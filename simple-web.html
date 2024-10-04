@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<title>simple-web</title>
+	<meta name="generator" content="LibreOffice 24.2.5.2 (Linux)"/>
+	<meta name="created" content="2024-08-22T15:28:36.278696448"/>
+	<meta name="changed" content="2024-08-22T15:32:02.845040240"/>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="css/styles.css">
+	<link chatgpt ="https://chatgpt.com/c/66fb4f7f-d8fc-8001-8a77-f6396cbc24df">
+</head>
+
+<body lang="vi-VN" link="#000080" vlink="#800000" dir="ltr">
+    <header>
+        <h1>Tạo website đơn giản</h1>
+        <nav>
+            <ul>
+			<li><a href="#" onclick="navigateTo('index.html')">Trang chủ</a></li>
+                	<li><a href="#" onclick="navigateTo('about.html')">Giới thiệu</a></li>
+                	<li><a href="#" onclick="navigateTo('services.html')">Các dịch vụ liên quan</a></li>
+                	<li><a href="#" onclick="navigateTo('contact.html')">Liên hệ hợp tác</a></li>
+            </ul>
+        </nav>
+    </header>
+
+<main>
+<h2>Tạo website đơn giản</h2>
+<p><i>Thời gian thực hiện: 2 tiết </i>
+<p>Sure, here is an example of a simple HTML website with a navigation menu using JavaScript to load different HTML files into a main content area and a login form.</p>
+<h3 id="file-structure">File Structure</h3>
+<ul>
+<li><code>index.html</code></li>
+<li><code>home.html</code></li>
+<li><code>about.html</code></li>
+<li><code>contact.html</code></li>
+<li><code>login.html</code></li>
+<li><code>style.css</code></li>
+<li><code>script.js</code></li>
+</ul>
+<h3 id="-index-html-"><code>index.html</code></h3>
+<pre><code class="lang-html"><span class="hljs-meta">&lt;!DOCTYPE html&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">"en"</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">"UTF-8"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"viewport"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"width=device-width, initial-scale=1.0"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>Simple Website<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"stylesheet"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"style.css"</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">header</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">nav</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"#"</span> <span class="hljs-attr">onclick</span>=<span class="hljs-string">"loadPage('home.html')"</span>&gt;</span>Home<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"#"</span> <span class="hljs-attr">onclick</span>=<span class="hljs-string">"loadPage('about.html')"</span>&gt;</span>About<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"#"</span> <span class="hljs-attr">onclick</span>=<span class="hljs-string">"loadPage('contact.html')"</span>&gt;</span>Contact<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"#"</span> <span class="hljs-attr">onclick</span>=<span class="hljs-string">"loadPage('login.html')"</span>&gt;</span>Login<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">nav</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">header</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">main</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"content"</span>&gt;</span>
+        <span class="hljs-comment">&lt;!-- Content will be loaded here --&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">main</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"script.js"</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
+</code></pre>
+<h3 id="-home-html-"><code>home.html</code></h3>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Welcome to the Home Page<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>This is the home page content.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+</code></pre>
+<h3 id="-about-html-"><code>about.html</code></h3>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>About Us<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>This is the about page content.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+</code></pre>
+<h3 id="-contact-html-"><code>contact.html</code></h3>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Contact Us<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>This is the contact page content.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+</code></pre>
+<h3 id="-login-html-"><code>login.html</code></h3>
+<pre><code class="lang-html">&lt;div&gt;
+    &lt;h1&gt;Login&lt;/h1&gt;
+    &lt;<span class="hljs-keyword">form</span> id=<span class="hljs-string">"loginForm"</span> onsubmit=<span class="hljs-string">"return validateLogin()"</span>&gt;
+        &lt;<span class="hljs-keyword">label</span> <span class="hljs-keyword">for</span>=<span class="hljs-string">"username"</span>&gt;Username:&lt;/<span class="hljs-keyword">label</span>&gt;
+        &lt;<span class="hljs-keyword">input</span> <span class="hljs-keyword">type</span>=<span class="hljs-string">"text"</span> id=<span class="hljs-string">"username"</span> name=<span class="hljs-string">"username"</span> required&gt;
+        &lt;<span class="hljs-keyword">br</span>&gt;
+        &lt;<span class="hljs-keyword">label</span> <span class="hljs-keyword">for</span>=<span class="hljs-string">"password"</span>&gt;Password:&lt;/<span class="hljs-keyword">label</span>&gt;
+        &lt;<span class="hljs-keyword">input</span> <span class="hljs-keyword">type</span>=<span class="hljs-string">"password"</span> id=<span class="hljs-string">"password"</span> name=<span class="hljs-string">"password"</span> required&gt;
+        &lt;<span class="hljs-keyword">br</span>&gt;
+        &lt;<span class="hljs-keyword">input</span> <span class="hljs-keyword">type</span>=<span class="hljs-string">"submit"</span> value=<span class="hljs-string">"Login"</span>&gt;
+    &lt;/<span class="hljs-keyword">form</span>&gt;
+&lt;/div&gt;
+</code></pre>
+<h3 id="-style-css-"><code>style.css</code></h3>
+<pre><code class="lang-css"><span class="hljs-selector-tag">body</span> {
+    <span class="hljs-attribute">font-family</span>: Arial, sans-serif;
+    <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span>;
+    <span class="hljs-attribute">padding</span>: <span class="hljs-number">0</span>;
+}
+
+<span class="hljs-selector-tag">header</span> {
+    <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#333</span>;
+    <span class="hljs-attribute">color</span>: <span class="hljs-number">#fff</span>;
+    <span class="hljs-attribute">padding</span>: <span class="hljs-number">1em</span>;
+    <span class="hljs-attribute">text-align</span>: center;
+}
+
+<span class="hljs-selector-tag">nav</span> <span class="hljs-selector-tag">ul</span> {
+    <span class="hljs-attribute">list-style-type</span>: none;
+    <span class="hljs-attribute">padding</span>: <span class="hljs-number">0</span>;
+}
+
+<span class="hljs-selector-tag">nav</span> <span class="hljs-selector-tag">ul</span> <span class="hljs-selector-tag">li</span> {
+    <span class="hljs-attribute">display</span>: inline;
+    <span class="hljs-attribute">margin-right</span>: <span class="hljs-number">10px</span>;
+}
+
+<span class="hljs-selector-tag">nav</span> <span class="hljs-selector-tag">ul</span> <span class="hljs-selector-tag">li</span> <span class="hljs-selector-tag">a</span> {
+    <span class="hljs-attribute">color</span>: <span class="hljs-number">#fff</span>;
+    <span class="hljs-attribute">text-decoration</span>: none;
+}
+
+<span class="hljs-selector-tag">main</span> {
+    <span class="hljs-attribute">padding</span>: <span class="hljs-number">1em</span>;
+}
+</code></pre>
+<h3 id="-script-js-"><code>script.js</code></h3>
+<pre><code class="lang-javascript"><span class="hljs-built_in">document</span>.addEventListener(<span class="hljs-string">"DOMContentLoaded"</span>, () =&gt; {
+    loadPage(<span class="hljs-string">'home.html'</span>); <span class="hljs-comment">// Load the home page by default</span>
+});
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">loadPage</span>(<span class="hljs-params">page</span>) </span>{
+    fetch(page)
+        .then(<span class="hljs-function"><span class="hljs-params">response</span> =&gt;</span> response.text())
+        .then(<span class="hljs-function"><span class="hljs-params">data</span> =&gt;</span> {
+            <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">'content'</span>).innerHTML = data;
+        })
+        .catch(<span class="hljs-function"><span class="hljs-params">error</span> =&gt;</span> {
+            <span class="hljs-built_in">console</span>.error(<span class="hljs-string">'Error loading the page:'</span>, error);
+            <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">'content'</span>).innerHTML = <span class="hljs-string">'&lt;p&gt;Sorry, there was an error loading the page.&lt;/p&gt;'</span>;
+        });
+}
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">validateLogin</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-keyword">const</span> username = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">'username'</span>).value;
+    <span class="hljs-keyword">const</span> password = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">'password'</span>).value;
+
+    <span class="hljs-keyword">if</span> (username === <span class="hljs-string">"admin"</span> &amp;&amp; password === <span class="hljs-string">"password"</span>) {
+        alert(<span class="hljs-string">"Login successful!"</span>);
+        loadPage(<span class="hljs-string">'home.html'</span>);
+    } <span class="hljs-keyword">else</span> {
+        alert(<span class="hljs-string">"Invalid username or password."</span>);
+    }
+    <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>; <span class="hljs-comment">// Prevent form submission</span>
+}
+</code></pre>
+<p>This setup includes a navigation menu that loads different HTML files into the main content area when clicked. The login form includes simple validation using JavaScript.</p>
+</main>
+
+<footer>
+	<p>&copy; 2024 Simple Project. All rights reserved.</p>
+</footer>
+
+<script src="js/scripts.js"></script>
+
+</body>
+</html>

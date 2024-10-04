@@ -1,6 +1,63 @@
-<html>
-<h1>
-  My html ưebsign
-</h1>
-  
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>nguyencongtacweb</title>
+    <!-- Reference to the local CSS file -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header>
+        <h1>Chào mừng bạn đến với trang tin của tôi!</h1>
+        <nav>
+            <ul>
+                	<li><a href="#" onclick="navigateTo('index.html')">Trang chủ</a></li>
+                	<li><a href="#" onclick="navigateTo('about.html')">Giới thiệu</a></li>
+                	<li><a href="#" onclick="navigateTo('services.html')">Các dịch vụ liên quan</a></li>
+                	<li><a href="#" onclick="navigateTo('contact.html')">Liên hệ hợp tác</a></li>
+			<li><a href="#" onclick="navigateTo('Start.html')">Start programmes</a></li>
+            </ul>
+        </nav>
+<h4>Current date and time:</h4>
+<span id="datetime"></span>
+
+</header>
+<main>
+<a href="email.txt">Email</a> | <a href = "https://maintrunghocpt.github.io/python/index.html">Python</a> | <a href = "https://www.4shared.com/web/account/settings">4shared</a> | <a href="total.html">Total commander</a> | YouTube | <a href="https://github.com/maintrunghocpt/python">GitHub</a> | Blog | Patreon | Amazon Author | LinkedIn | Scratch |
+<a href="chatgpt.html"> ChatGPT </a> | <a href="example.html">Ví dụ về tạo website</a> | <a href="#"></a> | <a href="#"></a> | <a href="#"></a> | <a href="#"></a> | 
+<a href="#"></a> | <a href="#"></a> | <a href="#"></a> | <a href="#"></a> | <a href="#"></a> | <a href="#"></a> |
+<a href="#"></a> | <a href="#"></a> | <a href="#"></a> | <a href="#"></a> | <a href="#"></a> | <a href="#"></a> | 
+<a href="#"></a> | <a href="#"></a> | <a href="#"></a> | <a href="#"></a> | <a href="#"></a> | <a href="#"></a> | 
+<a href="#"></a> | <a href="#"></a> | <a href="#"></a> | <a href="#"></a> |
+
+<h2>Nguyen Cong Tac-website</h2>
+<p>Mục này giới thiệu các hạng mục chính của dự án.</p>
+</main>
+
+    <!-- Reference to the local JavaScript file -->
+    <script src="js/scripts.js"></script>
+<script>
+      // create a function to update the date and time
+      function updateDateTime() {
+        // create a new `Date` object
+        const now = new Date();
+
+        // get the current date and time as a string
+        const currentDateTime = now.toLocaleString();
+
+        // update the `textContent` property of the `span` element with the `id` of `datetime`
+        document.querySelector('#datetime').textContent = currentDateTime;
+      }
+
+      // call the `updateDateTime` function every second
+      setInterval(updateDateTime, 1000);
+    </script>
+
+</body>
+<footer>
+ <p>&copy; 2024 Simple Project. All rights reserved.</p>
+
+/footer>
+
 </html>
