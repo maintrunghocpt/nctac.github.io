@@ -1,0 +1,674 @@
+```html
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đồ Thị Hàm Số y = ax + b - Đề Mục 86 - Toán Lớp 9</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@fontsource/roboto@4.5.8/index.css" rel="stylesheet">
+    <style>
+        * {
+            font-family: 'Roboto', sans-serif;
+        }
+        .gradient-header {
+            background: linear-gradient(135deg, #0891b2 0%, #7c3aed 100%);
+        }
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, #0891b2 0%, #7c3aed 100%);
+        }
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #067894 0%, #6a32c4 100%);
+        }
+        .answer-box {
+            background: #f0f9ff;
+            border-left: 4px solid #0891b2;
+        }
+        .solution-box {
+            background: #fef3c7;
+            border-left: 4px solid #f59e0b;
+        }
+        .nav-item {
+            transition: all 0.2s ease;
+        }
+        .nav-item:hover {
+            background: rgba(255,255,255,0.2);
+        }
+        .nav-item.active {
+            background: rgba(255,255,255,0.3);
+        }
+        .print-section {
+            page-break-inside: avoid;
+        }
+        @media print {
+            .no-print {
+                display: none;
+            }
+        }
+        .formula-box {
+            background: linear-gradient(135deg, #e0f2fe 0%, #ede9fe 100%);
+            border-radius: 8px;
+            padding: 16px;
+            margin: 12px 0;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="gradient-header text-white py-8">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center">
+                <div>
+                    <h1 class="text-3xl font-bold">ĐỒ THỊ HÀM SỐ y = ax + b</h1>
+                    <p class="text-lg opacity-90">Đề Mục 86 - Toán Lớp 9 - Đại Số</p>
+                </div>
+                <div class="text-right">
+                    <p class="text-sm opacity-80">Bộ Tài Liệu Toán THCS</p>
+                    <p class="text-sm opacity-80">60 Ngày Ôn Tập</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md sticky top-0 z-50 no-print">
+        <div class="container mx-auto px-4">
+            <div class="flex overflow-x-auto py-3 space-x-2">
+                <button onclick="showSection('lesson')" class="nav-item active px-4 py-2 rounded-lg bg-cyan-100 text-cyan-700 whitespace-nowrap">📚 Bài Giảng</button>
+                <button onclick="showSection('mcq')" class="nav-item px-4 py-2 rounded-lg hover:bg-gray-100 whitespace-nowrap">📝 30 Câu MCQ</button>
+                <button onclick="showSection('tf')" class="nav-item px-4 py-2 rounded-lg hover:bg-gray-100 whitespace-nowrap">✅ 10 Câu Đúng/Sai</button>
+                <button onclick="showSection('recognition')" class="nav-item px-4 py-2 rounded-lg hover:bg-gray-100 whitespace-nowrap">🔍 10 Bài Nhận Biết</button>
+                <button onclick="showSection('low')" class="nav-item px-4 py-2 rounded-lg hover:bg-gray-100 whitespace-nowrap">📊 10 Bài Vận Dụng Thấp</button>
+                <button onclick="showSection('high')" class="nav-item px-4 py-2 rounded-lg hover:bg-gray-100 whitespace-nowrap">🎯 10 Bài Vận Dụng Cao</button>
+                <button onclick="showSection('real')" class="nav-item px-4 py-2 rounded-lg hover:bg-gray-100 whitespace-nowrap">🌍 5 Bài Thực Tế</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+        <!-- Lesson Section -->
+        <section id="lesson" class="section-content">
+            <div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section">
+                <h2 class="text-2xl font-bold text-cyan-700 mb-6 flex items-center">
+                    <span class="mr-3">📚</span> BÀI GIẢNG CHI TIẾT: ĐỒ THỊ HÀM SỐ y = ax + b
+                </h2>
+                
+                <div class="space-y-6">
+                    <!-- Introduction -->
+                    <div class="answer-box p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold text-cyan-700 mb-4">1. ĐỒ THỊ HÀM SỐ BẬC NHẤT</h3>
+                        <p class="text-gray-700 mb-4">
+                            <strong>Đồ thị hàm số</strong> y = ax + b (a ≠ 0) là một đường thẳng cắt trục tung tại điểm có tung độ bằng b.
+                        </p>
+                        
+                        <div class="formula-box">
+                            <h4 class="font-semibold text-cyan-600 mb-2">📐 Đặc điểm đồ thị:</h4>
+                            <ul class="space-y-2 text-gray-700">
+                                <li>• <strong>Dạng:</strong> Đường thẳng</li>
+                                <li>• <strong>Cắt trục Oy:</strong> Tại điểm (0; b)</li>
+                                <li>• <strong>Cắt trục Ox:</strong> Tại điểm (-b/a; 0)</li>
+                                <li>• <strong>Hệ số góc:</strong> a = tan(α)</li>
+                            </ul>
+                        </div>
+
+                        <div class="grid md:grid-cols-3 gap-4 mt-4">
+                            <div class="bg-cyan-50 p-4 rounded-lg">
+                                <h4 class="font-semibold text-cyan-600 mb-2">a > 0</h4>
+                                <p class="text-gray-700 text-sm">Đường thẳng đi lên</p>
+                                <p class="text-cyan-700 text-sm font-semibold mt-2">Góc nhọn với Ox</p>
+                            </div>
+                            <div class="bg-purple-50 p-4 rounded-lg">
+                                <h4 class="font-semibold text-purple-600 mb-2">a < 0</h4>
+                                <p class="text-gray-700 text-sm">Đường thẳng đi xuống</p>
+                                <p class="text-purple-700 text-sm font-semibold mt-2">Góc tù với Ox</p>
+                            </div>
+                            <div class="bg-amber-50 p-4 rounded-lg">
+                                <h4 class="font-semibold text-amber-600 mb-2">b = 0</h4>
+                                <p class="text-gray-700 text-sm">Đi qua gốc tọa độ</p>
+                                <p class="text-amber-700 text-sm font-semibold mt-2">y = ax</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Drawing Graph -->
+                    <div class="solution-box p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold text-amber-700 mb-4">2. CÁCH VẼ ĐỒ THỊ</h3>
+                        
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div class="bg-white p-4 rounded-lg border-2 border-cyan-300">
+                                <h4 class="font-semibold text-cyan-600 mb-2">Cách 1: Dùng 2 điểm</h4>
+                                <ol class="space-y-2 text-gray-700 text-sm list-decimal list-inside">
+                                    <li>Cho x = 0 ⇒ y = b ⇒ A(0; b)</li>
+                                    <li>Cho y = 0 ⇒ x = -b/a ⇒ B(-b/a; 0)</li>
+                                    <li>Vẽ đường thẳng qua A và B</li>
+                                </ol>
+                            </div>
+                            <div class="bg-white p-4 rounded-lg border-2 border-purple-300">
+                                <h4 class="font-semibold text-purple-600 mb-2">Cách 2: Dùng bảng giá trị</h4>
+                                <ol class="space-y-2 text-gray-700 text-sm list-decimal list-inside">
+                                    <li>Chọn 2 giá trị x tùy ý</li>
+                                    <li>Tính y tương ứng</li>
+                                    <li>Vẽ đường thẳng qua 2 điểm</li>
+                                </ol>
+                            </div>
+                        </div>
+
+                        <div class="mt-4 formula-box">
+                            <h4 class="font-semibold text-cyan-600 mb-2">📐 Ví dụ: Vẽ đồ thị y = 2x + 1</h4>
+                            <p class="text-gray-700 mb-2">Bước 1: x = 0 ⇒ y = 1 ⇒ A(0; 1)</p>
+                            <p class="text-gray-700 mb-2">Bước 2: y = 0 ⇒ x = -0.5 ⇒ B(-0.5; 0)</p>
+                            <p class="text-gray-700">Bước 3: Vẽ đường thẳng qua A và B</p>
+                        </div>
+
+                        <div class="mt-4 bg-cyan-50 p-4 rounded-lg">
+                            <h4 class="font-semibold text-cyan-700 mb-2">📝 Lưu ý khi vẽ:</h4>
+                            <ul class="space-y-2 text-gray-700 text-sm">
+                                <li>• Chọn điểm có tọa độ nguyên để dễ vẽ</li>
+                                <li>• Dùng thước thẳng để vẽ đường thẳng</li>
+                                <li>• Ghi rõ tọa độ các điểm đặc biệt</li>
+                                <li>• Ghi tên hàm số trên đồ thị</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Relative Positions -->
+                    <div class="answer-box p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold text-cyan-700 mb-4">3. VỊ TRÍ TƯƠNG ĐỐI CỦA HAI ĐƯỜNG THẲNG</h3>
+                        
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div class="bg-white p-4 rounded-lg border-l-4 border-cyan-400">
+                                <h4 class="font-semibold text-cyan-600 mb-2">Cho (d₁): y = a₁x + b₁ và (d₂): y = a₂x + b₂</h4>
+                                <ul class="space-y-2 text-gray-700 text-sm">
+                                    <li>• <strong>Cắt nhau:</strong> a₁ ≠ a₂</li>
+                                    <li>• <strong>Song song:</strong> a₁ = a₂ và b₁ ≠ b₂</li>
+                                    <li>• <strong>Trùng nhau:</strong> a₁ = a₂ và b₁ = b₂</li>
+                                    <li>• <strong>Vuông góc:</strong> a₁ · a₂ = -1</li>
+                                </ul>
+                            </div>
+                            <div class="bg-white p-4 rounded-lg border-l-4 border-purple-400">
+                                <h4 class="font-semibold text-purple-600 mb-2">Tìm giao điểm</h4>
+                                <ol class="space-y-2 text-gray-700 text-sm list-decimal list-inside">
+                                    <li>Giải phương trình: a₁x + b₁ = a₂x + b₂</li>
+                                    <li>Tìm x từ phương trình</li>
+                                    <li>Thay x vào một trong hai phương trình để tìm y</li>
+                                    <li>Tọa độ giao điểm: (x; y)</li>
+                                </ol>
+                            </div>
+                        </div>
+
+                        <div class="mt-4 formula-box">
+                            <h4 class="font-semibold text-cyan-600 mb-2">📐 Ví dụ: Tìm giao điểm của y = 2x + 1 và y = -x + 4</h4>
+                            <p class="text-gray-700 mb-2">Phương trình hoành độ: 2x + 1 = -x + 4</p>
+                            <p class="text-gray-700 mb-2">3x = 3 ⇒ x = 1</p>
+                            <p class="text-gray-700">y = 2(1) + 1 = 3</p>
+                            <p class="text-gray-700">Giao điểm: M(1; 3)</p>
+                        </div>
+                    </div>
+
+                    <!-- Coefficient and Angle -->
+                    <div class="solution-box p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold text-amber-700 mb-4">4. HỆ SỐ GÓC VÀ GÓC TẠO BỞI ĐƯỜNG THẲNG</h3>
+                        
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div class="bg-white p-4 rounded-lg border-2 border-cyan-300">
+                                <h4 class="font-semibold text-cyan-600 mb-2">Hệ số góc</h4>
+                                <p class="text-gray-700 text-sm mb-2">Hệ số a trong y = ax + b</p>
+                                <p class="text-cyan-700 text-sm font-semibold">a = tan(α)</p>
+                                <p class="text-gray-600 text-sm mt-2">α là góc tạo bởi đường thẳng và Ox</p>
+                            </div>
+                            <div class="bg-white p-4 rounded-lg border-2 border-purple-300">
+                                <h4 class="font-semibold text-purple-600 mb-2">Tính chất</h4>
+                                <ul class="space-y-2 text-gray-700 text-sm">
+                                    <li>• a > 0: Góc nhọn</li>
+                                    <li>• a < 0: Góc tù</li>
+                                    <li>• a = 1: Góc 45°</li>
+                                    <li>• a = -1: Góc 135°</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="mt-4 bg-cyan-50 p-4 rounded-lg">
+                            <h4 class="font-semibold text-cyan-700 mb-2">📝 Công thức tính góc:</h4>
+                            <p class="text-gray-700 mb-2">α = arctan(|a|)</p>
+                            <p class="text-gray-700">Nếu a > 0: góc nhọn</p>
+                            <p class="text-gray-700">Nếu a < 0: góc tù = 180° - arctan(|a|)</p>
+                        </div>
+                    </div>
+
+                    <!-- Examples -->
+                    <div class="answer-box p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold text-cyan-700 mb-4">5. VÍ DỤ MINH HỌA</h3>
+                        
+                        <div class="bg-white p-4 rounded-lg mb-4">
+                            <h4 class="font-semibold text-cyan-600 mb-2">Ví dụ 1: Vẽ đồ thị</h4>
+                            <p class="text-gray-700 mb-2">Vẽ đồ thị hàm số y = 2x - 3</p>
+                            <div class="solution-box p-3 rounded">
+                                <p class="text-gray-700"><strong>Lời giải:</strong></p>
+                                <p class="text-gray-700">Cho x = 0 ⇒ y = -3 ⇒ A(0; -3)</p>
+                                <p class="text-gray-700">Cho y = 0 ⇒ x = 1.5 ⇒ B(1.5; 0)</p>
+                                <p class="text-gray-700">Vẽ đường thẳng qua A và B</p>
+                            </div>
+                        </div>
+
+                        <div class="bg-white p-4 rounded-lg mb-4">
+                            <h4 class="font-semibold text-cyan-600 mb-2">Ví dụ 2: Tìm giao điểm</h4>
+                            <p class="text-gray-700 mb-2">Tìm giao điểm của y = 3x + 2 và y = -x + 6</p>
+                            <div class="solution-box p-3 rounded">
+                                <p class="text-gray-700"><strong>Lời giải:</strong></p>
+                                <p class="text-gray-700">3x + 2 = -x + 6</p>
+                                <p class="text-gray-700">4x = 4 ⇒ x = 1</p>
+                                <p class="text-gray-700">y = 3(1) + 2 = 5</p>
+                                <p class="text-gray-700">Giao điểm: (1; 5)</p>
+                            </div>
+                        </div>
+
+                        <div class="bg-white p-4 rounded-lg">
+                            <h4 class="font-semibold text-cyan-600 mb-2">Ví dụ 3: Vị trí tương đối</h4>
+                            <p class="text-gray-700 mb-2">Xét vị trí tương đối của y = 2x + 1 và y = 2x - 3</p>
+                            <div class="solution-box p-3 rounded">
+                                <p class="text-gray-700"><strong>Lời giải:</strong></p>
+                                <p class="text-gray-700">a₁ = 2, a₂ = 2 ⇒ a₁ = a₂</p>
+                                <p class="text-gray-700">b₁ = 1, b₂ = -3 ⇒ b₁ ≠ b₂</p>
+                                <p class="text-gray-700">Vậy hai đường thẳng song song</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Calculator Guide -->
+                    <div class="solution-box p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold text-amber-700 mb-4">6. HƯỚNG DẪN BẤM MÁY TÍNH CASIO FX-580ES</h3>
+                        <div class="bg-white p-4 rounded-lg space-y-3">
+                            <p class="text-gray-700"><strong>Vẽ đồ thị (Mode Table):</strong></p>
+                            <ol class="list-decimal list-inside space-y-1 text-gray-700">
+                                <li>Bấm <kbd class="bg-gray-200 px-2 py-1 rounded">MODE</kbd> → <kbd class="bg-gray-200 px-2 py-1 rounded">7</kbd> (TABLE)</li>
+                                <li>Nhập hàm số f(x) = ax + b</li>
+                                <li>Nhập Start, End, Step</li>
+                                <li>Bấm <kbd class="bg-gray-200 px-2 py-1 rounded">=</kbd> để xem bảng giá trị</li>
+                            </ol>
+                            <p class="text-gray-700 mt-3"><strong>Tìm giao điểm (Mode EQN):</strong></p>
+                            <ol class="list-decimal list-inside space-y-1 text-gray-700">
+                                <li>Viết lại hệ: a₁x - y = -b₁ và a₂x - y = -b₂</li>
+                                <li>Bấm <kbd class="bg-gray-200 px-2 py-1 rounded">MODE</kbd> → <kbd class="bg-gray-200 px-2 py-1 rounded">5</kbd> (EQN)</li>
+                                <li>Chọn <kbd class="bg-gray-200 px-2 py-1 rounded">1</kbd> (anX + bnY = cn)</li>
+                                <li>Nhập hệ số, bấm <kbd class="bg-gray-200 px-2 py-1 rounded">=</kbd></li>
+                            </ol>
+                            <p class="text-gray-700 mt-3"><strong>Lưu ý:</strong> Kiểm tra lại kết quả bằng cách thay vào phương trình</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- MCQ Section -->
+        <section id="mcq" class="section-content hidden">
+            <div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section">
+                <h2 class="text-2xl font-bold text-cyan-700 mb-6 flex items-center">
+                    <span class="mr-3">📝</span> 30 CÂU TRẮC NGHIỆM 4 LỰA CHỌN
+                </h2>
+                <div class="space-y-6" id="mcq-container"></div>
+            </div>
+        </section>
+
+        <!-- True/False Section -->
+        <section id="tf" class="section-content hidden">
+            <div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section">
+                <h2 class="text-2xl font-bold text-cyan-700 mb-6 flex items-center">
+                    <span class="mr-3">✅</span> 10 CÂU TRẮC NGHIỆM ĐÚNG/SAI
+                </h2>
+                <div class="space-y-6" id="tf-container"></div>
+            </div>
+        </section>
+
+        <!-- Recognition Section -->
+        <section id="recognition" class="section-content hidden">
+            <div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section">
+                <h2 class="text-2xl font-bold text-cyan-700 mb-6 flex items-center">
+                    <span class="mr-3">🔍</span> 10 BÀI TẬP NHẬN BIẾT
+                </h2>
+                <div class="space-y-6" id="recognition-container"></div>
+            </div>
+        </section>
+
+        <!-- Low Application Section -->
+        <section id="low" class="section-content hidden">
+            <div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section">
+                <h2 class="text-2xl font-bold text-cyan-700 mb-6 flex items-center">
+                    <span class="mr-3">📊</span> 10 BÀI TẬP VẬN DỤNG THẤP
+                </h2>
+                <div class="space-y-6" id="low-container"></div>
+            </div>
+        </section>
+
+        <!-- High Application Section -->
+        <section id="high" class="section-content hidden">
+            <div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section">
+                <h2 class="text-2xl font-bold text-cyan-700 mb-6 flex items-center">
+                    <span class="mr-3">🎯</span> 10 BÀI TẬP VẬN DỤNG CAO
+                </h2>
+                <div class="space-y-6" id="high-container"></div>
+            </div>
+        </section>
+
+        <!-- Real World Section -->
+        <section id="real" class="section-content hidden">
+            <div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section">
+                <h2 class="text-2xl font-bold text-cyan-700 mb-6 flex items-center">
+                    <span class="mr-3">🌍</span> 5 BÀI TẬP ỨNG DỤNG THỰC TẾ
+                </h2>
+                <div class="space-y-6" id="real-container"></div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="gradient-header text-white py-6 mt-8">
+        <div class="container mx-auto px-4 text-center">
+            <p class="text-sm">Bộ Tài Liệu Toán THCS - Đề Mục 86: Đồ Thị Hàm Số y = ax + b</p>
+            <p class="text-sm opacity-80">© 2024 - Tài liệu ôn tập 60 ngày</p>
+        </div>
+    </footer>
+
+    <!-- Print Button -->
+    <button onclick="window.print()" class="no-print fixed bottom-6 right-6 btn-primary text-white px-6 py-3 rounded-full shadow-lg hover:shadow-xl transition-all">
+        🖨️ In Tài Liệu
+    </button>
+
+    <script>
+        // Navigation
+        function showSection(sectionId) {
+            document.querySelectorAll('.section-content').forEach(el => el.classList.add('hidden'));
+            document.getElementById(sectionId).classList.remove('hidden');
+            document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
+            event.target.classList.add('active');
+        }
+
+        // MCQ Data
+        const mcqData = [
+            { q: "Đồ thị hàm số y = ax + b là:", options: ["A. Parabol", "B. Đường thẳng", "C. Đường tròn", "D. Hyperbol"], answer: "B", solution: "Đồ thị hàm số bậc nhất là đường thẳng" },
+            { q: "Đường thẳng y = 2x + 1 cắt trục tung tại:", options: ["A. (0; 0)", "B. (0; 1)", "C. (1; 0)", "D. (2; 1)"], answer: "B", solution: "Cho x = 0 ⇒ y = 1" },
+            { q: "Đường thẳng y = 3x - 6 cắt trục hoành tại:", options: ["A. (0; -6)", "B. (2; 0)", "C. (-2; 0)", "D. (6; 0)"], answer: "B", solution: "Cho y = 0 ⇒ x = 2" },
+            { q: "Hệ số góc của đường thẳng y = -2x + 3 là:", options: ["A. -2", "B. 3", "C. 2", "D. -3"], answer: "A", solution: "Hệ số góc là a = -2" },
+            { q: "Đường thẳng y = 4x đi qua điểm:", options: ["A. (0; 0)", "B. (1; 4)", "C. (2; 8)", "D. Tất cả đều đúng"], answer: "D", solution: "Kiểm tra từng điểm đều thỏa" },
+            { q: "Hai đường thẳng y = 2x + 1 và y = 2x - 3 có vị trí:", options: ["A. Cắt nhau", "B. Song song", "C. Trùng nhau", "D. Vuông góc"], answer: "B", solution: "Cùng hệ số góc, khác hệ số tự do" },
+            { q: "Hai đường thẳng y = 3x + 2 và y = -1/3x + 1 có vị trí:", options: ["A. Cắt nhau", "B. Song song", "C. Trùng nhau", "D. Vuông góc"], answer: "D", solution: "3 × (-1/3) = -1" },
+            { q: "Giao điểm của y = x + 1 và y = 2x - 1 là:", options: ["A. (1; 2)", "B. (2; 3)", "C. (2; 1)", "D. (1; 3)"], answer: "B", solution: "x+1 = 2x-1 ⇒ x=2, y=3" },
+            { q: "Đường thẳng song song với y = 3x + 2 là:", options: ["A. y = 3x - 1", "B. y = -3x + 2", "C. y = 2x + 3", "D. y = -1/3x + 2"], answer: "A", solution: "Cùng hệ số góc a = 3" },
+            { q: "Đường thẳng vuông góc với y = 2x + 1 là:", options: ["A. y = 2x - 1", "B. y = -2x + 1", "C. y = -1/2x + 1", "D. y = 1/2x + 1"], answer: "C", solution: "2 × (-1/2) = -1" },
+            { q: "Góc tạo bởi y = x + 1 và Ox là:", options: ["A. 30°", "B. 45°", "C. 60°", "D. 90°"], answer: "B", solution: "a = 1 = tan(45°)" },
+            { q: "Góc tạo bởi y = √3x + 1 và Ox là:", options: ["A. 30°", "B. 45°", "C. 60°", "D. 90°"], answer: "C", solution: "a = √3 = tan(60°)" },
+            { q: "Đường thẳng y = ax + b đi qua gốc tọa độ khi:", options: ["A. a = 0", "B. b = 0", "C. a = b", "D. a ≠ b"], answer: "B", solution: "Đi qua (0;0) ⇒ b = 0" },
+            { q: "Hệ số góc của đường thẳng đi qua A(1; 2) và B(3; 6) là:", options: ["A. 1", "B. 2", "C. 3", "D. 4"], answer: "B", solution: "a = (6-2)/(3-1) = 2" },
+            { q: "Hàm số y = (m-1)x + 2 đồng biến khi:", options: ["A. m > 1", "B. m < 1", "C. m = 1", "D. m ≠ 1"], answer: "A", solution: "m-1 > 0 ⇒ m > 1" },
+            { q: "Hàm số y = (2-m)x - 3 nghịch biến khi:", options: ["A. m > 2", "B. m < 2", "C. m = 2", "D. m ≠ 2"], answer: "B", solution: "2-m < 0 ⇒ m > 2" },
+            { q: "Đường thẳng y = mx + 2m - 1 luôn đi qua điểm cố định:", options: ["A. (-2; -1)", "B. (2; 1)", "C. (-2; 1)", "D. (2; -1)"], answer: "A", solution: "y = m(x+2) - 1. Để không phụ thuộc m: x+2=0 ⇒ x=-2, y=-1" },
+            { q: "Khoảng cách từ O đến đường thẳng y = x + 2 là:", options: ["A. 1", "B. √2", "C. 2", "D. 2√2"], answer: "B", solution: "d = |2|/√(1²+1²) = √2" },
+            { q: "Diện tích tam giác tạo bởi y = 2x + 4 và hai trục tọa độ là:", options: ["A. 2", "B. 4", "C. 6", "D. 8"], answer: "B", solution: "Cắt Ox(-2;0), Oy(0;4). S = 1/2×2×4 = 4" },
+            { q: "Điều kiện để y = (m-2)x + 3 là hàm số bậc nhất:", options: ["A. m ≠ 2", "B. m = 2", "C. m > 2", "D. m < 2"], answer: "A", solution: "Hệ số a ≠ 0 ⇒ m-2 ≠ 0" },
+            { q: "Đường thẳng y = -x + 3 cắt trục hoành tại:", options: ["A. (0; 3)", "B. (3; 0)", "C. (-3; 0)", "D. (0; -3)"], answer: "B", solution: "Cho y=0 ⇒ x=3" },
+            { q: "Hai đường thẳng y = 3x + 1 và y = 3x + 1 có vị trí:", options: ["A. Cắt nhau", "B. Song song", "C. Trùng nhau", "D. Vuông góc"], answer: "C", solution: "a₁=a₂, b₁=b₂ ⇒ Trùng nhau" },
+            { q: "Hệ số góc của đường thẳng y = ax + b là:", options: ["A. a", "B. b", "C. -b/a", "D. -a/b"], answer: "A", solution: "Định nghĩa hệ số góc là a" },
+            { q: "Đường thẳng y = ax + b đi qua M(2; 5) và N(4; 9). Tìm a:", options: ["A. 1", "B. 2", "C. 3", "D. 4"], answer: "B", solution: "a = (9-5)/(4-2) = 2" },
+            { q: "Hàm số y = (m²-1)x + 2 đồng biến khi:", options: ["A. m > 1", "B. m < -1", "C. |m| > 1", "D. |m| < 1"], answer: "C", solution: "m²-1 > 0 ⇒ m² > 1 ⇒ |m| > 1" },
+            { q: "Giao điểm của y = 2x và y = -x + 6 là:", options: ["A. (1; 2)", "B. (2; 4)", "C. (3; 6)", "D. (4; 8)"], answer: "B", solution: "2x = -x+6 ⇒ 3x=6 ⇒ x=2, y=4" },
+            { q: "Đường thẳng y = mx + 2 vuông góc với y = 2x + 1 khi:", options: ["A. m = 2", "B. m = -2", "C. m = 1/2", "D. m = -1/2"], answer: "D", solution: "m · 2 = -1 ⇒ m = -1/2" },
+            { q: "Góc tạo bởi y = -x + 1 và Ox là:", options: ["A. 45°", "B. 135°", "C. 60°", "D. 120°"], answer: "B", solution: "a = -1, góc tù = 180° - 45° = 135°" },
+            { q: "Đường thẳng đi qua A(0; 3) và song song với y = 2x là:", options: ["A. y = 2x + 3", "B. y = 3x + 2", "C. y = 2x - 3", "D. y = 3x - 2"], answer: "A", solution: "Cùng hệ số góc a=2, qua (0;3) ⇒ b=3" },
+            { q: "Tìm m để ba đường thẳng y = x + 1, y = 2x - 1, y = mx + 3 đồng quy:", options: ["A. m = 1", "B. m = 2", "C. m = 3", "D. m = 4"], answer: "D", solution: "Giao điểm (2;3). Thay vào: 3 = 2m+3 ⇒ m=0" }
+        ];
+
+        // True/False Data
+        const tfData = [
+            { q: "Về đồ thị:", statements: [
+                { text: "Đồ thị y = ax + b là đường thẳng", answer: true },
+                { text: "Cắt trục tung tại (0; b)", answer: true },
+                { text: "Cắt trục hoành tại (-b/a; 0)", answer: true },
+                { text: "Luôn đi qua gốc tọa độ", answer: false }
+            ]},
+            { q: "Về hệ số góc:", statements: [
+                { text: "a > 0 thì đồng biến", answer: true },
+                { text: "a < 0 thì nghịch biến", answer: true },
+                { text: "a = tan(α)", answer: true },
+                { text: "a = 1 thì góc 45°", answer: true }
+            ]},
+            { q: "Về vị trí tương đối:", statements: [
+                { text: "a₁ ≠ a₂ thì cắt nhau", answer: true },
+                { text: "a₁ = a₂ thì song song", answer: false },
+                { text: "a₁ = a₂, b₁ ≠ b₂ thì song song", answer: true },
+                { text: "a₁ · a₂ = -1 thì vuông góc", answer: true }
+            ]},
+            { q: "Về điểm cố định:", statements: [
+                { text: "y = m(x+1) + 2 đi qua (-1; 2)", answer: true },
+                { text: "y = mx + m đi qua (-1; 0)", answer: true },
+                { text: "y = (m-1)x + 2m đi qua (-2; -2)", answer: true },
+                { text: "Mọi đường thẳng đều có điểm cố định", answer: false }
+            ]},
+            { q: "Về giao điểm:", statements: [
+                { text: "Hoành độ giao điểm là nghiệm của f(x)=g(x)", answer: true },
+                { text: "Tung độ tìm bằng cách thay x vào", answer: true },
+                { text: "Hai đường song song có giao điểm", answer: false },
+                { text: "Hai đường trùng nhau có vô số giao điểm", answer: true }
+            ]},
+            { q: "Về khoảng cách:", statements: [
+                { text: "Khoảng cách từ O đến y=ax+b là |b|/√(a²+1)", answer: true },
+                { text: "Khoảng cách luôn dương", answer: true },
+                { text: "Khoảng cách bằng 0 khi đi qua O", answer: true },
+                { text: "Khoảng cách âm", answer: false }
+            ]},
+            { q: "Về diện tích:", statements: [
+                { text: "Diện tích tam giác tạo bởi đồ thị và hai trục là S = b²/|2a|", answer: true },
+                { text: "Diện tích luôn dương", answer: true },
+                { text: "Diện tích bằng 0 khi b=0", answer: true },
+                { text: "Diện tích âm", answer: false }
+            ]},
+            { q: "Về máy tính:", statements: [
+                { text: "Có thể vẽ đồ thị bằng Mode Table", answer: true },
+                { text: "Có thể tìm giao điểm bằng Mode EQN", answer: true },
+                { text: "Kết quả luôn chính xác", answer: false },
+                { text: "Có thể kiểm tra bằng cách thay số", answer: true }
+            ]},
+            { q: "Về tính đồng biến:", statements: [
+                { text: "a > 0 thì đồng biến trên ℝ", answer: true },
+                { text: "a < 0 thì nghịch biến trên ℝ", answer: true },
+                { text: "a = 0 thì đồng biến", answer: false },
+                { text: "Đồng biến khi x₁ < x₂ ⇒ y₁ < y₂", answer: true }
+            ]},
+            { q: "Về ứng dụng:", statements: [
+                { text: "Dùng trong kinh tế", answer: true },
+                { text: "Dùng trong vật lý", answer: true },
+                { text: "Dùng trong thực tế", answer: true },
+                { text: "Chỉ dùng trong toán học", answer: false }
+            ]}
+        ];
+
+        // Recognition Data
+        const recognitionData = [
+            { q: "Viết dạng đồ thị hàm số y = ax + b.", answer: "Đường thẳng", solution: "Đồ thị là đường thẳng" },
+            { q: "Viết tọa độ giao điểm với trục Oy.", answer: "(0; b)", solution: "Cho x = 0" },
+            { q: "Viết tọa độ giao điểm với trục Ox.", answer: "(-b/a; 0)", solution: "Cho y = 0" },
+            { q: "Viết điều kiện để hai đường thẳng song song.", answer: "a₁ = a₂ và b₁ ≠ b₂", solution: "Cùng hệ số góc, khác hệ số tự do" },
+            { q: "Viết điều kiện để hai đường thẳng vuông góc.", answer: "a₁ · a₂ = -1", solution: "Tích hệ số góc bằng -1" },
+            { q: "Viết hệ số góc của y = ax + b.", answer: "a", solution: "Hệ số của x" },
+            { q: "Viết công thức tính góc tạo bởi đường thẳng và Ox.", answer: "tan(α) = a", solution: "Hệ số góc" },
+            { q: "Viết điều kiện để đường thẳng đi qua gốc tọa độ.", answer: "b = 0", solution: "Hệ số tự do bằng 0" },
+            { q: "Viết điều kiện để hàm số đồng biến.", answer: "a > 0", solution: "Hệ số góc dương" },
+            { q: "Viết điều kiện để hàm số nghịch biến.", answer: "a < 0", solution: "Hệ số góc âm" }
+        ];
+
+        // Low Application Data
+        const lowData = [
+            { q: "Vẽ đồ thị hàm số y = 2x + 1.", answer: "Đường thẳng qua (0;1) và (-0.5;0)", solution: "Lập bảng giá trị và vẽ" },
+            { q: "Tìm giao điểm của y = x + 2 và y = 2x - 1.", answer: "(3; 5)", solution: "x+2 = 2x-1 ⇒ x=3, y=5" },
+            { q: "Xét vị trí tương đối của y = 3x + 2 và y = 3x - 1.", answer: "Song song", solution: "a₁ = a₂ = 3, b₁ ≠ b₂" },
+            { q: "Xét vị trí tương đối của y = 2x + 1 và y = -1/2x + 3.", answer: "Vuông góc", solution: "2 × (-1/2) = -1" },
+            { q: "Tìm a, b biết đồ thị đi qua A(0; 2) và B(1; 4).", answer: "a=2, b=2", solution: "b=2, a=(4-2)/(1-0) = 2" },
+            { q: "Tìm m để y = (m-1)x + 2 đồng biến.", answer: "m > 1", solution: "m - 1 > 0 ⇒ m > 1" },
+            { q: "Tìm m để y = (2-m)x - 3 nghịch biến.", answer: "m > 2", solution: "2 - m < 0 ⇒ m > 2" },
+            { q: "Tính góc tạo bởi y = x + 1 và Ox.", answer: "45°", solution: "a = 1 = tan(45°)" },
+            { q: "Tính khoảng cách từ O đến y = x + 2.", answer: "√2", solution: "d = |2|/√(1²+1²) = √2" },
+            { q: "Tính diện tích tam giác tạo bởi y = 2x + 4 và hai trục tọa độ.", answer: "4", solution: "Cắt Ox(-2;0), Oy(0;4). S = 1/2×2×4 = 4" }
+        ];
+
+        // High Application Data
+        const highData = [
+            { q: "Chứng minh đường thẳng y = mx + 2m - 1 luôn đi qua điểm cố định.", answer: "A(-2; -1)", solution: "**Lời giải chi tiết:**\n\n1. Viết lại phương trình:\n   y = m(x + 2) - 1\n\n2. Để phương trình đúng với mọi m:\n   x + 2 = 0 ⇒ x = -2\n   y = -1\n\n3. Vậy điểm cố định là A(-2; -1)\n\n**Kết luận: Điểm cố định A(-2; -1)**" },
+            { q: "Tìm m để ba đường thẳng y = 2x + 1, y = 3x - 2, y = mx + 3 đồng quy.", answer: "m = 4/3", solution: "**Lời giải chi tiết:**\n\n1. Tìm giao điểm của (d₁) và (d₂):\n   2x + 1 = 3x - 2\n   x = 3, y = 7\n   Giao điểm M(3; 7)\n\n2. Để (d₃) đi qua M:\n   7 = 3m + 3\n   3m = 4\n   m = 4/3\n\n**Kết luận: m = 4/3**" },
+            { q: "Tìm m để khoảng cách từ O đến đường thẳng y = mx + 2m - 1 lớn nhất.", answer: "m = -2", solution: "**Lời giải chi tiết:**\n\n1. Đường thẳng đi qua điểm cố định A(-2; -1)\n\n2. Khoảng cách từ O đến đường thẳng lớn nhất khi đường thẳng vuông góc với OA\n\n3. Hệ số góc OA: k_OA = (-1-0)/(-2-0) = 1/2\n\n4. Hệ số góc đường thẳng: m = -1/k_OA = -2\n\n**Kết luận: m = -2**" },
+            { q: "Cho hai đường thẳng y = (m-1)x + 3 và y = (2-m)x + 1. Tìm m để chúng song song.", answer: "m = 1.5", solution: "**Lời giải chi tiết:**\n\n1. Điều kiện song song:\n   a₁ = a₂ và b₁ ≠ b₂\n\n2. Giải:\n   m - 1 = 2 - m\n   2m = 3\n   m = 1.5\n\n3. Kiểm tra:\n   b₁ = 3, b₂ = 1 ⇒ b₁ ≠ b₂ (thỏa)\n\n**Kết luận: m = 1.5**" },
+            { q: "Tìm m để hai đường thẳng y = 2x + 1 và y = mx + 3 tạo với nhau một góc 45°.", answer: "m = 1/3 hoặc m = -3", solution: "**Lời giải chi tiết:**\n\n1. Công thức góc giữa hai đường thẳng:\n   tan(α) = |(a₁-a₂)/(1+a₁a₂)|\n\n2. Thay số:\n   1 = |(2-m)/(1+2m)|\n\n3. Giải:\n   2-m = 1+2m ⇒ 3m = 1 ⇒ m = 1/3\n   2-m = -(1+2m) ⇒ 2-m = -1-2m ⇒ m = -3\n\n**Kết luận: m = 1/3 hoặc m = -3**" },
+            { q: "Cho đường thẳng y = mx + 2m - 1. Tìm m để khoảng cách từ A(1; 2) đến đường thẳng bằng 2.", answer: "m = (9 ± 2√14)/5", solution: "**Lời giải chi tiết:**\n\n1. Viết lại: mx - y + 2m - 1 = 0\n\n2. Công thức khoảng cách:\n   d = |m(1) - 2 + 2m - 1| / √(m²+1) = 2\n   |3m - 3| = 2√(m²+1)\n\n3. Bình phương:\n   9(m-1)² = 4(m²+1)\n   9m² - 18m + 9 = 4m² + 4\n   5m² - 18m + 5 = 0\n\n4. Giải:\n   m = (18 ± √(324-100))/10 = (18 ± √224)/10\n   m = (18 ± 4√14)/10 = (9 ± 2√14)/5\n\n**Kết luận: m = (9 ± 2√14)/5**" },
+            { q: "Tìm m để diện tích tam giác tạo bởi y = mx + 2m - 1 và hai trục tọa độ bằng 4.", answer: "m = (5 ± 2√6)/2", solution: "**Lời giải chi tiết:**\n\n1. Cắt Ox: y=0 ⇒ x = (1-2m)/m\n   Cắt Oy: x=0 ⇒ y = 2m - 1\n\n2. Diện tích:\n   S = 1/2 · |x| · |y| = 4\n   1/2 · |(1-2m)/m| · |2m-1| = 4\n   (2m-1)² / |2m| = 8\n\n3. Giải:\n   (2m-1)² = 16|m|\n   Trường hợp m > 0: 4m² - 4m + 1 = 16m ⇒ 4m² - 20m + 1 = 0\n   m = (20 ± √384)/8 = (5 ± 2√6)/2\n\n**Kết luận: m = (5 ± 2√6)/2**" },
+            { q: "Cho ba điểm A(1; 2), B(3; 4), C(m; m+1). Tìm m để A, B, C thẳng hàng.", answer: "Mọi m", solution: "**Lời giải chi tiết:**\n\n1. Viết phương trình đường thẳng AB:\n   a = (4-2)/(3-1) = 1\n   y - 2 = 1(x - 1) ⇒ y = x + 1\n\n2. Để C thuộc AB:\n   m + 1 = m + 1 (luôn đúng)\n   Vậy C luôn thuộc AB với mọi m\n\n**Kết luận: Mọi m**" },
+            { q: "Tìm m để đường thẳng y = mx + 2m - 1 cắt đồ thị hàm số y = x² tại hai điểm phân biệt.", answer: "m < -4-2√5 hoặc m > -4+2√5", solution: "**Lời giải chi tiết:**\n\n1. Phương trình hoành độ giao điểm:\n   x² = mx + 2m - 1\n   x² - mx - 2m + 1 = 0\n\n2. Điều kiện hai nghiệm phân biệt:\n   Δ = m² - 4(1-2m) > 0\n   m² + 8m - 4 > 0\n\n3. Giải:\n   m < -4-2√5 hoặc m > -4+2√5\n\n**Kết luận: m < -4-2√5 hoặc m > -4+2√5**" },
+            { q: "Tìm m để khoảng cách từ gốc tọa độ đến đường thẳng y = mx + 2m - 1 đạt giá trị lớn nhất.", answer: "m = -2", solution: "**Lời giải chi tiết:**\n\n1. Đường thẳng luôn đi qua A(-2; -1)\n\n2. Khoảng cách từ O đến đường thẳng lớn nhất khi đường thẳng ⊥ OA\n\n3. Hệ số góc OA: k = 1/2\n   Hệ số góc đường thẳng: m = -1/k = -2\n\n**Kết luận: m = -2**" }
+        ];
+
+        // Real World Data
+        const realData = [
+            { q: "Một taxi tính giá như sau: 15000 đồng cho km đầu tiên, 12000 đồng cho mỗi km tiếp theo. Viết hàm số biểu diễn số tiền phải trả theo số km đi được.", answer: "y = 12000x + 3000 (x ≥ 1)", solution: "**Lời giải chi tiết:**\n\n1. Gọi x là số km (x ≥ 1)\n   y là số tiền phải trả\n\n2. Tính toán:\n   y = 15000 + 12000(x - 1)\n   y = 15000 + 12000x - 12000\n   y = 12000x + 3000\n\n3. Ứng dụng:\n   - Tính chi phí di chuyển\n   - Lập kế hoạch ngân sách\n\n**Kết luận: y = 12000x + 3000 (x ≥ 1)**" },
+            { q: "Một công ty sản xuất có chi phí cố định 50 triệu đồng và chi phí sản xuất mỗi sản phẩm là 100 ngàn đồng. Viết hàm số chi phí tổng theo số sản phẩm.", answer: "C(x) = 100x + 50000 (nghìn đồng)", solution: "**Lời giải chi tiết:**\n\n1. Gọi x là số sản phẩm\n   C(x) là chi phí tổng (nghìn đồng)\n\n2. Tính toán:\n   C(x) = 100x + 50000\n\n3. Ứng dụng:\n   - Tính toán chi phí sản xuất\n   - Lập kế hoạch sản xuất\n\n**Kết luận: C(x) = 100x + 50000**" },
+            { q: "Một xe máy đi từ A đến B với vận tốc 40 km/h. Một ô tô đi từ B về A với vận tốc 60 km/h. Khoảng cách AB là 200km. Viết phương trình chuyển động của mỗi xe.", answer: "x₁ = 40t, x₂ = 200 - 60t", solution: "**Lời giải chi tiết:**\n\n1. Chọn gốc tọa độ tại A, chiều dương từ A đến B\n\n2. Xe máy:\n   x₁ = 40t\n\n3. Ô tô:\n   x₂ = 200 - 60t\n\n4. Ứng dụng:\n   - Tính thời điểm gặp nhau\n   - Tính vị trí gặp nhau\n\n**Kết luận: x₁ = 40t, x₂ = 200 - 60t**" },
+            { q: "Một cửa hàng bán áo với giá 200 ngàn đồng/áo. Nếu mua trên 10 áo thì được giảm 10 ngàn đồng/áo. Viết hàm số giá tiền theo số áo mua.", answer: "y = 200x (x≤10), y = 190x (x>10)", solution: "**Lời giải chi tiết:**\n\n1. Gọi x là số áo\n   y là số tiền phải trả (nghìn đồng)\n\n2. Hàm số:\n   Nếu x ≤ 10: y = 200x\n   Nếu x > 10: y = (200-10)x = 190x\n\n3. Ứng dụng:\n   - Tính chi phí mua hàng\n   - Lập kế hoạch mua sắm\n\n**Kết luận: y = 200x (x≤10), y = 190x (x>10)**" },
+            { q: "Một bể nước có 100 lít nước. Người ta mở vòi cho nước chảy vào với tốc độ 20 lít/phút. Viết hàm số lượng nước trong bể theo thời gian.", answer: "V(t) = 20t + 100", solution: "**Lời giải chi tiết:**\n\n1. Gọi t là thời gian (phút)\n   V(t) là lượng nước (lít)\n\n2. Tính toán:\n   V(t) = 100 + 20t\n\n3. Ứng dụng:\n   - Tính thời gian đầy bể\n   - Quản lý tài nguyên nước\n\n**Kết luận: V(t) = 20t + 100**" }
+        ];
+
+        // Render MCQ
+        function renderMCQ() {
+            const container = document.getElementById('mcq-container');
+            mcqData.forEach((item, index) => {
+                const div = document.createElement('div');
+                div.className = 'border-l-4 border-cyan-400 pl-4 py-3 bg-gray-50 rounded-r-lg';
+                div.innerHTML = `
+                    <p class="font-semibold text-gray-800 mb-2"><strong>Câu ${index + 1}:</strong> ${item.q}</p>
+                    <div class="grid grid-cols-2 gap-2 mb-3 text-sm">
+                        ${item.options.map(opt => `<span class="text-gray-700">${opt}</span>`).join('')}
+                    </div>
+                    <button onclick="toggleAnswer('mcq-${index}')" class="text-cyan-600 text-sm hover:underline">👁️ Xem đáp án</button>
+                    <div id="mcq-${index}" class="answer-box mt-2 p-3 rounded hidden">
+                        <p class="font-semibold text-green-700">Đáp án: ${item.answer}</p>
+                        <p class="text-gray-700 text-sm mt-1">${item.solution}</p>
+                    </div>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        // Render True/False
+        function renderTF() {
+            const container = document.getElementById('tf-container');
+            tfData.forEach((item, index) => {
+                const div = document.createElement('div');
+                div.className = 'border-l-4 border-amber-400 pl-4 py-3 bg-gray-50 rounded-r-lg';
+                div.innerHTML = `
+                    <p class="font-semibold text-gray-800 mb-3"><strong>Câu ${index + 1}:</strong> ${item.q}</p>
+                    <div class="space-y-2">
+                        ${item.statements.map((s, i) => `
+                            <div class="flex items-center justify-between bg-white p-2 rounded">
+                                <span class="text-gray-700 text-sm">${String.fromCharCode(65+i)}. ${s.text}</span>
+                                <span class="text-xs px-2 py-1 rounded ${s.answer ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}">${s.answer ? 'Đúng' : 'Sai'}</span>
+                            </div>
+                        `).join('')}
+                    </div>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        // Render Recognition
+        function renderRecognition() {
+            const container = document.getElementById('recognition-container');
+            recognitionData.forEach((item, index) => {
+                const div = document.createElement('div');
+                div.className = 'border-l-4 border-cyan-400 pl-4 py-3 bg-gray-50 rounded-r-lg';
+                div.innerHTML = `
+                    <p class="font-semibold text-gray-800 mb-2"><strong>Bài ${index + 1}:</strong> ${item.q}</p>
+                    <button onclick="toggleAnswer('rec-${index}')" class="text-cyan-600 text-sm hover:underline">👁️ Xem đáp án</button>
+                    <div id="rec-${index}" class="answer-box mt-2 p-3 rounded hidden">
+                        <p class="font-semibold text-purple-700">Đáp án: ${item.answer}</p>
+                        <p class="text-gray-700 text-sm mt-1">${item.solution}</p>
+                    </div>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        // Render Low Application
+        function renderLow() {
+            const container = document.getElementById('low-container');
+            lowData.forEach((item, index) => {
+                const div = document.createElement('div');
+                div.className = 'border-l-4 border-green-400 pl-4 py-3 bg-gray-50 rounded-r-lg';
+                div.innerHTML = `
+                    <p class="font-semibold text-gray-800 mb-2"><strong>Bài ${index + 1}:</strong> ${item.q}</p>
+                    <button onclick="toggleAnswer('low-${index}')" class="text-green-600 text-sm hover:underline">👁️ Xem đáp án</button>
+                    <div id="low-${index}" class="solution-box mt-2 p-3 rounded hidden">
+                        <p class="font-semibold text-amber-700">Đáp án: ${item.answer}</p>
+                        <p class="text-gray-700 text-sm mt-1 whitespace-pre-line">${item.solution}</p>
+                    </div>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        // Render High Application
+        function renderHigh() {
+            const container = document.getElementById('high-container');
+            highData.forEach((item, index) => {
+                const div = document.createElement('div');
+                div.className = 'border-l-4 border-red-400 pl-4 py-3 bg-gray-50 rounded-r-lg';
+                div.innerHTML = `
+                    <p class="font-semibold text-gray-800 mb-2"><strong>Bài ${index + 1}:</strong> ${item.q}</p>
+                    <button onclick="toggleAnswer('high-${index}')" class="text-red-600 text-sm hover:underline">👁️ Xem lời giải chi tiết</button>
+                    <div id="high-${index}" class="solution-box mt-2 p-4 rounded hidden">
+                        <p class="font-semibold text-amber-700 mb-2">Đáp án: ${item.answer}</p>
+                        <div class="text-gray-700 text-sm whitespace-pre-line">${item.solution}</div>
+                    </div>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        // Render Real World
+        function renderReal() {
+            const container = document.getElementById('real-container');
+            realData.forEach((item, index) => {
+                const div = document.createElement('div');
+                div.className = 'border-l-4 border-indigo-400 pl-4 py-3 bg-gray-50 rounded-r-lg';
+                div.innerHTML = `
+                    <p class="font-semibold text-gray-800 mb-2"><strong>Bài ${index + 1}:</strong> ${item.q}</p>
+                    <button onclick="toggleAnswer('real-${index}')" class="text-indigo-600 text-sm hover:underline">👁️ Xem lời giải chi tiết</button>
+                    <div id="real-${index}" class="solution-box mt-2 p-4 rounded hidden">
+                        <p class="font-semibold text-amber-700 mb-2">Đáp án: ${item.answer}</p>
+                        <div class="text-gray-700 text-sm whitespace-pre-line">${item.solution}</div>
+                    </div>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        // Toggle Answer
+        function toggleAnswer(id) {
+            const el = document.getElementById(id);
+            el.classList.toggle('hidden');
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            renderMCQ();
+            renderTF();
+            renderRecognition();
+            renderLow();
+            renderHigh();
+            renderReal();
+        });
+    </script>
+</body>
+</html>
+```
