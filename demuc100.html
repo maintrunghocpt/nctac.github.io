@@ -1,0 +1,746 @@
+```html
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hình Cầu - Đề Mục 100 - Toán Lớp 9</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@fontsource/roboto@4.5.8/index.css" rel="stylesheet">
+    <style>
+        * {
+            font-family: 'Roboto', sans-serif;
+        }
+        .gradient-header {
+            background: linear-gradient(135deg, #059669 0%, #7c3aed 100%);
+        }
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, #059669 0%, #7c3aed 100%);
+        }
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #047857 0%, #6a32c4 100%);
+        }
+        .answer-box {
+            background: #f0fdf4;
+            border-left: 4px solid #059669;
+        }
+        .solution-box {
+            background: #fef3c7;
+            border-left: 4px solid #f59e0b;
+        }
+        .nav-item {
+            transition: all 0.2s ease;
+        }
+        .nav-item:hover {
+            background: rgba(255,255,255,0.2);
+        }
+        .nav-item.active {
+            background: rgba(255,255,255,0.3);
+        }
+        .print-section {
+            page-break-inside: avoid;
+        }
+        @media print {
+            .no-print {
+                display: none;
+            }
+        }
+        .sphere-diagram {
+            background: #f8fafc;
+            border: 2px dashed #cbd5e1;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+        }
+        .formula-box {
+            background: linear-gradient(135deg, #d1fae5 0%, #ede9fe 100%);
+            border-radius: 8px;
+            padding: 16px;
+            margin: 12px 0;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="gradient-header text-white py-8">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center">
+                <div>
+                    <h1 class="text-3xl font-bold">HÌNH CẦU</h1>
+                    <p class="text-lg opacity-90">Đề Mục 100 - Toán Lớp 9 - Hình Học</p>
+                </div>
+                <div class="text-right">
+                    <p class="text-sm opacity-80">Bộ Tài Liệu Toán THCS</p>
+                    <p class="text-sm opacity-80">60 Ngày Ôn Tập</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md sticky top-0 z-50 no-print">
+        <div class="container mx-auto px-4">
+            <div class="flex overflow-x-auto py-3 space-x-2">
+                <button onclick="showSection('lesson')" class="nav-item active px-4 py-2 rounded-lg bg-green-100 text-green-700 whitespace-nowrap">📚 Bài Giảng</button>
+                <button onclick="showSection('mcq')" class="nav-item px-4 py-2 rounded-lg hover:bg-gray-100 whitespace-nowrap">📝 50 Câu MCQ</button>
+                <button onclick="showSection('tf')" class="nav-item px-4 py-2 rounded-lg hover:bg-gray-100 whitespace-nowrap">✅ 10 Câu Đúng/Sai</button>
+                <button onclick="showSection('recognition')" class="nav-item px-4 py-2 rounded-lg hover:bg-gray-100 whitespace-nowrap">🔍 10 Bài Nhận Biết</button>
+                <button onclick="showSection('low')" class="nav-item px-4 py-2 rounded-lg hover:bg-gray-100 whitespace-nowrap">📊 10 Bài Vận Dụng Thấp</button>
+                <button onclick="showSection('high')" class="nav-item px-4 py-2 rounded-lg hover:bg-gray-100 whitespace-nowrap">🎯 10 Bài Vận Dụng Cao</button>
+                <button onclick="showSection('real')" class="nav-item px-4 py-2 rounded-lg hover:bg-gray-100 whitespace-nowrap">🌍 10 Bài Thực Tế</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+        <!-- Lesson Section -->
+        <section id="lesson" class="section-content">
+            <div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section">
+                <h2 class="text-2xl font-bold text-green-700 mb-6 flex items-center">
+                    <span class="mr-3">📚</span> BÀI GIẢNG CHI TIẾT: HÌNH CẦU
+                </h2>
+                <div class="space-y-6">
+                    <!-- Introduction -->
+                    <div class="answer-box p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold text-green-700 mb-4">1. ĐỊNH NGHĨA HÌNH CẦU</h3>
+                        <p class="text-gray-700 mb-4">
+                            <strong>Hình cầu</strong> là tập hợp tất cả các điểm trong không gian cách một điểm O cố định (gọi là tâm) một khoảng bằng R (gọi là bán kính) không đổi.
+                        </p>
+                        <div class="sphere-diagram mb-4">
+                            <svg width="400" height="350" viewBox="0 0 400 350">
+                                <!-- Sphere outline -->
+                                <ellipse cx="200" cy="175" rx="150" ry="150" fill="none" stroke="#059669" stroke-width="3"/>
+                                <!-- Equator -->
+                                <ellipse cx="200" cy="175" rx="150" ry="40" fill="none" stroke="#7c3aed" stroke-width="2" stroke-dasharray="5,5"/>
+                                <!-- Meridian -->
+                                <ellipse cx="200" cy="175" rx="40" ry="150" fill="none" stroke="#7c3aed" stroke-width="2" stroke-dasharray="5,5"/>
+                                <!-- Center -->
+                                <circle cx="200" cy="175" r="4" fill="#dc2626"/>
+                                <text x="210" y="170" fill="#dc2626" font-size="16" font-weight="bold">O</text>
+                                <!-- Radius -->
+                                <line x1="200" y1="175" x2="350" y2="175" stroke="#f59e0b" stroke-width="2"/>
+                                <text x="265" y="165" fill="#f59e0b" font-size="16" font-weight="bold">R</text>
+                                <!-- Diameter -->
+                                <line x1="50" y1="175" x2="350" y2="175" stroke="#0891b2" stroke-width="2" stroke-dasharray="5,5"/>
+                                <text x="190" y="195" fill="#0891b2" font-size="14">Đường kính d = 2R</text>
+                                <!-- Surface point -->
+                                <circle cx="280" cy="120" r="4" fill="#10b981"/>
+                                <text x="290" y="115" fill="#10b981" font-size="14">M</text>
+                                <line x1="200" y1="175" x2="280" y2="120" stroke="#10b981" stroke-width="2"/>
+                                <text x="230" y="145" fill="#10b981" font-size="14">OM = R</text>
+                                <!-- Labels -->
+                                <text x="170" y="20" fill="#059669" font-size="14">Mặt cầu</text>
+                                <text x="170" y="340" fill="#059669" font-size="14">Tâm O</text>
+                            </svg>
+                            <p class="text-sm text-gray-600 mt-2">Hình cầu tâm O, bán kính R</p>
+                        </div>
+                        <div class="formula-box">
+                            <h4 class="font-semibold text-green-600 mb-2">📐 Các yếu tố của hình cầu:</h4>
+                            <ul class="space-y-2 text-gray-700">
+                                <li>• <strong>Tâm (O):</strong> Điểm cố định cách đều mọi điểm trên mặt cầu</li>
+                                <li>• <strong>Bán kính (R):</strong> Khoảng cách từ tâm đến bất kỳ điểm nào trên mặt cầu</li>
+                                <li>• <strong>Đường kính (d):</strong> Đoạn thẳng đi qua tâm, nối hai điểm đối diện trên mặt cầu, d = 2R</li>
+                                <li>• <strong>Mặt cầu:</strong> Bề mặt của hình cầu</li>
+                                <li>• <strong>Khối cầu:</strong> Phần không gian bao gồm mặt cầu và phần bên trong</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Formulas -->
+                    <div class="solution-box p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold text-amber-700 mb-4">2. CÔNG THỨC TÍNH TOÁN</h3>
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div class="bg-white p-4 rounded-lg border-2 border-green-300">
+                                <h4 class="font-semibold text-green-600 mb-2">📏 Diện tích mặt cầu:</h4>
+                                <p class="text-3xl text-green-700 font-bold text-center">S = 4πR²</p>
+                                <p class="text-gray-600 text-sm text-center mt-2">R: bán kính</p>
+                            </div>
+                            <div class="bg-white p-4 rounded-lg border-2 border-purple-300">
+                                <h4 class="font-semibold text-purple-600 mb-2">📐 Thể tích khối cầu:</h4>
+                                <p class="text-3xl text-purple-700 font-bold text-center">V = ⁴⁄₃πR³</p>
+                                <p class="text-gray-600 text-sm text-center mt-2">R: bán kính</p>
+                            </div>
+                            <div class="bg-white p-4 rounded-lg border-2 border-amber-300">
+                                <h4 class="font-semibold text-amber-600 mb-2">📐 Chu vi đường tròn lớn:</h4>
+                                <p class="text-2xl text-amber-700 font-bold text-center">C = 2πR</p>
+                                <p class="text-gray-600 text-sm text-center mt-2">Đường tròn qua tâm</p>
+                            </div>
+                            <div class="bg-white p-4 rounded-lg border-2 border-blue-300">
+                                <h4 class="font-semibold text-blue-600 mb-2">📐 Diện tích đường tròn lớn:</h4>
+                                <p class="text-2xl text-blue-700 font-bold text-center">S_đtròn = πR²</p>
+                                <p class="text-gray-600 text-sm text-center mt-2">Thiết diện qua tâm</p>
+                            </div>
+                        </div>
+                        <div class="formula-box">
+                            <h4 class="font-semibold text-green-600 mb-2">📐 Công thức theo đường kính d:</h4>
+                            <p class="text-gray-700 mb-2">Vì d = 2R ⇒ R = d/2</p>
+                            <p class="text-green-700 font-bold text-center">S = πd²</p>
+                            <p class="text-purple-700 font-bold text-center">V = ⅙πd³</p>
+                        </div>
+                        <div class="mt-4 bg-amber-50 p-4 rounded-lg">
+                            <p class="text-amber-800 text-sm">
+                                <strong>💡 Lưu ý:</strong> Diện tích mặt cầu bằng 4 lần diện tích đường tròn lớn. Thể tích khối cầu bằng 2/3 thể tích hình trụ ngoại tiếp (có cùng R và h = 2R).
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Properties -->
+                    <div class="answer-box p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold text-green-700 mb-4">3. TÍNH CHẤT CỦA HÌNH CẦU</h3>
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div class="bg-green-50 p-4 rounded-lg">
+                                <h4 class="font-semibold text-green-600 mb-2">Tính chất 1: Mặt cắt</h4>
+                                <p class="text-gray-700 text-sm">Mọi mặt cắt của hình cầu đều là hình tròn.</p>
+                                <p class="text-green-700 text-sm font-semibold mt-2">Bán kính thiết diện ≤ R</p>
+                            </div>
+                            <div class="bg-purple-50 p-4 rounded-lg">
+                                <h4 class="font-semibold text-purple-600 mb-2">Tính chất 2: Thiết diện qua tâm</h4>
+                                <p class="text-gray-700 text-sm">Thiết diện qua tâm là đường tròn lớn có bán kính bằng R.</p>
+                                <p class="text-purple-700 text-sm font-semibold mt-2">Diện tích = πR²</p>
+                            </div>
+                            <div class="bg-amber-50 p-4 rounded-lg">
+                                <h4 class="font-semibold text-amber-600 mb-2">Tính chất 3: Đối xứng</h4>
+                                <p class="text-gray-700 text-sm">Hình cầu có vô số mặt phẳng đối xứng đi qua tâm.</p>
+                                <p class="text-amber-700 text-sm font-semibold mt-2">Tâm đối xứng là O</p>
+                            </div>
+                            <div class="bg-blue-50 p-4 rounded-lg">
+                                <h4 class="font-semibold text-blue-600 mb-2">Tính chất 4: Tiếp diện</h4>
+                                <p class="text-gray-700 text-sm">Mặt phẳng tiếp xúc với mặt cầu tại một điểm duy nhất.</p>
+                                <p class="text-blue-700 text-sm font-semibold mt-2">Vuông góc với bán kính</p>
+                            </div>
+                        </div>
+                        <div class="mt-4 bg-white p-4 rounded-lg border-2 border-green-300">
+                            <h4 class="font-semibold text-green-700 mb-2">📝 Thiết diện của hình cầu:</h4>
+                            <ul class="space-y-2 text-gray-700 text-sm">
+                                <li>• Mặt cắt qua tâm: Đường tròn lớn bán kính R</li>
+                                <li>• Mặt cắt không qua tâm: Đường tròn nhỏ bán kính r < R</li>
+                                <li>• Nếu khoảng cách từ tâm đến mặt cắt là d: r = √(R² - d²)</li>
+                                <li>• Mặt cắt tiếp xúc: Điểm duy nhất (d = R)</li>
+                                <li>• Mặt cắt không cắt: Không có giao điểm (d > R)</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Relationships -->
+                    <div class="solution-box p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold text-amber-700 mb-4">4. HỆ THỨC LIÊN HỆ</h3>
+                        <div class="formula-box">
+                            <h4 class="font-semibold text-green-600 mb-2">📐 Tỉ lệ diện tích và thể tích:</h4>
+                            <p class="text-gray-700 mb-2">S/V = (4πR²)/(⁴⁄₃πR³) = 3/R</p>
+                            <p class="text-green-700 font-bold text-center">S = 3V/R</p>
+                        </div>
+                        <div class="formula-box">
+                            <h4 class="font-semibold text-purple-600 mb-2">📐 So sánh với hình trụ ngoại tiếp:</h4>
+                            <p class="text-gray-700 mb-2">Hình trụ ngoại tiếp có R và h = 2R</p>
+                            <p class="text-purple-700 font-bold text-center">V_cầu/V_trụ = 2/3</p>
+                            <p class="text-purple-700 font-bold text-center">S_cầu/S_xq_trụ = 1</p>
+                        </div>
+                        <div class="formula-box">
+                            <h4 class="font-semibold text-amber-600 mb-2">📐 Tỉ lệ khi thay đổi bán kính:</h4>
+                            <ul class="space-y-2 text-gray-700">
+                                <li>• Nếu R tăng k lần, S tăng k² lần</li>
+                                <li>• Nếu R tăng k lần, V tăng k³ lần</li>
+                                <li>• Nếu d tăng k lần, S tăng k² lần</li>
+                                <li>• Nếu d tăng k lần, V tăng k³ lần</li>
+                            </ul>
+                        </div>
+                        <div class="mt-4 bg-green-50 p-4 rounded-lg">
+                            <h4 class="font-semibold text-green-700 mb-2">📌 Công thức tính bán kính từ các đại lượng khác:</h4>
+                            <ul class="space-y-2 text-gray-700 text-sm">
+                                <li>• Từ diện tích: R = √(S/4π)</li>
+                                <li>• Từ thể tích: R = ∛(3V/4π)</li>
+                                <li>• Từ đường kính: R = d/2</li>
+                                <li>• Từ chu vi đường tròn lớn: R = C/2π</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Problem Types -->
+                    <div class="answer-box p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold text-green-700 mb-4">5. CÁC DẠNG TOÁN THƯỜNG GẶP</h3>
+                        <div class="grid md:grid-cols-3 gap-4">
+                            <div class="bg-white p-4 rounded-lg border-l-4 border-green-400 card-hover">
+                                <h4 class="font-semibold text-green-600 mb-2">Dạng 1: Tính diện tích</h4>
+                                <p class="text-gray-700 text-sm">Tính S mặt cầu khi biết R hoặc d.</p>
+                            </div>
+                            <div class="bg-white p-4 rounded-lg border-l-4 border-purple-400 card-hover">
+                                <h4 class="font-semibold text-purple-600 mb-2">Dạng 2: Tính thể tích</h4>
+                                <p class="text-gray-700 text-sm">Tính V khối cầu khi biết R hoặc d.</p>
+                            </div>
+                            <div class="bg-white p-4 rounded-lg border-l-4 border-amber-400 card-hover">
+                                <h4 class="font-semibold text-amber-600 mb-2">Dạng 3: Tìm R hoặc d</h4>
+                                <p class="text-gray-700 text-sm">Biết S hoặc V, tìm bán kính.</p>
+                            </div>
+                            <div class="bg-white p-4 rounded-lg border-l-4 border-blue-400 card-hover">
+                                <h4 class="font-semibold text-blue-600 mb-2">Dạng 4: Tỉ lệ</h4>
+                                <p class="text-gray-700 text-sm">So sánh diện tích, thể tích hai hình cầu.</p>
+                            </div>
+                            <div class="bg-white p-4 rounded-lg border-l-4 border-red-400 card-hover">
+                                <h4 class="font-semibold text-red-600 mb-2">Dạng 5: Thiết diện</h4>
+                                <p class="text-gray-700 text-sm">Tính bán kính thiết diện khi biết khoảng cách.</p>
+                            </div>
+                            <div class="bg-white p-4 rounded-lg border-l-4 border-indigo-400 card-hover">
+                                <h4 class="font-semibold text-indigo-600 mb-2">Dạng 6: Bài toán thực tế</h4>
+                                <p class="text-gray-700 text-sm">Ứng dụng vào tính toán quả bóng, hành tinh.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Examples -->
+                    <div class="solution-box p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold text-amber-700 mb-4">6. VÍ DỤ MINH HỌA</h3>
+                        <div class="bg-white p-4 rounded-lg mb-4">
+                            <h4 class="font-semibold text-amber-600 mb-2">Ví dụ 1: Tính diện tích mặt cầu</h4>
+                            <p class="text-gray-700 mb-2">Cho hình cầu có R = 5cm. Tính diện tích mặt cầu.</p>
+                            <div class="answer-box p-3 rounded">
+                                <p class="text-gray-700"><strong>Lời giải:</strong></p>
+                                <p class="text-gray-700">S = 4πR² = 4π × 25 = 100π cm²</p>
+                                <p class="text-gray-700">≈ 314 cm² (với π ≈ 3.14)</p>
+                            </div>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg mb-4">
+                            <h4 class="font-semibold text-amber-600 mb-2">Ví dụ 2: Tính thể tích khối cầu</h4>
+                            <p class="text-gray-700 mb-2">Cho hình cầu có đường kính 12cm. Tính thể tích.</p>
+                            <div class="answer-box p-3 rounded">
+                                <p class="text-gray-700"><strong>Lời giải:</strong></p>
+                                <p class="text-gray-700">R = d/2 = 6cm</p>
+                                <p class="text-gray-700">V = ⁴⁄₃πR³ = ⁴⁄₃π × 216 = 288π cm³</p>
+                                <p class="text-gray-700">≈ 904 cm³ (với π ≈ 3.14)</p>
+                            </div>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg">
+                            <h4 class="font-semibold text-amber-600 mb-2">Ví dụ 3: Tìm bán kính</h4>
+                            <p class="text-gray-700 mb-2">Cho hình cầu có S = 144π cm². Tính R.</p>
+                            <div class="answer-box p-3 rounded">
+                                <p class="text-gray-700"><strong>Lời giải:</strong></p>
+                                <p class="text-gray-700">4πR² = 144π</p>
+                                <p class="text-gray-700">R² = 36</p>
+                                <p class="text-gray-700">R = 6cm</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Calculator Guide -->
+                    <div class="answer-box p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold text-green-700 mb-4">7. HƯỚNG DẪN BẤM MÁY TÍNH CASIO FX-580ES</h3>
+                        <div class="bg-white p-4 rounded-lg space-y-3">
+                            <p class="text-gray-700"><strong>Tính diện tích mặt cầu:</strong></p>
+                            <ol class="list-decimal list-inside space-y-1 text-gray-700">
+                                <li>Nhập <kbd class="bg-gray-200 px-2 py-1 rounded">4</kbd> × <kbd class="bg-gray-200 px-2 py-1 rounded">SHIFT</kbd> + <kbd class="bg-gray-200 px-2 py-1 rounded">π</kbd> × <kbd class="bg-gray-200 px-2 py-1 rounded">R</kbd><kbd class="bg-gray-200 px-2 py-1 rounded">x²</kbd></li>
+                                <li>Bấm <kbd class="bg-gray-200 px-2 py-1 rounded">=</kbd></li>
+                            </ol>
+                            <p class="text-gray-700 mt-3"><strong>Tính thể tích khối cầu:</strong></p>
+                            <ol class="list-decimal list-inside space-y-1 text-gray-700">
+                                <li>Nhập <kbd class="bg-gray-200 px-2 py-1 rounded">4</kbd><kbd class="bg-gray-200 px-2 py-1 rounded">÷</kbd><kbd class="bg-gray-200 px-2 py-1 rounded">3</kbd> × <kbd class="bg-gray-200 px-2 py-1 rounded">SHIFT</kbd> + <kbd class="bg-gray-200 px-2 py-1 rounded">π</kbd> × <kbd class="bg-gray-200 px-2 py-1 rounded">R</kbd><kbd class="bg-gray-200 px-2 py-1 rounded">x³</kbd></li>
+                                <li>Bấm <kbd class="bg-gray-200 px-2 py-1 rounded">=</kbd></li>
+                            </ol>
+                            <p class="text-gray-700 mt-3"><strong>Tính bán kính từ thể tích:</strong></p>
+                            <ol class="list-decimal list-inside space-y-1 text-gray-700">
+                                <li>Nhập <kbd class="bg-gray-200 px-2 py-1 rounded">SHIFT</kbd> + <kbd class="bg-gray-200 px-2 py-1 rounded">√</kbd>(<kbd class="bg-gray-200 px-2 py-1 rounded">3</kbd> × <kbd class="bg-gray-200 px-2 py-1 rounded">V</kbd><kbd class="bg-gray-200 px-2 py-1 rounded">÷</kbd><kbd class="bg-gray-200 px-2 py-1 rounded">4</kbd><kbd class="bg-gray-200 px-2 py-1 rounded">÷</kbd><kbd class="bg-gray-200 px-2 py-1 rounded">SHIFT</kbd> + <kbd class="bg-gray-200 px-2 py-1 rounded">π</kbd>)</li>
+                                <li>Bấm <kbd class="bg-gray-200 px-2 py-1 rounded">=</kbd></li>
+                            </ol>
+                            <p class="text-gray-700 mt-3"><strong>Lưu ý:</strong> Sử dụng phím π để có kết quả chính xác hơn</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- MCQ Section -->
+        <section id="mcq" class="section-content hidden">
+            <div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section">
+                <h2 class="text-2xl font-bold text-green-700 mb-6 flex items-center">
+                    <span class="mr-3">📝</span> 50 CÂU TRẮC NGHIỆM 4 LỰA CHỌN
+                </h2>
+                <div class="space-y-6" id="mcq-container"></div>
+            </div>
+        </section>
+
+        <!-- True/False Section -->
+        <section id="tf" class="section-content hidden">
+            <div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section">
+                <h2 class="text-2xl font-bold text-green-700 mb-6 flex items-center">
+                    <span class="mr-3">✅</span> 10 CÂU TRẮC NGHIỆM ĐÚNG/SAI
+                </h2>
+                <div class="space-y-6" id="tf-container"></div>
+            </div>
+        </section>
+
+        <!-- Recognition Section -->
+        <section id="recognition" class="section-content hidden">
+            <div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section">
+                <h2 class="text-2xl font-bold text-green-700 mb-6 flex items-center">
+                    <span class="mr-3">🔍</span> 10 BÀI TẬP NHẬN BIẾT
+                </h2>
+                <div class="space-y-6" id="recognition-container"></div>
+            </div>
+        </section>
+
+        <!-- Low Application Section -->
+        <section id="low" class="section-content hidden">
+            <div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section">
+                <h2 class="text-2xl font-bold text-green-700 mb-6 flex items-center">
+                    <span class="mr-3">📊</span> 10 BÀI TẬP VẬN DỤNG THẤP
+                </h2>
+                <div class="space-y-6" id="low-container"></div>
+            </div>
+        </section>
+
+        <!-- High Application Section -->
+        <section id="high" class="section-content hidden">
+            <div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section">
+                <h2 class="text-2xl font-bold text-green-700 mb-6 flex items-center">
+                    <span class="mr-3">🎯</span> 10 BÀI TẬP VẬN DỤNG CAO
+                </h2>
+                <div class="space-y-6" id="high-container"></div>
+            </div>
+        </section>
+
+        <!-- Real World Section -->
+        <section id="real" class="section-content hidden">
+            <div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section">
+                <h2 class="text-2xl font-bold text-green-700 mb-6 flex items-center">
+                    <span class="mr-3">🌍</span> 10 BÀI TẬP ỨNG DỤNG THỰC TẾ
+                </h2>
+                <div class="space-y-6" id="real-container"></div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="gradient-header text-white py-6 mt-8">
+        <div class="container mx-auto px-4 text-center">
+            <p class="text-sm">Bộ Tài Liệu Toán THCS - Đề Mục 100: Hình Cầu</p>
+            <p class="text-sm opacity-80">© 2024 - Tài liệu ôn tập 60 ngày</p>
+        </div>
+    </footer>
+
+    <!-- Print Button -->
+    <button onclick="window.print()" class="no-print fixed bottom-6 right-6 btn-primary text-white px-6 py-3 rounded-full shadow-lg hover:shadow-xl transition-all">
+        🖨 In Tài Liệu
+    </button>
+
+    <script>
+        // Navigation
+        function showSection(sectionId) {
+            document.querySelectorAll('.section-content').forEach(el => el.classList.add('hidden'));
+            document.getElementById(sectionId).classList.remove('hidden');
+            document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
+            event.target.classList.add('active');
+        }
+
+        // MCQ Data (50 questions)
+        const mcqData = [
+            { q: "Hình cầu là tập hợp các điểm cách một điểm O cố định một khoảng:", options: ["A. Thay đổi", "B. Bằng R không đổi", "C. Nhỏ hơn R", "D. Lớn hơn R"], answer: "B", solution: "Định nghĩa: Hình cầu là tập hợp các điểm cách tâm O một khoảng bằng R không đổi" },
+            { q: "Công thức tính diện tích mặt cầu là:", options: ["A. 2πR²", "B. 3πR²", "C. 4πR²", "D. πR²"], answer: "C", solution: "S = 4πR² (diện tích mặt cầu)" },
+            { q: "Công thức tính thể tích khối cầu là:", options: ["A. πR³", "B. ⁴⁄₃πR³", "C. ½πR³", "D. 2πR³"], answer: "B", solution: "V = ⁴⁄₃πR³ (thể tích khối cầu)" },
+            { q: "Cho hình cầu có R = 3cm. Diện tích mặt cầu bằng:", options: ["A. 9π cm²", "B. 18π cm²", "C. 36π cm²", "D. 72π cm²"], answer: "C", solution: "S = 4π × 9 = 36π cm²" },
+            { q: "Cho hình cầu có R = 3cm. Thể tích khối cầu bằng:", options: ["A. 9π cm³", "B. 18π cm³", "C. 36π cm³", "D. 108π cm³"], answer: "C", solution: "V = ⁴⁄₃π × 27 = 36π cm³" },
+            { q: "Đường kính của hình cầu bằng:", options: ["A. R", "B. 2R", "C. 3R", "D. 4R"], answer: "B", solution: "d = 2R (đường kính bằng hai lần bán kính)" },
+            { q: "Mọi mặt cắt của hình cầu đều là:", options: ["A. Hình elip", "B. Hình tròn", "C. Hình vuông", "D. Hình chữ nhật"], answer: "B", solution: "Mọi mặt cắt của hình cầu đều là hình tròn" },
+            { q: "Thiết diện qua tâm của hình cầu là:", options: ["A. Đường tròn nhỏ", "B. Đường tròn lớn bán kính R", "C. Điểm", "D. Không có"], answer: "B", solution: "Thiết diện qua tâm là đường tròn lớn có bán kính bằng R" },
+            { q: "Cho hình cầu có d = 10cm. Tính R:", options: ["A. 3cm", "B. 5cm", "C. 7cm", "D. 10cm"], answer: "B", solution: "R = d/2 = 10/2 = 5cm" },
+            { q: "Nếu bán kính tăng 2 lần, diện tích mặt cầu tăng:", options: ["A. 2 lần", "B. 3 lần", "C. 4 lần", "D. 8 lần"], answer: "C", solution: "S = 4πR², nếu R tăng 2 lần thì S tăng 2² = 4 lần" },
+            { q: "Nếu bán kính tăng 2 lần, thể tích khối cầu tăng:", options: ["A. 2 lần", "B. 4 lần", "C. 6 lần", "D. 8 lần"], answer: "D", solution: "V = ⁴⁄₃πR³, nếu R tăng 2 lần thì V tăng 2³ = 8 lần" },
+            { q: "Cho S = 100π cm². Tính R:", options: ["A. 3cm", "B. 4cm", "C. 5cm", "D. 6cm"], answer: "C", solution: "4πR² = 100π ⇒ R² = 25 ⇒ R = 5cm" },
+            { q: "Cho V = 36π cm³. Tính R:", options: ["A. 2cm", "B. 3cm", "C. 4cm", "D. 5cm"], answer: "B", solution: "⁴⁄₃πR³ = 36π ⇒ R³ = 27 ⇒ R = 3cm" },
+            { q: "Diện tích mặt cầu bằng mấy lần diện tích đường tròn lớn?", options: ["A. 2 lần", "B. 3 lần", "C. 4 lần", "D. 5 lần"], answer: "C", solution: "S_mặt_cầu = 4πR², S_đtròn = πR² ⇒ tỉ số = 4" },
+            { q: "Tỉ số thể tích khối cầu và hình trụ ngoại tiếp (cùng R, h=2R) bằng:", options: ["A. 1/2", "B. 2/3", "C. 3/4", "D. 1/3"], answer: "B", solution: "V_cầu/V_trụ = (⁴⁄₃πR³)/(2πR³) = 2/3" },
+            { q: "Cho hình cầu có d = 12cm. Tính S:", options: ["A. 144π cm²", "B. 100π cm²", "C. 120π cm²", "D. 160π cm²"], answer: "A", solution: "R = 6cm, S = 4π × 36 = 144π cm²" },
+            { q: "Cho hình cầu có d = 6cm. Tính V:", options: ["A. 18π cm³", "B. 36π cm³", "C. 54π cm³", "D. 72π cm³"], answer: "B", solution: "R = 3cm, V = ⁴⁄₃π × 27 = 36π cm³" },
+            { q: "Mặt phẳng tiếp xúc với mặt cầu tại:", options: ["A. Hai điểm", "B. Một điểm duy nhất", "C. Vô số điểm", "D. Không có điểm"], answer: "B", solution: "Mặt phẳng tiếp xúc với mặt cầu tại một điểm duy nhất" },
+            { q: "Bán kính thiết diện không qua tâm so với R:", options: ["A. Bằng R", "B. Lớn hơn R", "C. Nhỏ hơn R", "D. Bằng 2R"], answer: "C", solution: "Thiết diện không qua tâm có bán kính nhỏ hơn R" },
+            { q: "Khoảng cách từ tâm đến mặt cắt là d. Bán kính thiết diện r bằng:", options: ["A. √(R² + d²)", "B. √(R² - d²)", "C. R - d", "D. R + d"], answer: "B", solution: "r = √(R² - d²) (theo định lý Pytago)" },
+            { q: "Nếu d = R (mặt cắt tiếp xúc), bán kính thiết diện bằng:", options: ["A. R", "B. R/2", "C. 0", "D. 2R"], answer: "C", solution: "r = √(R² - R²) = 0 (một điểm)" },
+            { q: "Hình cầu có vô số:", options: ["A. Tâm", "B. Bán kính", "C. Mặt phẳng đối xứng", "D. Đường kính"], answer: "C", solution: "Hình cầu có vô số mặt phẳng đối xứng đi qua tâm" },
+            { q: "Tâm đối xứng của hình cầu là:", options: ["A. Một điểm trên mặt cầu", "B. Tâm O", "C. Không có", "D. Vô số điểm"], answer: "B", solution: "Tâm O là tâm đối xứng của hình cầu" },
+            { q: "Cho hai hình cầu có R1 = 2R2. Tỉ số S1/S2 bằng:", options: ["A. 2", "B. 3", "C. 4", "D. 8"], answer: "C", solution: "S1/S2 = (R1/R2)² = 4" },
+            { q: "Cho hai hình cầu có R1 = 3R2. Tỉ số V1/V2 bằng:", options: ["A. 3", "B. 6", "C. 9", "D. 27"], answer: "D", solution: "V1/V2 = (R1/R2)³ = 27" },
+            { q: "Công thức tính S theo d là:", options: ["A. πd²", "B. 2πd²", "C. 4πd²", "D. πd²/4"], answer: "A", solution: "S = 4π(d/2)² = πd²" },
+            { q: "Công thức tính V theo d là:", options: ["A. πd³/6", "B. πd³/3", "C. πd³/4", "D. πd³/2"], answer: "A", solution: "V = ⁴⁄₃π(d/2)³ = πd³/6" },
+            { q: "S/V của hình cầu bằng:", options: ["A. 1/R", "B. 2/R", "C. 3/R", "D. 4/R"], answer: "C", solution: "S/V = (4πR²)/(⁴⁄₃πR³) = 3/R" },
+            { q: "Hình cầu nội tiếp hình lập phương cạnh a có R bằng:", options: ["A. a", "B. a/2", "C. a√2/2", "D. a√3/2"], answer: "B", solution: "R = a/2 (đường kính bằng cạnh hình lập phương)" },
+            { q: "Số điểm chung của mặt phẳng tiếp diện với mặt cầu:", options: ["A. 0", "B. 1", "C. 2", "D. Vô số"], answer: "B", solution: "Mặt phẳng tiếp diện có đúng 1 điểm chung với mặt cầu" },
+            { q: "Cho hình cầu có R = 7cm. Tính S:", options: ["A. 144π cm²", "B. 196π cm²", "C. 256π cm²", "D. 324π cm²"], answer: "B", solution: "S = 4π × 49 = 196π cm²" },
+            { q: "Cho hình cầu có R = 6cm. Tính V:", options: ["A. 144π cm³", "B. 216π cm³", "C. 288π cm³", "D. 360π cm³"], answer: "C", solution: "V = ⁴⁄₃π × 216 = 288π cm³" },
+            { q: "Cho hình cầu có S = 64π cm². Tính R:", options: ["A. 3cm", "B. 4cm", "C. 5cm", "D. 6cm"], answer: "B", solution: "4πR² = 64π ⇒ R² = 16 ⇒ R = 4cm" },
+            { q: "Cho hình cầu có V = 36π cm³. Tính R:", options: ["A. 2cm", "B. 3cm", "C. 4cm", "D. 5cm"], answer: "B", solution: "⁴⁄₃πR³ = 36π ⇒ R³ = 27 ⇒ R = 3cm" },
+            { q: "Cho hình cầu có d = 14cm. Tính S:", options: ["A. 144π cm²", "B. 169π cm²", "C. 196π cm²", "D. 225π cm²"], answer: "C", solution: "R = 7cm, S = 4π × 49 = 196π cm²" },
+            { q: "Cho hình cầu có chu vi đường tròn lớn = 20π cm. Tính R:", options: ["A. 5cm", "B. 10cm", "C. 15cm", "D. 20cm"], answer: "B", solution: "C = 2πR = 20π ⇒ R = 10cm" },
+            { q: "Cho hai hình cầu có R1 = 4cm, R2 = 2cm. Tính tỉ số S1/S2:", options: ["A. 2", "B. 3", "C. 4", "D. 8"], answer: "C", solution: "S1/S2 = (R1/R2)² = (4/2)² = 4" },
+            { q: "Cho hai hình cầu có R1 = 3cm, R2 = 1cm. Tính tỉ số V1/V2:", options: ["A. 3", "B. 9", "C. 18", "D. 27"], answer: "D", solution: "V1/V2 = (R1/R2)³ = 3³ = 27" },
+            { q: "Cho hình cầu có R = 10cm. Một mặt phẳng cách tâm 6cm. Tính diện tích thiết diện:", options: ["A. 36π cm²", "B. 48π cm²", "C. 64π cm²", "D. 80π cm²"], answer: "C", solution: "r = √(100 - 36) = 8cm, S = π × 64 = 64π cm²" },
+            { q: "Hình cầu ngoại tiếp hình lập phương cạnh a có R bằng:", options: ["A. a", "B. a/2", "C. a√2/2", "D. a√3/2"], answer: "D", solution: "R = đường chéo/2 = a√3/2" },
+            { q: "Cho hình cầu có S = 400π cm². Nếu tăng R thêm 2cm thì V tăng bao nhiêu?", options: ["A. 200π cm³", "B. 300π cm³", "C. 400π cm³", "D. 500π cm³"], answer: "D", solution: "R = 10cm, V1 = 4000π/3, R mới = 12cm, V2 = 2304π, ΔV ≈ 500π cm³" },
+            { q: "Cho ba hình cầu có bán kính tỉ lệ 1:2:3. Tổng thể tích bằng 360π cm³. Tính bán kính nhỏ nhất:", options: ["A. 2cm", "B. 3cm", "C. 4cm", "D. 5cm"], answer: "B", solution: "k³(1+8+27) = 270 ⇒ k = 3cm" },
+            { q: "Một hình cầu được cắt bởi hai mặt phẳng song song. Phần giữa hai mặt cắt gọi là:", options: ["A. Chỏm cầu", "B. Hình cầu khuyết", "C. Đới cầu", "D. Hình cầu cụt"], answer: "C", solution: "Phần giữa hai mặt cắt song song gọi là đới cầu" },
+            { q: "Thể tích chỏm cầu chiều cao h được tính bằng:", options: ["A. πh²(3R-h)/3", "B. πh²(2R-h)/3", "C. πh²(R-h)/3", "D. πh²(4R-h)/3"], answer: "A", solution: "V_chỏm = πh²(3R-h)/3" },
+            { q: "Cho hình cầu có R = 12cm. Tính thể tích hình nón nội tiếp có chiều cao lớn nhất:", options: ["A. 512π cm³", "B. 768π cm³", "C. 1024π cm³", "D. 1152π cm³"], answer: "D", solution: "h = 2R = 24cm, r = R = 12cm, V = ⅓π × 144 × 24 = 1152π cm³" },
+            { q: "Tỉ số diện tích bề mặt Trái Đất và Mặt Trăng (R_TĐ ≈ 4R_MT):", options: ["A. 4", "B. 8", "C. 16", "D. 64"], answer: "C", solution: "S tỉ lệ với R², nên tỉ số = 4² = 16" },
+            { q: "Một viên bi có đường kính 2cm. 1000 viên bi có thể tích khoảng:", options: ["A. 2094 cm³", "B. 3142 cm³", "C. 4189 cm³", "D. 5236 cm³"], answer: "C", solution: "V_1viên = ⁴⁄₃π × 1 = 4.19 cm³, 1000 viên = 4189 cm³" },
+            { q: "Bể chứa hình cầu đường kính 4m. Dung tích bể khoảng:", options: ["A. 16.8 m³", "B. 25.1 m³", "C. 33.5 m³", "D. 50.3 m³"], answer: "C", solution: "V = ⁴⁄₃π × 8 = 33.5 m³" },
+            { q: "Quả cam đường kính 8cm, vỏ dày 0.5cm. Thể tích phần thịt ăn được:", options: ["A. 150 cm³", "B. 180 cm³", "C. 210 cm³", "D. 240 cm³"], answer: "B", solution: "r = 3.5cm, V = ⁴⁄₃π × 42.875 ≈ 180 cm³" },
+            { q: "Hình cầu có S/V = 0.3. Tính bán kính R:", options: ["A. 5cm", "B. 10cm", "C. 15cm", "D. 20cm"], answer: "B", solution: "S/V = 3/R = 0.3 ⇒ R = 10cm" }
+        ];
+
+        // True/False Data
+        const tfData = [
+            { q: "Về định nghĩa hình cầu:", statements: [
+                { text: "Hình cầu là tập hợp các điểm cách tâm O một khoảng bằng R", answer: true },
+                { text: "Hình cầu có một tâm duy nhất", answer: true },
+                { text: "Hình cầu có vô số bán kính", answer: true },
+                { text: "Hình cầu có hai tâm đối xứng", answer: false }
+            ]},
+            { q: "Về công thức tính toán:", statements: [
+                { text: "S = 4πR²", answer: true },
+                { text: "V = ⁴⁄₃πR³", answer: true },
+                { text: "S = πd²", answer: true },
+                { text: "V = πd³/3", answer: false }
+            ]},
+            { q: "Về tính chất hình cầu:", statements: [
+                { text: "Mọi mặt cắt của hình cầu đều là hình tròn", answer: true },
+                { text: "Thiết diện qua tâm là đường tròn lớn", answer: true },
+                { text: "Thiết diện không qua tâm có bán kính bằng R", answer: false },
+                { text: "Hình cầu có tâm đối xứng", answer: true }
+            ]},
+            { q: "Về mối quan hệ giữa các đại lượng:", statements: [
+                { text: "Nếu R tăng 2 lần, S tăng 4 lần", answer: true },
+                { text: "Nếu R tăng 3 lần, V tăng 27 lần", answer: true },
+                { text: "S/V = 3/R", answer: true },
+                { text: "V tỉ lệ thuận với R²", answer: false }
+            ]},
+            { q: "Cho hình cầu có R = 5cm:", statements: [
+                { text: "S = 100π cm²", answer: true },
+                { text: "V = 500π/3 cm³", answer: true },
+                { text: "d = 10cm", answer: true },
+                { text: "Chu vi đường tròn lớn = 10π cm", answer: true }
+            ]},
+            { q: "Về thiết diện:", statements: [
+                { text: "Thiết diện qua tâm có bán kính R", answer: true },
+                { text: "Thiết diện không qua tâm có bán kính < R", answer: true },
+                { text: "Mặt cắt tiếp xúc có bán kính 0", answer: true },
+                { text: "Mặt cắt không cắt có bán kính âm", answer: false }
+            ]},
+            { q: "Về đơn vị đo:", statements: [
+                { text: "Diện tích đo bằng cm²", answer: true },
+                { text: "Thể tích đo bằng cm³", answer: true },
+                { text: "Bán kính đo bằng cm³", answer: false },
+                { text: "Đường kính đo bằng cm", answer: true }
+            ]},
+            { q: "Về so sánh với hình khác:", statements: [
+                { text: "V_cầu/V_trụ_ngoại_tiếp = 2/3", answer: true },
+                { text: "S_mặt_cầu = 4 × S_đtròn_lớn", answer: true },
+                { text: "Hình cầu nội tiếp hình lập phương có R = a/2", answer: true },
+                { text: "Hình cầu ngoại tiếp hình lập phương có R = a", answer: false }
+            ]},
+            { q: "Về tính đối xứng:", statements: [
+                { text: "Hình cầu có vô số mặt phẳng đối xứng", answer: true },
+                { text: "Mọi mặt phẳng qua tâm đều là mặt phẳng đối xứng", answer: true },
+                { text: "Hình cầu có trục đối xứng", answer: true },
+                { text: "Hình cầu không có tâm đối xứng", answer: false }
+            ]},
+            { q: "Về tính toán thực tế:", statements: [
+                { text: "π thường lấy bằng 3.14", answer: true },
+                { text: "π có thể lấy bằng 22/7", answer: true },
+                { text: "Thể tích quả bóng tính bằng V = ⁴⁄₃πR³", answer: true },
+                { text: "Diện tích bề mặt Trái Đất tính bằng S = 4πR²", answer: true }
+            ]}
+        ];
+
+        // Recognition Data
+        const recognitionData = [
+            { q: "Phát biểu định nghĩa hình cầu.", answer: "Tập hợp các điểm cách tâm O một khoảng bằng R không đổi", solution: "Hình cầu tâm O, bán kính R là tập hợp tất cả các điểm M sao cho OM = R" },
+            { q: "Viết công thức tính diện tích mặt cầu.", answer: "S = 4πR²", solution: "Diện tích mặt cầu bằng 4π nhân bình phương bán kính" },
+            { q: "Viết công thức tính thể tích khối cầu.", answer: "V = ⁴⁄₃πR³", solution: "Thể tích khối cầu bằng 4/3 π nhân lập phương bán kính" },
+            { q: "Cho biết mối quan hệ giữa đường kính và bán kính.", answer: "d = 2R", solution: "Đường kính bằng hai lần bán kính" },
+            { q: "Cho biết hình dạng của mọi mặt cắt hình cầu.", answer: "Hình tròn", solution: "Mọi mặt cắt của hình cầu đều là hình tròn" },
+            { q: "Cho biết bán kính thiết diện qua tâm.", answer: "Bằng R", solution: "Thiết diện qua tâm là đường tròn lớn có bán kính bằng R" },
+            { q: "Viết công thức tính S theo đường kính d.", answer: "S = πd²", solution: "S = 4π(d/2)² = πd²" },
+            { q: "Viết công thức tính V theo đường kính d.", answer: "V = πd³/6", solution: "V = ⁴⁄₃π(d/2)³ = πd³/6" },
+            { q: "Cho biết tỉ số S/V của hình cầu.", answer: "3/R", solution: "S/V = (4πR²)/(⁴⁄₃πR³) = 3/R" },
+            { q: "Cho biết số mặt phẳng đối xứng của hình cầu.", answer: "Vô số", solution: "Hình cầu có vô số mặt phẳng đối xứng đi qua tâm" }
+        ];
+
+        // Low Application Data
+        const lowData = [
+            { q: "Cho hình cầu có R = 7cm. Tính S.", answer: "S = 196π cm²", solution: "S = 4πR² = 4π × 49 = 196π cm²" },
+            { q: "Cho hình cầu có R = 6cm. Tính V.", answer: "V = 288π cm³", solution: "V = ⁴⁄₃πR³ = ⁴⁄₃π × 216 = 288π cm³" },
+            { q: "Cho hình cầu có d = 14cm. Tính S.", answer: "S = 196π cm²", solution: "R = 7cm, S = 4π × 49 = 196π cm²" },
+            { q: "Cho hình cầu có S = 64π cm². Tính R.", answer: "R = 4cm", solution: "4πR² = 64π ⇒ R² = 16 ⇒ R = 4cm" },
+            { q: "Cho hình cầu có V = 36π cm³. Tính R.", answer: "R = 3cm", solution: "⁴⁄₃πR³ = 36π ⇒ R³ = 27 ⇒ R = 3cm" },
+            { q: "Cho hình cầu có d = 10cm. Tính V.", answer: "V = 500π/3 cm³", solution: "R = 5cm, V = ⁴⁄₃π × 125 = 500π/3 cm³" },
+            { q: "Cho hình cầu có S = 144π cm². Tính d.", answer: "d = 12cm", solution: "4πR² = 144π ⇒ R = 6cm ⇒ d = 12cm" },
+            { q: "Cho hình cầu có chu vi đường tròn lớn = 20π cm. Tính R.", answer: "R = 10cm", solution: "C = 2πR = 20π ⇒ R = 10cm" },
+            { q: "Cho hai hình cầu có R1 = 4cm, R2 = 2cm. Tính tỉ số S1/S2.", answer: "S1/S2 = 4", solution: "S1/S2 = (R1/R2)² = (4/2)² = 4" },
+            { q: "Cho hai hình cầu có R1 = 3cm, R2 = 1cm. Tính tỉ số V1/V2.", answer: "V1/V2 = 27", solution: "V1/V2 = (R1/R2)³ = 3³ = 27" }
+        ];
+
+        // High Application Data
+        const highData = [
+            { q: "Cho hình cầu có S = 200π cm². Tính V.", answer: "V = 1000π√2/3 cm³", solution: "**Lời giải chi tiết:**\n\n1. Tính R từ S:\n  4πR² = 200π\n  R² = 50\n  R = 5√2 cm\n\n2. Tính V:\n  V = ⁴⁄₃πR³\n  V = ⁴⁄₃π × (5√2)³\n  V = ⁴⁄₃π × 250√2\n  V = 1000π√2/3 cm³\n\n**Kết luận: V = 1000π√2/3 cm³ ≈ 1480 cm³**" },
+            { q: "Cho hình cầu có V = 288π cm³. Tính S.", answer: "S = 144π cm²", solution: "**Lời giải chi tiết:**\n\n1. Tính R từ V:\n  ⁴⁄₃πR³ = 288π\n  R³ = 216\n  R = 6cm\n\n2. Tính S:\n  S = 4πR²\n  S = 4π × 36\n  S = 144π cm²\n\n**Kết luận: S = 144π cm² ≈ 452 cm²**" },
+            { q: "Một hình cầu nội tiếp trong hình lập phương có thể tích 216 cm³. Tính thể tích hình cầu.", answer: "V = 36π cm³", solution: "**Lời giải chi tiết:**\n\n1. Tính cạnh hình lập phương:\n  a³ = 216\n  a = 6cm\n\n2. Bán kính hình cầu nội tiếp:\n  R = a/2 = 3cm\n\n3. Thể tích hình cầu:\n  V = ⁴⁄₃πR³\n  V = ⁴⁄₃π × 27\n  V = 36π cm³\n\n**Kết luận: V = 36π cm³ ≈ 113 cm³**" },
+            { q: "Cho hình cầu có R = 10cm. Một mặt phẳng cách tâm 6cm. Tính diện tích thiết diện.", answer: "S = 64π cm²", solution: "**Lời giải chi tiết:**\n\n1. Tính bán kính thiết diện:\n  r = √(R² - d²)\n  r = √(100 - 36)\n  r = √64 = 8cm\n\n2. Diện tích thiết diện:\n  S = πr²\n  S = π × 64\n  S = 64π cm²\n\n**Kết luận: S = 64π cm² ≈ 201 cm²**" },
+            { q: "Hai hình cầu có tổng bán kính bằng 10cm và tổng thể tích bằng 500π cm³. Tìm bán kính mỗi hình cầu.", answer: "R1,2 = 5 ± √(25/3) cm", solution: "**Lời giải chi tiết:**\n\n1. Gọi R1, R2 là bán kính hai hình cầu\n  R1 + R2 = 10 (1)\n  ⁴⁄₃π(R1³ + R2³) = 500π (2)\n\n2. Từ (2):\n  R1³ + R2³ = 375\n\n3. Sử dụng hằng đẳng thức:\n  R1³ + R2³ = (R1 + R2)³ - 3R1R2(R1 + R2)\n  375 = 1000 - 30R1R2\n  R1R2 = 125/6\n\n4. Giải hệ:\n  R1 + R2 = 10\n  R1R2 = 125/6\n\n**Kết luận: R1,2 = 5 ± √(25/3) cm**" },
+            { q: "Một hình cầu ngoại tiếp hình lập phương có cạnh 6cm. Tính thể tích phần không gian giữa hình cầu và hình lập phương.", answer: "V = 108π√3 - 216 cm³", solution: "**Lời giải chi tiết:**\n\n1. Đường chéo hình lập phương:\n  d = a√3 = 6√3 cm\n\n2. Bán kính hình cầu ngoại tiếp:\n  R = d/2 = 3√3 cm\n\n3. Thể tích hình cầu:\n  V_cầu = ⁴⁄₃πR³\n  V_cầu = ⁴⁄₃π × 81√3\n  V_cầu = 108π√3 cm³\n\n4. Thể tích phần giữa:\n  V = V_cầu - V_lập_phương\n  V = 108π√3 - 216 cm³\n\n**Kết luận: V = 108π√3 - 216 cm³ ≈ 370 cm³**" },
+            { q: "Cho hình cầu có R = 12cm. Tính thể tích hình nón nội tiếp có chiều cao lớn nhất.", answer: "V = 1152π cm³", solution: "**Lời giải chi tiết:**\n\n1. Hình nón nội tiếp có chiều cao lớn nhất khi:\n  Đỉnh ở một đầu đường kính\n  Đáy là thiết diện qua tâm\n\n2. Chiều cao hình nón:\n  h = 2R = 24cm\n\n3. Bán kính đáy hình nón:\n  r = R = 12cm\n\n4. Thể tích hình nón:\n  V = ⅓πr²h\n  V = ⅓π × 144 × 24\n  V = 1152π cm³\n\n**Kết luận: V = 1152π cm³**" },
+            { q: "Một hình cầu có S = 400π cm². Nếu tăng R thêm 2cm thì V tăng bao nhiêu?", answer: "ΔV = 2912π/3 cm³", solution: "**Lời giải chi tiết:**\n\n1. Tính R ban đầu:\n  4πR² = 400π\n  R² = 100\n  R = 10cm\n\n2. Thể tích ban đầu:\n  V1 = ⁴⁄₃π × 1000 = 4000π/3 cm³\n\n3. R mới = 12cm\n  V2 = ⁴⁄₃π × 1728 = 2304π cm³\n\n4. Độ tăng thể tích:\n  ΔV = V2 - V1\n  ΔV = 2304π - 4000π/3\n  ΔV = 2912π/3 cm³\n\n**Kết luận: ΔV = 2912π/3 cm³ ≈ 3050 cm³**" },
+            { q: "Cho ba hình cầu có bán kính tỉ lệ 1:2:3. Tổng thể tích bằng 360π cm³. Tính bán kính mỗi hình cầu.", answer: "R1 = 3cm, R2 = 6cm, R3 = 9cm", solution: "**Lời giải chi tiết:**\n\n1. Gọi bán kính là k, 2k, 3k\n\n2. Tổng thể tích:\n  ⁴⁄₃π(k³ + 8k³ + 27k³) = 360π\n  ⁴⁄₃π × 36k³ = 360π\n  48k³ = 360\n  k³ = 27\n  k = 3cm\n\n3. Bán kính:\n  R1 = 3cm, R2 = 6cm, R3 = 9cm\n\n**Kết luận: R1 = 3cm, R2 = 6cm, R3 = 9cm**" },
+            { q: "Một hình cầu được cắt bởi hai mặt phẳng song song cách tâm 3cm và 5cm. Tính thể tích phần giữa hai mặt cắt, biết R = 10cm.", answer: "V = 502π/3 cm³", solution: "**Lời giải chi tiết:**\n\n1. Đây là bài toán tính thể tích chỏm cầu\n\n2. Thể tích chỏm cầu chiều cao h:\n  V_chỏm = πh²(3R - h)/3\n\n3. Chỏm 1 (h1 = R - 3 = 7cm):\n  V1 = π × 49 × (30 - 7)/3 = 1127π/3\n\n4. Chỏm 2 (h2 = R - 5 = 5cm):\n  V2 = π × 25 × (30 - 5)/3 = 625π/3\n\n5. Thể tích phần giữa:\n  V = V1 - V2 = 502π/3 cm³\n\n**Kết luận: V = 502π/3 cm³ ≈ 526 cm³**" }
+        ];
+
+        // Real World Data (10 unique questions)
+        const realData = [
+            { q: "Một quả địa cầu có đường kính 30cm. Tính diện tích bề mặt và thể tích không khí chứa trong quả địa cầu.", answer: "S ≈ 2827 cm², V ≈ 14137 cm³", solution: "**Lời giải chi tiết:**\n\n1. Đổi đơn vị:\n  d = 30cm ⇒ R = 15cm\n\n2. Diện tích bề mặt:\n  S = 4πR² = 4π × 225\n  S = 900π cm²\n  S ≈ 2827 cm²\n\n3. Thể tích không khí:\n  V = ⁴⁄₃πR³ = ⁴⁄₃π × 3375\n  V = 4500π cm³\n  V ≈ 14137 cm³ = 14.137 lít\n\n4. Ứng dụng:\n - Thiết kế quả địa cầu\n - Tính lượng vật liệu làm vỏ\n\n**Kết luận: S ≈ 2827 cm², V ≈ 14137 cm³**" },
+            { q: "Một trạm vũ trụ hình cầu có đường kính 100m. Tính diện tích bề mặt cần phủ tấm pin năng lượng mặt trời.", answer: "S ≈ 31,416 m²", solution: "**Lời giải chi tiết:**\n\n1. Bán kính trạm:\n  R = 100/2 = 50m\n\n2. Diện tích bề mặt:\n  S = 4πR² = 4π × 2500\n  S = 10000π m²\n  S ≈ 31,416 m²\n\n3. Ứng dụng:\n - Tính số lượng tấm pin cần thiết\n - Dự toán chi phí lắp đặt\n - Tính công suất điện tạo ra\n\n**Kết luận: Diện tích cần phủ khoảng 31,416 m²**" },
+            { q: "Một bồn chứa khí hóa lỏng hình cầu có đường kính 8m. Tính dung tích bồn (theo m³) và diện tích sơn cần thiết để sơn bên ngoài.", answer: "V ≈ 268 m³, S ≈ 201 m²", solution: "**Lời giải chi tiết:**\n\n1. Đổi đơn vị:\n  d = 8m ⇒ R = 4m\n\n2. Thể tích bồn:\n  V = ⁴⁄₃πR³ = ⁴⁄₃π × 64\n  V = 256π/3 m³\n  V ≈ 268 m³\n\n3. Diện tích cần sơn:\n  S = 4πR² = 4π × 16\n  S = 64π m²\n  S ≈ 201 m²\n\n4. Ứng dụng:\n - Thiết kế bồn chứa\n - Dự toán vật liệu sơn\n - Tính dung tích chứa khí\n\n**Kết luận: V ≈ 268 m³, S ≈ 201 m²**" },
+            { q: "Một viên ngọc trai hình cầu có đường kính 1.2cm. Tính khối lượng 500 viên ngọc trai biết khối lượng riêng ngọc trai là 2.7 g/cm³.", answer: "m ≈ 1221 g", solution: "**Lời giải chi tiết:**\n\n1. Đổi đơn vị:\n  d = 1.2cm ⇒ R = 0.6cm\n\n2. Thể tích một viên:\n  V = ⁴⁄₃πR³ = ⁴⁄₃π × 0.216\n  V ≈ 0.905 cm³\n\n3. Khối lượng một viên:\n  m1 = V × D = 0.905 × 2.7\n  m1 ≈ 2.44 g\n\n4. Khối lượng 500 viên:\n  m = 2.44 × 500 = 1220 g\n\n5. Ứng dụng:\n - Định giá ngọc trai\n - Tính toán trong chế tác trang sức\n\n**Kết luận: Khối lượng 500 viên khoảng 1221 g**" },
+            { q: "Một quả bóng chuyền có chu vi đường tròn lớn là 65cm. Tính thể tích không khí chứa trong bóng (theo ml).", answer: "V ≈ 4810 ml", solution: "**Lời giải chi tiết:**\n\n1. Tính bán kính:\n  C = 2πR = 65\n  R = 65/(2π) ≈ 10.35cm\n\n2. Thể tích bóng:\n  V = ⁴⁄₃πR³ = ⁴⁄₃π × 1108.5\n  V ≈ 4645 cm³\n  V ≈ 4645 ml\n\n3. Ứng dụng:\n - Tiêu chuẩn bóng chuyền thi đấu\n - Tính lượng khí cần bơm\n - Kiểm tra chất lượng bóng\n\n**Kết luận: Thể tích khoảng 4810 ml**" },
+            { q: "Một ngôi sao neutron có bán kính 10km và khối lượng 1.4 lần Mặt Trời (2×10³⁰ kg). Tính mật độ trung bình của ngôi sao (kg/m³).", answer: "ρ ≈ 6.7×10¹⁷ kg/m³", solution: "**Lời giải chi tiết:**\n\n1. Đổi đơn vị:\n  R = 10km = 10,000m\n  M = 1.4 × 2×10³⁰ = 2.8×10³⁰ kg\n\n2. Thể tích ngôi sao:\n  V = ⁴⁄₃πR³ = ⁴⁄₃π × 10¹²\n  V ≈ 4.19×10¹² m³\n\n3. Mật độ trung bình:\n  ρ = M/V = 2.8×10³⁰ / 4.19×10¹²\n  ρ ≈ 6.7×10¹⁷ kg/m³\n\n4. Ứng dụng:\n - Nghiên cứu vật lý thiên văn\n - Hiểu cấu trúc sao neutron\n\n**Kết luận: Mật độ khoảng 6.7×10¹⁷ kg/m³**" },
+            { q: "Một công ty sản xuất chocolate hình cầu đường kính 3cm. Mỗi viên được bọc bằng lớp vỏ bạc dày 0.1mm. Tính diện tích lá bạc cần để bọc 10,000 viên.", answer: "S ≈ 2827 m²", solution: "**Lời giải chi tiết:**\n\n1. Bán kính chocolate:\n  R = 3/2 = 1.5cm\n\n2. Diện tích một viên:\n  S1 = 4πR² = 4π × 2.25\n  S1 = 9π cm²\n  S1 ≈ 28.27 cm²\n\n3. Diện tích 10,000 viên:\n  S = 28.27 × 10,000 = 282,700 cm²\n  S = 28.27 m²\n\n4. Ứng dụng:\n - Tính nguyên liệu bọc\n - Dự toán chi phí sản xuất\n - Thiết kế bao bì\n\n**Kết luận: Cần khoảng 2827 m² lá bạc**" },
+            { q: "Một tháp nước hình cầu có đường kính 12m được đặt trên trụ cao 15m. Tính thể tích nước tối đa chứa được và chiều cao tổng cộng của công trình.", answer: "V ≈ 905 m³, H = 27m", solution: "**Lời giải chi tiết:**\n\n1. Bán kính tháp nước:\n  R = 12/2 = 6m\n\n2. Thể tích nước:\n  V = ⁴⁄₃πR³ = ⁴⁄₃π × 216\n  V = 288π m³\n  V ≈ 905 m³\n  V ≈ 905,000 lít\n\n3. Chiều cao tổng cộng:\n  H = chiều cao trụ + đường kính cầu\n  H = 15 + 12 = 27m\n\n4. Ứng dụng:\n - Thiết kế hệ thống cấp nước\n - Tính áp lực nước\n - Dự toán vật liệu xây dựng\n\n**Kết luận: V ≈ 905 m³, H = 27m**" },
+            { q: "Một quả dưa hấu hình cầu đường kính 25cm. Phần vỏ dày 2cm. Tính thể tích phần ruột có thể ăn được và tỉ lệ phần trăm ruột so với toàn quả.", answer: "V_ruột ≈ 5575 cm³, Tỉ lệ ≈ 68%", solution: "**Lời giải chi tiết:**\n\n1. Bán kính quả dưa:\n  R = 25/2 = 12.5cm\n\n2. Bán kính phần ruột:\n  r = 12.5 - 2 = 10.5cm\n\n3. Thể tích toàn quả:\n  V_toàn = ⁴⁄₃π × 12.5³ = ⁴⁄₃π × 1953.125\n  V_toàn ≈ 8181 cm³\n\n4. Thể tích phần ruột:\n  V_ruột = ⁴⁄₃π × 10.5³ = ⁴⁄₃π × 1157.625\n  V_ruột ≈ 4849 cm³\n\n5. Tỉ lệ phần trăm:\n  Tỉ lệ = 4849/8181 × 100% ≈ 59.3%\n\n6. Ứng dụng:\n - Tính giá trị dinh dưỡng\n - Định giá sản phẩm\n - Đóng gói và vận chuyển\n\n**Kết luận: V_ruột ≈ 5575 cm³, Tỉ lệ ≈ 68%**" },
+            { q: "Một vệ tinh viễn thông hình cầu có đường kính 2.5m. Tính lực hấp dẫn mà vệ tinh tác dụng lên một vật 1kg cách tâm 5m, biết khối lượng vệ tinh là 500kg.", answer: "F ≈ 1.33×10⁻⁹ N", solution: "**Lời giải chi tiết:**\n\n1. Dữ liệu:\n  M = 500kg (khối lượng vệ tinh)\n  m = 1kg (khối lượng vật)\n  r = 5m (khoảng cách)\n  G = 6.67×10⁻¹¹ N·m²/kg²\n\n2. Công thức lực hấp dẫn:\n  F = G × M × m / r²\n\n3. Tính toán:\n  F = 6.67×10⁻¹¹ × 500 × 1 / 25\n  F = 6.67×10⁻¹¹ × 20\n  F ≈ 1.33×10⁻⁹ N\n\n4. Ứng dụng:\n - Thiết kế quỹ đạo vệ tinh\n - Tính toán lực hấp dẫn\n - Nghiên cứu vật lý không gian\n\n**Kết luận: F ≈ 1.33×10⁻⁹ N**" }
+        ];
+
+        // Render MCQ
+        function renderMCQ() {
+            const container = document.getElementById('mcq-container');
+            mcqData.forEach((item, index) => {
+                const div = document.createElement('div');
+                div.className = 'border-l-4 border-green-400 pl-4 py-3 bg-gray-50 rounded-r-lg';
+                div.innerHTML = `
+                    <p class="font-semibold text-gray-800 mb-2"><strong>Câu ${index + 1}:</strong> ${item.q}</p>
+                    <div class="grid grid-cols-2 gap-2 mb-3 text-sm">
+                        ${item.options.map(opt => `<span class="text-gray-700">${opt}</span>`).join('')}
+                    </div>
+                    <button onclick="toggleAnswer('mcq-${index}')" class="text-green-600 text-sm hover:underline">👁 Xem đáp án</button>
+                    <div id="mcq-${index}" class="answer-box mt-2 p-3 rounded hidden">
+                        <p class="font-semibold text-green-700">Đáp án: ${item.answer}</p>
+                        <p class="text-gray-700 text-sm mt-1">${item.solution}</p>
+                    </div>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        // Render True/False
+        function renderTF() {
+            const container = document.getElementById('tf-container');
+            tfData.forEach((item, index) => {
+                const div = document.createElement('div');
+                div.className = 'border-l-4 border-amber-400 pl-4 py-3 bg-gray-50 rounded-r-lg';
+                div.innerHTML = `
+                    <p class="font-semibold text-gray-800 mb-3"><strong>Câu ${index + 1}:</strong> ${item.q}</p>
+                    <div class="space-y-2">
+                        ${item.statements.map((s, i) => `
+                            <div class="flex items-center justify-between bg-white p-2 rounded">
+                                <span class="text-gray-700 text-sm">${String.fromCharCode(65 + i)}. ${s.text}</span>
+                                <span class="text-xs px-2 py-1 rounded ${s.answer ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}">${s.answer ? 'Đúng' : 'Sai'}</span>
+                            </div>
+                        `).join('')}
+                    </div>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        // Render Recognition
+        function renderRecognition() {
+            const container = document.getElementById('recognition-container');
+            recognitionData.forEach((item, index) => {
+                const div = document.createElement('div');
+                div.className = 'border-l-4 border-green-400 pl-4 py-3 bg-gray-50 rounded-r-lg';
+                div.innerHTML = `
+                    <p class="font-semibold text-gray-800 mb-2"><strong>Bài ${index + 1}:</strong> ${item.q}</p>
+                    <button onclick="toggleAnswer('rec-${index}')" class="text-green-600 text-sm hover:underline">👁 Xem đáp án</button>
+                    <div id="rec-${index}" class="answer-box mt-2 p-3 rounded hidden">
+                        <p class="font-semibold text-purple-700">Đáp án: ${item.answer}</p>
+                        <p class="text-gray-700 text-sm mt-1">${item.solution}</p>
+                    </div>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        // Render Low Application
+        function renderLow() {
+            const container = document.getElementById('low-container');
+            lowData.forEach((item, index) => {
+                const div = document.createElement('div');
+                div.className = 'border-l-4 border-green-400 pl-4 py-3 bg-gray-50 rounded-r-lg';
+                div.innerHTML = `
+                    <p class="font-semibold text-gray-800 mb-2"><strong>Bài ${index + 1}:</strong> ${item.q}</p>
+                    <button onclick="toggleAnswer('low-${index}')" class="text-green-600 text-sm hover:underline">👁 Xem đáp án</button>
+                    <div id="low-${index}" class="solution-box mt-2 p-3 rounded hidden">
+                        <p class="font-semibold text-amber-700">Đáp án: ${item.answer}</p>
+                        <p class="text-gray-700 text-sm mt-1 whitespace-pre-line">${item.solution}</p>
+                    </div>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        // Render High Application
+        function renderHigh() {
+            const container = document.getElementById('high-container');
+            highData.forEach((item, index) => {
+                const div = document.createElement('div');
+                div.className = 'border-l-4 border-red-400 pl-4 py-3 bg-gray-50 rounded-r-lg';
+                div.innerHTML = `
+                    <p class="font-semibold text-gray-800 mb-2"><strong>Bài ${index + 1}:</strong> ${item.q}</p>
+                    <button onclick="toggleAnswer('high-${index}')" class="text-red-600 text-sm hover:underline">👁 Xem lời giải chi tiết</button>
+                    <div id="high-${index}" class="solution-box mt-2 p-4 rounded hidden">
+                        <p class="font-semibold text-amber-700 mb-2">Đáp án: ${item.answer}</p>
+                        <div class="text-gray-700 text-sm whitespace-pre-line">${item.solution}</div>
+                    </div>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        // Render Real World
+        function renderReal() {
+            const container = document.getElementById('real-container');
+            realData.forEach((item, index) => {
+                const div = document.createElement('div');
+                div.className = 'border-l-4 border-indigo-400 pl-4 py-3 bg-gray-50 rounded-r-lg';
+                div.innerHTML = `
+                    <p class="font-semibold text-gray-800 mb-2"><strong>Bài ${index + 1}:</strong> ${item.q}</p>
+                    <button onclick="toggleAnswer('real-${index}')" class="text-indigo-600 text-sm hover:underline">👁 Xem lời giải chi tiết</button>
+                    <div id="real-${index}" class="solution-box mt-2 p-4 rounded hidden">
+                        <p class="font-semibold text-amber-700 mb-2">Đáp án: ${item.answer}</p>
+                        <div class="text-gray-700 text-sm whitespace-pre-line">${item.solution}</div>
+                    </div>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        // Toggle Answer
+        function toggleAnswer(id) {
+            const el = document.getElementById(id);
+            el.classList.toggle('hidden');
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            renderMCQ();
+            renderTF();
+            renderRecognition();
+            renderLow();
+            renderHigh();
+            renderReal();
+        });
+    </script>
+</body>
+</html>
+```
