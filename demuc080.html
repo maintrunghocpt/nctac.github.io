@@ -1,0 +1,687 @@
+```html
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Căn Bậc Hai - Đề Mục 80 - Toán Lớp 9</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@fontsource/roboto@4.5.8/index.css" rel="stylesheet">
+    <style>
+        * {
+            font-family: 'Roboto', sans-serif;
+        }
+        .gradient-header {
+            background: linear-gradient(135deg, #0891b2 0%, #7c3aed 100%);
+        }
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, #0891b2 0%, #7c3aed 100%);
+        }
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #067894 0%, #6a32c4 100%);
+        }
+        .answer-box {
+            background: #f0f9ff;
+            border-left: 4px solid #0891b2;
+        }
+        .solution-box {
+            background: #fef3c7;
+            border-left: 4px solid #f59e0b;
+        }
+        .nav-item {
+            transition: all 0.2s ease;
+        }
+        .nav-item:hover {
+            background: rgba(255,255,255,0.2);
+        }
+        .nav-item.active {
+            background: rgba(255,255,255,0.3);
+        }
+        .print-section {
+            page-break-inside: avoid;
+        }
+        @media print {
+            .no-print {
+                display: none;
+            }
+        }
+        .formula-box {
+            background: linear-gradient(135deg, #e0f2fe 0%, #ede9fe 100%);
+            border-radius: 8px;
+            padding: 16px;
+            margin: 12px 0;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="gradient-header text-white py-8">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center">
+                <div>
+                    <h1 class="text-3xl font-bold">CĂN BẬC HAI</h1>
+                    <p class="text-lg opacity-90">Đề Mục 80 - Toán Lớp 9 - Đại Số</p>
+                </div>
+                <div class="text-right">
+                    <p class="text-sm opacity-80">Bộ Tài Liệu Toán THCS</p>
+                    <p class="text-sm opacity-80">60 Ngày Ôn Tập</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md sticky top-0 z-50 no-print">
+        <div class="container mx-auto px-4">
+            <div class="flex overflow-x-auto py-3 space-x-2">
+                <button onclick="showSection('lesson')" class="nav-item active px-4 py-2 rounded-lg bg-cyan-100 text-cyan-700 whitespace-nowrap">📚 Bài Giảng</button>
+                <button onclick="showSection('mcq')" class="nav-item px-4 py-2 rounded-lg hover:bg-gray-100 whitespace-nowrap">📝 30 Câu MCQ</button>
+                <button onclick="showSection('tf')" class="nav-item px-4 py-2 rounded-lg hover:bg-gray-100 whitespace-nowrap">✅ 10 Câu Đúng/Sai</button>
+                <button onclick="showSection('recognition')" class="nav-item px-4 py-2 rounded-lg hover:bg-gray-100 whitespace-nowrap">🔍 10 Bài Nhận Biết</button>
+                <button onclick="showSection('low')" class="nav-item px-4 py-2 rounded-lg hover:bg-gray-100 whitespace-nowrap">📊 10 Bài Vận Dụng Thấp</button>
+                <button onclick="showSection('high')" class="nav-item px-4 py-2 rounded-lg hover:bg-gray-100 whitespace-nowrap">🎯 10 Bài Vận Dụng Cao</button>
+                <button onclick="showSection('real')" class="nav-item px-4 py-2 rounded-lg hover:bg-gray-100 whitespace-nowrap">🌍 5 Bài Thực Tế</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+        <!-- Lesson Section -->
+        <section id="lesson" class="section-content">
+            <div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section">
+                <h2 class="text-2xl font-bold text-cyan-700 mb-6 flex items-center">
+                    <span class="mr-3">📚</span> BÀI GIẢNG CHI TIẾT: CĂN BẬC HAI
+                </h2>
+                
+                <div class="space-y-6">
+                    <!-- Introduction -->
+                    <div class="answer-box p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold text-cyan-700 mb-4">1. ĐỊNH NGHĨA CĂN BẬC HAI</h3>
+                        <p class="text-gray-700 mb-4">
+                            <strong>Căn bậc hai</strong> của một số a không âm là số x sao cho x² = a.
+                            Ký hiệu: x = √a (căn bậc hai số học)
+                        </p>
+                        
+                        <div class="formula-box">
+                            <h4 class="font-semibold text-cyan-600 mb-2">📐 Định nghĩa chính thức:</h4>
+                            <p class="text-gray-700 mb-2">Cho số a ≥ 0:</p>
+                            <p class="text-cyan-700 font-bold text-center text-2xl mb-2">√a = x ⇔ x ≥ 0 và x² = a</p>
+                            <p class="text-gray-700 text-sm">Điều kiện: a ≥ 0</p>
+                        </div>
+
+                        <div class="grid md:grid-cols-3 gap-4 mt-4">
+                            <div class="bg-cyan-50 p-4 rounded-lg">
+                                <h4 class="font-semibold text-cyan-600 mb-2">Căn bậc hai số học</h4>
+                                <p class="text-gray-700 text-sm">Là giá trị không âm</p>
+                                <p class="text-cyan-700 text-sm font-semibold mt-2">√a ≥ 0</p>
+                            </div>
+                            <div class="bg-purple-50 p-4 rounded-lg">
+                                <h4 class="font-semibold text-purple-600 mb-2">Căn bậc hai đại số</h4>
+                                <p class="text-gray-700 text-sm">Có hai giá trị ±√a</p>
+                                <p class="text-purple-700 text-sm font-semibold mt-2">±√a</p>
+                            </div>
+                            <div class="bg-amber-50 p-4 rounded-lg">
+                                <h4 class="font-semibold text-amber-600 mb-2">Điều kiện xác định</h4>
+                                <p class="text-gray-700 text-sm">Biểu thức trong căn ≥ 0</p>
+                                <p class="text-amber-700 text-sm font-semibold mt-2">A ≥ 0</p>
+                            </div>
+                        </div>
+
+                        <div class="mt-4 bg-cyan-50 p-4 rounded-lg">
+                            <h4 class="font-semibold text-cyan-700 mb-2">📝 Ví dụ minh họa:</h4>
+                            <ul class="space-y-2 text-gray-700 text-sm">
+                                <li>• √9 = 3 (vì 3 ≥ 0 và 3² = 9)</li>
+                                <li>• √16 = 4 (vì 4 ≥ 0 và 4² = 16)</li>
+                                <li>• √0 = 0</li>
+                                <li>• √(-4) không xác định trong số thực</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Properties -->
+                    <div class="solution-box p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold text-amber-700 mb-4">2. TÍNH CHẤT CỦA CĂN BẬC HAI</h3>
+                        
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div class="bg-white p-4 rounded-lg border-2 border-cyan-300">
+                                <h4 class="font-semibold text-cyan-600 mb-2">Tính chất cơ bản</h4>
+                                <ul class="space-y-2 text-gray-700 text-sm">
+                                    <li>• <strong>√(a·b) = √a · √b</strong> (a, b ≥ 0)</li>
+                                    <li>• <strong>√(a/b) = √a / √b</strong> (a ≥ 0, b > 0)</li>
+                                    <li>• <strong>√(a²) = |a|</strong></li>
+                                    <li>• <strong>(√a)² = a</strong> (a ≥ 0)</li>
+                                </ul>
+                            </div>
+                            <div class="bg-white p-4 rounded-lg border-2 border-purple-300">
+                                <h4 class="font-semibold text-purple-600 mb-2">Điều kiện xác định</h4>
+                                <ul class="space-y-2 text-gray-700 text-sm">
+                                    <li>• <strong>√A xác định</strong> ⇔ A ≥ 0</li>
+                                    <li>• <strong>1/√A xác định</strong> ⇔ A > 0</li>
+                                    <li>• <strong>√A + √B xác định</strong> ⇔ A ≥ 0 và B ≥ 0</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="mt-4 formula-box">
+                            <h4 class="font-semibold text-cyan-600 mb-2">📐 Các hằng đẳng thức quan trọng:</h4>
+                            <ul class="space-y-2 text-gray-700 text-sm">
+                                <li>• <strong>√(A²) = |A|</strong></li>
+                                <li>• <strong>√(A·B) = √A · √B</strong> (A, B ≥ 0)</li>
+                                <li>• <strong>√(A/B) = √A / √B</strong> (A ≥ 0, B > 0)</li>
+                                <li>• <strong>√(A²·B) = |A|√B</strong> (B ≥ 0)</li>
+                            </ul>
+                        </div>
+
+                        <div class="mt-4 bg-cyan-50 p-4 rounded-lg">
+                            <h4 class="font-semibold text-cyan-700 mb-2">📝 So sánh các căn bậc hai:</h4>
+                            <ul class="space-y-2 text-gray-700 text-sm">
+                                <li>• <strong>√a < √b</strong> ⇔ a < b (a, b ≥ 0)</li>
+                                <li>• <strong>√a = √b</strong> ⇔ a = b (a, b ≥ 0)</li>
+                                <li>• <strong>√a > 0</strong> ⇔ a > 0</li>
+                                <li>• <strong>√a = 0</strong> ⇔ a = 0</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Operations -->
+                    <div class="answer-box p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold text-cyan-700 mb-4">3. CÁC PHÉP TOÁN VỚI CĂN BẬC HAI</h3>
+                        
+                        <div class="grid md:grid-cols-3 gap-4">
+                            <div class="bg-white p-4 rounded-lg border-2 border-cyan-300">
+                                <h4 class="font-semibold text-cyan-600 mb-2">Đưa thừa số ra ngoài</h4>
+                                <p class="text-gray-700 text-sm">√(a²b) = |a|√b</p>
+                                <p class="text-cyan-700 text-sm font-semibold mt-2">Ví dụ: √12 = 2√3</p>
+                            </div>
+                            <div class="bg-white p-4 rounded-lg border-2 border-purple-300">
+                                <h4 class="font-semibold text-purple-600 mb-2">Đưa thừa số vào trong</h4>
+                                <p class="text-gray-700 text-sm">a√b = √(a²b)</p>
+                                <p class="text-purple-700 text-sm font-semibold mt-2">Ví dụ: 3√2 = √18</p>
+                            </div>
+                            <div class="bg-white p-4 rounded-lg border-2 border-amber-300">
+                                <h4 class="font-semibold text-amber-600 mb-2">Khử mẫu</h4>
+                                <p class="text-gray-700 text-sm">A/√B = A√B/B</p>
+                                <p class="text-amber-700 text-sm font-semibold mt-2">Ví dụ: 1/√2 = √2/2</p>
+                            </div>
+                        </div>
+
+                        <div class="mt-4 bg-cyan-50 p-4 rounded-lg">
+                            <h4 class="font-semibold text-cyan-700 mb-2">📝 Các bước trục căn thức ở mẫu:</h4>
+                            <ol class="space-y-2 text-gray-700 text-sm list-decimal list-inside">
+                                <li>Nhân cả tử và mẫu với √B</li>
+                                <li>Rút gọn nếu có thể</li>
+                                <li>Kết quả không còn căn ở mẫu</li>
+                            </ol>
+                        </div>
+                    </div>
+
+                    <!-- Simplification -->
+                    <div class="solution-box p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold text-amber-700 mb-4">4. RÚT GỌN BIỂU THỨC CHỨA CĂN</h3>
+                        
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div class="bg-white p-4 rounded-lg border-l-4 border-cyan-400">
+                                <h4 class="font-semibold text-cyan-600 mb-2">Các bước rút gọn</h4>
+                                <ol class="space-y-2 text-gray-700 text-sm list-decimal list-inside">
+                                    <li>Tìm điều kiện xác định</li>
+                                    <li>Đưa thừa số ra ngoài căn</li>
+                                    <li>Quy đồng mẫu số (nếu có)</li>
+                                    <li>Thực hiện phép tính</li>
+                                    <li>Rút gọn kết quả</li>
+                                </ol>
+                            </div>
+                            <div class="bg-white p-4 rounded-lg border-l-4 border-purple-400">
+                                <h4 class="font-semibold text-purple-600 mb-2">Lưu ý quan trọng</h4>
+                                <ul class="space-y-2 text-gray-700 text-sm">
+                                    <li>• Luôn kiểm tra điều kiện</li>
+                                    <li>• Sử dụng |A| khi cần</li>
+                                    <li>• Phân tích thành nhân tử</li>
+                                    <li>• Trục căn thức ở mẫu</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="mt-4 bg-amber-50 p-4 rounded-lg">
+                            <h4 class="font-semibold text-amber-700 mb-2">📌 Ví dụ minh họa:</h4>
+                            <p class="text-gray-700 text-sm mb-2">Rút gọn: √50 + √18 - √8</p>
+                            <p class="text-gray-700 text-sm"><strong>Lời giải:</strong></p>
+                            <p class="text-gray-700 text-sm">= 5√2 + 3√2 - 2√2</p>
+                            <p class="text-gray-700 text-sm">= 6√2</p>
+                        </div>
+                    </div>
+
+                    <!-- Examples -->
+                    <div class="answer-box p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold text-cyan-700 mb-4">5. VÍ DỤ MINH HỌA</h3>
+                        
+                        <div class="bg-white p-4 rounded-lg mb-4">
+                            <h4 class="font-semibold text-cyan-600 mb-2">Ví dụ 1: Tính giá trị</h4>
+                            <p class="text-gray-700 mb-2">Tính: √16 + √25 - √9</p>
+                            <div class="solution-box p-3 rounded">
+                                <p class="text-gray-700"><strong>Lời giải:</strong></p>
+                                <p class="text-gray-700">√16 = 4, √25 = 5, √9 = 3</p>
+                                <p class="text-gray-700">Kết quả: 4 + 5 - 3 = 6</p>
+                            </div>
+                        </div>
+
+                        <div class="bg-white p-4 rounded-lg mb-4">
+                            <h4 class="font-semibold text-cyan-600 mb-2">Ví dụ 2: Rút gọn biểu thức</h4>
+                            <p class="text-gray-700 mb-2">Rút gọn: √12 + √27 - √48</p>
+                            <div class="solution-box p-3 rounded">
+                                <p class="text-gray-700"><strong>Lời giải:</strong></p>
+                                <p class="text-gray-700">√12 = 2√3, √27 = 3√3, √48 = 4√3</p>
+                                <p class="text-gray-700">Kết quả: 2√3 + 3√3 - 4√3 = √3</p>
+                            </div>
+                        </div>
+
+                        <div class="bg-white p-4 rounded-lg">
+                            <h4 class="font-semibold text-cyan-600 mb-2">Ví dụ 3: Trục căn thức</h4>
+                            <p class="text-gray-700 mb-2">Trục căn thức ở mẫu: 3/√5</p>
+                            <div class="solution-box p-3 rounded">
+                                <p class="text-gray-700"><strong>Lời giải:</strong></p>
+                                <p class="text-gray-700">3/√5 = (3√5)/(√5×√5)</p>
+                                <p class="text-gray-700">= 3√5/5</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Calculator Guide -->
+                    <div class="solution-box p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold text-amber-700 mb-4">6. HƯỚNG DẪN BẤM MÁY TÍNH CASIO FX-580ES</h3>
+                        <div class="bg-white p-4 rounded-lg space-y-3">
+                            <p class="text-gray-700"><strong>Tính căn bậc hai:</strong></p>
+                            <ol class="list-decimal list-inside space-y-1 text-gray-700">
+                                <li>Bấm <kbd class="bg-gray-200 px-2 py-1 rounded">√</kbd></li>
+                                <li>Nhập số cần tính</li>
+                                <li>Bấm <kbd class="bg-gray-200 px-2 py-1 rounded">=</kbd></li>
+                            </ol>
+                            <p class="text-gray-700 mt-3"><strong>Tính biểu thức chứa căn:</strong></p>
+                            <ol class="list-decimal list-inside space-y-1 text-gray-700">
+                                <li>Nhập biểu thức đầy đủ</li>
+                                <li>Sử dụng ngoặc khi cần</li>
+                                <li>Bấm <kbd class="bg-gray-200 px-2 py-1 rounded">=</kbd></li>
+                            </ol>
+                            <p class="text-gray-700 mt-3"><strong>Chuyển đổi giữa dạng căn và số thập phân:</strong></p>
+                            <ol class="list-decimal list-inside space-y-1 text-gray-700">
+                                <li>Bấm <kbd class="bg-gray-200 px-2 py-1 rounded">SHIFT</kbd> + <kbd class="bg-gray-200 px-2 py-1 rounded">=</kbd> (S⇔D)</li>
+                            </ol>
+                            <p class="text-gray-700 mt-3"><strong>Lưu ý:</strong> Kiểm tra kết quả bằng cách bình phương lại</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- MCQ Section -->
+        <section id="mcq" class="section-content hidden">
+            <div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section">
+                <h2 class="text-2xl font-bold text-cyan-700 mb-6 flex items-center">
+                    <span class="mr-3">📝</span> 30 CÂU TRẮC NGHIỆM 4 LỰA CHỌN
+                </h2>
+                <div class="space-y-6" id="mcq-container"></div>
+            </div>
+        </section>
+
+        <!-- True/False Section -->
+        <section id="tf" class="section-content hidden">
+            <div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section">
+                <h2 class="text-2xl font-bold text-cyan-700 mb-6 flex items-center">
+                    <span class="mr-3">✅</span> 10 CÂU TRẮC NGHIỆM ĐÚNG/SAI
+                </h2>
+                <div class="space-y-6" id="tf-container"></div>
+            </div>
+        </section>
+
+        <!-- Recognition Section -->
+        <section id="recognition" class="section-content hidden">
+            <div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section">
+                <h2 class="text-2xl font-bold text-cyan-700 mb-6 flex items-center">
+                    <span class="mr-3">🔍</span> 10 BÀI TẬP NHẬN BIẾT
+                </h2>
+                <div class="space-y-6" id="recognition-container"></div>
+            </div>
+        </section>
+
+        <!-- Low Application Section -->
+        <section id="low" class="section-content hidden">
+            <div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section">
+                <h2 class="text-2xl font-bold text-cyan-700 mb-6 flex items-center">
+                    <span class="mr-3">📊</span> 10 BÀI TẬP VẬN DỤNG THẤP
+                </h2>
+                <div class="space-y-6" id="low-container"></div>
+            </div>
+        </section>
+
+        <!-- High Application Section -->
+        <section id="high" class="section-content hidden">
+            <div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section">
+                <h2 class="text-2xl font-bold text-cyan-700 mb-6 flex items-center">
+                    <span class="mr-3">🎯</span> 10 BÀI TẬP VẬN DỤNG CAO
+                </h2>
+                <div class="space-y-6" id="high-container"></div>
+            </div>
+        </section>
+
+        <!-- Real World Section -->
+        <section id="real" class="section-content hidden">
+            <div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section">
+                <h2 class="text-2xl font-bold text-cyan-700 mb-6 flex items-center">
+                    <span class="mr-3">🌍</span> 5 BÀI TẬP ỨNG DỤNG THỰC TẾ
+                </h2>
+                <div class="space-y-6" id="real-container"></div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="gradient-header text-white py-6 mt-8">
+        <div class="container mx-auto px-4 text-center">
+            <p class="text-sm">Bộ Tài Liệu Toán THCS - Đề Mục 80: Căn Bậc Hai</p>
+            <p class="text-sm opacity-80">© 2024 - Tài liệu ôn tập 60 ngày</p>
+        </div>
+    </footer>
+
+    <!-- Print Button -->
+    <button onclick="window.print()" class="no-print fixed bottom-6 right-6 btn-primary text-white px-6 py-3 rounded-full shadow-lg hover:shadow-xl transition-all">
+        🖨️ In Tài Liệu
+    </button>
+
+    <script>
+        // Navigation
+        function showSection(sectionId) {
+            document.querySelectorAll('.section-content').forEach(el => el.classList.add('hidden'));
+            document.getElementById(sectionId).classList.remove('hidden');
+            document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
+            event.target.classList.add('active');
+        }
+
+        // MCQ Data
+        const mcqData = [
+            { q: "Căn bậc hai số học của 16 là:", options: ["A. 4", "B. -4", "C. ±4", "D. 8"], answer: "A", solution: "√16 = 4 (căn bậc hai số học luôn không âm)" },
+            { q: "Điều kiện xác định của √(x-3) là:", options: ["A. x > 3", "B. x ≥ 3", "C. x < 3", "D. x ≤ 3"], answer: "B", solution: "Điều kiện: x - 3 ≥ 0 ⇒ x ≥ 3" },
+            { q: "√(a²) bằng:", options: ["A. a", "B. -a", "C. |a|", "D. a²"], answer: "C", solution: "√(a²) = |a|" },
+            { q: "√(9·16) bằng:", options: ["A. 12", "B. 24", "C. 36", "D. 48"], answer: "A", solution: "√(9×16) = √9 × √16 = 3 × 4 = 12" },
+            { q: "√(25/4) bằng:", options: ["A. 5/2", "B. 5/4", "C. 25/2", "D. 25/4"], answer: "A", solution: "√(25/4) = √25 / √4 = 5/2" },
+            { q: "Rút gọn √50:", options: ["A. 5√2", "B. 2√5", "C. 10√5", "D. 25√2"], answer: "A", solution: "√50 = √(25×2) = 5√2" },
+            { q: "Đưa thừa số ra ngoài: √12:", options: ["A. 2√3", "B. 3√2", "C. 4√3", "D. 6√2"], answer: "A", solution: "√12 = √(4×3) = 2√3" },
+            { q: "Trục căn thức: 1/√2:", options: ["A. √2", "B. √2/2", "C. 2/√2", "D. 1/2"], answer: "B", solution: "1/√2 = √2/(√2×√2) = √2/2" },
+            { q: "√0 bằng:", options: ["A. 0", "B. 1", "C. -1", "D. Không xác định"], answer: "A", solution: "√0 = 0" },
+            { q: "√(-4) trong số thực:", options: ["A. 2", "B. -2", "C. ±2", "D. Không xác định"], answer: "D", solution: "Căn bậc hai của số âm không xác định trong số thực" },
+            { q: "So sánh √9 và √16:", options: ["A. √9 < √16", "B. √9 > √16", "C. √9 = √16", "D. Không so sánh được"], answer: "A", solution: "√9 = 3, √16 = 4, nên √9 < √16" },
+            { q: "√(a·b) = √a · √b khi:", options: ["A. a, b ≥ 0", "B. a, b > 0", "C. a ≥ 0, b > 0", "D. Mọi a, b"], answer: "A", solution: "Điều kiện: a ≥ 0 và b ≥ 0" },
+            { q: "√(a/b) = √a / √b khi:", options: ["A. a, b ≥ 0", "B. a ≥ 0, b > 0", "C. a > 0, b ≥ 0", "D. a, b > 0"], answer: "B", solution: "Điều kiện: a ≥ 0 và b > 0" },
+            { q: "3√2 bằng:", options: ["A. √6", "B. √12", "C. √18", "D. √36"], answer: "C", solution: "3√2 = √(9×2) = √18" },
+            { q: "Điều kiện xác định của √(5-x) là:", options: ["A. x > 5", "B. x ≥ 5", "C. x < 5", "D. x ≤ 5"], answer: "D", solution: "5 - x ≥ 0 ⇒ x ≤ 5" },
+            { q: "√(x²) = x khi:", options: ["A. x ≥ 0", "B. x > 0", "C. x ≤ 0", "D. Mọi x"], answer: "A", solution: "√(x²) = |x| = x khi x ≥ 0" },
+            { q: "√(x²) = -x khi:", options: ["A. x ≥ 0", "B. x > 0", "C. x ≤ 0", "D. Mọi x"], answer: "C", solution: "√(x²) = |x| = -x khi x ≤ 0" },
+            { q: "Rút gọn √72:", options: ["A. 6√2", "B. 8√2", "C. 9√2", "D. 12√2"], answer: "A", solution: "√72 = √(36×2) = 6√2" },
+            { q: "√(1/4) bằng:", options: ["A. 1/2", "B. 1/4", "C. 1/8", "D. 1/16"], answer: "A", solution: "√(1/4) = 1/2" },
+            { q: "√(0.09) bằng:", options: ["A. 0.3", "B. 0.03", "C. 0.9", "D. 0.09"], answer: "A", solution: "√0.09 = 0.3" },
+            { q: "√(a²b) với b ≥ 0 bằng:", options: ["A. a√b", "B. |a|√b", "C. a²√b", "D. √(ab)"], answer: "B", solution: "√(a²b) = |a|√b" },
+            { q: "Trục căn thức: 2/√3:", options: ["A. 2√3", "B. 2√3/3", "C. √3/2", "D. 3/2"], answer: "B", solution: "2/√3 = 2√3/3" },
+            { q: "√(8) + √(2) bằng:", options: ["A. 2√2", "B. 3√2", "C. 4√2", "D. 5√2"], answer: "B", solution: "√8 + √2 = 2√2 + √2 = 3√2" },
+            { q: "√(18) - √(8) bằng:", options: ["A. √2", "B. 2√2", "C. 3√2", "D. 4√2"], answer: "A", solution: "√18 - √8 = 3√2 - 2√2 = √2" },
+            { q: "√(x-1) xác định khi:", options: ["A. x > 1", "B. x ≥ 1", "C. x < 1", "D. x ≤ 1"], answer: "B", solution: "x - 1 ≥ 0 ⇒ x ≥ 1" },
+            { q: "√(4x²) bằng:", options: ["A. 2x", "B. 2|x|", "C. 4x", "D. 4|x|"], answer: "B", solution: "√(4x²) = 2|x|" },
+            { q: "√(25x²) với x ≥ 0 bằng:", options: ["A. 5x", "B. 5|x|", "C. 25x", "D. 25|x|"], answer: "A", solution: "√(25x²) = 5x (vì x ≥ 0)" },
+            { q: "So sánh 3 và √10:", options: ["A. 3 < √10", "B. 3 > √10", "C. 3 = √10", "D. Không so sánh được"], answer: "A", solution: "3 = √9 < √10" },
+            { q: "√(a) + √(b) = √(a+b) khi:", options: ["A. a, b ≥ 0", "B. a = 0 hoặc b = 0", "C. a = b", "D. Không bao giờ"], answer: "B", solution: "Chỉ đúng khi a = 0 hoặc b = 0" },
+            { q: "√(100) - √(64) bằng:", options: ["A. 2", "B. 4", "C. 6", "D. 8"], answer: "A", solution: "√100 - √64 = 10 - 8 = 2" }
+        ];
+
+        // True/False Data
+        const tfData = [
+            { q: "Về căn bậc hai:", statements: [
+                { text: "√16 = 4", answer: true },
+                { text: "√16 = ±4", answer: false },
+                { text: "√0 = 0", answer: true },
+                { text: "√(-4) xác định", answer: false }
+            ]},
+            { q: "Về điều kiện xác định:", statements: [
+                { text: "√A xác định khi A ≥ 0", answer: true },
+                { text: "1/√A xác định khi A > 0", answer: true },
+                { text: "√(x-3) xác định khi x ≥ 3", answer: true },
+                { text: "√(5-x) xác định khi x ≥ 5", answer: false }
+            ]},
+            { q: "Về tính chất:", statements: [
+                { text: "√(a·b) = √a · √b với a,b ≥ 0", answer: true },
+                { text: "√(a/b) = √a / √b với a≥0, b>0", answer: true },
+                { text: "√(a²) = a", answer: false },
+                { text: "√(a²) = |a|", answer: true }
+            ]},
+            { q: "Về rút gọn:", statements: [
+                { text: "√50 = 5√2", answer: true },
+                { text: "√12 = 2√3", answer: true },
+                { text: "√72 = 6√2", answer: true },
+                { text: "√18 = 3√3", answer: false }
+            ]},
+            { q: "Về trục căn thức:", statements: [
+                { text: "1/√2 = √2/2", answer: true },
+                { text: "2/√3 = 2√3/3", answer: true },
+                { text: "3/√5 = 3√5/5", answer: true },
+                { text: "1/√a = √a", answer: false }
+            ]},
+            { q: "Về so sánh:", statements: [
+                { text: "√a < √b ⇔ a < b (a,b ≥ 0)", answer: true },
+                { text: "√a = √b ⇔ a = b (a,b ≥ 0)", answer: true },
+                { text: "3 < √10", answer: true },
+                { text: "5 > √24", answer: true }
+            ]},
+            { q: "Về đưa thừa số:", statements: [
+                { text: "3√2 = √18", answer: true },
+                { text: "2√5 = √20", answer: true },
+                { text: "5√3 = √75", answer: true },
+                { text: "4√2 = √8", answer: false }
+            ]},
+            { q: "Về máy tính cầm tay:", statements: [
+                { text: "Có thể tính √2", answer: true },
+                { text: "Có thể tính √(-1)", answer: false },
+                { text: "Có thể chuyển đổi dạng căn", answer: true },
+                { text: "Kết quả luôn chính xác", answer: false }
+            ]},
+            { q: "Về hằng đẳng thức:", statements: [
+                { text: "(√a)² = a (a ≥ 0)", answer: true },
+                { text: "√(a²) = |a|", answer: true },
+                { text: "√(a+b) = √a + √b", answer: false },
+                { text: "√(ab) = √a · √b (a,b ≥ 0)", answer: true }
+            ]},
+            { q: "Về ứng dụng:", statements: [
+                { text: "Dùng trong hình học", answer: true },
+                { text: "Dùng trong vật lý", answer: true },
+                { text: "Dùng trong thực tế", answer: true },
+                { text: "Chỉ dùng trong toán học", answer: false }
+            ]}
+        ];
+
+        // Recognition Data
+        const recognitionData = [
+            { q: "Viết định nghĩa căn bậc hai số học của a.", answer: "√a = x ⇔ x ≥ 0 và x² = a", solution: "Định nghĩa căn bậc hai" },
+            { q: "Viết điều kiện xác định của √A.", answer: "A ≥ 0", solution: "Điều kiện xác định" },
+            { q: "Viết công thức √(a·b).", answer: "√a · √b (a,b ≥ 0)", solution: "Tính chất căn bậc hai" },
+            { q: "Viết công thức √(a/b).", answer: "√a / √b (a≥0, b>0)", solution: "Tính chất căn bậc hai" },
+            { q: "Viết công thức √(a²).", answer: "|a|", solution: "Căn bậc hai của bình phương" },
+            { q: "Viết √16.", answer: "4", solution: "√16 = 4" },
+            { q: "Viết √0.", answer: "0", solution: "√0 = 0" },
+            { q: "Viết điều kiện của √(x-5).", answer: "x ≥ 5", solution: "x - 5 ≥ 0" },
+            { q: "Viết cách trục căn thức 1/√a.", answer: "√a/a", solution: "Nhân tử và mẫu với √a" },
+            { q: "Viết √50 rút gọn.", answer: "5√2", solution: "√50 = √(25×2) = 5√2" }
+        ];
+
+        // Low Application Data
+        const lowData = [
+            { q: "Tính: √25 + √16 - √9", answer: "6", solution: "√25 + √16 - √9 = 5 + 4 - 3 = 6" },
+            { q: "Rút gọn: √18 + √8", answer: "5√2", solution: "√18 + √8 = 3√2 + 2√2 = 5√2" },
+            { q: "Rút gọn: √50 - √18", answer: "2√2", solution: "√50 - √18 = 5√2 - 3√2 = 2√2" },
+            { q: "Trục căn thức: 3/√5", answer: "3√5/5", solution: "3/√5 = 3√5/(√5×√5) = 3√5/5" },
+            { q: "Tìm điều kiện: √(x+2)", answer: "x ≥ -2", solution: "x + 2 ≥ 0 ⇒ x ≥ -2" },
+            { q: "Tìm điều kiện: √(5-x)", answer: "x ≤ 5", solution: "5 - x ≥ 0 ⇒ x ≤ 5" },
+            { q: "Rút gọn: √12 + √27 - √48", answer: "√3", solution: "2√3 + 3√3 - 4√3 = √3" },
+            { q: "Đưa thừa số vào: 4√3", answer: "√48", solution: "4√3 = √(16×3) = √48" },
+            { q: "Tính: √(9·16)", answer: "12", solution: "√(9×16) = √9 × √16 = 3 × 4 = 12" },
+            { q: "Tính: √(25/4)", answer: "5/2", solution: "√(25/4) = √25 / √4 = 5/2" }
+        ];
+
+        // High Application Data
+        const highData = [
+            { q: "Rút gọn biểu thức: A = √(4+2√3) + √(4-2√3)", answer: "A = 2√3", solution: "**Lời giải chi tiết:**\n\n1. Nhận dạng hằng đẳng thức:\n   4+2√3 = (√3+1)²\n   4-2√3 = (√3-1)²\n\n2. Thay vào:\n   A = √(√3+1)² + √(√3-1)²\n   A = |√3+1| + |√3-1|\n\n3. Vì √3 > 1:\n   A = (√3+1) + (√3-1)\n   A = 2√3\n\n**Kết luận: A = 2√3**" },
+            { q: "Rút gọn: B = (√5+2)/(√5-2)", answer: "B = 9 + 4√5", solution: "**Lời giải chi tiết:**\n\n1. Trục căn thức ở mẫu:\n   B = (√5+2)(√5+2) / [(√5-2)(√5+2)]\n\n2. Tính mẫu:\n   (√5-2)(√5+2) = 5 - 4 = 1\n\n3. Tính tử:\n   (√5+2)² = 5 + 4√5 + 4 = 9 + 4√5\n\n4. Kết quả:\n   B = 9 + 4√5\n\n**Kết luận: B = 9 + 4√5**" },
+            { q: "Cho x ≥ 0. Rút gọn: C = √(x²-4x+4) + √(x²+4x+4)", answer: "C = 2x (x ≥ 2) hoặc C = 4 (-2 ≤ x < 2)", solution: "**Lời giải chi tiết:**\n\n1. Nhận dạng:\n   x²-4x+4 = (x-2)²\n   x²+4x+4 = (x+2)²\n\n2. Thay vào:\n   C = √(x-2)² + √(x+2)²\n   C = |x-2| + |x+2|\n\n3. Xét các trường hợp:\n   - Nếu x ≥ 2: C = (x-2) + (x+2) = 2x\n   - Nếu -2 ≤ x < 2: C = (2-x) + (x+2) = 4\n   - Nếu x < -2: C = (2-x) + (-x-2) = -2x\n\n**Kết luận: Tùy theo giá trị của x**" },
+            { q: "Tìm x để √(x-3) + √(5-x) xác định", answer: "3 ≤ x ≤ 5", solution: "**Lời giải chi tiết:**\n\n1. Điều kiện thứ nhất:\n   x - 3 ≥ 0 ⇒ x ≥ 3\n\n2. Điều kiện thứ hai:\n   5 - x ≥ 0 ⇒ x ≤ 5\n\n3. Kết hợp:\n   3 ≤ x ≤ 5\n\n**Kết luận: 3 ≤ x ≤ 5**" },
+            { q: "Rút gọn: D = (√3-√2)/(√3+√2) + (√3+√2)/(√3-√2)", answer: "D = 10", solution: "**Lời giải chi tiết:**\n\n1. Quy đồng mẫu:\n   D = [(√3-√2)² + (√3+√2)²] / [(√3+√2)(√3-√2)]\n\n2. Tính mẫu:\n   (√3+√2)(√3-√2) = 3 - 2 = 1\n\n3. Tính tử:\n   (√3-√2)² + (√3+√2)²\n   = (3-2√6+2) + (3+2√6+2)\n   = 5-2√6 + 5+2√6 = 10\n\n4. Kết quả:\n   D = 10/1 = 10\n\n**Kết luận: D = 10**" },
+            { q: "Cho x > 0. Chứng minh: √(x+1/x+2) = √x + 1/√x", answer: "ĐPCM", solution: "**Lời giải chi tiết:**\n\n1. Biến đổi VP:\n   √x + 1/√x = (x+1)/√x\n\n2. Bình phương 2 vế:\n   VT² = x + 1/x + 2\n   VP² = (x+1)²/x = (x²+2x+1)/x = x + 2 + 1/x\n\n3. Vậy VT² = VP²\n   ⇒ VT = VP (vì đều dương)\n\n**Kết luận: ĐPCM**" },
+            { q: "Tìm GTNN của: E = √(x²+4) + √(x²-4x+8)", answer: "E_min = 2√5", solution: "**Lời giải chi tiết:**\n\n1. Viết lại:\n   E = √(x²+2²) + √[(x-2)²+2²]\n\n2. Ý nghĩa hình học:\n   Tổng khoảng cách từ (x,0) đến (0,2) và (2,2)\n\n3. GTNN khi 3 điểm thẳng hàng:\n   E_min = √(2²+4²) = √20 = 2√5\n\n**Kết luận: E_min = 2√5**" },
+            { q: "Rút gọn: F = √(7+4√3) - √(7-4√3)", answer: "F = 2", solution: "**Lời giải chi tiết:**\n\n1. Nhận dạng:\n   7+4√3 = (2+√3)²\n   7-4√3 = (2-√3)²\n\n2. Thay vào:\n   F = √(2+√3)² - √(2-√3)²\n   F = |2+√3| - |2-√3|\n\n3. Vì 2 > √3:\n   F = (2+√3) - (2-√3) = 2√3\n\n**Kết luận: F = 2√3**" },
+            { q: "Cho a, b > 0. Chứng minh: √(a²+b²) ≥ (a+b)/√2", answer: "ĐPCM", solution: "**Lời giải chi tiết:**\n\n1. Bình phương 2 vế:\n   a²+b² ≥ (a+b)²/2\n\n2. Nhân 2 vế với 2:\n   2a²+2b² ≥ a²+2ab+b²\n\n3. Rút gọn:\n   a²-2ab+b² ≥ 0\n   (a-b)² ≥ 0 (luôn đúng)\n\n**Kết luận: ĐPCM**" },
+            { q: "Tìm x để √(x+3) = x - 3", answer: "x = 6", solution: "**Lời giải chi tiết:**\n\n1. Điều kiện:\n   x + 3 ≥ 0 ⇒ x ≥ -3\n   x - 3 ≥ 0 ⇒ x ≥ 3\n   Vậy x ≥ 3\n\n2. Bình phương 2 vế:\n   x+3 = (x-3)²\n   x+3 = x²-6x+9\n   x²-7x+6 = 0\n\n3. Giải:\n   x = 1 hoặc x = 6\n\n4. Đối chiếu điều kiện x ≥ 3:\n   x = 6 (thỏa)\n\n**Kết luận: x = 6**" }
+        ];
+
+        // Real World Data
+        const realData = [
+            { q: "Một hình vuông có diện tích 64m². Tính độ dài cạnh của hình vuông.", answer: "8m", solution: "**Lời giải chi tiết:**\n\n1. Gọi a là độ dài cạnh (m)\n   a² = 64\n\n2. Tính cạnh:\n   a = √64 = 8m\n\n3. Ứng dụng:\n   - Tính toán trong xây dựng\n   - Thiết kế nền nhà\n\n**Kết luận: Cạnh hình vuông là 8m**" },
+            { q: "Một tam giác vuông có hai cạnh góc vuông là 3cm và 4cm. Tính cạnh huyền.", answer: "5cm", solution: "**Lời giải chi tiết:**\n\n1. Áp dụng định lý Pytago:\n   c² = 3² + 4² = 9 + 16 = 25\n\n2. Tính cạnh huyền:\n   c = √25 = 5cm\n\n3. Ứng dụng:\n   - Tính toán trong xây dựng\n   - Thiết kế kết cấu\n\n**Kết luận: Cạnh huyền là 5cm**" },
+            { q: "Một mảnh đất hình vuông có chu vi 40m. Tính diện tích mảnh đất.", answer: "100m²", solution: "**Lời giải chi tiết:**\n\n1. Tính cạnh:\n   a = 40/4 = 10m\n\n2. Tính diện tích:\n   S = a² = 10² = 100m²\n\n3. Ứng dụng:\n   - Tính toán đất đai\n   - Quy hoạch sử dụng đất\n\n**Kết luận: Diện tích là 100m²**" },
+            { q: "Một cái thang dài 5m dựa vào tường, chân thang cách tường 3m. Tính chiều cao thang đạt được.", answer: "4m", solution: "**Lời giải chi tiết:**\n\n1. Áp dụng định lý Pytago:\n   h² + 3² = 5²\n   h² = 25 - 9 = 16\n\n2. Tính chiều cao:\n   h = √16 = 4m\n\n3. Ứng dụng:\n   - An toàn lao động\n   - Thiết kế xây dựng\n\n**Kết luận: Chiều cao là 4m**" },
+            { q: "Một hình chữ nhật có chiều dài 12cm, chiều rộng 5cm. Tính độ dài đường chéo.", answer: "13cm", solution: "**Lời giải chi tiết:**\n\n1. Áp dụng định lý Pytago:\n   d² = 12² + 5² = 144 + 25 = 169\n\n2. Tính đường chéo:\n   d = √169 = 13cm\n\n3. Ứng dụng:\n   - Thiết kế màn hình\n   - Tính toán kích thước\n\n**Kết luận: Đường chéo là 13cm**" }
+        ];
+
+        // Render MCQ
+        function renderMCQ() {
+            const container = document.getElementById('mcq-container');
+            mcqData.forEach((item, index) => {
+                const div = document.createElement('div');
+                div.className = 'border-l-4 border-cyan-400 pl-4 py-3 bg-gray-50 rounded-r-lg';
+                div.innerHTML = `
+                    <p class="font-semibold text-gray-800 mb-2"><strong>Câu ${index + 1}:</strong> ${item.q}</p>
+                    <div class="grid grid-cols-2 gap-2 mb-3 text-sm">
+                        ${item.options.map(opt => `<span class="text-gray-700">${opt}</span>`).join('')}
+                    </div>
+                    <button onclick="toggleAnswer('mcq-${index}')" class="text-cyan-600 text-sm hover:underline">👁️ Xem đáp án</button>
+                    <div id="mcq-${index}" class="answer-box mt-2 p-3 rounded hidden">
+                        <p class="font-semibold text-green-700">Đáp án: ${item.answer}</p>
+                        <p class="text-gray-700 text-sm mt-1">${item.solution}</p>
+                    </div>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        // Render True/False
+        function renderTF() {
+            const container = document.getElementById('tf-container');
+            tfData.forEach((item, index) => {
+                const div = document.createElement('div');
+                div.className = 'border-l-4 border-amber-400 pl-4 py-3 bg-gray-50 rounded-r-lg';
+                div.innerHTML = `
+                    <p class="font-semibold text-gray-800 mb-3"><strong>Câu ${index + 1}:</strong> ${item.q}</p>
+                    <div class="space-y-2">
+                        ${item.statements.map((s, i) => `
+                            <div class="flex items-center justify-between bg-white p-2 rounded">
+                                <span class="text-gray-700 text-sm">${String.fromCharCode(65+i)}. ${s.text}</span>
+                                <span class="text-xs px-2 py-1 rounded ${s.answer ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}">${s.answer ? 'Đúng' : 'Sai'}</span>
+                            </div>
+                        `).join('')}
+                    </div>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        // Render Recognition
+        function renderRecognition() {
+            const container = document.getElementById('recognition-container');
+            recognitionData.forEach((item, index) => {
+                const div = document.createElement('div');
+                div.className = 'border-l-4 border-cyan-400 pl-4 py-3 bg-gray-50 rounded-r-lg';
+                div.innerHTML = `
+                    <p class="font-semibold text-gray-800 mb-2"><strong>Bài ${index + 1}:</strong> ${item.q}</p>
+                    <button onclick="toggleAnswer('rec-${index}')" class="text-cyan-600 text-sm hover:underline">👁️ Xem đáp án</button>
+                    <div id="rec-${index}" class="answer-box mt-2 p-3 rounded hidden">
+                        <p class="font-semibold text-purple-700">Đáp án: ${item.answer}</p>
+                        <p class="text-gray-700 text-sm mt-1">${item.solution}</p>
+                    </div>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        // Render Low Application
+        function renderLow() {
+            const container = document.getElementById('low-container');
+            lowData.forEach((item, index) => {
+                const div = document.createElement('div');
+                div.className = 'border-l-4 border-green-400 pl-4 py-3 bg-gray-50 rounded-r-lg';
+                div.innerHTML = `
+                    <p class="font-semibold text-gray-800 mb-2"><strong>Bài ${index + 1}:</strong> ${item.q}</p>
+                    <button onclick="toggleAnswer('low-${index}')" class="text-green-600 text-sm hover:underline">👁️ Xem đáp án</button>
+                    <div id="low-${index}" class="solution-box mt-2 p-3 rounded hidden">
+                        <p class="font-semibold text-amber-700">Đáp án: ${item.answer}</p>
+                        <p class="text-gray-700 text-sm mt-1 whitespace-pre-line">${item.solution}</p>
+                    </div>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        // Render High Application
+        function renderHigh() {
+            const container = document.getElementById('high-container');
+            highData.forEach((item, index) => {
+                const div = document.createElement('div');
+                div.className = 'border-l-4 border-red-400 pl-4 py-3 bg-gray-50 rounded-r-lg';
+                div.innerHTML = `
+                    <p class="font-semibold text-gray-800 mb-2"><strong>Bài ${index + 1}:</strong> ${item.q}</p>
+                    <button onclick="toggleAnswer('high-${index}')" class="text-red-600 text-sm hover:underline">👁️ Xem lời giải chi tiết</button>
+                    <div id="high-${index}" class="solution-box mt-2 p-4 rounded hidden">
+                        <p class="font-semibold text-amber-700 mb-2">Đáp án: ${item.answer}</p>
+                        <div class="text-gray-700 text-sm whitespace-pre-line">${item.solution}</div>
+                    </div>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        // Render Real World
+        function renderReal() {
+            const container = document.getElementById('real-container');
+            realData.forEach((item, index) => {
+                const div = document.createElement('div');
+                div.className = 'border-l-4 border-indigo-400 pl-4 py-3 bg-gray-50 rounded-r-lg';
+                div.innerHTML = `
+                    <p class="font-semibold text-gray-800 mb-2"><strong>Bài ${index + 1}:</strong> ${item.q}</p>
+                    <button onclick="toggleAnswer('real-${index}')" class="text-indigo-600 text-sm hover:underline">👁️ Xem lời giải chi tiết</button>
+                    <div id="real-${index}" class="solution-box mt-2 p-4 rounded hidden">
+                        <p class="font-semibold text-amber-700 mb-2">Đáp án: ${item.answer}</p>
+                        <div class="text-gray-700 text-sm whitespace-pre-line">${item.solution}</div>
+                    </div>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        // Toggle Answer
+        function toggleAnswer(id) {
+            const el = document.getElementById(id);
+            el.classList.toggle('hidden');
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            renderMCQ();
+            renderTF();
+            renderRecognition();
+            renderLow();
+            renderHigh();
+            renderReal();
+        });
+    </script>
+</body>
+</html>
+```
