@@ -1,0 +1,665 @@
+```html
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đồ Thị Hàm Số y = ax² + bx + c - Đề Mục 90 - Toán Lớp 9</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@fontsource/roboto@4.5.8/index.css" rel="stylesheet">
+    <style>
+        * {
+            font-family: 'Roboto', sans-serif;
+        }
+        .gradient-header {
+            background: linear-gradient(135deg, #0891b2 0%, #7c3aed 100%);
+        }
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, #0891b2 0%, #7c3aed 100%);
+        }
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #067894 0%, #6a32c4 100%);
+        }
+        .answer-box {
+            background: #f0f9ff;
+            border-left: 4px solid #0891b2;
+        }
+        .solution-box {
+            background: #fef3c7;
+            border-left: 4px solid #f59e0b;
+        }
+        .nav-item {
+            transition: all 0.2s ease;
+        }
+        .nav-item:hover {
+            background: rgba(255,255,255,0.2);
+        }
+        .nav-item.active {
+            background: rgba(255,255,255,0.3);
+        }
+        .print-section {
+            page-break-inside: avoid;
+        }
+        @media print {
+            .no-print {
+                display: none;
+            }
+        }
+        .formula-box {
+            background: linear-gradient(135deg, #e0f2fe 0%, #ede9fe 100%);
+            border-radius: 8px;
+            padding: 16px;
+            margin: 12px 0;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="gradient-header text-white py-8">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center">
+                <div>
+                    <h1 class="text-3xl font-bold">ĐỒ THỊ HÀM SỐ y = ax² + bx + c</h1>
+                    <p class="text-lg opacity-90">Đề Mục 90 - Toán Lớp 9 - Đại Số</p>
+                </div>
+                <div class="text-right">
+                    <p class="text-sm opacity-80">Bộ Tài Liệu Toán THCS</p>
+                    <p class="text-sm opacity-80">60 Ngày Ôn Tập</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md sticky top-0 z-50 no-print">
+        <div class="container mx-auto px-4">
+            <div class="flex overflow-x-auto py-3 space-x-2">
+                <button onclick="showSection('lesson')" class="nav-item active px-4 py-2 rounded-lg bg-cyan-100 text-cyan-700 whitespace-nowrap">📚 Bài Giảng</button>
+                <button onclick="showSection('mcq')" class="nav-item px-4 py-2 rounded-lg hover:bg-gray-100 whitespace-nowrap">📝 30 Câu MCQ</button>
+                <button onclick="showSection('tf')" class="nav-item px-4 py-2 rounded-lg hover:bg-gray-100 whitespace-nowrap">✅ 10 Câu Đúng/Sai</button>
+                <button onclick="showSection('recognition')" class="nav-item px-4 py-2 rounded-lg hover:bg-gray-100 whitespace-nowrap">🔍 10 Bài Nhận Biết</button>
+                <button onclick="showSection('low')" class="nav-item px-4 py-2 rounded-lg hover:bg-gray-100 whitespace-nowrap">📊 10 Bài Vận Dụng Thấp</button>
+                <button onclick="showSection('high')" class="nav-item px-4 py-2 rounded-lg hover:bg-gray-100 whitespace-nowrap">🎯 10 Bài Vận Dụng Cao</button>
+                <button onclick="showSection('real')" class="nav-item px-4 py-2 rounded-lg hover:bg-gray-100 whitespace-nowrap">🌍 5 Bài Thực Tế</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+        <!-- Lesson Section -->
+        <section id="lesson" class="section-content">
+            <div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section">
+                <h2 class="text-2xl font-bold text-cyan-700 mb-6 flex items-center">
+                    <span class="mr-3">📚</span> BÀI GIẢNG CHI TIẾT: ĐỒ THỊ HÀM SỐ y = ax² + bx + c
+                </h2>
+                
+                <div class="space-y-6">
+                    <!-- Introduction -->
+                    <div class="answer-box p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold text-cyan-700 mb-4">1. ĐỒ THỊ HÀM SỐ BẬC HAI</h3>
+                        <p class="text-gray-700 mb-4">
+                            <strong>Đồ thị hàm số</strong> y = ax² + bx + c (a ≠ 0) là một đường cong Parabol với các đặc điểm xác định bởi các hệ số a, b, c.
+                        </p>
+                        
+                        <div class="formula-box">
+                            <h4 class="font-semibold text-cyan-600 mb-2">📐 Đỉnh của Parabol:</h4>
+                            <p class="text-gray-700 mb-2">Tọa độ đỉnh I(x₀; y₀) với:</p>
+                            <p class="text-cyan-700 font-bold text-center text-xl mb-2">x₀ = -b/2a</p>
+                            <p class="text-cyan-700 font-bold text-center text-xl mb-2">y₀ = -Δ/4a</p>
+                            <p class="text-gray-700 text-sm">Trong đó Δ = b² - 4ac</p>
+                        </div>
+
+                        <div class="grid md:grid-cols-3 gap-4 mt-4">
+                            <div class="bg-cyan-50 p-4 rounded-lg">
+                                <h4 class="font-semibold text-cyan-600 mb-2">a > 0</h4>
+                                <p class="text-gray-700 text-sm">Parabol quay bề lõm lên trên</p>
+                                <p class="text-cyan-700 text-sm font-semibold mt-2">Đỉnh là điểm thấp nhất</p>
+                                <p class="text-gray-600 text-sm">y ≥ y₀ với mọi x</p>
+                            </div>
+                            <div class="bg-purple-50 p-4 rounded-lg">
+                                <h4 class="font-semibold text-purple-600 mb-2">a < 0</h4>
+                                <p class="text-gray-700 text-sm">Parabol quay bề lõm xuống dưới</p>
+                                <p class="text-purple-700 text-sm font-semibold mt-2">Đỉnh là điểm cao nhất</p>
+                                <p class="text-gray-600 text-sm">y ≤ y₀ với mọi x</p>
+                            </div>
+                            <div class="bg-amber-50 p-4 rounded-lg">
+                                <h4 class="font-semibold text-amber-600 mb-2">Trục đối xứng</h4>
+                                <p class="text-gray-700 text-sm">Đường thẳng x = -b/2a</p>
+                                <p class="text-amber-700 text-sm font-semibold mt-2">Đi qua đỉnh I</p>
+                                <p class="text-gray-600 text-sm">Song song với trục Oy</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Properties -->
+                    <div class="solution-box p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold text-amber-700 mb-4">2. TÍNH CHẤT VÀ CÁCH VẼ</h3>
+                        
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div class="bg-white p-4 rounded-lg border-2 border-cyan-300">
+                                <h4 class="font-semibold text-cyan-600 mb-2">Chiều biến thiên</h4>
+                                <ul class="space-y-2 text-gray-700 text-sm">
+                                    <li>• <strong>a > 0:</strong></li>
+                                    <li class="ml-4">- Nghịch biến khi x < -b/2a</li>
+                                    <li class="ml-4">- Đồng biến khi x > -b/2a</li>
+                                    <li>• <strong>a < 0:</strong></li>
+                                    <li class="ml-4">- Đồng biến khi x < -b/2a</li>
+                                    <li class="ml-4">- Nghịch biến khi x > -b/2a</li>
+                                </ul>
+                            </div>
+                            <div class="bg-white p-4 rounded-lg border-2 border-purple-300">
+                                <h4 class="font-semibold text-purple-600 mb-2">Giao điểm với trục Ox</h4>
+                                <ul class="space-y-2 text-gray-700 text-sm">
+                                    <li>• <strong>Δ > 0:</strong> 2 giao điểm phân biệt</li>
+                                    <li>• <strong>Δ = 0:</strong> 1 giao điểm (tiếp xúc)</li>
+                                    <li>• <strong>Δ < 0:</strong> Không có giao điểm</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="mt-4 bg-cyan-50 p-4 rounded-lg">
+                            <h4 class="font-semibold text-cyan-700 mb-2">📝 Các bước vẽ đồ thị y = ax² + bx + c:</h4>
+                            <ol class="space-y-2 text-gray-700 text-sm list-decimal list-inside">
+                                <li>Xác định tọa độ đỉnh I(-b/2a; -Δ/4a)</li>
+                                <li>Xác định trục đối xứng x = -b/2a</li>
+                                <li>Tìm giao điểm với Oy: (0; c)</li>
+                                <li>Tìm giao điểm với Ox (nếu có): Giải ax² + bx + c = 0</li>
+                                <li>Lấy thêm điểm đối xứng qua trục đối xứng</li>
+                                <li>Vẽ parabol qua các điểm đã xác định</li>
+                            </ol>
+                        </div>
+                    </div>
+
+                    <!-- Intersection with Line -->
+                    <div class="answer-box p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold text-cyan-700 mb-4">3. GIAO ĐIỂM VỚI ĐƯỜNG THẲNG</h3>
+                        
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div class="bg-white p-4 rounded-lg border-l-4 border-cyan-400">
+                                <h4 class="font-semibold text-cyan-600 mb-2">Phương trình hoành độ</h4>
+                                <p class="text-gray-700 text-sm mb-2">Để tìm giao điểm của (P): y = ax² + bx + c và (d): y = mx + n:</p>
+                                <p class="text-cyan-700 text-sm font-bold">ax² + bx + c = mx + n</p>
+                                <p class="text-gray-600 text-sm mt-2">⇔ ax² + (b-m)x + (c-n) = 0</p>
+                            </div>
+                            <div class="bg-white p-4 rounded-lg border-l-4 border-purple-400">
+                                <h4 class="font-semibold text-purple-600 mb-2">Số giao điểm</h4>
+                                <ul class="space-y-2 text-gray-700 text-sm">
+                                    <li>• <strong>Δ > 0:</strong> 2 giao điểm phân biệt</li>
+                                    <li>• <strong>Δ = 0:</strong> 1 giao điểm (tiếp xúc)</li>
+                                    <li>• <strong>Δ < 0:</strong> Không có giao điểm</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="mt-4 formula-box">
+                            <h4 class="font-semibold text-cyan-600 mb-2">📐 Ví dụ: Tìm giao điểm của y = x² - 2x - 3 và y = x - 1</h4>
+                            <p class="text-gray-700 mb-2">Phương trình hoành độ: x² - 2x - 3 = x - 1</p>
+                            <p class="text-gray-700 mb-2">⇔ x² - 3x - 2 = 0</p>
+                            <p class="text-gray-700">Δ = 9 + 8 = 17</p>
+                            <p class="text-gray-700">x = (3 ± √17)/2</p>
+                        </div>
+                    </div>
+
+                    <!-- Tangent Line -->
+                    <div class="solution-box p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold text-amber-700 mb-4">4. ĐIỀU KIỆN TIẾP XÚC</h3>
+                        
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div class="bg-white p-4 rounded-lg border-2 border-red-300">
+                                <h4 class="font-semibold text-red-600 mb-2">Đường thẳng tiếp xúc Parabol</h4>
+                                <p class="text-gray-700 text-sm mb-2">Khi phương trình hoành độ giao điểm có nghiệm kép (Δ = 0)</p>
+                                <p class="text-red-700 text-sm font-semibold">Đường thẳng là tiếp tuyến</p>
+                                <p class="text-gray-600 text-sm mt-2">Tiếp điểm là nghiệm kép</p>
+                            </div>
+                            <div class="bg-white p-4 rounded-lg border-2 border-green-300">
+                                <h4 class="font-semibold text-green-600 mb-2">Ứng dụng</h4>
+                                <ul class="space-y-2 text-gray-700 text-sm">
+                                    <li>• Tìm điều kiện để tiếp xúc</li>
+                                    <li>• Viết phương trình tiếp tuyến</li>
+                                    <li>• Tìm tọa độ tiếp điểm</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="mt-4 bg-amber-50 p-4 rounded-lg">
+                            <h4 class="font-semibold text-amber-700 mb-2">📝 Ví dụ: Tìm m để y = 2x + m tiếp xúc y = x² - 2x + 3</h4>
+                            <p class="text-gray-700 mb-2">Phương trình: x² - 2x + 3 = 2x + m</p>
+                            <p class="text-gray-700 mb-2">⇔ x² - 4x + (3-m) = 0</p>
+                            <p class="text-gray-700">Điều kiện: Δ' = 4 - (3-m) = 0</p>
+                            <p class="text-gray-700">⇒ m = -1</p>
+                        </div>
+                    </div>
+
+                    <!-- Examples -->
+                    <div class="answer-box p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold text-cyan-700 mb-4">5. VÍ DỤ MINH HỌA</h3>
+                        
+                        <div class="bg-white p-4 rounded-lg mb-4">
+                            <h4 class="font-semibold text-cyan-600 mb-2">Ví dụ 1: Xác định đỉnh</h4>
+                            <p class="text-gray-700 mb-2">Tìm đỉnh của parabol y = 2x² - 4x + 1</p>
+                            <div class="solution-box p-3 rounded">
+                                <p class="text-gray-700"><strong>Lời giải:</strong></p>
+                                <p class="text-gray-700">x₀ = -b/2a = 4/4 = 1</p>
+                                <p class="text-gray-700">y₀ = 2(1)² - 4(1) + 1 = -1</p>
+                                <p class="text-gray-700">Đỉnh I(1; -1)</p>
+                            </div>
+                        </div>
+
+                        <div class="bg-white p-4 rounded-lg mb-4">
+                            <h4 class="font-semibold text-cyan-600 mb-2">Ví dụ 2: Tìm giao điểm</h4>
+                            <p class="text-gray-700 mb-2">Tìm giao điểm của y = x² - 4 và y = 2x</p>
+                            <div class="solution-box p-3 rounded">
+                                <p class="text-gray-700"><strong>Lời giải:</strong></p>
+                                <p class="text-gray-700">x² - 4 = 2x ⇔ x² - 2x - 4 = 0</p>
+                                <p class="text-gray-700">Δ' = 1 + 4 = 5</p>
+                                <p class="text-gray-700">x = 1 ± √5</p>
+                            </div>
+                        </div>
+
+                        <div class="bg-white p-4 rounded-lg">
+                            <h4 class="font-semibold text-cyan-600 mb-2">Ví dụ 3: Điều kiện tiếp xúc</h4>
+                            <p class="text-gray-700 mb-2">Tìm m để y = x + m tiếp xúc y = x²</p>
+                            <div class="solution-box p-3 rounded">
+                                <p class="text-gray-700"><strong>Lời giải:</strong></p>
+                                <p class="text-gray-700">x² = x + m ⇔ x² - x - m = 0</p>
+                                <p class="text-gray-700">Δ = 1 + 4m = 0 ⇒ m = -1/4</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Calculator Guide -->
+                    <div class="solution-box p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold text-amber-700 mb-4">6. HƯỚNG DẪN BẤM MÁY TÍNH CASIO FX-580ES</h3>
+                        <div class="bg-white p-4 rounded-lg space-y-3">
+                            <p class="text-gray-700"><strong>Tìm đỉnh parabol:</strong></p>
+                            <ol class="list-decimal list-inside space-y-1 text-gray-700">
+                                <li>Tính x₀ = -b/2a</li>
+                                <li>Thay vào tính y₀</li>
+                            </ol>
+                            <p class="text-gray-700 mt-3"><strong>Tìm giao điểm (Mode EQN):</strong></p>
+                            <ol class="list-decimal list-inside space-y-1 text-gray-700">
+                                <li>Viết lại: ax² + (b-m)x + (c-n) = 0</li>
+                                <li>Bấm <kbd class="bg-gray-200 px-2 py-1 rounded">MODE</kbd> → <kbd class="bg-gray-200 px-2 py-1 rounded">5</kbd> (EQN)</li>
+                                <li>Chọn <kbd class="bg-gray-200 px-2 py-1 rounded">3</kbd> (anX²+bnX+c=0)</li>
+                                <li>Nhập hệ số, bấm <kbd class="bg-gray-200 px-2 py-1 rounded">=</kbd></li>
+                            </ol>
+                            <p class="text-gray-700 mt-3"><strong>Lưu ý:</strong> Kiểm tra lại bằng cách thay vào phương trình</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- MCQ Section -->
+        <section id="mcq" class="section-content hidden">
+            <div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section">
+                <h2 class="text-2xl font-bold text-cyan-700 mb-6 flex items-center">
+                    <span class="mr-3">📝</span> 30 CÂU TRẮC NGHIỆM 4 LỰA CHỌN
+                </h2>
+                <div class="space-y-6" id="mcq-container"></div>
+            </div>
+        </section>
+
+        <!-- True/False Section -->
+        <section id="tf" class="section-content hidden">
+            <div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section">
+                <h2 class="text-2xl font-bold text-cyan-700 mb-6 flex items-center">
+                    <span class="mr-3">✅</span> 10 CÂU TRẮC NGHIỆM ĐÚNG/SAI
+                </h2>
+                <div class="space-y-6" id="tf-container"></div>
+            </div>
+        </section>
+
+        <!-- Recognition Section -->
+        <section id="recognition" class="section-content hidden">
+            <div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section">
+                <h2 class="text-2xl font-bold text-cyan-700 mb-6 flex items-center">
+                    <span class="mr-3">🔍</span> 10 BÀI TẬP NHẬN BIẾT
+                </h2>
+                <div class="space-y-6" id="recognition-container"></div>
+            </div>
+        </section>
+
+        <!-- Low Application Section -->
+        <section id="low" class="section-content hidden">
+            <div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section">
+                <h2 class="text-2xl font-bold text-cyan-700 mb-6 flex items-center">
+                    <span class="mr-3">📊</span> 10 BÀI TẬP VẬN DỤNG THẤP
+                </h2>
+                <div class="space-y-6" id="low-container"></div>
+            </div>
+        </section>
+
+        <!-- High Application Section -->
+        <section id="high" class="section-content hidden">
+            <div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section">
+                <h2 class="text-2xl font-bold text-cyan-700 mb-6 flex items-center">
+                    <span class="mr-3">🎯</span> 10 BÀI TẬP VẬN DỤNG CAO
+                </h2>
+                <div class="space-y-6" id="high-container"></div>
+            </div>
+        </section>
+
+        <!-- Real World Section -->
+        <section id="real" class="section-content hidden">
+            <div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section">
+                <h2 class="text-2xl font-bold text-cyan-700 mb-6 flex items-center">
+                    <span class="mr-3">🌍</span> 5 BÀI TẬP ỨNG DỤNG THỰC TẾ
+                </h2>
+                <div class="space-y-6" id="real-container"></div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="gradient-header text-white py-6 mt-8">
+        <div class="container mx-auto px-4 text-center">
+            <p class="text-sm">Bộ Tài Liệu Toán THCS - Đề Mục 90: Đồ Thị Hàm Số y = ax² + bx + c</p>
+            <p class="text-sm opacity-80">© 2024 - Tài liệu ôn tập 60 ngày</p>
+        </div>
+    </footer>
+
+    <!-- Print Button -->
+    <button onclick="window.print()" class="no-print fixed bottom-6 right-6 btn-primary text-white px-6 py-3 rounded-full shadow-lg hover:shadow-xl transition-all">
+        🖨️ In Tài Liệu
+    </button>
+
+    <script>
+        // Navigation
+        function showSection(sectionId) {
+            document.querySelectorAll('.section-content').forEach(el => el.classList.add('hidden'));
+            document.getElementById(sectionId).classList.remove('hidden');
+            document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
+            event.target.classList.add('active');
+        }
+
+        // MCQ Data
+        const mcqData = [
+            { q: "Đỉnh của parabol y = x² - 4x + 3 có tọa độ:", options: ["A. (2; -1)", "B. (-2; -1)", "C. (2; 1)", "D. (-2; 1)"], answer: "A", solution: "x₀ = 4/2 = 2, y₀ = 4-8+3 = -1" },
+            { q: "Trục đối xứng của y = 2x² + 4x - 1 là:", options: ["A. x = -1", "B. x = 1", "C. x = -2", "D. x = 2"], answer: "A", solution: "x = -b/2a = -4/4 = -1" },
+            { q: "Parabol y = -x² + 2x + 3 có bề lõm:", options: ["A. Quay lên trên", "B. Quay xuống dưới", "C. Sang trái", "D. Sang phải"], answer: "B", solution: "a = -1 < 0 nên quay xuống" },
+            { q: "Giao điểm của y = x² - 4 với Ox là:", options: ["A. (2; 0) và (-2; 0)", "B. (4; 0)", "C. (-4; 0)", "D. (0; -4)"], answer: "A", solution: "x²-4=0 ⇒ x=±2" },
+            { q: "Hàm số y = 2x² - 4x + 1 đồng biến khi:", options: ["A. x < 1", "B. x > 1", "C. x < 2", "D. x > 2"], answer: "B", solution: "a > 0, đồng biến khi x > -b/2a = 1" },
+            { q: "Đường thẳng y = 2x + 1 cắt parabol y = x² tại:", options: ["A. 1 điểm", "B. 2 điểm", "C. 3 điểm", "D. Không cắt"], answer: "B", solution: "x²-2x-1=0, Δ'=2>0 nên 2 điểm" },
+            { q: "Điều kiện để y = mx + 1 tiếp xúc y = x² là:", options: ["A. m = 2", "B. m = -2", "C. m = ±2", "D. m = -1/4"], answer: "D", solution: "x²-mx-1=0, Δ=m²+4=0 ⇒ m=-1/4" },
+            { q: "Điểm nào thuộc đồ thị y = x² - 2x - 3?", options: ["A. (0; -3)", "B. (1; -3)", "C. (2; -3)", "D. (3; -3)"], answer: "A", solution: "x=0 ⇒ y=-3" },
+            { q: "Tọa độ đỉnh của y = -2x² + 4x + 1 là:", options: ["A. (1; 3)", "B. (-1; 3)", "C. (1; -3)", "D. (-1; -3)"], answer: "A", solution: "x₀ = -4/(-4) = 1, y₀ = -2+4+1 = 3" },
+            { q: "Parabol y = x² - 6x + 9 tiếp xúc Ox tại:", options: ["A. (3; 0)", "B. (-3; 0)", "C. (9; 0)", "D. (-9; 0)"], answer: "A", solution: "Δ = 0, x = 6/2 = 3" },
+            { q: "Hệ số a trong y = ax² + bx + c quyết định:", options: ["A. Vị trí đỉnh", "B. Bề lõm", "C. Trục đối xứng", "D. Giao Oy"], answer: "B", solution: "Dấu của a quyết định bề lõm" },
+            { q: "Giao điểm của y = x² - 4x + 3 với Oy là:", options: ["A. (0; 3)", "B. (3; 0)", "C. (0; -3)", "D. (-3; 0)"], answer: "A", solution: "x = 0 ⇒ y = 3" },
+            { q: "Hàm số y = -x² + 4x - 3 có GTLN tại:", options: ["A. x = 1", "B. x = 2", "C. x = 3", "D. x = 4"], answer: "B", solution: "a < 0, GTLN tại x = -b/2a = 2" },
+            { q: "Phương trình x² - 4x + 3 = 0 có nghiệm:", options: ["A. 1 và 3", "B. -1 và -3", "C. 1 và -3", "D. -1 và 3"], answer: "A", solution: "Δ = 4, x = (4±2)/2" },
+            { q: "Đường thẳng y = 3 song song với:", options: ["A. Ox", "B. Oy", "C. y = x", "D. y = -x"], answer: "A", solution: "y = hằng số song song Ox" },
+            { q: "Parabol y = 2x² - 4x + 1 có đỉnh:", options: ["A. (1; -1)", "B. (-1; -1)", "C. (1; 1)", "D. (-1; 1)"], answer: "A", solution: "x₀ = 1, y₀ = 2-4+1 = -1" },
+            { q: "Trục đối xứng của y = ax² + bx + c là:", options: ["A. x = -b/a", "B. x = -b/2a", "C. x = b/2a", "D. x = b/a"], answer: "B", solution: "Công thức trục đối xứng" },
+            { q: "Hàm số y = 3x² - 6x + 2 đồng biến khi:", options: ["A. x < 1", "B. x > 1", "C. x < 2", "D. x > 2"], answer: "B", solution: "a > 0, đồng biến khi x > 1" },
+            { q: "Giao điểm của y = x² và y = 2x + 3 là:", options: ["A. (-1; 1) và (3; 9)", "B. (1; 1) và (3; 9)", "C. (-1; 1) và (-3; 9)", "D. (1; 1) và (-3; 9)"], answer: "A", solution: "x²-2x-3=0 ⇒ x=-1, x=3" },
+            { q: "Điều kiện để parabol cắt Ox tại 2 điểm là:", options: ["A. Δ > 0", "B. Δ = 0", "C. Δ < 0", "D. a > 0"], answer: "A", solution: "Δ > 0 có 2 nghiệm phân biệt" },
+            { q: "Đỉnh của y = x² + 2x - 3 là:", options: ["A. (-1; -4)", "B. (1; -4)", "C. (-1; 4)", "D. (1; 4)"], answer: "A", solution: "x₀ = -1, y₀ = 1-2-3 = -4" },
+            { q: "Parabol y = -x² + 2x + 3 cắt Ox tại:", options: ["A. (-1; 0) và (3; 0)", "B. (1; 0) và (-3; 0)", "C. (-1; 0) và (-3; 0)", "D. (1; 0) và (3; 0)"], answer: "A", solution: "-x²+2x+3=0 ⇒ x=-1, x=3" },
+            { q: "Hệ số c trong y = ax² + bx + c là:", options: ["A. Tung độ giao Oy", "B. Hoành độ đỉnh", "C. Hệ số góc", "D. Tung độ đỉnh"], answer: "A", solution: "c là tung độ giao điểm với Oy" },
+            { q: "Đường thẳng y = -2x + 1 cắt y = x² tại:", options: ["A. 1 điểm", "B. 2 điểm", "C. 3 điểm", "D. Không cắt"], answer: "B", solution: "x²+2x-1=0, Δ'=2>0" },
+            { q: "Tìm m để y = x² tiếp xúc y = 2x + m:", options: ["A. m = -1", "B. m = 1", "C. m = -1/4", "D. m = 1/4"], answer: "A", solution: "x²-2x-m=0, Δ'=1+m=0 ⇒ m=-1" },
+            { q: "Parabol y = 2x² - 8x + 6 có đỉnh:", options: ["A. (2; -2)", "B. (-2; -2)", "C. (2; 2)", "D. (-2; 2)"], answer: "A", solution: "x₀ = 2, y₀ = 8-16+6 = -2" },
+            { q: "Trục đối xứng của y = x² - 6x + 5 là:", options: ["A. x = 2", "B. x = 3", "C. x = 4", "D. x = 5"], answer: "B", solution: "x = 6/2 = 3" },
+            { q: "Hàm số y = -2x² + 4x + 1 nghịch biến khi:", options: ["A. x < 1", "B. x > 1", "C. x < 2", "D. x > 2"], answer: "B", solution: "a < 0, nghịch biến khi x > 1" },
+            { q: "Giao điểm của y = x² - 1 và y = 0 là:", options: ["A. (1; 0) và (-1; 0)", "B. (1; 0)", "C. (-1; 0)", "D. (0; -1)"], answer: "A", solution: "x²-1=0 ⇒ x=±1" },
+            { q: "Điều kiện để y = mx + 2 tiếp xúc y = x² là:", options: ["A. m = ±2√2", "B. m = ±2", "C. m = ±√2", "D. m = ±1"], answer: "A", solution: "x²-mx-2=0, Δ=m²+8=0 ⇒ m=±2√2" }
+        ];
+
+        // True/False Data
+        const tfData = [
+            { q: "Về đỉnh parabol:", statements: [
+                { text: "x₀ = -b/2a", answer: true },
+                { text: "y₀ = -Δ/4a", answer: true },
+                { text: "Đỉnh luôn nằm trên Ox", answer: false },
+                { text: "Đỉnh là điểm cực trị", answer: true }
+            ]},
+            { q: "Về trục đối xứng:", statements: [
+                { text: "Là đường thẳng x = -b/2a", answer: true },
+                { text: "Song song với Ox", answer: false },
+                { text: "Đi qua đỉnh", answer: true },
+                { text: "Song song với Oy", answer: true }
+            ]},
+            { q: "Về chiều biến thiên:", statements: [
+                { text: "a > 0 thì đồng biến khi x > -b/2a", answer: true },
+                { text: "a < 0 thì nghịch biến khi x > -b/2a", answer: true },
+                { text: "a > 0 thì nghịch biến khi x < -b/2a", answer: true },
+                { text: "a < 0 thì đồng biến khi x < -b/2a", answer: true }
+            ]},
+            { q: "Về giao điểm:", statements: [
+                { text: "Δ > 0 có 2 giao điểm với Ox", answer: true },
+                { text: "Δ = 0 tiếp xúc Ox", answer: true },
+                { text: "Δ < 0 không cắt Ox", answer: true },
+                { text: "Luôn cắt Oy", answer: true }
+            ]},
+            { q: "Về cực trị:", statements: [
+                { text: "a > 0 có GTNN tại đỉnh", answer: true },
+                { text: "a < 0 có GTLN tại đỉnh", answer: true },
+                { text: "a > 0 có GTLN", answer: false },
+                { text: "a < 0 có GTNN", answer: false }
+            ]},
+            { q: "Về tiếp xúc:", statements: [
+                { text: "Δ = 0 thì tiếp xúc", answer: true },
+                { text: "Tiếp điểm là nghiệm kép", answer: true },
+                { text: "Tiếp tuyến là đường thẳng", answer: true },
+                { text: "Luôn có tiếp tuyến", answer: false }
+            ]},
+            { q: "Về vị trí:", statements: [
+                { text: "a > 0 bề lõm quay lên", answer: true },
+                { text: "a < 0 bề lõm quay xuống", answer: true },
+                { text: "a > 0 nằm trên Ox", answer: false },
+                { text: "a < 0 nằm dưới Ox", answer: false }
+            ]},
+            { q: "Về máy tính:", statements: [
+                { text: "Có thể tìm đỉnh bằng tính toán", answer: true },
+                { text: "Có thể tìm giao điểm bằng EQN", answer: true },
+                { text: "Kết quả luôn chính xác", answer: false },
+                { text: "Có thể kiểm tra điểm thuộc đồ thị", answer: true }
+            ]},
+            { q: "Về hệ số:", statements: [
+                { text: "a quyết định bề lõm", answer: true },
+                { text: "b ảnh hưởng trục đối xứng", answer: true },
+                { text: "c là giao Oy", answer: true },
+                { text: "a = 0 là parabol", answer: false }
+            ]},
+            { q: "Về ứng dụng:", statements: [
+                { text: "Dùng trong vật lý", answer: true },
+                { text: "Dùng trong xây dựng", answer: true },
+                { text: "Dùng trong kinh tế", answer: true },
+                { text: "Chỉ dùng trong toán học", answer: false }
+            ]}
+        ];
+
+        // Recognition Data
+        const recognitionData = [
+            { q: "Viết công thức hoành độ đỉnh.", answer: "x₀ = -b/2a", solution: "Hoành độ đỉnh" },
+            { q: "Viết công thức tung độ đỉnh.", answer: "y₀ = -Δ/4a", solution: "Tung độ đỉnh" },
+            { q: "Viết phương trình trục đối xứng.", answer: "x = -b/2a", solution: "Trục đối xứng" },
+            { q: "Viết điều kiện để parabol quay lên.", answer: "a > 0", solution: "Hệ số a dương" },
+            { q: "Viết điều kiện để parabol quay xuống.", answer: "a < 0", solution: "Hệ số a âm" },
+            { q: "Viết điều kiện để cắt Ox tại 2 điểm.", answer: "Δ > 0", solution: "Biệt thức dương" },
+            { q: "Viết điều kiện để tiếp xúc Ox.", answer: "Δ = 0", solution: "Biệt thức bằng 0" },
+            { q: "Viết tọa độ giao điểm với Oy.", answer: "(0; c)", solution: "Cho x = 0" },
+            { q: "Viết công thức tính Δ.", answer: "Δ = b² - 4ac", solution: "Biệt thức" },
+            { q: "Viết điều kiện để có GTNN.", answer: "a > 0", solution: "Hệ số a dương" }
+        ];
+
+        // Low Application Data
+        const lowData = [
+            { q: "Tìm đỉnh của y = x² - 4x + 3.", answer: "I(2; -1)", solution: "x₀ = 2, y₀ = -1" },
+            { q: "Tìm trục đối xứng của y = 2x² + 4x - 1.", answer: "x = -1", solution: "x = -4/4 = -1" },
+            { q: "Tìm giao điểm của y = x² - 4 với Ox.", answer: "(2; 0) và (-2; 0)", solution: "x²-4=0 ⇒ x=±2" },
+            { q: "Xác định chiều biến thiên của y = -x² + 2x + 3.", answer: "ĐB khi x<1, NB khi x>1", solution: "a < 0, đỉnh x=1" },
+            { q: "Tìm GTLN của y = -2x² + 4x + 1.", answer: "3 tại x = 1", solution: "Đỉnh I(1; 3)" },
+            { q: "Tìm giao điểm của y = x² và y = 2x + 3.", answer: "(-1; 1) và (3; 9)", solution: "x²-2x-3=0" },
+            { q: "Xét vị trí tương đối của y = x² và y = -1.", answer: "Không cắt nhau", solution: "x²=-1 vô nghiệm" },
+            { q: "Tìm m để y = mx² đi qua A(2; 8).", answer: "m = 2", solution: "8 = m(4) ⇒ m=2" },
+            { q: "Tìm giao điểm của y = x² - 1 và y = 0.", answer: "(1; 0) và (-1; 0)", solution: "x²-1=0 ⇒ x=±1" },
+            { q: "Xác định dấu của a biết parabol quay xuống.", answer: "a < 0", solution: "Bề lõm xuống dưới" }
+        ];
+
+        // High Application Data
+        const highData = [
+            { q: "Tìm m để đường thẳng y = 2x + m tiếp xúc parabol y = x².", answer: "m = -1", solution: "**Lời giải chi tiết:**\n\n1. Phương trình hoành độ:\n   x² = 2x + m\n   x² - 2x - m = 0\n\n2. Điều kiện tiếp xúc:\n   Δ' = 0\n   1 + m = 0\n   m = -1\n\n**Kết luận: m = -1**" },
+            { q: "Tìm tọa độ giao điểm của y = x² - 2x - 3 và y = x - 1.", answer: "((3-√17)/2; (1-√17)/2) và ((3+√17)/2; (1+√17)/2)", solution: "**Lời giải chi tiết:**\n\n1. Phương trình:\n   x² - 2x - 3 = x - 1\n   x² - 3x - 2 = 0\n\n2. Giải:\n   Δ = 9 + 8 = 17\n   x = (3 ± √17)/2\n\n3. Tung độ:\n   y = x - 1\n\n**Kết luận: 2 giao điểm**" },
+            { q: "Tìm m để đường thẳng y = mx + 1 cắt y = x² tại 2 điểm phân biệt.", answer: "∀m", solution: "**Lời giải chi tiết:**\n\n1. Phương trình:\n   x² = mx + 1\n   x² - mx - 1 = 0\n\n2. Tính Δ:\n   Δ = m² + 4\n\n3. Vì m² ≥ 0 nên Δ ≥ 4 > 0 với mọi m\n\n**Kết luận: ∀m ∈ ℝ**" },
+            { q: "Cho parabol y = 2x² - 4x + 1. Tìm điểm trên parabol có tung độ bằng 7.", answer: "(3; 7) và (-1; 7)", solution: "**Lời giải chi tiết:**\n\n1. Phương trình tung độ:\n   2x² - 4x + 1 = 7\n   2x² - 4x - 6 = 0\n   x² - 2x - 3 = 0\n\n2. Giải:\n   x = -1 hoặc x = 3\n\n**Kết luận: (-1; 7) và (3; 7)**" },
+            { q: "Tìm m để parabol y = mx² tiếp xúc đường thẳng y = 2x - 1.", answer: "m = 1", solution: "**Lời giải chi tiết:**\n\n1. Phương trình:\n   mx² = 2x - 1\n   mx² - 2x + 1 = 0\n\n2. Điều kiện:\n   Δ' = 1 - m = 0\n   m = 1\n\n**Kết luận: m = 1**" },
+            { q: "Viết phương trình đường thẳng đi qua 2 điểm của y = x² - 4x + 3 có hoành độ 0 và 4.", answer: "y = 0", solution: "**Lời giải chi tiết:**\n\n1. Tìm 2 điểm:\n   A(0; 3), B(4; 3)\n\n2. Phương trình AB:\n   y = 3 (đường thẳng ngang)\n\n**Kết luận: y = 3**" },
+            { q: "Tìm m để đường thẳng y = 4x + m tiếp xúc y = x² - 2x + 3.", answer: "m = -5", solution: "**Lời giải chi tiết:**\n\n1. Phương trình:\n   x² - 2x + 3 = 4x + m\n   x² - 6x + (3-m) = 0\n\n2. Điều kiện:\n   Δ' = 9 - (3-m) = 0\n   6 + m = 0\n   m = -6\n\n**Kết luận: m = -6**" },
+            { q: "Tính diện tích tam giác tạo bởi giao điểm của y = x² - 4, y = 0 và Oy.", answer: "8", solution: "**Lời giải chi tiết:**\n\n1. Giao điểm:\n   A(-2; 0), B(2; 0), C(0; -4)\n\n2. Diện tích:\n   Đáy AB = 4\n   Chiều cao h = 4\n   S = 1/2 × 4 × 4 = 8\n\n**Kết luận: S = 8**" },
+            { q: "Tìm m để y = (m-1)x² + 2x + 1 đồng biến khi x > 1.", answer: "m > 1", solution: "**Lời giải chi tiết:**\n\n1. Điều kiện đồng biến khi x > 1:\n   a > 0 và -b/2a ≤ 1\n   m - 1 > 0 và -2/(2(m-1)) ≤ 1\n   m > 1 và -1/(m-1) ≤ 1\n\n2. Giải:\n   m > 1\n\n**Kết luận: m > 1**" },
+            { q: "Chứng minh rằng đường thẳng y = 2x - 1 luôn cắt parabol y = x².", answer: "ĐPCM", solution: "**Lời giải chi tiết:**\n\n1. Phương trình:\n   x² = 2x - 1\n   x² - 2x + 1 = 0\n   (x-1)² = 0\n\n2. Luôn có nghiệm x = 1\n   Nên luôn cắt (tiếp xúc)\n\n**Kết luận: ĐPCM**" }
+        ];
+
+        // Real World Data
+        const realData = [
+            { q: "Một vật được ném lên cao. Độ cao h (m) sau t giây là h = -5t² + 20t. Tính thời gian vật đạt độ cao lớn nhất.", answer: "t = 2s", solution: "**Lời giải chi tiết:**\n\n1. Hàm số: h = -5t² + 20t\n   a = -5 < 0 nên có GTLN\n\n2. Thời gian đạt GTLN:\n   t = -b/2a = -20/(-10) = 2s\n\n3. Độ cao lớn nhất:\n   h = -5(4) + 20(2) = 20m\n\n4. Ứng dụng:\n   - Tính toán trong vật lý\n   - Thiết kế quỹ đạo\n\n**Kết luận: t = 2s**" },
+            { q: "Một cầu vòm có dạng parabol y = -0.1x² + 10. Tính chiều cao tối đa của cầu.", answer: "h = 10m", solution: "**Lời giải chi tiết:**\n\n1. Hàm số: y = -0.1x² + 10\n   a = -0.1 < 0 nên có GTLN\n\n2. Đỉnh tại:\n   x = 0, y = 10\n\n3. Ứng dụng:\n   - Thiết kế cầu đường\n   - Kiến trúc xây dựng\n\n**Kết luận: 10m**" },
+            { q: "Lợi nhuận P (triệu đồng) của một cửa hàng được tính bởi P = -x² + 10x - 16. Tìm số sản phẩm để lợi nhuận lớn nhất.", answer: "x = 5 sản phẩm", solution: "**Lời giải chi tiết:**\n\n1. Hàm số: P = -x² + 10x - 16\n   a = -1 < 0 nên có GTLN\n\n2. Tại đỉnh:\n   x = -10/(-2) = 5\n\n3. Ứng dụng:\n   - Tối ưu hóa kinh doanh\n   - Lập kế hoạch bán hàng\n\n**Kết luận: 5 sản phẩm**" },
+            { q: "Một dây cáp treo có dạng parabol y = 0.01x². Tính độ võng tại điểm cách trụ 10m.", answer: "y = 1m", solution: "**Lời giải chi tiết:**\n\n1. Thay x = 10 vào:\n   y = 0.01(10)²\n   y = 0.01 × 100\n   y = 1\n\n2. Ứng dụng:\n   - Thiết kế cầu treo\n   - Tính toán kỹ thuật\n\n**Kết luận: 1m**" },
+            { q: "Chi phí sản xuất x sản phẩm là C = 0.5x² + 10x + 100. Tìm chi phí khi sản xuất 20 sản phẩm.", answer: "C = 500", solution: "**Lời giải chi tiết:**\n\n1. Thay x = 20 vào:\n   C = 0.5(20)² + 10(20) + 100\n   C = 0.5(400) + 200 + 100\n   C = 200 + 200 + 100\n   C = 500\n\n2. Ứng dụng:\n   - Tính toán chi phí\n   - Lập kế hoạch sản xuất\n\n**Kết luận: 500 (đơn vị tiền)**" }
+        ];
+
+        // Render MCQ
+        function renderMCQ() {
+            const container = document.getElementById('mcq-container');
+            mcqData.forEach((item, index) => {
+                const div = document.createElement('div');
+                div.className = 'border-l-4 border-cyan-400 pl-4 py-3 bg-gray-50 rounded-r-lg';
+                div.innerHTML = `
+                    <p class="font-semibold text-gray-800 mb-2"><strong>Câu ${index + 1}:</strong> ${item.q}</p>
+                    <div class="grid grid-cols-2 gap-2 mb-3 text-sm">
+                        ${item.options.map(opt => `<span class="text-gray-700">${opt}</span>`).join('')}
+                    </div>
+                    <button onclick="toggleAnswer('mcq-${index}')" class="text-cyan-600 text-sm hover:underline">👁️ Xem đáp án</button>
+                    <div id="mcq-${index}" class="answer-box mt-2 p-3 rounded hidden">
+                        <p class="font-semibold text-green-700">Đáp án: ${item.answer}</p>
+                        <p class="text-gray-700 text-sm mt-1">${item.solution}</p>
+                    </div>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        // Render True/False
+        function renderTF() {
+            const container = document.getElementById('tf-container');
+            tfData.forEach((item, index) => {
+                const div = document.createElement('div');
+                div.className = 'border-l-4 border-amber-400 pl-4 py-3 bg-gray-50 rounded-r-lg';
+                div.innerHTML = `
+                    <p class="font-semibold text-gray-800 mb-3"><strong>Câu ${index + 1}:</strong> ${item.q}</p>
+                    <div class="space-y-2">
+                        ${item.statements.map((s, i) => `
+                            <div class="flex items-center justify-between bg-white p-2 rounded">
+                                <span class="text-gray-700 text-sm">${String.fromCharCode(65+i)}. ${s.text}</span>
+                                <span class="text-xs px-2 py-1 rounded ${s.answer ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}">${s.answer ? 'Đúng' : 'Sai'}</span>
+                            </div>
+                        `).join('')}
+                    </div>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        // Render Recognition
+        function renderRecognition() {
+            const container = document.getElementById('recognition-container');
+            recognitionData.forEach((item, index) => {
+                const div = document.createElement('div');
+                div.className = 'border-l-4 border-cyan-400 pl-4 py-3 bg-gray-50 rounded-r-lg';
+                div.innerHTML = `
+                    <p class="font-semibold text-gray-800 mb-2"><strong>Bài ${index + 1}:</strong> ${item.q}</p>
+                    <button onclick="toggleAnswer('rec-${index}')" class="text-cyan-600 text-sm hover:underline">👁️ Xem đáp án</button>
+                    <div id="rec-${index}" class="answer-box mt-2 p-3 rounded hidden">
+                        <p class="font-semibold text-purple-700">Đáp án: ${item.answer}</p>
+                        <p class="text-gray-700 text-sm mt-1">${item.solution}</p>
+                    </div>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        // Render Low Application
+        function renderLow() {
+            const container = document.getElementById('low-container');
+            lowData.forEach((item, index) => {
+                const div = document.createElement('div');
+                div.className = 'border-l-4 border-green-400 pl-4 py-3 bg-gray-50 rounded-r-lg';
+                div.innerHTML = `
+                    <p class="font-semibold text-gray-800 mb-2"><strong>Bài ${index + 1}:</strong> ${item.q}</p>
+                    <button onclick="toggleAnswer('low-${index}')" class="text-green-600 text-sm hover:underline">👁️ Xem đáp án</button>
+                    <div id="low-${index}" class="solution-box mt-2 p-3 rounded hidden">
+                        <p class="font-semibold text-amber-700">Đáp án: ${item.answer}</p>
+                        <p class="text-gray-700 text-sm mt-1 whitespace-pre-line">${item.solution}</p>
+                    </div>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        // Render High Application
+        function renderHigh() {
+            const container = document.getElementById('high-container');
+            highData.forEach((item, index) => {
+                const div = document.createElement('div');
+                div.className = 'border-l-4 border-red-400 pl-4 py-3 bg-gray-50 rounded-r-lg';
+                div.innerHTML = `
+                    <p class="font-semibold text-gray-800 mb-2"><strong>Bài ${index + 1}:</strong> ${item.q}</p>
+                    <button onclick="toggleAnswer('high-${index}')" class="text-red-600 text-sm hover:underline">👁️ Xem lời giải chi tiết</button>
+                    <div id="high-${index}" class="solution-box mt-2 p-4 rounded hidden">
+                        <p class="font-semibold text-amber-700 mb-2">Đáp án: ${item.answer}</p>
+                        <div class="text-gray-700 text-sm whitespace-pre-line">${item.solution}</div>
+                    </div>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        // Render Real World
+        function renderReal() {
+            const container = document.getElementById('real-container');
+            realData.forEach((item, index) => {
+                const div = document.createElement('div');
+                div.className = 'border-l-4 border-indigo-400 pl-4 py-3 bg-gray-50 rounded-r-lg';
+                div.innerHTML = `
+                    <p class="font-semibold text-gray-800 mb-2"><strong>Bài ${index + 1}:</strong> ${item.q}</p>
+                    <button onclick="toggleAnswer('real-${index}')" class="text-indigo-600 text-sm hover:underline">👁️ Xem lời giải chi tiết</button>
+                    <div id="real-${index}" class="solution-box mt-2 p-4 rounded hidden">
+                        <p class="font-semibold text-amber-700 mb-2">Đáp án: ${item.answer}</p>
+                        <div class="text-gray-700 text-sm whitespace-pre-line">${item.solution}</div>
+                    </div>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        // Toggle Answer
+        function toggleAnswer(id) {
+            const el = document.getElementById(id);
+            el.classList.toggle('hidden');
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            renderMCQ();
+            renderTF();
+            renderRecognition();
+            renderLow();
+            renderHigh();
+            renderReal();
+        });
+    </script>
+</body>
+</html>
+```
