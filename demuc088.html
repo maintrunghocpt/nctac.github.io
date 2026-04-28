@@ -1,0 +1,615 @@
+```html
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hệ Phương Trình Bậc Nhất Hai Ẩn - Đề Mục 88 - Toán Lớp 9</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@fontsource/roboto@4.5.8/index.css" rel="stylesheet">
+    <style>
+        * {
+            font-family: 'Roboto', sans-serif;
+        }
+        .gradient-header {
+            background: linear-gradient(135deg, #0891b2 0%, #7c3aed 100%);
+        }
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, #0891b2 0%, #7c3aed 100%);
+        }
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #067894 0%, #6a32c4 100%);
+        }
+        .answer-box {
+            background: #f0f9ff;
+            border-left: 4px solid #0891b2;
+        }
+        .solution-box {
+            background: #fef3c7;
+            border-left: 4px solid #f59e0b;
+        }
+        .nav-item {
+            transition: all 0.2s ease;
+        }
+        .nav-item:hover {
+            background: rgba(255,255,255,0.2);
+        }
+        .nav-item.active {
+            background: rgba(255,255,255,0.3);
+        }
+        .print-section {
+            page-break-inside: avoid;
+        }
+        @media print {
+            .no-print {
+                display: none;
+            }
+        }
+        .formula-box {
+            background: linear-gradient(135deg, #e0f2fe 0%, #ede9fe 100%);
+            border-radius: 8px;
+            padding: 16px;
+            margin: 12px 0;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="gradient-header text-white py-8">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center">
+                <div>
+                    <h1 class="text-3xl font-bold">HỆ PHƯƠNG TRÌNH BẬC NHẤT HAI ẨN</h1>
+                    <p class="text-lg opacity-90">Đề Mục 88 - Toán Lớp 9 - Đại Số</p>
+                </div>
+                <div class="text-right">
+                    <p class="text-sm opacity-80">Bộ Tài Liệu Toán THCS</p>
+                    <p class="text-sm opacity-80">60 Ngày Ôn Tập</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md sticky top-0 z-50 no-print">
+        <div class="container mx-auto px-4">
+            <div class="flex overflow-x-auto py-3 space-x-2">
+                <button onclick="showSection('lesson')" class="nav-item active px-4 py-2 rounded-lg bg-cyan-100 text-cyan-700 whitespace-nowrap">📚 Bài Giảng</button>
+                <button onclick="showSection('mcq')" class="nav-item px-4 py-2 rounded-lg hover:bg-gray-100 whitespace-nowrap">📝 30 Câu MCQ</button>
+                <button onclick="showSection('tf')" class="nav-item px-4 py-2 rounded-lg hover:bg-gray-100 whitespace-nowrap">✅ 10 Câu Đúng/Sai</button>
+                <button onclick="showSection('recognition')" class="nav-item px-4 py-2 rounded-lg hover:bg-gray-100 whitespace-nowrap">🔍 10 Bài Nhận Biết</button>
+                <button onclick="showSection('low')" class="nav-item px-4 py-2 rounded-lg hover:bg-gray-100 whitespace-nowrap">📊 10 Bài Vận Dụng Thấp</button>
+                <button onclick="showSection('high')" class="nav-item px-4 py-2 rounded-lg hover:bg-gray-100 whitespace-nowrap">🎯 10 Bài Vận Dụng Cao</button>
+                <button onclick="showSection('real')" class="nav-item px-4 py-2 rounded-lg hover:bg-gray-100 whitespace-nowrap">🌍 5 Bài Thực Tế</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+        <!-- Lesson Section -->
+        <section id="lesson" class="section-content">
+            <div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section">
+                <h2 class="text-2xl font-bold text-cyan-700 mb-6 flex items-center">
+                    <span class="mr-3">📚</span> BÀI GIẢNG CHI TIẾT: HỆ PHƯƠNG TRÌNH BẬC NHẤT HAI ẨN
+                </h2>
+                
+                <div class="space-y-6">
+                    <!-- Introduction -->
+                    <div class="answer-box p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold text-cyan-700 mb-4">1. KHÁI NIỆM HỆ PHƯƠNG TRÌNH BẬC NHẤT HAI ẨN</h3>
+                        <p class="text-gray-700 mb-4">
+                            <strong>Hệ phương trình bậc nhất hai ẩn</strong> có dạng tổng quát là hệ gồm hai phương trình bậc nhất hai ẩn.
+                        </p>
+                        
+                        <div class="formula-box">
+                            <h4 class="font-semibold text-cyan-600 mb-2">📐 Dạng tổng quát:</h4>
+                            <p class="text-gray-700 mb-2 text-center text-lg">{ ax + by = c <br> a'x + b'y = c' </p>
+                            <p class="text-gray-700 text-sm">Trong đó a, b, c, a', b', c' là các số đã cho, a, b không đồng thời bằng 0, a', b' không đồng thời bằng 0.</p>
+                        </div>
+
+                        <div class="grid md:grid-cols-3 gap-4 mt-4">
+                            <div class="bg-cyan-50 p-4 rounded-lg">
+                                <h4 class="font-semibold text-cyan-600 mb-2">Nghiệm duy nhất</h4>
+                                <p class="text-gray-700 text-sm">a/a' ≠ b/b'</p>
+                                <p class="text-cyan-700 text-sm font-semibold mt-2">Hai đường thẳng cắt nhau</p>
+                            </div>
+                            <div class="bg-purple-50 p-4 rounded-lg">
+                                <h4 class="font-semibold text-purple-600 mb-2">Vô nghiệm</h4>
+                                <p class="text-gray-700 text-sm">a/a' = b/b' ≠ c/c'</p>
+                                <p class="text-purple-700 text-sm font-semibold mt-2">Hai đường thẳng song song</p>
+                            </div>
+                            <div class="bg-amber-50 p-4 rounded-lg">
+                                <h4 class="font-semibold text-amber-600 mb-2">Vô số nghiệm</h4>
+                                <p class="text-gray-700 text-sm">a/a' = b/b' = c/c'</p>
+                                <p class="text-amber-700 text-sm font-semibold mt-2">Hai đường thẳng trùng nhau</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Solving Methods -->
+                    <div class="solution-box p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold text-amber-700 mb-4">2. CÁC PHƯƠNG PHÁP GIẢI</h3>
+                        
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div class="bg-white p-4 rounded-lg border-2 border-cyan-300">
+                                <h4 class="font-semibold text-cyan-600 mb-2">Phương pháp thế</h4>
+                                <ol class="space-y-2 text-gray-700 text-sm list-decimal list-inside">
+                                    <li>Rút một ẩn từ phương trình này</li>
+                                    <li>Thế vào phương trình kia</li>
+                                    <li>Giải phương trình một ẩn</li>
+                                    <li>Tìm ẩn còn lại</li>
+                                </ol>
+                            </div>
+                            <div class="bg-white p-4 rounded-lg border-2 border-purple-300">
+                                <h4 class="font-semibold text-purple-600 mb-2">Phương pháp cộng đại số</h4>
+                                <ol class="space-y-2 text-gray-700 text-sm list-decimal list-inside">
+                                    <li>Nhân hai vế để hệ số bằng nhau</li>
+                                    <li>Cộng hoặc trừ từng vế</li>
+                                    <li>Giải phương trình một ẩn</li>
+                                    <li>Tìm ẩn còn lại</li>
+                                </ol>
+                            </div>
+                        </div>
+
+                        <div class="mt-4 formula-box">
+                            <h4 class="font-semibold text-cyan-600 mb-2">📐 Ví dụ: Giải hệ { 2x + y = 5 <br> x - y = 1 </h4>
+                            <p class="text-gray-700 mb-2">Cộng từng vế: 3x = 6 ⇒ x = 2</p>
+                            <p class="text-gray-700">Thế vào (2): 2 - y = 1 ⇒ y = 1</p>
+                            <p class="text-gray-700">Nghiệm: (2; 1)</p>
+                        </div>
+                    </div>
+
+                    <!-- Geometric Interpretation -->
+                    <div class="answer-box p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold text-cyan-700 mb-4">3. MINH HỌA HÌNH HỌC</h3>
+                        
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div class="bg-white p-4 rounded-lg border-l-4 border-cyan-400">
+                                <h4 class="font-semibold text-cyan-600 mb-2">Tập nghiệm</h4>
+                                <ul class="space-y-2 text-gray-700 text-sm">
+                                    <li>• <strong>Nghiệm duy nhất:</strong> Giao điểm của hai đường thẳng</li>
+                                    <li>• <strong>Vô nghiệm:</strong> Hai đường thẳng song song</li>
+                                    <li>• <strong>Vô số nghiệm:</strong> Hai đường thẳng trùng nhau</li>
+                                </ul>
+                            </div>
+                            <div class="bg-white p-4 rounded-lg border-l-4 border-purple-400">
+                                <h4 class="font-semibold text-purple-600 mb-2">Điều kiện hệ số</h4>
+                                <ul class="space-y-2 text-gray-700 text-sm">
+                                    <li>• <strong>Cắt nhau:</strong> a/a' ≠ b/b'</li>
+                                    <li>• <strong>Song song:</strong> a/a' = b/b' ≠ c/c'</li>
+                                    <li>• <strong>Trùng nhau:</strong> a/a' = b/b' = c/c'</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Examples -->
+                    <div class="solution-box p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold text-amber-700 mb-4">4. VÍ DỤ MINH HỌA</h3>
+                        
+                        <div class="bg-white p-4 rounded-lg mb-4">
+                            <h4 class="font-semibold text-amber-600 mb-2">Ví dụ 1: Phương pháp thế</h4>
+                            <p class="text-gray-700 mb-2">Giải hệ { x + 2y = 7 <br> 3x - y = 5 </p>
+                            <div class="solution-box p-3 rounded">
+                                <p class="text-gray-700"><strong>Lời giải:</strong></p>
+                                <p class="text-gray-700">Từ (1): x = 7 - 2y</p>
+                                <p class="text-gray-700">Thế vào (2): 3(7-2y) - y = 5</p>
+                                <p class="text-gray-700">21 - 6y - y = 5 ⇒ 7y = 16 ⇒ y = 16/7</p>
+                                <p class="text-gray-700">x = 7 - 32/7 = 17/7</p>
+                            </div>
+                        </div>
+
+                        <div class="bg-white p-4 rounded-lg mb-4">
+                            <h4 class="font-semibold text-amber-600 mb-2">Ví dụ 2: Phương pháp cộng</h4>
+                            <p class="text-gray-700 mb-2">Giải hệ { 2x + 3y = 8 <br> 2x - y = 0 </p>
+                            <div class="solution-box p-3 rounded">
+                                <p class="text-gray-700"><strong>Lời giải:</strong></p>
+                                <p class="text-gray-700">Trừ từng vế: 4y = 8 ⇒ y = 2</p>
+                                <p class="text-gray-700">Thế vào (2): 2x - 2 = 0 ⇒ x = 1</p>
+                                <p class="text-gray-700">Nghiệm: (1; 2)</p>
+                            </div>
+                        </div>
+
+                        <div class="bg-white p-4 rounded-lg">
+                            <h4 class="font-semibold text-amber-600 mb-2">Ví dụ 3: Biện luận</h4>
+                            <p class="text-gray-700 mb-2">Tìm m để hệ { mx + y = 2 <br> 2x + my = 4 } có nghiệm duy nhất.</p>
+                            <div class="solution-box p-3 rounded">
+                                <p class="text-gray-700"><strong>Lời giải:</strong></p>
+                                <p class="text-gray-700">Điều kiện: m/2 ≠ 1/m</p>
+                                <p class="text-gray-700">m² ≠ 2 ⇒ m ≠ ±√2</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Calculator Guide -->
+                    <div class="answer-box p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold text-cyan-700 mb-4">5. HƯỚNG DẪN BẤM MÁY TÍNH CASIO FX-580ES</h3>
+                        <div class="bg-white p-4 rounded-lg space-y-3">
+                            <p class="text-gray-700"><strong>Giải hệ phương trình (Mode EQN):</strong></p>
+                            <ol class="list-decimal list-inside space-y-1 text-gray-700">
+                                <li>Bấm <kbd class="bg-gray-200 px-2 py-1 rounded">MODE</kbd> → <kbd class="bg-gray-200 px-2 py-1 rounded">5</kbd> (EQN)</li>
+                                <li>Chọn <kbd class="bg-gray-200 px-2 py-1 rounded">1</kbd> (anX + bnY = cn)</li>
+                                <li>Nhập hệ số a₁, b₁, c₁</li>
+                                <li>Nhập hệ số a₂, b₂, c₂</li>
+                                <li>Bấm <kbd class="bg-gray-200 px-2 py-1 rounded">=</kbd> để xem nghiệm</li>
+                            </ol>
+                            <p class="text-gray-700 mt-3"><strong>Lưu ý:</strong> Nếu máy báo "No Solution" thì hệ vô nghiệm. Nếu "Infinite Solution" thì vô số nghiệm.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- MCQ Section -->
+        <section id="mcq" class="section-content hidden">
+            <div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section">
+                <h2 class="text-2xl font-bold text-cyan-700 mb-6 flex items-center">
+                    <span class="mr-3">📝</span> 30 CÂU TRẮC NGHIỆM 4 LỰA CHỌN
+                </h2>
+                <div class="space-y-6" id="mcq-container"></div>
+            </div>
+        </section>
+
+        <!-- True/False Section -->
+        <section id="tf" class="section-content hidden">
+            <div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section">
+                <h2 class="text-2xl font-bold text-cyan-700 mb-6 flex items-center">
+                    <span class="mr-3">✅</span> 10 CÂU TRẮC NGHIỆM ĐÚNG/SAI
+                </h2>
+                <div class="space-y-6" id="tf-container"></div>
+            </div>
+        </section>
+
+        <!-- Recognition Section -->
+        <section id="recognition" class="section-content hidden">
+            <div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section">
+                <h2 class="text-2xl font-bold text-cyan-700 mb-6 flex items-center">
+                    <span class="mr-3">🔍</span> 10 BÀI TẬP NHẬN BIẾT
+                </h2>
+                <div class="space-y-6" id="recognition-container"></div>
+            </div>
+        </section>
+
+        <!-- Low Application Section -->
+        <section id="low" class="section-content hidden">
+            <div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section">
+                <h2 class="text-2xl font-bold text-cyan-700 mb-6 flex items-center">
+                    <span class="mr-3">📊</span> 10 BÀI TẬP VẬN DỤNG THẤP
+                </h2>
+                <div class="space-y-6" id="low-container"></div>
+            </div>
+        </section>
+
+        <!-- High Application Section -->
+        <section id="high" class="section-content hidden">
+            <div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section">
+                <h2 class="text-2xl font-bold text-cyan-700 mb-6 flex items-center">
+                    <span class="mr-3">🎯</span> 10 BÀI TẬP VẬN DỤNG CAO
+                </h2>
+                <div class="space-y-6" id="high-container"></div>
+            </div>
+        </section>
+
+        <!-- Real World Section -->
+        <section id="real" class="section-content hidden">
+            <div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section">
+                <h2 class="text-2xl font-bold text-cyan-700 mb-6 flex items-center">
+                    <span class="mr-3">🌍</span> 5 BÀI TẬP ỨNG DỤNG THỰC TẾ
+                </h2>
+                <div class="space-y-6" id="real-container"></div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="gradient-header text-white py-6 mt-8">
+        <div class="container mx-auto px-4 text-center">
+            <p class="text-sm">Bộ Tài Liệu Toán THCS - Đề Mục 88: Hệ Phương Trình Bậc Nhất Hai Ẩn</p>
+            <p class="text-sm opacity-80">© 2024 - Tài liệu ôn tập 60 ngày</p>
+        </div>
+    </footer>
+
+    <!-- Print Button -->
+    <button onclick="window.print()" class="no-print fixed bottom-6 right-6 btn-primary text-white px-6 py-3 rounded-full shadow-lg hover:shadow-xl transition-all">
+        🖨️ In Tài Liệu
+    </button>
+
+    <script>
+        // Navigation
+        function showSection(sectionId) {
+            document.querySelectorAll('.section-content').forEach(el => el.classList.add('hidden'));
+            document.getElementById(sectionId).classList.remove('hidden');
+            document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
+            event.target.classList.add('active');
+        }
+
+        // MCQ Data
+        const mcqData = [
+            { q: "Hệ phương trình { x + y = 3 <br> x - y = 1 } có nghiệm là:", options: ["A. (1; 2)", "B. (2; 1)", "C. (3; 0)", "D. (0; 3)"], answer: "B", solution: "Cộng từng vế: 2x=4 ⇒ x=2. Thế vào: 2+y=3 ⇒ y=1" },
+            { q: "Hệ phương trình { 2x + y = 5 <br> 4x + 2y = 10 } có:", options: ["A. Nghiệm duy nhất", "B. Vô nghiệm", "C. Vô số nghiệm", "D. Vô nghiệm nguyên"], answer: "C", solution: "PT2 = 2×PT1 ⇒ Hai đường thẳng trùng nhau" },
+            { q: "Hệ phương trình { x + y = 2 <br> x + y = 5 } có:", options: ["A. Nghiệm duy nhất", "B. Vô nghiệm", "C. Vô số nghiệm", "D. Nghiệm nguyên"], answer: "B", solution: "2 ≠ 5 ⇒ Hai đường thẳng song song" },
+            { q: "Nghiệm của hệ { x = 2y <br> x + y = 6 } là:", options: ["A. (2; 4)", "B. (4; 2)", "C. (3; 3)", "D. (6; 0)"], answer: "B", solution: "Thế (1) vào (2): 2y+y=6 ⇒ 3y=6 ⇒ y=2, x=4" },
+            { q: "Hệ số góc của đường thẳng 2x - 3y = 6 là:", options: ["A. 2/3", "B. 3/2", "C. -2/3", "D. -3/2"], answer: "A", solution: "y = 2/3x - 2 ⇒ a = 2/3" },
+            { q: "Điều kiện để hệ { ax + by = c <br> a'x + b'y = c' } có nghiệm duy nhất là:", options: ["A. a/a' = b/b'", "B. a/a' ≠ b/b'", "C. a/a' = b/b' = c/c'", "D. a/a' ≠ c/c'"], answer: "B", solution: "Điều kiện hai đường thẳng cắt nhau" },
+            { q: "Giao điểm của y = 2x + 1 và y = -x + 4 là:", options: ["A. (1; 3)", "B. (2; 5)", "C. (3; 7)", "D. (0; 1)"], answer: "A", solution: "2x+1 = -x+4 ⇒ 3x=3 ⇒ x=1, y=3" },
+            { q: "Hệ { 3x + 2y = 7 <br> 6x + 4y = 14 } có:", options: ["A. Nghiệm duy nhất", "B. Vô nghiệm", "C. Vô số nghiệm", "D. Vô nghiệm nguyên"], answer: "C", solution: "PT2 = 2×PT1 ⇒ Trùng nhau" },
+            { q: "Nghiệm của hệ { x - y = 1 <br> 2x + y = 5 } là:", options: ["A. (1; 0)", "B. (2; 1)", "C. (3; 2)", "D. (0; -1)"], answer: "B", solution: "Cộng từng vế: 3x=6 ⇒ x=2. Thế vào: 2-y=1 ⇒ y=1" },
+            { q: "Hệ { x + y = 3 <br> 2x + 2y = 7 } có:", options: ["A. Nghiệm duy nhất", "B. Vô nghiệm", "C. Vô số nghiệm", "D. Nghiệm nguyên"], answer: "B", solution: "2(x+y) = 6 ≠ 7 ⇒ Vô nghiệm" },
+            { q: "Tìm m để hệ { x + my = 2 <br> mx + y = 2 } có nghiệm duy nhất:", options: ["A. m ≠ 1", "B. m ≠ -1", "C. m ≠ ±1", "D. m ≠ 0"], answer: "C", solution: "1/m ≠ m/1 ⇒ m² ≠ 1 ⇒ m ≠ ±1" },
+            { q: "Giao điểm của 2x + y = 4 và x - y = 2 là:", options: ["A. (2; 0)", "B. (0; 4)", "C. (1; 2)", "D. (3; -2)"], answer: "A", solution: "Cộng từng vế: 3x=6 ⇒ x=2. Thế vào: 4+y=4 ⇒ y=0" },
+            { q: "Hệ { 2x - y = 3 <br> 4x - 2y = 6 } có:", options: ["A. Nghiệm duy nhất", "B. Vô nghiệm", "C. Vô số nghiệm", "D. Vô nghiệm nguyên"], answer: "C", solution: "PT2 = 2×PT1 ⇒ Trùng nhau" },
+            { q: "Nghiệm của hệ { 3x + 2y = 8 <br> x - y = 1 } là:", options: ["A. (1; 0)", "B. (2; 1)", "C. (3; 2)", "D. (0; -1)"], answer: "B", solution: "Từ (2): x=y+1. Thế vào (1): 3(y+1)+2y=8 ⇒ 5y=5 ⇒ y=1, x=2" },
+            { q: "Hệ { x + y = 5 <br> 2x + 2y = 12 } có:", options: ["A. Nghiệm duy nhất", "B. Vô nghiệm", "C. Vô số nghiệm", "D. Nghiệm nguyên"], answer: "B", solution: "2(x+y) = 10 ≠ 12 ⇒ Vô nghiệm" },
+            { q: "Tìm m để hệ { mx + y = 3 <br> x + my = 3 } vô nghiệm:", options: ["A. m = 1", "B. m = -1", "C. m = 0", "D. m = 2"], answer: "B", solution: "m/1 = 1/m ≠ 3/3 ⇒ m²=1 và m≠1 ⇒ m=-1" },
+            { q: "Giao điểm của y = 3x - 2 và y = x + 2 là:", options: ["A. (1; 1)", "B. (2; 4)", "C. (3; 7)", "D. (0; -2)"], answer: "B", solution: "3x-2 = x+2 ⇒ 2x=4 ⇒ x=2, y=4" },
+            { q: "Hệ { 2x + 3y = 5 <br> 4x + 6y = 10 } có:", options: ["A. Nghiệm duy nhất", "B. Vô nghiệm", "C. Vô số nghiệm", "D. Vô nghiệm nguyên"], answer: "C", solution: "PT2 = 2×PT1 ⇒ Trùng nhau" },
+            { q: "Nghiệm của hệ { x + 2y = 5 <br> 3x - y = 1 } là:", options: ["A. (1; 2)", "B. (2; 1)", "C. (3; 1)", "D. (1; 3)"], answer: "A", solution: "Từ (2): y=3x-1. Thế vào (1): x+2(3x-1)=5 ⇒ 7x=7 ⇒ x=1, y=2" },
+            { q: "Hệ { x - y = 2 <br> 2x - 2y = 5 } có:", options: ["A. Nghiệm duy nhất", "B. Vô nghiệm", "C. Vô số nghiệm", "D. Nghiệm nguyên"], answer: "B", solution: "2(x-y) = 4 ≠ 5 ⇒ Vô nghiệm" },
+            { q: "Tìm m để hệ { x + my = 1 <br> mx + y = 1 } có vô số nghiệm:", options: ["A. m = 1", "B. m = -1", "C. m = 0", "D. m = 2"], answer: "A", solution: "1/m = m/1 = 1/1 ⇒ m=1" },
+            { q: "Giao điểm của y = -2x + 3 và y = x - 3 là:", options: ["A. (1; 1)", "B. (2; -1)", "C. (3; 0)", "D. (0; -3)"], answer: "B", solution: "-2x+3 = x-3 ⇒ 3x=6 ⇒ x=2, y=-1" },
+            { q: "Hệ { 3x - 2y = 4 <br> 6x - 4y = 8 } có:", options: ["A. Nghiệm duy nhất", "B. Vô nghiệm", "C. Vô số nghiệm", "D. Vô nghiệm nguyên"], answer: "C", solution: "PT2 = 2×PT1 ⇒ Trùng nhau" },
+            { q: "Nghiệm của hệ { 2x + y = 7 <br> x - 2y = 1 } là:", options: ["A. (2; 3)", "B. (3; 1)", "C. (1; 5)", "D. (5; -3)"], answer: "B", solution: "Từ (2): y=2x-1. Thế vào (1): 2(2x-1)+y=7 ⇒ 5y=5 ⇒ y=1, x=3" },
+            { q: "Hệ { 2x + 3y = 7 <br> 4x + 6y = 15 } có:", options: ["A. Nghiệm duy nhất", "B. Vô nghiệm", "C. Vô số nghiệm", "D. Nghiệm nguyên"], answer: "B", solution: "2(2x+3y) = 14 ≠ 15 ⇒ Vô nghiệm" },
+            { q: "Tìm m để hệ { mx + 2y = 4 <br> 2x + my = 4 } có nghiệm duy nhất:", options: ["A. m ≠ 2", "B. m ≠ -2", "C. m ≠ ±2", "D. m ≠ 0"], answer: "C", solution: "m/2 ≠ 2/m ⇒ m² ≠ 4 ⇒ m ≠ ±2" },
+            { q: "Giao điểm của y = 4x - 5 và y = 2x + 1 là:", options: ["A. (2; 3)", "B. (3; 7)", "C. (1; -1)", "D. (0; -5)"], answer: "B", solution: "4x-5 = 2x+1 ⇒ 2x=6 ⇒ x=3, y=7" },
+            { q: "Hệ { x + y = 4 <br> 2x + 2y = 9 } có:", options: ["A. Nghiệm duy nhất", "B. Vô nghiệm", "C. Vô số nghiệm", "D. Nghiệm nguyên"], answer: "B", solution: "2(x+y) = 8 ≠ 9 ⇒ Vô nghiệm" },
+            { q: "Nghiệm của hệ { 3x + 4y = 10 <br> 2x - y = 3 } là:", options: ["A. (2; 1)", "B. (1; 2)", "C. (3; 0)", "D. (0; 2.5)"], answer: "A", solution: "Từ (2): y=2x-3. Thế vào (1): 3x+4(2x-3)=10 ⇒ 11x=22 ⇒ x=2, y=1" },
+            { q: "Hệ { 2x - 3y = 5 <br> 4x - 6y = 11 } có:", options: ["A. Nghiệm duy nhất", "B. Vô nghiệm", "C. Vô số nghiệm", "D. Nghiệm nguyên"], answer: "B", solution: "2(2x-3y) = 10 ≠ 11 ⇒ Vô nghiệm" }
+        ];
+
+        // True/False Data
+        const tfData = [
+            { q: "Về nghiệm của hệ:", statements: [
+                { text: "Hệ có thể có nghiệm duy nhất", answer: true },
+                { text: "Hệ có thể vô nghiệm", answer: true },
+                { text: "Hệ có thể vô số nghiệm", answer: true },
+                { text: "Hệ luôn có nghiệm", answer: false }
+            ]},
+            { q: "Về phương pháp thế:", statements: [
+                { text: "Rút một ẩn từ phương trình này", answer: true },
+                { text: "Thế vào phương trình kia", answer: true },
+                { text: "Giải phương trình một ẩn", answer: true },
+                { text: "Chỉ áp dụng khi hệ số bằng 1", answer: false }
+            ]},
+            { q: "Về phương pháp cộng:", statements: [
+                { text: "Nhân hai vế để hệ số bằng nhau", answer: true },
+                { text: "Cộng hoặc trừ từng vế", answer: true },
+                { text: "Giải phương trình một ẩn", answer: true },
+                { text: "Chỉ áp dụng khi hệ số bằng nhau", answer: false }
+            ]},
+            { q: "Về điều kiện nghiệm:", statements: [
+                { text: "a/a' ≠ b/b' thì nghiệm duy nhất", answer: true },
+                { text: "a/a' = b/b' ≠ c/c' thì vô nghiệm", answer: true },
+                { text: "a/a' = b/b' = c/c' thì vô số nghiệm", answer: true },
+                { text: "a/a' ≠ c/c' thì vô nghiệm", answer: false }
+            ]},
+            { q: "Về minh họa hình học:", statements: [
+                { text: "Nghiệm duy nhất là giao điểm", answer: true },
+                { text: "Vô nghiệm là song song", answer: true },
+                { text: "Vô số nghiệm là trùng nhau", answer: true },
+                { text: "Nghiệm duy nhất là song song", answer: false }
+            ]},
+            { q: "Về máy tính:", statements: [
+                { text: "Có thể giải bằng Mode EQN", answer: true },
+                { text: "No Solution nghĩa là vô nghiệm", answer: true },
+                { text: "Infinite Solution nghĩa là vô số nghiệm", answer: true },
+                { text: "Kết quả luôn chính xác", answer: false }
+            ]},
+            { q: "Về hệ số:", statements: [
+                { text: "a, b không đồng thời bằng 0", answer: true },
+                { text: "a', b' không đồng thời bằng 0", answer: true },
+                { text: "a/a' = b/b' thì song song hoặc trùng", answer: true },
+                { text: "a/a' ≠ b/b' thì cắt nhau", answer: true }
+            ]},
+            { q: "Về nghiệm nguyên:", statements: [
+                { text: "Nghiệm có thể là số nguyên", answer: true },
+                { text: "Nghiệm có thể là số thập phân", answer: true },
+                { text: "Nghiệm luôn là số nguyên", answer: false },
+                { text: "Nghiệm có thể là phân số", answer: true }
+            ]},
+            { q: "Về ứng dụng:", statements: [
+                { text: "Dùng giải bài toán chuyển động", answer: true },
+                { text: "Dùng giải bài toán năng suất", answer: true },
+                { text: "Dùng giải bài toán thực tế", answer: true },
+                { text: "Chỉ dùng trong toán học", answer: false }
+            ]},
+            { q: "Về kiểm tra:", statements: [
+                { text: "Thay nghiệm vào cả hai phương trình", answer: true },
+                { text: "Thỏa cả hai thì là nghiệm", answer: true },
+                { text: "Thỏa một thì là nghiệm", answer: false },
+                { text: "Có thể kiểm tra bằng máy tính", answer: true }
+            ]}
+        ];
+
+        // Recognition Data
+        const recognitionData = [
+            { q: "Viết dạng tổng quát của hệ phương trình bậc nhất hai ẩn.", answer: "{ ax + by = c <br> a'x + b'y = c' }", solution: "Dạng tổng quát" },
+            { q: "Viết điều kiện để hệ có nghiệm duy nhất.", answer: "a/a' ≠ b/b'", solution: "Hai đường thẳng cắt nhau" },
+            { q: "Viết điều kiện để hệ vô nghiệm.", answer: "a/a' = b/b' ≠ c/c'", solution: "Hai đường thẳng song song" },
+            { q: "Viết điều kiện để hệ vô số nghiệm.", answer: "a/a' = b/b' = c/c'", solution: "Hai đường thẳng trùng nhau" },
+            { q: "Viết các bước giải bằng phương pháp thế.", answer: "Rút ẩn, thế, giải, tìm ẩn còn lại", solution: "4 bước cơ bản" },
+            { q: "Viết các bước giải bằng phương pháp cộng.", answer: "Nhân, cộng/trừ, giải, tìm ẩn còn lại", solution: "4 bước cơ bản" },
+            { q: "Viết ý nghĩa hình học của nghiệm duy nhất.", answer: "Hai đường thẳng cắt nhau", solution: "Giao điểm duy nhất" },
+            { q: "Viết ý nghĩa hình học của vô nghiệm.", answer: "Hai đường thẳng song song", solution: "Không có giao điểm" },
+            { q: "Viết ý nghĩa hình học của vô số nghiệm.", answer: "Hai đường thẳng trùng nhau", solution: "Vô số giao điểm" },
+            { q: "Viết cách kiểm tra nghiệm của hệ.", answer: "Thay vào cả hai phương trình", solution: "Thỏa mãn cả hai" }
+        ];
+
+        // Low Application Data
+        const lowData = [
+            { q: "Giải hệ { x + y = 5 <br> x - y = 1 }.", answer: "(3; 2)", solution: "Cộng từng vế: 2x=6 ⇒ x=3. Thế vào: 3+y=5 ⇒ y=2" },
+            { q: "Giải hệ { 2x + y = 7 <br> x - y = 2 }.", answer: "(3; 1)", solution: "Cộng từng vế: 3x=9 ⇒ x=3. Thế vào: 3-y=2 ⇒ y=1" },
+            { q: "Giải hệ { x = 2y <br> x + y = 6 }.", answer: "(4; 2)", solution: "Thế (1) vào (2): 2y+y=6 ⇒ 3y=6 ⇒ y=2, x=4" },
+            { q: "Giải hệ { 3x + 2y = 8 <br> x - y = 1 }.", answer: "(2; 1)", solution: "Từ (2): x=y+1. Thế vào (1): 3(y+1)+2y=8 ⇒ 5y=5 ⇒ y=1, x=2" },
+            { q: "Giải hệ { 2x + 3y = 7 <br> 4x - 3y = 5 }.", answer: "(2; 1)", solution: "Cộng từng vế: 6x=12 ⇒ x=2. Thế vào: 4+3y=7 ⇒ 3y=3 ⇒ y=1" },
+            { q: "Giải hệ { x + 2y = 5 <br> 3x - y = 1 }.", answer: "(1; 2)", solution: "Từ (2): y=3x-1. Thế vào (1): x+2(3x-1)=5 ⇒ 7x=7 ⇒ x=1, y=2" },
+            { q: "Giải hệ { 2x - y = 3 <br> x + 2y = 4 }.", answer: "(2; 1)", solution: "Nhân (1) với 2: 4x-2y=6. Cộng với (2): 5x=10 ⇒ x=2. Thế vào: 4-y=3 ⇒ y=1" },
+            { q: "Giải hệ { 3x + 4y = 10 <br> 2x - y = 3 }.", answer: "(2; 1)", solution: "Từ (2): y=2x-3. Thế vào (1): 3x+4(2x-3)=10 ⇒ 11x=22 ⇒ x=2, y=1" },
+            { q: "Giải hệ { x + y = 4 <br> 2x - y = 5 }.", answer: "(3; 1)", solution: "Cộng từng vế: 3x=9 ⇒ x=3. Thế vào: 3+y=4 ⇒ y=1" },
+            { q: "Giải hệ { 2x + y = 8 <br> x - y = 1 }.", answer: "(3; 2)", solution: "Cộng từng vế: 3x=9 ⇒ x=3. Thế vào: 3-y=1 ⇒ y=2" }
+        ];
+
+        // High Application Data
+        const highData = [
+            { q: "Tìm m để phương trình x² - 2mx + m² - 1 = 0 có hai nghiệm phân biệt.", answer: "∀m", solution: "**Lời giải chi tiết:**\n\n1. Tính Δ:\n   Δ = 4m² - 4(m²-1)\n   Δ = 4m² - 4m² + 4\n   Δ = 4\n\n2. Vì Δ = 4 > 0 với mọi m\n   Nên phương trình luôn có 2 nghiệm phân biệt\n\n**Kết luận: ∀m ∈ ℝ**" },
+            { q: "Tìm m để phương trình x² - 2(m+1)x + m² = 0 có hai nghiệm thỏa mãn x₁² + x₂² = 10.", answer: "m = 1 hoặc m = -3", solution: "**Lời giải chi tiết:**\n\n1. Điều kiện có nghiệm:\n   Δ' = (m+1)² - m² ≥ 0\n   2m + 1 ≥ 0 ⇒ m ≥ -1/2\n\n2. Theo Vi-ét:\n   S = 2(m+1), P = m²\n\n3. Tính:\n   x₁² + x₂² = S² - 2P = 10\n   4(m+1)² - 2m² = 10\n   4m² + 8m + 4 - 2m² = 10\n   2m² + 8m - 6 = 0\n   m² + 4m - 3 = 0\n\n4. Giải:\n   m = -2 ± √7\n   Kết hợp điều kiện: m = -2 + √7\n\n**Kết luận: m = -2 + √7**" },
+            { q: "Tìm m để parabol y = x² - 2mx + m cắt đường thẳng y = 2x tại hai điểm phân biệt.", answer: "m < 1 hoặc m > 9", solution: "**Lời giải chi tiết:**\n\n1. Phương trình hoành độ:\n   x² - 2mx + m = 2x\n   x² - 2(m+1)x + m = 0\n\n2. Điều kiện 2 nghiệm phân biệt:\n   Δ' = (m+1)² - m > 0\n   m² + 2m + 1 - m > 0\n   m² + m + 1 > 0\n\n3. Vì Δ = 1 - 4 = -3 < 0\n   Nên m² + m + 1 > 0 với mọi m\n\n**Kết luận: ∀m ∈ ℝ**" },
+            { q: "Cho phương trình x² - 2(m-1)x + m² - 3m = 0. Tìm m để phương trình có hai nghiệm dương.", answer: "m > 3", solution: "**Lời giải chi tiết:**\n\n1. Điều kiện có nghiệm:\n   Δ' = (m-1)² - (m²-3m) ≥ 0\n   m² - 2m + 1 - m² + 3m ≥ 0\n   m + 1 ≥ 0 ⇒ m ≥ -1\n\n2. Điều kiện 2 nghiệm dương:\n   S > 0: 2(m-1) > 0 ⇒ m > 1\n   P > 0: m² - 3m > 0 ⇒ m < 0 hoặc m > 3\n\n3. Kết hợp:\n   m > 3\n\n**Kết luận: m > 3**" },
+            { q: "Tìm m để phương trình x² + 2(m+1)x + m² + 2 = 0 có nghiệm kép.", answer: "m = 1", solution: "**Lời giải chi tiết:**\n\n1. Tính Δ':\n   Δ' = (m+1)² - (m²+2)\n   Δ' = m² + 2m + 1 - m² - 2\n   Δ' = 2m - 1\n\n2. Điều kiện nghiệm kép:\n   Δ' = 0\n   2m - 1 = 0\n   m = 1/2\n\n**Kết luận: m = 1/2**" },
+            { q: "Cho phương trình x² - mx + m - 1 = 0. Chứng minh phương trình luôn có nghiệm.", answer: "ĐPCM", solution: "**Lời giải chi tiết:**\n\n1. Tính Δ:\n   Δ = m² - 4(m-1)\n   Δ = m² - 4m + 4\n   Δ = (m-2)²\n\n2. Vì (m-2)² ≥ 0 với mọi m\n   Nên Δ ≥ 0 với mọi m\n\n3. Vậy phương trình luôn có nghiệm\n\n**Kết luận: ĐPCM**" },
+            { q: "Tìm m để phương trình x² - 2x + m = 0 có hai nghiệm thỏa mãn x₁ - x₂ = 4.", answer: "m = -3", solution: "**Lời giải chi tiết:**\n\n1. Điều kiện có nghiệm:\n   Δ = 4 - 4m ≥ 0 ⇒ m ≤ 1\n\n2. Theo đề:\n   x₁ - x₂ = 4\n   (x₁-x₂)² = 16\n   S² - 4P = 16\n   4 - 4m = 16\n   -4m = 12\n   m = -3\n\n3. Kiểm tra điều kiện:\n   m = -3 ≤ 1 (thỏa)\n\n**Kết luận: m = -3**" },
+            { q: "Tìm m để parabol y = x² - 2mx + m² - 1 tiếp xúc với đường thẳng y = 2x.", answer: "m = 1 ± √2", solution: "**Lời giải chi tiết:**\n\n1. Phương trình hoành độ:\n   x² - 2mx + m² - 1 = 2x\n   x² - 2(m+1)x + m² - 1 = 0\n\n2. Điều kiện tiếp xúc:\n   Δ' = 0\n   (m+1)² - (m²-1) = 0\n   m² + 2m + 1 - m² + 1 = 0\n   2m + 2 = 0\n   m = -1\n\n**Kết luận: m = -1**" },
+            { q: "Cho phương trình x² - 2(m+1)x + m² + 2m = 0. Tìm m để phương trình có hai nghiệm thỏa mãn x₁² + x₂² = 10.", answer: "m = 1 hoặc m = -3", solution: "**Lời giải chi tiết:**\n\n1. Tính Δ':\n   Δ' = (m+1)² - (m²+2m)\n   Δ' = m² + 2m + 1 - m² - 2m\n   Δ' = 1\n\n2. Theo Vi-ét:\n   S = 2(m+1), P = m² + 2m\n\n3. Tính:\n   x₁² + x₂² = S² - 2P = 10\n   4(m+1)² - 2(m²+2m) = 10\n   4m² + 8m + 4 - 2m² - 4m = 10\n   2m² + 4m - 6 = 0\n   m² + 2m - 3 = 0\n\n4. Giải:\n   m = 1 hoặc m = -3\n\n**Kết luận: m = 1 hoặc m = -3**" },
+            { q: "Tìm m để phương trình x² - mx + 1 = 0 có hai nghiệm thỏa mãn 1/x₁ + 1/x₂ = 3.", answer: "m = 3", solution: "**Lời giải chi tiết:**\n\n1. Điều kiện có nghiệm:\n   Δ = m² - 4 ≥ 0 ⇒ |m| ≥ 2\n\n2. Theo đề:\n   1/x₁ + 1/x₂ = 3\n   (x₁+x₂)/(x₁x₂) = 3\n   S/P = 3\n   m/1 = 3\n   m = 3\n\n3. Kiểm tra điều kiện:\n   |3| ≥ 2 (thỏa)\n\n**Kết luận: m = 3**" }
+        ];
+
+        // Real World Data
+        const realData = [
+            { q: "Một vật được ném thẳng đứng lên cao. Độ cao h (m) sau t giây được tính bởi h = -5t² + 20t. Tính thời gian vật đạt độ cao lớn nhất.", answer: "t = 2s", solution: "**Lời giải chi tiết:**\n\n1. Hàm số: h = -5t² + 20t\n   a = -5 < 0 nên có GTLN\n\n2. Thời gian đạt GTLN:\n   t = -b/2a = -20/(-10) = 2s\n\n3. Độ cao lớn nhất:\n   h = -5(4) + 20(2) = 20m\n\n4. Ứng dụng:\n   - Tính toán trong vật lý\n   - Thiết kế quỹ đạo\n\n**Kết luận: t = 2s**" },
+            { q: "Một công ty sản xuất có lợi nhuận P (triệu đồng) theo số sản phẩm x được tính bởi P = -x² + 100x - 900. Tìm số sản phẩm để lợi nhuận lớn nhất.", answer: "x = 50 sản phẩm", solution: "**Lời giải chi tiết:**\n\n1. Hàm số: P = -x² + 100x - 900\n   a = -1 < 0 nên có GTLN\n\n2. Số sản phẩm để GTLN:\n   x = -b/2a = -100/(-2) = 50\n\n3. Lợi nhuận lớn nhất:\n   P = -2500 + 5000 - 900 = 1600 triệu\n\n4. Ứng dụng:\n   - Tối ưu hóa sản xuất\n   - Lập kế hoạch sản xuất\n\n**Kết luận: 50 sản phẩm**" },
+            { q: "Một quả bóng được đá lên cao. Quỹ đạo là parabol y = -0.1x² + 2x. Tính khoảng cách xa nhất quả bóng bay được.", answer: "x = 20m", solution: "**Lời giải chi tiết:**\n\n1. Khi chạm đất: y = 0\n   -0.1x² + 2x = 0\n   x(-0.1x + 2) = 0\n\n2. Giải:\n   x = 0 hoặc x = 20\n\n3. Khoảng cách xa nhất:\n   x = 20m\n\n4. Ứng dụng:\n   - Tính toán trong thể thao\n   - Thiết kế sân bãi\n\n**Kết luận: 20m**" },
+            { q: "Một cửa hàng bán áo với giá 200 ngàn đồng/áo. Nếu giảm giá 10 ngàn đồng thì bán thêm được 5 áo. Tìm giá bán để doanh thu lớn nhất.", answer: "175 ngàn đồng", solution: "**Lời giải chi tiết:**\n\n1. Gọi x là số lần giảm giá\n   Giá bán: 200 - 10x\n   Số áo: 5x\n\n2. Doanh thu:\n   D = (200-10x)·5x\n   D = -50x² + 1000x\n\n3. GTLN tại:\n   x = -1000/(-100) = 10\n\n4. Giá bán:\n   200 - 10(10) = 100 ngàn\n\n**Kết luận: 100 ngàn đồng**" },
+            { q: "Một mảnh đất hình chữ nhật có chu vi 40m. Tìm kích thước để diện tích lớn nhất.", answer: "10m × 10m", solution: "**Lời giải chi tiết:**\n\n1. Gọi x là chiều dài\n   Chiều rộng: 20 - x\n\n2. Diện tích:\n   S = x(20-x) = -x² + 20x\n\n3. GTLN tại:\n   x = -20/(-2) = 10\n\n4. Chiều rộng:\n   20 - 10 = 10m\n\n5. Ứng dụng:\n   - Tối ưu hóa diện tích\n   - Quy hoạch sử dụng đất\n\n**Kết luận: 10m × 10m**" }
+        ];
+
+        // Render MCQ
+        function renderMCQ() {
+            const container = document.getElementById('mcq-container');
+            mcqData.forEach((item, index) => {
+                const div = document.createElement('div');
+                div.className = 'border-l-4 border-cyan-400 pl-4 py-3 bg-gray-50 rounded-r-lg';
+                div.innerHTML = `
+                    <p class="font-semibold text-gray-800 mb-2"><strong>Câu ${index + 1}:</strong> ${item.q}</p>
+                    <div class="grid grid-cols-2 gap-2 mb-3 text-sm">
+                        ${item.options.map(opt => `<span class="text-gray-700">${opt}</span>`).join('')}
+                    </div>
+                    <button onclick="toggleAnswer('mcq-${index}')" class="text-cyan-600 text-sm hover:underline">👁️ Xem đáp án</button>
+                    <div id="mcq-${index}" class="answer-box mt-2 p-3 rounded hidden">
+                        <p class="font-semibold text-green-700">Đáp án: ${item.answer}</p>
+                        <p class="text-gray-700 text-sm mt-1">${item.solution}</p>
+                    </div>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        // Render True/False
+        function renderTF() {
+            const container = document.getElementById('tf-container');
+            tfData.forEach((item, index) => {
+                const div = document.createElement('div');
+                div.className = 'border-l-4 border-amber-400 pl-4 py-3 bg-gray-50 rounded-r-lg';
+                div.innerHTML = `
+                    <p class="font-semibold text-gray-800 mb-3"><strong>Câu ${index + 1}:</strong> ${item.q}</p>
+                    <div class="space-y-2">
+                        ${item.statements.map((s, i) => `
+                            <div class="flex items-center justify-between bg-white p-2 rounded">
+                                <span class="text-gray-700 text-sm">${String.fromCharCode(65+i)}. ${s.text}</span>
+                                <span class="text-xs px-2 py-1 rounded ${s.answer ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}">${s.answer ? 'Đúng' : 'Sai'}</span>
+                            </div>
+                        `).join('')}
+                    </div>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        // Render Recognition
+        function renderRecognition() {
+            const container = document.getElementById('recognition-container');
+            recognitionData.forEach((item, index) => {
+                const div = document.createElement('div');
+                div.className = 'border-l-4 border-cyan-400 pl-4 py-3 bg-gray-50 rounded-r-lg';
+                div.innerHTML = `
+                    <p class="font-semibold text-gray-800 mb-2"><strong>Bài ${index + 1}:</strong> ${item.q}</p>
+                    <button onclick="toggleAnswer('rec-${index}')" class="text-cyan-600 text-sm hover:underline">👁️ Xem đáp án</button>
+                    <div id="rec-${index}" class="answer-box mt-2 p-3 rounded hidden">
+                        <p class="font-semibold text-purple-700">Đáp án: ${item.answer}</p>
+                        <p class="text-gray-700 text-sm mt-1">${item.solution}</p>
+                    </div>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        // Render Low Application
+        function renderLow() {
+            const container = document.getElementById('low-container');
+            lowData.forEach((item, index) => {
+                const div = document.createElement('div');
+                div.className = 'border-l-4 border-green-400 pl-4 py-3 bg-gray-50 rounded-r-lg';
+                div.innerHTML = `
+                    <p class="font-semibold text-gray-800 mb-2"><strong>Bài ${index + 1}:</strong> ${item.q}</p>
+                    <button onclick="toggleAnswer('low-${index}')" class="text-green-600 text-sm hover:underline">👁️ Xem đáp án</button>
+                    <div id="low-${index}" class="solution-box mt-2 p-3 rounded hidden">
+                        <p class="font-semibold text-amber-700">Đáp án: ${item.answer}</p>
+                        <p class="text-gray-700 text-sm mt-1 whitespace-pre-line">${item.solution}</p>
+                    </div>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        // Render High Application
+        function renderHigh() {
+            const container = document.getElementById('high-container');
+            highData.forEach((item, index) => {
+                const div = document.createElement('div');
+                div.className = 'border-l-4 border-red-400 pl-4 py-3 bg-gray-50 rounded-r-lg';
+                div.innerHTML = `
+                    <p class="font-semibold text-gray-800 mb-2"><strong>Bài ${index + 1}:</strong> ${item.q}</p>
+                    <button onclick="toggleAnswer('high-${index}')" class="text-red-600 text-sm hover:underline">👁️ Xem lời giải chi tiết</button>
+                    <div id="high-${index}" class="solution-box mt-2 p-4 rounded hidden">
+                        <p class="font-semibold text-amber-700 mb-2">Đáp án: ${item.answer}</p>
+                        <div class="text-gray-700 text-sm whitespace-pre-line">${item.solution}</div>
+                    </div>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        // Render Real World
+        function renderReal() {
+            const container = document.getElementById('real-container');
+            realData.forEach((item, index) => {
+                const div = document.createElement('div');
+                div.className = 'border-l-4 border-indigo-400 pl-4 py-3 bg-gray-50 rounded-r-lg';
+                div.innerHTML = `
+                    <p class="font-semibold text-gray-800 mb-2"><strong>Bài ${index + 1}:</strong> ${item.q}</p>
+                    <button onclick="toggleAnswer('real-${index}')" class="text-indigo-600 text-sm hover:underline">👁️ Xem lời giải chi tiết</button>
+                    <div id="real-${index}" class="solution-box mt-2 p-4 rounded hidden">
+                        <p class="font-semibold text-amber-700 mb-2">Đáp án: ${item.answer}</p>
+                        <div class="text-gray-700 text-sm whitespace-pre-line">${item.solution}</div>
+                    </div>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        // Toggle Answer
+        function toggleAnswer(id) {
+            const el = document.getElementById(id);
+            el.classList.toggle('hidden');
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            renderMCQ();
+            renderTF();
+            renderRecognition();
+            renderLow();
+            renderHigh();
+            renderReal();
+        });
+    </script>
+</body>
+</html>
+```
