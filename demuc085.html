@@ -1,0 +1,630 @@
+```html
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trục Căn Thức - Đề Mục 85 - Toán Lớp 9</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@fontsource/roboto@4.5.8/index.css" rel="stylesheet">
+    <style>
+        * {
+            font-family: 'Roboto', sans-serif;
+        }
+        .gradient-header {
+            background: linear-gradient(135deg, #0891b2 0%, #7c3aed 100%);
+        }
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, #0891b2 0%, #7c3aed 100%);
+        }
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #067894 0%, #6a32c4 100%);
+        }
+        .answer-box {
+            background: #f0f9ff;
+            border-left: 4px solid #0891b2;
+        }
+        .solution-box {
+            background: #fef3c7;
+            border-left: 4px solid #f59e0b;
+        }
+        .nav-item {
+            transition: all 0.2s ease;
+        }
+        .nav-item:hover {
+            background: rgba(255,255,255,0.2);
+        }
+        .nav-item.active {
+            background: rgba(255,255,255,0.3);
+        }
+        .print-section {
+            page-break-inside: avoid;
+        }
+        @media print {
+            .no-print {
+                display: none;
+            }
+        }
+        .formula-box {
+            background: linear-gradient(135deg, #e0f2fe 0%, #ede9fe 100%);
+            border-radius: 8px;
+            padding: 16px;
+            margin: 12px 0;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="gradient-header text-white py-8">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center">
+                <div>
+                    <h1 class="text-3xl font-bold">TRỤC CĂN THỨC</h1>
+                    <p class="text-lg opacity-90">Đề Mục 85 - Toán Lớp 9 - Đại Số</p>
+                </div>
+                <div class="text-right">
+                    <p class="text-sm opacity-80">Bộ Tài Liệu Toán THCS</p>
+                    <p class="text-sm opacity-80">60 Ngày Ôn Tập</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md sticky top-0 z-50 no-print">
+        <div class="container mx-auto px-4">
+            <div class="flex overflow-x-auto py-3 space-x-2">
+                <button onclick="showSection('lesson')" class="nav-item active px-4 py-2 rounded-lg bg-cyan-100 text-cyan-700 whitespace-nowrap">📚 Bài Giảng</button>
+                <button onclick="showSection('mcq')" class="nav-item px-4 py-2 rounded-lg hover:bg-gray-100 whitespace-nowrap">📝 30 Câu MCQ</button>
+                <button onclick="showSection('tf')" class="nav-item px-4 py-2 rounded-lg hover:bg-gray-100 whitespace-nowrap">✅ 10 Câu Đúng/Sai</button>
+                <button onclick="showSection('recognition')" class="nav-item px-4 py-2 rounded-lg hover:bg-gray-100 whitespace-nowrap">🔍 10 Bài Nhận Biết</button>
+                <button onclick="showSection('low')" class="nav-item px-4 py-2 rounded-lg hover:bg-gray-100 whitespace-nowrap">📊 10 Bài Vận Dụng Thấp</button>
+                <button onclick="showSection('high')" class="nav-item px-4 py-2 rounded-lg hover:bg-gray-100 whitespace-nowrap">🎯 10 Bài Vận Dụng Cao</button>
+                <button onclick="showSection('real')" class="nav-item px-4 py-2 rounded-lg hover:bg-gray-100 whitespace-nowrap">🌍 5 Bài Thực Tế</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+        <!-- Lesson Section -->
+        <section id="lesson" class="section-content">
+            <div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section">
+                <h2 class="text-2xl font-bold text-cyan-700 mb-6 flex items-center">
+                    <span class="mr-3">📚</span> BÀI GIẢNG CHI TIẾT: TRỤC CĂN THỨC
+                </h2>
+                
+                <div class="space-y-6">
+                    <!-- Introduction -->
+                    <div class="answer-box p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold text-cyan-700 mb-4">1. KHÁI NIỆM TRỤC CĂN THỨC</h3>
+                        <p class="text-gray-700 mb-4">
+                            <strong>Trục căn thức ở mẫu</strong> là phép biến đổi nhằm loại bỏ dấu căn ở mẫu số của phân thức, giúp biểu thức đơn giản hơn và dễ tính toán hơn.
+                        </p>
+                        
+                        <div class="formula-box">
+                            <h4 class="font-semibold text-cyan-600 mb-2">📐 Mục đích của việc trục căn:</h4>
+                            <ul class="space-y-2 text-gray-700">
+                                <li>• Loại bỏ căn ở mẫu số</li>
+                                <li>• Đơn giản hóa biểu thức</li>
+                                <li>• Dễ dàng thực hiện các phép tính</li>
+                                <li>• So sánh các phân thức chứa căn</li>
+                            </ul>
+                        </div>
+
+                        <div class="grid md:grid-cols-3 gap-4 mt-4">
+                            <div class="bg-cyan-50 p-4 rounded-lg">
+                                <h4 class="font-semibold text-cyan-600 mb-2">Dạng 1: A/√B</h4>
+                                <p class="text-gray-700 text-sm">Nhân với √B/√B</p>
+                                <p class="text-cyan-700 text-sm font-semibold mt-2">Kết quả: A√B/B</p>
+                            </div>
+                            <div class="bg-purple-50 p-4 rounded-lg">
+                                <h4 class="font-semibold text-purple-600 mb-2">Dạng 2: A/(√B±√C)</h4>
+                                <p class="text-gray-700 text-sm">Nhân với liên hợp</p>
+                                <p class="text-purple-700 text-sm font-semibold mt-2">Kết quả: A(√B∓√C)/(B-C)</p>
+                            </div>
+                            <div class="bg-amber-50 p-4 rounded-lg">
+                                <h4 class="font-semibold text-amber-600 mb-2">Dạng 3: (A±√B)/C</h4>
+                                <p class="text-gray-700 text-sm">Chia từng số hạng</p>
+                                <p class="text-amber-700 text-sm font-semibold mt-2">Kết quả: A/C ± √B/C</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Methods -->
+                    <div class="solution-box p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold text-amber-700 mb-4">2. CÁC DẠNG TRỤC CĂN THỨC</h3>
+                        
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div class="bg-white p-4 rounded-lg border-2 border-cyan-300">
+                                <h4 class="font-semibold text-cyan-600 mb-2">Dạng cơ bản: A/√B</h4>
+                                <p class="text-gray-700 text-sm mb-2">Nhân cả tử và mẫu với √B</p>
+                                <p class="text-cyan-700 text-sm font-bold text-center">A/√B = (A·√B)/(√B·√B) = A√B/B</p>
+                                <p class="text-gray-600 text-sm mt-2">Ví dụ: 3/√5 = 3√5/5</p>
+                            </div>
+                            <div class="bg-white p-4 rounded-lg border-2 border-purple-300">
+                                <h4 class="font-semibold text-purple-600 mb-2">Dạng liên hợp: A/(√B±√C)</h4>
+                                <p class="text-gray-700 text-sm mb-2">Nhân với biểu thức liên hợp</p>
+                                <p class="text-purple-700 text-sm font-bold text-center">A/(√B+√C) = A(√B-√C)/(B-C)</p>
+                                <p class="text-gray-600 text-sm mt-2">Ví dụ: 2/(√3+√2) = 2(√3-√2)</p>
+                            </div>
+                        </div>
+
+                        <div class="mt-4 formula-box">
+                            <h4 class="font-semibold text-cyan-600 mb-2">📐 Các công thức quan trọng:</h4>
+                            <ul class="space-y-2 text-gray-700 text-sm">
+                                <li>• <strong>(√A + √B)(√A - √B) = A - B</strong></li>
+                                <li>• <strong>(√A + √B)² = A + B + 2√(AB)</strong></li>
+                                <li>• <strong>(√A - √B)² = A + B - 2√(AB)</strong></li>
+                                <li>• <strong>(A + √B)(A - √B) = A² - B</strong></li>
+                            </ul>
+                        </div>
+
+                        <div class="mt-4 bg-cyan-50 p-4 rounded-lg">
+                            <h4 class="font-semibold text-cyan-700 mb-2">📝 Ví dụ minh họa:</h4>
+                            <p class="text-gray-700 text-sm mb-2">Ví dụ 1: Trục căn 3/√5</p>
+                            <p class="text-gray-700 text-sm">= 3√5/(√5×√5) = 3√5/5</p>
+                            <p class="text-gray-700 text-sm mt-2">Ví dụ 2: Trục căn 2/(√3+√2)</p>
+                            <p class="text-gray-700 text-sm">= 2(√3-√2)/[(√3+√2)(√3-√2)]</p>
+                            <p class="text-gray-700 text-sm">= 2(√3-√2)/(3-2) = 2(√3-√2)</p>
+                        </div>
+                    </div>
+
+                    <!-- Steps -->
+                    <div class="answer-box p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold text-cyan-700 mb-4">3. CÁC BƯỚC TRỤC CĂN THỨC</h3>
+                        
+                        <div class="bg-white p-4 rounded-lg border-l-4 border-cyan-400">
+                            <h4 class="font-semibold text-cyan-600 mb-2">Quy trình trục căn</h4>
+                            <ol class="space-y-2 text-gray-700 text-sm list-decimal list-inside">
+                                <li>Nhận dạng dạng biểu thức</li>
+                                <li>Chọn biểu thức liên hợp phù hợp</li>
+                                <li>Nhân cả tử và mẫu với liên hợp</li>
+                                <li>Rút gọn mẫu số</li>
+                                <li>Rút gọn tử số (nếu có thể)</li>
+                                <li>Rút gọn phân số cuối cùng</li>
+                            </ol>
+                        </div>
+
+                        <div class="mt-4 bg-amber-50 p-4 rounded-lg">
+                            <h4 class="font-semibold text-amber-700 mb-2">📌 Lưu ý quan trọng:</h4>
+                            <ul class="space-y-2 text-gray-700 text-sm">
+                                <li>• Luôn nhân cả tử và mẫu với cùng biểu thức</li>
+                                <li>• Sử dụng hằng đẳng thức để rút gọn mẫu</li>
+                                <li>• Kiểm tra điều kiện xác định (B > 0, B ≠ C)</li>
+                                <li>• Rút gọn phân số nếu tử và mẫu có ước chung</li>
+                                <li>• Kiểm tra lại kết quả cuối cùng</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Examples -->
+                    <div class="solution-box p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold text-amber-700 mb-4">4. VÍ DỤ MINH HỌA</h3>
+                        
+                        <div class="bg-white p-4 rounded-lg mb-4">
+                            <h4 class="font-semibold text-amber-600 mb-2">Ví dụ 1: Dạng cơ bản</h4>
+                            <p class="text-gray-700 mb-2">Trục căn: A = 5/√3</p>
+                            <div class="solution-box p-3 rounded">
+                                <p class="text-gray-700"><strong>Lời giải:</strong></p>
+                                <p class="text-gray-700">A = 5√3/(√3×√3)</p>
+                                <p class="text-gray-700">A = 5√3/3</p>
+                            </div>
+                        </div>
+
+                        <div class="bg-white p-4 rounded-lg mb-4">
+                            <h4 class="font-semibold text-amber-600 mb-2">Ví dụ 2: Dạng liên hợp</h4>
+                            <p class="text-gray-700 mb-2">Trục căn: B = 3/(√5+√2)</p>
+                            <div class="solution-box p-3 rounded">
+                                <p class="text-gray-700"><strong>Lời giải:</strong></p>
+                                <p class="text-gray-700">B = 3(√5-√2)/[(√5+√2)(√5-√2)]</p>
+                                <p class="text-gray-700">B = 3(√5-√2)/(5-2)</p>
+                                <p class="text-gray-700">B = 3(√5-√2)/3 = √5-√2</p>
+                            </div>
+                        </div>
+
+                        <div class="bg-white p-4 rounded-lg">
+                            <h4 class="font-semibold text-amber-600 mb-2">Ví dụ 3: Dạng phức tạp</h4>
+                            <p class="text-gray-700 mb-2">Trục căn: C = (√2+1)/(√2-1)</p>
+                            <div class="solution-box p-3 rounded">
+                                <p class="text-gray-700"><strong>Lời giải:</strong></p>
+                                <p class="text-gray-700">C = (√2+1)²/[(√2-1)(√2+1)]</p>
+                                <p class="text-gray-700">C = (2+2√2+1)/(2-1)</p>
+                                <p class="text-gray-700">C = 3 + 2√2</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Calculator Guide -->
+                    <div class="answer-box p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold text-cyan-700 mb-4">5. HƯỚNG DẪN BẤM MÁY TÍNH CASIO FX-580ES</h3>
+                        <div class="bg-white p-4 rounded-lg space-y-3">
+                            <p class="text-gray-700"><strong>Tính giá trị biểu thức chứa căn:</strong></p>
+                            <ol class="list-decimal list-inside space-y-1 text-gray-700">
+                                <li>Nhập biểu thức đầy đủ</li>
+                                <li>Sử dụng ngoặc khi cần</li>
+                                <li>Bấm <kbd class="bg-gray-200 px-2 py-1 rounded">=</kbd></li>
+                            </ol>
+                            <p class="text-gray-700 mt-3"><strong>Chuyển đổi dạng căn và số thập phân:</strong></p>
+                            <ol class="list-decimal list-inside space-y-1 text-gray-700">
+                                <li>Bấm <kbd class="bg-gray-200 px-2 py-1 rounded">SHIFT</kbd> + <kbd class="bg-gray-200 px-2 py-1 rounded">=</kbd> (S⇔D)</li>
+                            </ol>
+                            <p class="text-gray-700 mt-3"><strong>Lưu ý:</strong> Kiểm tra kết quả bằng cách tính lại</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- MCQ Section -->
+        <section id="mcq" class="section-content hidden">
+            <div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section">
+                <h2 class="text-2xl font-bold text-cyan-700 mb-6 flex items-center">
+                    <span class="mr-3">📝</span> 30 CÂU TRẮC NGHIỆM 4 LỰA CHỌN
+                </h2>
+                <div class="space-y-6" id="mcq-container"></div>
+            </div>
+        </section>
+
+        <!-- True/False Section -->
+        <section id="tf" class="section-content hidden">
+            <div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section">
+                <h2 class="text-2xl font-bold text-cyan-700 mb-6 flex items-center">
+                    <span class="mr-3">✅</span> 10 CÂU TRẮC NGHIỆM ĐÚNG/SAI
+                </h2>
+                <div class="space-y-6" id="tf-container"></div>
+            </div>
+        </section>
+
+        <!-- Recognition Section -->
+        <section id="recognition" class="section-content hidden">
+            <div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section">
+                <h2 class="text-2xl font-bold text-cyan-700 mb-6 flex items-center">
+                    <span class="mr-3">🔍</span> 10 BÀI TẬP NHẬN BIẾT
+                </h2>
+                <div class="space-y-6" id="recognition-container"></div>
+            </div>
+        </section>
+
+        <!-- Low Application Section -->
+        <section id="low" class="section-content hidden">
+            <div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section">
+                <h2 class="text-2xl font-bold text-cyan-700 mb-6 flex items-center">
+                    <span class="mr-3">📊</span> 10 BÀI TẬP VẬN DỤNG THẤP
+                </h2>
+                <div class="space-y-6" id="low-container"></div>
+            </div>
+        </section>
+
+        <!-- High Application Section -->
+        <section id="high" class="section-content hidden">
+            <div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section">
+                <h2 class="text-2xl font-bold text-cyan-700 mb-6 flex items-center">
+                    <span class="mr-3">🎯</span> 10 BÀI TẬP VẬN DỤNG CAO
+                </h2>
+                <div class="space-y-6" id="high-container"></div>
+            </div>
+        </section>
+
+        <!-- Real World Section -->
+        <section id="real" class="section-content hidden">
+            <div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section">
+                <h2 class="text-2xl font-bold text-cyan-700 mb-6 flex items-center">
+                    <span class="mr-3">🌍</span> 5 BÀI TẬP ỨNG DỤNG THỰC TẾ
+                </h2>
+                <div class="space-y-6" id="real-container"></div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="gradient-header text-white py-6 mt-8">
+        <div class="container mx-auto px-4 text-center">
+            <p class="text-sm">Bộ Tài Liệu Toán THCS - Đề Mục 85: Trục Căn Thức</p>
+            <p class="text-sm opacity-80">© 2024 - Tài liệu ôn tập 60 ngày</p>
+        </div>
+    </footer>
+
+    <!-- Print Button -->
+    <button onclick="window.print()" class="no-print fixed bottom-6 right-6 btn-primary text-white px-6 py-3 rounded-full shadow-lg hover:shadow-xl transition-all">
+        🖨️ In Tài Liệu
+    </button>
+
+    <script>
+        // Navigation
+        function showSection(sectionId) {
+            document.querySelectorAll('.section-content').forEach(el => el.classList.add('hidden'));
+            document.getElementById(sectionId).classList.remove('hidden');
+            document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
+            event.target.classList.add('active');
+        }
+
+        // MCQ Data
+        const mcqData = [
+            { q: "Trục căn: 1/√2:", options: ["A. √2", "B. √2/2", "C. 2/√2", "D. 1/2"], answer: "B", solution: "1/√2 = √2/(√2×√2) = √2/2" },
+            { q: "Trục căn: 3/√5:", options: ["A. 3√5", "B. 3√5/5", "C. √5/3", "D. 5/3"], answer: "B", solution: "3/√5 = 3√5/5" },
+            { q: "Trục căn: 2/(√3+√2):", options: ["A. 2(√3-√2)", "B. 2(√3+√2)", "C. √3-√2", "D. √3+√2"], answer: "A", solution: "2(√3-√2)/(3-2) = 2(√3-√2)" },
+            { q: "Trục căn: 5/(√7-√2):", options: ["A. 5(√7+√2)/5", "B. 5(√7+√2)", "C. √7+√2", "D. 5(√7-√2)"], answer: "A", solution: "5(√7+√2)/(7-2) = 5(√7+√2)/5 = √7+√2" },
+            { q: "Trục căn: 1/(√5+2):", options: ["A. √5-2", "B. √5+2", "C. 2-√5", "D. -√5-2"], answer: "A", solution: "(√5-2)/(5-4) = √5-2" },
+            { q: "Trục căn: 4/(√6-√2):", options: ["A. √6+√2", "B. 2(√6+√2)", "C. √6-√2", "D. 2(√6-√2)"], answer: "A", solution: "4(√6+√2)/(6-2) = 4(√6+√2)/4 = √6+√2" },
+            { q: "Trục căn: 3/(√2+1):", options: ["A. 3(√2-1)", "B. 3(√2+1)", "C. √2-1", "D. √2+1"], answer: "A", solution: "3(√2-1)/(2-1) = 3(√2-1)" },
+            { q: "Trục căn: 2/(√5-√3):", options: ["A. √5+√3", "B. 2(√5+√3)", "C. √5-√3", "D. 2(√5-√3)"], answer: "A", solution: "2(√5+√3)/(5-3) = 2(√5+√3)/2 = √5+√3" },
+            { q: "Trục căn: 5/(3-√2):", options: ["A. 5(3+√2)/7", "B. 5(3-√2)/7", "C. 3+√2", "D. 3-√2"], answer: "A", solution: "5(3+√2)/(9-2) = 5(3+√2)/7" },
+            { q: "Trục căn: 1/(2+√3):", options: ["A. 2-√3", "B. 2+√3", "C. √3-2", "D. -2-√3"], answer: "A", solution: "(2-√3)/(4-3) = 2-√3" },
+            { q: "Trục căn: 3/(√5-2):", options: ["A. 3(√5+2)", "B. 3(√5-2)", "C. √5+2", "D. √5-2"], answer: "A", solution: "3(√5+2)/(5-4) = 3(√5+2)" },
+            { q: "Trục căn: 4/(3+√5):", options: ["A. 4(3-√5)/4", "B. 4(3+√5)/4", "C. 3-√5", "D. 3+√5"], answer: "A", solution: "4(3-√5)/(9-5) = 4(3-√5)/4 = 3-√5" },
+            { q: "Trục căn: 2/(√7+√3):", options: ["A. (√7-√3)/2", "B. (√7+√3)/2", "C. √7-√3", "D. √7+√3"], answer: "A", solution: "2(√7-√3)/(7-3) = 2(√7-√3)/4 = (√7-√3)/2" },
+            { q: "Trục căn: 5/(2√3):", options: ["A. 5√3/6", "B. 5√3/3", "C. 5√3/2", "D. 5√3"], answer: "A", solution: "5√3/(2×3) = 5√3/6" },
+            { q: "Trục căn: 3/(2-√3):", options: ["A. 3(2+√3)", "B. 3(2-√3)", "C. 2+√3", "D. 2-√3"], answer: "A", solution: "3(2+√3)/(4-3) = 3(2+√3)" },
+            { q: "Trục căn: 4/(√8-√2):", options: ["A. 2√2", "B. 4√2", "C. √2", "D. 3√2"], answer: "A", solution: "4(√8+√2)/(8-2) = 4(2√2+√2)/6 = 4×3√2/6 = 2√2" },
+            { q: "Trục căn: 6/(3+√7):", options: ["A. 6(3-√7)/2", "B. 6(3+√7)/2", "C. 3-√7", "D. 3+√7"], answer: "A", solution: "6(3-√7)/(9-7) = 6(3-√7)/2" },
+            { q: "Trục căn: 2/(√10-√6):", options: ["A. (√10+√6)/2", "B. (√10-√6)/2", "C. √10+√6", "D. √10-√6"], answer: "A", solution: "2(√10+√6)/(10-6) = 2(√10+√6)/4 = (√10+√6)/2" },
+            { q: "Trục căn: 5/(√12-√3):", options: ["A. 5√3/3", "B. 5√3/9", "C. 5√3", "D. 5√3/2"], answer: "A", solution: "5(√12+√3)/(12-3) = 5(2√3+√3)/9 = 5×3√3/9 = 5√3/3" },
+            { q: "Trục căn: 3/(√18-√8):", options: ["A. 3√2", "B. 3√2/2", "C. 3√2/3", "D. 3√2/4"], answer: "B", solution: "3(√18+√8)/(18-8) = 3(3√2+2√2)/10 = 3×5√2/10 = 3√2/2" },
+            { q: "Trục căn: 4/(2+√3):", options: ["A. 4(2-√3)", "B. 4(2+√3)", "C. 2-√3", "D. 2+√3"], answer: "A", solution: "4(2-√3)/(4-3) = 4(2-√3)" },
+            { q: "Trục căn: 6/(√20-√5):", options: ["A. 2√5", "B. 2√5/3", "C. 2√5/2", "D. 2√5/5"], answer: "A", solution: "6(√20+√5)/(20-5) = 6(2√5+√5)/15 = 6×3√5/15 = 2√5" },
+            { q: "Trục căn: 5/(3-2√2):", options: ["A. 5(3+2√2)", "B. 5(3-2√2)", "C. 3+2√2", "D. 3-2√2"], answer: "A", solution: "5(3+2√2)/(9-8) = 5(3+2√2)" },
+            { q: "Trục căn: 3/(√50-√18):", options: ["A. √2", "B. √2/2", "C. √2/3", "D. √2/4"], answer: "D", solution: "3(√50+√18)/(50-18) = 3(5√2+3√2)/32 = 3×8√2/32 = 3√2/4" },
+            { q: "Trục căn: 4/(√12+√3):", options: ["A. 4√3/5", "B. 4√3/3", "C. 4√3/9", "D. 4√3/15"], answer: "C", solution: "4(√12-√3)/(12-3) = 4(2√3-√3)/9 = 4√3/9" },
+            { q: "Trục căn: 2/(3-√8):", options: ["A. 2(3+√8)", "B. 2(3-√8)", "C. 3+√8", "D. 3-√8"], answer: "A", solution: "2(3+√8)/(9-8) = 2(3+√8)" },
+            { q: "Trục căn: 5/(√27-√12):", options: ["A. 5√3", "B. 5√3/3", "C. 5√3/2", "D. 5√3/5"], answer: "B", solution: "5(√27+√12)/(27-12) = 5(3√3+2√3)/15 = 5×5√3/15 = 5√3/3" },
+            { q: "Trục căn: 6/(2√5-√20):", options: ["A. Không xác định", "B. 0", "C. ∞", "D. 1"], answer: "A", solution: "2√5-√20 = 2√5-2√5 = 0 (không xác định)" },
+            { q: "Trục căn: 3/(√8+√2):", options: ["A. √2", "B. √2/2", "C. √2/3", "D. √2/4"], answer: "B", solution: "3(√8-√2)/(8-2) = 3(2√2-√2)/6 = 3√2/6 = √2/2" },
+            { q: "Trục căn: 4/(√50+√18):", options: ["A. √2/2", "B. √2/3", "C. √2/4", "D. √2/5"], answer: "C", solution: "4(√50-√18)/(50-18) = 4(5√2-3√2)/32 = 4×2√2/32 = √2/4" }
+        ];
+
+        // True/False Data
+        const tfData = [
+            { q: "Về trục căn cơ bản:", statements: [
+                { text: "1/√2 = √2/2", answer: true },
+                { text: "3/√5 = 3√5/5", answer: true },
+                { text: "5/√3 = 5√3", answer: false },
+                { text: "2/√7 = 2√7/7", answer: true }
+            ]},
+            { q: "Về trục căn liên hợp:", statements: [
+                { text: "2/(√3+√2) = 2(√3-√2)", answer: true },
+                { text: "3/(√5-√2) = 3(√5+√2)/3", answer: true },
+                { text: "4/(√7+√3) = (√7-√3)", answer: false },
+                { text: "5/(3-√2) = 5(3+√2)/7", answer: true }
+            ]},
+            { q: "Về hằng đẳng thức:", statements: [
+                { text: "(√A+√B)(√A-√B) = A-B", answer: true },
+                { text: "(√A+√B)² = A+B+2√(AB)", answer: true },
+                { text: "(√A-√B)² = A+B-2√(AB)", answer: true },
+                { text: "(A+√B)(A-√B) = A²-B", answer: true }
+            ]},
+            { q: "Về điều kiện:", statements: [
+                { text: "√B xác định khi B ≥ 0", answer: true },
+                { text: "1/√B xác định khi B > 0", answer: true },
+                { text: "1/(√B-√C) xác định khi B ≠ C", answer: true },
+                { text: "1/(√B+√C) xác định khi B, C ≥ 0", answer: true }
+            ]},
+            { q: "Về tính toán:", statements: [
+                { text: "3/(√2+1) = 3(√2-1)", answer: true },
+                { text: "4/(√6-√2) = √6+√2", answer: true },
+                { text: "5/(3-√2) = 5(3+√2)/7", answer: true },
+                { text: "2/(√5-√3) = √5+√3", answer: true }
+            ]},
+            { q: "Về rút gọn:", statements: [
+                { text: "6/(√20-√5) = 2√5", answer: true },
+                { text: "3/(√27-√12) = 5√3/3", answer: true },
+                { text: "4/(√50+√18) = √2/4", answer: true },
+                { text: "3/(√8+√2) = √2/2", answer: true }
+            ]},
+            { q: "Về máy tính:", statements: [
+                { text: "Có thể tính biểu thức chứa căn", answer: true },
+                { text: "Có thể chuyển đổi dạng căn", answer: true },
+                { text: "Kết quả luôn chính xác", answer: false },
+                { text: "Có thể kiểm tra bằng tính lại", answer: true }
+            ]},
+            { q: "Về ứng dụng:", statements: [
+                { text: "Dùng trong hình học", answer: true },
+                { text: "Dùng trong vật lý", answer: true },
+                { text: "Dùng trong thực tế", answer: true },
+                { text: "Chỉ dùng trong toán học", answer: false }
+            ]},
+            { q: "Về phép nhân:", statements: [
+                { text: "Phải nhân cả tử và mẫu", answer: true },
+                { text: "Nhân với cùng biểu thức", answer: true },
+                { text: "Có thể chỉ nhân tử", answer: false },
+                { text: "Có thể chỉ nhân mẫu", answer: false }
+            ]},
+            { q: "Về kết quả:", statements: [
+                { text: "Phải không còn căn ở mẫu", answer: true },
+                { text: "Phải rút gọn phân số", answer: true },
+                { text: "Có thể để căn ở mẫu", answer: false },
+                { text: "Phải kiểm tra điều kiện", answer: true }
+            ]}
+        ];
+
+        // Recognition Data
+        const recognitionData = [
+            { q: "Viết cách trục căn 1/√a.", answer: "√a/a", solution: "Nhân tử và mẫu với √a" },
+            { q: "Viết cách trục căn 3/√5.", answer: "3√5/5", solution: "3√5/(√5×√5) = 3√5/5" },
+            { q: "Viết liên hợp của √3+√2.", answer: "√3-√2", solution: "Đổi dấu giữa hai căn" },
+            { q: "Viết cách trục căn 2/(√3+√2).", answer: "2(√3-√2)", solution: "Nhân với liên hợp" },
+            { q: "Viết (√A+√B)(√A-√B).", answer: "A-B", solution: "Hằng đẳng thức" },
+            { q: "Viết cách trục căn 5/(3-√2).", answer: "5(3+√2)/7", solution: "Nhân với liên hợp" },
+            { q: "Viết cách trục căn 1/(2+√3).", answer: "2-√3", solution: "(2-√3)/(4-3) = 2-√3" },
+            { q: "Viết cách trục căn 4/(√6-√2).", answer: "√6+√2", solution: "4(√6+√2)/(6-2) = √6+√2" },
+            { q: "Viết cách trục căn 3/(√2+1).", answer: "3(√2-1)", solution: "3(√2-1)/(2-1) = 3(√2-1)" },
+            { q: "Viết cách trục căn 2/(√5-√3).", answer: "√5+√3", solution: "2(√5+√3)/(5-3) = √5+√3" }
+        ];
+
+        // Low Application Data
+        const lowData = [
+            { q: "Trục căn: 5/√3", answer: "5√3/3", solution: "5/√3 = 5√3/(√3×√3) = 5√3/3" },
+            { q: "Trục căn: 3/√5", answer: "3√5/5", solution: "3/√5 = 3√5/(√5×√5) = 3√5/5" },
+            { q: "Trục căn: 2/(√3+√2)", answer: "2(√3-√2)", solution: "2(√3-√2)/[(√3+√2)(√3-√2)] = 2(√3-√2)/(3-2) = 2(√3-√2)" },
+            { q: "Trục căn: 5/(√7-√2)", answer: "√7+√2", solution: "5(√7+√2)/(7-2) = 5(√7+√2)/5 = √7+√2" },
+            { q: "Trục căn: 1/(√5+2)", answer: "√5-2", solution: "(√5-2)/(5-4) = √5-2" },
+            { q: "Trục căn: 4/(√6-√2)", answer: "√6+√2", solution: "4(√6+√2)/(6-2) = 4(√6+√2)/4 = √6+√2" },
+            { q: "Trục căn: 3/(√2+1)", answer: "3(√2-1)", solution: "3(√2-1)/(2-1) = 3(√2-1)" },
+            { q: "Trục căn: 2/(√5-√3)", answer: "√5+√3", solution: "2(√5+√3)/(5-3) = 2(√5+√3)/2 = √5+√3" },
+            { q: "Trục căn: 5/(3-√2)", answer: "5(3+√2)/7", solution: "5(3+√2)/(9-2) = 5(3+√2)/7" },
+            { q: "Trục căn: 1/(2+√3)", answer: "2-√3", solution: "(2-√3)/(4-3) = 2-√3" }
+        ];
+
+        // High Application Data
+        const highData = [
+            { q: "Trục căn: A = (√2+1)/(√2-1)", answer: "A = 3 + 2√2", solution: "**Lời giải chi tiết:**\n\n1. Nhân với liên hợp:\n   A = (√2+1)²/[(√2-1)(√2+1)]\n\n2. Tính mẫu:\n   (√2-1)(√2+1) = 2 - 1 = 1\n\n3. Tính tử:\n   (√2+1)² = 2 + 2√2 + 1 = 3 + 2√2\n\n4. Kết quả:\n   A = (3+2√2)/1 = 3 + 2√2\n\n**Kết luận: A = 3 + 2√2**" },
+            { q: "Trục căn: B = (√3+√2)/(√3-√2)", answer: "B = 5 + 2√6", solution: "**Lời giải chi tiết:**\n\n1. Nhân với liên hợp:\n   B = (√3+√2)²/[(√3-√2)(√3+√2)]\n\n2. Tính mẫu:\n   (√3-√2)(√3+√2) = 3 - 2 = 1\n\n3. Tính tử:\n   (√3+√2)² = 3 + 2√6 + 2 = 5 + 2√6\n\n4. Kết quả:\n   B = (5+2√6)/1 = 5 + 2√6\n\n**Kết luận: B = 5 + 2√6**" },
+            { q: "Trục căn: C = 3/(√5+√2) + 2/(√5-√2)", answer: "C = (5√5-√2)/3", solution: "**Lời giải chi tiết:**\n\n1. Trục căn từng phân thức:\n   3/(√5+√2) = 3(√5-√2)/(5-2) = 3(√5-√2)/3 = √5-√2\n   2/(√5-√2) = 2(√5+√2)/(5-2) = 2(√5+√2)/3\n\n2. Cộng lại:\n   C = (√5-√2) + 2(√5+√2)/3\n   C = (3√5-3√2 + 2√5+2√2)/3\n   C = (5√5-√2)/3\n\n**Kết luận: C = (5√5-√2)/3**" },
+            { q: "Trục căn: D = (2+√3)/(2-√3) + (2-√3)/(2+√3)", answer: "D = 14", solution: "**Lời giải chi tiết:**\n\n1. Quy đồng mẫu:\n   D = [(2+√3)² + (2-√3)²] / [(2-√3)(2+√3)]\n\n2. Tính mẫu:\n   (2-√3)(2+√3) = 4 - 3 = 1\n\n3. Tính tử:\n   (2+√3)² + (2-√3)²\n   = (4+4√3+3) + (4-4√3+3)\n   = 7+4√3 + 7-4√3 = 14\n\n4. Kết quả:\n   D = 14/1 = 14\n\n**Kết luận: D = 14**" },
+            { q: "Trục căn: E = 5/(3+2√2) + 3/(3-2√2)", answer: "E = 24 - 4√2", solution: "**Lời giải chi tiết:**\n\n1. Trục căn từng phân thức:\n   5/(3+2√2) = 5(3-2√2)/(9-8) = 5(3-2√2)\n   3/(3-2√2) = 3(3+2√2)/(9-8) = 3(3+2√2)\n\n2. Cộng lại:\n   E = 5(3-2√2) + 3(3+2√2)\n   E = 15-10√2 + 9+6√2\n   E = 24 - 4√2\n\n**Kết luận: E = 24 - 4√2**" },
+            { q: "Trục căn: F = 4/(√12+√3) + 3/(√27-√12)", answer: "F = 13√3/9", solution: "**Lời giải chi tiết:**\n\n1. Rút gọn các căn:\n   √12 = 2√3\n   √27 = 3√3\n\n2. Trục căn:\n   4/(2√3+√3) = 4/(3√3) = 4√3/9\n   3/(3√3-2√3) = 3/√3 = √3\n\n3. Cộng lại:\n   F = 4√3/9 + √3 = 4√3/9 + 9√3/9 = 13√3/9\n\n**Kết luận: F = 13√3/9**" },
+            { q: "Trục căn: G = 6/(3+√7) + 4/(3-√7)", answer: "G = 15 - √7", solution: "**Lời giải chi tiết:**\n\n1. Trục căn từng phân thức:\n   6/(3+√7) = 6(3-√7)/(9-7) = 6(3-√7)/2 = 3(3-√7)\n   4/(3-√7) = 4(3+√7)/(9-7) = 4(3+√7)/2 = 2(3+√7)\n\n2. Cộng lại:\n   G = 3(3-√7) + 2(3+√7)\n   G = 9-3√7 + 6+2√7\n   G = 15 - √7\n\n**Kết luận: G = 15 - √7**" },
+            { q: "Trục căn: H = 5/(2√5-√20) + 3/(√45-√20)", answer: "H = Không xác định", solution: "**Lời giải chi tiết:**\n\n1. Rút gọn các căn:\n   √20 = 2√5\n   √45 = 3√5\n\n2. Thay vào:\n   2√5-√20 = 2√5-2√5 = 0 (không xác định)\n   √45-√20 = 3√5-2√5 = √5\n\n3. Kết quả:\n   Phân thức đầu không xác định\n\n**Kết luận: Không xác định**" },
+            { q: "Trục căn: K = 3/(√8+√2) + 4/(√18-√8)", answer: "K = 5√2/2", solution: "**Lời giải chi tiết:**\n\n1. Rút gọn các căn:\n   √8 = 2√2\n   √18 = 3√2\n\n2. Trục căn:\n   3/(2√2+√2) = 3/(3√2) = 1/√2 = √2/2\n   4/(3√2-2√2) = 4/√2 = 2√2\n\n3. Cộng lại:\n   K = √2/2 + 2√2 = √2/2 + 4√2/2 = 5√2/2\n\n**Kết luận: K = 5√2/2**" },
+            { q: "Trục căn: L = 5/(√50-√18) + 3/(√50+√18)", answer: "L = 23√2/16", solution: "**Lời giải chi tiết:**\n\n1. Rút gọn các căn:\n   √50 = 5√2\n   √18 = 3√2\n\n2. Trục căn:\n   5/(5√2-3√2) = 5/(2√2) = 5√2/4\n   3/(5√2+3√2) = 3/(8√2) = 3√2/16\n\n3. Cộng lại:\n   L = 5√2/4 + 3√2/16 = 20√2/16 + 3√2/16 = 23√2/16\n\n**Kết luận: L = 23√2/16**" }
+        ];
+
+        // Real World Data
+        const realData = [
+            { q: "Một hình vuông có diện tích 72m². Tính độ dài cạnh của hình vuông (rút gọn căn).", answer: "6√2 m", solution: "**Lời giải chi tiết:**\n\n1. Gọi a là độ dài cạnh (m)\n   a² = 72\n\n2. Tính cạnh:\n   a = √72 = √(36×2) = 6√2 m\n\n3. Ứng dụng:\n   - Tính toán trong xây dựng\n   - Thiết kế nền nhà\n\n**Kết luận: Cạnh hình vuông là 6√2 m**" },
+            { q: "Một tam giác vuông có hai cạnh góc vuông là √12 cm và √27 cm. Tính diện tích tam giác.", answer: "9 cm²", solution: "**Lời giải chi tiết:**\n\n1. Rút gọn các cạnh:\n   √12 = 2√3 cm\n   √27 = 3√3 cm\n\n2. Tính diện tích:\n   S = (1/2) × 2√3 × 3√3\n   S = (1/2) × 6 × 3\n   S = 9 cm²\n\n3. Ứng dụng:\n   - Tính toán trong xây dựng\n   - Thiết kế kết cấu\n\n**Kết luận: Diện tích là 9 cm²**" },
+            { q: "Một mảnh đất hình chữ nhật có chiều dài √50 m và chiều rộng √18 m. Tính chu vi mảnh đất.", answer: "16√2 m", solution: "**Lời giải chi tiết:**\n\n1. Rút gọn các kích thước:\n   √50 = 5√2 m\n   √18 = 3√2 m\n\n2. Tính chu vi:\n   P = 2(5√2 + 3√2)\n   P = 2(8√2)\n   P = 16√2 m\n\n3. Ứng dụng:\n   - Tính toán đất đai\n   - Quy hoạch sử dụng đất\n\n**Kết luận: Chu vi là 16√2 m**" },
+            { q: "Một cái thang dài √50 m dựa vào tường, chân thang cách tường √18 m. Tính chiều cao thang đạt được.", answer: "4√2 m", solution: "**Lời giải chi tiết:**\n\n1. Rút gọn các số:\n   √50 = 5√2 m\n   √18 = 3√2 m\n\n2. Áp dụng định lý Pytago:\n   h² + (3√2)² = (5√2)²\n   h² + 18 = 50\n   h² = 32\n   h = √32 = 4√2 m\n\n3. Ứng dụng:\n   - An toàn lao động\n   - Thiết kế xây dựng\n\n**Kết luận: Chiều cao là 4√2 m**" },
+            { q: "Một hình chữ nhật có chiều dài √72 cm và chiều rộng √32 cm. Tính độ dài đường chéo.", answer: "2√26 cm", solution: "**Lời giải chi tiết:**\n\n1. Rút gọn các kích thước:\n   √72 = 6√2 cm\n   √32 = 4√2 cm\n\n2. Tính đường chéo:\n   d² = (6√2)² + (4√2)²\n   d² = 72 + 32 = 104\n   d = √104 = √(4×26) = 2√26 cm\n\n3. Ứng dụng:\n   - Thiết kế màn hình\n   - Tính toán kích thước\n\n**Kết luận: Đường chéo là 2√26 cm**" }
+        ];
+
+        // Render MCQ
+        function renderMCQ() {
+            const container = document.getElementById('mcq-container');
+            mcqData.forEach((item, index) => {
+                const div = document.createElement('div');
+                div.className = 'border-l-4 border-cyan-400 pl-4 py-3 bg-gray-50 rounded-r-lg';
+                div.innerHTML = `
+                    <p class="font-semibold text-gray-800 mb-2"><strong>Câu ${index + 1}:</strong> ${item.q}</p>
+                    <div class="grid grid-cols-2 gap-2 mb-3 text-sm">
+                        ${item.options.map(opt => `<span class="text-gray-700">${opt}</span>`).join('')}
+                    </div>
+                    <button onclick="toggleAnswer('mcq-${index}')" class="text-cyan-600 text-sm hover:underline">👁️ Xem đáp án</button>
+                    <div id="mcq-${index}" class="answer-box mt-2 p-3 rounded hidden">
+                        <p class="font-semibold text-green-700">Đáp án: ${item.answer}</p>
+                        <p class="text-gray-700 text-sm mt-1">${item.solution}</p>
+                    </div>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        // Render True/False
+        function renderTF() {
+            const container = document.getElementById('tf-container');
+            tfData.forEach((item, index) => {
+                const div = document.createElement('div');
+                div.className = 'border-l-4 border-amber-400 pl-4 py-3 bg-gray-50 rounded-r-lg';
+                div.innerHTML = `
+                    <p class="font-semibold text-gray-800 mb-3"><strong>Câu ${index + 1}:</strong> ${item.q}</p>
+                    <div class="space-y-2">
+                        ${item.statements.map((s, i) => `
+                            <div class="flex items-center justify-between bg-white p-2 rounded">
+                                <span class="text-gray-700 text-sm">${String.fromCharCode(65+i)}. ${s.text}</span>
+                                <span class="text-xs px-2 py-1 rounded ${s.answer ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}">${s.answer ? 'Đúng' : 'Sai'}</span>
+                            </div>
+                        `).join('')}
+                    </div>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        // Render Recognition
+        function renderRecognition() {
+            const container = document.getElementById('recognition-container');
+            recognitionData.forEach((item, index) => {
+                const div = document.createElement('div');
+                div.className = 'border-l-4 border-cyan-400 pl-4 py-3 bg-gray-50 rounded-r-lg';
+                div.innerHTML = `
+                    <p class="font-semibold text-gray-800 mb-2"><strong>Bài ${index + 1}:</strong> ${item.q}</p>
+                    <button onclick="toggleAnswer('rec-${index}')" class="text-cyan-600 text-sm hover:underline">👁️ Xem đáp án</button>
+                    <div id="rec-${index}" class="answer-box mt-2 p-3 rounded hidden">
+                        <p class="font-semibold text-purple-700">Đáp án: ${item.answer}</p>
+                        <p class="text-gray-700 text-sm mt-1">${item.solution}</p>
+                    </div>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        // Render Low Application
+        function renderLow() {
+            const container = document.getElementById('low-container');
+            lowData.forEach((item, index) => {
+                const div = document.createElement('div');
+                div.className = 'border-l-4 border-green-400 pl-4 py-3 bg-gray-50 rounded-r-lg';
+                div.innerHTML = `
+                    <p class="font-semibold text-gray-800 mb-2"><strong>Bài ${index + 1}:</strong> ${item.q}</p>
+                    <button onclick="toggleAnswer('low-${index}')" class="text-green-600 text-sm hover:underline">👁️ Xem đáp án</button>
+                    <div id="low-${index}" class="solution-box mt-2 p-3 rounded hidden">
+                        <p class="font-semibold text-amber-700">Đáp án: ${item.answer}</p>
+                        <p class="text-gray-700 text-sm mt-1 whitespace-pre-line">${item.solution}</p>
+                    </div>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        // Render High Application
+        function renderHigh() {
+            const container = document.getElementById('high-container');
+            highData.forEach((item, index) => {
+                const div = document.createElement('div');
+                div.className = 'border-l-4 border-red-400 pl-4 py-3 bg-gray-50 rounded-r-lg';
+                div.innerHTML = `
+                    <p class="font-semibold text-gray-800 mb-2"><strong>Bài ${index + 1}:</strong> ${item.q}</p>
+                    <button onclick="toggleAnswer('high-${index}')" class="text-red-600 text-sm hover:underline">👁️ Xem lời giải chi tiết</button>
+                    <div id="high-${index}" class="solution-box mt-2 p-4 rounded hidden">
+                        <p class="font-semibold text-amber-700 mb-2">Đáp án: ${item.answer}</p>
+                        <div class="text-gray-700 text-sm whitespace-pre-line">${item.solution}</div>
+                    </div>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        // Render Real World
+        function renderReal() {
+            const container = document.getElementById('real-container');
+            realData.forEach((item, index) => {
+                const div = document.createElement('div');
+                div.className = 'border-l-4 border-indigo-400 pl-4 py-3 bg-gray-50 rounded-r-lg';
+                div.innerHTML = `
+                    <p class="font-semibold text-gray-800 mb-2"><strong>Bài ${index + 1}:</strong> ${item.q}</p>
+                    <button onclick="toggleAnswer('real-${index}')" class="text-indigo-600 text-sm hover:underline">👁️ Xem lời giải chi tiết</button>
+                    <div id="real-${index}" class="solution-box mt-2 p-4 rounded hidden">
+                        <p class="font-semibold text-amber-700 mb-2">Đáp án: ${item.answer}</p>
+                        <div class="text-gray-700 text-sm whitespace-pre-line">${item.solution}</div>
+                    </div>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        // Toggle Answer
+        function toggleAnswer(id) {
+            const el = document.getElementById(id);
+            el.classList.toggle('hidden');
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            renderMCQ();
+            renderTF();
+            renderRecognition();
+            renderLow();
+            renderHigh();
+            renderReal();
+        });
+    </script>
+</body>
+</html>
+```
