@@ -1,0 +1,667 @@
+```html
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hệ Thức Vi-ét và Ứng Dụng - Đề Mục 92 - Toán Lớp 9</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@fontsource/roboto@4.5.8/index.css" rel="stylesheet">
+    <style>
+        * {
+            font-family: 'Roboto', sans-serif;
+        }
+        .gradient-header {
+            background: linear-gradient(135deg, #0891b2 0%, #7c3aed 100%);
+        }
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, #0891b2 0%, #7c3aed 100%);
+        }
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #067894 0%, #6a32c4 100%);
+        }
+        .answer-box {
+            background: #f0f9ff;
+            border-left: 4px solid #0891b2;
+        }
+        .solution-box {
+            background: #fef3c7;
+            border-left: 4px solid #f59e0b;
+        }
+        .nav-item {
+            transition: all 0.2s ease;
+        }
+        .nav-item:hover {
+            background: rgba(255,255,255,0.2);
+        }
+        .nav-item.active {
+            background: rgba(255,255,255,0.3);
+        }
+        .print-section {
+            page-break-inside: avoid;
+        }
+        @media print {
+            .no-print {
+                display: none;
+            }
+        }
+        .formula-box {
+            background: linear-gradient(135deg, #e0f2fe 0%, #ede9fe 100%);
+            border-radius: 8px;
+            padding: 16px;
+            margin: 12px 0;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="gradient-header text-white py-8">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center">
+                <div>
+                    <h1 class="text-3xl font-bold">HỆ THỨC VI-ÉT VÀ ỨNG DỤNG</h1>
+                    <p class="text-lg opacity-90">Đề Mục 92 - Toán Lớp 9 - Đại Số</p>
+                </div>
+                <div class="text-right">
+                    <p class="text-sm opacity-80">Bộ Tài Liệu Toán THCS</p>
+                    <p class="text-sm opacity-80">60 Ngày Ôn Tập</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md sticky top-0 z-50 no-print">
+        <div class="container mx-auto px-4">
+            <div class="flex overflow-x-auto py-3 space-x-2">
+                <button onclick="showSection('lesson')" class="nav-item active px-4 py-2 rounded-lg bg-cyan-100 text-cyan-700 whitespace-nowrap">📚 Bài Giảng</button>
+                <button onclick="showSection('mcq')" class="nav-item px-4 py-2 rounded-lg hover:bg-gray-100 whitespace-nowrap">📝 30 Câu MCQ</button>
+                <button onclick="showSection('tf')" class="nav-item px-4 py-2 rounded-lg hover:bg-gray-100 whitespace-nowrap">✅ 10 Câu Đúng/Sai</button>
+                <button onclick="showSection('recognition')" class="nav-item px-4 py-2 rounded-lg hover:bg-gray-100 whitespace-nowrap">🔍 10 Bài Nhận Biết</button>
+                <button onclick="showSection('low')" class="nav-item px-4 py-2 rounded-lg hover:bg-gray-100 whitespace-nowrap">📊 10 Bài Vận Dụng Thấp</button>
+                <button onclick="showSection('high')" class="nav-item px-4 py-2 rounded-lg hover:bg-gray-100 whitespace-nowrap">🎯 10 Bài Vận Dụng Cao</button>
+                <button onclick="showSection('real')" class="nav-item px-4 py-2 rounded-lg hover:bg-gray-100 whitespace-nowrap">🌍 5 Bài Thực Tế</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+        <!-- Lesson Section -->
+        <section id="lesson" class="section-content">
+            <div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section">
+                <h2 class="text-2xl font-bold text-cyan-700 mb-6 flex items-center">
+                    <span class="mr-3">📚</span> BÀI GIẢNG CHI TIẾT: HỆ THỨC VI-ÉT VÀ ỨNG DỤNG
+                </h2>
+                
+                <div class="space-y-6">
+                    <!-- Introduction -->
+                    <div class="answer-box p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold text-cyan-700 mb-4">1. ĐỊNH LÝ VI-ÉT</h3>
+                        <p class="text-gray-700 mb-4">
+                            <strong>Hệ thức Vi-ét</strong> là mối quan hệ giữa các nghiệm của phương trình bậc hai và các hệ số của phương trình đó, được phát hiện bởi nhà toán học François Viète.
+                        </p>
+                        
+                        <div class="formula-box">
+                            <h4 class="font-semibold text-cyan-600 mb-2">📐 Định lý Vi-ét thuận:</h4>
+                            <p class="text-gray-700 mb-2">Nếu x₁, x₂ là hai nghiệm của phương trình ax² + bx + c = 0 (a ≠ 0) thì:</p>
+                            <p class="text-cyan-700 font-bold text-center text-xl mb-2">S = x₁ + x₂ = -b/a</p>
+                            <p class="text-cyan-700 font-bold text-center text-xl">P = x₁ · x₂ = c/a</p>
+                        </div>
+
+                        <div class="grid md:grid-cols-2 gap-4 mt-4">
+                            <div class="bg-cyan-50 p-4 rounded-lg">
+                                <h4 class="font-semibold text-cyan-600 mb-2">Tổng nghiệm (S)</h4>
+                                <p class="text-gray-700 text-sm">S = x₁ + x₂ = -b/a</p>
+                                <p class="text-cyan-700 text-sm font-semibold mt-2">Bằng đối của hệ số b chia a</p>
+                            </div>
+                            <div class="bg-purple-50 p-4 rounded-lg">
+                                <h4 class="font-semibold text-purple-600 mb-2">Tích nghiệm (P)</h4>
+                                <p class="text-gray-700 text-sm">P = x₁ · x₂ = c/a</p>
+                                <p class="text-purple-700 text-sm font-semibold mt-2">Bằng hệ số c chia a</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Applications -->
+                    <div class="solution-box p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold text-amber-700 mb-4">2. ỨNG DỤNG CỦA HỆ THỨC VI-ÉT</h3>
+                        
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div class="bg-white p-4 rounded-lg border-2 border-cyan-300">
+                                <h4 class="font-semibold text-cyan-600 mb-2">Nhẩm nghiệm nhanh</h4>
+                                <ul class="space-y-2 text-gray-700 text-sm">
+                                    <li>• <strong>a + b + c = 0:</strong> x₁ = 1, x₂ = c/a</li>
+                                    <li>• <strong>a - b + c = 0:</strong> x₁ = -1, x₂ = -c/a</li>
+                                    <li>• Giúp giải nhanh không cần tính Δ</li>
+                                </ul>
+                            </div>
+                            <div class="bg-white p-4 rounded-lg border-2 border-purple-300">
+                                <h4 class="font-semibold text-purple-600 mb-2">Tính biểu thức đối xứng</h4>
+                                <ul class="space-y-2 text-gray-700 text-sm">
+                                    <li>• x₁² + x₂² = S² - 2P</li>
+                                    <li>• x₁³ + x₂³ = S³ - 3SP</li>
+                                    <li>• 1/x₁ + 1/x₂ = S/P</li>
+                                    <li>• (x₁-x₂)² = S² - 4P</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="mt-4 bg-cyan-50 p-4 rounded-lg">
+                            <h4 class="font-semibold text-cyan-700 mb-2">📝 Các biểu thức đối xứng thường gặp:</h4>
+                            <ul class="space-y-2 text-gray-700 text-sm">
+                                <li>• <strong>x₁² + x₂² = (x₁+x₂)² - 2x₁x₂ = S² - 2P</strong></li>
+                                <li>• <strong>x₁³ + x₂³ = (x₁+x₂)³ - 3x₁x₂(x₁+x₂) = S³ - 3SP</strong></li>
+                                <li>• <strong>1/x₁ + 1/x₂ = (x₁+x₂)/(x₁x₂) = S/P</strong></li>
+                                <li>• <strong>(x₁-x₂)² = (x₁+x₂)² - 4x₁x₂ = S² - 4P</strong></li>
+                                <li>• <strong>x₁²x₂ + x₁x₂² = x₁x₂(x₁+x₂) = P·S</strong></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Finding Two Numbers -->
+                    <div class="answer-box p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold text-cyan-700 mb-4">3. TÌM HAI SỐ BIẾT TỔNG VÀ TÍCH</h3>
+                        
+                        <div class="formula-box">
+                            <h4 class="font-semibold text-cyan-600 mb-2">📐 Định lý Vi-ét đảo:</h4>
+                            <p class="text-gray-700 mb-2">Nếu hai số u và v có tổng S và tích P, và S² - 4P ≥ 0 thì u và v là nghiệm của phương trình:</p>
+                            <p class="text-cyan-700 font-bold text-center text-xl mb-2">X² - SX + P = 0</p>
+                        </div>
+
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div class="bg-white p-4 rounded-lg border-l-4 border-cyan-400">
+                                <h4 class="font-semibold text-cyan-600 mb-2">Điều kiện tồn tại</h4>
+                                <p class="text-gray-700 text-sm mb-2">Để tồn tại hai số thực u, v:</p>
+                                <p class="text-cyan-700 text-sm font-semibold">Điều kiện: S² - 4P ≥ 0</p>
+                                <p class="text-gray-600 text-sm mt-2">Tương đương Δ ≥ 0 của phương trình</p>
+                            </div>
+                            <div class="bg-white p-4 rounded-lg border-l-4 border-purple-400">
+                                <h4 class="font-semibold text-purple-600 mb-2">Cách giải</h4>
+                                <ol class="space-y-2 text-gray-700 text-sm list-decimal list-inside">
+                                    <li>Lập phương trình X² - SX + P = 0</li>
+                                    <li>Giải phương trình bậc hai</li>
+                                    <li>Hai nghiệm là hai số cần tìm</li>
+                                </ol>
+                            </div>
+                        </div>
+
+                        <div class="mt-4 bg-cyan-50 p-4 rounded-lg">
+                            <h4 class="font-semibold text-cyan-700 mb-2">📝 Ví dụ minh họa:</h4>
+                            <p class="text-gray-700 text-sm mb-2">Ví dụ 1: Tìm hai số biết tổng bằng 5, tích bằng 6</p>
+                            <p class="text-gray-700 text-sm">Phương trình: X² - 5X + 6 = 0</p>
+                            <p class="text-gray-700 text-sm">Giải ra: X = 2 hoặc X = 3</p>
+                            <p class="text-gray-700 text-sm mt-2">Ví dụ 2: Tìm hai số biết tổng bằng 7, tích bằng 10</p>
+                            <p class="text-gray-700 text-sm">Phương trình: X² - 7X + 10 = 0</p>
+                            <p class="text-gray-700 text-sm">Giải ra: X = 2 hoặc X = 5</p>
+                        </div>
+                    </div>
+
+                    <!-- Special Cases -->
+                    <div class="solution-box p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold text-amber-700 mb-4">4. CÁC TRƯỜNG HỢP ĐẶC BIỆT</h3>
+                        
+                        <div class="grid md:grid-cols-3 gap-4">
+                            <div class="bg-white p-4 rounded-lg border-2 border-cyan-300">
+                                <h4 class="font-semibold text-cyan-600 mb-2">a + b + c = 0</h4>
+                                <p class="text-gray-700 text-sm">Một nghiệm bằng 1</p>
+                                <p class="text-cyan-700 text-sm font-semibold mt-2">x₁ = 1, x₂ = c/a</p>
+                                <p class="text-gray-600 text-sm">Ví dụ: 2x² - 5x + 3 = 0</p>
+                            </div>
+                            <div class="bg-white p-4 rounded-lg border-2 border-purple-300">
+                                <h4 class="font-semibold text-purple-600 mb-2">a - b + c = 0</h4>
+                                <p class="text-gray-700 text-sm">Một nghiệm bằng -1</p>
+                                <p class="text-purple-700 text-sm font-semibold mt-2">x₁ = -1, x₂ = -c/a</p>
+                                <p class="text-gray-600 text-sm">Ví dụ: 3x² + 5x + 2 = 0</p>
+                            </div>
+                            <div class="bg-white p-4 rounded-lg border-2 border-amber-300">
+                                <h4 class="font-semibold text-amber-600 mb-2">Nhẩm nghiệm</h4>
+                                <p class="text-gray-700 text-sm">Khi nhẩm được tích và tổng</p>
+                                <p class="text-amber-700 text-sm font-semibold mt-2">Giải nhanh không cần Δ</p>
+                                <p class="text-gray-600 text-sm">Tiết kiệm thời gian</p>
+                            </div>
+                        </div>
+
+                        <div class="mt-4 bg-amber-50 p-4 rounded-lg">
+                            <h4 class="font-semibold text-amber-700 mb-2">📝 Ví dụ nhẩm nghiệm:</h4>
+                            <p class="text-gray-700 text-sm mb-2">Ví dụ 1: 3x² - 5x + 2 = 0</p>
+                            <p class="text-gray-700 text-sm">a + b + c = 3 - 5 + 2 = 0</p>
+                            <p class="text-gray-700 text-sm">Nhẩm: x₁ = 1, x₂ = 2/3</p>
+                            <p class="text-gray-700 text-sm mt-2">Ví dụ 2: 2x² + 5x + 3 = 0</p>
+                            <p class="text-gray-700 text-sm">a - b + c = 2 - 5 + 3 = 0</p>
+                            <p class="text-gray-700 text-sm">Nhẩm: x₁ = -1, x₂ = -3/2</p>
+                        </div>
+                    </div>
+
+                    <!-- Examples -->
+                    <div class="answer-box p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold text-cyan-700 mb-4">5. VÍ DỤ MINH HỌA</h3>
+                        
+                        <div class="bg-white p-4 rounded-lg mb-4">
+                            <h4 class="font-semibold text-cyan-600 mb-2">Ví dụ 1: Tính biểu thức đối xứng</h4>
+                            <p class="text-gray-700 mb-2">Cho x² - 5x + 6 = 0 có nghiệm x₁, x₂. Tính x₁² + x₂².</p>
+                            <div class="solution-box p-3 rounded">
+                                <p class="text-gray-700"><strong>Lời giải:</strong></p>
+                                <p class="text-gray-700">S = 5, P = 6</p>
+                                <p class="text-gray-700">x₁² + x₂² = S² - 2P = 25 - 12 = 13</p>
+                            </div>
+                        </div>
+
+                        <div class="bg-white p-4 rounded-lg mb-4">
+                            <h4 class="font-semibold text-cyan-600 mb-2">Ví dụ 2: Tìm hai số</h4>
+                            <p class="text-gray-700 mb-2">Tìm hai số biết tổng bằng 7, tích bằng 12.</p>
+                            <div class="solution-box p-3 rounded">
+                                <p class="text-gray-700"><strong>Lời giải:</strong></p>
+                                <p class="text-gray-700">Phương trình: X² - 7X + 12 = 0</p>
+                                <p class="text-gray-700">Giải ra: X = 3 hoặc X = 4</p>
+                                <p class="text-gray-700">Vậy hai số là 3 và 4</p>
+                            </div>
+                        </div>
+
+                        <div class="bg-white p-4 rounded-lg">
+                            <h4 class="font-semibold text-cyan-600 mb-2">Ví dụ 3: Nhẩm nghiệm</h4>
+                            <p class="text-gray-700 mb-2">Giải phương trình: 2x² - 5x + 3 = 0</p>
+                            <div class="solution-box p-3 rounded">
+                                <p class="text-gray-700"><strong>Lời giải:</strong></p>
+                                <p class="text-gray-700">a + b + c = 2 - 5 + 3 = 0</p>
+                                <p class="text-gray-700">Nhẩm được: x₁ = 1, x₂ = 3/2</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Calculator Guide -->
+                    <div class="solution-box p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold text-amber-700 mb-4">6. HƯỚNG DẪN BẤM MÁY TÍNH CASIO FX-580ES</h3>
+                        <div class="bg-white p-4 rounded-lg space-y-3">
+                            <p class="text-gray-700"><strong>Giải phương trình bậc hai:</strong></p>
+                            <ol class="list-decimal list-inside space-y-1 text-gray-700">
+                                <li>Bấm <kbd class="bg-gray-200 px-2 py-1 rounded">MODE</kbd> → <kbd class="bg-gray-200 px-2 py-1 rounded">5</kbd> (EQN)</li>
+                                <li>Chọn <kbd class="bg-gray-200 px-2 py-1 rounded">3</kbd> (anX²+bnX+c=0)</li>
+                                <li>Nhập hệ số a, b, c</li>
+                                <li>Bấm <kbd class="bg-gray-200 px-2 py-1 rounded">=</kbd> để xem nghiệm</li>
+                            </ol>
+                            <p class="text-gray-700 mt-3"><strong>Tính S và P:</strong></p>
+                            <ol class="list-decimal list-inside space-y-1 text-gray-700">
+                                <li>Tính S = -b/a</li>
+                                <li>Tính P = c/a</li>
+                                <li>Dùng CALC để tính biểu thức</li>
+                            </ol>
+                            <p class="text-gray-700 mt-3"><strong>Lưu ý:</strong> Kiểm tra lại nghiệm bằng cách thay vào phương trình</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- MCQ Section -->
+        <section id="mcq" class="section-content hidden">
+            <div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section">
+                <h2 class="text-2xl font-bold text-cyan-700 mb-6 flex items-center">
+                    <span class="mr-3">📝</span> 30 CÂU TRẮC NGHIỆM 4 LỰA CHỌN
+                </h2>
+                <div class="space-y-6" id="mcq-container"></div>
+            </div>
+        </section>
+
+        <!-- True/False Section -->
+        <section id="tf" class="section-content hidden">
+            <div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section">
+                <h2 class="text-2xl font-bold text-cyan-700 mb-6 flex items-center">
+                    <span class="mr-3">✅</span> 10 CÂU TRẮC NGHIỆM ĐÚNG/SAI
+                </h2>
+                <div class="space-y-6" id="tf-container"></div>
+            </div>
+        </section>
+
+        <!-- Recognition Section -->
+        <section id="recognition" class="section-content hidden">
+            <div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section">
+                <h2 class="text-2xl font-bold text-cyan-700 mb-6 flex items-center">
+                    <span class="mr-3">🔍</span> 10 BÀI TẬP NHẬN BIẾT
+                </h2>
+                <div class="space-y-6" id="recognition-container"></div>
+            </div>
+        </section>
+
+        <!-- Low Application Section -->
+        <section id="low" class="section-content hidden">
+            <div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section">
+                <h2 class="text-2xl font-bold text-cyan-700 mb-6 flex items-center">
+                    <span class="mr-3">📊</span> 10 BÀI TẬP VẬN DỤNG THẤP
+                </h2>
+                <div class="space-y-6" id="low-container"></div>
+            </div>
+        </section>
+
+        <!-- High Application Section -->
+        <section id="high" class="section-content hidden">
+            <div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section">
+                <h2 class="text-2xl font-bold text-cyan-700 mb-6 flex items-center">
+                    <span class="mr-3">🎯</span> 10 BÀI TẬP VẬN DỤNG CAO
+                </h2>
+                <div class="space-y-6" id="high-container"></div>
+            </div>
+        </section>
+
+        <!-- Real World Section -->
+        <section id="real" class="section-content hidden">
+            <div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section">
+                <h2 class="text-2xl font-bold text-cyan-700 mb-6 flex items-center">
+                    <span class="mr-3">🌍</span> 5 BÀI TẬP ỨNG DỤNG THỰC TẾ
+                </h2>
+                <div class="space-y-6" id="real-container"></div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="gradient-header text-white py-6 mt-8">
+        <div class="container mx-auto px-4 text-center">
+            <p class="text-sm">Bộ Tài Liệu Toán THCS - Đề Mục 92: Hệ Thức Vi-ét và Ứng Dụng</p>
+            <p class="text-sm opacity-80">© 2024 - Tài liệu ôn tập 60 ngày</p>
+        </div>
+    </footer>
+
+    <!-- Print Button -->
+    <button onclick="window.print()" class="no-print fixed bottom-6 right-6 btn-primary text-white px-6 py-3 rounded-full shadow-lg hover:shadow-xl transition-all">
+        🖨️ In Tài Liệu
+    </button>
+
+    <script>
+        // Navigation
+        function showSection(sectionId) {
+            document.querySelectorAll('.section-content').forEach(el => el.classList.add('hidden'));
+            document.getElementById(sectionId).classList.remove('hidden');
+            document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
+            event.target.classList.add('active');
+        }
+
+        // MCQ Data
+        const mcqData = [
+            { q: "Hệ thức Vi-ét cho tổng hai nghiệm là:", options: ["A. S = -b/a", "B. S = b/a", "C. S = -c/a", "D. S = c/a"], answer: "A", solution: "Theo Vi-ét: S = x₁ + x₂ = -b/a" },
+            { q: "Hệ thức Vi-ét cho tích hai nghiệm là:", options: ["A. P = -b/a", "B. P = b/a", "C. P = -c/a", "D. P = c/a"], answer: "D", solution: "Theo Vi-ét: P = x₁ · x₂ = c/a" },
+            { q: "Nếu a + b + c = 0 thì phương trình có nghiệm:", options: ["A. x = 1", "B. x = -1", "C. x = 0", "D. x = 2"], answer: "A", solution: "a+b+c=0 ⇒ x₁=1, x₂=c/a" },
+            { q: "Nếu a - b + c = 0 thì phương trình có nghiệm:", options: ["A. x = 1", "B. x = -1", "C. x = 0", "D. x = 2"], answer: "B", solution: "a-b+c=0 ⇒ x₁=-1, x₂=-c/a" },
+            { q: "Biểu thức x₁² + x₂² bằng:", options: ["A. S² - 2P", "B. S² + 2P", "C. S² - P", "D. S² + P"], answer: "A", solution: "x₁² + x₂² = (x₁+x₂)² - 2x₁x₂ = S² - 2P" },
+            { q: "Biểu thức 1/x₁ + 1/x₂ bằng:", options: ["A. S/P", "B. P/S", "C. S-P", "D. S+P"], answer: "A", solution: "1/x₁ + 1/x₂ = (x₁+x₂)/(x₁x₂) = S/P" },
+            { q: "Hai số có tổng 5, tích 6 là nghiệm của phương trình:", options: ["A. x² - 5x + 6 = 0", "B. x² + 5x + 6 = 0", "C. x² - 5x - 6 = 0", "D. x² + 5x - 6 = 0"], answer: "A", solution: "X² - SX + P = 0 ⇒ x² - 5x + 6 = 0" },
+            { q: "Phương trình x² - 7x + 12 = 0 có hai nghiệm là:", options: ["A. 3 và 4", "B. -3 và -4", "C. 2 và 6", "D. -2 và -6"], answer: "A", solution: "Nhẩm: 3+4=7, 3×4=12" },
+            { q: "Biểu thức (x₁-x₂)² bằng:", options: ["A. S² - 4P", "B. S² + 4P", "C. S² - 2P", "D. S² + 2P"], answer: "A", solution: "(x₁-x₂)² = (x₁+x₂)² - 4x₁x₂ = S² - 4P" },
+            { q: "Phương trình 2x² - 5x + 3 = 0 có a+b+c bằng:", options: ["A. 0", "B. 1", "C. 2", "D. 3"], answer: "A", solution: "2 - 5 + 3 = 0" },
+            { q: "Phương trình 3x² + 5x + 2 = 0 có a-b+c bằng:", options: ["A. 0", "B. 1", "C. 2", "D. 3"], answer: "A", solution: "3 - 5 + 2 = 0" },
+            { q: "Hai số có tổng 7, tích 10 là:", options: ["A. 2 và 5", "B. -2 và -5", "C. 1 và 10", "D. -1 và -10"], answer: "A", solution: "2+5=7, 2×5=10" },
+            { q: "Biểu thức x₁³ + x₂³ bằng:", options: ["A. S³ - 3SP", "B. S³ + 3SP", "C. S³ - 3P", "D. S³ + 3P"], answer: "A", solution: "x₁³ + x₂³ = S³ - 3SP" },
+            { q: "Điều kiện để tồn tại hai số thực có tổng S, tích P là:", options: ["A. S² - 4P ≥ 0", "B. S² - 4P > 0", "C. S² - 4P ≤ 0", "D. S² - 4P < 0"], answer: "A", solution: "Điều kiện: S² - 4P ≥ 0" },
+            { q: "Phương trình x² - 5x + 6 = 0 có tổng nghiệm bằng:", options: ["A. 5", "B. -5", "C. 6", "D. -6"], answer: "A", solution: "S = 5" },
+            { q: "Phương trình x² - 5x + 6 = 0 có tích nghiệm bằng:", options: ["A. 5", "B. -5", "C. 6", "D. -6"], answer: "C", solution: "P = 6" },
+            { q: "Biểu thức x₁²x₂ + x₁x₂² bằng:", options: ["A. PS", "B. P/S", "C. S/P", "D. S-P"], answer: "A", solution: "x₁²x₂ + x₁x₂² = x₁x₂(x₁+x₂) = PS" },
+            { q: "Phương trình 2x² - 7x + 3 = 0 có nghiệm:", options: ["A. 1/2 và 3", "B. -1/2 và -3", "C. 1/2 và -3", "D. -1/2 và 3"], answer: "A", solution: "Nhẩm hoặc giải ra được" },
+            { q: "Hai số có tổng -3, tích 2 là:", options: ["A. -1 và -2", "B. 1 và 2", "C. -1 và 2", "D. 1 và -2"], answer: "A", solution: "-1+(-2)=-3, (-1)×(-2)=2" },
+            { q: "Biểu thức (x₁+x₂)² - 4x₁x₂ bằng:", options: ["A. (x₁-x₂)²", "B. (x₁+x₂)²", "C. x₁² + x₂²", "D. x₁² - x₂²"], answer: "A", solution: "(x₁+x₂)² - 4x₁x₂ = (x₁-x₂)²" },
+            { q: "Phương trình x² + 4x + 4 = 0 có nghiệm kép:", options: ["A. x = 2", "B. x = -2", "C. x = 4", "D. x = -4"], answer: "B", solution: "(x+2)² = 0 ⇒ x = -2" },
+            { q: "Hai số có tổng 10, tích 21 là:", options: ["A. 3 và 7", "B. -3 và -7", "C. 1 và 21", "D. -1 và -21"], answer: "A", solution: "3+7=10, 3×7=21" },
+            { q: "Biểu thức 1/x₁² + 1/x₂² bằng:", options: ["A. (S²-2P)/P²", "B. (S²+2P)/P²", "C. (S²-2P)/P", "D. (S²+2P)/P"], answer: "A", solution: "1/x₁² + 1/x₂² = (x₁²+x₂²)/(x₁x₂)² = (S²-2P)/P²" },
+            { q: "Phương trình 3x² - 8x + 5 = 0 có a+b+c bằng:", options: ["A. 0", "B. 1", "C. 2", "D. 3"], answer: "A", solution: "3 - 8 + 5 = 0" },
+            { q: "Hai số có tổng 0, tích -4 là:", options: ["A. 2 và -2", "B. -2 và -2", "C. 2 và 2", "D. 4 và -1"], answer: "A", solution: "2+(-2)=0, 2×(-2)=-4" },
+            { q: "Biểu thức x₁/x₂ + x₂/x₁ bằng:", options: ["A. (S²-2P)/P", "B. (S²+2P)/P", "C. (S²-2P)/P²", "D. (S²+2P)/P²"], answer: "A", solution: "x₁/x₂ + x₂/x₁ = (x₁²+x₂²)/(x₁x₂) = (S²-2P)/P" },
+            { q: "Phương trình x² - 6x + 9 = 0 có nghiệm:", options: ["A. x = 3", "B. x = -3", "C. x = 9", "D. x = -9"], answer: "A", solution: "(x-3)² = 0 ⇒ x = 3" },
+            { q: "Hai số có tổng 8, tích 15 là:", options: ["A. 3 và 5", "B. -3 và -5", "C. 1 và 15", "D. -1 và -15"], answer: "A", solution: "3+5=8, 3×5=15" },
+            { q: "Biểu thức |x₁ - x₂| bằng:", options: ["A. √(S²-4P)", "B. √(S²+4P)", "C. S²-4P", "D. S²+4P"], answer: "A", solution: "|x₁ - x₂| = √[(x₁-x₂)²] = √(S²-4P)" },
+            { q: "Phương trình 4x² - 12x + 9 = 0 có nghiệm kép:", options: ["A. x = 3/2", "B. x = -3/2", "C. x = 9/4", "D. x = -9/4"], answer: "A", solution: "(2x-3)² = 0 ⇒ x = 3/2" }
+        ];
+
+        // True/False Data
+        const tfData = [
+            { q: "Về hệ thức Vi-ét:", statements: [
+                { text: "S = x₁ + x₂ = -b/a", answer: true },
+                { text: "P = x₁ · x₂ = c/a", answer: true },
+                { text: "x₁² + x₂² = S² - 2P", answer: true },
+                { text: "1/x₁ + 1/x₂ = P/S", answer: false }
+            ]},
+            { q: "Về nghiệm đặc biệt:", statements: [
+                { text: "a+b+c=0 ⇒ x₁=1", answer: true },
+                { text: "a-b+c=0 ⇒ x₁=-1", answer: true },
+                { text: "a+b+c=0 ⇒ x₂=c/a", answer: true },
+                { text: "a-b+c=0 ⇒ x₂=-c/a", answer: true }
+            ]},
+            { q: "Về biểu thức đối xứng:", statements: [
+                { text: "x₁³ + x₂³ = S³ - 3SP", answer: true },
+                { text: "(x₁-x₂)² = S² - 4P", answer: true },
+                { text: "x₁²x₂ + x₁x₂² = PS", answer: true },
+                { text: "x₁/x₂ + x₂/x₁ = (S²-2P)/P", answer: true }
+            ]},
+            { q: "Về điều kiện:", statements: [
+                { text: "S² - 4P ≥ 0 để tồn tại hai số thực", answer: true },
+                { text: "S² - 4P > 0 để có 2 nghiệm phân biệt", answer: true },
+                { text: "S² - 4P = 0 để có nghiệm kép", answer: true },
+                { text: "S² - 4P < 0 để có nghiệm thực", answer: false }
+            ]},
+            { q: "Về tìm hai số:", statements: [
+                { text: "Lập phương trình X² - SX + P = 0", answer: true },
+                { text: "Hai nghiệm là hai số cần tìm", answer: true },
+                { text: "Cần điều kiện S² - 4P ≥ 0", answer: true },
+                { text: "Luôn tìm được hai số", answer: false }
+            ]},
+            { q: "Về nhẩm nghiệm:", statements: [
+                { text: "a+b+c=0 nhẩm được x₁=1", answer: true },
+                { text: "a-b+c=0 nhẩm được x₁=-1", answer: true },
+                { text: "Nhẩm nhanh hơn tính Δ", answer: true },
+                { text: "Chỉ áp dụng khi a=1", answer: false }
+            ]},
+            { q: "Về máy tính:", statements: [
+                { text: "MODE 5 để giải phương trình", answer: true },
+                { text: "Có thể tính S và P", answer: true },
+                { text: "Kết quả luôn chính xác", answer: false },
+                { text: "Có thể kiểm tra nghiệm", answer: true }
+            ]},
+            { q: "Về ứng dụng:", statements: [
+                { text: "Tính biểu thức đối xứng", answer: true },
+                { text: "Tìm hai số biết tổng và tích", answer: true },
+                { text: "Nhẩm nghiệm phương trình", answer: true },
+                { text: "Chỉ dùng trong toán học", answer: false }
+            ]},
+            { q: "Về dấu nghiệm:", statements: [
+                { text: "P < 0 ⇒ 2 nghiệm trái dấu", answer: true },
+                { text: "P > 0, S > 0 ⇒ 2 nghiệm dương", answer: true },
+                { text: "P > 0, S < 0 ⇒ 2 nghiệm âm", answer: true },
+                { text: "S = 0 ⇒ 2 nghiệm đối nhau", answer: true }
+            ]},
+            { q: "Về tính toán:", statements: [
+                { text: "x₁² + x₂² = (x₁+x₂)² - 2x₁x₂", answer: true },
+                { text: "x₁³ + x₂³ = (x₁+x₂)³ - 3x₁x₂(x₁+x₂)", answer: true },
+                { text: "1/x₁ + 1/x₂ = (x₁+x₂)/(x₁x₂)", answer: true },
+                { text: "|x₁ - x₂| = √(S²-4P)", answer: true }
+            ]}
+        ];
+
+        // Recognition Data
+        const recognitionData = [
+            { q: "Viết hệ thức Vi-ét về tổng.", answer: "S = x₁ + x₂ = -b/a", solution: "Tổng nghiệm" },
+            { q: "Viết hệ thức Vi-ét về tích.", answer: "P = x₁ · x₂ = c/a", solution: "Tích nghiệm" },
+            { q: "Viết công thức x₁² + x₂² theo S, P.", answer: "x₁² + x₂² = S² - 2P", solution: "Biểu thức đối xứng" },
+            { q: "Viết công thức 1/x₁ + 1/x₂ theo S, P.", answer: "1/x₁ + 1/x₂ = S/P", solution: "Tổng nghịch đảo" },
+            { q: "Viết điều kiện để tồn tại hai số thực.", answer: "S² - 4P ≥ 0", solution: "Điều kiện tồn tại" },
+            { q: "Viết nghiệm khi a+b+c=0.", answer: "x₁=1, x₂=c/a", solution: "Nhẩm nghiệm" },
+            { q: "Viết nghiệm khi a-b+c=0.", answer: "x₁=-1, x₂=-c/a", solution: "Nhẩm nghiệm" },
+            { q: "Viết phương trình tìm hai số biết S, P.", answer: "X² - SX + P = 0", solution: "Phương trình bậc hai" },
+            { q: "Viết công thức (x₁-x₂)² theo S, P.", answer: "(x₁-x₂)² = S² - 4P", solution: "Hiệu bình phương" },
+            { q: "Viết công thức x₁³ + x₂³ theo S, P.", answer: "x₁³ + x₂³ = S³ - 3SP", solution: "Tổng lập phương" }
+        ];
+
+        // Low Application Data
+        const lowData = [
+            { q: "Cho x² - 5x + 6 = 0. Tính S và P.", answer: "S = 5, P = 6", solution: "S = 5, P = 6" },
+            { q: "Cho x² - 7x + 12 = 0. Tính x₁ + x₂.", answer: "7", solution: "S = 7" },
+            { q: "Cho x² - 5x + 6 = 0. Tính x₁ · x₂.", answer: "6", solution: "P = 6" },
+            { q: "Tìm hai số có tổng 5, tích 6.", answer: "2 và 3", solution: "X² - 5X + 6 = 0 ⇒ X=2,3" },
+            { q: "Tìm hai số có tổng 7, tích 12.", answer: "3 và 4", solution: "X² - 7X + 12 = 0 ⇒ X=3,4" },
+            { q: "Cho x² - 5x + 6 = 0. Tính x₁² + x₂².", answer: "13", solution: "S² - 2P = 25 - 12 = 13" },
+            { q: "Giải phương trình: 2x² - 5x + 3 = 0 bằng cách nhẩm.", answer: "x = 1 hoặc x = 3/2", solution: "a+b+c=0 ⇒ x₁=1, x₂=3/2" },
+            { q: "Giải phương trình: 3x² + 5x + 2 = 0 bằng cách nhẩm.", answer: "x = -1 hoặc x = -2/3", solution: "a-b+c=0 ⇒ x₁=-1, x₂=-2/3" },
+            { q: "Cho x² - 6x + 8 = 0. Tính 1/x₁ + 1/x₂.", answer: "3/4", solution: "S/P = 6/8 = 3/4" },
+            { q: "Tìm hai số có tổng 10, tích 21.", answer: "3 và 7", solution: "X² - 10X + 21 = 0 ⇒ X=3,7" }
+        ];
+
+        // High Application Data
+        const highData = [
+            { q: "Cho phương trình x² - 2(m+1)x + m² = 0. Tìm m để x₁² + x₂² = 10.", answer: "m = 1 hoặc m = -3", solution: "**Lời giải chi tiết:**\n\n1. Điều kiện có nghiệm:\n   Δ' = (m+1)² - m² ≥ 0\n   2m + 1 ≥ 0 ⇒ m ≥ -1/2\n\n2. Theo Vi-ét:\n   S = 2(m+1), P = m²\n\n3. Tính:\n   x₁² + x₂² = S² - 2P = 10\n   4(m+1)² - 2m² = 10\n   2m² + 8m - 6 = 0\n   m² + 4m - 3 = 0\n\n4. Giải:\n   m = -2 ± √7\n   Kết hợp: m = -2 + √7\n\n**Kết luận: m = -2 + √7**" },
+            { q: "Cho phương trình x² - mx + 1 = 0. Tìm m để 1/x₁ + 1/x₂ = 3.", answer: "m = 3", solution: "**Lời giải chi tiết:**\n\n1. Điều kiện:\n   Δ = m² - 4 ≥ 0 ⇒ |m| ≥ 2\n\n2. Theo đề:\n   1/x₁ + 1/x₂ = 3\n   S/P = 3\n   m/1 = 3\n   m = 3\n\n3. Kiểm tra:\n   |3| ≥ 2 (thỏa)\n\n**Kết luận: m = 3**" },
+            { q: "Cho phương trình x² - 2(m-1)x + m² - 3m = 0. Tìm m để có 2 nghiệm dương.", answer: "m > 3", solution: "**Lời giải chi tiết:**\n\n1. Điều kiện có nghiệm:\n   Δ' = (m-1)² - (m²-3m) ≥ 0\n   m + 1 ≥ 0 ⇒ m ≥ -1\n\n2. Điều kiện 2 nghiệm dương:\n   S > 0: 2(m-1) > 0 ⇒ m > 1\n   P > 0: m² - 3m > 0 ⇒ m > 3\n\n3. Kết hợp:\n   m > 3\n\n**Kết luận: m > 3**" },
+            { q: "Tìm m để phương trình x² + 2(m+1)x + m² + 2 = 0 có nghiệm kép.", answer: "m = 1/2", solution: "**Lời giải chi tiết:**\n\n1. Tính Δ':\n   Δ' = (m+1)² - (m²+2)\n   Δ' = 2m - 1\n\n2. Điều kiện:\n   Δ' = 0\n   2m - 1 = 0\n   m = 1/2\n\n**Kết luận: m = 1/2**" },
+            { q: "Cho phương trình x² - mx + m - 1 = 0. Chứng minh luôn có nghiệm.", answer: "ĐPCM", solution: "**Lời giải chi tiết:**\n\n1. Tính Δ:\n   Δ = m² - 4(m-1)\n   Δ = m² - 4m + 4\n   Δ = (m-2)²\n\n2. Vì (m-2)² ≥ 0 với mọi m\n   Nên Δ ≥ 0 với mọi m\n\n**Kết luận: ĐPCM**" },
+            { q: "Tìm m để x² - 2x + m = 0 có 2 nghiệm thỏa x₁ - x₂ = 4.", answer: "m = -3", solution: "**Lời giải chi tiết:**\n\n1. Điều kiện:\n   Δ = 4 - 4m ≥ 0 ⇒ m ≤ 1\n\n2. Theo đề:\n   (x₁-x₂)² = 16\n   S² - 4P = 16\n   4 - 4m = 16\n   m = -3\n\n3. Kiểm tra:\n   -3 ≤ 1 (thỏa)\n\n**Kết luận: m = -3**" },
+            { q: "Cho phương trình x² - 2(m+1)x + m² + 2m = 0. Tìm m để x₁² + x₂² = 10.", answer: "m = 1 hoặc m = -3", solution: "**Lời giải chi tiết:**\n\n1. Tính Δ':\n   Δ' = 1\n\n2. Theo Vi-ét:\n   S = 2(m+1), P = m² + 2m\n\n3. Tính:\n   S² - 2P = 10\n   2m² + 4m - 6 = 0\n   m = 1 hoặc m = -3\n\n**Kết luận: m = 1 hoặc m = -3**" },
+            { q: "Tìm hai số biết tổng bằng 11, tích bằng 30.", answer: "5 và 6", solution: "**Lời giải chi tiết:**\n\n1. Phương trình:\n   X² - 11X + 30 = 0\n\n2. Giải:\n   Δ = 121 - 120 = 1\n   X = (11 ± 1)/2\n   X = 5 hoặc X = 6\n\n**Kết luận: 5 và 6**" },
+            { q: "Cho phương trình x² - 3x + 2 = 0. Tính x₁³ + x₂³.", answer: "9", solution: "**Lời giải chi tiết:**\n\n1. Theo Vi-ét:\n   S = 3, P = 2\n\n2. Tính:\n   x₁³ + x₂³ = S³ - 3SP\n   = 27 - 3×3×2\n   = 27 - 18 = 9\n\n**Kết luận: 9**" },
+            { q: "Chứng minh rằng nếu x₁, x₂ là nghiệm của x² - px + q = 0 thì x₁², x₂² là nghiệm của X² - (p²-2q)X + q² = 0.", answer: "ĐPCM", solution: "**Lời giải chi tiết:**\n\n1. Theo Vi-ét:\n   x₁ + x₂ = p, x₁x₂ = q\n\n2. Tính tổng x₁² + x₂²:\n   x₁² + x₂² = (x₁+x₂)² - 2x₁x₂\n   = p² - 2q\n\n3. Tính tích x₁² · x₂²:\n   x₁² · x₂² = (x₁x₂)² = q²\n\n4. Vậy x₁², x₂² là nghiệm của:\n   X² - (p²-2q)X + q² = 0\n\n**Kết luận: ĐPCM**" }
+        ];
+
+        // Real World Data
+        const realData = [
+            { q: "Một mảnh đất hình chữ nhật có chu vi 40m, diện tích 96m². Tìm kích thước.", answer: "12m và 8m", solution: "**Lời giải chi tiết:**\n\n1. Gọi chiều dài và rộng là x, y\n   x + y = 20 (nửa chu vi)\n   xy = 96\n\n2. Phương trình:\n   X² - 20X + 96 = 0\n\n3. Giải:\n   Δ = 400 - 384 = 16\n   X = (20 ± 4)/2\n   X = 12 hoặc X = 8\n\n4. Ứng dụng:\n   - Tính toán đất đai\n   - Quy hoạch sử dụng đất\n\n**Kết luận: 12m và 8m**" },
+            { q: "Tìm hai số biết tổng bằng 15, tích bằng 56.", answer: "7 và 8", solution: "**Lời giải chi tiết:**\n\n1. Phương trình:\n   X² - 15X + 56 = 0\n\n2. Giải:\n   Δ = 225 - 224 = 1\n   X = (15 ± 1)/2\n   X = 7 hoặc X = 8\n\n3. Ứng dụng:\n   - Giải bài toán tìm số\n   - Tính toán trong thực tế\n\n**Kết luận: 7 và 8**" },
+            { q: "Một công ty sản xuất có lợi nhuận P = -x² + 10x - 16. Tìm số sản phẩm để lợi nhuận bằng 8 triệu.", answer: "x = 2 hoặc x = 8", solution: "**Lời giải chi tiết:**\n\n1. Phương trình:\n   -x² + 10x - 16 = 8\n   x² - 10x + 24 = 0\n\n2. Giải:\n   Δ = 100 - 96 = 4\n   x = (10 ± 2)/2\n   x = 4 ± 1\n   x = 2 hoặc x = 8\n\n3. Ứng dụng:\n   - Lập kế hoạch sản xuất\n   - Tối ưu hóa lợi nhuận\n\n**Kết luận: 2 hoặc 8 sản phẩm**" },
+            { q: "Tìm hai số biết tổng bằng 10, tích bằng 21.", answer: "3 và 7", solution: "**Lời giải chi tiết:**\n\n1. Phương trình:\n   X² - 10X + 21 = 0\n\n2. Giải:\n   Δ = 100 - 84 = 16\n   X = (10 ± 4)/2\n   X = 3 hoặc X = 7\n\n3. Ứng dụng:\n   - Giải bài toán tìm số\n   - Tính toán trong thực tế\n\n**Kết luận: 3 và 7**" },
+            { q: "Một hình chữ nhật có chu vi 28m, diện tích 48m². Tìm kích thước.", answer: "8m và 6m", solution: "**Lời giải chi tiết:**\n\n1. Gọi chiều dài và rộng là x, y\n   x + y = 14 (nửa chu vi)\n   xy = 48\n\n2. Phương trình:\n   X² - 14X + 48 = 0\n\n3. Giải:\n   Δ = 196 - 192 = 4\n   X = (14 ± 2)/2\n   X = 6 hoặc X = 8\n\n4. Ứng dụng:\n   - Tính toán đất đai\n   - Thiết kế xây dựng\n\n**Kết luận: 8m và 6m**" }
+        ];
+
+        // Render MCQ
+        function renderMCQ() {
+            const container = document.getElementById('mcq-container');
+            mcqData.forEach((item, index) => {
+                const div = document.createElement('div');
+                div.className = 'border-l-4 border-cyan-400 pl-4 py-3 bg-gray-50 rounded-r-lg';
+                div.innerHTML = `
+                    <p class="font-semibold text-gray-800 mb-2"><strong>Câu ${index + 1}:</strong> ${item.q}</p>
+                    <div class="grid grid-cols-2 gap-2 mb-3 text-sm">
+                        ${item.options.map(opt => `<span class="text-gray-700">${opt}</span>`).join('')}
+                    </div>
+                    <button onclick="toggleAnswer('mcq-${index}')" class="text-cyan-600 text-sm hover:underline">👁️ Xem đáp án</button>
+                    <div id="mcq-${index}" class="answer-box mt-2 p-3 rounded hidden">
+                        <p class="font-semibold text-green-700">Đáp án: ${item.answer}</p>
+                        <p class="text-gray-700 text-sm mt-1">${item.solution}</p>
+                    </div>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        // Render True/False
+        function renderTF() {
+            const container = document.getElementById('tf-container');
+            tfData.forEach((item, index) => {
+                const div = document.createElement('div');
+                div.className = 'border-l-4 border-amber-400 pl-4 py-3 bg-gray-50 rounded-r-lg';
+                div.innerHTML = `
+                    <p class="font-semibold text-gray-800 mb-3"><strong>Câu ${index + 1}:</strong> ${item.q}</p>
+                    <div class="space-y-2">
+                        ${item.statements.map((s, i) => `
+                            <div class="flex items-center justify-between bg-white p-2 rounded">
+                                <span class="text-gray-700 text-sm">${String.fromCharCode(65+i)}. ${s.text}</span>
+                                <span class="text-xs px-2 py-1 rounded ${s.answer ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}">${s.answer ? 'Đúng' : 'Sai'}</span>
+                            </div>
+                        `).join('')}
+                    </div>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        // Render Recognition
+        function renderRecognition() {
+            const container = document.getElementById('recognition-container');
+            recognitionData.forEach((item, index) => {
+                const div = document.createElement('div');
+                div.className = 'border-l-4 border-cyan-400 pl-4 py-3 bg-gray-50 rounded-r-lg';
+                div.innerHTML = `
+                    <p class="font-semibold text-gray-800 mb-2"><strong>Bài ${index + 1}:</strong> ${item.q}</p>
+                    <button onclick="toggleAnswer('rec-${index}')" class="text-cyan-600 text-sm hover:underline">👁️ Xem đáp án</button>
+                    <div id="rec-${index}" class="answer-box mt-2 p-3 rounded hidden">
+                        <p class="font-semibold text-purple-700">Đáp án: ${item.answer}</p>
+                        <p class="text-gray-700 text-sm mt-1">${item.solution}</p>
+                    </div>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        // Render Low Application
+        function renderLow() {
+            const container = document.getElementById('low-container');
+            lowData.forEach((item, index) => {
+                const div = document.createElement('div');
+                div.className = 'border-l-4 border-green-400 pl-4 py-3 bg-gray-50 rounded-r-lg';
+                div.innerHTML = `
+                    <p class="font-semibold text-gray-800 mb-2"><strong>Bài ${index + 1}:</strong> ${item.q}</p>
+                    <button onclick="toggleAnswer('low-${index}')" class="text-green-600 text-sm hover:underline">👁️ Xem đáp án</button>
+                    <div id="low-${index}" class="solution-box mt-2 p-3 rounded hidden">
+                        <p class="font-semibold text-amber-700">Đáp án: ${item.answer}</p>
+                        <p class="text-gray-700 text-sm mt-1 whitespace-pre-line">${item.solution}</p>
+                    </div>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        // Render High Application
+        function renderHigh() {
+            const container = document.getElementById('high-container');
+            highData.forEach((item, index) => {
+                const div = document.createElement('div');
+                div.className = 'border-l-4 border-red-400 pl-4 py-3 bg-gray-50 rounded-r-lg';
+                div.innerHTML = `
+                    <p class="font-semibold text-gray-800 mb-2"><strong>Bài ${index + 1}:</strong> ${item.q}</p>
+                    <button onclick="toggleAnswer('high-${index}')" class="text-red-600 text-sm hover:underline">👁️ Xem lời giải chi tiết</button>
+                    <div id="high-${index}" class="solution-box mt-2 p-4 rounded hidden">
+                        <p class="font-semibold text-amber-700 mb-2">Đáp án: ${item.answer}</p>
+                        <div class="text-gray-700 text-sm whitespace-pre-line">${item.solution}</div>
+                    </div>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        // Render Real World
+        function renderReal() {
+            const container = document.getElementById('real-container');
+            realData.forEach((item, index) => {
+                const div = document.createElement('div');
+                div.className = 'border-l-4 border-indigo-400 pl-4 py-3 bg-gray-50 rounded-r-lg';
+                div.innerHTML = `
+                    <p class="font-semibold text-gray-800 mb-2"><strong>Bài ${index + 1}:</strong> ${item.q}</p>
+                    <button onclick="toggleAnswer('real-${index}')" class="text-indigo-600 text-sm hover:underline">👁️ Xem lời giải chi tiết</button>
+                    <div id="real-${index}" class="solution-box mt-2 p-4 rounded hidden">
+                        <p class="font-semibold text-amber-700 mb-2">Đáp án: ${item.answer}</p>
+                        <div class="text-gray-700 text-sm whitespace-pre-line">${item.solution}</div>
+                    </div>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        // Toggle Answer
+        function toggleAnswer(id) {
+            const el = document.getElementById(id);
+            el.classList.toggle('hidden');
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            renderMCQ();
+            renderTF();
+            renderRecognition();
+            renderLow();
+            renderHigh();
+            renderReal();
+        });
+    </script>
+</body>
+</html>
+```
