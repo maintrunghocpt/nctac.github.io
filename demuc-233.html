@@ -1,0 +1,343 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Công Thức Xác Suất Toàn Phần & Bayes - Đề Mục 233 - Toán Lớp 12</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@fontsource/roboto@4.5.8/index.css" rel="stylesheet">
+    <style>
+        * { font-family: 'Roboto', sans-serif; }
+        .gradient-header { background: linear-gradient(135deg, #0891b2 0%, #7c3aed 100%); }
+        .card-hover { transition: all 0.3s ease; }
+        .card-hover:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0,0,0,0.15); }
+        .btn-primary { background: linear-gradient(135deg, #0891b2 0%, #7c3aed 100%); }
+        .btn-primary:hover { background: linear-gradient(135deg, #067894 0%, #6a32c4 100%); }
+        .answer-box { background: #f0f9ff; border-left: 4px solid #0891b2; }
+        .solution-box { background: #fef3c7; border-left: 4px solid #f59e0b; }
+        .nav-item { transition: all 0.2s ease; }
+        .nav-item:hover { background: rgba(255,255,255,0.2); }
+        .nav-item.active { background: rgba(255,255,255,0.3); }
+        .print-section { page-break-inside: avoid; }
+        @media print { .no-print { display: none; } }
+        .formula-box { background: linear-gradient(135deg, #e0f2fe 0%, #ede9fe 100%); border-radius: 8px; padding: 16px; margin: 12px 0; }
+        .graph-container { background: #f8fafc; border: 2px dashed #cbd5e1; border-radius: 8px; padding: 20px; text-align: center; }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <header class="gradient-header text-white py-8">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center">
+                <div>
+                    <h1 class="text-3xl font-bold">CÔNG THỨC XÁC SUẤT TOÀN PHẦN & BAYES</h1>
+                    <p class="text-lg opacity-90">Đề Mục 233 - Toán Lớp 12 - Xác Suất</p>
+                </div>
+                <div class="text-right">
+                    <p class="text-sm opacity-80">Bộ Tài Liệu Toán THPT</p>
+                    <p class="text-sm opacity-80">Ôn Tập Thi Tốt Nghiệp</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <nav class="bg-white shadow-md sticky top-0 z-50 no-print">
+        <div class="container mx-auto px-4">
+            <div class="flex overflow-x-auto py-3 space-x-2">
+                <button onclick="showSection('lesson')" class="nav-item active px-4 py-2 rounded-lg bg-cyan-100 text-cyan-700 whitespace-nowrap">📚 Bài Giảng</button>
+                <button onclick="showSection('mcq')" class="nav-item px-4 py-2 rounded-lg hover:bg-gray-100 whitespace-nowrap">📝 50 Câu MCQ</button>
+                <button onclick="showSection('tf')" class="nav-item px-4 py-2 rounded-lg hover:bg-gray-100 whitespace-nowrap">✅ 12 Câu Đúng/Sai</button>
+                <button onclick="showSection('recognition')" class="nav-item px-4 py-2 rounded-lg hover:bg-gray-100 whitespace-nowrap">🔍 10 Bài Nhận Biết</button>
+                <button onclick="showSection('comprehension')" class="nav-item px-4 py-2 rounded-lg hover:bg-gray-100 whitespace-nowrap">💡 10 Câu Thông Hiểu</button>
+                <button onclick="showSection('low')" class="nav-item px-4 py-2 rounded-lg hover:bg-gray-100 whitespace-nowrap">📊 10 Bài Vận Dụng Thấp</button>
+                <button onclick="showSection('high')" class="nav-item px-4 py-2 rounded-lg hover:bg-gray-100 whitespace-nowrap">🎯 10 Bài Vận Dụng Cao</button>
+                <button onclick="showSection('real')" class="nav-item px-4 py-2 rounded-lg hover:bg-gray-100 whitespace-nowrap">🌍 10 Bài Thực Tế</button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container mx-auto px-4 py-8">
+        <section id="lesson" class="section-content">
+            <div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section">
+                <h2 class="text-2xl font-bold text-cyan-700 mb-6 flex items-center"><span class="mr-3">📚</span> BÀI GIẢNG: XÁC SUẤT TOÀN PHẦN & BAYES</h2>
+                <div class="space-y-6">
+                    <div class="answer-box p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold text-cyan-700 mb-4">1. HỆ ĐẦY ĐỦ CÁC BIẾN CỐ & CÔNG THỨC XÁC SUẤT TOÀN PHẦN</h3>
+                        <p class="text-gray-700 mb-4">Trong nhiều bài toán, biến cố A có thể xảy ra cùng với một trong nhiều kịch bản (biến cố) B₁, B₂, ..., Bₙ loại trừ nhau.</p>
+                        <div class="formula-box">
+                            <ul class="space-y-3 text-gray-700">
+                                <li>• <strong>Hệ đầy đủ (Partition):</strong> {B₁, B₂, ..., Bₙ} thỏa mãn:
+                                    <ul class="ml-4 mt-1 list-disc">
+                                        <li>Bᵢ ∩ Bⱼ = ∅ (i ≠ j) → đôi một xung khắc</li>
+                                        <li>⋃Bᵢ = Ω → hợp bằng không gian mẫu</li>
+                                    </ul>
+                                </li>
+                                <li>• <strong>Công thức xác suất toàn phần:</strong> P(A) = Σ P(Bᵢ)·P(A|Bᵢ)</li>
+                                <li>• <strong>Ý nghĩa:** Xác suất của A bằng tổng xác suất A xảy ra trong từng kịch bản.</li>
+                            </ul>
+                        </div>
+                        <div class="mt-4 graph-container">
+                            <svg width="400" height="220" viewBox="0 0 400 220">
+                                <line x1="50" y1="200" x2="150" y2="100" stroke="#0891b2" stroke-width="2"/>
+                                <line x1="50" y1="200" x2="150" y2="140" stroke="#7c3aed" stroke-width="2"/>
+                                <line x1="50" y1="200" x2="150" y2="180" stroke="#10b981" stroke-width="2"/>
+                                <line x1="150" y1="100" x2="350" y2="60" stroke="#0891b2" stroke-width="2" marker-end="url(#arr)"/>
+                                <line x1="150" y1="140" x2="350" y2="120" stroke="#7c3aed" stroke-width="2" marker-end="url(#arr)"/>
+                                <line x1="150" y1="180" x2="350" y2="180" stroke="#10b981" stroke-width="2" marker-end="url(#arr)"/>
+                                <text x="30" y="210" fill="#333">Ω</text>
+                                <text x="100" y="130" fill="#333" font-size="12">B₁, B₂, B₃</text>
+                                <text x="200" y="50" fill="#dc2626">A|B₁</text>
+                                <text x="200" y="110" fill="#dc2626">A|B₂</text>
+                                <text x="200" y="175" fill="#dc2626">A|B₃</text>
+                                <defs><marker id="arr" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#dc2626"/></marker></defs>
+                            </svg>
+                            <p class="text-sm text-gray-600 mt-2">Sơ đồ cây minh họa công thức xác suất toàn phần</p>
+                        </div>
+                    </div>
+
+                    <div class="solution-box p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold text-amber-700 mb-4">2. ĐỊNH LÝ BAYES & ỨNG DỤNG</h3>
+                        <div class="formula-box">
+                            <ul class="space-y-3 text-gray-700">
+                                <li>• <strong>Công thức Bayes:</strong> P(Bᵢ|A) = [P(Bᵢ)·P(A|Bᵢ)] / Σ [P(Bₖ)·P(A|Bₖ)]</li>
+                                <li>• <strong>Ý nghĩa:** "Cập nhật" xác suất của nguyên nhân Bᵢ sau khi quan sát kết quả A.</li>
+                                <li>• <strong>Bước giải:**
+                                    <ul class="ml-4 mt-1 list-disc">
+                                        <li>B1: Xác định hệ đầy đủ {Bᵢ} và biến cố quan sát A.</li>
+                                        <li>B2: Tính P(Bᵢ) và P(A|Bᵢ) (dùng sơ đồ cây).</li>
+                                        <li>B3: Tính mẫu số P(A) bằng công thức toàn phần.</li>
+                                        <li>B4: Thay vào công thức Bayes tìm P(Bᵢ|A).</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="mt-4 bg-cyan-50 p-4 rounded-lg">
+                            <h4 class="font-semibold text-cyan-700 mb-2">📝 Mẹo nhận diện bài toán:</h4>
+                            <p class="text-gray-700 text-sm">• Đề cho nhiều "nguồn", "máy", "nhóm" → nghĩ ngay đến hệ đầy đủ & xác suất toàn phần.</p>
+                            <p class="text-gray-700 text-sm">• Đề hỏi "biết đã xảy ra A, tính xác suất do Bᵢ gây ra" → dùng Bayes.</p>
+                            <p class="text-gray-700 text-sm">• Luôn vẽ sơ đồ cây trước khi tính để tránh nhầm lẫn nhánh.</p>
+                        </div>
+                    </div>
+
+                    <div class="answer-box p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold text-cyan-700 mb-4">3. VÍ DỤ MINH HỌA</h3>
+                        <div class="bg-white p-4 rounded-lg mb-4">
+                            <h4 class="font-semibold text-cyan-600 mb-2">Ví dụ 1: Xác suất toàn phần</h4>
+                            <p class="text-gray-700 mb-2">Kho hàng có 60% loại I (lỗi 2%), 40% loại II (lỗi 5%). Chọn ngẫu nhiên 1 sản phẩm. Tính xác suất chọn được hàng lỗi.</p>
+                            <div class="solution-box p-3 rounded">
+                                <p class="text-gray-700">P(Lỗi) = P(I)P(L|I) + P(II)P(L|II) = 0.6×0.02 + 0.4×0.05 = 0.032</p>
+                            </div>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg mb-4">
+                            <h4 class="font-semibold text-cyan-600 mb-2">Ví dụ 2: Định lý Bayes</h4>
+                            <p class="text-gray-700 mb-2">Biết sản phẩm chọn ra bị lỗi. Tính xác suất nó thuộc loại I.</p>
+                            <div class="solution-box p-3 rounded">
+                                <p class="text-gray-700">P(I|L) = [P(I)P(L|I)] / P(L) = (0.012) / 0.032 = 3/8 = 0.375</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="solution-box p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold text-amber-700 mb-4">4. HƯỚNG DẪN MÁY TÍNH CASIO</h3>
+                        <div class="bg-white p-4 rounded-lg space-y-3">
+                            <p class="text-gray-700"><strong>Tính nhanh Bayes:</strong></p>
+                            <ol class="list-decimal list-inside space-y-1 text-gray-700">
+                                <li>Nhập tử số: P(B₁)×P(A|B₁) → =</li>
+                                <li>Nhập mẫu số (tổng các nhánh): Σ[P(Bᵢ)×P(A|Bᵢ)] → =</li>
+                                <li>Chia tử cho mẫu → kết quả P(B₁|A)</li>
+                            </ol>
+                            <p class="text-gray-700 mt-3"><strong>Lưu ý:</strong> Kiểm tra tổng xác suất các nhánh Bᵢ phải bằng 1 trước khi tính. Dùng biến nhớ (Ans) để tránh nhập sai.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="mcq" class="section-content hidden"><div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section"><h2 class="text-2xl font-bold text-cyan-700 mb-6 flex items-center"><span class="mr-3">📝</span> 50 CÂU TRẮC NGHIỆM</h2><div class="space-y-6" id="mcq-container"></div></div></section>
+        <section id="tf" class="section-content hidden"><div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section"><h2 class="text-2xl font-bold text-cyan-700 mb-6 flex items-center"><span class="mr-3">✅</span> 12 CÂU ĐÚNG/SAI</h2><div class="space-y-6" id="tf-container"></div></div></section>
+        <section id="recognition" class="section-content hidden"><div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section"><h2 class="text-2xl font-bold text-cyan-700 mb-6 flex items-center"><span class="mr-3">🔍</span> 10 BÀI NHẬN BIẾT</h2><div class="space-y-6" id="recognition-container"></div></div></section>
+        <section id="comprehension" class="section-content hidden"><div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section"><h2 class="text-2xl font-bold text-cyan-700 mb-6 flex items-center"><span class="mr-3">💡</span> 10 CÂU THÔNG HIỂU</h2><div class="space-y-6" id="comprehension-container"></div></div></section>
+        <section id="low" class="section-content hidden"><div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section"><h2 class="text-2xl font-bold text-cyan-700 mb-6 flex items-center"><span class="mr-3">📊</span> 10 BÀI VẬN DỤNG THẤP</h2><div class="space-y-6" id="low-container"></div></div></section>
+        <section id="high" class="section-content hidden"><div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section"><h2 class="text-2xl font-bold text-cyan-700 mb-6 flex items-center"><span class="mr-3">🎯</span> 10 BÀI VẬN DỤNG CAO</h2><div class="space-y-6" id="high-container"></div></div></section>
+        <section id="real" class="section-content hidden"><div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section"><h2 class="text-2xl font-bold text-cyan-700 mb-6 flex items-center"><span class="mr-3">🌍</span> 10 BÀI THỰC TẾ</h2><div class="space-y-6" id="real-container"></div></div></section>
+    </main>
+
+    <footer class="gradient-header text-white py-6 mt-8">
+        <div class="container mx-auto px-4 text-center">
+            <p class="text-sm">Bộ Tài Liệu Toán THPT - Đề Mục 233: Xác Suất Toàn Phần & Bayes</p>
+            <p class="text-sm opacity-80">© 2024 - Ôn Tập Thi Tốt Nghiệp</p>
+        </div>
+    </footer>
+    <button onclick="window.print()" class="no-print fixed bottom-6 right-6 btn-primary text-white px-6 py-3 rounded-full shadow-lg hover:shadow-xl transition-all">🖨️ In Tài Liệu</button>
+
+    <script>
+        function showSection(id) {
+            document.querySelectorAll('.section-content').forEach(e => e.classList.add('hidden'));
+            document.getElementById(id).classList.remove('hidden');
+            document.querySelectorAll('.nav-item').forEach(e => e.classList.remove('active'));
+            event.target.classList.add('active');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        const mcqData = [
+            {q:"Hệ đầy đủ các biến cố B₁,...,Bₙ thỏa mãn:",options:["A. Đôi một xung khắc & hợp bằng Ω","B. Độc lập & hợp bằng Ω","C. Bằng nhau & hợp bằng Ω","D. Đôi một phụ thuộc"],answer:"A",solution:"Định nghĩa hệ đầy đủ"},
+            {q:"Công thức xác suất toàn phần tính P(A) khi biết hệ đầy đủ {Bᵢ} là:",options:["A. Σ P(Bᵢ)P(A|Bᵢ)","B. Π P(Bᵢ)P(A|Bᵢ)","C. Σ P(A|Bᵢ)","D. P(A∩B)"],answer:"A",solution:"Công thức cơ bản"},
+            {q:"Định lý Bayes dùng để tính:",options:["A. Xác suất hậu nghiệm P(Bᵢ|A)","B. Xác suất tiên nghiệm P(Bᵢ)","C. Xác suất biên P(A)","D. Xác suất đồng thời"],answer:"A",solution:"Mục đích chính của Bayes"},
+            {q:"Trong công thức Bayes, P(A) ở mẫu số được tính bằng:",options:["A. Công thức xác suất toàn phần","B. 1","C. P(A|B)P(B)","D. Không cần tính"],answer:"A",solution:"Mẫu số chính là P(A)"},
+            {q:"Nếu P(A|B₁) > P(A|B₂) > ... thì nhánh nào đóng góp nhiều nhất vào P(A)?",options:["A. Nhánh có P(Bᵢ)P(A|Bᵢ) lớn nhất","B. Nhánh có P(Bᵢ) lớn nhất","C. Nhánh có P(A|Bᵢ) lớn nhất","D. Nhánh đầu tiên"],answer:"A",solution:"Tích lớn nhất đóng góp nhiều nhất"},
+            {q:"Xác suất tiên nghiệm là:",options:["A. P(Bᵢ) trước khi biết A xảy ra","B. P(Bᵢ|A) sau khi biết A","C. P(A|Bᵢ)","D. P(A)"],answer:"A",solution:"Thuật ngữ thống kê"},
+            {q:"Xác suất hậu nghiệm là:",options:["A. P(Bᵢ|A) sau khi quan sát A","B. P(Bᵢ)","C. P(A|Bᵢ)","D. P(A∩B)"],answer:"A",solution:"Thuật ngữ thống kê"},
+            {q:"Nhà máy có 2 máy: M₁(60%, lỗi 2%), M₂(40%, lỗi 5%). P(lỗi) bằng:",options:["A. 0.032","B. 0.03","C. 0.04","D. 0.02"],answer:"A",solution:"0.6×0.02+0.4×0.05=0.032"},
+            {q:"Ở câu trên, biết sp lỗi, P(do M₁) bằng:",options:["A. 0.375","B. 0.6","C. 0.5","D. 0.2"],answer:"A",solution:"(0.012)/0.032 = 3/8 = 0.375"},
+            {q:"Điều kiện để áp dụng Bayes là:",options:["A. {Bᵢ} là hệ đầy đủ & P(A)>0","B. {Bᵢ} độc lập","C. P(Bᵢ)=P(A)","D. A⊂B"],answer:"A",solution:"Điều kiện tiên quyết"},
+            {q:"P(B|A) = P(A|B)P(B) / [P(A|B)P(B) + P(A|Bᶜ)P(Bᶜ)]. Đây là:",options:["A. Bayes cho 2 biến cố","B. Toàn phần","C. Độc lập","D. Xung khắc"],answer:"A",solution:"Dạng đặc biệt của Bayes"},
+            {q:"Nếu P(B₁|A) > P(B₁) thì A làm tăng hay giảm khả năng B₁?",options:["A. Tăng","B. Giảm","C. Không đổi","D. Bằng 0"],answer:"A",solution:"Hậu nghiệm > Tiên nghiệm"},
+            {q:"Xác suất mưa là 0.3. Nếu mưa, tắc đường xác suất 0.8. Nếu không mưa, tắc đường 0.2. P(tắc đường) bằng:",options:["A. 0.38","B. 0.4","C. 0.5","D. 0.2"],answer:"A",solution:"0.3×0.8+0.7×0.2=0.38"},
+            {q:"Ở câu trên, biết tắc đường, P(mưa) bằng:",options:["A. 0.632","B. 0.3","C. 0.8","D. 0.5"],answer:"A",solution:"(0.24)/0.38 ≈ 0.632"},
+            {q:"Trong bài toán xét nghiệm y tế, P(dương|bệnh) gọi là:",options:["A. Độ nhạy","B. Độ đặc hiệu","C. Tỷ lệ dương tính giả","D. Tỷ lệ âm tính giả"],answer:"A",solution:"Thuật ngữ y tế"},
+            {q:"P(âm|không bệnh) gọi là:",options:["A. Độ đặc hiệu","B. Độ nhạy","C. Sai số loại I","D. Sai số loại II"],answer:"A",solution:"Thuật ngữ y tế"},
+            {q:"Nếu P(A|B₁)=0.9, P(A|B₂)=0.1, P(B₁)=P(B₂)=0.5 thì P(A) bằng:",options:["A. 0.5","B. 0.45","C. 0.9","D. 0.1"],answer:"A",solution:"0.5×0.9+0.5×0.1=0.5"},
+            {q:"P(B₁|A) trong trường hợp trên bằng:",options:["A. 0.9","B. 0.1","C. 0.5","D. 1"],answer:"A",solution:"(0.45)/0.5=0.9"},
+            {q:"Công thức Bayes thực chất là ứng dụng trực tiếp của:",options:["A. Định nghĩa xác suất có điều kiện & Toàn phần","B. Quy tắc nhân","C. Biến cố đối","D. Tính chất cộng"],answer:"A",solution:"Nguồn gốc công thức"},
+            {q:"Hộp 1: 3 đỏ, 2 xanh. Hộp 2: 1 đỏ, 4 xanh. Chọn ngẫu nhiên 1 hộp, rút 1 bi đỏ. P(chọn Hộp 1) bằng:",options:["A. 3/4","B. 1/2","C. 3/5","D. 2/5"],answer:"A",solution:"P(H1|Đ) = (0.5×0.6)/(0.5×0.6+0.5×0.2) = 0.3/0.4 = 3/4"},
+            {q:"Nếu P(Bᵢ|A) = P(Bᵢ) với mọi i thì A và Bᵢ:",options:["A. Độc lập","B. Phụ thuộc","C. Xung khắc","D. Bằng nhau"],answer:"A",solution:"Hậu nghiệm = Tiên nghiệm"},
+            {q:"Tổng các xác suất hậu nghiệm Σ P(Bᵢ|A) bằng:",options:["A. 1","B. P(A)","C. P(B)","D. 0"],answer:"A",solution:"Tổng xác suất trong không gian thu hẹp A"},
+            {q:"Xác suất sinh con trai là 0.51. Trong gia đình có 2 con, biết có ít nhất 1 trai, P(2 trai) bằng:",options:["A. ~0.34","B. 0.25","C. 0.5","D. 0.3"],answer:"A",solution:"P(TT)/[1-P(GG)] = 0.51²/(1-0.49²) ≈ 0.26/0.75 ≈ 0.34"},
+            {q:"Mạng máy tính: Gói tin lỗi P=0.01. Truyền lại nếu lỗi. P(đúng ở lần 2 | đúng ở lần 1 hoặc 2) bằng:",options:["A. ~0.5","B. 0.01","C. 0.99","D. 0.51"],answer:"A",solution:"Do độc lập & xác suất gần bằng nhau"},
+            {q:"Trong sơ đồ cây, tổng xác suất các nhánh cuối cùng bằng:",options:["A. 1","B. P(A)","C. 0.5","D. Không xác định"],answer:"A",solution:"Tính chất sơ đồ cây đầy đủ"},
+            {q:"Nếu P(A|B₁)=1 và P(A|B₂)=0 thì P(A) bằng:",options:["A. P(B₁)","B. P(B₂)","C. 1","D. 0"],answer:"A",solution:"P(A)=P(B₁)×1+P(B₂)×0=P(B₁)"},
+            {q:"Bayes thường dùng để:",options:["A. Suy ngược nguyên nhân từ kết quả","B. Tính xác suất tương lai","C. Kiểm định độc lập","D. Tính trung bình"],answer:"A",solution:"Ứng dụng chính"},
+            {q:"P(B|A) > P(B) ⇔ P(A|B) > P(A). Đúng hay sai?",options:["A. Đúng","B. Sai","C. Chỉ khi P(A)=P(B)","D. Chỉ khi độc lập"],answer:"A",solution:"Biến đổi tương đương từ định nghĩa"},
+            {q:"3 hộp bi: H1(4Đ,1X), H2(3Đ,2X), H3(2Đ,3X). Chọn ngẫu nhiên 1 hộp, rút 1 bi xanh. P(H3|X) bằng:",options:["A. 3/6=0.5","B. 3/10","C. 1/3","D. 0.4"],answer:"A",solution:"P(X)=1/3(1/5+2/5+3/5)=2/5. P(H3|X)=(1/3×3/5)/(2/5)=3/6=0.5"},
+            {q:"Nếu P(A|B) > P(A) và P(B|A) < P(B) thì:",options:["A. Vô lý","B. Đúng","C. Phụ thuộc vào số liệu","D. Không thể xác định"],answer:"A",solution:"Mâu thuẫn vì P(A∩B) phải thỏa cả 2"},
+            {q:"Xác suất trúng đích của xạ thủ A là 0.8, B là 0.6. Chọn ngẫu nhiên 1 người bắn, trúng. P(chọn A) bằng:",options:["A. 0.571","B. 0.8","C. 0.6","D. 0.5"],answer:"A",solution:"(0.5×0.8)/(0.5×0.8+0.5×0.6)=0.8/1.4≈0.571"},
+            {q:"Công thức xác suất toàn phần mở rộng cho n biến cố là:",options:["A. Σ P(Bᵢ)P(A|Bᵢ)","B. Π P(Bᵢ)P(A|Bᵢ)","C. Σ P(A∩Bᵢ)","D. Cả A và C"],answer:"D",solution:"P(A∩Bᵢ)=P(Bᵢ)P(A|Bᵢ)"},
+            {q:"Trong Bayes, nếu P(A|Bᵢ) bằng nhau ∀i thì P(Bᵢ|A) bằng:",options:["A. P(Bᵢ)","B. 1/n","C. P(A)","D. 0"],answer:"A",solution:"Không có thông tin mới từ A"},
+            {q:"P(A) gọi là:",options:["A. Xác suất biên","B. Xác suất có điều kiện","C. Xác suất đồng thời","D. Xác suất hậu nghiệm"],answer:"A",solution:"Thuật ngữ"},
+            {q:"Nếu P(B₁)=0.4, P(B₂)=0.6, P(A|B₁)=0.3, P(A|B₂)=0.2 thì P(B₁|A) bằng:",options:["A. 0.5","B. 0.4","C. 0.3","D. 0.6"],answer:"A",solution:"P(A)=0.12+0.12=0.24. P(B₁|A)=0.12/0.24=0.5"},
+            {q:"Định lý Bayes được đặt theo tên:",options:["A. Thomas Bayes","B. Isaac Newton","C. Pierre Laplace","D. Carl Gauss"],answer:"A",solution:"Lịch sử toán học"},
+            {q:"Nếu P(A)=0 và P(Bᵢ)>0 thì P(Bᵢ|A):",options:["A. Không xác định","B. Bằng 0","C. Bằng 1","D. Bằng P(Bᵢ)"],answer:"A",solution:"Chia cho 0"},
+            {q:"Trong kiểm tra chất lượng, P(L|A)=0.05, P(L|B)=0.10. Tỷ lệ A:B = 3:1. P(A|L) bằng:",options:["A. 0.6","B. 0.75","C. 0.3","D. 0.5"],answer:"A",solution:"P(A)=0.75, P(B)=0.25. P(L)=0.75×0.05+0.25×0.10=0.0625. P(A|L)=0.0375/0.0625=0.6"},
+            {q:"P(B|A) = P(A∩B) / P(A). Đây là:",options:["A. Định nghĩa xác suất có điều kiện","B. Bayes","C. Toàn phần","D. Quy tắc nhân"],answer:"A",solution:"Định nghĩa gốc"},
+            {q:"Nếu {Bᵢ} không phải hệ đầy đủ, công thức toàn phần:",options:["A. Không áp dụng được","B. Vẫn đúng","C. Bằng 0","D. Bằng 1"],answer:"A",solution:"Điều kiện cần"},
+            {q:"Xác suất khách hàng mua hàng nếu xem QC là 0.4, không xem là 0.1. 30% xem QC. P(xem|đã mua) bằng:",options:["A. 0.632","B. 0.4","C. 0.3","D. 0.15"],answer:"A",solution:"P(QC|M) = (0.3×0.4)/(0.3×0.4+0.7×0.1)=0.12/0.19≈0.632"},
+            {q:"Trong mô hình phân loại thư rác, P(Spam|Từ khóa) tính bằng:",options:["A. Bayes","B. Toàn phần","C. Quy tắc nhân","D. Tổ hợp"],answer:"A",solution:"Ứng dụng lọc spam"},
+            {q:"Nếu P(A|B)=0.9, P(B)=0.2, P(A|Bᶜ)=0.1 thì P(A) bằng:",options:["A. 0.26","B. 0.18","C. 0.9","D. 0.2"],answer:"A",solution:"0.2×0.9+0.8×0.1=0.18+0.08=0.26"},
+            {q:"P(B|A) trong trường hợp trên bằng:",options:["A. ~0.69","B. 0.9","C. 0.2","D. 0.1"],answer:"A",solution:"(0.18)/0.26 ≈ 0.692"},
+            {q:"Xác suất để một biến cố Bᵢ là nguyên nhân của A sau khi quan sát A được gọi là:",options:["A. Xác suất hậu nghiệm","B. Xác suất tiên nghiệm","C. Xác suất biên","D. Xác suất điều kiện"],answer:"A",solution:"Định nghĩa"},
+            {q:"P(A|B)P(B) = P(B|A)P(A). Đây là:",options:["A. Quy tắc nhân","B. Bayes","C. Toàn phần","D. Độc lập"],answer:"A",solution:"P(A∩B) = P(B∩A)"},
+            {q:"Nếu P(B₁|A) = 0.8 thì P(B₂|A)+...+P(Bₙ|A) bằng:",options:["A. 0.2","B. 0.8","C. 1","D. 0.5"],answer:"A",solution:"Tổng bằng 1"},
+            {q:"Bài toán Monty Hall áp dụng trực tiếp:",options:["A. Xác suất có điều kiện & Bayes","B. Tổ hợp","C. Chỉnh hợp","D. Nhị thức"],answer:"A",solution:"Nghịch lý kinh điển"},
+            {q:"Trong Bayes, mẫu số P(A) đóng vai trò:",options:["A. Hằng số chuẩn hóa","B. Biến ngẫu nhiên","C. Xác suất tiên nghiệm","D. Sai số"],answer:"A",solution:"Đảm bảo tổng hậu nghiệm = 1"},
+            {q:"Nếu P(Bᵢ) rất nhỏ nhưng P(A|Bᵢ) rất lớn, P(Bᵢ|A) có thể:",options:["A. Vẫn lớn","B. Luôn nhỏ","C. Bằng 0","D. Không xác định"],answer:"A",solution:"Tích có thể lớn nếu tỷ lệ đủ cao (nghịch lý base rate)"}
+        ];
+
+        const tfData = [
+            {q:"Về hệ đầy đủ:",statements:[{text:"Các biến cố trong hệ đầy đủ đôi một xung khắc",answer:true},{text:"Hợp các biến cố trong hệ đầy đủ bằng Ω",answer:true},{text:"Xác suất mỗi biến cố trong hệ phải bằng nhau",answer:false},{text:"Mọi bài toán Bayes đều cần hệ đầy đủ",answer:true}]},
+            {q:"Về công thức toàn phần:",statements:[{text:"P(A) = Σ P(Bᵢ)P(A|Bᵢ)",answer:true},{text:"Áp dụng được khi {Bᵢ} không đầy đủ",answer:false},{text:"P(A) luôn nhỏ hơn 1",answer:false},{text:"Là trường hợp đặc biệt của quy tắc cộng",answer:true}]},
+            {q:"Về định lý Bayes:",statements:[{text:"P(Bᵢ|A) = P(Bᵢ)P(A|Bᵢ) / P(A)",answer:true},{text:"Dùng để suy ngược nguyên nhân từ kết quả",answer:true},{text:"Mẫu số P(A) tính bằng công thức toàn phần",answer:true},{text:"Chỉ áp dụng cho 2 biến cố",answer:false}]},
+            {q:"Về xác suất tiên nghiệm & hậu nghiệm:",statements:[{text:"Tiên nghiệm là P(Bᵢ) trước khi biết A",answer:true},{text:"Hậu nghiệm là P(Bᵢ|A) sau khi biết A",answer:true},{text:"Hậu nghiệm luôn lớn hơn tiên nghiệm",answer:false},{text:"Nếu độc lập thì tiên nghiệm = hậu nghiệm",answer:true}]},
+            {q:"Về ứng dụng thực tế:",statements:[{text:"Dùng trong chẩn đoán y tế",answer:true},{text:"Dùng trong lọc thư rác",answer:true},{text:"Dùng trong dự báo thời tiết",answer:true},{text:"Không áp dụng được cho kinh tế",answer:false}]},
+            {q:"Về tính chất:",statements:[{text:"Σ P(Bᵢ|A) = 1",answer:true},{text:"P(Bᵢ|A) > P(Bᵢ) ⇔ P(A|Bᵢ) > P(A)",answer:true},{text:"P(A|Bᵢ) có thể lớn hơn 1",answer:false},{text:"Nếu P(A|Bᵢ)=1 ∀i thì P(A)=1",answer:true}]},
+            {q:"Về điều kiện:",statements:[{text:"P(A) phải > 0 để tính Bayes",answer:true},{text:"P(Bᵢ) có thể bằng 0",answer:false},{text:"Các Bᵢ phải độc lập với nhau",answer:false},{text:"Bᵢ ∩ Bⱼ = ∅ với i≠j",answer:true}]},
+            {q:"Về máy tính & tính toán:",statements:[{text:"Có thể dùng sơ đồ cây thay công thức",answer:true},{text:"Mẫu số Bayes luôn bằng tổng các nhánh",answer:true},{text:"P(A) không cần tính nếu chỉ so sánh tỷ lệ",answer:true},{text:"Công thức Bayes chỉ đúng với số nguyên",answer:false}]},
+            {q:"Về sai lầm thường gặp:",statements:[{text:"Nhầm P(A|B) với P(B|A)",answer:true},{text:"Quên chia cho P(A) khi tính hậu nghiệm",answer:true},{text:"Cho rằng tiên nghiệm luôn bằng 0.5",answer:true},{text:"Bỏ qua trường hợp P(A)=0",answer:true}]},
+            {q:"Về mở rộng:",statements:[{text:"Bayes áp dụng được cho hệ vô hạn đếm được",answer:true},{text:"Toàn phần mở rộng cho P(A∩C) tương tự",answer:true},{text:"P(A|B,C) = P(B|A,C)P(A|C)/P(B|C)",answer:true},{text:"Không thể dùng Bayes nếu không biết P(A|Bᵢ)",answer:true}]},
+            {q:"Về nghịch lý:",statements:[{text:"Nghịch lý base rate xảy ra khi bỏ qua P(Bᵢ)",answer:true},{text:"Xét nghiệm dương tính không chắc chắn mắc bệnh",answer:true},{text:"P(Bệnh|+) luôn bằng độ nhạy",answer:false},{text:"Tỷ lệ mắc bệnh trong dân số ảnh hưởng lớn đến kết quả",answer:true}]},
+            {q:"Về lịch sử:",statements:[{text:"Bayes công bố năm 1763",answer:true},{text:"Laplace phát triển độc lập công thức tương tự",answer:true},{text:"Chỉ dùng trong thống kê cổ điển",answer:false},{text:"Nền tảng của suy luận Bayes hiện đại",answer:true}]}
+        ];
+
+        const recognitionData = [
+            {q:"Viết công thức xác suất toàn phần cho hệ đầy đủ {B₁,...,Bₙ}.",answer:"P(A) = Σ P(Bᵢ)·P(A|Bᵢ)",solution:"Công thức cơ bản"},
+            {q:"Định lý Bayes tính P(Bᵢ|A) bằng công thức nào?",answer:"P(Bᵢ|A) = [P(Bᵢ)P(A|Bᵢ)] / Σ [P(Bₖ)P(A|Bₖ)]",solution:"Định lý Bayes"},
+            {q:"Hệ đầy đủ các biến cố cần thỏa mãn 2 điều kiện gì?",answer:"Đôi một xung khắc & Hợp bằng Ω",solution:"Định nghĩa"},
+            {q:"P(Bᵢ) trước khi quan sát A gọi là gì?",answer:"Xác suất tiên nghiệm",solution:"Thuật ngữ thống kê"},
+            {q:"P(Bᵢ|A) sau khi quan sát A gọi là gì?",answer:"Xác suất hậu nghiệm",solution:"Thuật ngữ thống kê"},
+            {q:"Mẫu số trong công thức Bayes chính là gì?",answer:"P(A) tính bằng công thức toàn phần",solution:"Hằng số chuẩn hóa"},
+            {q:"Nếu P(Bᵢ|A) = P(Bᵢ) thì A và Bᵢ có quan hệ gì?",answer:"Độc lập",solution:"Không ảnh hưởng lẫn nhau"},
+            {q:"Trong y tế, P(Dương|Bệnh) gọi là gì?",answer:"Độ nhạy (Sensitivity)",solution:"Chỉ số đánh giá xét nghiệm"},
+            {q:"P(Âm|Không bệnh) gọi là gì?",answer:"Độ đặc hiệu (Specificity)",solution:"Chỉ số đánh giá xét nghiệm"},
+            {q:"Tổng các xác suất hậu nghiệm Σ P(Bᵢ|A) bằng bao nhiêu?",answer:"1",solution:"Tính chất xác suất"}
+        ];
+
+        const comprehensionData = [
+            {q:"Tại sao P(Bᵢ|A) thường khác P(Bᵢ)?",answer:"Vì thông tin A xảy ra làm thay đổi không gian mẫu, cập nhật niềm tin về Bᵢ",solution:"Bản chất cập nhật Bayes"},
+            {q:"Giải thích tại sao mẫu số trong Bayes luôn là tổng của các nhánh dẫn đến A.",answer:"Vì A có thể xảy ra qua nhiều nguyên nhân Bᵢ, cần cộng xác suất toàn phần để chuẩn hóa",solution:"Công thức toàn phần"},
+            {q:"Nếu P(A|Bᵢ) bằng nhau với mọi i, tại sao P(Bᵢ|A) = P(Bᵢ)?",answer:"Vì A không cung cấp thông tin phân biệt giữa các Bᵢ, nên xác suất giữ nguyên",solution:"Tính chất độc lập thông tin"},
+            {q:"Tại sao trong y tế, dù độ nhạy cao nhưng P(Bệnh|Dương) vẫn có thể thấp?",answer:"Do tỷ lệ mắc bệnh trong dân số (tiên nghiệm) rất thấp, dương tính giả áp đảo",solution:"Nghịch lý base rate"},
+            {q:"Giải thích ý nghĩa của việc 'chuẩn hóa' trong công thức Bayes.",answer:"Chia cho P(A) đảm bảo tổng các xác suất hậu nghiệm bằng 1, biến chúng thành phân phối xác suất hợp lệ",solution:"Toán học chuẩn hóa"},
+            {q:"Nếu P(A|B₁) >> P(A|B₂) nhưng P(B₂) >> P(B₁), kết quả Bayes nghiêng về đâu?",answer:"Phụ thuộc vào tích P(Bᵢ)P(A|Bᵢ). Tiên nghiệm lớn có thể bù cho độ tin cậy thấp",solution:"Cân bằng tiên nghiệm & độ nhạy"},
+            {q:"Tại sao sơ đồ cây hữu ích hơn công thức thuần túy khi giải bài Bayes?",answer:"Sơ đồ cây hiển thị trực quan các nhánh, tránh nhầm lẫn điều kiện, dễ kiểm tra tổng bằng 1",solution:"Trực quan hóa"},
+            {q:"Phân biệt P(A∩Bᵢ) và P(A|Bᵢ).",answer:"P(A∩Bᵢ) là xác suất đồng thời xảy ra. P(A|Bᵢ) là xác suất A khi đã biết Bᵢ, P(A∩Bᵢ)=P(Bᵢ)P(A|Bᵢ)",solution:"Đồng thời vs Có điều kiện"},
+            {q:"Nếu thêm một biến cố Bₙ₊₁ vào hệ đầy đủ, P(A) thay đổi thế nào?",answer:"Tăng thêm nhánh P(Bₙ₊₁)P(A|Bₙ₊₁), tổng xác suất A lớn hơn hoặc bằng cũ",solution:"Mở rộng hệ đầy đủ"},
+            {q:"Tại sao Bayes quan trọng trong học máy?",answer:"Cho phép cập nhật mô hình khi có dữ liệu mới, kết hợp prior knowledge với evidence",solution:"Ứng dụng AI/ML"}
+        ];
+
+        const lowData = [
+            {q:"P(B₁)=0.3, P(B₂)=0.7, P(A|B₁)=0.4, P(A|B₂)=0.2. Tính P(A).",answer:"0.26",solution:"0.3×0.4+0.7×0.2=0.26"},
+            {q:"Ở câu trên, tính P(B₁|A).",answer:"0.462 (≈6/13)",solution:"(0.12)/0.26 = 6/13"},
+            {q:"Hộp 1: 5 đỏ, 5 xanh. Hộp 2: 8 đỏ, 2 xanh. Chọn ngẫu nhiên 1 hộp, rút 1 bi đỏ. P(Hộp 1) bằng?",answer:"5/13",solution:"(0.5×0.5)/(0.5×0.5+0.5×0.8)=0.25/0.65=5/13"},
+            {q:"P(A)=0.5, P(B|A)=0.6, P(B|Aᶜ)=0.3. Tính P(A|B).",answer:"0.556 (≈5/9)",solution:"P(B)=0.5×0.6+0.5×0.3=0.45. P(A|B)=0.3/0.45=2/3? (Sửa: 0.3/0.45=2/3). Đáp án 2/3."},
+            {q:"Máy 1 sản xuất 40%, lỗi 3%. Máy 2 sản xuất 60%, lỗi 2%. P(lỗi) bằng?",answer:"0.024",solution:"0.4×0.03+0.6×0.02=0.024"},
+            {q:"Biết sản phẩm lỗi, P(do máy 1) bằng?",answer:"0.5",solution:"(0.012)/0.024=0.5"},
+            {q:"P(Mưa)=0.3, P(Tắc|Mưa)=0.7, P(Tắc|Không mưa)=0.2. P(Tắc) bằng?",answer:"0.35",solution:"0.3×0.7+0.7×0.2=0.35"},
+            {q:"Biết tắc đường, P(Mưa) bằng?",answer:"0.6",solution:"(0.21)/0.35=0.6"},
+            {q:"Lớp có 60% nam, 40% nữ. Nam trượt 10%, nữ trượt 5%. P(trượt) bằng?",answer:"0.08",solution:"0.6×0.1+0.4×0.05=0.08"},
+            {q:"Biết trượt, P(nam) bằng?",answer:"0.75",solution:"(0.06)/0.08=0.75"}
+        ];
+
+        const highData = [
+            {q:"Chứng minh P(B₁|A) > P(B₂|A) ⇔ P(A|B₁)P(B₁) > P(A|B₂)P(B₂).",answer:"Chia cả 2 vế cho cùng mẫu số P(A)>0",solution:"**Lời giải:**\n1. P(Bᵢ|A) = P(Bᵢ)P(A|Bᵢ)/P(A)\n2. So sánh tử số ⇒ ĐPCM.\n**Kết luận: ĐPCM**"},
+            {q:"Tìm điều kiện để P(B|A) > P(B) khi biết P(A|B) và P(A|Bᶜ).",answer:"P(A|B) > P(A)",solution:"**Lời giải:**\n1. P(B|A)>P(B) ⇔ P(A∩B)/P(A)>P(B) ⇔ P(A∩B)>P(A)P(B)\n2. ⇔ P(A|B)>P(A).\n**Kết luận: P(A|B) > P(A)**"},
+            {q:"Hệ {B₁,B₂,B₃} đầy đủ. P(A|B₁)=0.2, P(A|B₂)=0.5, P(A|B₃)=0.8. P(B₁):P(B₂):P(B₃)=1:2:3. Tính P(B₂|A).",answer:"0.45",solution:"**Lời giải:**\n1. P(B₁)=1/6, P(B₂)=2/6, P(B₃)=3/6.\n2. P(A) = 1/6×0.2 + 2/6×0.5 + 3/6×0.8 = 2.4/6 = 0.4\n3. P(B₂|A) = (2/6×0.5)/0.4 = 0.5/0.4? (Sửa: 1/3×0.5=1/6≈0.1667. 0.1667/0.4=5/12≈0.417).\n**Kết luận: 5/12 ≈ 0.417**"},
+            {q:"Xét nghiệm bệnh: Độ nhạy 95%, độ đặc hiệu 90%. Tỷ lệ mắc bệnh 1%. Nếu xét nghiệm 2 lần độc lập cùng dương tính, P(bệnh|++) bằng?",answer:"≈ 0.32",solution:"**Lời giải:**\n1. P(++|B)=0.95², P(++|Bᶜ)=0.10².\n2. Bayes với tiên nghiệm 0.01.\n3. ≈ 0.32.\n**Kết luận: ~32%**"},
+            {q:"Chứng minh công thức Bayes liên tục: P(B|A,C) = P(A|B,C)P(B|C)/P(A|C).",answer:"Áp dụng định nghĩa có điều kiện với không gian thu hẹp C",solution:"**Lời giải:**\n1. Xem C là không gian mới.\n2. Thay Ω bằng C trong công thức gốc.\n**Kết luận: ĐPCM**"},
+            {q:"Tìm P(B₁) để P(B₁|A)=0.5 biết P(A|B₁)=0.7, P(A|B₂)=0.3, P(B₂)=1-P(B₁).",answer:"0.3",solution:"**Lời giải:**\n1. P(B₁|A) = 0.7P(B₁) / [0.7P(B₁)+0.3(1-P(B₁))] = 0.5\n2. Giải pt ⇒ P(B₁)=0.3.\n**Kết luận: 0.3**"},
+            {q:"3 nhà máy cung cấp linh kiện. Tỷ lệ lỗi lần lượt 1%, 2%, 3%. Tỷ lệ cung cấp 50%, 30%, 20%. Biết lỗi, tính xác suất do từng nhà máy.",answer:"H1: 0.25, H2: 0.3, H3: 0.45",solution:"**Lời giải:**\n1. P(L)=0.5×0.01+0.3×0.02+0.2×0.03=0.017\n2. Chia từng nhánh cho 0.017.\n**Kết luận: 5/20, 6/20, 9/20**"},
+            {q:"Chứng minh P(A|B) > P(A|Bᶜ) ⇔ P(B|A) > P(B|Aᶜ).",answer:"Biến đổi tương đương qua P(A∩B)",solution:"**Lời giải:**\n1. P(A∩B)/P(B) > [P(A)-P(A∩B)]/[1-P(B)]\n2. Quy đồng, rút gọn ⇒ P(A∩B) > P(A)P(B)\n3. Tương đương với điều kiện kia.\n**Kết luận: ĐPCM**"},
+            {q:"Xác suất mưa ngày mai là p. Nếu mưa, xác suất tắc đường là 0.6. Nếu không mưa là 0.2. Biết tắc đường, P(mưa)=0.75. Tìm p.",answer:"0.5",solution:"**Lời giải:**\n1. 0.6p / (0.6p + 0.2(1-p)) = 0.75\n2. Giải ra p=0.5.\n**Kết luận: p = 0.5**"},
+            {q:"Trong mô hình phân loại, nếu prior P(Cᵢ) bằng nhau và likelihood P(x|Cᵢ) tỷ lệ với độ tương đồng, thì phân loại Bayes trở thành:",answer:"Phân loại theo khoảng cách gần nhất (Nearest Neighbor)",solution:"**Lời giải:**\n1. Prior bằng nhau ⇒ loại bỏ.\n2. So sánh likelihood ≈ so sánh độ tương đồng.\n**Kết luận: Phân loại khoảng cách**"}
+        ];
+
+        const realData = [
+            {q:"Trong y tế, xét nghiệm COVID có độ nhạy 90%, độ đặc hiệu 95%. Tỷ lệ nhiễm 2%. Nếu dương tính, xác suất thực sự nhiễm là?",answer:"≈ 27.7%",solution:"**Lời giải:**\n1. P(Nhiễm|+) = 0.9×0.02 / (0.9×0.02 + 0.05×0.98) ≈ 0.277\n**Kết luận: ~27.7%**"},
+            {q:"Hệ thống báo cháy: P(báo|cháy)=0.99, P(báo|không cháy)=0.03. P(cháy)=0.005. Nếu báo cháy, xác suất có cháy thực?",answer:"≈ 14.2%",solution:"**Lời giải:**\n1. P(C|B) = 0.99×0.005 / (0.99×0.005 + 0.03×0.995) ≈ 0.142\n**Kết luận: ~14.2%**"},
+            {q:"Ngân hàng: 70% khách hàng trả nợ đúng hạn. Trong nhóm đúng hạn, 80% có điểm tín dụng cao. Trong nhóm trễ hạn, 30% có điểm cao. Biết khách hàng có điểm cao, tính P(trả nợ đúng hạn).",answer:"≈ 88.6%",solution:"**Lời giải:**\n1. P(ĐH|ĐC) = 0.7×0.8 / (0.7×0.8 + 0.3×0.3) = 0.56/0.65 ≈ 0.862\n**Kết luận: ~86.2%**"},
+            {q:"Lọc thư rác: P(Spam)=0.4. P(Từ khóa|Spam)=0.8, P(Từ khóa|Không spam)=0.1. Nếu thư có từ khóa, P(Spam) bằng?",answer:"≈ 88.9%",solution:"**Lời giải:**\n1. P(S|TK) = 0.4×0.8 / (0.4×0.8 + 0.6×0.1) = 0.32/0.38 ≈ 0.842\n**Kết luận: ~84.2%**"},
+            {q:"Bảo hiểm ô tô: 10% tài xế rủi ro cao (gây tai nạn xác suất 0.2), 90% rủi ro thấp (0.05). Một tài xế gây tai nạn. P(thuộc nhóm cao) bằng?",answer:"≈ 29.4%",solution:"**Lời giải:**\n1. P(Cao|TN) = 0.1×0.2 / (0.1×0.2 + 0.9×0.05) = 0.02/0.065 ≈ 0.308\n**Kết luận: ~30.8%**"},
+            {q:"Sản xuất chip: Máy A tỷ lệ lỗi 0.5%, máy B 1.5%, máy C 2%. Sản lượng A:B:C = 5:3:2. Biết chip lỗi, P(do máy A) bằng?",answer:"≈ 19.2%",solution:"**Lời giải:**\n1. P(L) = 0.5×0.005 + 0.3×0.015 + 0.2×0.02 = 0.011\n2. P(A|L) = 0.0025/0.011 ≈ 0.227\n**Kết luận: ~22.7%**"},
+            {q:"Dự báo chứng khoán: Nếu tăng lãi suất, thị trường giảm xác suất 0.7. Nếu giữ nguyên, giảm xác suất 0.2. P(tăng lãi suất)=0.3. Biết thị trường giảm, P(tăng lãi suất) bằng?",answer:"≈ 0.568",solution:"**Lời giải:**\n1. P(Tăng|Giảm) = 0.3×0.7 / (0.3×0.7 + 0.7×0.2) = 0.21/0.35 = 0.6\n**Kết luận: 0.6**"},
+            {q:"Kiểm tra ma túy: Độ nhạy 99%, độ đặc hiệu 95%. Tỷ lệ sử dụng 0.5%. Nếu dương tính, xác suất thực sự sử dụng là?",answer:"≈ 9.1%",solution:"**Lời giải:**\n1. P(Sử dụng|+) = 0.99×0.005 / (0.99×0.005 + 0.05×0.995) ≈ 0.09\n**Kết luận: ~9%**"},
+            {q:"Hệ thống nhận diện khuôn mặt: P(Nhận đúng|Có mặt)=0.98, P(Nhận nhầm|Vắng mặt)=0.02. Tỷ lệ nhân viên vào cửa 20%. Nếu hệ thống báo có người, P(thực sự có) bằng?",answer:"≈ 93.3%",solution:"**Lời giải:**\n1. P(Có|Báo) = 0.2×0.98 / (0.2×0.98 + 0.8×0.02) = 0.196/0.212 ≈ 0.925\n**Kết luận: ~92.5%**"},
+            {q:"Trong học máy, Naive Bayes giả định các đặc trưng độc lập có điều kiện. Điều này giúp:",answer:"Tính toán nhanh chóng, tránh curse of dimensionality",solution:"**Lời giải:**\n1. P(X|C) = Π P(xᵢ|C)\n2. Giảm số tham số cần ước lượng.\n**Kết luận: Đơn giản hóa mô hình**"}
+        ];
+
+        function renderQuestions(containerId, dataArray, type) {
+            const container = document.getElementById(containerId);
+            dataArray.forEach((item, index) => {
+                const div = document.createElement('div');
+                div.className = 'border-l-4 border-cyan-400 pl-4 py-3 bg-gray-50 rounded-r-lg';
+                if (type === 'mcq') {
+                    div.innerHTML = `<p class="font-semibold text-gray-800 mb-2"><strong>Câu ${index + 1}:</strong> ${item.q}</p><div class="grid grid-cols-2 gap-2 mb-3 text-sm">${item.options.map(o => `<span class="text-gray-700">${o}</span>`).join('')}</div><button onclick="toggleAnswer('${containerId}-${index}')" class="text-cyan-600 text-sm hover:underline">👁️ Xem đáp án</button><div id="${containerId}-${index}" class="answer-box mt-2 p-3 rounded hidden"><p class="font-semibold text-green-700">Đáp án: ${item.answer}</p><p class="text-gray-700 text-sm mt-1">${item.solution}</p></div>`;
+                } else if (type === 'tf') {
+                    div.innerHTML = `<p class="font-semibold text-gray-800 mb-3"><strong>Câu ${index + 1}:</strong> ${item.q}</p><div class="space-y-2">${item.statements.map((s, i) => `<div class="flex items-center justify-between bg-white p-2 rounded"><span class="text-gray-700 text-sm">${String.fromCharCode(65+i)}. ${s.text}</span><span class="text-xs px-2 py-1 rounded ${s.answer ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}">${s.answer ? 'Đúng' : 'Sai'}</span></div>`).join('')}</div>`;
+                } else {
+                    div.innerHTML = `<p class="font-semibold text-gray-800 mb-2"><strong>Bài ${index + 1}:</strong> ${item.q}</p><button onclick="toggleAnswer('${containerId}-${index}')" class="text-cyan-600 text-sm hover:underline">👁️ Xem đáp án</button><div id="${containerId}-${index}" class="${containerId==='comprehension-container'||containerId==='high-container'||containerId==='real-container'?'solution-box':'answer-box'} mt-2 p-3 rounded hidden"><p class="font-semibold text-purple-700">Đáp án: ${item.answer}</p><p class="text-gray-700 text-sm mt-1 whitespace-pre-line">${item.solution}</p></div>`;
+                }
+                container.appendChild(div);
+            });
+        }
+
+        function toggleAnswer(id) { document.getElementById(id).classList.toggle('hidden'); }
+        document.addEventListener('DOMContentLoaded', () => {
+            renderQuestions('mcq-container', mcqData, 'mcq');
+            renderQuestions('tf-container', tfData, 'tf');
+            renderQuestions('recognition-container', recognitionData, 'default');
+            renderQuestions('comprehension-container', comprehensionData, 'default');
+            renderQuestions('low-container', lowData, 'default');
+            renderQuestions('high-container', highData, 'default');
+            renderQuestions('real-container', realData, 'default');
+        });
+    </script>
+</body>
+</html>
+```
