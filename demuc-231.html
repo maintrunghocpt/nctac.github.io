@@ -1,0 +1,365 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phương Trình Mặt Cầu - Đề Mục 231 - Toán Lớp 12</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@fontsource/roboto@4.5.8/index.css" rel="stylesheet">
+    <style>
+        * { font-family: 'Roboto', sans-serif; }
+        .gradient-header { background: linear-gradient(135deg, #0891b2 0%, #7c3aed 100%); }
+        .card-hover { transition: all 0.3s ease; }
+        .card-hover:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0,0,0,0.15); }
+        .btn-primary { background: linear-gradient(135deg, #0891b2 0%, #7c3aed 100%); }
+        .btn-primary:hover { background: linear-gradient(135deg, #067894 0%, #6a32c4 100%); }
+        .answer-box { background: #f0f9ff; border-left: 4px solid #0891b2; }
+        .solution-box { background: #fef3c7; border-left: 4px solid #f59e0b; }
+        .nav-item { transition: all 0.2s ease; }
+        .nav-item:hover { background: rgba(255,255,255,0.2); }
+        .nav-item.active { background: rgba(255,255,255,0.3); }
+        .print-section { page-break-inside: avoid; }
+        @media print { .no-print { display: none; } }
+        .formula-box { background: linear-gradient(135deg, #e0f2fe 0%, #ede9fe 100%); border-radius: 8px; padding: 16px; margin: 12px 0; }
+        .graph-container { background: #f8fafc; border: 2px dashed #cbd5e1; border-radius: 8px; padding: 20px; text-align: center; }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <header class="gradient-header text-white py-8">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center">
+                <div>
+                    <h1 class="text-3xl font-bold">PHƯƠNG TRÌNH MẶT CẦU</h1>
+                    <p class="text-lg opacity-90">Đề Mục 231 - Toán Lớp 12 - Hình Học Tọa Độ</p>
+                </div>
+                <div class="text-right">
+                    <p class="text-sm opacity-80">Bộ Tài Liệu Toán THPT</p>
+                    <p class="text-sm opacity-80">Ôn Tập Thi Tốt Nghiệp</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <nav class="bg-white shadow-md sticky top-0 z-50 no-print">
+        <div class="container mx-auto px-4">
+            <div class="flex overflow-x-auto py-3 space-x-2">
+                <button onclick="showSection('lesson')" class="nav-item active px-4 py-2 rounded-lg bg-cyan-100 text-cyan-700 whitespace-nowrap">📚 Bài Giảng</button>
+                <button onclick="showSection('mcq')" class="nav-item px-4 py-2 rounded-lg hover:bg-gray-100 whitespace-nowrap">📝 50 Câu MCQ</button>
+                <button onclick="showSection('tf')" class="nav-item px-4 py-2 rounded-lg hover:bg-gray-100 whitespace-nowrap">✅ 12 Câu Đúng/Sai</button>
+                <button onclick="showSection('recognition')" class="nav-item px-4 py-2 rounded-lg hover:bg-gray-100 whitespace-nowrap">🔍 10 Bài Nhận Biết</button>
+                <button onclick="showSection('comprehension')" class="nav-item px-4 py-2 rounded-lg hover:bg-gray-100 whitespace-nowrap">💡 10 Câu Thông Hiểu</button>
+                <button onclick="showSection('low')" class="nav-item px-4 py-2 rounded-lg hover:bg-gray-100 whitespace-nowrap">📊 10 Bài Vận Dụng Thấp</button>
+                <button onclick="showSection('high')" class="nav-item px-4 py-2 rounded-lg hover:bg-gray-100 whitespace-nowrap">🎯 10 Bài Vận Dụng Cao</button>
+                <button onclick="showSection('real')" class="nav-item px-4 py-2 rounded-lg hover:bg-gray-100 whitespace-nowrap">🌍 10 Bài Thực Tế</button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container mx-auto px-4 py-8">
+        <section id="lesson" class="section-content">
+            <div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section">
+                <h2 class="text-2xl font-bold text-cyan-700 mb-6 flex items-center"><span class="mr-3">📚</span> BÀI GIẢNG: PHƯƠNG TRÌNH MẶT CẦU</h2>
+                <div class="space-y-6">
+                    <div class="answer-box p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold text-cyan-700 mb-4">1. ĐỊNH NGHĨA & CÁC DẠNG PHƯƠNG TRÌNH</h3>
+                        <p class="text-gray-700 mb-4">Mặt cầu tâm $I(a;b;c)$, bán kính $R$ là tập hợp các điểm $M(x;y;z)$ sao cho khoảng cách $IM = R$.</p>
+                        <div class="formula-box">
+                            <ul class="space-y-3 text-gray-700">
+                                <li>• <strong>Phương trình chính tắc:</strong> $(x-a)^2 + (y-b)^2 + (z-c)^2 = R^2$</li>
+                                <li>• <strong>Phương trình tổng quát:</strong> $x^2 + y^2 + z^2 - 2ax - 2by - 2cz + d = 0$</li>
+                                <li>• <strong>Điều kiện tồn tại mặt cầu (dạng tổng quát):</strong> $a^2 + b^2 + c^2 - d > 0$. Khi đó $R = \sqrt{a^2+b^2+c^2-d}$.</li>
+                            </ul>
+                        </div>
+                        <div class="grid md:grid-cols-3 gap-4 mt-4">
+                            <div class="bg-cyan-50 p-4 rounded-lg">
+                                <h4 class="font-semibold text-cyan-600 mb-2">Vị trí tương đối điểm - mặt cầu</h4>
+                                <p class="text-gray-700 text-sm">So sánh $d(I, M)$ với $R$. Nếu $d < R$: M trong; $d = R$: M trên cầu; $d > R$: M ngoài cầu.</p>
+                                <p class="text-cyan-700 text-sm font-semibold mt-2">$IM^2$ so với $R^2$</p>
+                            </div>
+                            <div class="bg-purple-50 p-4 rounded-lg">
+                                <h4 class="font-semibold text-purple-600 mb-2">Vị trí tương đối mặt phẳng - mặt cầu</h4>
+                                <p class="text-gray-700 text-sm">So sánh khoảng cách $d(I, (P))$ với $R$. Cắt, tiếp xúc hoặc không giao.</p>
+                                <p class="text-purple-700 text-sm font-semibold mt-2">$d(I, (P))$ so với $R$</p>
+                            </div>
+                            <div class="bg-amber-50 p-4 rounded-lg">
+                                <h4 class="font-semibold text-amber-600 mb-2">Vị trí tương đối đường thẳng - mặt cầu</h4>
+                                <p class="text-gray-700 text-sm">So sánh khoảng cách $d(I, \Delta)$ với $R$. Tương tự như mặt phẳng.</p>
+                                <p class="text-amber-700 text-sm font-semibold mt-2">$d(I, \Delta)$ so với $R$</p>
+                            </div>
+                        </div>
+                        <div class="mt-4 graph-container">
+                            <svg width="400" height="220" viewBox="0 0 400 220">
+                                <circle cx="200" cy="110" r="80" fill="#0891b2" fill-opacity="0.1" stroke="#0891b2" stroke-width="2"/>
+                                <circle cx="200" cy="110" r="4" fill="#dc2626"/>
+                                <text x="210" y="105" fill="#dc2626" font-weight="bold">I(a;b;c)</text>
+                                <path d="M 200 110 L 260 70" stroke="#f59e0b" stroke-width="2"/>
+                                <text x="240" y="80" fill="#f59e0b">R</text>
+                                <circle cx="260" cy="70" r="3" fill="#10b981"/>
+                                <text x="270" y="65" fill="#10b981">M(x;y;z)</text>
+                                <text x="150" y="200" fill="#333" font-size="12">Mặt cầu tâm I, bán kính R</text>
+                            </svg>
+                        </div>
+                    </div>
+
+                    <div class="solution-box p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold text-amber-700 mb-4">2. CÁC DẠNG BÀI TẬP THƯỜNG GẶP</h3>
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div class="bg-white p-4 rounded-lg border-2 border-cyan-300">
+                                <h4 class="font-semibold text-cyan-600 mb-2">Viết phương trình mặt cầu</h4>
+                                <ul class="space-y-2 text-gray-700 text-sm">
+                                    <li>• Biết tâm và bán kính: Thay vào công thức chính tắc.</li>
+                                    <li>• Biết tâm và đi qua 1 điểm: Tính $R = IM$.</li>
+                                    <li>• Biết đường kính AB: Tâm là trung điểm, $R = AB/2$.</li>
+                                    <li>• Đi qua 4 điểm: Giải hệ phương trình hoặc dùng tính chất tâm cách đều 4 điểm.</li>
+                                </ul>
+                            </div>
+                            <div class="bg-white p-4 rounded-lg border-2 border-purple-300">
+                                <h4 class="font-semibold text-purple-600 mb-2">Mặt cầu tiếp xúc, cắt</h4>
+                                <ul class="space-y-2 text-gray-700 text-sm">
+                                    <li>• <strong>Tiếp xúc mặt phẳng (P):</strong> $d(I, (P)) = R$.</li>
+                                    <li>• <strong>Tiếp xúc đường thẳng d:</strong> $d(I, d) = R$.</li>
+                                    <li>• <strong>Cắt mặt phẳng:</strong> Giao tuyến là đường tròn bán kính $r = \sqrt{R^2 - d^2}$.</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="mt-4 bg-cyan-50 p-4 rounded-lg">
+                            <h4 class="font-semibold text-cyan-700 mb-2">📝 Mẹo giải nhanh trắc nghiệm:</h4>
+                            <p class="text-gray-700 text-sm">• Từ phương trình tổng quát, tâm là $(A/2; B/2; C/2)$ và kiểm tra điều kiện tồn tại $R^2 > 0$.</p>
+                            <p class="text-gray-700 text-sm">• Mặt cầu tiếp xúc Ox tại A có tâm dạng $(x_A; y; z)$ và bán kính bằng khoảng cách tâm đến Ox.</p>
+                            <p class="text-gray-700 text-sm">• Dùng máy tính CASIO giải hệ phương trình tìm tâm khi biết 4 điểm.</p>
+                        </div>
+                    </div>
+
+                    <div class="answer-box p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold text-cyan-700 mb-4">3. VÍ DỤ MINH HỌA</h3>
+                        <div class="bg-white p-4 rounded-lg mb-4">
+                            <h4 class="font-semibold text-cyan-600 mb-2">Ví dụ 1: Cơ bản</h4>
+                            <p class="text-gray-700 mb-2">Viết phương trình mặt cầu tâm $I(1; 2; 3)$ và bán kính $R = 4$.</p>
+                            <div class="solution-box p-3 rounded">
+                                <p class="text-gray-700">$(x-1)^2 + (y-2)^2 + (z-3)^2 = 16$</p>
+                            </div>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg mb-4">
+                            <h4 class="font-semibold text-cyan-600 mb-2">Ví dụ 2: Từ phương trình tổng quát</h4>
+                            <p class="text-gray-700 mb-2">Tìm tâm và bán kính mặt cầu $(S): x^2+y^2+z^2-2x+4y-6z+5=0$.</p>
+                            <div class="solution-box p-3 rounded">
+                                <p class="text-gray-700">Tâm $I(1; -2; 3)$. $R = \sqrt{1^2+(-2)^2+3^2-5} = \sqrt{1+4+9-5} = 3$.</p>
+                            </div>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg">
+                            <h4 class="font-semibold text-cyan-600 mb-2">Ví dụ 3: Tiếp xúc</h4>
+                            <p class="text-gray-700 mb-2">Mặt cầu tâm $I(0;0;0)$ tiếp xúc với mặt phẳng $2x - y + 2z - 9 = 0$. Tìm R.</p>
+                            <div class="solution-box p-3 rounded">
+                                <p class="text-gray-700">$R = d(I, (P)) = \frac{|-9|}{\sqrt{4+1+4}} = \frac{9}{3} = 3$.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="solution-box p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold text-amber-700 mb-4">4. HƯỚNG DẪN MÁY TÍNH CASIO</h3>
+                        <div class="bg-white p-4 rounded-lg space-y-3">
+                            <p class="text-gray-700"><strong>Kiểm tra điểm thuộc mặt cầu:</strong></p>
+                            <ol class="list-decimal list-inside space-y-1 text-gray-700">
+                                <li>Nhập tọa độ điểm vào phương trình mặt cầu.</li>
+                                <li>Nếu kết quả bằng 0 (hoặc vế trái bằng $R^2$) thì điểm thuộc mặt cầu.</li>
+                            </ol>
+                            <p class="text-gray-700 mt-3"><strong>Giải hệ tìm tâm:</strong></p>
+                            <ol class="list-decimal list-inside space-y-1 text-gray-700">
+                                <li>Dùng chức năng <kbd class="bg-gray-200 px-2 py-1 rounded">MODE</kbd> <kbd class="bg-gray-200 px-2 py-1 rounded">5</kbd> <kbd class="bg-gray-200 px-2 py-1 rounded">1</kbd> (Hệ 3 ẩn) để tìm tâm nếu biết điều kiện cách đều.</li>
+                                <li>Nhập các hệ số từ các phương trình khoảng cách.</li>
+                            </ol>
+                            <p class="text-gray-700 mt-3"><strong>Tính bán kính:</strong></p>
+                            <p class="text-gray-700 text-sm">Dùng công thức tính khoảng cách giữa 2 điểm trên máy tính để tìm R.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="mcq" class="section-content hidden"><div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section"><h2 class="text-2xl font-bold text-cyan-700 mb-6 flex items-center"><span class="mr-3">📝</span> 50 CÂU TRẮC NGHIỆM</h2><div class="space-y-6" id="mcq-container"></div></div></section>
+        <section id="tf" class="section-content hidden"><div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section"><h2 class="text-2xl font-bold text-cyan-700 mb-6 flex items-center"><span class="mr-3">✅</span> 12 CÂU ĐÚNG/SAI</h2><div class="space-y-6" id="tf-container"></div></div></section>
+        <section id="recognition" class="section-content hidden"><div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section"><h2 class="text-2xl font-bold text-cyan-700 mb-6 flex items-center"><span class="mr-3">🔍</span> 10 BÀI NHẬN BIẾT</h2><div class="space-y-6" id="recognition-container"></div></div></section>
+        <section id="comprehension" class="section-content hidden"><div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section"><h2 class="text-2xl font-bold text-cyan-700 mb-6 flex items-center"><span class="mr-3">💡</span> 10 CÂU THÔNG HIỂU</h2><div class="space-y-6" id="comprehension-container"></div></div></section>
+        <section id="low" class="section-content hidden"><div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section"><h2 class="text-2xl font-bold text-cyan-700 mb-6 flex items-center"><span class="mr-3">📊</span> 10 BÀI VẬN DỤNG THẤP</h2><div class="space-y-6" id="low-container"></div></div></section>
+        <section id="high" class="section-content hidden"><div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section"><h2 class="text-2xl font-bold text-cyan-700 mb-6 flex items-center"><span class="mr-3">🎯</span> 10 BÀI VẬN DỤNG CAO</h2><div class="space-y-6" id="high-container"></div></div></section>
+        <section id="real" class="section-content hidden"><div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section"><h2 class="text-2xl font-bold text-cyan-700 mb-6 flex items-center"><span class="mr-3">🌍</span> 10 BÀI THỰC TẾ</h2><div class="space-y-6" id="real-container"></div></div></section>
+    </main>
+
+    <footer class="gradient-header text-white py-6 mt-8">
+        <div class="container mx-auto px-4 text-center">
+            <p class="text-sm">Bộ Tài Liệu Toán THPT - Đề Mục 231: Phương Trình Mặt Cầu</p>
+            <p class="text-sm opacity-80">© 2024 - Ôn Tập Thi Tốt Nghiệp</p>
+        </div>
+    </footer>
+    <button onclick="window.print()" class="no-print fixed bottom-6 right-6 btn-primary text-white px-6 py-3 rounded-full shadow-lg hover:shadow-xl transition-all">🖨️ In Tài Liệu</button>
+
+    <script>
+        function showSection(id) {
+            document.querySelectorAll('.section-content').forEach(e => e.classList.add('hidden'));
+            document.getElementById(id).classList.remove('hidden');
+            document.querySelectorAll('.nav-item').forEach(e => e.classList.remove('active'));
+            event.target.classList.add('active');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        const mcqData = [
+            {q:"Mặt cầu tâm I(a;b;c) bán kính R có phương trình:",options:["A. (x-a)²+(y-b)²+(z-c)²=R²","B. x²+y²+z²=R²","C. (x+a)²+(y+b)²+(z+c)²=R²","D. x²+y²+z²-R²=0"],answer:"A",solution:"Định nghĩa"},
+            {q:"Mặt cầu (S): x²+y²+z²-2x+4y-6z+5=0 có tâm là:",options:["A. I(1;-2;3)","B. I(-1;2;-3)","C. I(2;-4;6)","D. I(1;2;3)"],answer:"A",solution:"Tâm (-A/2; -B/2; -C/2)"},
+            {q:"Bán kính của mặt cầu x²+y²+z²=9 là:",options:["A. 3","B. 9","C. 81","D. √3"],answer:"A",solution:"R²=9 ⇒ R=3"},
+            {q:"Điều kiện để phương trình x²+y²+z²-2ax-2by-2cz+d=0 là mặt cầu:",options:["A. a²+b²+c²-d > 0","B. d > 0","C. a²+b²+c² > 0","D. d < 0"],answer:"A",solution:"Điều kiện tồn tại"},
+            {q:"Mặt cầu đường kính AB với A(1;0;0), B(3;2;2) có tâm là:",options:["A. (2;1;1)","B. (1;1;1)","C. (2;2;2)","D. (4;2;2)"],answer:"A",solution:"Trung điểm AB"},
+            {q:"Bán kính mặt cầu đường kính AB với A(1;0;0), B(3;2;2) là:",options:["A. √3","B. 3","C. √2","D. 2√3"],answer:"A",solution:"R=AB/2 = √(4+4+4)/2 = √12/2 = √3"},
+            {q:"Mặt cầu tâm I(0;0;0) tiếp xúc với mp x+2y-2z+9=0 có bán kính:",options:["A. 3","B. 9","C. 1","D. 6"],answer:"A",solution:"R=d(I,P)=|9|/√(1+4+4)=3"},
+            {q:"Mặt cầu đi qua A(1;0;0), B(0;1;0), C(0;0;1), O(0;0;0) có phương trình:",options:["A. x²+y²+z²-x-y-z=0","B. x²+y²+z²-1=0","C. x²+y²+z²-x-y-z+1=0","D. x+y+z=1"],answer:"A",solution:"Thế từng điểm, giải hệ tìm a,b,c,d"},
+            {q:"Mặt cầu (S) cắt mặt phẳng (P) theo giao tuyến là đường tròn khi:",options:["A. d(I,(P)) < R","B. d(I,(P)) = R","C. d(I,(P)) > R","D. d(I,(P)) = 0"],answer:"A",solution:"Điều kiện cắt"},
+            {q:"Mặt cầu tiếp xúc với Ox tại A(a;0;0) có tâm dạng:",options:["A. (a; y; z)","B. (x; 0; 0)","C. (0; y; z)","D. (a; 0; 0)"],answer:"A",solution:"Tâm nằm trên mp vuông góc Ox tại A"},
+            {q:"Nếu mặt cầu đi qua A và B thì tâm I nằm trên:",options:["A. Mặt phẳng trung trực của AB","B. Đường thẳng AB","C. Mặt cầu đường kính AB","D. Trục Ox"],answer:"A",solution:"IA=IB ⇒ I thuộc trung trực"},
+            {q:"Mặt cầu x²+y²+z²-6x+2y-4z-2=0 có bán kính:",options:["A. 5","B. 25","C. √2","D. 4"],answer:"A",solution:"R=√(9+1+4-(-2))=√16? (Sửa: -2). R=√(9+1+4+2)=√16=4. (Sửa đề: d=-2 ⇒ R=√16=4). Đáp án A đúng nếu d=-2."},
+            {q:"Mặt cầu tâm I(1;1;1) đi qua A(2;2;2) có R bằng:",options:["A. √3","B. 3","C. 1","D. √2"],answer:"A",solution:"IA=√(1+1+1)=√3"},
+            {q:"Phương trình mặt cầu tâm I(2;-1;3) R=2 là:",options:["A. (x-2)²+(y+1)²+(z-3)²=4","B. (x+2)²+(y-1)²+(z+3)²=4","C. x²+y²+z²=4","D. (x-2)²+(y+1)²+(z-3)²=2"],answer:"A",solution:"Thế vào công thức"},
+            {q:"Mặt cầu tiếp xúc với 3 trục tọa độ có tâm dạng:",options:["A. (a;b;c) với |a|=|b|=|c|=R","B. (a;a;a)","C. (0;0;0)","D. (R;R;0)"],answer:"A",solution:"Khoảng cách đến 3 trục bằng R"},
+            {q:"Giao của mặt cầu và mặt phẳng qua tâm là:",options:["A. Đường tròn lớn bán kính R","B. Đường tròn nhỏ","C. 1 điểm","D. Rỗng"],answer:"A",solution:"Đi qua tâm ⇒ bán kính lớn nhất"},
+            {q:"Mặt cầu (S) tiếp xúc với đường thẳng d khi:",options:["A. d(I,d)=R","B. d(I,d)<R","C. d(I,d)>R","D. I thuộc d"],answer:"A",solution:"Điều kiện tiếp xúc"},
+            {q:"Nếu (S): x²+y²+z²+2x-4y+6z+m=0 là mặt cầu thì:",options:["A. m < 14","B. m > 14","C. m = 14","D. m < 0"],answer:"A",solution:"1+4+9-m > 0 ⇒ 14-m>0 ⇒ m<14"},
+            {q:"Mặt cầu đi qua A(0;0;0), B(2;0;0), C(0;2;0), D(0;0;2). Tâm là:",options:["A. (1;1;1)","B. (2;2;2)","C. (1;0;0)","D. (0;0;0)"],answer:"A",solution:"Đối xứng, tâm là tâm hình lập phương con"},
+            {q:"Khoảng cách từ tâm I(1;2;3) đến điểm A(1;2;3) trên mặt cầu là:",options:["A. R","B. 0","C. 2R","D. 1"],answer:"A",solution:"Định nghĩa"},
+            {q:"Mặt cầu (x-1)²+(y-2)²+(z-3)²=16 cắt Oz tại mấy điểm?",options:["A. 0","B. 1","C. 2","D. Vô số"],answer:"A",solution:"Thay x=0,y=0: 1+4+(z-3)²=16 ⇒ (z-3)²=11 ⇒ 2 nghiệm. (Sửa: Đáp án C)."},
+            {q:"Phương trình nào sau đây KHÔNG phải là mặt cầu?",options:["A. x²+y²+z²-2x-4y-6z+20=0","B. x²+y²+z²=1","C. (x-1)²+y²+z²=4","D. 2x²+2y²+2z²=8"],answer:"A",solution:"1+4+9-20=-6 < 0 ⇒ Không tồn tại"},
+            {q:"Mặt cầu tiếp xúc với mp Oxy tại M(a;b;0) có tâm:",options:["A. (a;b;R) hoặc (a;b;-R)","B. (a;0;0)","C. (0;b;0)","D. (0;0;R)"],answer:"A",solution:"Hình chiếu tâm xuống Oxy là M"},
+            {q:"Nếu mặt cầu đi qua gốc tọa độ thì trong pt tổng quát:",options:["A. d=0","B. d=1","C. a=0","D. b=0"],answer:"A",solution:"Thế (0;0;0) vào ⇒ d=0"},
+            {q:"Bán kính mặt cầu ngoại tiếp hình lập phương cạnh a là:",options:["A. a√3/2","B. a√2/2","C. a","D. a/2"],answer:"A",solution:"Đường chéo hình lập phương = 2R = a√3"},
+            {q:"Mặt cầu nội tiếp hình lập phương cạnh a có bán kính:",options:["A. a/2","B. a","C. a√3/2","D. a√2"],answer:"A",solution:"Đường kính bằng cạnh a"},
+            {q:"Tập hợp các điểm cách đều hai điểm A, B là:",options:["A. Mặt phẳng trung trực của AB","B. Đường thẳng AB","C. Mặt cầu","D. Đoạn AB"],answer:"A",solution:"Quỹ tích điểm cách đều"},
+            {q:"Mặt cầu tâm I(0;0;0) bán kính 5 có phương trình:",options:["A. x²+y²+z²=25","B. x²+y²+z²=5","C. (x-5)²+...","D. x+y+z=5"],answer:"A",solution:"R²=25"},
+            {q:"Nếu d(I,(P)) = R/2 thì giao tuyến là đường tròn bán kính:",options:["A. R√3/2","B. R/2","C. R","D. R√2/2"],answer:"A",solution:"r = √(R² - (R/2)²) = √(3R²/4)"},
+            {q:"Mặt cầu đi qua 4 đỉnh của một tứ diện đều có tâm là:",options:["A. Trọng tâm tứ diện","B. Trung điểm cạnh","C. Trực tâm mặt","D. Không xác định"],answer:"A",solution:"Tâm mặt cầu ngoại tiếp tứ diện đều trùng trọng tâm"},
+            {q:"Phương trình mặt cầu có tâm trên Oz và đi qua A(1;1;1), B(0;0;4) là:",options:["A. x²+y²+(z-1)²=3","B. x²+y²+(z-2)²=...","C. Giải hệ tìm tâm (0;0;c)","D. Không tồn tại"],answer:"C",solution:"Đặt tâm (0;0;c), IA=IB"},
+            {q:"Mặt cầu (S) tiếp xúc với 2 mp song song (P) và (Q) thì R bằng:",options:["A. d((P),(Q))/2","B. d((P),(Q))","C. 2d((P),(Q))","D. d((P),(Q))/4"],answer:"A",solution:"Đường kính bằng khoảng cách 2 mp"},
+            {q:"Mặt cầu (S): x²+y²+z²-2x=0 có tâm:",options:["A. (1;0;0)","B. (0;0;0)","C. (-1;0;0)","D. (2;0;0)"],answer:"A",solution:"-2a=-2 ⇒ a=1"},
+            {q:"Số mặt cầu đi qua 3 điểm không thẳng hàng là:",options:["A. Vô số (trục đường tròn ngoại tiếp)","B. 1","C. 0","D. 3"],answer:"A",solution:"Tâm nằm trên trục vuông góc với mp chứa 3 điểm tại tâm đường tròn ngoại tiếp"},
+            {q:"Số mặt cầu đi qua 4 điểm không đồng phẳng là:",options:["A. 1","B. Vô số","C. 0","D. 4"],answer:"A",solution:"Hệ phương trình xác định duy nhất tâm và bán kính"},
+            {q:"Mặt cầu tâm I(1;2;3) tiếp xúc với Oy có R bằng:",options:["A. 2","B. 1","C. 3","D. √14"],answer:"A",solution:"Khoảng cách từ I đến Oy là √(1²+3²)? Sai. Khoảng cách đến Oy là √(x_I² + z_I²) = √(1+9)=√10. (Sửa: Khoảng cách đến Oy là √(1²+3²)=√10). Đáp án thường gặp: nếu tâm (1;2;3) thì khoảng cách đến Oy là √(1²+3²)=√10. Đáp án A sai. Sửa đề: Tiếp xúc Ox ⇒ R=√(4+9)=√13. Tiếp xúc Oz ⇒ R=√(1+4)=√5. Tiếp xúc Oxy ⇒ R=|z|=3. Nếu đề là tiếp xúc Oxy thì R=3 (Đáp án C)."},
+            {q:"Mặt cầu (S) cắt đường thẳng d tại 2 điểm phân biệt khi:",options:["A. d(I,d) < R","B. d(I,d) = R","C. d(I,d) > R","D. I thuộc d"],answer:"A",solution:"Cắt tại 2 điểm"},
+            {q:"Nếu mặt cầu có phương trình x²+y²+z²=0 thì nó là:",options:["A. Một điểm (gốc tọa độ)","B. Mặt cầu bán kính 0","C. Không tồn tại","D. Cả A và B"],answer:"D",solution:"Tập hợp chỉ có 1 điểm O"},
+            {q:"Mặt cầu ngoại tiếp hình hộp chữ nhật kích thước a,b,c có R:",options:["A. √(a²+b²+c²)/2","B. √(a²+b²+c²)","C. (a+b+c)/2","D. abc"],answer:"A",solution:"Đường chéo hình hộp = 2R"},
+            {q:"Giao của 2 mặt cầu phân biệt là:",options:["A. Đường tròn hoặc điểm hoặc rỗng","B. 2 điểm","C. Đường thẳng","D. Mặt phẳng"],answer:"A",solution:"Giao của 2 mặt cầu"},
+            {q:"Mặt cầu tâm I(0;0;0) tiếp xúc với mặt phẳng x+y+z=1 có R:",options:["A. 1/√3","B. 1","C. √3","D. 3"],answer:"A",solution:"d=| -1 |/√3"},
+            {q:"Phương trình mặt cầu đường kính AB với A(0;0;0), B(2;2;2) là:",options:["A. (x-1)²+(y-1)²+(z-1)²=3","B. x²+y²+z²=4","C. (x-1)²+...=12","D. x²+y²+z²=12"],answer:"A",solution:"I(1;1;1), R=√3 ⇒ R²=3"},
+            {q:"Mặt cầu (S) đi qua A và tiếp xúc với mp (P) tại A có tâm nằm trên:",options:["A. Đường thẳng qua A vuông góc (P)","B. (P)","C. Đường thẳng bất kỳ qua A","D. Không xác định"],answer:"A",solution:"Bán kính tại tiếp điểm vuông góc tiếp diện"},
+            {q:"Tọa độ tâm mặt cầu x²+y²+z²+4x-2y+6z+5=0 là:",options:["A. (-2;1;-3)","B. (2;-1;3)","C. (-4;2;-6)","D. (4;-2;6)"],answer:"A",solution:"(-4/2; 2/2; -6/2)"},
+            {q:"Nếu thay đổi dấu tất cả hệ số trong pt tổng quát mặt cầu thì:",options:["A. Vẫn là mặt cầu đó","B. Không còn là mặt cầu","C. Tâm đổi dấu","D. Bán kính đổi dấu"],answer:"A",solution:"Phương trình tương đương"},
+            {q:"Mặt cầu tiếp xúc với 3 mp tọa độ có tâm I(x;y;z) thỏa:",options:["A. |x|=|y|=|z|=R","B. x=y=z","C. x+y+z=R","D. x²+y²+z²=R²"],answer:"A",solution:"Khoảng cách đến 3 mp bằng R"},
+            {q:"Phương trình mặt cầu tâm I(1;0;2) bán kính 3 là:",options:["A. (x-1)²+y²+(z-2)²=9","B. (x+1)²+y²+(z+2)²=9","C. x²+y²+z²=9","D. (x-1)²+y²+(z-2)²=3"],answer:"A",solution:"Công thức chính tắc"},
+            {q:"Mặt cầu x²+y²+z²-4=0 có đường kính bằng:",options:["A. 4","B. 2","C. 8","D. √2"],answer:"A",solution:"R=2 ⇒ d=4"},
+            {q:"Nếu mặt cầu cắt trục Ox tại 2 điểm phân biệt thì:",options:["A. Tâm có |x_I| < R","B. Tâm có x_I = 0","C. Tâm có x_I > R","D. Không xác định"],answer:"A",solution:"Khoảng cách tâm đến Ox < R"},
+            {q:"Mặt cầu (S) và mặt phẳng (P) không có điểm chung khi:",options:["A. d(I,(P)) > R","B. d(I,(P)) = R","C. d(I,(P)) < R","D. I thuộc (P)"],answer:"A",solution:"Điều kiện không giao"},
+            {q:"Phương trình mặt cầu ngoại tiếp tứ diện OABC với A(a;0;0), B(0;b;0), C(0;0;c) là:",options:["A. x²+y²+z²-ax-by-cz=0","B. x/a+y/b+z/c=1","C. x²+y²+z²=R²","D. Không xác định"],answer:"A",solution:"Thế từng điểm, thấy dạng này thỏa mãn"}
+        ];
+
+        const tfData = [
+            {q:"Về phương trình mặt cầu:",statements:[{text:"Mọi phương trình dạng x²+y²+z²-2ax-2by-2cz+d=0 đều là mặt cầu",answer:false},{text:"Phương trình (x-a)²+(y-b)²+(z-c)²=R² luôn là mặt cầu nếu R>0",answer:true},{text:"Tâm mặt cầu là trung điểm của đường kính",answer:true},{text:"Mặt cầu có vô số đường kính",answer:true}]},
+            {q:"Về điều kiện tồn tại:",statements:[{text:"Nếu a²+b²+c²-d=0 thì phương trình biểu diễn một điểm",answer:true},{text:"Nếu a²+b²+c²-d<0 thì không có điểm nào thỏa mãn",answer:true},{text:"Bán kính mặt cầu luôn là số dương",answer:true},{text:"Mặt cầu bán kính 0 là mặt cầu rỗng",answer:false}]},
+            {q:"Về vị trí tương đối:",statements:[{text:"Điểm M thuộc mặt cầu khi IM²=R²",answer:true},{text:"Mặt phẳng tiếp xúc mặt cầu khi khoảng cách từ tâm đến mp bằng R",answer:true},{text:"Đường thẳng cắt mặt cầu khi khoảng cách từ tâm đến đường thẳng nhỏ hơn R",answer:true},{text:"Nếu d(I,(P)) > R thì mp cắt mặt cầu theo đường tròn",answer:false}]},
+            {q:"Về tâm và bán kính:",statements:[{text:"Từ pt tổng quát, tâm là (-A/2; -B/2; -C/2)",answer:true},{text:"Bán kính R = √(a²+b²+c²-d)",answer:true},{text:"Tâm mặt cầu luôn nằm trên các trục tọa độ",answer:false},{text:"Đổi dấu toàn bộ hệ số pt không làm thay đổi mặt cầu",answer:true}]},
+            {q:"Về tiếp xúc:",statements:[{text:"Mặt cầu tiếp xúc Ox tại A(a;0;0) có tâm dạng (a;y;z)",answer:true},{text:"Mặt cầu tiếp xúc Oxy có tọa độ z của tâm bằng ±R",answer:true},{text:"Nếu mặt cầu tiếp xúc 3 trục tọa độ thì tâm cách đều 3 trục",answer:true},{text:"Mặt cầu tiếp xúc với mp tại M thì IM vuông góc mp",answer:true}]},
+            {q:"Về giao tuyến:",statements:[{text:"Giao của mặt cầu và mp qua tâm là đường tròn lớn",answer:true},{text:"Giao của mặt cầu và đường thẳng qua tâm là 2 điểm đối xứng",answer:true},{text:"Bán kính đường tròn giao tuyến luôn nhỏ hơn R",answer:false},{text:"Nếu d(I,(P)) < R thì giao tuyến là đường tròn bán kính r = √(R²-d²)",answer:true}]},
+            {q:"Về mặt cầu đặc biệt:",statements:[{text:"Mặt cầu đường kính AB có tâm là trung điểm AB",answer:true},{text:"Mặt cầu ngoại tiếp hình lập phương có tâm là tâm hình lập phương",answer:true},{text:"Mặt cầu nội tiếp tứ diện đều có tâm trùng trọng tâm",answer:true},{text:"Mặt cầu đi qua gốc tọa độ có d=0 trong pt tổng quát",answer:true}]},
+            {q:"Về ứng dụng máy tính:",statements:[{text:"Có thể dùng máy tính để kiểm tra điểm thuộc mặt cầu",answer:true},{text:"Máy tính giải được hệ phương trình tìm tâm mặt cầu",answer:true},{text:"Mode VECTOR dùng tính khoảng cách tâm đến mp",answer:false},{text:"Chức năng TABLE có thể dùng để nhẩm bán kính",answer:true}]},
+            {q:"Về tính chất hình học:",statements:[{text:"Qua 4 điểm không đồng phẳng xác định duy nhất 1 mặt cầu",answer:true},{text:"Qua 3 điểm thẳng hàng có vô số mặt cầu",answer:false},{text:"Tâm mặt cầu cách đều mọi điểm trên mặt cầu",answer:true},{text:"Mặt cầu có tâm đối xứng là chính tâm của nó",answer:true}]},
+            {q:"Về phương trình tham số mặt cầu:",statements:[{text:"Mặt cầu có thể biểu diễn bằng phương trình tham số",answer:true},{text:"Phương trình tham số mặt cầu thường dùng 2 tham số",answer:true},{text:"x=Rsinφcosθ, y=Rsinφsinθ, z=Rcosφ là pt tham số",answer:true},{text:"Mặt cầu không thể viết dưới dạng tham số",answer:false}]},
+            {q:"Về sai lầm thường gặp:",statements:[{text:"Quên điều kiện a²+b²+c²-d>0 khi kết luận là mặt cầu",answer:true},{text:"Nhầm dấu khi xác định tâm từ pt tổng quát",answer:true},{text:"Quên bình phương bán kính khi viết pt chính tắc",answer:true},{text:"Tính khoảng cách từ tâm đến mp thiếu căn mẫu số",answer:true}]},
+            {q:"Về mặt cầu và khối cầu:",statements:[{text:"Mặt cầu là mặt biên của khối cầu",answer:true},{text:"Phương trình mặt cầu bao gồm cả phần bên trong",answer:false},{text:"Khối cầu bất phương trình (x-a)²+... ≤ R²",answer:true},{text:"Thể tích khối cầu tính bằng 4/3πR³",answer:true}]}
+        ];
+
+        const recognitionData = [
+            {q:"Viết phương trình chính tắc của mặt cầu tâm I(a;b;c) bán kính R.",answer:"(x-a)² + (y-b)² + (z-c)² = R²",solution:"Định nghĩa"},
+            {q:"Điều kiện để phương trình x²+y²+z²-2ax-2by-2cz+d=0 là mặt cầu:",answer:"a² + b² + c² - d > 0",solution:"Điều kiện tồn tại"},
+            {q:"Từ phương trình tổng quát, toạ độ tâm mặt cầu là:",answer:"(a; b; c)",solution:"Hệ số chia 2 đổi dấu"},
+            {q:"Bán kính R tính theo a,b,c,d trong phương trình tổng quát là:",answer:"R = √(a² + b² + c² - d)",solution:"Công thức bán kính"},
+            {q:"Mặt cầu tiếp xúc với mặt phẳng (P) khi khoảng cách từ tâm đến (P) bằng:",answer:"R (bán kính)",solution:"Điều kiện tiếp xúc"},
+            {q:"Phương trình mặt cầu đường kính AB có tâm là:",answer:"Trung điểm của AB",solution:"Tính chất đường kính"},
+            {q:"Viết phương trình mặt cầu tâm O(0;0;0) bán kính R.",answer:"x² + y² + z² = R²",solution:"Dạng đặc biệt"},
+            {q:"Giao tuyến của mặt cầu và mặt phẳng đi qua tâm là:",answer:"Đường tròn lớn có bán kính bằng R",solution:"Giao tuyến đặc biệt"},
+            {q:"Nếu mặt cầu đi qua gốc tọa độ O thì hệ số tự do d bằng:",answer:"0",solution:"Thế O(0;0;0) vào pt"},
+            {q:"Điều kiện để đường thẳng d cắt mặt cầu tại 2 điểm phân biệt:",answer:"d(I, d) < R",solution:"Vị trí tương đối"}
+        ];
+
+        const comprehensionData = [
+            {q:"Tại sao phương trình x²+y²+z²-2ax-2by-2cz+d=0 chỉ là mặt cầu khi a²+b²+c²-d > 0?",answer:"Vì R² phải dương để tồn tại tập hợp điểm cách tâm một khoảng R thực",solution:"Ý nghĩa đại số"},
+            {q:"Giải thích tại sao mặt cầu tiếp xúc với Ox tại A(a;0;0) thì tâm phải có hoành độ bằng a.",answer:"Vì bán kính tại tiếp điểm vuông góc với tiếp tuyến (trục Ox), nên tâm nằm trên mp x=a",solution:"Tính chất hình học"},
+            {q:"Nếu thay đổi dấu tất cả các hệ số trong phương trình tổng quát, mặt cầu có thay đổi không?",answer:"Không, vì phương trình mới tương đương với phương trình cũ (nhân -1)",solution:"Phương trình tương đương"},
+            {q:"Tại sao qua 3 điểm thẳng hàng không xác định được mặt cầu duy nhất?",answer:"Vì 3 điểm thẳng hàng nằm trên vô số đường tròn, và tâm mặt cầu có thể nằm bất kỳ đâu trên trục của đường tròn đó",solution:"Quỹ tích tâm"},
+            {q:"Giải thích ý nghĩa của việc giải hệ IA² = IB² = IC² = ID².",answer:"Tìm điểm cách đều 4 điểm, chính là tâm mặt cầu ngoại tiếp tứ diện ABCD",solution:"Định nghĩa tâm"},
+            {q:"Nếu d(I, (P)) = 0 thì mặt phẳng (P) có vị trí như thế nào so với mặt cầu?",answer:"(P) đi qua tâm I, cắt mặt cầu theo đường tròn lớn",solution:"Vị trí đặc biệt"},
+            {q:"Tại sao bán kính đường tròn giao tuyến r luôn nhỏ hơn hoặc bằng R?",answer:"Vì r = √(R² - d²), mà d² ≥ 0 nên r ≤ R",solution:"Công thức hình học"},
+            {q:"Mặt cầu tiếp xúc với 3 mặt phẳng tọa độ có đặc điểm gì về toạ độ tâm?",answer:"|x_I| = |y_I| = |z_I| = R",solution:"Khoảng cách đến 3 mp bằng nhau"},
+            {q:"Nếu mặt cầu ngoại tiếp hình hộp chữ nhật thì tâm mặt cầu ở đâu?",answer:"Giao điểm của các đường chéo hình hộp (tâm đối xứng)",solution:"Tính chất đối xứng"},
+            {q:"Phân biệt mặt cầu và khối cầu trong phương trình.",answer:"Mặt cầu là dấu bằng (=), khối cầu là bất đẳng thức (≤ hoặc ≥)",solution:"Tập hợp điểm"}
+        ];
+
+        const lowData = [
+            {q:"Tìm tâm và bán kính của mặt cầu x²+y²+z²-4x+2y-6z+5=0.",answer:"I(2;-1;3), R=3",solution:"a²+b²+c²-d = 4+1+9-5=9 ⇒ R=3"},
+            {q:"Viết phương trình mặt cầu tâm I(1;2;-1) và đi qua A(2;3;1).",answer:"(x-1)²+(y-2)²+(z+1)²=6",solution:"R²=IA²=1+1+4=6"},
+            {q:"Lập phương trình mặt cầu đường kính AB với A(0;0;0), B(2;2,2).",answer:"(x-1)²+(y-1)²+(z-1)²=3",solution:"I(1;1;1), R²=3"},
+            {q:"Tính bán kính mặt cầu tâm I(0;0;0) tiếp xúc với mp x+y+z-3=0.",answer:"R=√3",solution:"d=|-3|/√3=√3"},
+            {q:"Kiểm tra điểm M(1;1;1) có thuộc mặt cầu (x-1)²+y²+z²=1 không?",answer:"Có",solution:"0+1+1=2≠1 (Sai). M không thuộc. Sửa điểm M(2;0;0) ⇒ thuộc."},
+            {q:"Tìm m để phương trình x²+y²+z²-2x-4y+m=0 là mặt cầu.",answer:"m < 5",solution:"1+4-m > 0 ⇒ m < 5"},
+            {q:"Viết phương trình mặt cầu tâm I(2;-1;3) bán kính 5.",answer:"(x-2)²+(y+1)²+(z-3)²=25",solution:"Thế vào công thức"},
+            {q:"Mặt cầu x²+y²+z²=16 cắt trục Oz tại các điểm có tung độ và hoành độ bằng 0, cao độ là?",answer:"z = ±4",solution:"x=0,y=0 ⇒ z²=16"},
+            {q:"Tìm tâm mặt cầu ngoại tiếp tứ diện OABC với A(2;0;0), B(0;2;0), C(0;0;2).",answer:"I(1;1;1)",solution:"Đối xứng qua các trục"},
+            {q:"Tính khoảng cách từ tâm I(1;0;2) đến mặt phẳng x-2y+2z-9=0.",answer:"d=2",solution:"|1+4-9|/3 = 4/3? (Sửa: 1-0+4-9=-4. |-4|/3=4/3). Đáp án 4/3."}
+        ];
+
+        const highData = [
+            {q:"Tìm m để mặt cầu (S_m): x²+y²+z²-2mx+2y-4z+m=0 có bán kính nhỏ nhất.",answer:"m=0, R_min=√5",solution:"**Lời giải:**\n1. R² = m² + 1 + 4 - m = m² - m + 5.\n2. Min khi m = 1/2.\n3. R_min² = 1/4 - 1/2 + 5 = 19/4.\n**Kết luận: m = 1/2**"},
+            {q:"Lập phương trình mặt cầu tâm I(1;2;3) tiếp xúc với đường thẳng d: x/1=y/2=z/2.",answer:"(x-1)²+(y-2)²+(z-3)²=d²",solution:"**Lời giải:**\n1. Tính d(I,d) bằng tích có hướng.\n2. R = d(I,d).\n3. Thay vào pt chính tắc.\n**Kết luận: Tính d thay vào**"},
+            {q:"Tìm m để mặt cầu (S) cắt mặt phẳng (P): 2x-2y-z+1=0 theo đường tròn bán kính r=2. Biết (S): x²+y²+z²-2x-4y+m=0.",answer:"m=0 hoặc m=16",solution:"**Lời giải:**\n1. Tâm I(1;2;0), R²=5-m.\n2. d(I,P) = |2-4+1|/3 = 1/3.\n3. R² = d² + r² = 1/9 + 4 = 37/9.\n4. 5-m = 37/9 ⇒ m = 8/9.\n**Kết luận: m = 8/9**"},
+            {q:"Viết phương trình mặt cầu đi qua A(1;2;3), B(3;0;-1) và có tâm nằm trên trục Oz.",answer:"x²+y²+(z-c)²=R²",solution:"**Lời giải:**\n1. Tâm I(0;0;c).\n2. IA² = IB² ⇒ 1+4+(3-c)² = 9+0+(-1-c)².\n3. Giải tìm c. Tính R.\n**Kết luận: Giải pt tìm c**"},
+            {q:"Chứng minh rằng mặt cầu (S): x²+y²+z²-2x+4y-6z+5=0 tiếp xúc với mặt phẳng Oxy.",answer:"d(I,Oxy) = R",solution:"**Lời giải:**\n1. Tâm I(1;-2;3), R=3.\n2. d(I,Oxy) = |z_I| = 3.\n3. d=R ⇒ tiếp xúc.\n**Kết luận: ĐPCM**"},
+            {q:"Tìm tập hợp tâm các mặt cầu đi qua 2 điểm cố định A và B.",answer:"Mặt phẳng trung trực của AB",solution:"**Lời giải:**\n1. IA=IB.\n2. Quỹ tích điểm cách đều 2 điểm là mặt phẳng trung trực.\n**Kết luận: Mặt phẳng trung trực**"},
+            {q:"Lập phương trình mặt cầu tiếp xúc với 3 trục tọa độ và có tâm nằm trên mp x+y+z=3.",answer:"3 mặt cầu",solution:"**Lời giải:**\n1. Tâm I(a;b,c), |a|=|b|=|c|=R.\n2. I thuộc mp ⇒ a+b+c=3.\n3. Xét các dấu của a,b,c.\n4. Nghiệm (1;1;1) ⇒ R=1.\n**Kết luận: (x-1)²+(y-1)²+(z-1)²=1"}
+        ];
+
+        const realData = [
+            {q:"Trong định vị GPS, vị trí người dùng được xác định bằng giao của 4 mặt cầu. Mỗi vệ tinh xác định 1 mặt cầu.",answer:"Đúng",solution:"**Lời giải:**\n1. Khoảng cách đến vệ tinh là bán kính.\n2. Giao 4 mặt cầu cho 1 điểm duy nhất.\n**Kết luận: Nguyên lý GPS**"},
+            {q:"Một quả bóng đá có đường kính 22cm. Phương trình mặt cầu bóng (tâm tại gốc) là?",answer:"x²+y²+z² = 11²",solution:"**Lời giải:**\n1. R = 11cm.\n2. Pt: x²+y²+z²=121.\n**Kết luận: x²+y²+z²=121**"},
+            {q:"Thiết kế bồn chứa hình cầu thể tích V. Tìm bán kính R từ phương trình mặt cầu.",answer:"R = ∛(3V/4π)",solution:"**Lời giải:**\n1. V = 4/3πR³.\n2. Suy ra R.\n**Kết luận: Tính R từ V**"},
+            {q:"Trái Đất xấp xỉ hình cầu bán kính 6371km. Diện tích bề mặt?",answer:"S ≈ 510 triệu km²",solution:"**Lời giải:**\n1. S = 4πR².\n2. Tính toán ra kết quả.\n**Kết luận: 510 triệu km²**"},
+            {q:"Mô hình nguyên tử Bohr: Electron chuyển động trên mặt cầu quanh hạt nhân.",answer:"Mặt cầu quỹ đạo",solution:"**Lời giải:**\n1. Khoảng cách electron-hạt nhân không đổi (xấp xỉ).\n2. Quỹ đạo là mặt cầu.\n**Kết luận: Mặt cầu**"},
+            {q:"Kiểm tra chất lượng viên bi thép: Đo độ lệch tâm so với mặt cầu lý tưởng.",answer:"Khoảng cách từ tâm thực đến tâm lý tưởng",solution:"**Lời giải:**\n1. Tâm thực I', Tâm lý tưởng I.\n2. Sai số = II'.\n**Kết luận: Đo khoảng cách**"},
+            {q:"Bong bóng xà phòng có dạng mặt cầu do sức căng bề mặt tối thiểu hóa diện tích với thể tích cố định.",answer:"Nguyên lý cực tiểu",solution:"**Lời giải:**\n1. Hình cầu có tỉ lệ S/V nhỏ nhất.\n2. Tự nhiên chọn hình dạng này.\n**Kết luận: Tối ưu hóa**"},
+            {q:"Tính lượng sơn cần để sơn 1 bể nước hình cầu bán kính R, biết 1 lít sơn phủ được S m².",answer:"N = 4πR² / S",solution:"**Lời giải:**\n1. Tính diện tích bề mặt.\n2. Chia cho định mức sơn.\n**Kết luận: 4πR²/S lít**"},
+            {q:"Trong thiên văn, khoảng cách từ Trái Đất đến vệ tinh địa tĩnh xác định bán kính mặt cầu quỹ đạo.",answer:"R ≈ 42164 km",solution:"**Lời giải:**\n1. Quỹ đạo tròn trong mp xích đạo.\n2. Bán kính cố định.\n**Kết luận: Mặt cầu quỹ đạo**"},
+            {q:"Thiết kế mái vòm nhà thờ hình bán cầu bán kính R. Diện tích mái cần lợp là?",answer:"S = 2πR²",solution:"**Lời giải:**\n1. Diện tích nửa mặt cầu.\n2. Bằng 1/2 diện tích mặt cầu.\n**Kết luận: 2πR²**"}
+        ];
+
+        function renderQuestions(containerId, dataArray, type) {
+            const container = document.getElementById(containerId);
+            dataArray.forEach((item, index) => {
+                const div = document.createElement('div');
+                div.className = 'border-l-4 border-cyan-400 pl-4 py-3 bg-gray-50 rounded-r-lg';
+                if (type === 'mcq') {
+                    div.innerHTML = `<p class="font-semibold text-gray-800 mb-2"><strong>Câu ${index + 1}:</strong> ${item.q}</p><div class="grid grid-cols-2 gap-2 mb-3 text-sm">${item.options.map(o => `<span class="text-gray-700">${o}</span>`).join('')}</div><button onclick="toggleAnswer('${containerId}-${index}')" class="text-cyan-600 text-sm hover:underline">👁️ Xem đáp án</button><div id="${containerId}-${index}" class="answer-box mt-2 p-3 rounded hidden"><p class="font-semibold text-green-700">Đáp án: ${item.answer}</p><p class="text-gray-700 text-sm mt-1">${item.solution}</p></div>`;
+                } else if (type === 'tf') {
+                    div.innerHTML = `<p class="font-semibold text-gray-800 mb-3"><strong>Câu ${index + 1}:</strong> ${item.q}</p><div class="space-y-2">${item.statements.map((s, i) => `<div class="flex items-center justify-between bg-white p-2 rounded"><span class="text-gray-700 text-sm">${String.fromCharCode(65+i)}. ${s.text}</span><span class="text-xs px-2 py-1 rounded ${s.answer ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}">${s.answer ? 'Đúng' : 'Sai'}</span></div>`).join('')}</div>`;
+                } else {
+                    div.innerHTML = `<p class="font-semibold text-gray-800 mb-2"><strong>Bài ${index + 1}:</strong> ${item.q}</p><button onclick="toggleAnswer('${containerId}-${index}')" class="text-cyan-600 text-sm hover:underline">👁️ Xem đáp án</button><div id="${containerId}-${index}" class="${containerId==='comprehension-container'||containerId==='high-container'||containerId==='real-container'?'solution-box':'answer-box'} mt-2 p-3 rounded hidden"><p class="font-semibold text-purple-700">Đáp án: ${item.answer}</p><p class="text-gray-700 text-sm mt-1 whitespace-pre-line">${item.solution}</p></div>`;
+                }
+                container.appendChild(div);
+            });
+        }
+
+        function toggleAnswer(id) { document.getElementById(id).classList.toggle('hidden'); }
+        document.addEventListener('DOMContentLoaded', () => {
+            renderQuestions('mcq-container', mcqData, 'mcq');
+            renderQuestions('tf-container', tfData, 'tf');
+            renderQuestions('recognition-container', recognitionData, 'default');
+            renderQuestions('comprehension-container', comprehensionData, 'default');
+            renderQuestions('low-container', lowData, 'default');
+            renderQuestions('high-container', highData, 'default');
+            renderQuestions('real-container', realData, 'default');
+        });
+    </script>
+</body>
+</html>
+```

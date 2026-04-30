@@ -1,0 +1,370 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phương Trình Mặt Phẳng - Đề Mục 229 - Toán Lớp 12</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@fontsource/roboto@4.5.8/index.css" rel="stylesheet">
+    <style>
+        * { font-family: 'Roboto', sans-serif; }
+        .gradient-header { background: linear-gradient(135deg, #0891b2 0%, #7c3aed 100%); }
+        .card-hover { transition: all 0.3s ease; }
+        .card-hover:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0,0,0,0.15); }
+        .btn-primary { background: linear-gradient(135deg, #0891b2 0%, #7c3aed 100%); }
+        .btn-primary:hover { background: linear-gradient(135deg, #067894 0%, #6a32c4 100%); }
+        .answer-box { background: #f0f9ff; border-left: 4px solid #0891b2; }
+        .solution-box { background: #fef3c7; border-left: 4px solid #f59e0b; }
+        .nav-item { transition: all 0.2s ease; }
+        .nav-item:hover { background: rgba(255,255,255,0.2); }
+        .nav-item.active { background: rgba(255,255,255,0.3); }
+        .print-section { page-break-inside: avoid; }
+        @media print { .no-print { display: none; } }
+        .formula-box { background: linear-gradient(135deg, #e0f2fe 0%, #ede9fe 100%); border-radius: 8px; padding: 16px; margin: 12px 0; }
+        .graph-container { background: #f8fafc; border: 2px dashed #cbd5e1; border-radius: 8px; padding: 20px; text-align: center; }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <header class="gradient-header text-white py-8">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center">
+                <div>
+                    <h1 class="text-3xl font-bold">PHƯƠNG TRÌNH MẶT PHẲNG</h1>
+                    <p class="text-lg opacity-90">Đề Mục 229 - Toán Lớp 12 - Hình Học Tọa Độ</p>
+                </div>
+                <div class="text-right">
+                    <p class="text-sm opacity-80">Bộ Tài Liệu Toán THPT</p>
+                    <p class="text-sm opacity-80">Ôn Tập Thi Tốt Nghiệp</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <nav class="bg-white shadow-md sticky top-0 z-50 no-print">
+        <div class="container mx-auto px-4">
+            <div class="flex overflow-x-auto py-3 space-x-2">
+                <button onclick="showSection('lesson')" class="nav-item active px-4 py-2 rounded-lg bg-cyan-100 text-cyan-700 whitespace-nowrap">📚 Bài Giảng</button>
+                <button onclick="showSection('mcq')" class="nav-item px-4 py-2 rounded-lg hover:bg-gray-100 whitespace-nowrap">📝 50 Câu MCQ</button>
+                <button onclick="showSection('tf')" class="nav-item px-4 py-2 rounded-lg hover:bg-gray-100 whitespace-nowrap">✅ 12 Câu Đúng/Sai</button>
+                <button onclick="showSection('recognition')" class="nav-item px-4 py-2 rounded-lg hover:bg-gray-100 whitespace-nowrap">🔍 10 Bài Nhận Biết</button>
+                <button onclick="showSection('comprehension')" class="nav-item px-4 py-2 rounded-lg hover:bg-gray-100 whitespace-nowrap">💡 10 Câu Thông Hiểu</button>
+                <button onclick="showSection('low')" class="nav-item px-4 py-2 rounded-lg hover:bg-gray-100 whitespace-nowrap">📊 10 Bài Vận Dụng Thấp</button>
+                <button onclick="showSection('high')" class="nav-item px-4 py-2 rounded-lg hover:bg-gray-100 whitespace-nowrap">🎯 10 Bài Vận Dụng Cao</button>
+                <button onclick="showSection('real')" class="nav-item px-4 py-2 rounded-lg hover:bg-gray-100 whitespace-nowrap">🌍 10 Bài Thực Tế</button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container mx-auto px-4 py-8">
+        <section id="lesson" class="section-content">
+            <div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section">
+                <h2 class="text-2xl font-bold text-cyan-700 mb-6 flex items-center"><span class="mr-3">📚</span> BÀI GIẢNG: PHƯƠNG TRÌNH MẶT PHẲNG</h2>
+                <div class="space-y-6">
+                    <div class="answer-box p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold text-cyan-700 mb-4">1. PHƯƠNG TRÌNH TỔNG QUÁT & ĐIỀU KIỆN</h3>
+                        <p class="text-gray-700 mb-4">Trong không gian Oxyz, mặt phẳng (P) được xác định khi biết một điểm thuộc nó và một vectơ pháp tuyến.</p>
+                        <div class="formula-box">
+                            <ul class="space-y-3 text-gray-700">
+                                <li>• <strong>Phương trình tổng quát:</strong> Ax + By + Cz + D = 0 (A²+B²+C² > 0)</li>
+                                <li>• <strong>Vectơ pháp tuyến:</strong> n⃗ = (A; B; C) vuông góc với mặt phẳng.</li>
+                                <li>• <strong>Qua điểm M₀(x₀;y₀;z₀), VTPT n⃗=(A;B;C):</strong> A(x-x₀)+B(y-y₀)+C(z-z₀)=0</li>
+                                <li>• <strong>Phương trình đoạn chắn:</strong> x/a + y/b + z/c = 1</li>
+                            </ul>
+                        </div>
+                        <div class="grid md:grid-cols-3 gap-4 mt-4">
+                            <div class="bg-cyan-50 p-4 rounded-lg">
+                                <h4 class="font-semibold text-cyan-600 mb-2">Vị trí tương đối</h4>
+                                <p class="text-gray-700 text-sm">So sánh VTPT để biết song song, cắt nhau hoặc trùng nhau.</p>
+                                <p class="text-cyan-700 text-sm font-semibold mt-2">n₁ ≠ k·n₂ ⇔ Cắt nhau</p>
+                            </div>
+                            <div class="bg-purple-50 p-4 rounded-lg">
+                                <h4 class="font-semibold text-purple-600 mb-2">Góc giữa 2 mặt phẳng</h4>
+                                <p class="text-gray-700 text-sm">cos(P,Q) = |n₁·n₂| / (|n₁||n₂|)</p>
+                                <p class="text-purple-700 text-sm font-semibold mt-2">Vuông góc ⇔ n₁·n₂ = 0</p>
+                            </div>
+                            <div class="bg-amber-50 p-4 rounded-lg">
+                                <h4 class="font-semibold text-amber-600 mb-2">Khoảng cách</h4>
+                                <p class="text-gray-700 text-sm">d(M₀, P) = |Ax₀+By₀+Cz₀+D| / √(A²+B²+C²)</p>
+                                <p class="text-amber-700 text-sm font-semibold mt-2">Dùng tính khoảng cách điểm-mặt phẳng</p>
+                            </div>
+                        </div>
+                        <div class="mt-4 graph-container">
+                            <svg width="400" height="240" viewBox="0 0 400 240">
+                                <path d="M 50 180 L 350 180" stroke="#cbd5e1" stroke-width="2"/>
+                                <path d="M 200 20 L 200 220" stroke="#cbd5e1" stroke-width="2"/>
+                                <path d="M 200 200 L 350 120" stroke="#cbd5e1" stroke-width="2"/>
+                                <path d="M 80 150 L 200 80 L 320 150 L 200 220 Z" fill="#0891b2" fill-opacity="0.3" stroke="#0891b2" stroke-width="3"/>
+                                <path d="M 200 150 L 200 90" stroke="#dc2626" stroke-width="3" marker-end="url(#arrow)"/>
+                                <text x="210" y="80" fill="#dc2626" font-weight="bold">n⃗ = (A;B;C)</text>
+                                <text x="150" y="180" fill="#0891b2" font-weight="bold">Ax + By + Cz + D = 0</text>
+                                <circle cx="200" cy="150" r="4" fill="#f59e0b"/>
+                                <text x="215" y="145" fill="#f59e0b">M₀</text>
+                                <defs><marker id="arrow" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#dc2626"/></marker></defs>
+                            </svg>
+                            <p class="text-sm text-gray-600 mt-2">Mặt phẳng, điểm thuộc mặt phẳng và vectơ pháp tuyến</p>
+                        </div>
+                    </div>
+
+                    <div class="solution-box p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold text-amber-700 mb-4">2. CÁC DẠNG BÀI TẬP CƠ BẢN</h3>
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div class="bg-white p-4 rounded-lg border-2 border-cyan-300">
+                                <h4 class="font-semibold text-cyan-600 mb-2">Viết phương trình mặt phẳng</h4>
+                                <ul class="space-y-2 text-gray-700 text-sm">
+                                    <li>• Biết 1 điểm và VTPT.</li>
+                                    <li>• Đi qua 3 điểm không thẳng hàng (tích có hướng của 2 vectơ tạo bởi 3 điểm là VTPT).</li>
+                                    <li>• Song song với mặt phẳng khác và qua 1 điểm.</li>
+                                    <li>• Chứa đường thẳng và qua điểm.</li>
+                                </ul>
+                            </div>
+                            <div class="bg-white p-4 rounded-lg border-2 border-purple-300">
+                                <h4 class="font-semibold text-purple-600 mb-2">Vị trí tương đối & Góc</h4>
+                                <ul class="space-y-2 text-gray-700 text-sm">
+                                    <li>• Cắt nhau nếu n₁ không cùng phương n₂.</li>
+                                    <li>• Song song nếu n₁ ∥ n₂ và D khác tỉ lệ.</li>
+                                    <li>• Trùng nhau nếu các hệ số tỉ lệ.</li>
+                                    <li>• Góc α: cosα = |A₁A₂+B₁B₂+C₁C₂| / (|n₁||n₂|)</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="mt-4 bg-cyan-50 p-4 rounded-lg">
+                            <h4 class="font-semibold text-cyan-700 mb-2">📝 Mẹo nhớ nhanh:</h4>
+                            <p class="text-gray-700 text-sm">• Hệ số A, B, C chính là toạ độ vectơ pháp tuyến.</p>
+                            <p class="text-gray-700 text-sm">• Nếu mặt phẳng song song với Ox thì A=0, với Oy thì B=0, với Oz thì C=0.</p>
+                            <p class="text-gray-700 text-sm">• Nếu mặt phẳng đi qua gốc tọa độ O(0;0;0) thì D=0.</p>
+                        </div>
+                    </div>
+
+                    <div class="answer-box p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold text-cyan-700 mb-4">3. VÍ DỤ MINH HỌA</h3>
+                        <div class="bg-white p-4 rounded-lg mb-4">
+                            <h4 class="font-semibold text-cyan-600 mb-2">Ví dụ 1: Viết PTTQ</h4>
+                            <p class="text-gray-700 mb-2">Viết phương trình mặt phẳng đi qua M(1;2;3) và nhận n⃗=(2;-1;2) làm VTPT.</p>
+                            <div class="solution-box p-3 rounded">
+                                <p class="text-gray-700">PT: 2(x-1) - 1(y-2) + 2(z-3) = 0</p>
+                                <p class="text-gray-700">⇔ 2x - y + 2z - 6 = 0</p>
+                            </div>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg mb-4">
+                            <h4 class="font-semibold text-cyan-600 mb-2">Ví dụ 2: Mặt phẳng qua 3 điểm</h4>
+                            <p class="text-gray-700 mb-2">Mặt phẳng qua A(1;0;0), B(0;2;0), C(0;0;3).</p>
+                            <div class="solution-box p-3 rounded">
+                                <p class="text-gray-700">Dùng phương trình đoạn chắn: x/1 + y/2 + z/3 = 1</p>
+                                <p class="text-gray-700">Nhân 6: 6x + 3y + 2z - 6 = 0</p>
+                            </div>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg">
+                            <h4 class="font-semibold text-cyan-600 mb-2">Ví dụ 3: Khoảng cách</h4>
+                            <p class="text-gray-700 mb-2">Tính khoảng cách từ O(0;0;0) đến (P): 2x + 2y - z + 3 = 0.</p>
+                            <div class="solution-box p-3 rounded">
+                                <p class="text-gray-700">d = |2(0)+2(0)-0+3| / √(4+4+1) = 3/3 = 1</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="solution-box p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold text-amber-700 mb-4">4. HƯỚNG DẪN MÁY TÍNH CASIO</h3>
+                        <div class="bg-white p-4 rounded-lg space-y-3">
+                            <p class="text-gray-700"><strong>Tính tích có hướng (tìm VTPT):</strong></p>
+                            <ol class="list-decimal list-inside space-y-1 text-gray-700">
+                                <li>Nhấn <kbd class="bg-gray-200 px-2 py-1 rounded">MODE</kbd> <kbd class="bg-gray-200 px-2 py-1 rounded">5</kbd> (VECTOR)</li>
+                                <li>Nhập VctA và VctB</li>
+                                <li>Tính VctA × VctB bằng phím <kbd class="bg-gray-200 px-2 py-1 rounded">×</kbd></li>
+                                <li>Kết quả là VTPT cần tìm.</li>
+                            </ol>
+                            <p class="text-gray-700 mt-3"><strong>Khoảng cách từ điểm đến mặt phẳng:</strong> Thay tọa độ điểm vào vế trái |Ax+By+Cz+D| rồi chia cho √(A²+B²+C²).</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="mcq" class="section-content hidden"><div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section"><h2 class="text-2xl font-bold text-cyan-700 mb-6 flex items-center"><span class="mr-3">📝</span> 50 CÂU TRẮC NGHIỆM</h2><div class="space-y-6" id="mcq-container"></div></div></section>
+        <section id="tf" class="section-content hidden"><div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section"><h2 class="text-2xl font-bold text-cyan-700 mb-6 flex items-center"><span class="mr-3">✅</span> 12 CÂU ĐÚNG/SAI</h2><div class="space-y-6" id="tf-container"></div></div></section>
+        <section id="recognition" class="section-content hidden"><div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section"><h2 class="text-2xl font-bold text-cyan-700 mb-6 flex items-center"><span class="mr-3">🔍</span> 10 BÀI NHẬN BIẾT</h2><div class="space-y-6" id="recognition-container"></div></div></section>
+        <section id="comprehension" class="section-content hidden"><div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section"><h2 class="text-2xl font-bold text-cyan-700 mb-6 flex items-center"><span class="mr-3">💡</span> 10 CÂU THÔNG HIỂU</h2><div class="space-y-6" id="comprehension-container"></div></div></section>
+        <section id="low" class="section-content hidden"><div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section"><h2 class="text-2xl font-bold text-cyan-700 mb-6 flex items-center"><span class="mr-3">📊</span> 10 BÀI VẬN DỤNG THẤP</h2><div class="space-y-6" id="low-container"></div></div></section>
+        <section id="high" class="section-content hidden"><div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section"><h2 class="text-2xl font-bold text-cyan-700 mb-6 flex items-center"><span class="mr-3">🎯</span> 10 BÀI VẬN DỤNG CAO</h2><div class="space-y-6" id="high-container"></div></div></section>
+        <section id="real" class="section-content hidden"><div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section"><h2 class="text-2xl font-bold text-cyan-700 mb-6 flex items-center"><span class="mr-3">🌍</span> 10 BÀI THỰC TẾ</h2><div class="space-y-6" id="real-container"></div></div></section>
+    </main>
+
+    <footer class="gradient-header text-white py-6 mt-8">
+        <div class="container mx-auto px-4 text-center">
+            <p class="text-sm">Bộ Tài Liệu Toán THPT - Đề Mục 229: Phương Trình Mặt Phẳng</p>
+            <p class="text-sm opacity-80">© 2024 - Ôn Tập Thi Tốt Nghiệp</p>
+        </div>
+    </footer>
+    <button onclick="window.print()" class="no-print fixed bottom-6 right-6 btn-primary text-white px-6 py-3 rounded-full shadow-lg hover:shadow-xl transition-all">🖨️ In Tài Liệu</button>
+
+    <script>
+        function showSection(id) {
+            document.querySelectorAll('.section-content').forEach(e => e.classList.add('hidden'));
+            document.getElementById(id).classList.remove('hidden');
+            document.querySelectorAll('.nav-item').forEach(e => e.classList.remove('active'));
+            event.target.classList.add('active');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        const mcqData = [
+            {q:"Vectơ pháp tuyến của mặt phẳng 2x - y + 3z + 5 = 0 là:",options:["A. (2;-1;3)","B. (2;1;3)","C. (-2;1;-3)","D. (5;-1;3)"],answer:"A",solution:"Hệ số của x,y,z"},
+            {q:"Điều kiện để mặt phẳng Ax+By+Cz+D=0 tồn tại là:",options:["A. A²+B²+C² > 0","B. D ≠ 0","C. A,B,C khác 0","D. A+B+C ≠ 0"],answer:"A",solution:"Định nghĩa mặt phẳng"},
+            {q:"Mặt phẳng qua O(0;0;0) và nhận n⃗=(1;2;-1) làm VTPT có phương trình:",options:["A. x + 2y - z = 0","B. x + 2y - z + 1 = 0","C. x - 2y + z = 0","D. 2x + y - z = 0"],answer:"A",solution:"D=0 vì qua gốc tọa độ"},
+            {q:"Mặt phẳng (P): x + y + z - 6 = 0 đi qua điểm nào sau đây?",options:["A. (1;2;3)","B. (1;1;1)","C. (2;2;1)","D. (3;3;1)"],answer:"A",solution:"1+2+3-6=0 (Thỏa mãn)"},
+            {q:"Khoảng cách từ M(1;2;1) đến mặt phẳng x + 2y + 2z - 10 = 0 là:",options:["A. 1","B. 2","C. 3","D. 4"],answer:"A",solution:"d = |1+4+2-10|/√(1+4+4) = 3/3 = 1"},
+            {q:"Hai mặt phẳng (P): x+2y+3z=0 và (Q): 2x+4y+6z+1=0 có vị trí tương đối:",options:["A. Song song","B. Trùng nhau","C. Cắt nhau","D. Vuông góc"],answer:"A",solution:"VTPT tỉ lệ nhưng D không tỉ lệ"},
+            {q:"Phương trình đoạn chắn của mặt phẳng cắt các trục tại A(2;0;0), B(0;-3;0), C(0;0;4) là:",options:["A. x/2 + y/(-3) + z/4 = 1","B. x/2 - y/3 - z/4 = 1","C. 2x - 3y + 4z = 1","D. x + y + z = 1"],answer:"A",solution:"Công thức đoạn chắn"},
+            {q:"Góc giữa hai mặt phẳng (P): x+y+z=0 và (Q): y+z=0 bằng:",options:["A. arccos(√(2/3))","B. arccos(1/√3)","C. arccos(√(1/3))","D. 45°"],answer:"A",solution:"cosα = |0+1+1| / (√3·√2) = 2/√6 = √(2/3)"},
+            {q:"Mặt phẳng đi qua A(1;2;3) và song song với (Q): x - 2y + z + 5 = 0 có VTPT:",options:["A. (1;-2;1)","B. (1;2;1)","C. (-1;2;-1)","D. (2;-4;2)"],answer:"A",solution:"Song song nên VTPT giống nhau"},
+            {q:"Nếu mặt phẳng vuông góc với Ox thì hệ số A, B, C thỏa mãn:",options:["A. B=0, C=0","B. A=0","C. A=B","D. B=C"],answer:"A",solution:"VTPT song song Ox ⇒ (A;0;0)"},
+            {q:"Khoảng cách giữa hai mặt phẳng song song x+y+z-1=0 và x+y+z+5=0 là:",options:["A. 2√3","B. √6","C. 6","D. 3√2"],answer:"A",solution:"d = |5 - (-1)| / √3 = 6/√3 = 2√3"},
+            {q:"Mặt phẳng trung trực của đoạn thẳng AB với A(1;0;0), B(3;2;2) có VTPT là:",options:["A. (1;1;1)","B. (2;2;2)","C. (1;2;2)","D. (3;2;2)"],answer:"A",solution:"AB⃗=(2;2;2) ⇒ n⃗=(1;1;1)"},
+            {q:"Điều kiện để mặt phẳng (P) vuông góc với (Q) là:",options:["A. n_P · n_Q = 0","B. n_P // n_Q","C. n_P = n_Q","D. A_P = A_Q"],answer:"A",solution:"Tích vô hướng VTPT bằng 0"},
+            {q:"Mặt phẳng chứa trục Ox có dạng:",options:["A. By + Cz = 0","B. Ax + D = 0","C. Ay + Bz = 0","D. Ax + By = 0"],answer:"A",solution:"Chứa Ox ⇒ đi qua (0;0;0) và n⃗⊥(1;0;0) ⇒ A=0, D=0"},
+            {q:"Khoảng cách từ gốc tọa độ đến mặt phẳng x/a + y/b + z/c = 1 là:",options:["A. 1/√(1/a²+1/b²+1/c²)","B. √(a²+b²+c²)","C. abc","D. 1/(a+b+c)"],answer:"A",solution:"Công thức khoảng cách"},
+            {q:"Cho (P): 2x-y+2z-9=0. Điểm nào sau đây thuộc (P)?",options:["A. (2;1;3)","B. (1;2;3)","C. (3;2;1)","D. (0;0;9)"],answer:"A",solution:"4-1+6-9=0 (Thỏa)"},
+            {q:"Mặt phẳng đi qua M(1;1;1) và vuông góc với đường thẳng d: x/1=y/2=z/3 có phương trình:",options:["A. x+2y+3z-6=0","B. x+2y+3z=0","C. x-2y+3z-2=0","D. 2x+y+3z-6=0"],answer:"A",solution:"VTPT là VTCP của d: (1;2;3)"},
+            {q:"Góc giữa (Oxy) và (Oyz) bằng:",options:["A. 90°","B. 45°","C. 60°","D. 0°"],answer:"A",solution:"Hai mặt phẳng tọa độ vuông góc"},
+            {q:"VTPT của mặt phẳng đi qua 3 điểm A, B, C là:",options:["A. [AB⃗, AC⃗]","B. AB⃗ + AC⃗","C. AB⃗ - AC⃗","D. OA⃗ + OB⃗"],answer:"A",solution:"Tích có hướng của 2 vectơ trên mp"},
+            {q:"Nếu mặt phẳng song song với (Oxy) thì phương trình có dạng:",options:["A. z = c","B. x = c","C. y = c","D. x + y = c"],answer:"A",solution:"VTPT (0;0;1) ⇒ Cz+D=0 ⇒ z=c"},
+            {q:"Cho (P): x+2y-2z+3=0 và điểm M(1;-1;2). Hình chiếu vuông góc của M lên (P) có toạ độ:",options:["A. Tính theo công thức đường thẳng qua M vuông góc (P)","B. (1;-1;2)","C. (0;0;0)","D. Không xác định"],answer:"A",solution:"Viết đt qua M vuông góc (P), tìm giao điểm"},
+            {q:"Mặt phẳng (P): 3x-4z+5=0 không chứa trục nào?",options:["A. Không chứa trục nào","B. Ox","C. Oy","D. Oz"],answer:"C",solution:"Không chứa Oy vì hệ số B=0 nhưng D≠0"},
+            {q:"Phương trình mặt phẳng đi qua M(1;2;3) và song song với (Oyz) là:",options:["A. x-1=0","B. y-2=0","C. z-3=0","D. x+y+z=0"],answer:"A",solution://Song song Oyz ⇒ VTPT (1;0;0) ⇒ x=1. x-1=0.
+            {q:"Nếu khoảng cách từ M đến (P) bằng 0 thì:",options:["A. M thuộc (P)","B. M là hình chiếu","C. (P) qua gốc tọa độ","D. M trùng O"],answer:"A",solution:"Khoảng cách 0 ⇔ điểm thuộc mặt phẳng"},
+            {q:"Cho (P): x+y+z-1=0. Vectơ nào sau đây VTPT của (P)?",options:["A. (1;1;1)","B. (1;0;0)","C. (0;1;0)","D. (1;1;0)"],answer:"A",solution:"Đọc hệ số"},
+            {q:"Mặt phẳng (P) cắt các trục tại A(a;0;0), B(0;b;0), C(0;0;c) có phương trình:",options:["A. x/a+y/b+z/c=1","B. ax+by+cz=1","C. x+y+z=abc","D. abc(x+y+z)=1"],answer:"A",solution:"PT đoạn chắn"},
+            {q:"VTPT của mặt phẳng đi qua A(1;0;0), B(0;1;0), C(0;0;1) là:",options:["A. (1;1;1)","B. (1;-1;1)","C. (-1;1;1)","D. (0;0;0)"],answer:"A",solution:"AB=(-1;1;0), AC=(-1;0;1) => n=(1;1;1)"},
+            {q:"Khoảng cách từ A(1;0;0) đến mặt phẳng y+z-2=0 là:",options:["A. √2","B. 2","C. 1","D. √3"],answer:"A",solution:"d=|0+0-2|/√2 = √2"},
+            {q:"Mặt phẳng (P) vuông góc với đường thẳng d: (x-1)/2 = y/(-1) = (z+1)/3 có VTPT:",options:["A. (2;-1;3)","B. (2;1;3)","C. (-2;1;3)","D. (1;-1;1)"],answer:"A",solution:"VTPT (P) // VTCP (d)"},
+            {q:"Hai mặt phẳng trùng nhau khi:",options:["A. Các hệ số tỉ lệ","B. VTPT song song","C. Cắt nhau theo đường thẳng","D. Vuông góc"],answer:"A",solution:"A1/A2 = B1/B2 = C1/C2 = D1/D2"},
+            {q:"Mặt phẳng (P): 2x-y+2z=0 đi qua điểm:",options:["A. Gốc tọa độ","B. (1;1;1)","C. (0;1;0)","D. (0;0;1)"],answer:"A",solution:"D=0 ⇒ qua O(0;0;0)"},
+            {q:"Cho (P): x-2y+3z-5=0. Điểm đối xứng của O(0;0;0) qua (P) có toạ độ tính được bằng:",options:["A. Công thức đối xứng","B. Trung điểm đoạn vuông góc","C. Cả A và B","D. Không tính được"],answer:"C",solution:"Viết đt vuông góc, tìm hình chiếu, suy ra đối xứng"},
+            {q:"Mặt phẳng tiếp xúc với mặt cầu tâm I bán kính R khi khoảng cách từ I đến mp bằng:",options:["A. R","B. 2R","C. R/2","D. R²"],answer:"A",solution:"Điều kiện tiếp xúc"},
+            {q:"Phương trình mặt phẳng song song cách đều hai mặt phẳng x+2y+2z+3=0 và x+2y+2z-5=0 là:",options:["A. x+2y+2z-1=0","B. x+2y+2z+1=0","C. x+2y+2z=0","D. x+2y+2z-2=0"],answer:"A",solution:"Lấy trung bình cộng D: (3-5)/2 = -1"},
+            {q:"Nếu A=0 trong Ax+By+Cz+D=0 thì mặt phẳng:",options:["A. Song song hoặc chứa Ox","B. Song song hoặc chứa Oy","C. Song song hoặc chứa Oz","D. Vuông góc Ox"],answer:"A",solution:"A=0 ⇒ n⃗⊥i⃗ ⇒ mp // Ox"},
+            {q:"Cho (P): x+y+z=0 và điểm M(1;1;1). Độ dài đoạn vuông góc từ M đến (P) là:",options:["A. √3","B. 1","C. 3","D. 2"],answer:"A",solution:"d=|1+1+1|/√3 = √3"},
+            {q:"Mặt phẳng (P) có VTPT n⃗=(1;0;-1) và qua M(1;2;3). Phương trình:",options:["A. x-z+2=0","B. x+z-4=0","C. x-z=0","D. y-2=0"],answer:"A",solution:"1(x-1)+0(y-2)-1(z-3)=0 ⇒ x-z+2=0"},
+            {q:"Khoảng cách từ M đến (P) lớn nhất khi M di chuyển trên đường thẳng d vuông góc (P) là:",options:["A. Vô cực","B. Bằng 0","C. Bằng 1","D. Không xác định"],answer:"A",solution:"Đi xa vô tận thì khoảng cách lớn vô cùng"},
+            {q:"Mặt phẳng (P): 2x+3y-6z+5=0 có cosin góc với trục Oz là:",options:["A. 6/7","B. 1/7","C. 6","D. 7/6"],answer:"A",solution:"|cos(n,k)| = |-6|/√(4+9+36) = 6/7"},
+            {q:"Cho 3 điểm thẳng hàng. Có bao nhiêu mặt phẳng phân biệt đi qua 3 điểm đó?",options:["A. Vô số","B. 1","C. 0","D. 3"],answer:"A",solution:"Quay quanh đường thẳng chứa 3 điểm"},
+            {q:"Mặt phẳng (P) vuông góc với (Q) khi góc giữa chúng bằng:",options:["A. 90°","B. 0°","C. 45°","D. 180°"],answer:"A",solution:"Định nghĩa vuông góc"},
+            {q:"Phương trình mặt phẳng đi qua A(1;0;0) và vuông góc với Oy là:",options:["A. y=0","B. x=1","C. z=0","D. y=1"],answer:"A",solution:"Vuông góc Oy ⇒ VTPT (0;1;0) ⇒ y=0"},
+            {q:"Cho (P): x+y+z=3. Tổng các hệ số A+B+C+D bằng:",options:["A. 0","B. 3","C. 1","D. 6"],answer:"A",solution:"1+1+1-3=0"},
+            {q:"Mặt phẳng (P) tạo với 3 trục toạ độ 3 góc bằng nhau. VTPT có dạng:",options:["A. (k;k;k)","B. (1;0;0)","C. (1;1;0)","D. (0;0;1)"],answer:"A",solution:"Cos 3 góc bằng nhau ⇒ |A|=|B|=|C|"},
+            {q:"Điều kiện để mp(P) song song mp(Q) là:",options:["A. n1=k·n2 và D khác tỉ lệ","B. n1=n2","C. n1·n2=0","D. A1=A2"],answer:"A",solution:"Song song hoặc trùng, loại trùng thì song song"},
+            {q:"Cho (P): 2x-y+2z-6=0. Tọa độ hình chiếu của O lên (P) là:",options:["A. (4/9;-2/9;4/9)","B. (4/3;-2/3;4/3)","C. (1;-1;1)","D. (2;-1;2)"],answer:"A",solution:"Đt qua O vuông góc (P): x/2=y/(-1)=z/2=t. Thay vào pt mp tìm t."},
+            {q:"Mặt phẳng (P): x=0 là mặt phẳng:",options:["A. (Oyz)","B. (Oxy)","C. (Oxz)","D. song song Ox"],answer:"A",solution:"Mặt phẳng tung độ và cao độ bằng 0"},
+            {q:"Nếu M(x₀;y₀;z₀) thuộc (P): Ax+By+Cz+D=0 thì:",options:["A. Ax₀+By₀+Cz₀+D=0","B. Ax₀+By₀+Cz₀=1","C. A+B+C=D","D. x₀+y₀+z₀=0"],answer:"A",solution:"Điều kiện thuộc mặt phẳng"},
+            {q:"Khoảng cách từ I(1;1;1) đến (P): x+y+z-3=0 là:",options:["A. 0","B. 1","C. √3","D. 3"],answer:"A",solution:"1+1+1-3=0. I thuộc (P) nên d=0"},
+            {q:"Cho (P): 3x+4y-12z+1=0. VTPT là:",options:["A. (3;4;-12)","B. (3;4;12)","C. (-3;-4;12)","D. (12;4;3)"],answer:"A",solution:"Đọc hệ số"}
+        ];
+
+        const tfData = [
+            {q:"Về vectơ pháp tuyến:",statements:[{text:"Mặt phẳng có vô số vectơ pháp tuyến cùng phương",answer:true},{text:"VTPT luôn có độ dài bằng 1",answer:false},{text:"Nếu n⃗=(A;B;C) là VTPT thì kn⃗ (k≠0) cũng là VTPT",answer:true},{text:"VTPT song song với mặt phẳng",answer:false}]},
+            {q:"Về phương trình mặt phẳng:",statements:[{text:"Mọi mặt phẳng đều có phương trình dạng Ax+By+Cz+D=0",answer:true},{text:"Nếu D=0 thì mặt phẳng đi qua gốc tọa độ",answer:true},{text:"Phương trình mặt phẳng là duy nhất",answer:false},{text:"Hệ số A, B, C không thể đồng thời bằng 0",answer:true}]},
+            {q:"Về vị trí tương đối:",statements:[{text:"Hai mặt phẳng song song khi VTPT cùng phương",answer:true},{text:"Hai mặt phẳng trùng nhau khi các hệ số tỉ lệ",answer:true},{text:"Hai mặt phẳng vuông góc khi VTPT vuông góc",answer:true},{text:"Hai mặt phẳng cắt nhau khi VTPT cùng phương",answer:false}]},
+            {q:"Về khoảng cách:",statements:[{text:"Khoảng cách từ điểm đến mặt phẳng luôn không âm",answer:true},{text:"Nếu khoảng cách bằng 0 thì điểm thuộc mặt phẳng",answer:true},{text:"Khoảng cách từ điểm đến mặt phẳng tính bằng công thức tích có hướng",answer:false},{text:"Khoảng cách giữa 2 mp song song là khoảng cách từ 1 điểm thuộc mp này đến mp kia",answer:true}]},
+            {q:"Về góc:",statements:[{text:"Góc giữa 2 mặt phẳng là góc giữa 2 VTPT",answer:true},{text:"Góc giữa 2 mặt phẳng luôn ≤ 90°",answer:true},{text:"Cos góc giữa 2 mp bằng tích vô hướng VTPT",answer:false},{text:"Hai mp vuông góc khi cos góc bằng 0",answer:true}]},
+            {q:"Về phương trình đoạn chắn:",statements:[{text:"Dùng khi mặt phẳng cắt 3 trục toạ độ tại 3 điểm khác O",answer:true},{text:"Dạng x/a+y/b+z/c=1",answer:true},{text:"Áp dụng được khi mặt phẳng đi qua gốc tọa độ",answer:false},{text:"a, b, c là toạ độ giao điểm với các trục",answer:true}]},
+            {q:"Về mặt phẳng đặc biệt:",statements:[{text:"(Oxy) có phương trình z=0",answer:true},{text:"(Oyz) có phương trình x=0",answer:true},{text:"Mặt phẳng vuông góc Ox có dạng By+Cz+D=0",answer:true},{text:"Mặt phẳng song song Oz có dạng Ax+By+C=0",answer:false}]},
+            {q:"Về ứng dụng:",statements:[{text:"Dùng viết pt mặt phẳng trung trực đoạn thẳng",answer:true},{text:"Dùng tính thể tích tứ diện",answer:true},{text:"Dùng xác định vị trí tương đối của điểm và mặt phẳng",answer:true},{text:"Không dùng trong hình học không gian giải tích",answer:false}]},
+            {q:"Về máy tính CASIO:",statements:[{text:"Dùng Mode Vector tính tích có hướng tìm VTPT",answer:true},{text:"Tính khoảng cách bằng cách thay số trực tiếp",answer:true},{text:"Giải hệ phương trình tìm giao điểm",answer:true},{text:"Không hỗ trợ tính toán hình học không gian",answer:false}]},
+            {q:"Về bài toán tham số:",statements:[{text:"Có thể tìm m để 2 mặt phẳng song song",answer:true},{text:"Có thể tìm m để khoảng cách bằng k",answer:true},{text:"Luôn tồn tại m thoả mãn mọi điều kiện",answer:false},{text:"Dùng điều kiện đồng phương của VTPT",answer:true}]},
+            {q:"Về tính chất:",statements:[{text:"Qua 3 điểm không thẳng hàng xác định duy nhất 1 mặt phẳng",answer:true},{text:"Qua 1 điểm và 1 VTPT xác định duy nhất 1 mặt phẳng",answer:true},{text:"Qua 1 đường thẳng có duy nhất 1 mặt phẳng",answer:false},{text:"Giao tuyến của 2 mp cắt nhau là 1 đường thẳng",answer:true}]},
+            {q:"Về sai lầm thường gặp:",statements:[{text:"Quên trị tuyệt đối khi tính cos góc",answer:true},{text:"Nhầm VTPT với VTCP của đường thẳng",answer:true},{text:"Quên chia cho độ dài VTPT khi tính khoảng cách",answer:true},{text:"Điều kiện song song quên xét D",answer:true}]}
+        ];
+
+        const recognitionData = [
+            {q:"Viết phương trình tổng quát của mặt phẳng có VTPT n⃗=(A;B;C) và đi qua M(x₀;y₀;z₀).",answer:"A(x-x₀) + B(y-y₀) + C(z-z₀) = 0",solution:"Công thức cơ bản"},
+            {q:"Nếu n⃗=(2;-1;3) là VTPT của (P) thì phương trình (P) có dạng:",answer:"2x - y + 3z + D = 0",solution:"Đọc hệ số"},
+            {q:"Điều kiện để hai mặt phẳng vuông góc là:",answer:"n₁·n₂ = 0 ⇔ A₁A₂ + B₁B₂ + C₁C₂ = 0",solution:"Tích vô hướng bằng 0"},
+            {q:"Khoảng cách từ điểm M₀(x₀;y₀;z₀) đến mp Ax+By+Cz+D=0 là:",answer:"d = |Ax₀+By₀+Cz₀+D| / √(A²+B²+C²)",solution:"Công thức khoảng cách"},
+            {q:"Phương trình mặt phẳng (Oxy) là:",answer:"z = 0",solution:"Mặt phẳng tọa độ"},
+            {q:"VTPT của mặt phẳng (Oyz) là:",answer:"(1;0;0) hoặc i⃗",solution:"Vuông góc Oyz"},
+            {q:"Mặt phẳng song song với (Oxy) có phương trình dạng:",answer:"z = c (hoặc Cz+D=0)",solution:"VTPT (0;0;1)"},
+            {q:"Góc giữa hai mặt phẳng (P) và (Q) được tính bởi công thức:",answer:"cos(P,Q) = |n₁·n₂| / (|n₁||n₂|)",solution:"Công thức góc"},
+            {q:"Nếu mặt phẳng đi qua 3 điểm A, B, C thì VTPT tính bằng:",answer:"n⃗ = [AB⃗, AC⃗] (tích có hướng)",solution:"Phương pháp tìm VTPT"},
+            {q:"Phương trình đoạn chắn của mặt phẳng cắt trục tại A(a;0;0), B(0;b;0), C(0;0;c) là:",answer:"x/a + y/b + z/c = 1",solution:"Dạng đoạn chắn"}
+        ];
+
+        const comprehensionData = [
+            {q:"Tại sao mặt phẳng Ax+By+Cz+D=0 không tồn tại nếu A=B=C=0?",answer:"Vì khi đó phương trình suy biến thành D=0, không mô tả mặt phẳng trong không gian 3 chiều",solution:"Điều kiện tồn tại"},
+            {q:"Giải thích tại khoảng cách từ điểm đến mặt phẳng luôn dùng giá trị tuyệt đối ở tử số.",answer:"Khoảng cách là độ dài đại số không âm, giá trị tuyệt đối đảm bảo kết quả dương dù điểm nằm phía nào của mp",solution:"Ý nghĩa hình học"},
+            {q:"Nếu VTPT n⃗ có thành phần B=0 thì mặt phẳng có đặc điểm gì?",answer:"Song song hoặc chứa trục Oy",solution:"VTPT vuông góc j⃗"},
+            {q:"Tại sao hai mặt phẳng song song có cùng VTPT?",answer:"Vì chúng cùng vuông góc với một phương, nên VTPT phải cùng phương",solution:"Định nghĩa song song"},
+            {q:"Giải thích ý nghĩa của D trong phương trình Ax+By+Cz+D=0.",answer:"D liên quan đến khoảng cách từ gốc tọa độ đến mặt phẳng. D=0 ⇔ mp qua gốc tọa độ",solution:"Vai trò hệ số tự do"},
+            {q:"Nếu góc giữa 2 mặt phẳng bằng 0° thì chúng có vị trí tương đối nào?",answer:"Song song hoặc trùng nhau",solution:"VTPT cùng phương"},
+            {q:"Tại sao qua 3 điểm thẳng hàng có vô số mặt phẳng?",answer:"Vì 3 điểm thẳng hàng xác định 1 đường thẳng, và có vô số mặt phẳng quay quanh đường thẳng đó",solution:"Hình học không gian"},
+            {q:"Nếu mặt phẳng vuông góc với Oy thì phương trình có dạng gì? Tại sao?",answer:"y = c. Vì VTPT (0;1;0) ⇒ 0x+1y+0z+D=0 ⇒ y+c'=0",solution:"Phương vuông góc trục"},
+            {q:"Giải thích tại sao cos góc giữa 2 mp cần lấy trị tuyệt đối của tích vô hướng.",answer:"Góc giữa 2 mặt phẳng được định nghĩa là góc nhọn hoặc vuông (≤ 90°), nên cos phải ≥ 0",solution:"Quy ước góc"},
+            {q:"Mặt phẳng trung trực của đoạn AB là gì? Cách viết?",answer:"Tập hợp điểm cách đều A, B. Qua trung điểm I của AB và nhận AB⃗ làm VTPT",solution:"Định nghĩa và phương pháp"}
+        ];
+
+        const lowData = [
+            {q:"Viết phương trình mặt phẳng qua M(1;2;-1) và nhận n⃗=(2;3;-1) làm VTPT.",answer:"2x + 3y - z - 9 = 0",solution:"2(x-1)+3(y-2)-1(z+1)=0"},
+            {q:"Viết phương trình mặt phẳng (Oxy).",answer:"z = 0",solution:"Mặt phẳng tọa độ"},
+            {q:"Tính khoảng cách từ O(0;0;0) đến mặt phẳng x + 2y + 2z - 6 = 0.",answer:"2",solution:"d = |-6|/√(1+4+4) = 6/3 = 2"},
+            {q:"Mặt phẳng qua A(1;0;0), B(0;1;0), C(0;0;1) có phương trình:",answer:"x + y + z - 1 = 0",solution:"Đoạn chắn hoặc tích có hướng"},
+            {q:"Tìm VTPT của mặt phẳng 3x - y + 2z + 5 = 0.",answer:"(3; -1; 2)",solution:"Hệ số của x, y, z"},
+            {q:"Viết pt mặt phẳng qua M(2;1;3) và song song với x - y + 2z + 1 = 0.",answer:"x - y + 2z - 7 = 0",solution:"Cùng VTPT (1;-1;2)"},
+            {q:"Tính cos góc giữa 2 mp: x+y+z=0 và x=0.",answer:"1/√3",solution:"|1| / (√3·1) = 1/√3"},
+            {q:"Mặt phẳng qua M(1;1;1) và vuông góc với d: x/1=y/2=z/3 có pt:",answer:"x + 2y + 3z - 6 = 0",solution:"VTPT là VTCP (1;2;3)"},
+            {q:"Khoảng cách từ A(1;2;3) đến mp z = 0 là:",answer:"3",solution:"|z_A| = 3"},
+            {q:"Mặt phẳng trung trực của đoạn OM với M(2;0;0) có pt:",answer:"x - 1 = 0",solution:"Qua (1;0;0), VTPT (1;0;0)"}
+        ];
+
+        const highData = [
+            {q:"Viết phương trình mặt phẳng đi qua A(1;2;3), B(2;0;-1) và vuông góc với (P): x - y + 3z + 1 = 0.",answer:"7x + 10y - z - 24 = 0",solution:"**Lời giải:**\n1. AB⃗=(1;-2;-4), n_P=(1;-1;3).\n2. n_mp = [AB⃗, n_P] = (-10; -7; 1) hoặc (10; 7; -1). (Tính lại: i(-6-4)-j(3+4)+k(-1+2) = (-10;-7;1)).\n3. PT: -10(x-1)-7(y-2)+1(z-3)=0 ⇔ 10x+7y-z-21=0.\n**Kết luận: 10x + 7y - z - 21 = 0**"},
+            {q:"Tìm m để khoảng cách từ M(1;1;1) đến mp (m+1)x - 2y + (m-2)z - 4 = 0 lớn nhất.",answer:"m = 1",solution:"**Lời giải:**\n1. Khoảng cách lớn nhất khi hình chiếu của M lên mp là cố định hoặc mp quay quanh đường thẳng cố định.\n2. Thực tế bài toán thường yêu cầu mp qua điểm cố định. Nếu không, khảo sát hàm khoảng cách theo m.\n**Kết luận: Khảo sát hàm số d(m)**"},
+            {q:"Viết pt mặt phẳng qua A(1;0;0) và cách đều B(0;1;0), C(0;0;1).",answer:"Có 2 mp: y-z=0 và x+y+z-1=0",solution:"**Lời giải:**\n1. TH1: mp song song BC hoặc chứa trung điểm BC. Qua A và trung điểm I(0; 0.5; 0.5).\n2. VTPT tính từ AI và vectơ BC hoặc xét d(B)=d(C).\n**Kết luận: y-z=0 hoặc x+y+z-1=0**"},
+            {q:"Chứng minh rằng mặt phẳng (m+2)x + (1-m)y + (m-1)z + 2 = 0 luôn đi qua 1 điểm cố định với mọi m.",answer:"Điểm cố định I(1; 1; -1)",solution:"**Lời giải:**\n1. Nhóm theo m: m(x-y+z) + (2x+y-z+2) = 0.\n2. Giải hệ {x-y+z=0; 2x+y-z+2=0}. Chọn x=1 ⇒ y=1, z=-1 (thỏa).\n**Kết luận: I(1; 1; -1)**"},
+            {q:"Tìm m để góc giữa 2 mp x+my+z=0 và x-y+2z=0 bằng 45°.",answer:"m = 0 hoặc m = -4/3",solution:"**Lời giải:**\n1. cos45° = |1-m+2| / (√(2+m²)·√6) = 1/√2.\n2. Bình phương và giải pt theo m.\n**Kết luận: m = 0 hoặc m = -4/3**"},
+            {q:"Viết pt mặt phẳng đi qua đường thẳng d: x/1=y/2=z/3 và vuông góc với mp x+y+z=0.",answer:"x - 2y + z = 0",solution:"**Lời giải:**\n1. d qua O(0;0;0), VTCP u=(1;2;3). n_Q=(1;1;1).\n2. n_mp = [u, n_Q] = (-1; 2; -1).\n3. PT: -x+2y-z=0 ⇔ x-2y+z=0.\n**Kết luận: x - 2y + z = 0**"},
+            {q:"Tính thể tích tứ diện OABC với A(a;0;0), B(0;b;0), C(0;0;c).",answer:"V = |abc|/6",solution:"**Lời giải:**\n1. V = 1/6 |[OA⃗, OB⃗]·OC⃗| = 1/6 |abc|.\n2. Hoặc dùng công thức V = 1/3 S_đáy · h.\n**Kết luận: V = |abc|/6**"},
+            {q:"Cho mp (P): x+y+z-3=0. Tìm điểm M trên (P) sao cho MA²+MB² min với A(1;0;0), B(0;1;0).",answer:"M(0.5; 0.5; 2)",solution:"**Lời giải:**\n1. MA²+MB² min ⇔ M là hình chiếu của trung điểm I lên (P).\n2. I(0.5; 0.5; 0). Viết đt qua I vuông góc (P), tìm giao với (P).\n**Kết luận: M(0.5; 0.5; 2)**"},
+            {q:"Viết pt mặt phẳng tiếp xúc với mặt cầu (S): x²+y²+z²=4 và song song với x+2y+2z+5=0.",answer:"x+2y+2z ± 6 = 0",solution:"**Lời giải:**\n1. Dạng x+2y+2z+D=0.\n2. d(O,mp)=R=2 ⇒ |D|/3=2 ⇒ D=±6.\n**Kết luận: x+2y+2z ± 6 = 0**"},
+            {q:"Tìm m để 3 mặt phẳng x+y+z=1, 2x+3y+mz=4, x+my+2z=3 đồng quy.",answer:"m = 1 hoặc m = 2",solution:"**Lời giải:**\n1. Giải hệ 3 phương trình.\n2. Định thức hệ số khác 0 hoặc nghiệm duy nhất.\n**Kết luận: Giải hệ tìm m**"}
+        ];
+
+        const realData = [
+            {q:"Trong xây dựng, mặt phẳng mái nhà có phương trình z = 0.5x + 2. Góc nghiêng của mái nhà so với mặt đất là?",answer:"α = arctan(0.5) ≈ 26.6°",solution:"**Lời giải:**\n1. VTPT n=(0.5; 0; -1). VTPT đất k=(0;0;1).\n2. cosα = |n·k|/(|n||k|) = 1/√1.25.\n**Kết luận: ~26.6°**"},
+            {q:"Một tấm pin mặt trời đặt trên mặt phẳng x + 2y + 2z = 10. Ánh sáng chiếu theo hướng d(1;1;1). Tính góc tới.",answer:"Góc giữa d và n⃗",solution:"**Lời giải:**\n1. Góc giữa tia sáng và VTPT.\n2. cosθ = |1+2+2|/(√3·3) = 5/(3√3).\n**Kết luận: Tính góc chiếu sáng**"},
+            {q:"Khoảng cách từ máy bay tại M(0;0;5) đến mặt đất (Oxy) là 5km. Viết pt mp biểu diễn độ cao bay 5km.",answer:"z = 5",solution:"**Lời giải:**\n1. Mặt phẳng song song Oxy, cách Oxy 5 đơn vị.\n**Kết luận: z = 5**"},
+            {q:"Thiết kế hộp chữ nhật có 1 mặt nằm trên mp x+y+z=6. Thể tích lớn nhất khi các cạnh song song trục toạ độ là?",answer:"Hình lập phương cạnh 2",solution:"**Lời giải:**\n1. Tối ưu hóa V = xyz với x+y+z=6.\n2. x=y=z=2 ⇒ V=8.\n**Kết luận: Hình lập phương**"},
+            {q:"Trong đồ họa 3D, mặt phẳng z=0 thường được gọi là:",answer:"Mặt phẳng hình chiếu (Ground Plane)",solution:"**Lời giải:**\n1. Dùng làm mặt đất trong môi trường ảo.\n**Kết luận: Ground Plane**"},
+            {q:"Cắt viên kim cương hình bát diện đều bởi mp đi qua tâm và vuông góc với trục đối xứng. Thiết diện là hình gì?",answer:"Hình vuông",solution:"**Lời giải:**\n1. Đối xứng của bát diện.\n**Kết luận: Hình vuông**"},
+            {q:"Một bức tường nghiêng có phương trình x - z = 0. Góc nghiêng so với phương thẳng đứng là?",answer:"45°",solution:"**Lời giải:**\n1. Góc giữa n(1;0;-1) và k(0;0;1).\n**Kết luận: 45°**"},
+            {q:"Định vị GPS sử dụng giao của 4 mặt cầu, tương đương giải hệ phương trình. Mỗi vệ tinh xác định 1 mặt cầu.",answer:"Đúng",solution:"**Lời giải:**\n1. Giao 4 mặt cầu cho 1 điểm duy nhất (x,y,z,t).\n**Kết luận: Nguyên lý GPS**"},
+            {q:"Trong kiến trúc, mái nhà hình chóp có 4 mặt phẳng. Viết pt 1 mặt nếu biết 3 đỉnh.",answer:"Dùng tích có hướng",solution:"**Lời giải:**\n1. Chọn 3 điểm, tìm VTPT, viết pt.\n**Kết luận: Phương pháp tọa độ**"},
+            {q:"Mực nước hồ chứa dâng lên theo mp z = 0.1t. Sau 10h, mực nước ở độ cao nào?",answer:"z = 1",solution:"**Lời giải:**\n1. Thay t=10 vào pt.\n**Kết luận: Độ cao 1 đơn vị**"}
+        ];
+
+        function renderQuestions(containerId, dataArray, type) {
+            const container = document.getElementById(containerId);
+            dataArray.forEach((item, index) => {
+                const div = document.createElement('div');
+                div.className = 'border-l-4 border-cyan-400 pl-4 py-3 bg-gray-50 rounded-r-lg';
+                if (type === 'mcq') {
+                    div.innerHTML = `<p class="font-semibold text-gray-800 mb-2"><strong>Câu ${index + 1}:</strong> ${item.q}</p><div class="grid grid-cols-2 gap-2 mb-3 text-sm">${item.options.map(o => `<span class="text-gray-700">${o}</span>`).join('')}</div><button onclick="toggleAnswer('${containerId}-${index}')" class="text-cyan-600 text-sm hover:underline">👁️ Xem đáp án</button><div id="${containerId}-${index}" class="answer-box mt-2 p-3 rounded hidden"><p class="font-semibold text-green-700">Đáp án: ${item.answer}</p><p class="text-gray-700 text-sm mt-1">${item.solution}</p></div>`;
+                } else if (type === 'tf') {
+                    div.innerHTML = `<p class="font-semibold text-gray-800 mb-3"><strong>Câu ${index + 1}:</strong> ${item.q}</p><div class="space-y-2">${item.statements.map((s, i) => `<div class="flex items-center justify-between bg-white p-2 rounded"><span class="text-gray-700 text-sm">${String.fromCharCode(65+i)}. ${s.text}</span><span class="text-xs px-2 py-1 rounded ${s.answer ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}">${s.answer ? 'Đúng' : 'Sai'}</span></div>`).join('')}</div>`;
+                } else {
+                    div.innerHTML = `<p class="font-semibold text-gray-800 mb-2"><strong>Bài ${index + 1}:</strong> ${item.q}</p><button onclick="toggleAnswer('${containerId}-${index}')" class="text-cyan-600 text-sm hover:underline">👁️ Xem đáp án</button><div id="${containerId}-${index}" class="${containerId==='comprehension-container'||containerId==='high-container'||containerId==='real-container'?'solution-box':'answer-box'} mt-2 p-3 rounded hidden"><p class="font-semibold text-purple-700">Đáp án: ${item.answer}</p><p class="text-gray-700 text-sm mt-1 whitespace-pre-line">${item.solution}</p></div>`;
+                }
+                container.appendChild(div);
+            });
+        }
+
+        function toggleAnswer(id) { document.getElementById(id).classList.toggle('hidden'); }
+        document.addEventListener('DOMContentLoaded', () => {
+            renderQuestions('mcq-container', mcqData, 'mcq');
+            renderQuestions('tf-container', tfData, 'tf');
+            renderQuestions('recognition-container', recognitionData, 'default');
+            renderQuestions('comprehension-container', comprehensionData, 'default');
+            renderQuestions('low-container', lowData, 'default');
+            renderQuestions('high-container', highData, 'default');
+            renderQuestions('real-container', realData, 'default');
+        });
+    </script>
+</body>
+</html>
+```

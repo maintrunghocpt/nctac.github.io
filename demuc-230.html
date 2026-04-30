@@ -1,0 +1,371 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phương Trình Đường Thẳng - Đề Mục 230 - Toán Lớp 12</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@fontsource/roboto@4.5.8/index.css" rel="stylesheet">
+    <style>
+        * { font-family: 'Roboto', sans-serif; }
+        .gradient-header { background: linear-gradient(135deg, #0891b2 0%, #7c3aed 100%); }
+        .card-hover { transition: all 0.3s ease; }
+        .card-hover:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0,0,0,0.15); }
+        .btn-primary { background: linear-gradient(135deg, #0891b2 0%, #7c3aed 100%); }
+        .btn-primary:hover { background: linear-gradient(135deg, #067894 0%, #6a32c4 100%); }
+        .answer-box { background: #f0f9ff; border-left: 4px solid #0891b2; }
+        .solution-box { background: #fef3c7; border-left: 4px solid #f59e0b; }
+        .nav-item { transition: all 0.2s ease; }
+        .nav-item:hover { background: rgba(255,255,255,0.2); }
+        .nav-item.active { background: rgba(255,255,255,0.3); }
+        .print-section { page-break-inside: avoid; }
+        @media print { .no-print { display: none; } }
+        .formula-box { background: linear-gradient(135deg, #e0f2fe 0%, #ede9fe 100%); border-radius: 8px; padding: 16px; margin: 12px 0; }
+        .graph-container { background: #f8fafc; border: 2px dashed #cbd5e1; border-radius: 8px; padding: 20px; text-align: center; }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <header class="gradient-header text-white py-8">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center">
+                <div>
+                    <h1 class="text-3xl font-bold">PHƯƠNG TRÌNH ĐƯỜNG THẲNG</h1>
+                    <p class="text-lg opacity-90">Đề Mục 230 - Toán Lớp 12 - Hình Học Tọa Độ</p>
+                </div>
+                <div class="text-right">
+                    <p class="text-sm opacity-80">Bộ Tài Liệu Toán THPT</p>
+                    <p class="text-sm opacity-80">Ôn Tập Thi Tốt Nghiệp</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <nav class="bg-white shadow-md sticky top-0 z-50 no-print">
+        <div class="container mx-auto px-4">
+            <div class="flex overflow-x-auto py-3 space-x-2">
+                <button onclick="showSection('lesson')" class="nav-item active px-4 py-2 rounded-lg bg-cyan-100 text-cyan-700 whitespace-nowrap">📚 Bài Giảng</button>
+                <button onclick="showSection('mcq')" class="nav-item px-4 py-2 rounded-lg hover:bg-gray-100 whitespace-nowrap">📝 50 Câu MCQ</button>
+                <button onclick="showSection('tf')" class="nav-item px-4 py-2 rounded-lg hover:bg-gray-100 whitespace-nowrap">✅ 12 Câu Đúng/Sai</button>
+                <button onclick="showSection('recognition')" class="nav-item px-4 py-2 rounded-lg hover:bg-gray-100 whitespace-nowrap">🔍 10 Bài Nhận Biết</button>
+                <button onclick="showSection('comprehension')" class="nav-item px-4 py-2 rounded-lg hover:bg-gray-100 whitespace-nowrap">💡 10 Câu Thông Hiểu</button>
+                <button onclick="showSection('low')" class="nav-item px-4 py-2 rounded-lg hover:bg-gray-100 whitespace-nowrap">📊 10 Bài Vận Dụng Thấp</button>
+                <button onclick="showSection('high')" class="nav-item px-4 py-2 rounded-lg hover:bg-gray-100 whitespace-nowrap">🎯 10 Bài Vận Dụng Cao</button>
+                <button onclick="showSection('real')" class="nav-item px-4 py-2 rounded-lg hover:bg-gray-100 whitespace-nowrap">🌍 10 Bài Thực Tế</button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container mx-auto px-4 py-8">
+        <section id="lesson" class="section-content">
+            <div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section">
+                <h2 class="text-2xl font-bold text-cyan-700 mb-6 flex items-center"><span class="mr-3">📚</span> BÀI GIẢNG: PHƯƠNG TRÌNH ĐƯỜNG THẲNG</h2>
+                <div class="space-y-6">
+                    <div class="answer-box p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold text-cyan-700 mb-4">1. ĐỊNH NGHĨA & CÁC DẠNG PHƯƠNG TRÌNH</h3>
+                        <p class="text-gray-700 mb-4">Trong không gian Oxyz, đường thẳng Δ được xác định khi biết một điểm thuộc nó và một vectơ chỉ phương.</p>
+                        <div class="formula-box">
+                            <ul class="space-y-3 text-gray-700">
+                                <li>• <strong>Đi qua M₀(x₀;y₀;z₀), VTCP u⃗=(a;b;c)≠0⃗:</strong></li>
+                                <li>• <strong>Phương trình tham số:</strong> x = x₀ + at, y = y₀ + bt, z = z₀ + ct (t ∈ ℝ)</li>
+                                <li>• <strong>Phương trình chính tắc (a,b,c ≠ 0):</strong> (x-x₀)/a = (y-y₀)/b = (z-z₀)/c</li>
+                            </ul>
+                        </div>
+                        <div class="grid md:grid-cols-3 gap-4 mt-4">
+                            <div class="bg-cyan-50 p-4 rounded-lg">
+                                <h4 class="font-semibold text-cyan-600 mb-2">Vectơ chỉ phương</h4>
+                                <p class="text-gray-700 text-sm">u⃗ cùng phương với đường thẳng. Nếu u⃗ là VTCP thì k·u⃗ (k≠0) cũng là VTCP.</p>
+                                <p class="text-cyan-700 text-sm font-semibold mt-2">u⃗ = (a; b; c)</p>
+                            </div>
+                            <div class="bg-purple-50 p-4 rounded-lg">
+                                <h4 class="font-semibold text-purple-600 mb-2">Vị trí tương đối</h4>
+                                <p class="text-gray-700 text-sm">Xét hệ phương trình hoành độ giao điểm. Nếu hệ có 1 nghiệm → Cắt, vô số → Trùng, vô nghiệm → Song song hoặc chéo nhau.</p>
+                                <p class="text-purple-700 text-sm font-semibold mt-2">Giải hệ tham số</p>
+                            </div>
+                            <div class="bg-amber-50 p-4 rounded-lg">
+                                <h4 class="font-semibold text-amber-600 mb-2">Góc & Khoảng cách</h4>
+                                <p class="text-gray-700 text-sm">Góc giữa 2 đường: cosφ = |u₁·u₂|/(|u₁||u₂|). Khoảng cách từ điểm đến đường thẳng dùng tích có hướng.</p>
+                                <p class="text-amber-700 text-sm font-semibold mt-2">d(M,Δ) = |[M₀M⃗, u⃗]|/|u⃗|</p>
+                            </div>
+                        </div>
+                        <div class="mt-4 graph-container">
+                            <svg width="400" height="220" viewBox="0 0 400 220">
+                                <line x1="40" y1="180" x2="360" y2="180" stroke="#cbd5e1" stroke-width="2"/>
+                                <line x1="40" y1="180" x2="40" y2="40" stroke="#cbd5e1" stroke-width="2"/>
+                                <line x1="40" y1="180" x2="240" y2="100" stroke="#cbd5e1" stroke-width="2"/>
+                                <path d="M 60 150 L 320 90" stroke="#0891b2" stroke-width="4"/>
+                                <path d="M 190 120 L 220 70" stroke="#dc2626" stroke-width="3" marker-end="url(#arr)"/>
+                                <circle cx="160" cy="135" r="5" fill="#f59e0b"/>
+                                <text x="170" y="125" fill="#f59e0b">M₀</text>
+                                <text x="230" y="60" fill="#dc2626" font-weight="bold">u⃗=(a;b;c)</text>
+                                <text x="280" y="80" fill="#0891b2" font-weight="bold">Δ</text>
+                                <defs><marker id="arr" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#dc2626"/></marker></defs>
+                            </svg>
+                            <p class="text-sm text-gray-600 mt-2">Đường thẳng đi qua M₀ và có vectơ chỉ phương u⃗</p>
+                        </div>
+                    </div>
+
+                    <div class="solution-box p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold text-amber-700 mb-4">2. VỊ TRÍ TƯƠNG ĐỐI & GÓC</h3>
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div class="bg-white p-4 rounded-lg border-2 border-cyan-300">
+                                <h4 class="font-semibold text-cyan-600 mb-2">Đường thẳng và mặt phẳng</h4>
+                                <ul class="space-y-2 text-gray-700 text-sm">
+                                    <li>• <strong>Cắt:</strong> u⃗·n⃗ ≠ 0</li>
+                                    <li>• <strong>Song song:</strong> u⃗·n⃗ = 0, điểm thuộc Δ không thuộc (P)</li>
+                                    <li>• <strong>Nằm trong:</strong> u⃗·n⃗ = 0, điểm thuộc Δ thuộc (P)</li>
+                                    <li>• <strong>Vuông góc:</strong> u⃗ // n⃗</li>
+                                </ul>
+                            </div>
+                            <div class="bg-white p-4 rounded-lg border-2 border-purple-300">
+                                <h4 class="font-semibold text-purple-600 mb-2">Hai đường thẳng</h4>
+                                <ul class="space-y-2 text-gray-700 text-sm">
+                                    <li>• <strong>Cắt nhau:</strong> Giải hệ có 1 nghiệm</li>
+                                    <li>• <strong>Song song:</strong> u₁ = k·u₂, điểm không chung</li>
+                                    <li>• <strong>Chéo nhau:</strong> [u₁,u₂]·M₁M₂⃗ ≠ 0</li>
+                                    <li>• <strong>Vuông góc:</strong> u₁·u₂ = 0</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="mt-4 bg-cyan-50 p-4 rounded-lg">
+                            <h4 class="font-semibold text-cyan-700 mb-2">📝 Mẹo giải nhanh:</h4>
+                            <p class="text-gray-700 text-sm">• Khi viết phương trình đường thẳng, luôn kiểm tra u⃗ ≠ 0⃗.</p>
+                            <p class="text-gray-700 text-sm">• Nếu đề cho 2 điểm A, B → VTCP là AB⃗.</p>
+                            <p class="text-gray-700 text-sm">• Nếu đề cho Δ vuông góc với mp(P) → VTCP của Δ chính là VTPT của (P).</p>
+                        </div>
+                    </div>
+
+                    <div class="answer-box p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold text-cyan-700 mb-4">3. VÍ DỤ MINH HỌA</h3>
+                        <div class="bg-white p-4 rounded-lg mb-4">
+                            <h4 class="font-semibold text-cyan-600 mb-2">Ví dụ 1: Viết phương trình tham số</h4>
+                            <p class="text-gray-700 mb-2">Viết phương trình đường thẳng đi qua A(1;-2;3) và song song với trục Ox.</p>
+                            <div class="solution-box p-3 rounded">
+                                <p class="text-gray-700">VTCP u⃗ = (1;0;0) (VTCP trục Ox)</p>
+                                <p class="text-gray-700">PTTS: x = 1 + t, y = -2, z = 3</p>
+                            </div>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg mb-4">
+                            <h4 class="font-semibold text-cyan-600 mb-2">Ví dụ 2: Vị trí tương đối</h4>
+                            <p class="text-gray-700 mb-2">Xét vị trí tương đối của Δ₁: x/1 = (y-1)/2 = (z+1)/-1 và Δ₂: x=1+2t, y=-t, z=2-t.</p>
+                            <div class="solution-box p-3 rounded">
+                                <p class="text-gray-700">u₁=(1;2;-1), u₂=(2;-1;-1) → Không cùng phương.</p>
+                                <p class="text-gray-700">Giải hệ: 1+2t₁ = 1+2t₂; 1+2t₁? (Sửa: Δ₁ qua M₁(0;1;-1)). Giải hệ PTTS thu được nghiệm duy nhất → Cắt nhau.</p>
+                            </div>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg">
+                            <h4 class="font-semibold text-cyan-600 mb-2">Ví dụ 3: Khoảng cách</h4>
+                            <p class="text-gray-700 mb-2">Tính khoảng cách từ M(1;2;3) đến đường thẳng d qua O(0;0;0), VTCP u⃗=(1;0;0).</p>
+                            <div class="solution-box p-3 rounded">
+                                <p class="text-gray-700">OM⃗ = (1;2;3). [OM⃗, u⃗] = (0; 3; -2)</p>
+                                <p class="text-gray-700">d = √(0+9+4)/1 = √13</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="solution-box p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold text-amber-700 mb-4">4. HƯỚNG DẪN MÁY TÍNH CASIO</h3>
+                        <div class="bg-white p-4 rounded-lg space-y-3">
+                            <p class="text-gray-700"><strong>Tích có hướng & Giải hệ:</strong></p>
+                            <ol class="list-decimal list-inside space-y-1 text-gray-700">
+                                <li>Nhấn <kbd class="bg-gray-200 px-2 py-1 rounded">MODE</kbd> <kbd class="bg-gray-200 px-2 py-1 rounded">5</kbd> (VECTOR)</li>
+                                <li>Nhập VTCP và vectơ tạo bởi điểm & đường thẳng</li>
+                                <li>Dùng phím <kbd class="bg-gray-200 px-2 py-1 rounded">×</kbd> để tính tích có hướng (dùng tìm khoảng cách hoặc đường vuông góc chung)</li>
+                                <li>Dùng chức năng <kbd class="bg-gray-200 px-2 py-1 rounded">SOLVE</kbd> hoặc giải hệ 3 ẩn để tìm giao điểm.</li>
+                            </ol>
+                            <p class="text-gray-700 mt-3"><strong>Lưu ý:</strong> Luôn kiểm tra điều kiện mẫu số khác 0 khi chuyển từ PTTS sang PTCN.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="mcq" class="section-content hidden"><div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section"><h2 class="text-2xl font-bold text-cyan-700 mb-6 flex items-center"><span class="mr-3">📝</span> 50 CÂU TRẮC NGHIỆM</h2><div class="space-y-6" id="mcq-container"></div></div></section>
+        <section id="tf" class="section-content hidden"><div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section"><h2 class="text-2xl font-bold text-cyan-700 mb-6 flex items-center"><span class="mr-3">✅</span> 12 CÂU ĐÚNG/SAI</h2><div class="space-y-6" id="tf-container"></div></div></section>
+        <section id="recognition" class="section-content hidden"><div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section"><h2 class="text-2xl font-bold text-cyan-700 mb-6 flex items-center"><span class="mr-3">🔍</span> 10 BÀI NHẬN BIẾT</h2><div class="space-y-6" id="recognition-container"></div></div></section>
+        <section id="comprehension" class="section-content hidden"><div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section"><h2 class="text-2xl font-bold text-cyan-700 mb-6 flex items-center"><span class="mr-3">💡</span> 10 CÂU THÔNG HIỂU</h2><div class="space-y-6" id="comprehension-container"></div></div></section>
+        <section id="low" class="section-content hidden"><div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section"><h2 class="text-2xl font-bold text-cyan-700 mb-6 flex items-center"><span class="mr-3">📊</span> 10 BÀI VẬN DỤNG THẤP</h2><div class="space-y-6" id="low-container"></div></div></section>
+        <section id="high" class="section-content hidden"><div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section"><h2 class="text-2xl font-bold text-cyan-700 mb-6 flex items-center"><span class="mr-3">🎯</span> 10 BÀI VẬN DỤNG CAO</h2><div class="space-y-6" id="high-container"></div></div></section>
+        <section id="real" class="section-content hidden"><div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section"><h2 class="text-2xl font-bold text-cyan-700 mb-6 flex items-center"><span class="mr-3">🌍</span> 10 BÀI THỰC TẾ</h2><div class="space-y-6" id="real-container"></div></div></section>
+    </main>
+
+    <footer class="gradient-header text-white py-6 mt-8">
+        <div class="container mx-auto px-4 text-center">
+            <p class="text-sm">Bộ Tài Liệu Toán THPT - Đề Mục 230: Phương Trình Đường Thẳng</p>
+            <p class="text-sm opacity-80">© 2024 - Ôn Tập Thi Tốt Nghiệp</p>
+        </div>
+    </footer>
+    <button onclick="window.print()" class="no-print fixed bottom-6 right-6 btn-primary text-white px-6 py-3 rounded-full shadow-lg hover:shadow-xl transition-all">🖨️ In Tài Liệu</button>
+
+    <script>
+        function showSection(id) {
+            document.querySelectorAll('.section-content').forEach(e => e.classList.add('hidden'));
+            document.getElementById(id).classList.remove('hidden');
+            document.querySelectorAll('.nav-item').forEach(e => e.classList.remove('active'));
+            event.target.classList.add('active');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        const mcqData = [
+            {q:"Đường thẳng đi qua M(x₀;y₀;z₀) và có VTCP u⃗=(a;b;c) có phương trình tham số là:",options:["A. x=x₀+at, y=y₀+bt, z=z₀+ct","B. x=x₀+at, y=y₀+bt, z=z₀+ct (t∈R)","C. (x-x₀)/a=(y-y₀)/b=(z-z₀)/c","D. ax+by+cz+d=0"],answer:"B",solution:"Định nghĩa PTTS"},
+            {q:"VTCP của trục Oy là:",options:["A. (0;1;0)","B. (1;0;0)","C. (0;0;1)","D. (1;1;1)"],answer:"A",solution:"Trục Oy song song vectơ đơn vị j⃗"},
+            {q:"Nếu đường thẳng d song song với trục Oz thì VTCP của d có dạng:",options:["A. (0;0;k), k≠0","B. (k;0;0)","C. (0;k;0)","D. (k;k;k)"],answer:"A",solution:"Song song Oz ⇒ chỉ có thành phần z"},
+            {q:"Đường thẳng đi qua A(1;2;-1) và B(3;0;1) có VTCP là:",options:["A. (2;-2;2)","B. (1;-1;1)","C. Cả A và B đều đúng","D. (1;1;1)"],answer:"C",solution:"AB⃗=(2;-2;2) hoặc rút gọn (1;-1;1)"},
+            {q:"Phương trình chính tắc của đường thẳng yêu cầu điều kiện:",options:["A. a,b,c ≠ 0","B. a²+b²+c²>0","C. a,b,c > 0","D. Không có điều kiện"],answer:"A",solution:"Không thể chia cho 0"},
+            {q:"Góc giữa hai đường thẳng có VTCP u⃗₁, u⃗₂ được tính bởi:",options:["A. cosφ = |u₁·u₂|/(|u₁||u₂|)","B. cosφ = (u₁·u₂)/(|u₁||u₂|)","C. sinφ = |u₁×u₂|/(|u₁||u₂|)","D. tanφ = |u₁·u₂|"],answer:"A",solution:"Lấy trị tuyệt đối để góc nhọn"},
+            {q:"Hai đường thẳng vuông góc khi:",options:["A. u₁·u₂ = 0","B. u₁ × u₂ = 0","C. u₁ = u₂","D. u₁ // u₂"],answer:"A",solution:"Tích vô hướng VTCP bằng 0"},
+            {q:"Khoảng cách từ điểm M đến đường thẳng Δ qua M₀, VTCP u⃗ là:",options:["A. |[M₀M⃗, u⃗]| / |u⃗|","B. |M₀M⃗·u⃗| / |u⃗|","C. |M₀M⃗ × u⃗|","D. |M₀M⃗| / |u⃗|"],answer:"A",solution:"Công thức khoảng cách"},
+            {q:"Đường thẳng Δ song song với mặt phẳng (P) khi:",options:["A. u⃗·n⃗ = 0 và điểm thuộc Δ không thuộc (P)","B. u⃗·n⃗ ≠ 0","C. u⃗ // n⃗","D. Δ nằm trong (P)"],answer:"A",solution:"Vuông góc VTPT và không thuộc mp"},
+            {q:"Nếu giải hệ phương trình hoành độ giao điểm của Δ và (P) vô nghiệm thì:",options:["A. Δ song song hoặc nằm trong (P)","B. Δ cắt (P)","C. Δ vuông góc (P)","D. Δ chéo nhau"],answer:"A",solution:"Không có điểm chung"},
+            {q:"Đường thẳng d: x=1+2t, y=-t, z=3+t đi qua điểm:",options:["A. (1;0;3)","B. (2;-1;1)","C. (3;1;4)","D. (0;1;2)"],answer:"A",solution:"Thay t=0 được (1;0;3)"},
+            {q:"Góc giữa đường thẳng d và mặt phẳng (P) có VTCP u⃗, VTPT n⃗ thỏa:",options:["A. sinφ = |u⃗·n⃗|/(|u⃗||n⃗|)","B. cosφ = |u⃗·n⃗|/(|u⃗||n⃗|)","C. tanφ = |u⃗·n⃗|","D. sinφ = (u⃗×n⃗)"],answer:"A",solution:"Góc giữa đường và mp dùng sin"},
+            {q:"Đường thẳng đi qua M(2;-1;3) và vuông góc với mp (P): x-2y+z-5=0 có VTCP:",options:["A. (1;-2;1)","B. (2;-1;3)","C. (1;2;1)","D. (-1;2;-1)"],answer:"A",solution:"VTCP đường thẳng // VTPT mặt phẳng"},
+            {q:"Hai đường thẳng chéo nhau khi:",options:["A. Không đồng phẳng","B. Không cắt nhau và không song song","C. Vuông góc nhau","D. Cắt nhau tại vô cực"],answer:"B",solution:"Định nghĩa đường chéo nhau"},
+            {q:"Đường thẳng d nằm trong mp (P) khi:",options:["A. u⃗·n⃗=0 và 1 điểm thuộc d thuộc (P)","B. u⃗·n⃗≠0","C. u⃗ // n⃗","D. d song song (P)"],answer:"A",solution:"Vuông góc VTPT và có điểm chung"},
+            {q:"Phương trình chính tắc của đường thẳng qua O(0;0;0), VTCP (1;2;-1) là:",options:["A. x/1=y/2=z/(-1)","B. x=1, y=2, z=-1","C. x+2y-z=0","D. x/2=y/1=z/1"],answer:"A",solution:"Thế vào công thức"},
+            {q:"Nếu u⃗=(1;1;1) là VTCP của d, thì vectơ nào sau đây cũng là VTCP?",options:["A. (-2;-2;-2)","B. (1;-1;1)","C. (0;0;0)","D. (1;2;3)"],answer:"A",solution:"Cùng phương với u⃗"},
+            {q:"Góc giữa hai đường thẳng có VTCP (1;0;0) và (0;1;0) là:",options:["A. 90°","B. 0°","C. 45°","D. 60°"],answer:"A",solution:"Tích vô hướng = 0"},
+            {q:"Đường thẳng d song song với Ox thì phương trình có dạng:",options:["A. y=b, z=c","B. x=a","C. y=mx+n","D. z=cx+d"],answer:"A",solution:"y,z không đổi, x thay đổi theo t"},
+            {q:"Khoảng cách từ A(0;0;0) đến đường thẳng d qua B(1;0;0), VTCP (0;1;0) là:",options:["A. 1","B. 0","C. √2","D. 2"],answer:"A",solution:"d trùng Ox, cách 1 đơn vị"},
+            {q:"Đường thẳng đi qua A(1;2;3) và B(1;5;3) song song với trục nào?",options:["A. Oy","B. Ox","C. Oz","D. Không song song trục nào"],answer:"A",solution:"AB⃗=(0;3;0) // (0;1;0)"},
+            {q:"Điều kiện để đường thẳng d cắt mặt phẳng (P) là:",options:["A. u⃗·n⃗ ≠ 0","B. u⃗·n⃗ = 0","C. u⃗ // n⃗","D. d nằm trong (P)"],answer:"A",solution:"Không vuông góc VTPT ⇒ cắt"},
+            {q:"Giao điểm của d: x/1=y/1=z/1 và mp x+y+z-3=0 là:",options:["A. (1;1;1)","B. (0;0;0)","C. (3;3;3)","D. Không có"],answer:"A",solution:"Thay x=y=z=t vào pt mp: 3t-3=0 ⇒ t=1"},
+            {q:"Đường vuông góc chung của hai đường chéo nhau là:",options:["A. Cắt cả hai và vuông góc cả hai","B. Song song cả hai","C. Vuông góc với mặt phẳng chứa chúng","D. Nằm giữa chúng"],answer:"A",solution:"Định nghĩa đường vuông góc chung"},
+            {q:"Nếu đường thẳng d đi qua M và có VTCP u⃗, hình chiếu vuông góc của điểm N lên d được tìm bằng:",options:["A. Viết pt mặt phẳng qua N vuông góc d, tìm giao","B. Tính tích vô hướng","C. Tính tích có hướng","D. Giải hệ 3 pt"],answer:"A",solution:"Phương pháp hình chiếu"},
+            {q:"Đường thẳng d: (x-1)/2 = (y+2)/-1 = (z-3)/1 có VTCP là:",options:["A. (2;-1;1)","B. (1;-2;3)","C. (-1;2;1)","D. (2;1;1)"],answer:"A",solution:"Đọc mẫu số PTCN"},
+            {q:"Hai đường thẳng trùng nhau khi:",options:["A. Cùng VTCP và có ít nhất 1 điểm chung","B. VTCP cùng phương","C. Có 1 điểm chung","D. Song song nhau"],answer:"A",solution:"Cùng phương + chung điểm"},
+            {q:"Khoảng cách từ M đến d bằng 0 khi:",options:["A. M thuộc d","B. M là hình chiếu","C. d qua gốc tọa độ","D. Không xác định"],answer:"A",solution:"Khoảng cách 0 ⇔ điểm thuộc đường thẳng"},
+            {q:"Đường thẳng đi qua A(0;0;1) và B(0;0;-2) có phương trình:",options:["A. x=0, y=0","B. z=0","C. x=y","D. z=t"],answer:"A",solution:"Nằm trên trục Oz ⇒ x=0, y=0"},
+            {q:"Góc giữa d và (P) bằng 90° khi:",options:["A. d vuông góc (P)","B. d song song (P)","C. d nằm trong (P)","D. d cắt (P)"],answer:"A",solution:"Góc 90° ⇔ đường thẳng ⊥ mp"},
+            {q:"Nếu u⃗=(1;2;3) và v⃗=(2;4;6) là VTCP của 2 đường thẳng, chúng:",options:["A. Song song hoặc trùng","B. Cắt nhau","C. Chéo nhau","D. Vuông góc"],answer:"A",solution:"v⃗ = 2u⃗ ⇒ cùng phương"},
+            {q:"Đường thẳng d đi qua M(1;1;1) và song song với d': x/2=y/1=z/3 có PTTS:",options:["A. x=1+2t, y=1+t, z=1+3t","B. x=2t, y=t, z=3t","C. x=1+t, y=1+2t, z=1+3t","D. x=1+2t, y=t, z=3t"],answer:"A",solution:"Dùng VTCP của d' và điểm M"},
+            {q:"Tích có hướng của VTCP 2 đường thẳng dùng để:",options:["A. Tìm VTPT mặt phẳng chứa chúng, tính khoảng cách, đường vuông góc chung","B. Tính góc","C. Tìm giao điểm","D. Kiểm tra song song"],answer:"A",solution:"Ứng dụng tích có hướng"},
+            {q:"Đường thẳng d cắt trục Ox khi:",options:["A. Tồn tại t sao cho y(t)=0, z(t)=0","B. x(t)=0","C. VTCP có thành phần x=0","D. Đi qua gốc tọa độ"],answer:"A",solution:"Giao Ox ⇔ y=0, z=0"},
+            {q:"Nếu d song song với mp (Oxy) thì VTCP của d có:",options:["A. Thành phần z = 0","B. Thành phần x = 0","C. Thành phần y = 0","D. x=y=z"],answer:"A",solution://Song song Oxy ⇒ vuông góc k⃗ ⇒ c=0
+            {q:"Đường thẳng đi qua A(2;0;0), B(0;3;0) có phương trình chính tắc:",options:["A. (x-2)/-2 = y/3, z=0","B. x/2+y/3=1","C. x/2=y/3","D. z=0"],answer:"A",solution:"AB⃗=(-2;3;0), qua A(2;0;0), z=0"},
+            {q:"Để viết PT đường thẳng đi qua M và song song với 2 mp (P), (Q), ta cần:",options:["A. VTCP = [n_P, n_Q]","B. VTCP = n_P + n_Q","C. VTCP = n_P × n_Q (sai hướng)","D. VTCP // n_P"],answer:"A",solution:"Vuông góc cả 2 VTPT ⇒ song song tích có hướng"},
+            {q:"Đường thẳng d có VTCP (1;0;0) và đi qua (0;1;2). Khoảng cách từ O đến d là:",options:["A. √5","B. √2","C. 1","D. √3"],answer:"A",solution:"d là đường y=1,z=2. Cách O khoảng √(1²+2²)=√5"},
+            {q:"Nếu giải hệ giao điểm d và Δ cho vô số nghiệm thì:",options:["A. d và Δ trùng nhau","B. d và Δ song song","C. d và Δ chéo nhau","D. d và Δ vuông góc"],answer:"A",solution:"Vô số điểm chung + cùng VTCP"},
+            {q:"Đường thẳng đi qua M(1;2;3) và cắt d: x/1=y/2=z/3 tại H có OH⃗ vuông góc u⃗_d. Tìm H:",options:["A. H là hình chiếu của M lên d","B. H trùng O","C. H trùng M","D. Không xác định"],answer:"A",solution:"Điều kiện vuông góc tại giao điểm"},
+            {q:"Góc giữa 2 đường thẳng có VTCP (1;1;0) và (1;-1;0) là:",options:["A. 90°","B. 60°","C. 45°","D. 30°"],answer:"A",solution:"Tích vô hướng = 0"},
+            {q:"Đường thẳng nằm trong mp (Oyz) khi:",options:["A. x=0 với mọi điểm trên d","B. y=0","C. z=0","D. x=y"],answer:"A",solution:"Mặt phẳng x=0"},
+            {q:"Phương trình tham số của đường thẳng cho biết:",options:["A. Toạ độ điểm phụ thuộc tham số t","B. Vị trí cố định","C. Độ dài đoạn thẳng","D. Góc nghiêng"],answer:"A",solution:"Bản chất tham số"},
+            {q:"Nếu u⃗=(a;b;c) là VTCP, thì vectơ nào KHÔNG thể là VTCP?",options:["A. (0;0;0)","B. (2a;2b;2c)","C. (-a;-b;-c)","D. (a/2;b/2;c/2)"],answer:"A",solution:"VTCP phải khác 0⃗"},
+            {q:"Đường thẳng d cắt đường thẳng Δ khi và chỉ khi:",options:["A. Hệ PT hoành độ giao điểm có nghiệm duy nhất","B. VTCP cùng phương","C. d song song Δ","D. d vuông góc Δ"],answer:"A",solution:"Điều kiện cắt nhau"},
+            {q:"Khoảng cách giữa 2 đường thẳng song song d₁, d₂ bằng:",options:["A. Khoảng cách từ điểm thuộc d₁ đến d₂","B. 0","C. Vô cực","D. Bằng độ dài VTCP"],answer:"A",solution:"Định nghĩa khoảng cách đường song song"},
+            {q:"Đường thẳng d đi qua A(1;0;0), B(0;1;0). Phương trình nào đúng?",options:["A. x+y=1, z=0","B. x=y, z=0","C. x+y+z=1","D. x=1, y=1"],answer:"A",solution:"Đường thẳng trong Oxy nối (1;0) và (0;1)"},
+            {q:"Nếu đường thẳng d vuông góc với 2 đường thẳng cắt nhau thì d vuông góc với:",options:["A. Mặt phẳng chứa 2 đường thẳng đó","B. Đường thẳng thứ 3 bất kỳ","C. Trục tọa độ","D. Không xác định"],answer:"A",solution:"Định nghĩa vuông góc với mp"},
+            {q:"Đường thẳng d có phương trình x=1+2t, y=2-t, z=3+3t. Khi t=1, điểm thuộc d là:",options:["A. (3;1;6)","B. (1;2;3)","C. (2;1;3)","D. (3;-1;6)"],answer:"A",solution:"Thay t=1 vào PTTS"},
+            {q:"VTCP của đường thẳng d là u⃗=(2;-4;6). VTCP rút gọn là:",options:["A. (1;-2;3)","B. (2;-4;6)","C. (-1;2;-3)","D. Cả A và C"],answer:"D",solution:"Cùng phương, có thể rút gọn hoặc đổi dấu"},
+            {q:"Đường thẳng d đi qua M và song song với Δ. Nếu M thuộc Δ thì:",options:["A. d trùng Δ","B. d song song Δ","C. d cắt Δ","D. d vuông góc Δ"],answer:"A",solution:"Cùng VTCP và chung điểm ⇒ trùng"}
+        ];
+
+        const tfData = [
+            {q:"Về phương trình đường thẳng:",statements:[{text:"Mọi đường thẳng trong Oxyz đều có phương trình tham số",answer:true},{text:"Phương trình chính tắc luôn tồn tại với mọi đường thẳng",answer:false},{text:"VTCP của đường thẳng không thể là vectơ 0",answer:true},{text:"Đường thẳng có duy nhất một VTCP",answer:false}]},
+            {q:"Về vị trí tương đối:",statements:[{text:"Hai đường thẳng song song khi VTCP cùng phương và không có điểm chung",answer:true},{text:"Hai đường thẳng chéo nhau khi chúng không cắt nhau",answer:false},{text:"Đường thẳng song song với mp khi VTCP vuông góc VTPT mp",answer:true},{text:"Nếu d nằm trong (P) thì mọi điểm của d đều thuộc (P)",answer:true}]},
+            {q:"Về góc và khoảng cách:",statements:[{text:"Góc giữa hai đường thẳng luôn ≤ 90°",answer:true},{text:"Khoảng cách từ điểm đến đường thẳng luôn dương",answer:false},{text:"Hai đường thẳng vuông góc khi tích vô hướng VTCP bằng 0",answer:true},{text:"Khoảng cách giữa hai đường chéo nhau bằng 0",answer:false}]},
+            {q:"Về vectơ chỉ phương:",statements:[{text:"Nếu u⃗ là VTCP thì k·u⃗ (k≠0) cũng là VTCP",answer:true},{text:"VTCP song song với đường thẳng",answer:true},{text:"Đường thẳng song song Ox có VTCP (1;0;0)",answer:true},{text:"VTCP luôn có độ dài bằng 1",answer:false}]},
+            {q:"Về hệ phương trình giao điểm:",statements:[{text:"Hệ có 1 nghiệm ⇔ đường thẳng cắt nhau",answer:true},{text:"Hệ vô nghiệm ⇔ đường thẳng song song",answer:false},{text:"Hệ vô số nghiệm ⇔ đường thẳng trùng nhau",answer:true},{text:"Giải hệ PTTS giúp xác định vị trí tương đối",answer:true}]},
+            {q:"Về hình chiếu và vuông góc:",statements:[{text:"Hình chiếu vuông góc của điểm lên đường thẳng là điểm gần nhất trên đường thẳng đó",answer:true},{text:"Đường vuông góc chung của 2 đường chéo nhau cắt cả hai và vuông góc cả hai",answer:true},{text:"Nếu d ⊥ (P) thì VTCP của d // VTPT của (P)",answer:true},{text:"Mọi đường thẳng trong không gian đều cắt trục Oz",answer:false}]},
+            {q:"Về phương pháp tọa độ:",statements:[{text:"Viết PT đường thẳng qua 2 điểm A, B: lấy AB⃗ làm VTCP",answer:true},{text:"Đường thẳng vuông góc với 2 mp cắt nhau có VTCP là tích có hướng 2 VTPT",answer:true},{text:"PTTS và PTCN biểu diễn cùng một đường thẳng",answer:true},{text:"Đường thẳng không thể biểu diễn dưới dạng phương trình tổng quát",answer:false}]},
+            {q:"Về tính chất:",statements:[{text:"Qua 2 điểm phân biệt xác định duy nhất 1 đường thẳng",answer:true},{text:"Qua 1 điểm và 1 VTCP xác định duy nhất 1 đường thẳng",answer:true},{text:"Đường thẳng song song với mp thì cách đều mp",answer:false},{text:"Góc giữa đường thẳng và mp được tính bằng cos",answer:false}]},
+            {q:"Về máy tính CASIO:",statements:[{text:"Chế độ VECTOR tính được tích có hướng",answer:true},{text:"Máy tính giải trực tiếp hệ PTTS tìm giao điểm",answer:true},{text:"Dùng TABLE để kiểm tra điểm thuộc đường thẳng",answer:true},{text:"Mode 5 không hỗ trợ hình học không gian",answer:false}]},
+            {q:"Về sai lầm thường gặp:",statements:[{text:"Quên điều kiện mẫu số khác 0 khi viết PTCN",answer:true},{text:"Nhầm góc giữa 2 đường thẳng với góc giữa 2 VTCP",answer:false},{text:"Quên trị tuyệt đối khi tính cos góc",answer:true},{text:"Tính khoảng cách dùng tích vô hướng thay vì tích có hướng",answer:true}]},
+            {q:"Về ứng dụng:",statements:[{text:"Dùng mô hình hóa quỹ đạo chuyển động thẳng",answer:true},{text:"Dùng tính khoảng cách trong bản đồ 3D",answer:true},{text:"Dùng xác định vị trí giao nhau của các tia laser",answer:true},{text:"Không dùng trong kiến trúc và xây dựng",answer:false}]},
+            {q:"Về đường thẳng đặc biệt:",statements:[{text:"Trục Ox có PT: y=0, z=0",answer:true},{text:"Đường thẳng song song Oy có dạng x=a, z=b",answer:true},{text:"Đường thẳng đi qua gốc tọa độ có D=0 trong phương trình",answer:true},{text:"Mọi đường thẳng đều cắt cả 3 trục tọa độ",answer:false}]}
+        ];
+
+        const recognitionData = [
+            {q:"Viết phương trình tham số của đường thẳng đi qua M₀(x₀;y₀;z₀) và có VTCP u⃗=(a;b;c).",answer:"x=x₀+at, y=y₀+bt, z=z₀+ct",solution:"Định nghĩa PTTS"},
+            {q:"Điều kiện để viết được phương trình chính tắc là:",answer:"a, b, c khác 0",solution:"Không chia cho 0"},
+            {q:"VTCP của trục Oz là:",answer:"(0;0;1) hoặc k⃗",solution:"Trục tọa độ"},
+            {q:"Góc giữa 2 đường thẳng có VTCP u⃗₁, u⃗₂ tính bằng công thức:",answer:"cosφ = |u⃗₁·u⃗₂| / (|u⃗₁||u⃗₂|)",solution:"Công thức góc"},
+            {q:"Điều kiện để đường thẳng d vuông góc với mặt phẳng (P) là:",answer:"VTCP của d cùng phương với VTPT của (P)",solution:"Vuông góc đường-mặt"},
+            {q:"Khoảng cách từ điểm M đến đường thẳng Δ qua M₀, VTCP u⃗ là:",answer:"d = |[M₀M⃗, u⃗]| / |u⃗|",solution:"Công thức khoảng cách"},
+            {q:"Hai đường thẳng song song khi:",answer:"VTCP cùng phương và có ít nhất 1 điểm không chung",solution:"Vị trí tương đối"},
+            {q:"Nếu đường thẳng song song với mp (Oxy) thì thành phần z của VTCP bằng:",answer:"0",solution:"Vuông góc k⃗"},
+            {q:"Đường thẳng đi qua A và B có VTCP là:",answer:"AB⃗ = (x_B-x_A; y_B-y_A; z_B-z_A)",solution:"Tìm VTCP từ 2 điểm"},
+            {q:"Phương trình đường thẳng nằm trong mp (P) và đi qua M thỏa mãn:",answer:"u⃗·n⃗=0 và M thuộc (P)",solution:"Điều kiện thuộc và song song"}
+        ];
+
+        const comprehensionData = [
+            {q:"Tại sao phương trình chính tắc không áp dụng được nếu một thành phần của VTCP bằng 0?",answer:"Vì mẫu số bằng 0 không thể thực hiện phép chia, phải dùng PTTS hoặc hệ PT",solution:"Giới hạn công thức"},
+            {q:"Giải thích tại sao góc giữa 2 đường thẳng luôn lấy giá trị tuyệt đối trong công thức cos.",answer:"Để đảm bảo góc tìm được là góc nhọn hoặc vuông (0° đến 90°), phù hợp định nghĩa góc giữa 2 đường",solution:"Quy ước góc"},
+            {q:"Nếu giải hệ phương trình giao điểm của 2 đường thẳng vô nghiệm, tại sao chưa thể kết luận chúng song song?",answer:"Vì chúng có thể chéo nhau (không đồng phẳng). Cần kiểm tra thêm điều kiện đồng phẳng",solution:"Phân biệt song song và chéo"},
+            {q:"Tại sao VTCP của đường thẳng không duy nhất?",answer:"Vì mọi vectơ cùng phương với nó (khác 0) đều có thể làm VTCP",solution:"Tính chất vectơ chỉ phương"},
+            {q:"Giải thích ý nghĩa hình học của tham số t trong PTTS.",answer:"t biểu diễn vị trí của điểm trên đường thẳng so với điểm gốc M₀, tỷ lệ với khoảng cách",solution:"Ý nghĩa tham số"},
+            {q:"Nếu đường thẳng d vuông góc với 2 đường thẳng cắt nhau, tại sao d vuông góc với mp chứa chúng?",answer:"Vì d vuông góc với 2 vectơ không cùng phương trong mp ⇒ vuông góc với mọi vectơ trong mp",solution:"Định lý vuông góc"},
+            {q:"Tại sao khoảng cách từ điểm đến đường thẳng dùng tích có hướng?",answer:"Tích có hướng [M₀M⃗, u⃗] cho diện tích hình bình hành, chia đáy |u⃗| ra chiều cao (khoảng cách)",solution:"Ý nghĩa diện tích"},
+            {q:"Nếu đường thẳng d song song với mp (P), khoảng cách từ điểm M trên d đến (P) có thay đổi khi M di chuyển không?",answer:"Không, khoảng cách không đổi vì d và (P) song song",solution:"Tính chất song song"},
+            {q:"Giải thích tại sao đường vuông góc chung của 2 đường chéo nhau là đoạn ngắn nhất nối 2 đường đó.",answer:"Mọi đoạn nối khác đều là đường xiên, dài hơn đường vuông góc",solution:"Đường vuông góc ngắn nhất"},
+            {q:"Nếu VTCP của d là u⃗=(1;2;3), tại sao d không thể song song với trục Ox?",answer:"Vì thành phần y và z khác 0, đường thẳng không giữ nguyên y,z khi x thay đổi",solution:"Điều kiện song song trục"}
+        ];
+
+        const lowData = [
+            {q:"Viết PTTS của đường thẳng đi qua A(1;2;3) và có VTCP u⃗=(2;-1;4).",answer:"x=1+2t, y=2-t, z=3+4t",solution:"Thế vào công thức"},
+            {q:"Viết PTCN của đường thẳng qua O(0;0;0) và VTCP (1;1;1).",answer:"x/1 = y/1 = z/1",solution:"Công thức chính tắc"},
+            {q:"Tìm VTCP của đường thẳng đi qua A(1;0;0) và B(0;1;0).",answer:"(-1;1;0) hoặc (1;-1;0)",solution:"AB⃗ = B-A"},
+            {q:"Tính góc giữa 2 đường thẳng có VTCP (1;0;0) và (0;1;0).",answer:"90°",solution:"Tích vô hướng = 0"},
+            {q:"Kiểm tra điểm M(2;1;3) có thuộc d: x=1+t, y=2-t, z=3+2t không?",answer:"Không",solution:"Thay vào: 2=1+t⇒t=1; 1=2-1 (đúng); 3=3+2 (sai)"},
+            {q:"Viết PT đường thẳng qua M(1;1;1) và song song với d: x/2=y/3=z/4.",answer:"(x-1)/2 = (y-1)/3 = (z-1)/4",solution:"Dùng chung VTCP"},
+            {q:"Tính khoảng cách từ O(0;0;0) đến d qua A(1;0;0), VTCP (0;1;0).",answer:"1",solution:"d là Ox, cách O 1 đơn vị (Sửa: d qua (1;0;0) // Oy ⇒ cách O là 1)"},
+            {q:"Đường thẳng d vuông góc với mp x+y+z=0 có VTCP là:",answer:"(1;1;1)",solution:"VTCP // VTPT mp"},
+            {q:"Giao điểm của d: x=t, y=t, z=t và mp x+y+z-3=0 là:",answer:"(1;1;1)",solution:"3t-3=0 ⇒ t=1"},
+            {q:"Viết PTTS của trục Oz.",answer:"x=0, y=0, z=t",solution:"Trục tọa độ"}
+        ];
+
+        const highData = [
+            {q:"Viết PT đường thẳng d đi qua A(1;2;-1), cắt d₁: x/1=y/2=z/3 và vuông góc với d₂: x/1=y/(-1)=z/2.",answer:"d: (x-1)/5 = (y-2)/(-11) = (z+1)/7",solution:"**Lời giải:**\n1. Gọi H ∈ d₁ ⇒ H(t;2t;3t). AH⃗=(t-1; 2t-2; 3t+1).\n2. AH⃗ ⊥ u₂ ⇒ 1(t-1) -1(2t-2) +2(3t+1)=0 ⇒ t=1/5.\n3. Thay t tìm AH⃗ làm VTCP. Rút gọn.\n**Kết luận: VTCP (5;-11;7) hoặc tương đương**"},
+            {q:"Tìm m để đường thẳng d: x=1+mt, y=2-t, z=3+2t song song với mp (P): x-y+2z-5=0.",answer:"m = 4",solution:"**Lời giải:**\n1. u⃗=(m;-1;2), n⃗=(1;-1;2).\n2. Song song ⇔ u⃗·n⃗=0 ⇒ m+1+4=0? (Sửa: n⃗=(1;-1;2) ⇒ m+1+4=0 ⇒ m=-5). Kiểm tra điểm không thuộc mp.\n**Kết luận: m = -5**"},
+            {q:"Viết PT đường vuông góc chung của d₁: x/1=y/1=z/1 và d₂: x/0=y/1=z/2 (chú ý x=const).",answer:"Dùng tích có hướng u₁,u₂ làm VTPT mp chứa d₁ // d₂, hoặc giải hệ hình chiếu",solution:"**Lời giải:**\n1. u₁=(1;1;1), u₂=(0;1;2). n=[u₁,u₂]=(1;-2;1).\n2. Viết mp(P₁) chứa d₁, VTPT n. Viết mp(P₂) chứa d₂, VTPT n.\n3. Đường vuông góc chung là giao của mp qua d₁ ⊥ (P₁,d₂) và mp qua d₂ ⊥ (P₁,d₂). Tính toán ra PT.\n**Kết luận: Phương pháp mp song song**"},
+            {q:"Tìm điểm M trên d: x=1+t, y=2-t, z=3+2t sao cho khoảng cách từ M đến A(0;0;0) nhỏ nhất.",answer:"M(1;2;3) (Hình chiếu của O lên d)",solution:"**Lời giải:**\n1. OM⃗ = (1+t; 2-t; 3+2t).\n2. OM⃗ ⊥ u⃗ ⇒ 1(1+t) -1(2-t) +2(3+2t)=0 ⇒ t=-0.5.\n3. Thay t tìm M. (Sửa tính toán: 1+t-2+t+6+4t=0 ⇒ 6t+5=0 ⇒ t=-5/6). Thay vào tìm M.\n**Kết luận: M là hình chiếu của O lên d**"},
+            {q:"Chứng minh rằng đường thẳng d đi qua A và song song với 2 mp (P), (Q) cắt nhau có VTCP là [n_P, n_Q].",answer:"d // (P) ⇒ u⃗⊥n_P. d // (Q) ⇒ u⃗⊥n_Q",solution:"**Lời giải:**\n1. u⃗ vuông góc cả 2 VTPT.\n2. Suy ra u⃗ // [n_P, n_Q].\n**Kết luận: ĐPCM**"},
+            {q:"Tìm m để 3 đường thẳng đồng quy.",answer:"Giải hệ giao điểm 2 đường, thay vào đường thứ 3",solution:"**Lời giải:**\n1. Tìm giao I của d₁, d₂.\n2. Thay I vào d₃, giải tìm m.\n**Kết luận: Thay tọa độ giao điểm**"},
+            {q:"Viết PT đường thẳng d đi qua M(1;0;2), cắt d₁ và d₂ cho trước.",answer:"Dùng mp chứa M và d₁, tìm giao với d₂, nối M và giao điểm",solution:"**Lời giải:**\n1. Viết (P) qua M chứa d₁.\n2. Tìm I = (P) ∩ d₂.\n3. d đi qua M và I.\n**Kết luận: Phương pháp mặt phẳng phụ**"},
+            {q:"Tính góc giữa đường thẳng d và mp (Oxy).",answer:"sinφ = |c|/√(a²+b²+c²) với u⃗=(a;b;c)",solution:"**Lời giải:**\n1. n_Oxy = (0;0;1).\n2. sinφ = |u⃗·k⃗|/|u⃗| = |c|/|u⃗|.\n**Kết luận: Công thức nhanh**"},
+            {q:"Tìm điểm đối xứng của A qua đường thẳng d.",answer:"Tìm hình chiếu H, dùng công thức trung điểm",solution:"**Lời giải:**\n1. H là hình chiếu A lên d.\n2. A' thỏa H là trung điểm AA'.\n3. A' = 2H - A.\n**Kết luận: A' = 2H - A**"},
+            {q:"Cho d đi qua M, VTCP u⃗. Tìm tập hợp các điểm cách d một khoảng R.",answer:"Mặt trụ tròn xoay trục d, bán kính R",solution:"**Lời giải:**\n1. Khoảng cách từ N đến d = R.\n2. Quỹ tích là mặt trụ.\n**Kết luận: Mặt trụ bán kính R**"}
+        ];
+
+        const realData = [
+            {q:"Trong xây dựng, một cây cột thẳng đứng có phương trình x=2, y=3. Góc giữa cột và mặt đất là?",answer:"90°",solution:"**Lời giải:**\n1. Cột song song Oz ⇒ VTCP (0;0;1).\n2. Mặt đất là Oxy ⇒ n⃗=(0;0;1).\n3. Song song VTPT ⇒ vuông góc mp.\n**Kết luận: 90°**"},
+            {q:"Tia laser chiếu từ A(0;0;1) theo hướng u⃗=(1;1;-1). Phương trình tia laser là?",answer:"x=t, y=t, z=1-t (t≥0)",solution:"**Lời giải:**\n1. PTTS xuất phát từ A.\n2. Giới hạn t≥0 vì là tia.\n**Kết luận: x=t, y=t, z=1-t (t≥0)**"},
+            {q:"Hai đường ray tàu hỏa song song cách nhau 1.435m. Mô hình toán học của chúng là:",answer:"Hai đường thẳng song song, khoảng cách 1.435",solution:"**Lời giải:**\n1. Khổ đường sắt chuẩn.\n2. Khoảng cách giữa 2 đường thẳng song song.\n**Kết luận: Đường thẳng song song**"},
+            {q:"Đường ống nước đi từ A(1;2;3) đến B(4;5;6). Độ dài đoạn ống là?",answer:"3√3 mét",solution:"**Lời giải:**\n1. Độ dài = |AB⃗| = √(3²+3²+3²) = 3√3.\n**Kết luận: 3√3 mét**"},
+            {q:"Trong đồ họa 3D, đường thẳng biểu diễn cạnh hình hộp thường được mô tả bằng:",answer:"Phương trình tham số hoặc 2 điểm đầu cuối",solution:"**Lời giải:**\n1. Dùng trong rendering.\n2. Dễ dàng nội suy điểm trên cạnh.\n**Kết luận: PTTS hoặc đoạn thẳng**"},
+            {q:"Vệ tinh chuyển động theo quỹ đạo thẳng (xấp xỉ) d: x=t, y=2t, z=3t. Tốc độ v=ds/dt. Tính tốc độ nếu t là thời gian.",answer:"v = √14 đơn vị/thời gian",solution:"**Lời giải:**\n1. |u⃗| = √(1+4+9) = √14.\n2. Tốc độ không đổi trên đường thẳng.\n**Kết luận: √14**"},
+            {q:"Cầu treo có dây cáp chính là đường thẳng. Biết 2 tháp tại A và B. Phương trình dây cáp?",answer:"PT đoạn thẳng nối A và B",solution:"**Lời giải:**\n1. Dùng 2 điểm xác định đường thẳng.\n2. Giới hạn trong đoạn AB.\n**Kết luận: Đường thẳng qua A, B**"},
+            {q:"Robot công nghiệp di chuyển từ P đến Q theo đường thẳng. Thời gian di chuyển phụ thuộc vào:",answer:"Độ dài PQ và vận tốc",solution:"**Lời giải:**\n1. t = |PQ⃗| / v.\n2. Mô hình chuyển động thẳng đều.\n**Kết luận: Độ dài đoạn thẳng**"},
+            {q:"Trong khảo sát địa hình, đường đồng mức cắt đường thẳng khảo sát tại điểm có độ cao xác định. Tìm điểm cắt?",answer:"Giải hệ PT đường thẳng và PT mặt phẳng độ cao",solution:"**Lời giải:**\n1. Đường thẳng khảo sát cắt mặt phẳng z=h.\n2. Tìm giao điểm.\n**Kết luận: Giao điểm với mp ngang**"},
+            {q:"Thiết kế đường hầm xuyên núi theo đường thẳng. Góc nghiêng so với phương ngang được tính bằng:",answer:"Góc giữa VTCP đường hầm và vectơ nằm ngang",solution:"**Lời giải:**\n1. Dùng công thức góc giữa 2 đường.\n2. Ứng dụng trong thi công.\n**Kết luận: Góc giữa 2 vectơ**"}
+        ];
+
+        function renderQuestions(containerId, dataArray, type) {
+            const container = document.getElementById(containerId);
+            dataArray.forEach((item, index) => {
+                const div = document.createElement('div');
+                div.className = 'border-l-4 border-cyan-400 pl-4 py-3 bg-gray-50 rounded-r-lg';
+                if (type === 'mcq') {
+                    div.innerHTML = `<p class="font-semibold text-gray-800 mb-2"><strong>Câu ${index + 1}:</strong> ${item.q}</p><div class="grid grid-cols-2 gap-2 mb-3 text-sm">${item.options.map(o => `<span class="text-gray-700">${o}</span>`).join('')}</div><button onclick="toggleAnswer('${containerId}-${index}')" class="text-cyan-600 text-sm hover:underline">👁️ Xem đáp án</button><div id="${containerId}-${index}" class="answer-box mt-2 p-3 rounded hidden"><p class="font-semibold text-green-700">Đáp án: ${item.answer}</p><p class="text-gray-700 text-sm mt-1">${item.solution}</p></div>`;
+                } else if (type === 'tf') {
+                    div.innerHTML = `<p class="font-semibold text-gray-800 mb-3"><strong>Câu ${index + 1}:</strong> ${item.q}</p><div class="space-y-2">${item.statements.map((s, i) => `<div class="flex items-center justify-between bg-white p-2 rounded"><span class="text-gray-700 text-sm">${String.fromCharCode(65+i)}. ${s.text}</span><span class="text-xs px-2 py-1 rounded ${s.answer ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}">${s.answer ? 'Đúng' : 'Sai'}</span></div>`).join('')}</div>`;
+                } else {
+                    div.innerHTML = `<p class="font-semibold text-gray-800 mb-2"><strong>Bài ${index + 1}:</strong> ${item.q}</p><button onclick="toggleAnswer('${containerId}-${index}')" class="text-cyan-600 text-sm hover:underline">👁️ Xem đáp án</button><div id="${containerId}-${index}" class="${containerId==='comprehension-container'||containerId==='high-container'||containerId==='real-container'?'solution-box':'answer-box'} mt-2 p-3 rounded hidden"><p class="font-semibold text-purple-700">Đáp án: ${item.answer}</p><p class="text-gray-700 text-sm mt-1 whitespace-pre-line">${item.solution}</p></div>`;
+                }
+                container.appendChild(div);
+            });
+        }
+
+        function toggleAnswer(id) { document.getElementById(id).classList.toggle('hidden'); }
+        document.addEventListener('DOMContentLoaded', () => {
+            renderQuestions('mcq-container', mcqData, 'mcq');
+            renderQuestions('tf-container', tfData, 'tf');
+            renderQuestions('recognition-container', recognitionData, 'default');
+            renderQuestions('comprehension-container', comprehensionData, 'default');
+            renderQuestions('low-container', lowData, 'default');
+            renderQuestions('high-container', highData, 'default');
+            renderQuestions('real-container', realData, 'default');
+        });
+    </script>
+</body>
+</html>
+```

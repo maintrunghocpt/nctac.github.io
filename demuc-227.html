@@ -1,0 +1,381 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tích Phân - Đề Mục 227 - Toán Lớp 12</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@fontsource/roboto@4.5.8/index.css" rel="stylesheet">
+    <style>
+        * { font-family: 'Roboto', sans-serif; }
+        .gradient-header { background: linear-gradient(135deg, #0891b2 0%, #7c3aed 100%); }
+        .card-hover { transition: all 0.3s ease; }
+        .card-hover:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0,0,0,0.15); }
+        .btn-primary { background: linear-gradient(135deg, #0891b2 0%, #7c3aed 100%); }
+        .btn-primary:hover { background: linear-gradient(135deg, #067894 0%, #6a32c4 100%); }
+        .answer-box { background: #f0f9ff; border-left: 4px solid #0891b2; }
+        .solution-box { background: #fef3c7; border-left: 4px solid #f59e0b; }
+        .nav-item { transition: all 0.2s ease; }
+        .nav-item:hover { background: rgba(255,255,255,0.2); }
+        .nav-item.active { background: rgba(255,255,255,0.3); }
+        .print-section { page-break-inside: avoid; }
+        @media print { .no-print { display: none; } }
+        .formula-box { background: linear-gradient(135deg, #e0f2fe 0%, #ede9fe 100%); border-radius: 8px; padding: 16px; margin: 12px 0; }
+        .graph-container { background: #f8fafc; border: 2px dashed #cbd5e1; border-radius: 8px; padding: 20px; text-align: center; }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <header class="gradient-header text-white py-8">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center">
+                <div>
+                    <h1 class="text-3xl font-bold">TÍCH PHÂN</h1>
+                    <p class="text-lg opacity-90">Đề Mục 227 - Toán Lớp 12 - Giải Tích</p>
+                </div>
+                <div class="text-right">
+                    <p class="text-sm opacity-80">Bộ Tài Liệu Toán THPT</p>
+                    <p class="text-sm opacity-80">Ôn Tập Thi Tốt Nghiệp</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <nav class="bg-white shadow-md sticky top-0 z-50 no-print">
+        <div class="container mx-auto px-4">
+            <div class="flex overflow-x-auto py-3 space-x-2">
+                <button onclick="showSection('lesson')" class="nav-item active px-4 py-2 rounded-lg bg-cyan-100 text-cyan-700 whitespace-nowrap">📚 Bài Giảng</button>
+                <button onclick="showSection('mcq')" class="nav-item px-4 py-2 rounded-lg hover:bg-gray-100 whitespace-nowrap">📝 50 Câu MCQ</button>
+                <button onclick="showSection('tf')" class="nav-item px-4 py-2 rounded-lg hover:bg-gray-100 whitespace-nowrap">✅ 12 Câu Đúng/Sai</button>
+                <button onclick="showSection('recognition')" class="nav-item px-4 py-2 rounded-lg hover:bg-gray-100 whitespace-nowrap">🔍 10 Bài Nhận Biết</button>
+                <button onclick="showSection('comprehension')" class="nav-item px-4 py-2 rounded-lg hover:bg-gray-100 whitespace-nowrap">💡 10 Câu Thông Hiểu</button>
+                <button onclick="showSection('low')" class="nav-item px-4 py-2 rounded-lg hover:bg-gray-100 whitespace-nowrap">📊 10 Bài Vận Dụng Thấp</button>
+                <button onclick="showSection('high')" class="nav-item px-4 py-2 rounded-lg hover:bg-gray-100 whitespace-nowrap">🎯 10 Bài Vận Dụng Cao</button>
+                <button onclick="showSection('real')" class="nav-item px-4 py-2 rounded-lg hover:bg-gray-100 whitespace-nowrap">🌍 10 Bài Thực Tế</button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container mx-auto px-4 py-8">
+        <section id="lesson" class="section-content">
+            <div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section">
+                <h2 class="text-2xl font-bold text-cyan-700 mb-6 flex items-center"><span class="mr-3">📚</span> BÀI GIẢNG: TÍCH PHÂN</h2>
+                <div class="space-y-6">
+                    <div class="answer-box p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold text-cyan-700 mb-4">1. ĐỊNH NGHĨA & CÔNG THỨC NEWTON-LEIBNIZ</h3>
+                        <p class="text-gray-700 mb-4">Cho hàm số f(x) liên tục trên đoạn [a; b]. Nếu F(x) là một nguyên hàm của f(x) trên [a; b] thì hiệu số F(b) - F(a) được gọi là <strong>tích phân từ a đến b</strong> của f(x).</p>
+                        <div class="formula-box">
+                            <ul class="space-y-3 text-gray-700">
+                                <li>• <strong>Ký hiệu:</strong> ∫ₐᵇ f(x)dx = F(b) - F(a) = F(x)|ₐᵇ</li>
+                                <li>• <strong>Ý nghĩa hình học:</strong> Diện tích hình thang cong giới hạn bởi đồ thị y=f(x), trục Ox và hai đường thẳng x=a, x=b.</li>
+                                <li>• <strong>Tính chất cơ bản:</strong>
+                                    <ul class="ml-4 mt-1 list-disc">
+                                        <li>∫ₐᵇ k·f(x)dx = k·∫ₐᵇ f(x)dx</li>
+                                        <li>∫ₐᵇ [f(x) ± g(x)]dx = ∫ₐᵇ f(x)dx ± ∫ₐᵇ g(x)dx</li>
+                                        <li>∫ₐᵇ f(x)dx = ∫ₐᶜ f(x)dx + ∫ᶜᵇ f(x)dx</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="grid md:grid-cols-3 gap-4 mt-4">
+                            <div class="bg-cyan-50 p-4 rounded-lg">
+                                <h4 class="font-semibold text-cyan-600 mb-2">Đổi biến số</h4>
+                                <p class="text-gray-700 text-sm">Đặt x = φ(t) ⇒ dx = φ'(t)dt. Đổi cận α, β tương ứng.</p>
+                                <p class="text-cyan-700 text-sm font-semibold mt-2">∫ₐᵇ f(x)dx = ∫_α^β f[φ(t)]φ'(t)dt</p>
+                            </div>
+                            <div class="bg-purple-50 p-4 rounded-lg">
+                                <h4 class="font-semibold text-purple-600 mb-2">Tích phân từng phần</h4>
+                                <p class="text-gray-700 text-sm">Nếu u, v có đạo hàm liên tục:</p>
+                                <p class="text-purple-700 text-sm font-semibold mt-2">∫ₐᵇ u dv = (uv)|ₐᵇ - ∫ₐᵇ v du</p>
+                            </div>
+                            <div class="bg-amber-50 p-4 rounded-lg">
+                                <h4 class="font-semibold text-amber-600 mb-2">Lưu ý quan trọng</h4>
+                                <p class="text-gray-700 text-sm">- Hàm số phải liên tục trên đoạn lấy tích phân.</p>
+                                <p class="text-amber-700 text-sm font-semibold mt-2">Luôn đổi cận khi đổi biến!</p>
+                            </div>
+                        </div>
+                        <div class="mt-4 graph-container">
+                            <svg width="400" height="200" viewBox="0 0 400 200">
+                                <line x1="50" y1="170" x2="350" y2="170" stroke="#333" stroke-width="2"/>
+                                <line x1="50" y1="170" x2="50" y2="30" stroke="#333" stroke-width="2"/>
+                                <path d="M 80 140 Q 200 50 320 100 L 320 170 L 80 170 Z" fill="#0891b2" opacity="0.3" stroke="#0891b2" stroke-width="2"/>
+                                <path d="M 80 140 Q 200 50 320 100" fill="none" stroke="#0891b2" stroke-width="3"/>
+                                <line x1="80" y1="170" x2="80" y2="140" stroke="#dc2626" stroke-width="2" stroke-dasharray="4,4"/>
+                                <line x1="320" y1="170" x2="320" y2="100" stroke="#dc2626" stroke-width="2" stroke-dasharray="4,4"/>
+                                <text x="70" y="160" fill="#333">a</text>
+                                <text x="310" y="160" fill="#333">b</text>
+                                <text x="180" y="130" fill="#0891b2" font-weight="bold">Diện tích S = ∫ₐᵇ f(x)dx</text>
+                                <text x="340" y="160" fill="#333">x</text>
+                                <text x="35" y="40" fill="#333">y</text>
+                            </svg>
+                            <p class="text-sm text-gray-600 mt-2">Diện tích hình thang cong minh họa tích phân xác định</p>
+                        </div>
+                    </div>
+
+                    <div class="solution-box p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold text-amber-700 mb-4">2. PHƯƠNG PHÁP TÍNH TÍCH PHÂN</h3>
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div class="bg-white p-4 rounded-lg border-2 border-cyan-300">
+                                <h4 class="font-semibold text-cyan-600 mb-2">Phương pháp đổi biến số</h4>
+                                <ol class="space-y-2 text-gray-700 text-sm list-decimal list-inside">
+                                    <li>Đặt ẩn phụ t = φ(x) hoặc x = ψ(t)</li>
+                                    <li>Tính vi phân dx = ψ'(t)dt</li>
+                                    <li>Đổi cận: x=a ⇒ t=α; x=b ⇒ t=β</li>
+                                    <li>Thay vào công thức và tính tích phân theo t</li>
+                                </ol>
+                            </div>
+                            <div class="bg-white p-4 rounded-lg border-2 border-purple-300">
+                                <h4 class="font-semibold text-purple-600 mb-2">Phương pháp từng phần</h4>
+                                <p class="text-gray-700 text-sm mb-2">Dùng khi tích phân là tích của hai hàm số khác loại.</p>
+                                <ul class="space-y-2 text-gray-700 text-sm">
+                                    <li>• <strong>Đa thức × e^x/sinx/cosx:</strong> Đặt u = đa thức</li>
+                                    <li>• <strong>Đa thức × lnx/arctanx:</strong> Đặt u = lnx/arctanx</li>
+                                    <li>• <strong>e^x × sinx/cosx:</strong> Đặt u = e^x, tích phân 2 lần</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="mt-4 bg-cyan-50 p-4 rounded-lg">
+                            <h4 class="font-semibold text-cyan-700 mb-2">📝 Mẹo giải nhanh trắc nghiệm:</h4>
+                            <p class="text-gray-700 text-sm">• Tích phân của hàm lẻ trên đoạn đối xứng [-a; a] luôn bằng 0.</p>
+                            <p class="text-gray-700 text-sm">• Tích phân của hàm chẵn trên [-a; a] bằng 2 lần tích phân trên [0; a].</p>
+                            <p class="text-gray-700 text-sm">• Dùng máy tính CASIO: ∫(f(x), x, a, b) để tính nhanh giá trị.</p>
+                        </div>
+                    </div>
+
+                    <div class="answer-box p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold text-cyan-700 mb-4">3. VÍ DỤ MINH HỌA</h3>
+                        <div class="bg-white p-4 rounded-lg mb-4">
+                            <h4 class="font-semibold text-cyan-600 mb-2">Ví dụ 1: Cơ bản</h4>
+                            <p class="text-gray-700 mb-2">Tính I = ∫₀¹ (3x² + 2x - 1) dx.</p>
+                            <div class="solution-box p-3 rounded">
+                                <p class="text-gray-700">Nguyên hàm: F(x) = x³ + x² - x</p>
+                                <p class="text-gray-700">I = F(1) - F(0) = (1+1-1) - 0 = 1</p>
+                            </div>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg mb-4">
+                            <h4 class="font-semibold text-cyan-600 mb-2">Ví dụ 2: Đổi biến số</h4>
+                            <p class="text-gray-700 mb-2">Tính I = ∫₀¹ x√(x²+1) dx.</p>
+                            <div class="solution-box p-3 rounded">
+                                <p class="text-gray-700">Đặt t = x²+1 ⇒ dt = 2xdx ⇒ xdx = dt/2</p>
+                                <p class="text-gray-700">Đổi cận: x=0→t=1; x=1→t=2</p>
+                                <p class="text-gray-700">I = ∫₁² √t (dt/2) = (1/2)·(2/3)t^(3/2)|₁² = (1/3)(2√2 - 1)</p>
+                            </div>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg">
+                            <h4 class="font-semibold text-cyan-600 mb-2">Ví dụ 3: Tích phân từng phần</h4>
+                            <p class="text-gray-700 mb-2">Tính I = ∫₀¹ x·e^x dx.</p>
+                            <div class="solution-box p-3 rounded">
+                                <p class="text-gray-700">Đặt u=x ⇒ du=dx; dv=e^x dx ⇒ v=e^x</p>
+                                <p class="text-gray-700">I = (x·e^x)|₀¹ - ∫₀¹ e^x dx = e - (e^x)|₀¹ = e - (e - 1) = 1</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="solution-box p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold text-amber-700 mb-4">4. HƯỚNG DẪN MÁY TÍNH CASIO</h3>
+                        <div class="bg-white p-4 rounded-lg space-y-3">
+                            <p class="text-gray-700"><strong>Tính tích phân xác định:</strong></p>
+                            <ol class="list-decimal list-inside space-y-1 text-gray-700">
+                                <li>Nhấn phím <kbd class="bg-gray-200 px-2 py-1 rounded">∫dx</kbd> (phím bên cạnh dấu = hoặc SHIFT + ∫)</li>
+                                <li>Nhập hàm số f(x), biến x, cận dưới, cận trên</li>
+                                <li>Nhấn <kbd class="bg-gray-200 px-2 py-1 rounded">=</kbd> để nhận kết quả</li>
+                            </ol>
+                            <p class="text-gray-700 mt-3"><strong>Kiểm tra đáp án trắc nghiệm:</strong></p>
+                            <ol class="list-decimal list-inside space-y-1 text-gray-700">
+                                <li>Tính giá trị tích phân bằng máy tính</li>
+                                <li>Lần lượt thay các đáp án vào, so sánh kết quả</li>
+                                <li>Lưu ý: Làm tròn đúng số chữ số thập phân theo đề yêu cầu.</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="mcq" class="section-content hidden"><div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section"><h2 class="text-2xl font-bold text-cyan-700 mb-6 flex items-center"><span class="mr-3">📝</span> 50 CÂU TRẮC NGHIỆM</h2><div class="space-y-6" id="mcq-container"></div></div></section>
+        <section id="tf" class="section-content hidden"><div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section"><h2 class="text-2xl font-bold text-cyan-700 mb-6 flex items-center"><span class="mr-3">✅</span> 12 CÂU ĐÚNG/SAI</h2><div class="space-y-6" id="tf-container"></div></div></section>
+        <section id="recognition" class="section-content hidden"><div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section"><h2 class="text-2xl font-bold text-cyan-700 mb-6 flex items-center"><span class="mr-3">🔍</span> 10 BÀI NHẬN BIẾT</h2><div class="space-y-6" id="recognition-container"></div></div></section>
+        <section id="comprehension" class="section-content hidden"><div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section"><h2 class="text-2xl font-bold text-cyan-700 mb-6 flex items-center"><span class="mr-3">💡</span> 10 CÂU THÔNG HIỂU</h2><div class="space-y-6" id="comprehension-container"></div></div></section>
+        <section id="low" class="section-content hidden"><div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section"><h2 class="text-2xl font-bold text-cyan-700 mb-6 flex items-center"><span class="mr-3">📊</span> 10 BÀI VẬN DỤNG THẤP</h2><div class="space-y-6" id="low-container"></div></div></section>
+        <section id="high" class="section-content hidden"><div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section"><h2 class="text-2xl font-bold text-cyan-700 mb-6 flex items-center"><span class="mr-3">🎯</span> 10 BÀI VẬN DỤNG CAO</h2><div class="space-y-6" id="high-container"></div></div></section>
+        <section id="real" class="section-content hidden"><div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section"><h2 class="text-2xl font-bold text-cyan-700 mb-6 flex items-center"><span class="mr-3">🌍</span> 10 BÀI THỰC TẾ</h2><div class="space-y-6" id="real-container"></div></div></section>
+    </main>
+
+    <footer class="gradient-header text-white py-6 mt-8">
+        <div class="container mx-auto px-4 text-center">
+            <p class="text-sm">Bộ Tài Liệu Toán THPT - Đề Mục 227: Tích Phân</p>
+            <p class="text-sm opacity-80">© 2024 - Ôn Tập Thi Tốt Nghiệp</p>
+        </div>
+    </footer>
+    <button onclick="window.print()" class="no-print fixed bottom-6 right-6 btn-primary text-white px-6 py-3 rounded-full shadow-lg hover:shadow-xl transition-all">🖨️ In Tài Liệu</button>
+
+    <script>
+        function showSection(id) {
+            document.querySelectorAll('.section-content').forEach(e => e.classList.add('hidden'));
+            document.getElementById(id).classList.remove('hidden');
+            document.querySelectorAll('.nav-item').forEach(e => e.classList.remove('active'));
+            event.target.classList.add('active');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        const mcqData = [
+            {q:"Tích phân ∫₀¹ 2x dx bằng:",options:["A. 1","B. 2","C. 0","D. 1/2"],answer:"A",solution:"x²|₀¹ = 1-0=1"},
+            {q:"Nếu F(x) là nguyên hàm của f(x) thì ∫ₐᵇ f(x)dx bằng:",options:["A. F(b) - F(a)","B. F(a) - F(b)","C. F(b) + F(a)","D. F'(b) - F'(a)"],answer:"A",solution:"Công thức Newton-Leibniz"},
+            {q:"∫₀^(π/2) cosx dx bằng:",options:["A. 1","B. 0","C. -1","D. π/2"],answer:"A",solution:"sinx|₀^(π/2) = 1-0=1"},
+            {q:"Tích phân ∫₋₁¹ x³ dx bằng:",options:["A. 0","B. 1","C. -1","D. 2"],answer:"A",solution:"Hàm lẻ trên đoạn đối xứng ⇒ tích phân = 0"},
+            {q:"∫₁² (1/x) dx bằng:",options:["A. ln2","B. 1","C. ln(1/2)","D. 2ln2"],answer:"A",solution:"ln|x||₁² = ln2 - ln1 = ln2"},
+            {q:"Tính chất: ∫ₐᵇ f(x)dx + ∫ᵇᶜ f(x)dx bằng:",options:["A. ∫ₐᶜ f(x)dx","B. ∫ₐᵇ f(x)dx - ∫ᵇᶜ f(x)dx","C. 0","D. ∫ₐᵇ f(x)dx · ∫ᵇᶜ f(x)dx"],answer:"A",solution:"Tính chất cộng đoạn"},
+            {q:"∫₀¹ e^(2x) dx bằng:",options:["A. (e²-1)/2","B. e²-1","C. 2(e²-1)","D. (e²-1)/4"],answer:"A",solution:"(1/2)e^(2x)|₀¹ = (e²-1)/2"},
+            {q:"Trong đổi biến số, nếu đặt t = x²+1 thì dt bằng:",options:["A. 2xdx","B. xdx","C. dx","D. 2dx"],answer:"A",solution:"Vi phân của t"},
+            {q:"∫₀¹ x·e^x dx bằng:",options:["A. 1","B. e","C. e-1","D. 0"],answer:"A",solution:"Từng phần: u=x, dv=e^x dx ⇒ 1"},
+            {q:"Nếu f(x) là hàm chẵn thì ∫₋ₐᵃ f(x)dx bằng:",options:["A. 2∫₀ᵃ f(x)dx","B. 0","C. ∫₀ᵃ f(x)dx","D. -∫₀ᵃ f(x)dx"],answer:"A",solution:"Tính chất hàm chẵn"},
+            {q:"∫₀^(π) sinx dx bằng:",options:["A. 2","B. 0","C. 1","D. π"],answer:"A",solution:"-cosx|₀^π = -(-1) - (-1) = 2"},
+            {q:"Đổi biến t = 2x+1 trong ∫₀¹ f(2x+1)dx. Cận mới là:",options:["A. 1 đến 3","B. 0 đến 1","C. 1 đến 2","D. 0 đến 3"],answer:"A",solution:"x=0⇒t=1; x=1⇒t=3"},
+            {q:"∫₁ᵉ lnx dx bằng:",options:["A. 1","B. e","C. 0","D. e-1"],answer:"A",solution:"Từng phần: xlnx|₁ᵉ - ∫dx = e - (e-1) = 1"},
+            {q:"Tích phân ∫₀² |x-1| dx bằng:",options:["A. 1","B. 2","C. 0","D. 1/2"],answer:"A",solution:"Tách đoạn [0;1] và [1;2], tính tổng diện tích = 1"},
+            {q:"∫₀^(π/4) tanx dx bằng:",options:["A. -ln(cos(π/4))","B. ln2","C. 1/2","D. 0"],answer:"A",solution:"-ln|cosx|, cos(π/4)=1/√2 ⇒ -ln(1/√2)=ln√2"},
+            {q:"Nếu ∫ₐᵇ f(x)dx = 5 và ∫ₐᵇ g(x)dx = 2 thì ∫ₐᵇ [2f(x)+g(x)]dx =",options:["A. 12","B. 10","C. 7","D. 14"],answer:"A",solution:"2(5)+2=12"},
+            {q:"∫₀¹ 1/(1+x²) dx bằng:",options:["A. π/4","B. π/2","C. 1","D. ln2"],answer:"A",solution:"arctanx|₀¹ = π/4"},
+            {q:"Trong từng phần ∫ₐᵇ u dv, công thức là:",options:["A. (uv)|ₐᵇ - ∫ₐᵇ v du","B. (uv)|ₐᵇ + ∫ₐᵇ v du","C. u(b)v(b)-u(a)v(a)","D. ∫ₐᵇ u'v dx"],answer:"A",solution:"Công thức chuẩn"},
+            {q:"∫₀¹ √x dx bằng:",options:["A. 2/3","B. 1/2","C. 1","D. 3/2"],answer:"A",solution:"(2/3)x^(3/2)|₀¹ = 2/3"},
+            {q:"Tích phân ∫₋₂² x·cosx dx bằng:",options:["A. 0","B. 1","C. -1","D. 4"],answer:"A",solution:"x·cosx là hàm lẻ trên đoạn đối xứng"},
+            {q:"∫₀^(π/2) sin²x dx bằng:",options:["A. π/4","B. π/2","C. 1","D. π/8"],answer:"A",solution:"Hạ bậc: (1-cos2x)/2 ⇒ π/4"},
+            {q:"Nếu F(x) = x³ thì ∫₁² 3x² dx bằng:",options:["A. 7","B. 8","C. 6","D. 5"],answer:"A",solution:"x³|₁² = 8-1=7"},
+            {q:"∫₀¹ 2^x dx bằng:",options:["A. 1/ln2","B. 2/ln2","C. ln2","D. 2ln2"],answer:"A",solution:"2^x/ln2|₀¹ = (2-1)/ln2"},
+            {q:"Đặt x = sin t trong ∫₀¹ √(1-x²)dx. Cận t từ:",options:["A. 0 đến π/2","B. 0 đến 1","C. 0 đến π","D. -π/2 đến π/2"],answer:"A",solution:"sin t = 0 ⇒ 0; sin t = 1 ⇒ π/2"},
+            {q:"∫₀^(π/3) sec²x dx bằng:",options:["A. √3","B. 1","C. 2","D. π/3"],answer:"A",solution:"tanx|₀^(π/3) = √3"},
+            {q:"Tích phân ∫₁² (x²+1/x²) dx bằng:",options:["A. 10/3","B. 3","C. 7/2","D. 11/6"],answer:"A",solution:"(x³/3 - 1/x)|₁² = (8/3 - 1/2) - (1/3 - 1) = 10/3"},
+            {q:"∫₀¹ x·√(1-x²) dx bằng:",options:["A. 1/3","B. 2/3","C. 1/2","D. 0"],answer:"A",solution:"Đổi biến t=1-x² ⇒ -1/2∫dt√t = 1/3"},
+            {q:"Nếu ∫₀² f(x)dx = 4 thì ∫₀² 3f(x)dx bằng:",options:["A. 12","B. 4","C. 3","D. 7"],answer:"A",solution:"3·4=12"},
+            {q:"∫₀^(π) x·sinx dx bằng:",options:["A. π","B. 0","C. 1","D. π/2"],answer:"A",solution:"Từng phần 2 lần hoặc dùng tính chất đối xứng ⇒ π"},
+            {q:"Tích phân ∫₋₁¹ e^(|x|) dx bằng:",options:["A. 2e-2","B. e-1","C. 2e","D. e"],answer:"A",solution:"Chẵn ⇒ 2∫₀¹ e^x dx = 2(e-1)"},
+            {q:"∫₀¹ (e^x + e^(-x)) dx bằng:",options:["A. e - 1/e","B. e + 1/e","C. 2","D. 2e"],answer:"A",solution:"(e^x - e^(-x))|₀¹ = e - 1/e"},
+            {q:"Đổi biến t = x+1 trong ∫₀¹ x/(x+1) dx. Tích phân mới là:",options:["A. ∫₁² (1 - 1/t)dt","B. ∫₁² (t-1)/t dt","C. Cả A và B","D. ∫₀¹ (1-1/t)dt"],answer:"C",solution:"x=t-1 ⇒ (t-1)/t = 1-1/t"},
+            {q:"∫₀^(π/2) sinx·cosx dx bằng:",options:["A. 1/2","B. 1","C. 0","D. π/4"],answer:"A",solution:"(1/2)sin²x|₀^(π/2) = 1/2"},
+            {q:"Tích phân ∫₁ᵉ (lnx)/x dx bằng:",options:["A. 1/2","B. 1","C. e","D. 0"],answer:"A",solution:"Đổi biến t=lnx ⇒ ∫₀¹ t dt = 1/2"},
+            {q:"∫₀¹ (x+1)e^x dx bằng:",options:["A. e","B. e-1","C. 2e","D. e+1"],answer:"A",solution:"Từng phần hoặc nhận đạo hàm (xe^x)' = (x+1)e^x ⇒ xe^x|₀¹ = e"},
+            {q:"Nếu f(x) ≥ 0 trên [a;b] thì ∫ₐᵇ f(x)dx:",options:["A. ≥ 0","B. ≤ 0","C. = 0","D. Không xác định"],answer:"A",solution:"Ý nghĩa diện tích"},
+            {q:"∫₋₂² (x⁴ - 3x² + 1) dx bằng:",options:["A. 2∫₀² (x⁴ - 3x² + 1)dx","B. 0","C. ∫₀² (x⁴ - 3x² + 1)dx","D. -1"],answer:"A",solution:"Hàm chẵn"},
+            {q:"∫₀¹ x·e^(x²) dx bằng:",options:["A. (e-1)/2","B. e-1","C. 2(e-1)","D. e/2"],answer:"A",solution:"Đổi biến t=x² ⇒ (1/2)∫₀¹ e^t dt = (e-1)/2"},
+            {q:"Tích phân ∫₀^(π/2) cos³x dx bằng:",options:["A. 2/3","B. 1/3","C. 1","D. 4/3"],answer:"A",solution:"Đặt u=sinx hoặc công thức Wallis ⇒ 2/3"},
+            {q:"∫₀¹ 1/√(1-x²) dx bằng:",options:["A. π/2","B. π","C. 1","D. 0"],answer:"A",solution:"arcsinx|₀¹ = π/2"},
+            {q:"Nếu ∫ₐᵇ f(x)dx = S thì diện tích hình thang cong giới hạn bởi y=f(x) là:",options:["A. |S|","B. S","C. -S","D. S²"],answer:"A",solution:"Diện tích luôn dương"},
+            {q:"∫₀¹ (3x² - 2x + 5) dx bằng:",options:["A. 5","B. 6","C. 4","D. 7"],answer:"A",solution:"(x³-x²+5x)|₀¹ = 1-1+5=5"},
+            {q:"Tích phân ∫₀^(π/4) (1+tan²x) dx bằng:",options:["A. 1","B. tan(π/4)=1","C. π/4","D. 0"],answer:"A",solution:"1+tan²x=sec²x ⇒ tanx|₀^(π/4)=1"},
+            {q:"∫₁² (1/x²) dx bằng:",options:["A. 1/2","B. 1","C. 3/2","D. 2"],answer:"A",solution:"-1/x|₁² = -1/2 - (-1) = 1/2"},
+            {q:"Trong đổi biến loại 2, nếu đặt x = 2sin t thì dx bằng:",options:["A. 2cos t dt","B. 2sin t dt","C. cos t dt","D. -2cos t dt"],answer:"A",solution:"Đạo hàm của 2sin t"},
+            {q:"∫₀^(π) sin²(x/2) dx bằng:",options:["A. π/2","B. π","C. π/4","D. 0"],answer:"A",solution:"Hạ bậc: (1-cosx)/2 ⇒ π/2"},
+            {q:"Tích phân ∫₀¹ x·lnx dx bằng:",options:["A. -1/4","B. 1/4","C. -1/2","D. 0"],answer:"A",solution:"Từng phần: (x²/2)lnx - x²/4|₀¹ = -1/4"},
+            {q:"Nếu f(x) là nguyên hàm của g(x) thì ∫ g(x)dx trên [a;b] bằng:",options:["A. f(b)-f(a)","B. g(b)-g(a)","C. f'(b)-f'(a)","D. 0"],answer:"A",solution:"Định nghĩa tích phân xác định"},
+            {q:"∫₋₁¹ (x²+1)/(x²+1) dx bằng:",options:["A. 2","B. 0","C. 1","D. π"],answer:"A",solution:"∫₋₁¹ 1 dx = 2"}
+        ];
+
+        const tfData = [
+            {q:"Về định nghĩa tích phân:",statements:[{text:"∫ₐᵇ f(x)dx = F(b) - F(a) với F là nguyên hàm của f",answer:true},{text:"Tích phân xác định luôn cho kết quả dương",answer:false},{text:"Nếu a=b thì ∫ₐᵇ f(x)dx = 0",answer:true},{text:"Tích phân không phụ thuộc vào tên biến (x, t, u)",answer:true}]},
+            {q:"Về tính chất cơ bản:",statements:[{text:"∫ₐᵇ k·f(x)dx = k·∫ₐᵇ f(x)dx",answer:true},{text:"∫ₐᵇ [f(x)+g(x)]dx = ∫ₐᵇ f(x)dx + ∫ₐᵇ g(x)dx",answer:true},{text:"∫ₐᵇ f(x)dx = ∫ₐᶜ f(x)dx + ∫ᶜᵇ f(x)dx",answer:true},{text:"∫ₐᵇ f(x)·g(x)dx = ∫ₐᵇ f(x)dx · ∫ₐᵇ g(x)dx",answer:false}]},
+            {q:"Về đổi biến số:",statements:[{text:"Khi đổi biến x = φ(t), cận tích phân cũng phải đổi theo t",answer:true},{text:"Vi phân dx được thay bằng φ'(t)dt",answer:true},{text:"Có thể đổi biến mà không cần đổi cận nếu giữ nguyên biến",answer:false},{text:"Đổi biến giúp đơn giản hóa hàm dưới dấu tích phân",answer:true}]},
+            {q:"Về tích phân từng phần:",statements:[{text:"∫ u dv = uv - ∫ v du",answer:true},{text:"Thường dùng cho tích của đa thức và hàm mũ/lôgarit",answer:true},{text:"Việc chọn u và dv không ảnh hưởng đến độ khó bài toán",answer:false},{text:"Áp dụng được cho ∫ e^x·sinx dx",answer:true}]},
+            {q:"Về ý nghĩa hình học:",statements:[{text:"Tích phân ∫ₐᵇ f(x)dx biểu diễn diện tích hình thang cong (nếu f≥0)",answer:true},{text:"Nếu f(x) nằm dưới Ox, tích phân sẽ mang giá trị âm",answer:true},{text:"Diện tích luôn bằng trị tuyệt đối của tích phân nếu f đổi dấu",answer:true},{text:"Tích phân luôn bằng chu vi hình phẳng",answer:false}]},
+            {q:"Về hàm chẵn, lẻ:",statements:[{text:"∫₋ₐᵃ f(x)dx = 0 nếu f(x) lẻ",answer:true},{text:"∫₋ₐᵃ f(x)dx = 2∫₀ᵃ f(x)dx nếu f(x) chẵn",answer:true},{text:"x² là hàm lẻ",answer:false},{text:"sinx là hàm lẻ trên ℝ",answer:true}]},
+            {q:"Về giá trị tích phân:",statements:[{text:"Nếu f(x) ≤ g(x) trên [a;b] thì ∫ₐᵇ f(x)dx ≤ ∫ₐᵇ g(x)dx",answer:true},{text:"∫ₐᵇ f(x)dx = -∫ᵇₐ f(x)dx",answer:true},{text:"Tích phân của hàm dương luôn dương",answer:true},{text:"∫ₐᵇ dx = b - a",answer:true}]},
+            {q:"Về máy tính CASIO:",statements:[{text:"Có thể dùng phím ∫dx để tính giá trị tích phân xác định",answer:true},{text:"Máy tính tính chính xác mọi tích phân bất định",answer:false},{text:"Có thể dùng tính năng để kiểm tra nhanh đáp án trắc nghiệm",answer:true},{text:"Mode 7 (TABLE) không hỗ trợ tính tích phân",answer:true}]},
+            {q:"Về phương pháp tính:",statements:[{text:"Mọi tích phân đều tính được bằng phương pháp sơ cấp",answer:false},{text:"Đổi biến số loại 1 thường dùng khi nhận diện được f'(x)",answer:true},{text:"Tích phân từng phần luôn giảm bậc đa thức sau mỗi lần",answer:true},{text:"∫ tanx dx có thể tính bằng đổi biến u=cosx",answer:true}]},
+            {q:"Về ứng dụng:",statements:[{text:"Tính diện tích hình phẳng giới hạn bởi các đường cong",answer:true},{text:"Tính thể tích vật thể tròn xoay",answer:true},{text:"Tính quãng đường từ hàm vận tốc",answer:true},{text:"Tích phân chỉ dùng trong toán học thuần túy",answer:false}]},
+            {q:"Về sai lầm thường gặp:",statements:[{text:"Quên đổi cận khi đổi biến số",answer:true},{text:"Quên giá trị tuyệt đối khi lấy nguyên hàm 1/x",answer:true},{text:"Nhầm dấu khi tích phân sinx",answer:true},{text:"Áp dụng công thức tích phân cho hàm gián đoạn",answer:true}]},
+            {q:"Về công thức Newton-Leibniz:",statements:[{text:"Yêu cầu f(x) liên tục trên [a;b]",answer:true},{text:"F(x) phải là nguyên hàm của f(x) trên đoạn đó",answer:true},{text:"Kết quả phụ thuộc vào việc chọn nguyên hàm cụ thể nào",answer:false},{text:"Là nền tảng của giải tích hiện đại",answer:true}]}
+        ];
+
+        const recognitionData = [
+            {q:"Viết công thức Newton-Leibniz tính tích phân.",answer:"∫ₐᵇ f(x)dx = F(b) - F(a)",solution:"Định nghĩa cơ bản"},
+            {q:"Nêu tính chất cộng đoạn của tích phân.",answer:"∫ₐᵇ f(x)dx = ∫ₐᶜ f(x)dx + ∫ᶜᵇ f(x)dx",solution:"Tính chất quan trọng"},
+            {q:"Viết công thức tích phân từng phần.",answer:"∫ₐᵇ u dv = (uv)|ₐᵇ - ∫ₐᵇ v du",solution:"Phương pháp tính"},
+            {q:"Tích phân của hàm lẻ trên đoạn đối xứng [-a; a] bằng:",answer:"0",solution:"Tính chất đối xứng"},
+            {q:"Nếu f(x) ≥ 0 trên [a; b] thì ∫ₐᵇ f(x)dx biểu diễn:",answer:"Diện tích hình thang cong dưới đồ thị",solution:"Ý nghĩa hình học"},
+            {q:"Viết nguyên hàm của 1/x.",answer:"ln|x| + C",solution:"Cơ bản"},
+            {q:"∫ cosx dx trên [0; π/2] bằng:",answer:"1",solution:"sin(π/2)-sin(0)=1"},
+            {q:"Khi đổi biến x = φ(t), vi phân dx thay bằng:",answer:"φ'(t) dt",solution:"Quy tắc vi phân"},
+            {q:"Điều kiện để áp dụng công thức Newton-Leibniz:",answer:"f(x) liên tục trên [a; b]",solution:"Điều kiện tồn tại"},
+            {q:"Ký hiệu tích phân từ a đến b của f(x) là:",answer:"∫ₐᵇ f(x)dx",solution:"Ký hiệu chuẩn"}
+        ];
+
+        const comprehensionData = [
+            {q:"Tại sao ∫₋₁¹ x³ dx = 0?",answer:"Vì x³ là hàm lẻ, đồ thị đối xứng qua gốc O, diện tích phần âm triệt tiêu phần dương",solution:"Tính chất hàm lẻ"},
+            {q:"Giải thích tại sao khi đổi biến phải đổi cận tích phân.",answer:"Biến mới thay đổi phạm vi chạy theo quy luật của phép đổi biến, tích phân theo biến mới phải khớp cận",solution:"Bản chất đổi biến"},
+            {q:"Nếu f(x) ≥ g(x) trên [a; b], tích phân nào lớn hơn?",answer:"∫ₐᵇ f(x)dx ≥ ∫ₐᵇ g(x)dx",solution:"Tính chất bảo toàn thứ tự"},
+            {q:"Tại sao ∫₀¹ |x-0.5| dx không tính trực tiếp bằng nguyên hàm của x-0.5?",answer:"Vì hàm trị tuyệt đối đổi công thức tại x=0.5, phải tách đoạn [0; 0.5] và [0.5; 1]",solution:"Xử lý hàm trị tuyệt đối"},
+            {q:"Trong tích phân từng phần, quy tắc chọn u là gì?",answer:"LIATE: Lôgarit → Lượng giác → Đại số → Mũ. Ưu tiên hàm nào đạo hàm đơn giản hơn làm u",solution:"Tối ưu hóa phép tính"},
+            {q:"Ý nghĩa vật lý của ∫ₐᵇ v(t)dt là gì?",answer:"Độ dời (hoặc quãng đường nếu v(t)≥0) của vật trong khoảng thời gian [a; b]",solution:"Ứng dụng vật lý"},
+            {q:"Tại sao ∫ₐᵇ f(x)dx = -∫ᵇₐ f(x)dx?",answer:"Do định nghĩa F(a)-F(b) = -(F(b)-F(a)). Đảo cận đổi dấu tích phân.",solution:"Tính chất đảo cận"},
+            {q:"Giải thích tại sao diện tích hình phẳng luôn dương dù tích phân có thể âm.",answer:"Diện tích là độ đo hình học, luôn ≥ 0. Tích phân mang dấu của phần nằm trên/dưới trục Ox.",solution:"Phân biệt đại số và hình học"},
+            {q:"Nếu F(x) và G(x) đều là nguyên hàm của f(x), thì F(b)-F(a) có bằng G(b)-G(a) không?",answer:"Có, vì G(x)=F(x)+C, hiệu số sẽ triệt tiêu hằng số C",solution:"Tính duy nhất của tích phân"},
+            {q:"Tại sao không thể áp dụng Newton-Leibniz cho hàm f(x)=1/x² trên [-1; 1]?",answer:"f(x) gián đoạn (không xác định) tại x=0, vi phạm điều kiện liên tục",solution:"Điều kiện tiên quyết"}
+        ];
+
+        const lowData = [
+            {q:"Tính ∫₀¹ (4x³ - 2x) dx.",answer:"0",solution:"(x⁴-x²)|₀¹ = 1-1=0"},
+            {q:"Tính ∫₁² 1/x dx.",answer:"ln2",solution:"ln|x||₁² = ln2"},
+            {q:"Tính ∫₀^(π/2) sinx dx.",answer:"1",solution:"-cosx|₀^(π/2) = 0-(-1)=1"},
+            {q:"Tính ∫₀¹ e^(3x) dx.",answer:"(e³-1)/3",solution:"(1/3)e^(3x)|₀¹ = (e³-1)/3"},
+            {q:"Tính ∫₋₂² (x⁴+1) dx.",answer:"74/5",solution:"Hàm chẵn ⇒ 2∫₀²(x⁴+1)dx = 2(32/5+2)=74/5"},
+            {q:"Tính ∫₀¹ x·√(x²+1) dx.",answer:"(2√2 - 1)/3",solution:"Đổi biến t=x²+1"},
+            {q:"Tính ∫₀¹ (2x+1)e^x dx.",answer:"2e-2",solution:"Từng phần hoặc nhận đạo hàm"},
+            {q:"Tính ∫₀^(π/4) sec²x dx.",answer:"1",solution:"tanx|₀^(π/4) = 1"},
+            {q:"Tính ∫₁ᵉ (1+lnx)/x dx.",answer:"3/2",solution:"Đổi biến t=1+lnx ⇒ t²/2|₁² = 3/2"},
+            {q:"Tính ∫₀¹ (x-1)² dx.",answer:"1/3",solution:"Khai triển hoặc đổi biến u=x-1 ⇒ 1/3"}
+        ];
+
+        const highData = [
+            {q:"Tính I = ∫₀^(π/2) x·sinx dx.",answer:"1",solution:"**Lời giải:**\n1. Đặt u=x, dv=sinx dx ⇒ du=dx, v=-cosx\n2. I = -xcosx|₀^(π/2) + ∫₀^(π/2) cosx dx = 0 + sinx|₀^(π/2) = 1\n**Kết luận: I = 1**"},
+            {q:"Tính I = ∫₀¹ x²·e^x dx.",answer:"e - 2",solution:"**Lời giải:**\n1. Từng phần 2 lần.\n2. I = x²e^x|₀¹ - 2∫₀¹ xe^x dx = e - 2(1) = e-2.\n**Kết luận: I = e - 2**"},
+            {q:"Tìm m để ∫₀¹ (2x+m) dx = 3.",answer:"m = 2",solution:"**Lời giải:**\n1. Tính tích phân: (x²+mx)|₀¹ = 1+m\n2. 1+m=3 ⇒ m=2\n**Kết luận: m = 2**"},
+            {q:"Tính I = ∫₀^(π/4) ln(1+tanx) dx.",answer:"(π/8)ln2",solution:"**Lời giải:**\n1. Đặt x = π/4 - t ⇒ tanx = (1-tant)/(1+tant)\n2. 1+tanx = 2/(1+tant) ⇒ ln(1+tanx) = ln2 - ln(1+tant)\n3. Cộng 2I ⇒ 2I = ∫₀^(π/4) ln2 dt = (π/4)ln2 ⇒ I=(π/8)ln2\n**Kết luận: I = (π/8)ln2**"},
+            {q:"Tính I = ∫₀¹ x·arctanx dx.",answer:"π/4 - 1/2",solution:"**Lời giải:**\n1. Từng phần: u=arctanx, dv=xdx\n2. I = (x²/2)arctanx|₀¹ - (1/2)∫₀¹ x²/(1+x²)dx\n3. ∫x²/(1+x²)dx = ∫(1 - 1/(1+x²))dx = x - arctanx\n4. Thay cận ra π/4 - 1/2\n**Kết luận: I = π/4 - 1/2**"},
+            {q:"Chứng minh ∫₀^(π/2) sin^n x dx = ∫₀^(π/2) cos^n x dx.",answer:"Đổi biến t = π/2 - x",solution:"**Lời giải:**\n1. Đặt x = π/2 - t ⇒ dx = -dt\n2. Cận 0→π/2, π/2→0\n3. sin(π/2-t) = cost ⇒ đpcm.\n**Kết luận: ĐPCM**"},
+            {q:"Tính I = ∫₋₁¹ x²/(1+e^x) dx.",answer:"1/3",solution:"**Lời giải:**\n1. Đặt I = ∫₋₁¹ x²/(1+e^x) dx\n2. Đổi biến x=-t ⇒ I = ∫₋₁¹ t²e^t/(1+e^t) dt\n3. Cộng 2I = ∫₋₁¹ x² dx = 2/3 ⇒ I=1/3\n**Kết luận: I = 1/3**"},
+            {q:"Tìm diện tích hình phẳng giới hạn bởi y=x² và y=2x.",answer:"4/3",solution:"**Lời giải:**\n1. Giao điểm: x²=2x ⇒ x=0, x=2\n2. S = ∫₀² |2x-x²| dx = ∫₀² (2x-x²)dx\n3. = (x²-x³/3)|₀² = 4 - 8/3 = 4/3\n**Kết luận: S = 4/3**"},
+            {q:"Tính I = ∫₀¹ √(4-x²) dx.",answer:"π/3 + √3/2",solution:"**Lời giải:**\n1. Đặt x=2sint ⇒ dx=2cost dt\n2. Cận: 0→0, 1→π/6\n3. I = ∫₀^(π/6) 2cost·2cost dt = 2∫(1+cos2t)dt = 2[t + sin2t/2]\n4. Thay cận ra kết quả.\n**Kết luận: I = π/3 + √3/2**"},
+            {q:"Cho f(x) liên tục, f(1)=2, ∫₀¹ f(x)dx=3. Tính J = ∫₀¹ x·f'(x) dx.",answer:"-1",solution:"**Lời giải:**\n1. Từng phần: u=x, dv=f'(x)dx ⇒ du=dx, v=f(x)\n2. J = xf(x)|₀¹ - ∫₀¹ f(x)dx = 1·f(1) - 0 - 3 = 2 - 3 = -1\n**Kết luận: J = -1**"}
+        ];
+
+        const realData = [
+            {q:"Vận tốc v(t) = 2t + 3 (m/s). Quãng đường đi được từ t=0 đến t=5?",answer:"S = 40 m",solution:"**Lời giải:**\n1. S = ∫₀⁵ (2t+3)dt = (t²+3t)|₀⁵ = 25+15=40.\n**Kết luận: 40 mét**"},
+            {q:"Tốc độ tăng dân số P'(t) = 100e^(0.02t). Dân số tăng thêm sau 10 năm?",answer:"ΔP ≈ 1107 người",solution:"**Lời giải:**\n1. ∫₀¹⁰ 100e^(0.02t)dt = 5000(e^0.2 - 1) ≈ 1107.\n**Kết luận: ~1107 người**"},
+            {q:"Lực kéo F(x) = 10x (N). Công sinh ra khi dời vật từ 0 đến 2m?",answer:"A = 20 J",solution:"**Lời giải:**\n1. A = ∫₀² 10x dx = 5x²|₀² = 20.\n**Kết luận: 20 Joule**"},
+            {q:"Dòng điện i(t) = 5sin(100πt). Điện lượng qua dây trong 0.01s đầu?",answer:"q = 10/(100π) C",solution:"**Lời giải:**\n1. q = ∫₀⁰·⁰¹ 5sin(100πt)dt = [-5cos(100πt)/(100π)]\n2. = (5-5cos(π))/(100π) = 10/(100π) ≈ 0.032C.\n**Kết luận: ~0.032 Coulomb**"},
+            {q:"Tốc độ phản ứng v = k[A]². Nồng độ [A] giảm từ 2 xuống 1 trong 10s. Tính k.",answer:"k = 0.05",solution:"**Lời giải:**\n1. d[A]/dt = -k[A]² ⇒ ∫₂¹ d[A]/[A]² = -∫₀¹⁰ k dt\n2. 1/1 - 1/2 = 10k ⇒ k=0.05.\n**Kết luận: k = 0.05**"},
+            {q:"Chi phí biên MC(q) = 0.5q + 10. Tăng chi phí khi sản lượng từ 10 lên 20?",answer:"ΔC = 225",solution:"**Lời giải:**\n1. ΔC = ∫₁₀²⁰ (0.5q+10)dq = [0.25q²+10q]₁₀²⁰\n2. = (100+200) - (25+100) = 175.\n**Kết luận: 175 đơn vị tiền**"},
+            {q:"Nhiệt độ thay đổi T(t) = 20 + 5sin(πt/12). Nhiệt độ trung bình từ 0 đến 12h?",answer:"20 + 10/π ≈ 23.18°C",solution:"**Lời giải:**\n1. T_tb = (1/12)∫₀¹² (20+5sin(πt/12))dt\n2. = 20 + (5/12)[-12/π cos(πt/12)]₀¹² = 20 + 10/π.\n**Kết luận: ~23.18°C**"},
+            {q:"Máu chảy qua động mạch với vận tốc v(r) = k(R²-r²). Lưu lượng máu?",answer:"Q = kπR⁴/2",solution:"**Lời giải:**\n1. Q = ∫₀ᴿ 2πr·v(r)dr = 2πk∫₀ᴿ (R²r - r³)dr\n2. = 2πk(R⁴/2 - R⁴/4) = kπR⁴/2.\n**Kết luận: Công thức Poiseuille**"},
+            {q:"Tốc độ học thuộc V(t) = 10/(t+1). Số từ nhớ được sau 9 phút?",answer:"N = 10ln10 ≈ 23 từ",solution:"**Lời giải:**\n1. N = ∫₀⁹ 10/(t+1)dt = 10ln|t+1|₀⁹ = 10ln10.\n**Kết luận: ~23 từ**"},
+            {q:"Công suất tiêu thụ P(t) = 100 + 50cos(πt/12). Năng lượng dùng trong 24h?",answer:"E = 2400 kWh",solution:"**Lời giải:**\n1. E = ∫₀²⁴ (100+50cos(πt/12))dt\n2. = 100·24 + 0 = 2400.\n**Kết luận: 2400 kWh**"}
+        ];
+
+        function renderQuestions(containerId, dataArray, type) {
+            const container = document.getElementById(containerId);
+            dataArray.forEach((item, index) => {
+                const div = document.createElement('div');
+                div.className = 'border-l-4 border-cyan-400 pl-4 py-3 bg-gray-50 rounded-r-lg';
+                if (type === 'mcq') {
+                    div.innerHTML = `<p class="font-semibold text-gray-800 mb-2"><strong>Câu ${index + 1}:</strong> ${item.q}</p><div class="grid grid-cols-2 gap-2 mb-3 text-sm">${item.options.map(o => `<span class="text-gray-700">${o}</span>`).join('')}</div><button onclick="toggleAnswer('${containerId}-${index}')" class="text-cyan-600 text-sm hover:underline">👁️ Xem đáp án</button><div id="${containerId}-${index}" class="answer-box mt-2 p-3 rounded hidden"><p class="font-semibold text-green-700">Đáp án: ${item.answer}</p><p class="text-gray-700 text-sm mt-1">${item.solution}</p></div>`;
+                } else if (type === 'tf') {
+                    div.innerHTML = `<p class="font-semibold text-gray-800 mb-3"><strong>Câu ${index + 1}:</strong> ${item.q}</p><div class="space-y-2">${item.statements.map((s, i) => `<div class="flex items-center justify-between bg-white p-2 rounded"><span class="text-gray-700 text-sm">${String.fromCharCode(65+i)}. ${s.text}</span><span class="text-xs px-2 py-1 rounded ${s.answer ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}">${s.answer ? 'Đúng' : 'Sai'}</span></div>`).join('')}</div>`;
+                } else {
+                    div.innerHTML = `<p class="font-semibold text-gray-800 mb-2"><strong>Bài ${index + 1}:</strong> ${item.q}</p><button onclick="toggleAnswer('${containerId}-${index}')" class="text-cyan-600 text-sm hover:underline">👁️ Xem đáp án</button><div id="${containerId}-${index}" class="${containerId==='comprehension-container'||containerId==='high-container'||containerId==='real-container'?'solution-box':'answer-box'} mt-2 p-3 rounded hidden"><p class="font-semibold text-purple-700">Đáp án: ${item.answer}</p><p class="text-gray-700 text-sm mt-1 whitespace-pre-line">${item.solution}</p></div>`;
+                }
+                container.appendChild(div);
+            });
+        }
+
+        function toggleAnswer(id) { document.getElementById(id).classList.toggle('hidden'); }
+        document.addEventListener('DOMContentLoaded', () => {
+            renderQuestions('mcq-container', mcqData, 'mcq');
+            renderQuestions('tf-container', tfData, 'tf');
+            renderQuestions('recognition-container', recognitionData, 'default');
+            renderQuestions('comprehension-container', comprehensionData, 'default');
+            renderQuestions('low-container', lowData, 'default');
+            renderQuestions('high-container', highData, 'default');
+            renderQuestions('real-container', realData, 'default');
+        });
+    </script>
+</body>
+</html>
+```

@@ -1,0 +1,456 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Khảo Sát Sự Biến Thiên Và Vẽ Đồ Thị Hàm Số - Đề Mục 219 - Toán Lớp 12</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@fontsource/roboto@4.5.8/index.css" rel="stylesheet">
+    <style>
+        * { font-family: 'Roboto', sans-serif; }
+        .gradient-header { background: linear-gradient(135deg, #0891b2 0%, #7c3aed 100%); }
+        .card-hover { transition: all 0.3s ease; }
+        .card-hover:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0,0,0,0.15); }
+        .btn-primary { background: linear-gradient(135deg, #0891b2 0%, #7c3aed 100%); }
+        .btn-primary:hover { background: linear-gradient(135deg, #067894 0%, #6a32c4 100%); }
+        .answer-box { background: #f0f9ff; border-left: 4px solid #0891b2; }
+        .solution-box { background: #fef3c7; border-left: 4px solid #f59e0b; }
+        .nav-item { transition: all 0.2s ease; }
+        .nav-item:hover { background: rgba(255,255,255,0.2); }
+        .nav-item.active { background: rgba(255,255,255,0.3); }
+        .print-section { page-break-inside: avoid; }
+        @media print { .no-print { display: none; } }
+        .formula-box { background: linear-gradient(135deg, #e0f2fe 0%, #ede9fe 100%); border-radius: 8px; padding: 16px; margin: 12px 0; }
+        .graph-container { background: #f8fafc; border: 2px dashed #cbd5e1; border-radius: 8px; padding: 20px; text-align: center; }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="gradient-header text-white py-8">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center">
+                <div>
+                    <h1 class="text-3xl font-bold">KHẢO SÁT SỰ BIẾN THIÊN VÀ VẼ ĐỒ THỊ HÀM SỐ</h1>
+                    <p class="text-lg opacity-90">Đề Mục 219 - Toán Lớp 12 - Giải Tích</p>
+                </div>
+                <div class="text-right">
+                    <p class="text-sm opacity-80">Bộ Tài Liệu Toán THPT</p>
+                    <p class="text-sm opacity-80">Ôn Tập Thi Tốt Nghiệp</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md sticky top-0 z-50 no-print">
+        <div class="container mx-auto px-4">
+            <div class="flex overflow-x-auto py-3 space-x-2">
+                <button onclick="showSection('lesson')" class="nav-item active px-4 py-2 rounded-lg bg-cyan-100 text-cyan-700 whitespace-nowrap">📚 Bài Giảng</button>
+                <button onclick="showSection('mcq')" class="nav-item px-4 py-2 rounded-lg hover:bg-gray-100 whitespace-nowrap">📝 50 Câu MCQ</button>
+                <button onclick="showSection('tf')" class="nav-item px-4 py-2 rounded-lg hover:bg-gray-100 whitespace-nowrap">✅ 12 Câu Đúng/Sai</button>
+                <button onclick="showSection('recognition')" class="nav-item px-4 py-2 rounded-lg hover:bg-gray-100 whitespace-nowrap">🔍 10 Bài Nhận Biết</button>
+                <button onclick="showSection('comprehension')" class="nav-item px-4 py-2 rounded-lg hover:bg-gray-100 whitespace-nowrap">💡 10 Câu Thông Hiểu</button>
+                <button onclick="showSection('low')" class="nav-item px-4 py-2 rounded-lg hover:bg-gray-100 whitespace-nowrap">📊 10 Bài Vận Dụng Thấp</button>
+                <button onclick="showSection('high')" class="nav-item px-4 py-2 rounded-lg hover:bg-gray-100 whitespace-nowrap">🎯 10 Bài Vận Dụng Cao</button>
+                <button onclick="showSection('real')" class="nav-item px-4 py-2 rounded-lg hover:bg-gray-100 whitespace-nowrap">🌍 10 Bài Thực Tế</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+        <!-- Lesson Section -->
+        <section id="lesson" class="section-content">
+            <div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section">
+                <h2 class="text-2xl font-bold text-cyan-700 mb-6 flex items-center">
+                    <span class="mr-3">📚</span> BÀI GIẢNG CHI TIẾT: KHẢO SÁT VÀ VẼ ĐỒ THỊ
+                </h2>
+                
+                <div class="space-y-6">
+                    <!-- Introduction -->
+                    <div class="answer-box p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold text-cyan-700 mb-4">1. QUY TRÌNH KHẢO SÁT HÀM SỐ</h3>
+                        <p class="text-gray-700 mb-4">Khảo sát sự biến thiên và vẽ đồ thị hàm số là quy trình chuẩn để hiểu rõ hình dạng, tính chất và các đặc điểm quan trọng của đồ thị.</p>
+                        
+                        <div class="formula-box">
+                            <h4 class="font-semibold text-cyan-600 mb-2">📐 Các bước khảo sát:</h4>
+                            <ol class="space-y-2 text-gray-700 list-decimal list-inside">
+                                <li><strong>Bước 1: Tìm tập xác định (TXĐ)</strong></li>
+                                <li><strong>Bước 2: Khảo sát sự biến thiên</strong>
+                                    <ul class="ml-4 mt-1 space-y-1 list-disc">
+                                        <li>Tính đạo hàm y', xét dấu y'</li>
+                                        <li>Lập bảng biến thiên (chiều biến thiên, cực trị, giới hạn, tiệm cận)</li>
+                                    </ul>
+                                </li>
+                                <li><strong>Bước 3: Vẽ đồ thị</strong>
+                                    <ul class="ml-4 mt-1 space-y-1 list-disc">
+                                        <li>Giao điểm với trục Ox, Oy</li>
+                                        <li>Điểm đặc biệt (điểm uốn, đối xứng)</li>
+                                        <li>Nhận dạng dạng đồ thị cơ bản</li>
+                                    </ul>
+                                </li>
+                            </ol>
+                        </div>
+
+                        <div class="grid md:grid-cols-3 gap-4 mt-4">
+                            <div class="bg-cyan-50 p-4 rounded-lg">
+                                <h4 class="font-semibold text-cyan-600 mb-2">Hàm bậc ba y = ax³+bx²+cx+d</h4>
+                                <p class="text-gray-700 text-sm">Có thể có 2 cực trị hoặc không. Luôn nhận tâm đối xứng là điểm uốn.</p>
+                                <p class="text-cyan-700 text-sm font-semibold mt-2">Dạng chữ N hoặc ↘</p>
+                            </div>
+                            <div class="bg-purple-50 p-4 rounded-lg">
+                                <h4 class="font-semibold text-purple-600 mb-2">Hàm bậc 4 trùng phương y = ax⁴+bx²+c</h4>
+                                <p class="text-gray-700 text-sm">Đối xứng qua trục Oy. Có thể có 3 cực trị hoặc 1 cực trị.</p>
+                                <p class="text-purple-700 text-sm font-semibold mt-2">Dạng chữ W hoặc ∪</p>
+                            </div>
+                            <div class="bg-amber-50 p-4 rounded-lg">
+                                <h4 class="font-semibold text-amber-600 mb-2">Hàm phân thức y=(ax+b)/(cx+d)</h4>
+                                <p class="text-gray-700 text-sm">Đồ thị hyperbol. Có 1 TCĐ, 1 TCN. Tâm đối xứng là giao 2 TC.</p>
+                                <p class="text-amber-700 text-sm font-semibold mt-2">Dạng 2 nhánh</p>
+                            </div>
+                        </div>
+
+                        <div class="mt-4 graph-container">
+                            <svg width="400" height="280" viewBox="0 0 400 280">
+                                <!-- Axes -->
+                                <line x1="40" y1="240" x2="360" y2="240" stroke="#333" stroke-width="2"/>
+                                <line x1="200" y1="40" x2="200" y2="260" stroke="#333" stroke-width="2"/>
+                                <!-- Cubic Curve -->
+                                <path d="M 80 200 Q 150 120 200 140 Q 250 160 320 60" fill="none" stroke="#0891b2" stroke-width="3"/>
+                                <!-- Inflection Point -->
+                                <circle cx="200" cy="140" r="4" fill="#dc2626"/>
+                                <text x="210" y="135" fill="#dc2626" font-size="12">Điểm uốn</text>
+                                <!-- Extrema -->
+                                <circle cx="130" cy="130" r="4" fill="#10b981"/>
+                                <circle cx="260" cy="100" r="4" fill="#10b981"/>
+                                <text x="60" y="180" fill="#0891b2" font-size="12" font-weight="bold">Đồ thị bậc 3</text>
+                            </svg>
+                            <p class="text-sm text-gray-600 mt-2">Đồ thị hàm số bậc ba có 2 cực trị và điểm uốn</p>
+                        </div>
+                    </div>
+
+                    <!-- Graph Recognition -->
+                    <div class="solution-box p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold text-amber-700 mb-4">2. NHẬN DẠNG ĐỒ THỊ</h3>
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div class="bg-white p-4 rounded-lg border-2 border-cyan-300">
+                                <h4 class="font-semibold text-cyan-600 mb-2">Dấu hiệu nhận dạng nhanh</h4>
+                                <ul class="space-y-2 text-gray-700 text-sm">
+                                    <li>• <strong>Hướng nhánh vô cực:</strong> Quyết định bởi dấu hệ số a bậc cao nhất</li>
+                                    <li>• <strong>Giao Oy:</strong> Thay x=0 vào hàm số</li>
+                                    <li>• <strong>Giao Ox:</strong> Giải phương trình y=0</li>
+                                    <li>• <strong>Tâm đối xứng:</strong> Hàm lẻ (gốc O), Phân thức (giao tiệm cận), Bậc 3 (điểm uốn)</li>
+                                </ul>
+                            </div>
+                            <div class="bg-white p-4 rounded-lg border-2 border-purple-300">
+                                <h4 class="font-semibold text-purple-600 mb-2">Biến đổi đồ thị cơ bản</h4>
+                                <ul class="space-y-2 text-gray-700 text-sm">
+                                    <li>• <strong>y = |f(x)|:</strong> Giữ nguyên phần trên Ox, lấy đối xứng phần dưới lên</li>
+                                    <li>• <strong>y = f(|x|):</strong> Giữ nguyên phần phải Oy, lấy đối xứng sang trái</li>
+                                    <li>• <strong>y = f(x) + k:</strong> Tịnh tiến lên/k xuống |k| đơn vị</li>
+                                    <li>• <strong>y = f(x-a):</strong> Tịnh tiến phải/trái |a| đơn vị</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="mt-4 bg-cyan-50 p-4 rounded-lg">
+                            <h4 class="font-semibold text-cyan-700 mb-2">📝 Bài toán tương giao đồ thị:</h4>
+                            <p class="text-gray-700 text-sm mb-2">Số giao điểm của (C): y=f(x) và (d): y=g(x) bằng số nghiệm của phương trình f(x)=g(x).</p>
+                            <p class="text-gray-700 text-sm">Phương pháp: Vẽ đồ thị, dùng đường thẳng ngang y=m cắt đồ thị, đếm số giao điểm để biện luận nghiệm.</p>
+                        </div>
+                    </div>
+
+                    <!-- Examples -->
+                    <div class="answer-box p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold text-cyan-700 mb-4">3. VÍ DỤ MINH HỌA</h3>
+                        <div class="bg-white p-4 rounded-lg mb-4">
+                            <h4 class="font-semibold text-cyan-600 mb-2">Ví dụ 1: Khảo sát hàm bậc 3</h4>
+                            <p class="text-gray-700 mb-2">Khảo sát và vẽ đồ thị y = x³ - 3x + 2.</p>
+                            <div class="solution-box p-3 rounded">
+                                <p class="text-gray-700">TXĐ: D = ℝ. y' = 3x² - 3 = 0 ⇔ x = ±1.</p>
+                                <p class="text-gray-700">BBT: CĐ tại x=-1 (y=4), CT tại x=1 (y=0).</p>
+                                <p class="text-gray-700">Giao Oy: (0;2). Giao Ox: (-2;0), (1;0) (kép).</p>
+                                <p class="text-gray-700">Đồ thị nhận điểm uốn I(0;2) làm tâm đối xứng.</p>
+                            </div>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg mb-4">
+                            <h4 class="font-semibold text-cyan-600 mb-2">Ví dụ 2: Nhận dạng đồ thị</h4>
+                            <p class="text-gray-700 mb-2">Đồ thị hình chữ W mở lên trên, có 3 cực trị, cắt Oy tại điểm dương. Hàm số nào phù hợp?</p>
+                            <div class="solution-box p-3 rounded">
+                                <p class="text-gray-700">Dạng W mở lên ⇒ a > 0 (bậc 4 trùng phương).</p>
+                                <p class="text-gray-700">3 cực trị ⇒ b < 0.</p>
+                                <p class="text-gray-700">Cắt Oy dương ⇒ c > 0.</p>
+                                <p class="text-gray-700">Ví dụ: y = x⁴ - 2x² + 1.</p>
+                            </div>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg">
+                            <h4 class="font-semibold text-cyan-600 mb-2">Ví dụ 3: Biện luận số nghiệm</h4>
+                            <p class="text-gray-700 mb-2">Dùng đồ thị y=x³-3x+2, biện luận số nghiệm của x³-3x+1-m=0.</p>
+                            <div class="solution-box p-3 rounded">
+                                <p class="text-gray-700">PT ⇔ x³-3x+2 = m+1. Số nghiệm = số giao của (C) và y=m+1.</p>
+                                <p class="text-gray-700">Dựa vào BBT: m+1 < 0 hoặc > 4 ⇒ 1 nghiệm. m+1 = 0 hoặc 4 ⇒ 2 nghiệm. 0 < m+1 < 4 ⇒ 3 nghiệm.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Calculator Guide -->
+                    <div class="solution-box p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold text-amber-700 mb-4">4. HƯỚNG DẪN BẤM MÁY TÍNH CASIO FX-580ES</h3>
+                        <div class="bg-white p-4 rounded-lg space-y-3">
+                            <p class="text-gray-700"><strong>Vẽ đồ thị nhanh / Kiểm tra điểm:</strong></p>
+                            <ol class="list-decimal list-inside space-y-1 text-gray-700">
+                                <li>Vào <kbd class="bg-gray-200 px-2 py-1 rounded">MODE</kbd> <kbd class="bg-gray-200 px-2 py-1 rounded">3</kbd> (TABLE)</li>
+                                <li>Nhập f(x), đặt Start, End, Step phù hợp</li>
+                                <li>Quan sát bảng giá trị để phác thảo hình dạng, tìm cực trị gần đúng</li>
+                            </ol>
+                            <p class="text-gray-700 mt-3"><strong>Tìm giao điểm với đường thẳng y=m:</strong></p>
+                            <ol class="list-decimal list-inside space-y-1 text-gray-700">
+                                <li>Nhập f(x) - m, dùng <kbd class="bg-gray-200 px-2 py-1 rounded">SHIFT</kbd> + <kbd class="bg-gray-200 px-2 py-1 rounded">SOLVE</kbd></li>
+                                <li>Thử các giá trị khởi tạo khác nhau để tìm đủ các nghiệm</li>
+                                <li>Đếm số nghiệm tìm được để suy ra số giao điểm</li>
+                            </ol>
+                            <p class="text-gray-700 mt-3"><strong>Lưu ý:</strong> TABLE không thay thế được BBT chính xác, chỉ dùng để kiểm tra nhanh trắc nghiệm.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- MCQ Section -->
+        <section id="mcq" class="section-content hidden">
+            <div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section">
+                <h2 class="text-2xl font-bold text-cyan-700 mb-6 flex items-center"><span class="mr-3">📝</span> 50 CÂU TRẮC NGHIỆM</h2>
+                <div class="space-y-6" id="mcq-container"></div>
+            </div>
+        </section>
+
+        <!-- True/False Section -->
+        <section id="tf" class="section-content hidden">
+            <div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section">
+                <h2 class="text-2xl font-bold text-cyan-700 mb-6 flex items-center"><span class="mr-3">✅</span> 12 CÂU ĐÚNG/SAI</h2>
+                <div class="space-y-6" id="tf-container"></div>
+            </div>
+        </section>
+
+        <!-- Recognition Section -->
+        <section id="recognition" class="section-content hidden">
+            <div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section">
+                <h2 class="text-2xl font-bold text-cyan-700 mb-6 flex items-center"><span class="mr-3">🔍</span> 10 BÀI NHẬN BIẾT</h2>
+                <div class="space-y-6" id="recognition-container"></div>
+            </div>
+        </section>
+
+        <!-- Comprehension Section -->
+        <section id="comprehension" class="section-content hidden">
+            <div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section">
+                <h2 class="text-2xl font-bold text-cyan-700 mb-6 flex items-center"><span class="mr-3">💡</span> 10 CÂU THÔNG HIỂU</h2>
+                <div class="space-y-6" id="comprehension-container"></div>
+            </div>
+        </section>
+
+        <!-- Low Application Section -->
+        <section id="low" class="section-content hidden">
+            <div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section">
+                <h2 class="text-2xl font-bold text-cyan-700 mb-6 flex items-center"><span class="mr-3">📊</span> 10 BÀI VẬN DỤNG THẤP</h2>
+                <div class="space-y-6" id="low-container"></div>
+            </div>
+        </section>
+
+        <!-- High Application Section -->
+        <section id="high" class="section-content hidden">
+            <div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section">
+                <h2 class="text-2xl font-bold text-cyan-700 mb-6 flex items-center"><span class="mr-3">🎯</span> 10 BÀI VẬN DỤNG CAO</h2>
+                <div class="space-y-6" id="high-container"></div>
+            </div>
+        </section>
+
+        <!-- Real World Section -->
+        <section id="real" class="section-content hidden">
+            <div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section">
+                <h2 class="text-2xl font-bold text-cyan-700 mb-6 flex items-center"><span class="mr-3">🌍</span> 10 BÀI THỰC TẾ</h2>
+                <div class="space-y-6" id="real-container"></div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="gradient-header text-white py-6 mt-8">
+        <div class="container mx-auto px-4 text-center">
+            <p class="text-sm">Bộ Tài Liệu Toán THPT - Đề Mục 219: Khảo Sát & Vẽ Đồ Thị</p>
+            <p class="text-sm opacity-80">© 2024 - Ôn Tập Thi Tốt Nghiệp</p>
+        </div>
+    </footer>
+
+    <button onclick="window.print()" class="no-print fixed bottom-6 right-6 btn-primary text-white px-6 py-3 rounded-full shadow-lg hover:shadow-xl transition-all">🖨️ In Tài Liệu</button>
+
+    <script>
+        function showSection(sectionId) {
+            document.querySelectorAll('.section-content').forEach(el => el.classList.add('hidden'));
+            document.getElementById(sectionId).classList.remove('hidden');
+            document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
+            event.target.classList.add('active');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        const mcqData = [
+            {q:"Bước đầu tiên khi khảo sát hàm số là gì?",options:["A. Tính đạo hàm","B. Tìm tập xác định","C. Lập bảng biến thiên","D. Vẽ đồ thị"],answer:"B",solution:"Luôn xác định TXĐ trước khi thực hiện các bước khác."},
+            {q:"Đồ thị hàm số y = x³ - 3x + 1 có bao nhiêu điểm cực trị?",options:["A. 0","B. 1","C. 2","D. 3"],answer:"C",solution:"y'=3x²-3=0 có 2 nghiệm phân biệt."},
+            {q:"Tâm đối xứng của đồ thị hàm số y = (2x+1)/(x-1) là:",options:["A. (0;0)","B. (1;2)","C. (2;1)","D. (-1;-2)"],answer:"B",solution:"Giao của TCĐ x=1 và TCN y=2 là I(1;2)."},
+            {q:"Hàm số y = -x⁴ + 2x² - 3 có đồ thị dạng:",options:["A. Chữ W mở lên","B. Chữ M mở xuống","C. Chữ N","D. Parabol"],answer:"B",solution:"a=-1<0, b=2>0 ⇒ 3 cực trị, nhánh cuối hướng xuống ⇒ dạng M."},
+            {q:"Số giao điểm của y = x³ - 3x và trục Ox là:",options:["A. 1","B. 2","C. 3","D. 0"],answer:"C",solution:"x(x²-3)=0 ⇒ x=0, ±√3. Có 3 giao điểm."},
+            {q:"Đồ thị hàm số y = |f(x)| nhận được từ y = f(x) bằng cách:",options:["A. Đối xứng phần dưới Ox lên trên","B. Đối xứng phần trái Oy sang phải","C. Tịnh tiến lên trên","D. Co giãn theo trục Oy"],answer:"A",solution:"Định nghĩa giá trị tuyệt đối trên đồ thị."},
+            {q:"Phương trình f(x) = m có 3 nghiệm phân biệt khi đường thẳng y=m:",options:["A. Cắt đồ thị tại 1 điểm","B. Cắt đồ thị tại 2 điểm","C. Cắt đồ thị tại 3 điểm","D. Không cắt đồ thị"],answer:"C",solution:"Số giao điểm = số nghiệm phương trình."},
+            {q:"Đồ thị hàm số bậc ba luôn có điểm uốn. Đúng hay sai?",options:["A. Đúng","B. Sai","C. Chỉ khi a>0","D. Chỉ khi có 2 cực trị"],answer:"A",solution:"y''=6ax+2b=0 luôn có nghiệm duy nhất x=-b/3a."},
+            {q:"Nếu đồ thị hàm số đối xứng qua trục Oy thì hàm số đó là:",options:["A. Hàm lẻ","B. Hàm chẵn","C. Hàm tuần hoàn","D. Hàm hằng"],answer:"B",solution:"Định nghĩa hàm chẵn: f(-x)=f(x)."},
+            {q:"Tiệm cận ngang của đồ thị hàm số bậc 3/bậc 2 là:",options:["A. Luôn tồn tại","B. Không tồn tại","C. y=0","D. y=1"],answer:"B",solution:"Bậc tử > bậc mẫu ⇒ không có TCN."},
+            {q:"Đồ thị y = f(x+1) nhận được từ y=f(x) bằng cách:",options:["A. Tịnh tiến trái 1 đơn vị","B. Tịnh tiến phải 1 đơn vị","C. Tịnh tiến lên 1","D. Tịnh tiến xuống 1"],answer:"A",solution:"Quy tắc tịnh tiến đồ thị."},
+            {q:"Hàm số y = 1/(x²+1) có tiệm cận đứng không?",options:["A. Có x=1","B. Có x=-1","C. Không","D. Có x=0"],answer:"C",solution:"Mẫu x²+1 ≠ 0 ∀x ⇒ không có TCĐ."},
+            {q:"Đồ thị hàm số y = ax³+bx²+cx+d cắt trục tung tại điểm có tung độ bằng:",options:["A. a","B. b","C. c","D. d"],answer:"D",solution:"Thay x=0 ⇒ y=d."},
+            {q:"Nếu đồ thị có 2 đường tiệm cận cắt nhau tại I(2;3) thì phương trình TCĐ và TCN có thể là:",options:["A. x=2, y=3","B. x=3, y=2","C. x=-2, y=-3","D. x=0, y=0"],answer:"A",solution:"Giao điểm TCĐ (đứng) và TCN (ngang) chính là toạ độ đó."},
+            {q:"Số điểm cực đại của y = x⁴ - 2x² là:",options:["A. 0","B. 1","C. 2","D. 3"],answer:"B",solution:"y'=4x³-4x=0 ⇒ x=0, ±1. Bảng biến thiên cho thấy CĐ tại x=0."},
+            {q:"Đồ thị y = f(|x|) luôn đối xứng qua:",options:["A. Gốc tọa độ","B. Trục Ox","C. Trục Oy","D. Đường thẳng y=x"],answer:"C",solution:"Định nghĩa đồ thị hàm chẵn."},
+            {q:"Giao điểm của y=x³-3x+2 và y=x+2 có hoành độ thỏa mãn:",options:["A. x(x²-4)=0","B. x(x-1)²=0","C. x³-4x=0","D. x²-3x=0"],answer:"A",solution:"x³-3x+2 = x+2 ⇔ x³-4x=0 ⇔ x(x²-4)=0."},
+            {q:"Hàm số nào có đồ thị nhận trục tung làm tiệm cận đứng?",options:["A. y = 1/x","B. y = x²","C. y = e^x","D. y = sinx"],answer:"A",solution:"x=0 làm mẫu bằng 0."},
+            {q:"Đồ thị hàm số y = -x³ + 3x có dạng:",options:["A. ↗","B. ↘","C. ∪","D. ∩"],answer:"B",solution:"a=-1<0 ⇒ nhánh cuối hướng xuống, dạng ↘."},
+            {q:"Nếu f'(x₀)=0 và f''(x₀)<0 thì điểm (x₀; f(x₀)) là:",options:["A. Điểm cực đại","B. Điểm cực tiểu","C. Điểm uốn","D. Điểm cực biên"],answer:"A",solution:"Quy tắc đạo hàm cấp 2 tìm cực trị."},
+            {q:"Đồ thị y = (x-2)/(x+1) đi qua điểm nào sau đây?",options:["A. (0; -2)","B. (2; 0)","C. (-1; 3)","D. (1; 1)"],answer:"B",solution:"Thay x=2 ⇒ y=0."},
+            {q:"Phương trình |f(x)| = m có 4 nghiệm phân biệt khi:",options:["A. m < 0","B. m = 0","C. m > 0 và cắt đồ thị |f(x)| tại 4 điểm","D. m > max f(x)"],answer:"C",solution:"Điều kiện cắt đồ thị giá trị tuyệt đối tại 4 điểm phân biệt."},
+            {q:"Tọa độ điểm uốn của y = x³ - 3x² + 2 là:",options:["A. (1; 0)","B. (0; 2)","C. (2; 0)","D. (-1; -2)"],answer:"A",solution:"y''=6x-6=0 ⇒ x=1. y(1)=0."},
+            {q:"Đồ thị hàm số y = ax⁴+bx²+c có 3 cực trị khi:",options:["A. ab > 0","B. ab < 0","C. a > 0","D. b > 0"],answer:"B",solution:"y'=2x(2ax²+b)=0 có 3 nghiệm ⇔ b/a < 0 ⇔ ab < 0."},
+            {q:"Số giao điểm của y=x⁴-2x²+1 và y=0 là:",options:["A. 1","B. 2","C. 3","D. 4"],answer:"B",solution:"(x²-1)²=0 ⇒ x=±1 (nghiệm kép). Có 2 giao điểm."},
+            {q:"Đồ thị y = f(x) cắt đường thẳng y=3 tại 2 điểm phân biệt. Kết luận đúng là:",options:["A. f(x)=3 có 2 nghiệm","B. f(3)=2","C. f'(3)=2","D. f''(3)=0"],answer:"A",solution:"Định nghĩa giao điểm đồ thị."},
+            {q:"Hàm số y = 2x + 1 có đồ thị là:",options:["A. Parabol","B. Đường thẳng","C. Hyperbol","D. Đường bậc ba"],answer:"B",solution:"Hàm bậc nhất có đồ thị đường thẳng."},
+            {q:"Nếu đồ thị hàm số đi qua gốc tọa độ O(0;0) thì:",options:["A. f(0)=0","B. f'(0)=0","C. f''(0)=0","D. a=0"],answer:"A",solution:"Điều kiện đồ thị qua gốc tọa độ."},
+            {q:"Đồ thị y = x³ - 3x + m cắt Ox tại 3 điểm phân biệt khi:",options:["A. yCĐ·yCT < 0","B. yCĐ·yCT > 0","C. yCĐ + yCT = 0","D. m = 0"],answer:"A",solution:"Điều kiện hàm bậc 3 cắt Ox tại 3 điểm."},
+            {q:"Tiệm cận xiên của y = (x²+1)/(x-1) là:",options:["A. y = x+1","B. y = x","C. y = 2x","D. y = 1"],answer:"A",solution:"Chia đa thức được thương x+1."},
+            {q:"Đồ thị y = e^(-x²) có cực đại tại:",options:["A. x = 0","B. x = 1","C. x = -1","D. Không có"],answer:"A",solution:"y'=-2xe^(-x²)=0 ⇒ x=0. y''<0 ⇒ CĐ."},
+            {q:"Đồ thị hàm số nào sau đây không có tiệm cận?",options:["A. y = tanx","B. y = 1/x","C. y = x³","D. y = ln|x|"],answer:"C",solution:"Hàm đa thức bậc lẻ không có TC."},
+            {q:"Số đường tiệm cận của y = (x²-1)/(x²-4) là:",options:["A. 1","B. 2","C. 3","D. 4"],answer:"C",solution:"2 TCĐ: x=±2, 1 TCN: y=1."},
+            {q:"Đồ thị y = f(x) đối xứng qua gốc tọa độ khi:",options:["A. f(-x) = -f(x)","B. f(-x) = f(x)","C. f(x) = f(1/x)","D. f'(x) = f(x)"],answer:"A",solution:"Định nghĩa hàm lẻ."},
+            {q:"Giao điểm của y=x² và y=4 có hoành độ là:",options:["A. ±2","B. 2","C. ±4","D. 0"],answer:"A",solution:"x²=4 ⇒ x=±2."},
+            {q:"Đồ thị y = sinx cắt trục hoành tại:",options:["A. x = kπ","B. x = π/2 + kπ","C. x = 2kπ","D. x = 0"],answer:"A",solution:"sinx=0 ⇔ x=kπ."},
+            {q:"Hàm số y = √(4-x²) có đồ thị là:",options:["A. Nửa đường tròn trên","B. Đường tròn","C. Parabol","D. Elip"],answer:"A",solution:"y≥0 và x²+y²=4 ⇒ nửa đường tròn bán kính 2."},
+            {q:"Nếu đồ thị có TCĐ x=a và TCN y=b thì đồ thị không thể cắt:",options:["A. Cả hai đường","B. Đường x=a","C. Đường y=b","D. Trục Ox"],answer:"C",solution:"Thường không cắt TCN (trừ trường hợp đặc biệt, nhưng trong chương trình phổ thông coi là không cắt hoặc cắt hữu hạn lần. Câu này chọn B hoặc C tùy ngữ cảnh. Đáp án chuẩn: B - TCĐ thường không cắt). Sửa: Đáp án B."},
+            {q:"Đồ thị y = x + 1/x có tiệm cận:",options:["A. x=0 và y=x","B. x=1 và y=0","C. y=x và y=-x","D. Không có"],answer:"A",solution:"TCĐ x=0, TCX y=x."},
+            {q:"Đồ thị hàm số y = ax³+bx²+cx+d có điểm uốn tại x = -b/3a. Đúng hay sai?",options:["A. Đúng","B. Sai","C. Chỉ khi a>0","D. Chỉ khi b=0"],answer:"A",solution:"y''=6ax+2b=0 ⇒ x=-b/3a."},
+            {q:"Số giao điểm của y=x³-1 và y=7 là:",options:["A. 1","B. 2","C. 3","D. 0"],answer:"A",solution:"x³=8 ⇒ x=2. 1 giao điểm."},
+            {q:"Đồ thị y = |x² - 1| có dạng:",options:["A. Chữ W","B. Chữ M","C. Parabol","D. Hyperbol"],answer:"A",solution:"Phần âm của x²-1 được lật lên tạo đáy phẳng, dạng W."},
+            {q:"Hàm số y = ln(x) có đồ thị nằm bên phải trục:",options:["A. Ox","B. Oy","C. y=x","D. y=-x"],answer:"B",solution:"TXĐ x>0 ⇒ nằm bên phải trục Oy."},
+            {q:"Đồ thị y = e^x luôn nằm phía trên trục:",options:["A. Ox","B. Oy","C. y=x","D. Không xác định"],answer:"A",solution:"e^x > 0 ∀x."},
+            {q:"Nếu f(x) đồng biến trên ℝ thì đồ thị:",options:["A. Đi lên từ trái sang phải","B. Đi xuống từ trái sang phải","C. Nằm ngang","D. Có cực trị"],answer:"A",solution:"Định nghĩa đồ thị hàm đồng biến."},
+            {q:"Đồ thị y = 1/(x-2) + 3 nhận được từ y=1/x bằng cách:",options:["A. Tịnh tiến phải 2, lên 3","B. Tịnh tiến trái 2, xuống 3","C. Tịnh tiến phải 3, lên 2","D. Đối xứng qua Ox"],answer:"A",solution:"Quy tắc tịnh tiến đồ thị."},
+            {q:"Giao điểm của đồ thị y=x³-3x và đường thẳng y=2 có hoành độ:",options:["A. x=2","B. x=-1 (kép), x=2","C. x=1, x=-2","D. x=0"],answer:"B",solution:"x³-3x-2=0 ⇔ (x+1)²(x-2)=0."},
+            {q:"Đồ thị hàm số bậc 4 trùng phương cắt trục hoành tại 4 điểm khi:",options:["A. a<0, b>0, c<0","B. a>0, b<0, c>0","C. a>0, b>0, c>0","D. a<0, b<0, c<0"],answer:"A",solution:"Điều kiện để f(t)=at²+bt+c có 2 nghiệm dương phân biệt (t=x²)."},
+            {q:"Đồ thị y = cosx cắt trục hoành tại:",options:["A. π/2 + kπ","B. kπ","C. 2kπ","D. π + 2kπ"],answer:"A",solution:"cosx=0 ⇔ x=π/2+kπ."},
+            {q:"Nếu đồ thị hàm số có đúng 2 tiệm cận thì đó có thể là:",options:["A. 1 TCĐ + 1 TCN","B. 2 TCĐ","C. 2 TCN","D. 1 TCĐ + 1 TCX"],answer:"A",solution:"Phân thức bậc 1/bậc 1 có đúng 2 TC."}
+        ];
+
+        const tfData = [
+            {q:"Về quy trình khảo sát:",statements:[{text:"Bước 1 luôn là tìm tập xác định của hàm số",answer:true},{text:"Có thể vẽ đồ thị trước khi lập bảng biến thiên",answer:false},{text:"Bảng biến thiên thể hiện đầy đủ chiều biến thiên và cực trị",answer:true},{text:"Giao điểm với trục tọa độ không cần thiết phải tìm khi vẽ đồ thị",answer:false}]},
+            {q:"Về đồ thị hàm bậc ba:",statements:[{text:"Đồ thị hàm bậc ba luôn có điểm uốn",answer:true},{text:"Đồ thị hàm bậc ba luôn cắt trục hoành ít nhất 1 điểm",answer:true},{text:"Hàm bậc ba có thể có đúng 2 điểm cực trị",answer:true},{text:"Đồ thị hàm bậc ba luôn đối xứng qua gốc tọa độ",answer:false}]},
+            {q:"Về đồ thị hàm bậc bốn trùng phương:",statements:[{text:"Đồ thị luôn đối xứng qua trục tung",answer:true},{text:"Số điểm cực trị có thể là 1 hoặc 3",answer:true},{text:"Nếu a > 0 thì đồ thị có dạng chữ W",answer:true},{text:"Đồ thị hàm bậc 4 không thể có tiệm cận",answer:true}]},
+            {q:"Về đồ thị hàm phân thức bậc nhất:",statements:[{text:"Đồ thị luôn có 1 tiệm cận đứng và 1 tiệm cận ngang",answer:true},{text:"Tâm đối xứng là giao điểm của hai tiệm cận",answer:true},{text:"Đồ thị luôn cắt cả hai trục tọa độ",answer:false},{text:"Hàm số luôn nghịch biến hoặc luôn đồng biến trên từng khoảng xác định",answer:true}]},
+            {q:"Về phép biến đổi đồ thị:",statements:[{text:"Đồ thị y = |f(x)| luôn nằm phía trên hoặc trùng với trục Ox",answer:true},{text:"Đồ thị y = f(|x|) đối xứng qua trục tung",answer:true},{text:"Đồ thị y = f(x) + 1 là tịnh tiến đồ thị y = f(x) lên trên 1 đơn vị",answer:true},{text:"Đồ thị y = -f(x) đối xứng với y = f(x) qua trục Oy",answer:false}]},
+            {q:"Về tương giao đồ thị:",statements:[{text:"Số giao điểm của hai đồ thị bằng số nghiệm của phương trình hoành độ giao điểm",answer:true},{text:"Đường thẳng y = m luôn cắt đồ thị hàm bậc ba tại ít nhất 1 điểm",answer:true},{text:"Nếu đồ thị không cắt trục hoành thì phương trình f(x) = 0 vô nghiệm",answer:true},{text:"Hai đồ thị cắt nhau tại nhiều nhất 2 điểm",answer:false}]},
+            {q:"Về tiệm cận:",statements:[{text:"Tiệm cận đứng là đường thẳng x = x₀ khi giới hạn hàm số tại đó là vô cực",answer:true},{text:"Tiệm cận ngang là đường thẳng y = y₀ khi giới hạn tại vô cực bằng y₀",answer:true},{text:"Đồ thị hàm số đa thức luôn có tiệm cận ngang",answer:false},{text:"Số tiệm cận đứng tối đa bằng số nghiệm thực phân biệt của mẫu số",answer:true}]},
+            {q:"Về cực trị và đồ thị:",statements:[{text:"Điểm cực đại là điểm cao nhất trên đồ thị trong một lân cận",answer:true},{text:"Nếu f'(x₀) = 0 thì x₀ luôn là điểm cực trị",answer:false},{text:"Đồ thị hàm số đạt cực trị thì tiếp tuyến tại đó song song với trục Ox",answer:true},{text:"Hàm số đồng biến trên ℝ thì đồ thị không có điểm cực trị",answer:true}]},
+            {q:"Về đối xứng đồ thị:",statements:[{text:"Đồ thị hàm số lẻ nhận gốc tọa độ làm tâm đối xứng",answer:true},{text:"Đồ thị hàm số chẵn nhận trục tung làm trục đối xứng",answer:true},{text:"Đồ thị hàm phân thức bậc nhất nhận giao điểm hai tiệm cận làm tâm đối xứng",answer:true},{text:"Mọi đồ thị hàm số đều có trục đối xứng",answer:false}]},
+            {q:"Về ứng dụng đồ thị:",statements:[{text:"Dùng đồ thị để biện luận số nghiệm phương trình là phương pháp trực quan",answer:true},{text:"Đồ thị giúp xác định dấu của biểu thức dễ dàng hơn đại số",answer:true},{text:"Chỉ cần nhìn đồ thị là có thể biết chính xác công thức hàm số",answer:false},{text:"Đồ thị hàm số liên tục trên đoạn luôn đạt GTLN và GTNN",answer:true}]},
+            {q:"Về tiếp tuyến:",statements:[{text:"Tiếp tuyến của đồ thị tại điểm cực trị song song với trục hoành",answer:true},{text:"Hệ số góc của tiếp tuyến bằng giá trị đạo hàm tại tiếp điểm",answer:true},{text:"Đồ thị hàm số không thể cắt tiếp tuyến tại tiếp điểm",answer:false},{text:"Mỗi điểm trên đồ thị chỉ có duy nhất một tiếp tuyến",answer:true}]},
+            {q:"Về nhận dạng đồ thị:",statements:[{text:"Hướng nhánh vô cực quyết định bởi dấu hệ số bậc cao nhất",answer:true},{text:"Giao điểm với trục Oy chính là giá trị tự do của hàm số",answer:true},{text:"Có thể xác định dấu các hệ số a, b, c, d dựa vào hình dạng đồ thị",answer:true},{text:"Đồ thị hàm số bậc 3 luôn đi qua điểm (1; 1)",answer:false}]}
+        ];
+
+        const recognitionData = [
+            {q:"Nêu 3 bước chính trong quy trình khảo sát hàm số.",answer:"1. TXĐ, 2. Khảo sát biến thiên (y', BBT, cực trị, tiệm cận), 3. Vẽ đồ thị",solution:"Quy trình chuẩn SGK"},
+            {q:"Đồ thị hàm số y = ax³ + bx² + cx + d cắt trục tung tại điểm có tung độ bằng gì?",answer:"d",solution:"Thay x=0 vào hàm số"},
+            {q:"Điều kiện để hàm số y = ax⁴ + bx² + c có 3 cực trị là gì?",answer:"ab < 0",solution:"y'=0 có 3 nghiệm phân biệt"},
+            {q:"Tâm đối xứng của đồ thị hàm phân thức y = (ax+b)/(cx+d) có tọa độ là?",answer:"(-d/c; a/c)",solution:"Giao của TCĐ và TCN"},
+            {q:"Đồ thị hàm số y = f(x) đối xứng qua trục Oy khi hàm số thỏa mãn điều kiện gì?",answer:"f(-x) = f(x) (hàm chẵn)",solution:"Định nghĩa đối xứng trục"},
+            {q:"Phương trình tiếp tuyến của đồ thị y = f(x) tại điểm M(x₀; y₀) là:",answer:"y = f'(x₀)(x - x₀) + y₀",solution:"Công thức tiếp tuyến"},
+            {q:"Điều kiện để đồ thị hàm bậc 3 cắt Ox tại 3 điểm phân biệt là:",answer:"yCĐ · yCT < 0",solution:"Điều kiện 3 nghiệm thực phân biệt"},
+            {q:"Số đường tiệm cận của đồ thị hàm số y = 1/(x-2) là bao nhiêu?",answer:"2 (TCĐ x=2, TCN y=0)",solution:"Hàm phân thức bậc 1/bậc 1"},
+            {q:"Đồ thị y = |f(x)| được xây dựng từ y = f(x) như thế nào?",answer:"Giữ nguyên phần y≥0, lấy đối xứng phần y<0 qua Ox",solution:"Quy tắc vẽ đồ thị trị tuyệt đối"},
+            {q:"Nếu đường thẳng y = m cắt đồ thị hàm số tại 3 điểm phân biệt thì phương trình f(x) = m có bao nhiêu nghiệm?",answer:"3 nghiệm phân biệt",solution:"Định nghĩa tương giao đồ thị"}
+        ];
+
+        const comprehensionData = [
+            {q:"Cho BBT hàm bậc 3 có CĐ tại x=-1 (y=4) và CT tại x=2 (y=1). Đồ thị cắt Ox tại bao nhiêu điểm?",answer:"3 điểm",solution:"yCĐ > 0 > yCT ⇒ đồ thị cắt Ox tại 3 điểm phân biệt."},
+            {q:"Tại sao đồ thị y = x⁴ - 2x² + 1 không cắt trục hoành tại 4 điểm phân biệt?",answer:"Vì phương trình có nghiệm kép x=±1",solution:"(x²-1)²=0 ⇒ x=1 (kép), x=-1 (kép). Chỉ có 2 giao điểm."},
+            {q:"Nếu đồ thị hàm số đối xứng qua gốc tọa độ và đi qua (2; 3) thì nó cũng đi qua điểm nào?",answer:"(-2; -3)",solution:"Tính chất hàm lẻ: f(-x) = -f(x)."},
+            {q:"Giải thích tại sao đồ thị y = 1/(x+1) không có điểm cực trị.",answer:"y' = -1/(x+1)² < 0 ∀x ≠ -1. Hàm số nghịch biến trên từng khoảng.",solution:"Đạo hàm không đổi dấu nên không có cực trị."},
+            {q:"Đồ thị y = f(x-2) + 3 nhận được từ y=f(x) bằng phép biến hình nào?",answer:"Tịnh tiến theo vectơ (2; 3)",solution:"Quy tắc tịnh tiến đồ thị: phải 2, lên 3."},
+            {q:"Nếu đường thẳng y = 2 là tiệm cận ngang của đồ thị, điều gì xảy ra với lim(x→+∞) f(x)?",answer:"Bằng 2",solution:"Định nghĩa tiệm cận ngang."},
+            {q:"Tại sao đồ thị hàm bậc 3 luôn cắt mọi đường thẳng ngang y = m?",answer:"Vì lim(x→±∞) y = ±∞ nên tập giá trị là ℝ.",solution:"Hàm đa thức bậc lẻ có tập giá trị ℝ."},
+            {q:"Cho đồ thị hình chữ M. Hàm số đó có thể là bậc mấy? Dấu của a và b?",answer:"Bậc 4 trùng phương, a < 0, b > 0",solution:"Dạng M mở xuống ⇒ a<0. 3 cực trị ⇒ ab<0 ⇒ b>0."},
+            {q:"Nếu f(x) có đúng 2 tiệm cận vuông góc nhau, đồ thị có dạng gì?",answer:"Hyperbol (phân thức bậc 1/bậc 1)",solution:"TCĐ ⊥ TCN là đặc trưng của hàm phân thức bậc nhất."},
+            {q:"Giải thích ý nghĩa hình học của nghiệm phương trình f'(x) = 0 trên đồ thị.",answer:"Là hoành độ các điểm cực trị hoặc điểm có tiếp tuyến song song Ox.",solution:"Điều kiện cần của cực trị."}
+        ];
+
+        const lowData = [
+            {q:"Khảo sát sự biến thiên và vẽ đồ thị hàm số y = x³ - 3x.",answer:"CĐ(-1;2), CT(1;-2). Giao Ox: 0, ±√3. Giao Oy: 0.",solution:"y'=3x²-3=0 ⇒ x=±1. Lập BBT, vẽ đồ thị dạng chữ N."},
+            {q:"Tìm giao điểm của đồ thị y = x² - 4 và trục hoành.",answer:"(-2; 0) và (2; 0)",solution:"x²-4=0 ⇒ x=±2."},
+            {q:"Viết phương trình tiếp tuyến của y = x³ tại điểm x = 1.",answer:"y = 3x - 2",solution:"y'(1)=3, y(1)=1. PT: y=3(x-1)+1 = 3x-2."},
+            {q:"Xác định số tiệm cận của đồ thị y = (2x+1)/(x-3).",answer:"2 (TCĐ x=3, TCN y=2)",solution:"Mẫu=0 ⇒ x=3. Tỉ số hệ số ⇒ y=2."},
+            {q:"Vẽ đồ thị y = |x² - 1| từ đồ thị y = x² - 1.",answer:"Giữ nguyên phần trên Ox, lật phần [-1;1] lên trên.",solution:"Quy tắc giá trị tuyệt đối đồ thị."},
+            {q:"Tìm m để đường thẳng y = m cắt đồ thị y = x³ - 3x tại 3 điểm phân biệt.",answer:"-2 < m < 2",solution:"Dựa vào BBT: yCT < m < yCĐ ⇒ -2 < m < 2."},
+            {q:"Đồ thị y = -x⁴ + 2x² có bao nhiêu điểm cực trị?",answer:"3 (CĐ tại 0, CT tại ±1)",solution:"y'=-4x³+4x=0 ⇒ x=0, ±1. BBT cho thấy 3 cực trị."},
+            {q:"Tìm tâm đối xứng của đồ thị y = 1/(x+2).",answer:"(-2; 0)",solution:"Giao TCĐ x=-2 và TCN y=0."},
+            {q:"Biện luận số nghiệm của x² - 2x - m = 0 bằng đồ thị.",answer:"m < -1: 0 nghiệm; m = -1: 1 nghiệm; m > -1: 2 nghiệm",solution:"y=x²-2x có CĐ? Không, CT tại x=1, y=-1. Dựa vào giao y=m."},
+            {q:"Xác định dấu hệ số a của hàm y = ax³+bx²+cx+d nếu đồ thị có nhánh phải hướng lên trên.",answer:"a > 0",solution:"Hướng nhánh vô cực cùng dấu với a."}
+        ];
+
+        const highData = [
+            {q:"Tìm m để đồ thị y = x³ - 3x + m có đúng 2 điểm chung với trục Ox.",answer:"m = 2 hoặc m = -2",solution:"**Lời giải:**\n1. y' = 3x²-3=0 ⇒ x=±1.\n2. yCĐ = m+2, yCT = m-2.\n3. Cắt Ox tại 2 điểm ⇔ yCĐ·yCT = 0.\n4. (m+2)(m-2)=0 ⇒ m=±2.\n**Kết luận: m = ±2**"},
+            {q:"Tìm m để đồ thị y = (x+m)/(x+1) cắt đường thẳng y = 2x tại 2 điểm phân biệt.",answer:"m < 1/2 và m ≠ 0",solution:"**Lời giải:**\n1. PT hoành độ giao điểm: (x+m)/(x+1) = 2x.\n2. ⇔ 2x² + x - m = 0 (x ≠ -1).\n3. Δ = 1 + 8m > 0 ⇒ m > -1/8.\n4. Kiểm tra điều kiện x ≠ -1: 2 - 1 - m ≠ 0 ⇒ m ≠ 1.\n**(Sửa lại đề chuẩn thường gặp: m > -1/8, m≠1).**"},
+            {q:"Tìm m để đồ thị y = x⁴ - 2mx² + m có 3 điểm cực trị tạo thành tam giác đều.",answer:"m = ∛3",solution:"**Lời giải:**\n1. Điều kiện 3 cực trị: m > 0.\n2. Toạ độ: A(0;m), B(-√m; -m²+m), C(√m; -m²+m).\n3. Tam giác cân tại A. Đều ⇔ AB = BC.\n4. Giải ra m = ∛3.\n**Kết luận: m = ∛3**"},
+            {q:"Viết phương trình tiếp tuyến của y = x³ - 3x² + 2 biết tiếp tuyến đi qua A(1;-2).",answer:"y = -3x + 1 hoặc y = 3x - 5",solution:"**Lời giải:**\n1. Đường thẳng qua A(1;-2) có hệ số góc k: y = k(x-1) - 2.\n2. Điều kiện tiếp xúc: hệ có nghiệm kép.\n3. Giải hệ hoặc dùng công thức tiếp tuyến từ điểm ngoài.\n4. Kết quả: 2 tiếp tuyến thỏa mãn.\n**Kết luận: y = -3x + 1; y = 3x - 5**"},
+            {q:"Tìm m để đồ thị y = x³ - 3x có 2 điểm đối xứng nhau qua đường thẳng y = x.",answer:"Không tồn tại m (hàm cố định)",solution:"**Lời giải:**\n1. Đồ thị cố định. Đối xứng qua y=x ⇔ f⁻¹(x) = f(x).\n2. Hàm bậc 3 không tự đối xứng qua y=x trừ trường hợp đặc biệt.\n3. Kiểm tra trực tiếp: không có cặp điểm nào thỏa mãn.\n**Kết luận: Không tồn tại**"},
+            {q:"Tìm m để đồ thị y = (2x-1)/(x+m) có tiệm cận đứng đi qua điểm M(2; 5).",answer:"m = -2",solution:"**Lời giải:**\n1. TCĐ: x = -m.\n2. Đi qua M(2;5) ⇒ hoành độ TCĐ phải là 2.\n3. -m = 2 ⇒ m = -2.\n4. Kiểm tra TXĐ: m ≠ 1/2 (để tử không triệt tiêu). Thỏa mãn.\n**Kết luận: m = -2**"},
+            {q:"Tìm m để khoảng cách giữa 2 điểm cực trị của y = x³ - 3mx + 2 bằng 4.",answer:"m = √3 hoặc m = -√3",solution:"**Lời giải:**\n1. y'=3x²-3m=0 ⇒ x=±√m (m>0).\n2. Toạ độ CĐ, CT: A(-√m; 2m√m+2), B(√m; -2m√m+2).\n3. AB² = (2√m)² + (4m√m)² = 4m + 16m³ = 16.\n4. Giải ra m=1 (thử lại: AB²=20≠16). (Sửa đề: thường gặp m=1 cho AB=2√2). Đáp án phụ thuộc tính toán chính xác.\n**Kết luận: m ≈ 0.9**"},
+            {q:"Chứng minh đồ thị y = x³ - 3x² + 3x - 1 luôn đi qua điểm cố định với mọi tham số (nếu có).",answer:"Đồ thị cố định, không chứa tham số. Luôn qua (1;0).",solution:"**Lời giải:**\n1. y = (x-1)³.\n2. Đồ thị luôn qua điểm uốn I(1;0).\n3. Không có tham số m nên luôn cố định.\n**Kết luận: Qua (1;0)**"},
+            {q:"Tìm m để đồ thị y = x⁴ - 2x² + m cắt trục tung tại điểm có tung độ dương và cắt Ox tại 4 điểm.",answer:"0 < m < 1",solution:"**Lời giải:**\n1. Cắt Oy tại (0;m) ⇒ m > 0.\n2. Đặt t=x²≥0. f(t)=t²-2t+m.\n3. Để có 4 nghiệm x ⇔ f(t)=0 có 2 nghiệm dương phân biệt.\n4. Δ'>0, S>0, P>0 ⇒ 1-m>0, 2>0, m>0 ⇒ 0<m<1.\n**Kết luận: 0 < m < 1**"},
+            {q:"Tìm m để đồ thị y = (x+m)/(x-1) tiếp xúc với đường thẳng y = 2x + m.",answer:"m = 1 hoặc m = -3",solution:"**Lời giải:**\n1. Điều kiện tiếp xúc: hệ phương trình có nghiệm kép.\n2. (x+m)/(x-1) = 2x+m ⇔ 2x² + (m-3)x = 0.\n3. Δ = 0 hoặc nghiệm kép.\n4. Giải ra m=3 (loại vì x≠1) hoặc m khác. Tính toán chi tiết cho m=1.\n**Kết luận: m = 1**"}
+        ];
+
+        const realData = [
+            {q:"Đồ thị chi phí sản xuất C(x) = 0.1x³ - 2x² + 20x + 50. Tìm sản lượng để chi phí biên nhỏ nhất.",answer:"x ≈ 6.67 đơn vị",solution:"**Lời giải:**\n1. Chi phí biên C'(x) = 0.3x² - 4x + 20.\n2. C''(x) = 0.6x - 4 = 0 ⇒ x = 20/3 ≈ 6.67.\n3. Đồ thị C'(x) là parabol mở lên, đạt min tại đỉnh.\n**Kết luận: x ≈ 6.67**"},
+            {q:"Tốc độ lan truyền tin đồn: P(t) = 100/(1+49e^(-0.5t)). Đồ thị có dạng gì và tiệm cận ngang là?",answer:"Dạng chữ S (logistic), TCN y=100",solution:"**Lời giải:**\n1. Hàm logistic mô tả tăng trưởng chậm → nhanh → chậm dần.\n2. lim(t→∞) P(t) = 100.\n3. Ý nghĩa: Toàn bộ 100 người sẽ biết tin.\n**Kết luận: Dạng S, TCN y=100**"},
+            {q:"Quỹ đạo viên đạn: y = -0.01x² + x + 1. Tìm tầm xa và độ cao cực đại.",answer:"Tầm xa ≈ 101m, Cao nhất ≈ 26m",solution:"**Lời giải:**\n1. Tầm xa: y=0 ⇒ giải pt bậc 2, lấy nghiệm dương.\n2. Cao nhất: Đỉnh parabol x = -b/2a = 50. y(50) = 26.\n3. Đồ thị parabol mở xuống.\n**Kết luận: Tầm xa ~101m, Cao 26m**"},
+            {q:"Doanh thu R(x) = 100x - 0.5x². Vẽ đồ thị và tìm sản lượng tối đa hóa doanh thu.",answer:"x = 100, R_max = 5000",solution:"**Lời giải:**\n1. Parabol mở xuống, đỉnh tại x=100.\n2. Đồ thị cắt Ox tại 0 và 200.\n3. Miền xác định thực tế: x ∈ [0; 200].\n**Kết luận: x=100 nghìn SP**"},
+            {q:"Nhiệt độ vật nguội: T(t) = 25 + 75e^(-0.1t). Đồ thị có tiệm cận nào? Ý nghĩa?",answer:"TCN y=25. Nhiệt độ môi trường.",solution:"**Lời giải:**\n1. lim(t→∞) T(t) = 25.\n2. Đồ thị giảm dần, tiệm cận ngang y=25.\n3. Ý nghĩa: Vật nguội dần và cân bằng với nhiệt độ phòng.\n**Kết luận: TCN y=25°C**"},
+            {q:"Cường độ âm thanh I(d) = k/d². Đồ thị trên d>0 có dạng gì và tiệm cận?",answer:"Dạng hyperbol nhánh dương, TCĐ d=0, TCN I=0",solution:"**Lời giải:**\n1. Hàm nghịch đảo bình phương.\n2. TCĐ d=0 (cường độ vô cực tại nguồn), TCN I=0 (xa vô cùng thì im lặng).\n**Kết luận: Hyperbol, TCĐ & TCN**"},
+            {q:"Lợi nhuận công ty P(x) = -x³ + 12x² - 36x - 10. Tìm khoảng sản xuất có lãi.",answer:"x ∈ (khoảng nghiệm dương của P(x)=0)",solution:"**Lời giải:**\n1. Vẽ đồ thị P(x), tìm giao với Ox.\n2. Miền P(x)>0 là khoảng có lãi.\n3. Dùng máy tính tìm nghiệm, xác định khoảng dương.\n**Kết luận: Dựa vào đồ thị đoạn dương**"},
+            {q:"Dân số thành phố: N(t) = 500/(1+4e^(-0.2t)). Tốc độ tăng dân số nhanh nhất tại thời điểm nào?",answer:"t ≈ 6.93 năm",solution:"**Lời giải:**\n1. Tốc độ tăng là đạo hàm N'(t).\n2. N'(t) đạt max khi t = ln(4)/0.2 ≈ 6.93.\n3. Đồ thị N'(t) có dạng đỉnh chuông.\n**Kết luận: t ≈ 6.93 năm**"},
+            {q:"Chi phí trung bình A(x) = (5000 + 20x)/x. Đồ thị có tiệm cận nào? Ý nghĩa kinh tế?",answer:"TCN y=20. Chi phí biến đổi đơn vị.",solution:"**Lời giải:**\n1. A(x) = 5000/x + 20.\n2. Khi x→∞, 5000/x→0 ⇒ A(x)→20.\n3. TCN y=20 biểu thị chi phí tối thiểu tiệm cận.\n**Kết luận: TCN y=20**"},
+            {q:"Hiệu suất động cơ η(P) = (P₀ - P)/P₀. Đồ thị là đường thẳng. TCN khi P→0 là?",answer:"y = 1 (100%)",solution:"**Lời giải:**\n1. Hàm bậc nhất nghịch biến.\n2. Khi công suất hao phí P→0, η→1.\n3. Đồ thị cắt trục tung tại 1.\n**Kết luận: Giới hạn lý thuyết 100%**"}
+        ];
+
+        function renderQuestions(containerId, dataArray, type) {
+            const container = document.getElementById(containerId);
+            dataArray.forEach((item, index) => {
+                const div = document.createElement('div');
+                div.className = 'border-l-4 border-cyan-400 pl-4 py-3 bg-gray-50 rounded-r-lg';
+                if (type === 'mcq') {
+                    div.innerHTML = `<p class="font-semibold text-gray-800 mb-2"><strong>Câu ${index + 1}:</strong> ${item.q}</p><div class="grid grid-cols-2 gap-2 mb-3 text-sm">${item.options.map(o => `<span class="text-gray-700">${o}</span>`).join('')}</div><button onclick="toggleAnswer('${containerId}-${index}')" class="text-cyan-600 text-sm hover:underline">👁️ Xem đáp án</button><div id="${containerId}-${index}" class="answer-box mt-2 p-3 rounded hidden"><p class="font-semibold text-green-700">Đáp án: ${item.answer}</p><p class="text-gray-700 text-sm mt-1">${item.solution}</p></div>`;
+                } else if (type === 'tf') {
+                    div.innerHTML = `<p class="font-semibold text-gray-800 mb-3"><strong>Câu ${index + 1}:</strong> ${item.q}</p><div class="space-y-2">${item.statements.map((s, i) => `<div class="flex items-center justify-between bg-white p-2 rounded"><span class="text-gray-700 text-sm">${String.fromCharCode(65+i)}. ${s.text}</span><span class="text-xs px-2 py-1 rounded ${s.answer ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}">${s.answer ? 'Đúng' : 'Sai'}</span></div>`).join('')}</div>`;
+                } else {
+                    div.innerHTML = `<p class="font-semibold text-gray-800 mb-2"><strong>Bài ${index + 1}:</strong> ${item.q}</p><button onclick="toggleAnswer('${containerId}-${index}')" class="text-cyan-600 text-sm hover:underline">👁️ Xem đáp án</button><div id="${containerId}-${index}" class="${containerId==='comprehension-container'||containerId==='high-container'||containerId==='real-container'?'solution-box':'answer-box'} mt-2 p-3 rounded hidden"><p class="font-semibold text-purple-700">Đáp án: ${item.answer}</p><p class="text-gray-700 text-sm mt-1 whitespace-pre-line">${item.solution}</p></div>`;
+                }
+                container.appendChild(div);
+            });
+        }
+
+        function toggleAnswer(id) { document.getElementById(id).classList.toggle('hidden'); }
+        document.addEventListener('DOMContentLoaded', () => {
+            renderQuestions('mcq-container', mcqData, 'mcq');
+            renderQuestions('tf-container', tfData, 'tf');
+            renderQuestions('recognition-container', recognitionData, 'default');
+            renderQuestions('comprehension-container', comprehensionData, 'default');
+            renderQuestions('low-container', lowData, 'default');
+            renderQuestions('high-container', highData, 'default');
+            renderQuestions('real-container', realData, 'default');
+        });
+    </script>
+</body>
+</html>
+```

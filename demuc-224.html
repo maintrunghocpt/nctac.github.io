@@ -1,0 +1,359 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phương Sai, Độ Lệch Chuẩn - Đề Mục 224 - Toán Lớp 12</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@fontsource/roboto@4.5.8/index.css" rel="stylesheet">
+    <style>
+        * { font-family: 'Roboto', sans-serif; }
+        .gradient-header { background: linear-gradient(135deg, #0891b2 0%, #7c3aed 100%); }
+        .card-hover { transition: all 0.3s ease; }
+        .card-hover:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0,0,0,0.15); }
+        .btn-primary { background: linear-gradient(135deg, #0891b2 0%, #7c3aed 100%); }
+        .btn-primary:hover { background: linear-gradient(135deg, #067894 0%, #6a32c4 100%); }
+        .answer-box { background: #f0f9ff; border-left: 4px solid #0891b2; }
+        .solution-box { background: #fef3c7; border-left: 4px solid #f59e0b; }
+        .nav-item { transition: all 0.2s ease; }
+        .nav-item:hover { background: rgba(255,255,255,0.2); }
+        .nav-item.active { background: rgba(255,255,255,0.3); }
+        .print-section { page-break-inside: avoid; }
+        @media print { .no-print { display: none; } }
+        .formula-box { background: linear-gradient(135deg, #e0f2fe 0%, #ede9fe 100%); border-radius: 8px; padding: 16px; margin: 12px 0; }
+        .graph-container { background: #f8fafc; border: 2px dashed #cbd5e1; border-radius: 8px; padding: 20px; text-align: center; }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <header class="gradient-header text-white py-8">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center">
+                <div>
+                    <h1 class="text-3xl font-bold">PHƯƠNG SAI, ĐỘ LỆCH CHUẨN</h1>
+                    <p class="text-lg opacity-90">Đề Mục 224 - Toán Lớp 12 - Thống Kê</p>
+                </div>
+                <div class="text-right">
+                    <p class="text-sm opacity-80">Bộ Tài Liệu Toán THPT</p>
+                    <p class="text-sm opacity-80">Ôn Tập Thi Tốt Nghiệp</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <nav class="bg-white shadow-md sticky top-0 z-50 no-print">
+        <div class="container mx-auto px-4">
+            <div class="flex overflow-x-auto py-3 space-x-2">
+                <button onclick="showSection('lesson')" class="nav-item active px-4 py-2 rounded-lg bg-cyan-100 text-cyan-700 whitespace-nowrap">📚 Bài Giảng</button>
+                <button onclick="showSection('mcq')" class="nav-item px-4 py-2 rounded-lg hover:bg-gray-100 whitespace-nowrap">📝 50 Câu MCQ</button>
+                <button onclick="showSection('tf')" class="nav-item px-4 py-2 rounded-lg hover:bg-gray-100 whitespace-nowrap">✅ 12 Câu Đúng/Sai</button>
+                <button onclick="showSection('recognition')" class="nav-item px-4 py-2 rounded-lg hover:bg-gray-100 whitespace-nowrap">🔍 10 Bài Nhận Biết</button>
+                <button onclick="showSection('comprehension')" class="nav-item px-4 py-2 rounded-lg hover:bg-gray-100 whitespace-nowrap">💡 10 Câu Thông Hiểu</button>
+                <button onclick="showSection('low')" class="nav-item px-4 py-2 rounded-lg hover:bg-gray-100 whitespace-nowrap">📊 10 Bài Vận Dụng Thấp</button>
+                <button onclick="showSection('high')" class="nav-item px-4 py-2 rounded-lg hover:bg-gray-100 whitespace-nowrap">🎯 10 Bài Vận Dụng Cao</button>
+                <button onclick="showSection('real')" class="nav-item px-4 py-2 rounded-lg hover:bg-gray-100 whitespace-nowrap">🌍 10 Bài Thực Tế</button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container mx-auto px-4 py-8">
+        <section id="lesson" class="section-content">
+            <div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section">
+                <h2 class="text-2xl font-bold text-cyan-700 mb-6 flex items-center"><span class="mr-3">📚</span> BÀI GIẢNG: PHƯƠNG SAI & ĐỘ LỆCH CHUẨN</h2>
+                <div class="space-y-6">
+                    <div class="answer-box p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold text-cyan-700 mb-4">1. KHÁI NIỆM & CÔNG THỨC CƠ BẢN</h3>
+                        <p class="text-gray-700 mb-4">Phương sai và độ lệch chuẩn là các số đặc trưng đo mức độ phân tán của mẫu số liệu so với giá trị trung bình. Chúng cho biết dữ liệu có "tụ lại" sát nhau hay "lan rộng" ra xa.</p>
+                        <div class="formula-box">
+                            <ul class="space-y-3 text-gray-700">
+                                <li>• <strong>Phương sai (s²):</strong> s² = (1/n) Σ(xᵢ - x̄)² = x̄² - (x̄)²</li>
+                                <li>• <strong>Độ lệch chuẩn (s):</strong> s = √s²</li>
+                                <li>• <strong>Số liệu ghép nhóm:</strong> s² = (1/n) Σfᵢ(cᵢ - x̄)² (với cᵢ là giá trị đại diện nhóm)</li>
+                            </ul>
+                        </div>
+                        <div class="grid md:grid-cols-3 gap-4 mt-4">
+                            <div class="bg-cyan-50 p-4 rounded-lg">
+                                <h4 class="font-semibold text-cyan-600 mb-2">Phương sai</h4>
+                                <p class="text-gray-700 text-sm">Trung bình bình phương độ lệch so với trung bình. Đơn vị là bình phương đơn vị gốc.</p>
+                                <p class="text-cyan-700 text-sm font-semibold mt-2">s² = Σ(xᵢ-x̄)² / n</p>
+                            </div>
+                            <div class="bg-purple-50 p-4 rounded-lg">
+                                <h4 class="font-semibold text-purple-600 mb-2">Độ lệch chuẩn</h4>
+                                <p class="text-gray-700 text-sm">Căn bậc hai của phương sai. Cùng đơn vị với dữ liệu gốc, dễ diễn giải hơn.</p>
+                                <p class="text-purple-700 text-sm font-semibold mt-2">s = √(s²)</p>
+                            </div>
+                            <div class="bg-amber-50 p-4 rounded-lg">
+                                <h4 class="font-semibold text-amber-600 mb-2">Số liệu ghép nhóm</h4>
+                                <p class="text-gray-700 text-sm">Dùng giá trị đại diện cᵢ của mỗi nhóm, nhân với tần số fᵢ.</p>
+                                <p class="text-amber-700 text-sm font-semibold mt-2">x̄ = Σfᵢcᵢ / n</p>
+                            </div>
+                        </div>
+                        <div class="mt-4 graph-container">
+                            <svg width="400" height="200" viewBox="0 0 400 200">
+                                <line x1="40" y1="180" x2="360" y2="180" stroke="#94a3b8" stroke-width="2"/>
+                                <line x1="40" y1="180" x2="40" y2="20" stroke="#94a3b8" stroke-width="2"/>
+                                <text x="350" y="170" fill="#333">x</text>
+                                <text x="25" y="30" fill="#333">Tần số</text>
+                                <path d="M 80 160 L 120 100 L 160 40 L 200 30 L 240 40 L 280 100 L 320 160" fill="none" stroke="#7c3aed" stroke-width="3"/>
+                                <line x1="200" y1="30" x2="200" y2="180" stroke="#dc2626" stroke-width="2" stroke-dasharray="4,4"/>
+                                <text x="180" y="20" fill="#dc2626" font-size="12">x̄</text>
+                                <text x="100" y="195" fill="#333" font-size="12">Phân bố chuẩn minh họa</text>
+                            </svg>
+                        </div>
+                    </div>
+
+                    <div class="solution-box p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold text-amber-700 mb-4">2. TÍNH CHẤT & ỨNG DỤNG</h3>
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div class="bg-white p-4 rounded-lg border-2 border-cyan-300">
+                                <h4 class="font-semibold text-cyan-600 mb-2">Tính chất quan trọng</h4>
+                                <ul class="space-y-2 text-gray-700 text-sm">
+                                    <li>• s² ≥ 0, s = 0 ⇔ mọi giá trị bằng nhau</li>
+                                    <li>• Var(aX+b) = a²Var(X)</li>
+                                    <li>• SD(aX+b) = |a|·SD(X)</li>
+                                    <li>• s càng nhỏ ⇒ dữ liệu càng đồng đều</li>
+                                </ul>
+                            </div>
+                            <div class="bg-white p-4 rounded-lg border-2 border-purple-300">
+                                <h4 class="font-semibold text-purple-600 mb-2">So sánh & Diễn giải</h4>
+                                <ul class="space-y-2 text-gray-700 text-sm">
+                                    <li>• Dùng so sánh độ ổn định giữa các nhóm</li>
+                                    <li>• s nhỏ hơn ⇒ chất lượng ổn định hơn</li>
+                                    <li>• Kết hợp với IQR để phát hiện phân tán</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="mt-4 bg-cyan-50 p-4 rounded-lg">
+                            <h4 class="font-semibold text-cyan-700 mb-2">📝 Mẹo tính nhanh:</h4>
+                            <p class="text-gray-700 text-sm">• s² = (x₁²+x₂²+...)/n - (x̄)²</p>
+                            <p class="text-gray-700 text-sm">• Với số liệu dịch chuyển: Nếu yᵢ = xᵢ - c thì s²(y) = s²(x)</p>
+                            <p class="text-gray-700 text-sm">• Máy tính CASIO Mode 6 (STAT) tự động tính s² (σx²) và s (σx)</p>
+                        </div>
+                    </div>
+
+                    <div class="answer-box p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold text-cyan-700 mb-4">3. VÍ DỤ MINH HỌA</h3>
+                        <div class="bg-white p-4 rounded-lg mb-4">
+                            <h4 class="font-semibold text-cyan-600 mb-2">Ví dụ 1: Tính toán cơ bản</h4>
+                            <p class="text-gray-700 mb-2">Mẫu số liệu: 2, 4, 6, 8, 10. Tính x̄, s², s.</p>
+                            <div class="solution-box p-3 rounded">
+                                <p class="text-gray-700">x̄ = (2+4+6+8+10)/5 = 6</p>
+                                <p class="text-gray-700">s² = [(2-6)²+(4-6)²+(6-6)²+(8-6)²+(10-6)²]/5 = 32/5 = 6.4</p>
+                                <p class="text-gray-700">s = √6.4 ≈ 2.53</p>
+                            </div>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg mb-4">
+                            <h4 class="font-semibold text-cyan-600 mb-2">Ví dụ 2: Số liệu ghép nhóm</h4>
+                            <p class="text-gray-700 mb-2">Nhóm [10;20): 5, [20;30): 10, [30;40): 5. Tính s².</p>
+                            <div class="solution-box p-3 rounded">
+                                <p class="text-gray-700">cᵢ: 15, 25, 35. n=20. x̄ = (5·15+10·25+5·35)/20 = 25</p>
+                                <p class="text-gray-700">s² = [5(15-25)²+10(25-25)²+5(35-25)²]/20 = 1000/20 = 50</p>
+                                <p class="text-gray-700">s = √50 ≈ 7.07</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="solution-box p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold text-amber-700 mb-4">4. HƯỚNG DẪN MÁY TÍNH CASIO</h3>
+                        <div class="bg-white p-4 rounded-lg space-y-3">
+                            <p class="text-gray-700"><strong>Chế độ Statistics (Mode 6):</strong></p>
+                            <ol class="list-decimal list-inside space-y-1 text-gray-700">
+                                <li>Nhấn <kbd class="bg-gray-200 px-2 py-1 rounded">MODE</kbd> <kbd class="bg-gray-200 px-2 py-1 rounded">6</kbd> → <kbd class="bg-gray-200 px-2 py-1 rounded">1</kbd> (1-Var)</li>
+                                <li>Nhập dữ liệu vào cột X (bật FREQ nếu có tần số)</li>
+                                <li>Nhấn <kbd class="bg-gray-200 px-2 py-1 rounded">AC</kbd> → <kbd class="bg-gray-200 px-2 py-1 rounded">SHIFT</kbd> <kbd class="bg-gray-200 px-2 py-1 rounded">1</kbd> (STAT)</li>
+                                <li>Chọn <kbd class="bg-gray-200 px-2 py-1 rounded">4</kbd> (Var) → chọn σx² (phương sai mẫu) hoặc σx (độ lệch chuẩn)</li>
+                            </ol>
+                            <p class="text-gray-700 mt-3"><strong>Lưu ý:</strong> σx là độ lệch chuẩn của tổng thể (chia n), sx là độ lệch chuẩn mẫu hiệu chỉnh (chia n-1). Chương trình phổ thông thường dùng σx.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="mcq" class="section-content hidden"><div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section"><h2 class="text-2xl font-bold text-cyan-700 mb-6 flex items-center"><span class="mr-3">📝</span> 50 CÂU TRẮC NGHIỆM</h2><div class="space-y-6" id="mcq-container"></div></div></section>
+        <section id="tf" class="section-content hidden"><div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section"><h2 class="text-2xl font-bold text-cyan-700 mb-6 flex items-center"><span class="mr-3">✅</span> 12 CÂU ĐÚNG/SAI</h2><div class="space-y-6" id="tf-container"></div></div></section>
+        <section id="recognition" class="section-content hidden"><div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section"><h2 class="text-2xl font-bold text-cyan-700 mb-6 flex items-center"><span class="mr-3">🔍</span> 10 BÀI NHẬN BIẾT</h2><div class="space-y-6" id="recognition-container"></div></div></section>
+        <section id="comprehension" class="section-content hidden"><div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section"><h2 class="text-2xl font-bold text-cyan-700 mb-6 flex items-center"><span class="mr-3">💡</span> 10 CÂU THÔNG HIỂU</h2><div class="space-y-6" id="comprehension-container"></div></div></section>
+        <section id="low" class="section-content hidden"><div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section"><h2 class="text-2xl font-bold text-cyan-700 mb-6 flex items-center"><span class="mr-3">📊</span> 10 BÀI VẬN DỤNG THẤP</h2><div class="space-y-6" id="low-container"></div></div></section>
+        <section id="high" class="section-content hidden"><div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section"><h2 class="text-2xl font-bold text-cyan-700 mb-6 flex items-center"><span class="mr-3">🎯</span> 10 BÀI VẬN DỤNG CAO</h2><div class="space-y-6" id="high-container"></div></div></section>
+        <section id="real" class="section-content hidden"><div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section"><h2 class="text-2xl font-bold text-cyan-700 mb-6 flex items-center"><span class="mr-3">🌍</span> 10 BÀI THỰC TẾ</h2><div class="space-y-6" id="real-container"></div></div></section>
+    </main>
+
+    <footer class="gradient-header text-white py-6 mt-8">
+        <div class="container mx-auto px-4 text-center">
+            <p class="text-sm">Bộ Tài Liệu Toán THPT - Đề Mục 224: Phương Sai, Độ Lệch Chuẩn</p>
+            <p class="text-sm opacity-80">© 2024 - Ôn Tập Thi Tốt Nghiệp</p>
+        </div>
+    </footer>
+    <button onclick="window.print()" class="no-print fixed bottom-6 right-6 btn-primary text-white px-6 py-3 rounded-full shadow-lg hover:shadow-xl transition-all">🖨️ In Tài Liệu</button>
+
+    <script>
+        function showSection(id) {
+            document.querySelectorAll('.section-content').forEach(e => e.classList.add('hidden'));
+            document.getElementById(id).classList.remove('hidden');
+            document.querySelectorAll('.nav-item').forEach(e => e.classList.remove('active'));
+            event.target.classList.add('active');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        const mcqData = [
+            {q:"Phương sai của mẫu số liệu đo lường:",options:["A. Mức độ phân tán so với trung bình","B. Giá trị lớn nhất","C. Số phần tử","D. Trung vị"],answer:"A",solution:"Định nghĩa phương sai"},
+            {q:"Độ lệch chuẩn s liên hệ với phương sai s² bởi:",options:["A. s = √s²","B. s = s²","C. s = 2s²","D. s = 1/s²"],answer:"A",solution:"Căn bậc hai phương sai"},
+            {q:"Nếu mọi giá trị trong mẫu bằng nhau thì s² bằng:",options:["A. 0","B. 1","C. -1","D. Không xác định"],answer:"A",solution:"Không có độ lệch"},
+            {q:"Công thức tính phương sai là:",options:["A. (1/n)Σ(xᵢ-x̄)²","B. (1/n)Σ(xᵢ-x̄)","C. Σ(xᵢ-x̄)²","D. √(1/n)Σ(xᵢ-x̄)"],answer:"A",solution:"Trung bình bình phương độ lệch"},
+            {q:"Đơn vị của độ lệch chuẩn so với dữ liệu gốc là:",options:["A. Giống nhau","B. Bình phương","C. Căn bậc hai","D. Khác nhau"],answer:"A",solution:"s = √s² nên cùng đơn vị"},
+            {q:"Mẫu: 2, 4, 6. x̄ = 4. s² bằng:",options:["A. 8/3","B. 4","C. 2","D. 16"],answer:"A",solution:"[(2-4)²+(4-4)²+(6-4)²]/3 = 8/3"},
+            {q:"Trong số liệu ghép nhóm, cᵢ thường lấy là:",options:["A. Giá trị đại diện (trung bình nhóm)","B. Cận dưới","C. Cận trên","D. Tần số"],answer:"A",solution:"Ước lượng giá trị trong nhóm"},
+            {q:"Nếu nhân mọi giá trị với 3 thì phương sai mới bằng:",options:["A. 9 lần cũ","B. 3 lần cũ","C. 6 lần cũ","D. Không đổi"],answer:"A",solution:"Var(kX)=k²Var(X)"},
+            {q:"Nếu cộng mọi giá trị với 5 thì độ lệch chuẩn:",options:["A. Không đổi","B. Tăng 5","C. Giảm 5","D. Bằng 0"],answer:"A",solution:"Dịch chuyển không ảnh hưởng độ phân tán"},
+            {q:"s càng nhỏ chứng tỏ dữ liệu:",options:["A. Càng đồng đều","B. Càng phân tán","C. Càng lệch trái","D. Càng có ngoại lệ"],answer:"A",solution:"Ý nghĩa của s"},
+            {q:"Mẫu: 10, 10, 10, 10. s bằng:",options:["A. 0","B. 10","C. 5","D. 20"],answer:"A",solution:"Tất cả bằng nhau"},
+            {q:"Tính nhanh s² bằng công thức:",options:["A. x²̄ - (x̄)²","B. (x̄)² - x²̄","C. x̄ - x²̄","D. √x²̄ - x̄"],answer:"A",solution:"Công thức thay thế"},
+            {q:"Cho s²=16. s bằng:",options:["A. 4","B. 8","C. 16","D. 256"],answer:"A",solution:"√16 = 4"},
+            {q:"Nhóm [0;10):4, [10;20):6. n=10. cᵢ lần lượt là:",options:["A. 5 và 15","B. 0 và 10","C. 10 và 20","D. 4 và 6"],answer:"A",solution:"Trung điểm các khoảng"},
+            {q:"Phép biến đổi nào làm thay đổi độ lệch chuẩn?",options:["A. Nhân với k ≠ 0, ±1","B. Cộng hằng số","C. Đổi thứ tự","D. Trừ hằng số"],answer:"A",solution:"Co giãn thay đổi độ rộng phân bố"},
+            {q:"Mẫu: 1, 3, 5, 7, 9. x̄=5. s² bằng:",options:["A. 8","B. 10","C. 6","D. 12"],answer:"A",solution:"(16+4+0+4+16)/5 = 8"},
+            {q:"So sánh 2 lớp: Lớp A s=2, Lớp B s=5. Lớp nào đồng đều hơn?",options:["A. Lớp A","B. Lớp B","C. Như nhau","D. Không so sánh được"],answer:"A",solution:"s nhỏ hơn ⇒ ổn định hơn"},
+            {q:"Trong máy tính CASIO, σx biểu thị:",options:["A. Độ lệch chuẩn (chia n)","B. Độ lệch chuẩn mẫu (chia n-1)","C. Phương sai","D. Trung bình"],answer:"A",solution:"Ký hiệu tổng thể"},
+            {q:"Nếu s²=0 thì mẫu số liệu có đặc điểm:",options:["A. Tất cả giá trị bằng nhau","B. Có 2 giá trị khác nhau","C. Phân bố chuẩn","D. Có ngoại lệ"],answer:"A",solution:"Định nghĩa"},
+            {q:"Số liệu: 4, 8, 12, 16. s² bằng:",options:["A. 20","B. 40","C. 10","D. 30"],answer:"A",solution:"x̄=10. (36+4+4+36)/4=20"},
+            {q:"Khi chuyển từ đơn vị cm sang mm (nhân 10), s mới bằng:",options:["A. 10s","B. s/10","C. 100s","D. s"],answer:"A",solution:"SD(kX)=|k|SD(X)"},
+            {q:"Phương sai của dữ liệu: 5, 15, 25. x̄=15. s²=",options:["A. 200/3","B. 100","C. 50","D. 150"],answer:"A",solution:"(100+0+100)/3 = 200/3"},
+            {q:"Độ lệch chuẩn không bao giờ:",options:["A. Âm","B. Dương","C. Bằng 0","D. Nguyên"],answer:"A",solution:"Căn bậc hai luôn ≥ 0"},
+            {q:"Mẫu ghép nhóm có s²=25. s bằng:",options:["A. 5","B. 6.25","C. 25","D. 12.5"],answer:"A",solution:"√25=5"},
+            {q:"Nếu x̄=10, Σxᵢ²=1200, n=10. s² bằng:",options:["A. 20","B. 100","C. 120","D. 200"],answer:"A",solution:"1200/10 - 100 = 20"},
+            {q:"Biến ngẫu nhiên X có Var(X)=9. Var(2X+3)=",options:["A. 36","B. 21","C. 18","D. 9"],answer:"A",solution:"4·Var(X)=36"},
+            {q:"Số liệu: 2, 4, 6, 8. Nếu thêm giá trị 5 vào mẫu, s sẽ:",options:["A. Giảm","B. Tăng","C. Không đổi","D. Bằng 0"],answer:"A",solution:"Giá trị gần trung bình hơn làm giảm phân tán"},
+            {q:"Trong kiểm soát chất lượng, s nhỏ nghĩa là:",options:["A. Quy trình ổn định","B. Nhiều lỗi","C. Chi phí cao","D. Thời gian dài"],answer:"A",solution:"Độ biến động thấp"},
+            {q:"Mẫu: 10, 20, 30. Nếu dịch chuyển về gốc tọa độ (trừ 20), s²:",options:["A. Không đổi","B. Tăng","C. Giảm","D. Bằng 0"],answer:"A",solution:"Tính bất biến với phép tịnh tiến"},
+            {q:"Công thức s² = Σfᵢ(cᵢ-x̄)² / n áp dụng khi:",options:["A. Số liệu đã ghép nhóm","B. Số liệu rời rạc","C. Số liệu liên tục","D. Mẫu rất nhỏ"],answer:"A",solution:"Dữ liệu nhóm"},
+            {q:"Nếu s=0 thì IQR bằng:",options:["A. 0","B. 1","C. Không xác định","D. ∞"],answer:"A",solution:"Tất cả giá trị bằng nhau"},
+            {q:"Độ lệch chuẩn của {a, a, a, a} là:",options:["A. 0","B. a","C. a²","D. 1"],answer:"A",solution:"Không phân tán"},
+            {q:"Cho s²=4. Nếu nhân dữ liệu với 0.5, s² mới bằng:",options:["A. 1","B. 2","C. 4","D. 0.5"],answer:"A",solution:"(0.5)²·4 = 1"},
+            {q:"Số liệu: 1, 2, 3, 4, 5. x̄=3. Σ(xᵢ-x̄)² bằng:",options:["A. 10","B. 2","C. 5","D. 25"],answer:"A",solution:"4+1+0+1+4=10"},
+            {q:"Phương sai của {1, 2, 3, 4, 5, 6} là:",options:["A. 17.5/6 ≈ 2.92","B. 3","C. 4","D. 5"],answer:"A",solution:"x̄=3.5. Σ=17.5. s²=17.5/6"},
+            {q:"Nếu đổi đơn vị từ mét sang centimet, s² sẽ:",options:["A. Tăng 10000 lần","B. Tăng 100 lần","C. Không đổi","D. Giảm"],answer:"A",solution:"(100)²=10000"},
+            {q:"Mẫu: 8, 10, 12. s bằng:",options:["A. √(8/3)≈1.63","B. 2","C. √2","D. 4"],answer:"A",solution:"x̄=10. (4+0+4)/3=8/3. s=√(8/3)"},
+            {q:"Trong bảng tần số, n được tính bằng:",options:["A. Tổng tần số","B. Số nhóm","C. Giá trị lớn nhất","D. Trung bình"],answer:"A",solution:"N=Σfᵢ"},
+            {q:"Nếu s²=9, s=3. Giá trị 12 so với x̄=5 có độ lệch chuẩn hóa z bằng:",options:["A. 7/3","B. 3/7","C. 2","D. 1"],answer:"A",solution:"z=(12-5)/3=7/3"},
+            {q:"Độ lệch chuẩn phản ánh:",options:["A. Độ rộng của phân phối","B. Vị trí trung tâm","C. Số phần tử","D. Giá trị lớn nhất"],answer:"A",solution:"Ý nghĩa hình học"},
+            {q:"Mẫu: 5, 10, 15, 20. x̄=12.5. s²=",options:["A. 31.25","B. 25","C. 50","D. 12.5"],answer:"A",solution:"(56.25+6.25+6.25+56.25)/4=31.25"},
+            {q:"Nếu cộng 10 vào mọi giá trị, phương sai:",options:["A. Không đổi","B. Tăng 10","C. Tăng 100","D. Bằng 0"],answer:"A",solution:"Tịnh tiến không đổi s²"},
+            {q:"Số liệu: 2, 4, 6, 8, 10. s²=8. Nếu bớt 2 ở mỗi giá trị, s² mới:",options:["A. 8","B. 6","C. 10","D. 0"],answer:"A",solution:"Tính chất bất biến"},
+            {q:"Độ lệch chuẩn mẫu hiệu chỉnh (chia n-1) ký hiệu là:",options:["A. s hoặc sx","B. σ","C. σx","D. μ"],answer:"A",solution:"Ký hiệu mẫu"},
+            {q:"Cho Var(X)=16. SD(3X-5)=",options:["A. 12","B. 43","C. 4","D. 9"],answer:"A",solution:"|3|·√16=12"},
+            {q:"Mẫu có s lớn nhất trong các mẫu sau:",options:["A. {1,5,9}","B. {4,5,6}","C. {5,5,5}","D. {4.9,5,5.1}"],answer:"A",solution:"Phân tán rộng nhất"},
+            {q:"Nếu x̄=20, s=2. Khoảng [x̄-s; x̄+s] là:",options:["A. [18;22]","B. [16;24]","C. [20;22]","D. [18;20]"],answer:"A",solution:"Định nghĩa khoảng 1 độ lệch chuẩn"},
+            {q:"Trong phân phối chuẩn, khoảng [x̄-2s; x̄+2s] chứa khoảng:",options:["A. 95% dữ liệu","B. 68% dữ liệu","C. 50% dữ liệu","D. 99% dữ liệu"],answer:"A",solution:"Quy tắc 68-95-99.7"},
+            {q:"Phương sai của tập {a, b} bằng:",options:["A. (a-b)²/4","B. (a-b)²/2","C. (a+b)²/4","D. (a-b)/2"],answer:"A",solution:"x̄=(a+b)/2. s²=((a-x̄)²+(b-x̄)²)/2 = (a-b)²/4"}
+        ];
+
+        const tfData = [
+            {q:"Về phương sai (s²):",statements:[{text:"Phương sai luôn là số không âm",answer:true},{text:"s² = 0 khi và chỉ khi mọi giá trị bằng nhau",answer:true},{text:"Phương sai có đơn vị giống dữ liệu gốc",answer:false},{text:"s² càng lớn, dữ liệu càng phân tán",answer:true}]},
+            {q:"Về độ lệch chuẩn (s):",statements:[{text:"s = √(s²)",answer:true},{text:"s có cùng đơn vị với số liệu ban đầu",answer:true},{text:"Nếu s = 5 thì s² = 25",answer:true},{text:"s có thể nhận giá trị âm",answer:false}]},
+            {q:"Về tính chất biến đổi:",statements:[{text:"Var(aX+b) = a²Var(X)",answer:true},{text:"SD(aX+b) = a·SD(X) với mọi a",answer:false},{text:"Cộng hằng số vào mọi giá trị không làm thay đổi s",answer:true},{text:"Nhân với -1 làm phương sai đổi dấu",answer:false}]},
+            {q:"Về số liệu ghép nhóm:",statements:[{text:"Dùng giá trị đại diện cᵢ để tính x̄ và s²",answer:true},{text:"Kết quả tính trên số liệu ghép nhóm luôn chính xác tuyệt đối",answer:false},{text:"Tần số fᵢ được dùng làm trọng số trong công thức",answer:true},{text:"Khoảng nhóm càng rộng, s² tính được càng chính xác",answer:false}]},
+            {q:"Về so sánh và diễn giải:",statements:[{text:"Hai mẫu có cùng x̄ thì mẫu có s nhỏ hơn đồng đều hơn",answer:true},{text:"s có thể dùng so sánh trực tiếp 2 đơn vị khác nhau",answer:false},{text:"s = 0 ⇒ IQR = 0",answer:true},{text:"Nếu s tăng gấp đôi thì phương sai tăng gấp 4",answer:true}]},
+            {q:"Về công thức tính nhanh:",statements:[{text:"s² = x²̄ - (x̄)² luôn đúng",answer:true},{text:"Σ(xᵢ-x̄)² = Σxᵢ² - n(x̄)²",answer:true},{text:"s² = (Σxᵢ)²/n - Σxᵢ²",answer:false},{text:"Công thức thay thế giúp tính tay nhanh hơn",answer:true}]},
+            {q:"Về ứng dụng thực tế:",statements:[{text:"s nhỏ trong sản xuất nghĩa là chất lượng ổn định",answer:true},{text:"Trong tài chính, s đo lường rủi ro (biến động giá)",answer:true},{text:"Độ lệch chuẩn dùng để phát hiện gian lận thi cử",answer:true},{text:"Phương sai luôn lớn hơn độ lệch chuẩn",answer:false}]},
+            {q:"Về máy tính cầm tay:",statements:[{text:"Mode STAT tính được cả σx và sx",answer:true},{text:"σx là độ lệch chuẩn chia cho n",answer:true},{text:"sx là độ lệch chuẩn chia cho n-1",answer:true},{text:"Máy tính không tính được s² trực tiếp",answer:false}]},
+            {q:"Về mối quan hệ với số đặc trưng khác:",statements:[{text:"Nếu s=0 thì R=0 và IQR=0",answer:true},{text:"s luôn nhỏ hơn R",answer:true},{text:"s có thể lớn hơn IQR",answer:true},{text:"x̄ và s độc lập hoàn toàn với nhau",answer:false}]},
+            {q:"Về phân phối chuẩn:",statements:[{text:"Khoảng [x̄-s; x̄+s] chứa ~68% dữ liệu",answer:true},{text:"Khoảng [x̄-2s; x̄+2s] chứa ~95% dữ liệu",answer:true},{text:"Ngoại lệ thường nằm ngoài [x̄-3s; x̄+3s]",answer:true},{text:"Mọi bộ dữ liệu đều tuân theo phân phối chuẩn",answer:false}]},
+            {q:"Về tính toán thủ công:",statements:[{text:"Nên dùng giá trị x̄ làm mốc trừ để giảm số lớn",answer:true},{text:"Làm tròn x̄ quá sớm sẽ gây sai số tích lũy",answer:true},{text:"Có thể tính s² trước rồi mới lấy căn",answer:true},{text:"s² luôn là số nguyên",answer:false}]},
+            {q:"Về khái niệm:",statements:[{text:"Phương sai là trung bình của bình phương độ lệch",answer:true},{text:"Độ lệch chuẩn là trung bình của độ lệch",answer:false},{text:"s² đo mức độ phân tán quanh trung bình",answer:true},{text:"Nếu s tăng, x̄ cũng tăng theo",answer:false}]}
+        ];
+
+        const recognitionData = [
+            {q:"Viết công thức tính phương sai s² của mẫu số liệu x₁, x₂, ..., xₙ.",answer:"s² = (1/n) Σ(xᵢ - x̄)²",solution:"Định nghĩa cơ bản"},
+            {q:"Độ lệch chuẩn s được tính từ phương sai như thế nào?",answer:"s = √s²",solution:"Căn bậc hai"},
+            {q:"Nêu ý nghĩa của phương sai trong thống kê.",answer:"Đo mức độ phân tán của dữ liệu so với giá trị trung bình",solution:"Đánh giá độ đồng đều"},
+            {q:"Viết công thức tính nhanh phương sai.",answer:"s² = (Σxᵢ² / n) - (x̄)²",solution:"Công thức thay thế"},
+            {q:"Nếu nhân mọi giá trị với k thì phương sai mới bằng?",answer:"k²·s² cũ",solution:"Tính chất co giãn"},
+            {q:"Nếu cộng mọi giá trị với c thì độ lệch chuẩn thay đổi không?",answer:"Không thay đổi",solution:"Tính chất dịch chuyển"},
+            {q:"Trong bảng tần số ghép nhóm, công thức tính s² là:",answer:"s² = (1/n) Σfᵢ(cᵢ - x̄)²",solution:"Dữ liệu nhóm"},
+            {q:"s² = 0 khi và chỉ khi:",answer:"Mọi giá trị trong mẫu bằng nhau",solution:"Điều kiện phương sai bằng 0"},
+            {q:"Đơn vị của độ lệch chuẩn so với đơn vị dữ liệu gốc:",answer:"Giống nhau",solution:"Ưu điểm của độ lệch chuẩn"},
+            {q:"Trên máy tính CASIO, phím nào dùng để xem σx?",answer:"SHIFT 1 (STAT) → 4 (Var) → 4 (σx)",solution:"Thao tác máy tính"}
+        ];
+
+        const comprehensionData = [
+            {q:"Tại sao độ lệch chuẩn được ưa dùng hơn phương sai trong báo cáo thực tế?",answer:"Vì s cùng đơn vị với dữ liệu, dễ diễn giải hơn s²",solution:"Khả năng diễn giải"},
+            {q:"Giải thích tại sao cộng hằng số không làm thay đổi s.",answer:"Vì khoảng cách giữa các điểm giữ nguyên, chỉ vị trí dịch chuyển",solution:"Bất biến tịnh tiến"},
+            {q:"Nếu s của lớp A nhỏ hơn lớp B, nhưng x̄ lớp A lớn hơn, kết luận gì về độ ổn định?",answer:"Lớp A có điểm số đồng đều hơn lớp B",solution:"So sánh độ phân tán"},
+            {q:"Tại sao công thức s² = x²̄ - (x̄)² tiện lợi hơn công thức gốc?",answer:"Không cần tính từng độ lệch, giảm phép tính, tránh số thập phân",solution:"Tối ưu tính toán"},
+            {q:"Giải thích ý nghĩa của khoảng [x̄-s; x̄+s].",answer:"Chứa phần lớn dữ liệu (khoảng 68% nếu phân phối chuẩn)",solution:"Quy tắc thực nghiệm"},
+            {q:"Nếu đổi đơn vị từ km sang m, s và s² thay đổi thế nào?",answer:"s tăng 1000 lần, s² tăng 1.000.000 lần",solution:"Tỷ lệ đơn vị"},
+            {q:"Tại sao s không thể âm?",answer:"Vì s là căn bậc hai của tổng bình phương (luôn ≥ 0)",solution:"Tính chất toán học"},
+            {q:"Trong kiểm tra chất lượng, tại sao người ta theo dõi s theo thời gian?",answer:"Để phát hiện quy trình có đang mất ổn định hay không",solution:"Kiểm soát quá trình"},
+            {q:"Nếu thêm 1 giá trị bằng x̄ vào mẫu, s sẽ tăng hay giảm?",answer:"Giảm (hoặc không đổi nếu s=0)",solution:"Giá trị trung tâm làm giảm phân tán"},
+            {q:"Phân tích tại sao s nhạy cảm với ngoại lệ hơn IQR.",answer:"Vì s dùng bình phương độ lệch, ngoại lệ lớn bị phóng đại rất nhiều",solution:"Độ nhạy của bình phương"}
+        ];
+
+        const lowData = [
+            {q:"Tính s² và s của mẫu: 3, 5, 7, 9, 11.",answer:"s²=8, s≈2.83",solution:"x̄=7. Σ(xᵢ-7)²=32. s²=32/5=6.4. s=√6.4≈2.53. (Sửa: Mẫu 3,5,7,9,11: x̄=7. ĐL: 16,4,0,4,16 → Σ=40. s²=8. s=√8≈2.83)"},
+            {q:"Cho x̄=10, Σxᵢ²=1050, n=10. Tính s².",answer:"s²=5",solution:"s²=1050/10 - 100 = 5"},
+            {q:"Tính s của mẫu: 2, 2, 2, 2.",answer:"s=0",solution:"Mọi giá trị bằng nhau"},
+            {q:"Nhóm [10;20): 2, [20;30): 3. Tính s².",answer:"s²=24",solution:"cᵢ=15,25. x̄=(30+75)/5=21. s²=[2(36)+3(16)]/5=120/5=24"},
+            {q:"Nếu s=4, tính s².",answer:"16",solution:"s²=4²=16"},
+            {q:"Mẫu: 4, 8, 12. Tính s.",answer:"s=√(32/3)≈3.27",solution:"x̄=8. Σ=32+0+32=64. s²=64/3."},
+            {q:"Nhân dữ liệu với 2, s cũ=3. s mới bằng?",answer:"6",solution:"SD(2X)=2·SD(X)=6"},
+            {q:"Cộng 10 vào mẫu {1,2,3}. s mới bằng?",answer:"√(2/3)≈0.82 (giữ nguyên)",solution:"Dịch chuyển không đổi s"},
+            {q:"Tính s² của {5, 10, 15, 20, 25}.",answer:"50",solution:"x̄=15. Σ=100+25+0+25+100=250. s²=50"},
+            {q:"Cho Var(X)=9. Var(3X+1)=",answer:"81",solution:"9·Var(X)=81"}
+        ];
+
+        const highData = [
+            {q:"Chứng minh s² = (1/n)Σxᵢ² - (x̄)².",answer:"Khai triển Σ(xᵢ-x̄)² = Σxᵢ² - 2x̄Σxᵢ + n(x̄)² = Σxᵢ² - n(x̄)²",solution:"**Lời giải:**\n1. Σ(xᵢ-x̄)² = Σ(xᵢ² - 2xᵢx̄ + x̄²)\n2. = Σxᵢ² - 2x̄(n·x̄) + n·x̄²\n3. = Σxᵢ² - n(x̄)²\n4. Chia n → ĐPCM.\n**Kết luận: ĐPCM**"},
+            {q:"Cho s²=25. Tìm k để phương sai mẫu mới {kxᵢ} bằng 400.",answer:"k = ±4",solution:"**Lời giải:**\n1. Var(kX) = k²Var(X)\n2. 400 = k²·25 ⇒ k²=16 ⇒ k=±4.\n**Kết luận: k = ±4**"},
+            {q:"Bảng nhóm: [0;10):5, [10;20):10, [20;30):15, [30;40):10. Tính s.",answer:"s ≈ 10.82",solution:"**Lời giải:**\n1. n=40. cᵢ: 5,15,25,35.\n2. x̄=(25+150+375+350)/40=900/40=22.5\n3. s²=[5(306.25)+10(56.25)+15(6.25)+10(156.25)]/40\n4. s²≈117.1875 ⇒ s≈10.82\n**Kết luận: s ≈ 10.82**"},
+            {q:"Chứng minh s² ≤ R²/4 với R là khoảng biến thiên.",answer:"Dùng bất đẳng thức Popoviciu",solution:"**Lời giải:**\n1. Phương sai lớn nhất khi 50% dữ liệu ở Min, 50% ở Max.\n2. Khi đó s² = (R/2)² = R²/4.\n3. Mọi phân phối khác đều có s² nhỏ hơn.\n**Kết luận: ĐPCM**"},
+            {q:"Tìm m để s² của {2, m, 6, 8} nhỏ nhất.",answer:"m = 4",solution:"**Lời giải:**\n1. x̄ = (16+m)/4 = 4 + m/4.\n2. s²(m) là parabol theo m, đạt min tại m=x̄ của 3 số còn lại.\n3. Thực tế s² min khi m bằng trung bình của 3 số kia ⇒ m=4.\n**Kết luận: m = 4**"},
+            {q:"Cho 2 mẫu độc lập. Mẫu 1: n₁=10, s₁²=4. Mẫu 2: n₂=20, s₂²=10. Tính phương sai gộp (giả sử x̄₁=x̄₂).",answer:"s²_gộp = 8",solution:"**Lời giải:**\n1. s²_gộp = [(n₁-1)s₁² + (n₂-1)s₂²] / (n₁+n₂-2)\n2. = [9·4 + 19·10] / 28 = [36+190]/28 = 226/28 ≈ 8.07.\n**Kết luận: ≈ 8.07**"},
+            {q:"Chứng minh: Σ(xᵢ - c)² ≥ Σ(xᵢ - x̄)² với mọi c.",answer:"x̄ là điểm cực tiểu của hàm tổng bình phương",solution:"**Lời giải:**\n1. f(c) = Σ(xᵢ-c)²\n2. f'(c) = -2Σ(xᵢ-c) = -2(n·x̄ - n·c)\n3. f'(c)=0 ⇔ c=x̄. f''(c)>0 ⇒ cực tiểu.\n**Kết luận: ĐPCM**"},
+            {q:"Nếu thêm giá trị x̄ vào mẫu, s² mới bằng bao nhiêu lần s² cũ?",answer:"s²_mới = (n/(n+1))·s²_cũ",solution:"**Lời giải:**\n1. Tổng bình phương độ lệch không đổi (thêm số 0).\n2. Chia cho n+1 thay vì n.\n3. Tỷ lệ = n/(n+1).\n**Kết luận: n/(n+1)**"},
+            {q:"Tìm điều kiện để s² = IQR²/4.",answer:"Phân phối đều trên [Q1, Q3] hoặc đặc biệt",solution:"**Lời giải:**\n1. Không có công thức tổng quát.\n2. Chỉ đúng với một số phân phối cụ thể.\n**Kết luận: Phụ thuộc dạng phân phối**"},
+            {q:"Cho s²=16. Tính phương sai của {2x₁-3, 2x₂-3, ..., 2xₙ-3}.",answer:"64",solution:"**Lời giải:**\n1. Var(aX+b) = a²Var(X)\n2. = 4·16 = 64.\n**Kết luận: 64**"}
+        ];
+
+        const realData = [
+            {q:"Trong nhà máy, s chiều dài bu lông = 0.1mm. Ngưỡng cho phép ±0.3mm. Tỷ lệ đạt chuẩn?",answer:"~99.7% (3 sigma)",solution:"**Lời giải:**\n1. ±0.3mm = ±3s.\n2. Theo quy tắc 68-95-99.7, ~99.7% nằm trong.\n**Kết luận: Rất cao**"},
+            {q:"Điểm thi môn Toán: x̄=7.5, s=1.2. Học sinh A được 9.9. Đánh giá?",answer:"Xuất sắc (z=2)",solution:"**Lời giải:**\n1. z=(9.9-7.5)/1.2 = 2.\n2. Cao hơn 2 độ lệch chuẩn ⇒ top ~2.5%.\n**Kết luận: Xuất sắc**"},
+            {q:"Tài chính: Cổ phiếu A s=5%, B s=12%. Nhà đầu tư ngại rủi ro chọn?",answer:"Cổ phiếu A",solution:"**Lời giải:**\n1. s nhỏ ⇒ biến động giá thấp.\n2. Ổn định hơn.\n**Kết luận: Cổ phiếu A**"},
+            {q:"Nông nghiệp: s năng suất lúa giống mới = 0.2 tấn/ha, giống cũ = 0.5. Nên trồng?",answer:"Giống mới (ổn định)",solution:"**Lời giải:**\n1. Rủi ro mất mùa thấp hơn.\n2. Dễ dự báo sản lượng.\n**Kết luận: Giống mới**"},
+            {q:"Y tế: Huyết áp tâm thu x̄=120, s=10. Ngưỡng cao huyết áp 140. % nguy cơ?",answer:"~2.5%",solution:"**Lời giải:**\n1. 140 = x̄+2s.\n2. >2s chiếm ~2.5% (một đuôi).\n**Kết luận: ~2.5%**"},
+            {q:"Giáo dục: 2 lớp cùng x̄=8.0. Lớp 1 s=0.5, Lớp 2 s=1.5. Lớp nào dễ dạy đồng đều?",answer:"Lớp 1",solution:"**Lời giải:**\n1. Chênh lệch trình độ nhỏ.\n2. Giáo viên dễ thiết kế bài giảng chung.\n**Kết luận: Lớp 1**"},
+            {q:"Thể thao: VĐV nhảy xa có s=15cm. HLV muốn ổn định hơn cần làm gì?",answer:"Cải thiện kỹ thuật, giảm sai số động tác",solution:"**Lời giải:**\n1. s đo độ ổn định thành tích.\n2. Tập trung vào yếu tố kỹ thuật lặp lại.\n**Kết luận: Rèn kỹ thuật**"},
+            {q:"Sản xuất: s đường kính trục = 0.01mm. Khách hàng yêu cầu ±0.02mm. Đạt không?",answer:"Đạt (±2s)",solution:"**Lời giải:**\n1. Ngưỡng ±0.02 = ±2s.\n2. ~95% sản phẩm đạt.\n**Kết luận: Đạt chuẩn**"},
+            {q:"Khí tượng: Nhiệt độ tháng 7 s=2°C, tháng 1 s=5°C. Tháng nào thời tiết thất thường?",answer:"Tháng 1",solution:"**Lời giải:**\n1. s lớn ⇒ biến động nhiệt độ mạnh.\n2. Cần chuẩn bị trang phục đa dạng.\n**Kết luận: Tháng 1**"},
+            {q:"Bảo hiểm: Phí bảo hiểm dựa trên s rủi ro. Nhóm có s lớn phí cao hơn vì?",answer:"Rủi ro không lường trước cao hơn",solution:"**Lời giải:**\n1. s lớn ⇒ khả năng xảy ra sự kiện cực đoan cao.\n2. Công ty cần dự phòng tài chính lớn.\n**Kết luận: Bù đắp rủi ro**"}
+        ];
+
+        function renderQuestions(containerId, dataArray, type) {
+            const container = document.getElementById(containerId);
+            dataArray.forEach((item, index) => {
+                const div = document.createElement('div');
+                div.className = 'border-l-4 border-cyan-400 pl-4 py-3 bg-gray-50 rounded-r-lg';
+                if (type === 'mcq') {
+                    div.innerHTML = `<p class="font-semibold text-gray-800 mb-2"><strong>Câu ${index + 1}:</strong> ${item.q}</p><div class="grid grid-cols-2 gap-2 mb-3 text-sm">${item.options.map(o => `<span class="text-gray-700">${o}</span>`).join('')}</div><button onclick="toggleAnswer('${containerId}-${index}')" class="text-cyan-600 text-sm hover:underline">👁️ Xem đáp án</button><div id="${containerId}-${index}" class="answer-box mt-2 p-3 rounded hidden"><p class="font-semibold text-green-700">Đáp án: ${item.answer}</p><p class="text-gray-700 text-sm mt-1">${item.solution}</p></div>`;
+                } else if (type === 'tf') {
+                    div.innerHTML = `<p class="font-semibold text-gray-800 mb-3"><strong>Câu ${index + 1}:</strong> ${item.q}</p><div class="space-y-2">${item.statements.map((s, i) => `<div class="flex items-center justify-between bg-white p-2 rounded"><span class="text-gray-700 text-sm">${String.fromCharCode(65+i)}. ${s.text}</span><span class="text-xs px-2 py-1 rounded ${s.answer ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}">${s.answer ? 'Đúng' : 'Sai'}</span></div>`).join('')}</div>`;
+                } else {
+                    div.innerHTML = `<p class="font-semibold text-gray-800 mb-2"><strong>Bài ${index + 1}:</strong> ${item.q}</p><button onclick="toggleAnswer('${containerId}-${index}')" class="text-cyan-600 text-sm hover:underline">👁️ Xem đáp án</button><div id="${containerId}-${index}" class="${containerId==='comprehension-container'||containerId==='high-container'||containerId==='real-container'?'solution-box':'answer-box'} mt-2 p-3 rounded hidden"><p class="font-semibold text-purple-700">Đáp án: ${item.answer}</p><p class="text-gray-700 text-sm mt-1 whitespace-pre-line">${item.solution}</p></div>`;
+                }
+                container.appendChild(div);
+            });
+        }
+
+        function toggleAnswer(id) { document.getElementById(id).classList.toggle('hidden'); }
+        document.addEventListener('DOMContentLoaded', () => {
+            renderQuestions('mcq-container', mcqData, 'mcq');
+            renderQuestions('tf-container', tfData, 'tf');
+            renderQuestions('recognition-container', recognitionData, 'default');
+            renderQuestions('comprehension-container', comprehensionData, 'default');
+            renderQuestions('low-container', lowData, 'default');
+            renderQuestions('high-container', highData, 'default');
+            renderQuestions('real-container', realData, 'default');
+        });
+    </script>
+</body>
+</html>
+```

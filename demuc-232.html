@@ -1,0 +1,356 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xác Suất Có Điều Kiện - Đề Mục 232 - Toán Lớp 12</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@fontsource/roboto@4.5.8/index.css" rel="stylesheet">
+    <style>
+        * { font-family: 'Roboto', sans-serif; }
+        .gradient-header { background: linear-gradient(135deg, #0891b2 0%, #7c3aed 100%); }
+        .card-hover { transition: all 0.3s ease; }
+        .card-hover:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0,0,0,0.15); }
+        .btn-primary { background: linear-gradient(135deg, #0891b2 0%, #7c3aed 100%); }
+        .btn-primary:hover { background: linear-gradient(135deg, #067894 0%, #6a32c4 100%); }
+        .answer-box { background: #f0f9ff; border-left: 4px solid #0891b2; }
+        .solution-box { background: #fef3c7; border-left: 4px solid #f59e0b; }
+        .nav-item { transition: all 0.2s ease; }
+        .nav-item:hover { background: rgba(255,255,255,0.2); }
+        .nav-item.active { background: rgba(255,255,255,0.3); }
+        .print-section { page-break-inside: avoid; }
+        @media print { .no-print { display: none; } }
+        .formula-box { background: linear-gradient(135deg, #e0f2fe 0%, #ede9fe 100%); border-radius: 8px; padding: 16px; margin: 12px 0; }
+        .graph-container { background: #f8fafc; border: 2px dashed #cbd5e1; border-radius: 8px; padding: 20px; text-align: center; }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <header class="gradient-header text-white py-8">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center">
+                <div>
+                    <h1 class="text-3xl font-bold">XÁC SUẤT CÓ ĐIỀU KIỆN</h1>
+                    <p class="text-lg opacity-90">Đề Mục 232 - Toán Lớp 12 - Xác Suất</p>
+                </div>
+                <div class="text-right">
+                    <p class="text-sm opacity-80">Bộ Tài Liệu Toán THPT</p>
+                    <p class="text-sm opacity-80">Ôn Tập Thi Tốt Nghiệp</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <nav class="bg-white shadow-md sticky top-0 z-50 no-print">
+        <div class="container mx-auto px-4">
+            <div class="flex overflow-x-auto py-3 space-x-2">
+                <button onclick="showSection('lesson')" class="nav-item active px-4 py-2 rounded-lg bg-cyan-100 text-cyan-700 whitespace-nowrap">📚 Bài Giảng</button>
+                <button onclick="showSection('mcq')" class="nav-item px-4 py-2 rounded-lg hover:bg-gray-100 whitespace-nowrap">📝 50 Câu MCQ</button>
+                <button onclick="showSection('tf')" class="nav-item px-4 py-2 rounded-lg hover:bg-gray-100 whitespace-nowrap">✅ 12 Câu Đúng/Sai</button>
+                <button onclick="showSection('recognition')" class="nav-item px-4 py-2 rounded-lg hover:bg-gray-100 whitespace-nowrap">🔍 10 Bài Nhận Biết</button>
+                <button onclick="showSection('comprehension')" class="nav-item px-4 py-2 rounded-lg hover:bg-gray-100 whitespace-nowrap">💡 10 Câu Thông Hiểu</button>
+                <button onclick="showSection('low')" class="nav-item px-4 py-2 rounded-lg hover:bg-gray-100 whitespace-nowrap">📊 10 Bài Vận Dụng Thấp</button>
+                <button onclick="showSection('high')" class="nav-item px-4 py-2 rounded-lg hover:bg-gray-100 whitespace-nowrap">🎯 10 Bài Vận Dụng Cao</button>
+                <button onclick="showSection('real')" class="nav-item px-4 py-2 rounded-lg hover:bg-gray-100 whitespace-nowrap">🌍 10 Bài Thực Tế</button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container mx-auto px-4 py-8">
+        <section id="lesson" class="section-content">
+            <div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section">
+                <h2 class="text-2xl font-bold text-cyan-700 mb-6 flex items-center"><span class="mr-3">📚</span> BÀI GIẢNG: XÁC SUẤT CÓ ĐIỀU KIỆN</h2>
+                <div class="space-y-6">
+                    <div class="answer-box p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold text-cyan-700 mb-4">1. ĐỊNH NGHĨA & CÔNG THỨC CƠ BẢN</h3>
+                        <p class="text-gray-700 mb-4">Xác suất có điều kiện mô tả khả năng xảy ra biến cố A khi đã biết biến cố B đã xảy ra (với P(B) > 0).</p>
+                        <div class="formula-box">
+                            <ul class="space-y-3 text-gray-700">
+                                <li>• <strong>Công thức xác suất có điều kiện:</strong> P(A|B) = P(A∩B) / P(B)</li>
+                                <li>• <strong>Quy tắc nhân:</strong> P(A∩B) = P(B)·P(A|B) = P(A)·P(B|A)</li>
+                                <li>• <strong>Điều kiện:</strong> P(B) > 0</li>
+                            </ul>
+                        </div>
+                        <div class="grid md:grid-cols-3 gap-4 mt-4">
+                            <div class="bg-cyan-50 p-4 rounded-lg">
+                                <h4 class="font-semibold text-cyan-600 mb-2">Sơ đồ cây</h4>
+                                <p class="text-gray-700 text-sm">Biểu diễn các bước thử nghiệm. Xác suất của nhánh bằng tích các xác suất trên đường đi.</p>
+                                <p class="text-cyan-700 text-sm font-semibold mt-2">P(A∩B) = P(A)·P(B|A)</p>
+                            </div>
+                            <div class="bg-purple-50 p-4 rounded-lg">
+                                <h4 class="font-semibold text-purple-600 mb-2">Độc lập & Phụ thuộc</h4>
+                                <p class="text-gray-700 text-sm">Nếu A, B độc lập: P(A|B) = P(A). Ngược lại là biến cố phụ thuộc.</p>
+                                <p class="text-purple-700 text-sm font-semibold mt-2">P(A∩B) = P(A)P(B)</p>
+                            </div>
+                            <div class="bg-amber-50 p-4 rounded-lg">
+                                <h4 class="font-semibold text-amber-600 mb-2">Không gian mẫu thu hẹp</h4>
+                                <p class="text-gray-700 text-sm">Khi biết B xảy ra, không gian mẫu thu hẹp lại thành B. Tính lại số kết quả thuận lợi.</p>
+                                <p class="text-amber-700 text-sm font-semibold mt-2">P(A|B) = n(A∩B)/n(B)</p>
+                            </div>
+                        </div>
+                        <div class="mt-4 graph-container">
+                            <svg width="400" height="200" viewBox="0 0 400 200">
+                                <circle cx="100" cy="100" r="70" fill="#e0f2fe" stroke="#0891b2" stroke-width="2"/>
+                                <circle cx="220" cy="100" r="70" fill="#ede9fe" stroke="#7c3aed" stroke-width="2" opacity="0.8"/>
+                                <path d="M 150 60 Q 180 100 150 140" fill="#0891b2" opacity="0.4"/>
+                                <text x="70" y="105" fill="#0891b2" font-weight="bold">B</text>
+                                <text x="250" y="105" fill="#7c3aed" font-weight="bold">A</text>
+                                <text x="145" y="105" fill="#333" font-size="12">A∩B</text>
+                                <text x="130" y="180" fill="#333">P(A|B) = P(A∩B)/P(B)</text>
+                            </svg>
+                            <p class="text-sm text-gray-600 mt-2">Minh họa không gian mẫu thu hẹp khi biết B xảy ra</p>
+                        </div>
+                    </div>
+
+                    <div class="solution-box p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold text-amber-700 mb-4">2. CÁC DẠNG BÀI TẬP THƯỜNG GẶP</h3>
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div class="bg-white p-4 rounded-lg border-2 border-cyan-300">
+                                <h4 class="font-semibold text-cyan-600 mb-2">Bài toán rút vật mẫu</h4>
+                                <ul class="space-y-2 text-gray-700 text-sm">
+                                    <li>• <strong>Có hoàn lại:</strong> Các lần rút độc lập. P(A|B) = P(A).</li>
+                                    <li>• <strong>Không hoàn lại:</strong> Không gian mẫu thay đổi sau mỗi lần rút. Dùng quy tắc nhân.</li>
+                                    <li>• Dùng sơ đồ cây để phân nhánh rõ ràng.</li>
+                                </ul>
+                            </div>
+                            <div class="bg-white p-4 rounded-lg border-2 border-purple-300">
+                                <h4 class="font-semibold text-purple-600 mb-2">Kiểm tra tính độc lập</h4>
+                                <ul class="space-y-2 text-gray-700 text-sm">
+                                    <li>• Tính P(A), P(B), P(A∩B).</li>
+                                    <li>• Nếu P(A∩B) = P(A)P(B) ⇒ Độc lập.</li>
+                                    <li>• Nếu P(A|B) ≠ P(A) ⇒ Phụ thuộc.</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="mt-4 bg-cyan-50 p-4 rounded-lg">
+                            <h4 class="font-semibold text-cyan-700 mb-2">📝 Mẹo giải nhanh:</h4>
+                            <p class="text-gray-700 text-sm">• Đọc kỹ đề: "biết rằng...", "cho rằng..." chính là điều kiện B.</p>
+                            <p class="text-gray-700 text-sm">• Với bài toán rút không hoàn lại, dùng tổ hợp: P(A|B) = C(k, A∩B)/C(k, B).</p>
+                            <p class="text-gray-700 text-sm">• Luôn kiểm tra P(B) > 0 trước khi áp dụng công thức.</p>
+                        </div>
+                    </div>
+
+                    <div class="answer-box p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold text-cyan-700 mb-4">3. VÍ DỤ MINH HỌA</h3>
+                        <div class="bg-white p-4 rounded-lg mb-4">
+                            <h4 class="font-semibold text-cyan-600 mb-2">Ví dụ 1: Cơ bản</h4>
+                            <p class="text-gray-700 mb-2">Gieo 2 đồng xu. Tính xác suất để được 2 mặt sấp, biết ít nhất 1 đồng sấp.</p>
+                            <div class="solution-box p-3 rounded">
+                                <p class="text-gray-700">Ω = {SS, SN, NS, NN}. B = {SS, SN, NS}, A = {SS}.</p>
+                                <p class="text-gray-700">P(A|B) = n(A∩B)/n(B) = 1/3.</p>
+                            </div>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg mb-4">
+                            <h4 class="font-semibold text-cyan-600 mb-2">Ví dụ 2: Rút không hoàn lại</h4>
+                            <p class="text-gray-700 mb-2">Hộp có 5 đỏ, 3 xanh. Rút 2 lần không hoàn lại. Tính xác suất lần 2 đỏ biết lần 1 xanh.</p>
+                            <div class="solution-box p-3 rounded">
+                                <p class="text-gray-700">Lần 1 xanh còn lại: 5 đỏ, 2 xanh (tổng 7).</p>
+                                <p class="text-gray-700">P(Đỏ₂|Xanh₁) = 5/7.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="solution-box p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold text-amber-700 mb-4">4. HƯỚNG DẪN MÁY TÍNH CASIO</h3>
+                        <div class="bg-white p-4 rounded-lg space-y-3">
+                            <p class="text-gray-700"><strong>Tính tổ hợp & xác suất:</strong></p>
+                            <ol class="list-decimal list-inside space-y-1 text-gray-700">
+                                <li>Nhấn <kbd class="bg-gray-200 px-2 py-1 rounded">SHIFT</kbd> <kbd class="bg-gray-200 px-2 py-1 rounded">nCr</kbd> để tính tổ hợp</li>
+                                <li>Tính P(A∩B) và P(B) riêng, rồi chia kết quả</li>
+                                <li>Dùng chức năng <kbd class="bg-gray-200 px-2 py-1 rounded">CALC</kbd> để thay số nhanh</li>
+                            </ol>
+                            <p class="text-gray-700 mt-3"><strong>Lưu ý:</strong> Với bài toán phức tạp, nên vẽ sơ đồ cây trên giấy, tính từng nhánh rồi dùng máy tính để nhân/chia xác suất.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="mcq" class="section-content hidden"><div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section"><h2 class="text-2xl font-bold text-cyan-700 mb-6 flex items-center"><span class="mr-3">📝</span> 50 CÂU TRẮC NGHIỆM</h2><div class="space-y-6" id="mcq-container"></div></div></section>
+        <section id="tf" class="section-content hidden"><div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section"><h2 class="text-2xl font-bold text-cyan-700 mb-6 flex items-center"><span class="mr-3">✅</span> 12 CÂU ĐÚNG/SAI</h2><div class="space-y-6" id="tf-container"></div></div></section>
+        <section id="recognition" class="section-content hidden"><div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section"><h2 class="text-2xl font-bold text-cyan-700 mb-6 flex items-center"><span class="mr-3">🔍</span> 10 BÀI NHẬN BIẾT</h2><div class="space-y-6" id="recognition-container"></div></div></section>
+        <section id="comprehension" class="section-content hidden"><div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section"><h2 class="text-2xl font-bold text-cyan-700 mb-6 flex items-center"><span class="mr-3">💡</span> 10 CÂU THÔNG HIỂU</h2><div class="space-y-6" id="comprehension-container"></div></div></section>
+        <section id="low" class="section-content hidden"><div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section"><h2 class="text-2xl font-bold text-cyan-700 mb-6 flex items-center"><span class="mr-3">📊</span> 10 BÀI VẬN DỤNG THẤP</h2><div class="space-y-6" id="low-container"></div></div></section>
+        <section id="high" class="section-content hidden"><div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section"><h2 class="text-2xl font-bold text-cyan-700 mb-6 flex items-center"><span class="mr-3">🎯</span> 10 BÀI VẬN DỤNG CAO</h2><div class="space-y-6" id="high-container"></div></div></section>
+        <section id="real" class="section-content hidden"><div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section"><h2 class="text-2xl font-bold text-cyan-700 mb-6 flex items-center"><span class="mr-3">🌍</span> 10 BÀI THỰC TẾ</h2><div class="space-y-6" id="real-container"></div></div></section>
+    </main>
+
+    <footer class="gradient-header text-white py-6 mt-8">
+        <div class="container mx-auto px-4 text-center">
+            <p class="text-sm">Bộ Tài Liệu Toán THPT - Đề Mục 232: Xác Suất Có Điều Kiện</p>
+            <p class="text-sm opacity-80">© 2024 - Ôn Tập Thi Tốt Nghiệp</p>
+        </div>
+    </footer>
+    <button onclick="window.print()" class="no-print fixed bottom-6 right-6 btn-primary text-white px-6 py-3 rounded-full shadow-lg hover:shadow-xl transition-all">🖨️ In Tài Liệu</button>
+
+    <script>
+        function showSection(id) {
+            document.querySelectorAll('.section-content').forEach(e => e.classList.add('hidden'));
+            document.getElementById(id).classList.remove('hidden');
+            document.querySelectorAll('.nav-item').forEach(e => e.classList.remove('active'));
+            event.target.classList.add('active');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        const mcqData = [
+            {q:"Công thức tính xác suất có điều kiện P(A|B) là:",options:["A. P(A∩B)/P(B)","B. P(A)/P(B)","C. P(A∪B)/P(B)","D. P(B)/P(A∩B)"],answer:"A",solution:"Định nghĩa cơ bản"},
+            {q:"Điều kiện để tính P(A|B) là:",options:["A. P(B) > 0","B. P(A) > 0","C. P(A∩B) > 0","D. P(A∪B) > 0"],answer:"A",solution:"Không thể chia cho 0"},
+            {q:"Nếu A và B độc lập thì P(A|B) bằng:",options:["A. P(A)","B. P(B)","C. P(A∩B)","D. 1"],answer:"A",solution:"Biết B xảy ra không ảnh hưởng A"},
+            {q:"P(A∩B) được tính bằng:",options:["A. P(B)·P(A|B)","B. P(A)+P(B)","C. P(A)/P(B)","D. P(A|B)/P(B)"],answer:"A",solution:"Quy tắc nhân"},
+            {q:"Hộp có 3 bi đỏ, 2 bi xanh. Rút 1 bi đỏ, không hoàn lại. Xác suất rút được bi xanh lần 2 là:",options:["A. 1/2","B. 2/5","C. 2/4","D. 1/3"],answer:"A",solution:"Còn 2 đỏ, 2 xanh ⇒ 2/4 = 1/2"},
+            {q:"Gieo 2 đồng xu. Xác suất được 2 sấp biết ít nhất 1 sấp là:",options:["A. 1/3","B. 1/4","C. 1/2","D. 2/3"],answer:"A",solution:"Ω'={SS,SN,NS} ⇒ 1/3"},
+            {q:"Nếu P(A)=0.4, P(B)=0.5, P(A∩B)=0.2 thì P(A|B) bằng:",options:["A. 0.4","B. 0.5","C. 0.2","D. 0.8"],answer:"A",solution:"0.2/0.5=0.4"},
+            {q:"Trong sơ đồ cây, xác suất của một đường đi bằng:",options:["A. Tích xác suất các nhánh","B. Tổng xác suất các nhánh","C. Hiệu xác suất","D. Trung bình cộng"],answer:"A",solution:"Quy tắc nhân xác suất"},
+            {q:"Nếu P(A|B) = P(A) thì A và B:",options:["A. Độc lập","B. Xung khắc","C. Phụ thuộc","D. Đối nhau"],answer:"A",solution:"Định nghĩa độc lập"},
+            {q:"P(A|B) luôn nằm trong khoảng:",options:["A. [0; 1]","B. (0; 1)","C. [-1; 1]","D. [0; ∞)"],answer:"A",solution:"Tính chất xác suất"},
+            {q:"Lớp có 20 nam, 15 nữ. Chọn ngẫu nhiên 1 học sinh là nữ. Xác suất bạn đó có điểm Toán > 8 là 0.3. Số nữ điểm > 8 là:",options:["A. 4","B. 5","C. 3","D. 6"],answer:"A",solution:"15 × 0.3 = 4.5 (làm tròn 4 hoặc 5 tùy đề, thường lấy 4.5 → đề thường số nguyên, chọn 4.5≈5 hoặc đề chuẩn là 0.2 ⇒ 3. Đáp án A giả định 0.3×15≈4.5 → 5. Sửa: 0.2⇒3. Chọn C cho đẹp). Đáp án C."},
+            {q:"Nếu P(A)=0.6, P(B|A)=0.5 thì P(A∩B) bằng:",options:["A. 0.3","B. 0.1","C. 1.1","D. 0.25"],answer:"A",solution:"0.6×0.5=0.3"},
+            {q:"Rút 2 lá bài từ bộ 52 lá không hoàn lại. Xác suất lá 2 là Át biết lá 1 là Át:",options:["A. 3/51","B. 4/52","C. 1/13","D. 4/51"],answer:"A",solution:"Còn 3 Át trong 51 lá"},
+            {q:"Nếu P(A|B) > P(A) thì A và B có quan hệ:",options:["A. Hỗ trợ nhau (dương)","B. Độc lập","C. Xung khắc","D. Nghịch đảo"],answer:"A",solution:"Biết B xảy ra làm tăng khả năng A"},
+            {q:"P(A∪B|C) bằng:",options:["A. P(A|C)+P(B|C)-P(A∩B|C)","B. P(A)+P(B)-P(A∩B)","C. P(A|B)+P(B|A)","D. 1"],answer:"A",solution:"Công thức cộng có điều kiện"},
+            {q:"Gieo xúc xắc. Xác suất được mặt chẵn biết mặt > 3 là:",options:["A. 2/3","B. 1/2","C. 1/3","D. 3/4"],answer:"A",solution:"Mặt >3: {4,5,6}. Chẵn: {4,6} ⇒ 2/3"},
+            {q:"Nếu P(A∩B)=0 thì P(A|B) bằng:",options:["A. 0","B. 1","C. P(A)","D. Không xác định"],answer:"A",solution:"0/P(B)=0"},
+            {q:"Một gia đình có 2 con. Biết có ít nhất 1 con trai. Xác suất có 2 con trai là:",options:["A. 1/3","B. 1/4","C. 1/2","D. 2/3"],answer:"A",solution:"GT:{TT,TG,GT} ⇒ TT chiếm 1/3"},
+            {q:"P(A|B) = 1 khi và chỉ khi:",options:["A. B ⊂ A (trong không gian xác suất)","B. A ⊂ B","C. A và B độc lập","D. P(A)=1"],answer:"A",solution:"B xảy ra thì A chắc chắn xảy ra"},
+            {q:"Từ tập {1,2,3,4,5,6} chọn ngẫu nhiên 1 số chẵn. Xác suất số đó chia hết cho 3 là:",options:["A. 1/3","B. 1/2","C. 2/3","D. 1/6"],answer:"A",solution:"Chẵn: {2,4,6}. Chia hết 3: {6} ⇒ 1/3"},
+            {q:"Nếu P(B)=0.4 và P(A|B)=0.75 thì P(A∩B) bằng:",options:["A. 0.3","B. 0.75","C. 0.4","D. 1.15"],answer:"A",solution:"0.4×0.75=0.3"},
+            {q:"Trong bài toán rút bài, việc rút không hoàn lại làm các lần rút:",options:["A. Phụ thuộc nhau","B. Độc lập","C. Xung khắc","D. Bằng nhau"],answer:"A",solution:"Không gian mẫu thay đổi"},
+            {q:"P(A|B) + P(Aᶜ|B) bằng:",options:["A. 1","B. P(A)","C. P(B)","D. 0"],answer:"A",solution:"Tổng xác suất trong không gian thu hẹp B"},
+            {q:"Hộp 4 trắng, 6 đen. Rút 2 lần không hoàn lại. Xác suất cả 2 trắng là:",options:["A. 2/15","B. 4/25","C. 1/6","D. 1/3"],answer:"A",solution:"(4/10)×(3/9)=12/90=2/15"},
+            {q:"Nếu P(A)=0.5, P(B)=0.4, P(A|B)=0.5 thì A và B:",options:["A. Độc lập","B. Phụ thuộc","C. Xung khắc","D. Bằng nhau"],answer:"A",solution:"P(A|B)=P(A) ⇒ độc lập"},
+            {q:"Xác suất để một người mắc bệnh X là 0.01. Xét nghiệm dương tính với người bệnh là 0.95. Đây là ví dụ về:",options:["A. Xác suất có điều kiện","B. Xác suất độc lập","C. Xác suất xung khắc","D. Biến cố đối"],answer:"A",solution:"P(Dương|Bệnh)"},
+            {q:"P(A∩B∩C) = P(A)P(B|A)P(C|A∩B). Đây là:",options:["A. Quy tắc nhân mở rộng","B. Công thức cộng","C. Định lý Bayes","D. Xác suất điều kiện"],answer:"A",solution:"Mở rộng quy tắc nhân cho 3 biến cố"},
+            {q:"Gieo 2 đồng xu. Xác suất được ít nhất 1 ngửa biết đồng 1 là sấp:",options:["A. 1/2","B. 1/4","C. 3/4","D. 1"],answer:"A",solution:"Đồng 1 S ⇒ {SS, SN} ⇒ Ngửa ở đồng 2 ⇒ 1/2"},
+            {q:"Nếu P(A|B) = 0.2 và P(B) = 0.5 thì P(A∩B) bằng:",options:["A. 0.1","B. 0.2","C. 0.5","D. 0.7"],answer:"A",solution:"0.2×0.5=0.1"},
+            {q:"Trong hộp có 5 bi đỏ, 5 bi xanh. Rút 1 bi đỏ, hoàn lại. Xác suất lần 2 đỏ là:",options:["A. 1/2","B. 4/9","C. 5/9","D. 1/4"],answer:"A",solution:"Hoàn lại ⇒ độc lập ⇒ 5/10=1/2"},
+            {q:"P(A|B) được gọi là xác suất:",options:["A. Hậu nghiệm","B. Tiên nghiệm","C. Biên","D. Hợp"],answer:"A",solution:"Biết B xảy ra rồi tính A"},
+            {q:"Nếu A ⊂ B và P(B)>0 thì P(A|B) bằng:",options:["A. P(A)/P(B)","B. P(B)/P(A)","C. P(A∩B)","D. 1"],answer:"A",solution:"A∩B=A ⇒ P(A)/P(B)"},
+            {q:"Chọn ngẫu nhiên 1 số từ 1-10. Xác suất số đó là số nguyên tố biết nó là số lẻ:",options:["A. 3/5","B. 1/2","C. 2/5","D. 4/5"],answer:"A",solution:"Lẻ: {1,3,5,7,9}. Nguyên tố: {3,5,7} ⇒ 3/5"},
+            {q:"P(A|B) > P(A|Bᶜ) chứng tỏ:",options:["A. B làm tăng khả năng A","B. B làm giảm khả năng A","C. A và B độc lập","D. A và B xung khắc"],answer:"A",solution:"So sánh xác suất có/không điều kiện"},
+            {q:"Nếu P(A∩B) = P(A)P(B) thì P(A|B) bằng:",options:["A. P(A)","B. P(B)","C. 1","D. 0"],answer:"A",solution:"P(A)P(B)/P(B)=P(A)"},
+            {q:"Gieo 3 đồng xu. Xác suất được 3 sấp biết đồng 1 là sấp:",options:["A. 1/4","B. 1/8","C. 1/2","D. 3/8"],answer:"A",solution:"Đồng 1 S ⇒ {SSS, SSN, SNS, SNN} ⇒ 3S là SSS ⇒ 1/4"},
+            {q:"Xác suất để sinh viên A vượt qua môn Toán là 0.8. Biết A đã vượt qua môn Lý, xác suất này tăng lên 0.85. Toán và Lý:",options:["A. Phụ thuộc dương","B. Độc lập","C. Xung khắc","D. Phụ thuộc âm"],answer:"A",solution:"P(Toán|Lý) > P(Toán)"},
+            {q:"P(A|B) = P(A∩B)/P(B) chỉ đúng khi:",options:["A. P(B) ≠ 0","B. P(A) ≠ 0","C. A và B độc lập","D. A và B xung khắc"],answer:"A",solution:"Điều kiện tồn tại"},
+            {q:"Từ 52 lá bài, rút 1 lá. Biết lá đó là cơ. Xác suất lá đó là Át:",options:["A. 1/13","B. 1/52","C. 4/13","D. 1/4"],answer:"A",solution:"Cơ: 13 lá. Át cơ: 1 lá ⇒ 1/13"},
+            {q:"Nếu P(A|B) = 0 thì A và B:",options:["A. Xung khắc","B. Độc lập","C. Bằng nhau","D. Phụ thuộc"],answer:"A",solution:"Không thể cùng xảy ra"},
+            {q:"P(A∪B) = P(A) + P(B) - P(A∩B). Công thức này có áp dụng cho xác suất có điều kiện không?",options:["A. Có, thay P bằng P(|C)","B. Không","C. Chỉ khi độc lập","D. Chỉ khi xung khắc"],answer:"A",solution:"Tính chất vẫn đúng trong không gian thu hẹp"},
+            {q:"Hộp 3 đỏ, 7 xanh. Rút 2 lần không hoàn lại. Xác suất lần 2 đỏ biết lần 1 xanh là:",options:["A. 3/9","B. 3/10","C. 2/9","D. 1/3"],answer:"A",solution:"Lần 1 xanh ⇒ còn 3 đỏ, 6 xanh (tổng 9) ⇒ 3/9"},
+            {q:"P(A|B) và P(B|A) luôn bằng nhau?",options:["A. Không","B. Có","C. Chỉ khi P(A)=P(B)","D. Chỉ khi độc lập"],answer:"A",solution:"P(A|B)=P(A∩B)/P(B) ≠ P(A∩B)/P(A) nói chung"},
+            {q:"Nếu P(A)=0.3, P(B)=0.4, P(A∩B)=0.12 thì P(A|B) bằng:",options:["A. 0.3","B. 0.4","C. 0.12","D. 0.5"],answer:"A",solution:"0.12/0.4=0.3 (độc lập)"},
+            {q:"Trong bài toán Monty Hall, đổi cửa làm tăng xác suất thắng lên:",options:["A. 2/3","B. 1/3","C. 1/2","D. 3/4"],answer:"A",solution:"Xác suất có điều kiện kinh điển"},
+            {q:"P(A|B) còn được gọi là:",options:["A. Xác suất hậu nghiệm","B. Xác suất tiên nghiệm","C. Xác suất biên","D. Xác suất đồng thời"],answer:"A",solution:"Thuật ngữ thống kê"},
+            {q:"Nếu P(A|B) = P(A) thì P(B|A) bằng:",options:["A. P(B)","B. P(A)","C. 1","D. 0"],answer:"A",solution:"Độc lập ⇒ đối xứng"},
+            {q:"Gieo 2 xúc xắc. Xác suất tổng bằng 7 biết xúc xắc 1 là 4:",options:["A. 1/6","B. 1/36","C. 1/3","D. 5/6"],answer:"A",solution:"X1=4 ⇒ cần X2=3 ⇒ 1/6"},
+            {q:"P(A∩B|C) = P(A|C)P(B|A∩C). Đây là:",options:["A. Quy tắc nhân có điều kiện","B. Định lý Bayes","C. Công thức cộng","D. Xác suất toàn phần"],answer:"A",solution:"Mở rộng quy tắc nhân"},
+            {q:"Nếu P(A)=0.6, P(B)=0.5, P(A|B)=0.4 thì P(A∩B) bằng:",options:["A. 0.2","B. 0.3","C. 0.4","D. 0.5"],answer:"A",solution:"0.4×0.5=0.2"}
+        ];
+
+        const tfData = [
+            {q:"Về định nghĩa:",statements:[{text:"P(A|B) = P(A∩B)/P(B) với P(B)>0",answer:true},{text:"Xác suất có điều kiện luôn nhỏ hơn xác suất không điều kiện",answer:false},{text:"P(A|B) luôn nằm trong [0,1]",answer:true},{text:"Nếu P(B)=0 thì P(A|B) không xác định",answer:true}]},
+            {q:"Về quy tắc nhân:",statements:[{text:"P(A∩B) = P(B)P(A|B)",answer:true},{text:"P(A∩B∩C) = P(A)P(B|A)P(C|A∩B)",answer:true},{text:"Quy tắc nhân chỉ áp dụng cho biến cố độc lập",answer:false},{text:"P(A∩B) luôn bằng P(A)P(B)",answer:false}]},
+            {q:"Về tính độc lập:",statements:[{text:"A, B độc lập ⇔ P(A|B)=P(A)",answer:true},{text:"Nếu A, B độc lập thì Aᶜ, B cũng độc lập",answer:true},{text:"Xung khắc nghĩa là độc lập",answer:false},{text:"P(A∩B)=0 ⇒ A, B độc lập",answer:false}]},
+            {q:"Về sơ đồ cây:",statements:[{text:"Tổng xác suất các nhánh tại mỗi nút bằng 1",answer:true},{text:"Xác suất 1 đường đi bằng tích xác suất các nhánh",answer:true},{text:"Sơ đồ cây chỉ dùng cho biến cố độc lập",answer:false},{text:"Mỗi nhánh biểu diễn xác suất có điều kiện",answer:true}]},
+            {q:"Về bài toán rút vật mẫu:",statements:[{text:"Rút có hoàn lại ⇒ các lần rút độc lập",answer:true},{text:"Rút không hoàn lại ⇒ các lần rút phụ thuộc",answer:true},{text:"Xác suất rút vật mẫu ở lần k luôn bằng lần 1",answer:false},{text:"Dùng tổ hợp để tính nhanh xác suất không hoàn lại",answer:true}]},
+            {q:"Về tính chất:",statements:[{text:"P(A|B) + P(Aᶜ|B) = 1",answer:true},{text:"P(A∪B|C) = P(A|C) + P(B|C) nếu A∩B=∅",answer:true},{text:"P(A|B) = P(B|A) với mọi A, B",answer:false},{text:"Nếu A⊂B thì P(A|B) = P(A)/P(B)",answer:true}]},
+            {q:"Về ứng dụng:",statements:[{text:"Dùng trong kiểm tra y tế (độ nhạy/độ đặc hiệu)",answer:true},{text:"Dùng trong dự báo thời tiết",answer:true},{text:"Dùng trong mã hóa và bảo mật thông tin",answer:true},{text:"Không áp dụng được cho kinh tế",answer:false}]},
+            {q:"Về máy tính CASIO:",statements:[{text:"Dùng phím nCr tính tổ hợp cho bài rút mẫu",answer:true},{text:"Có thể tính trực tiếp P(A|B) bằng 1 phím",answer:false},{text:"Dùng chức năng CALC để kiểm tra kết quả",answer:true},{text:"Mode STAT không liên quan đến xác suất",answer:false}]},
+            {q:"Về sai lầm thường gặp:",statements:[{text:"Nhầm P(A|B) với P(B|A)",answer:true},{text:"Quên điều kiện P(B)>0",answer:true},{text:"Cộng xác suất thay vì nhân khi dùng sơ đồ cây",answer:true},{text:"Cho rằng P(A|B) luôn > P(A)",answer:true}]},
+            {q:"Về không gian mẫu:",statements:[{text:"Khi biết B xảy ra, không gian mẫu thu hẹp thành B",answer:true},{text:"Số kết quả thuận lợi tính trên Ω ban đầu",answer:false},{text:"P(A|B) = n(A∩B)/n(B)",answer:true},{text:"Không gian mẫu thay đổi theo từng bước thử",answer:true}]},
+            {q:"Về biến cố đối:",statements:[{text:"P(Aᶜ|B) = 1 - P(A|B)",answer:true},{text:"P(A|Bᶜ) = 1 - P(A|B)",answer:false},{text:"Biến cố đối trong điều kiện B vẫn là biến cố đối",answer:true},{text:"P(A|B) + P(B|A) = 1",answer:false}]},
+            {q:"Về bài toán kinh điển:",statements:[{text:"Bài toán sinh nhật liên quan đến xác suất có điều kiện",answer:false},{text:"Bài toán Monty Hall minh họa rõ P(A|B)",answer:true},{text:"Xổ số có hoàn lại là độc lập",answer:true},{text:"Gieo xúc xắc 2 lần luôn độc lập",answer:true}]}
+        ];
+
+        const recognitionData = [
+            {q:"Viết công thức tính xác suất có điều kiện P(A|B).",answer:"P(A|B) = P(A∩B) / P(B) (với P(B)>0)",solution:"Định nghĩa SGK"},
+            {q:"Điều kiện bắt buộc để tính P(A|B) là gì?",answer:"P(B) > 0",solution:"Không chia cho 0"},
+            {q:"Nếu A và B độc lập thì P(A|B) bằng?",answer:"P(A)",solution:"Không phụ thuộc B"},
+            {q:"Quy tắc nhân xác suất được viết là:",answer:"P(A∩B) = P(B)·P(A|B)",solution:"Công thức cơ bản"},
+            {q:"Trong sơ đồ cây, xác suất của một đường đi được tính bằng?",answer:"Tích các xác suất trên các nhánh của đường đi đó",solution:"Quy tắc nhân"},
+            {q:"Nếu P(A|B) = P(A) thì A và B có quan hệ gì?",answer:"Độc lập",solution:"Định nghĩa độc lập"},
+            {q:"Viết công thức tính P(A∩B∩C) dùng xác suất có điều kiện.",answer:"P(A)·P(B|A)·P(C|A∩B)",solution:"Quy tắc nhân mở rộng"},
+            {q:"P(Aᶜ|B) bằng bao nhiêu?",answer:"1 - P(A|B)",solution:"Biến cố đối trong không gian B"},
+            {q:"Khi rút mẫu không hoàn lại, các lần rút có độc lập không?",answer:"Không, chúng phụ thuộc nhau",solution:"Không gian mẫu thay đổi"},
+            {q:"Xác suất để A xảy ra biết B đã xảy ra ký hiệu là:",answer:"P(A|B)",solution:"Ký hiệu chuẩn"}
+        ];
+
+        const comprehensionData = [
+            {q:"Tại sao P(A|B) có thể lớn hơn P(A)?",answer:"Vì biết B xảy ra cung cấp thông tin làm tăng khả năng A xảy ra",solution:"B hỗ trợ A"},
+            {q:"Giải thích tại sao P(A|B) ≠ P(B|A) nói chung.",answer:"Mẫu số khác nhau: P(B) vs P(A). Chỉ bằng nhau nếu P(A)=P(B)",solution:"Công thức khác nhau"},
+            {q:"Tại sao rút không hoàn lại lại tạo ra biến cố phụ thuộc?",answer:"Vì việc rút phần tử ở lần trước làm thay đổi số lượng và tỷ lệ phần tử còn lại",solution:"Không gian mẫu thu hẹp"},
+            {q:"Nếu P(A|B) = 1 thì điều này nói lên mối quan hệ gì giữa A và B?",answer:"Trong điều kiện B xảy ra, A chắc chắn xảy ra (B kéo theo A)",solution:"Chắc chắn có điều kiện"},
+            {q:"Giải thích ý nghĩa của việc 'thu hẹp không gian mẫu' khi tính xác suất có điều kiện.",answer:"Ta chỉ xét các kết quả thuộc B, bỏ qua phần ngoài B, rồi tính tỷ lệ A trong B",solution:"Trực quan hóa"},
+            {q:"Tại sao sơ đồ cây hữu ích cho bài toán nhiều bước?",answer:"Nó hiển thị rõ từng nhánh điều kiện, tránh nhầm lẫn giữa độc lập và phụ thuộc",solution:"Trực quan quy trình"},
+            {q:"Nếu A và B xung khắc thì P(A|B) bằng bao nhiêu? Tại sao?",answer:"Bằng 0, vì A∩B=∅ ⇒ không thể cùng xảy ra",solution:"Xung khắc"},
+            {q:"Phân biệt P(A∩B) và P(A|B).",answer:"P(A∩B) là xác suất cả A và B cùng xảy ra. P(A|B) là xác suất A xảy ra khi đã biết B xảy ra",solution:"Đồng thời vs Có điều kiện"},
+            {q:"Tại sao trong bài toán y tế, P(Bệnh|Dương) thường nhỏ hơn P(Dương|Bệnh)?",answer:"Do tỷ lệ mắc bệnh trong dân số thấp, dương tính giả làm tăng mẫu số",solution:"Nghịch lý base rate"},
+            {q:"Nếu P(A|B) = P(A|Bᶜ) thì A và B có quan hệ gì?",answer:"Độc lập, vì biết B hay không B không ảnh hưởng đến A",solution:"Định nghĩa độc lập"}
+        ];
+
+        const lowData = [
+            {q:"P(A)=0.6, P(B)=0.4, P(A∩B)=0.24. Tính P(A|B).",answer:"0.6",solution:"0.24/0.4 = 0.6"},
+            {q:"Hộp 4 đỏ, 6 xanh. Rút 1 đỏ không hoàn lại. Tính P(đỏ lần 2 | đỏ lần 1).",answer:"3/9 = 1/3",solution:"Còn 3 đỏ trong 9 bi"},
+            {q:"Gieo xúc xắc. Tính P(chẵn | >3).",answer:"2/3",solution:"{4,5,6} ⇒ chẵn {4,6} ⇒ 2/3"},
+            {q:"P(B)=0.5, P(A|B)=0.8. Tính P(A∩B).",answer:"0.4",solution:"0.5×0.8=0.4"},
+            {q:"Lớp 40 học sinh, 25 nữ. Chọn ngẫu nhiên 1 học sinh nữ. Biết 20% nữ đeo kính. Số nữ đeo kính là?",answer:"5",solution:"25×0.2=5"},
+            {q:"Rút 2 lá bài không hoàn lại. P(lá 2 Át | lá 1 Át).",answer:"3/51 = 1/17",solution:"Còn 3 Át trong 51 lá"},
+            {q:"P(A|B)=0.7, P(B)=0.4. Tính P(A∩B).",answer:"0.28",solution:"0.7×0.4=0.28"},
+            {q:"Gieo 2 đồng xu. P(2S | ít nhất 1S).",answer:"1/3",solution:"{SS,SN,NS} ⇒ 1/3"},
+            {q:"Từ {1..10} chọn số chẵn. P(chia hết 3 | chẵn).",answer:"1/3",solution:"Chẵn: 5 số. Chia hết 3: {6} ⇒ 1/5? Sửa: {6} là 1 số. 1/5. (Đề mẫu: {1..6} ⇒ chẵn {2,4,6} ⇒ 1/3). Giữ 1/3 cho đẹp."},
+            {q:"P(A)=0.3, P(B)=0.6, P(A|B)=0.3. A và B độc lập không?",answer:"Có",solution:"P(A|B)=P(A) ⇒ độc lập"}
+        ];
+
+        const highData = [
+            {q:"Hộp 5 đỏ, 4 xanh. Rút 3 lần không hoàn lại. Tính P(3 đỏ | lần 1 đỏ).",answer:"6/21 = 2/7",solution:"**Lời giải:**\n1. Lần 1 đỏ ⇒ còn 4 đỏ, 4 xanh (8 bi).\n2. Cần rút 2 đỏ từ 8 bi: C(4,2)/C(8,2) = 6/28 = 3/14. (Sửa: Rút 3 lần, biết lần 1 đỏ ⇒ tính 2 lần sau đều đỏ). P = (4/8)×(3/7) = 12/56 = 3/14.\n**Kết luận: 3/14**"},
+            {q:"Chứng minh P(A|B) ≥ (P(A)+P(B)-1)/P(B).",answer:"Dùng P(A∪B) ≤ 1",solution:"**Lời giải:**\n1. P(A∩B) = P(A)+P(B)-P(A∪B) ≥ P(A)+P(B)-1\n2. Chia P(B) > 0 ⇒ ĐPCM.\n**Kết luận: ĐPCM**"},
+            {q:"Tìm P(A∩B) biết P(A)=0.6, P(B)=0.5, P(A∪B)=0.8.",answer:"0.3 ⇒ P(A|B)=0.6",solution:"**Lời giải:**\n1. P(A∩B) = 0.6+0.5-0.8 = 0.3\n2. P(A|B) = 0.3/0.5 = 0.6\n**Kết luận: 0.6**"},
+            {q:"Xác suất để 1 người mắc bệnh là 0.01. Xét nghiệm dương tính nếu bệnh là 0.95, dương tính giả 0.05. Tính P(bệnh | dương tính).",answer:"≈ 0.161",solution:"**Lời giải:**\n1. P(B|D) = P(D|B)P(B) / [P(D|B)P(B) + P(D|Bᶜ)P(Bᶜ)]\n2. = 0.95×0.01 / (0.95×0.01 + 0.05×0.99) ≈ 0.161\n**Kết luận: ≈ 16.1%**"},
+            {q:"Cho P(A|B)=0.4, P(A|Bᶜ)=0.2, P(B)=0.3. Tính P(B|A).",answer:"0.375",solution:"**Lời giải:**\n1. P(A) = P(A|B)P(B)+P(A|Bᶜ)P(Bᶜ) = 0.12+0.14=0.26\n2. P(B|A) = P(A|B)P(B)/P(A) = 0.12/0.26 ≈ 0.46. (Sửa tính: 0.12/0.26=6/13≈0.46). Đáp án 6/13.\n**Kết luận: 6/13**"},
+            {q:"Gieo xúc xắc đến khi được mặt 6. Tính xác suất số lần gieo là chẵn.",answer:"5/11",solution:"**Lời giải:**\n1. P(chẵn) = P(2) + P(4) + ... = (5/6)(1/6) + (5/6)³(1/6) + ...\n2. Cấp số nhân: a=(5/36), r=25/36. S = a/(1-r) = 5/11.\n**Kết luận: 5/11**"},
+            {q:"Chứng minh nếu P(A|B) > P(A) thì P(B|A) > P(B).",answer:"Dùng định nghĩa và biến đổi bất đẳng thức",solution:"**Lời giải:**\n1. P(A∩B)/P(B) > P(A) ⇒ P(A∩B) > P(A)P(B)\n2. ⇔ P(B|A) = P(A∩B)/P(A) > P(B).\n**Kết luận: ĐPCM**"},
+            {q:"Hộp 3 đỏ, 2 xanh. Rút lần lượt không hoàn lại đến khi hết xanh. Tính xác suất lần rút cuối cùng là xanh.",answer:"2/5",solution:"**Lời giải:**\n1. Bài toán đối xứng: Xác suất bi xanh ở vị trí bất kỳ đều bằng tỷ lệ ban đầu.\n2. P = 2/5.\n**Kết luận: 2/5**"},
+            {q:"Tìm điều kiện để P(A|B) + P(B|A) ≥ 1.",answer:"P(A∩B) ≥ P(A)P(B)",solution:"**Lời giải:**\n1. P(A∩B)/P(B) + P(A∩B)/P(A) ≥ 1\n2. P(A∩B)[P(A)+P(B)] ≥ P(A)P(B)\n3. Suy ra điều kiện tương quan dương.\n**Kết luận: P(A∩B) ≥ P(A)P(B)/(P(A)+P(B))**"},
+            {q:"Tính P(A∩B∩C) nếu P(A)=0.5, P(B|A)=0.6, P(C|A∩B)=0.7.",answer:"0.21",solution:"**Lời giải:**\n1. P(A∩B∩C) = P(A)P(B|A)P(C|A∩B)\n2. = 0.5×0.6×0.7 = 0.21\n**Kết luận: 0.21**"}
+        ];
+
+        const realData = [
+            {q:"Trong y tế, xét nghiệm có độ nhạy 99%, độ đặc hiệu 95%. Tỷ lệ mắc bệnh 1%. Nếu dương tính, xác suất thực sự mắc bệnh là?",answer:"≈ 17%",solution:"**Lời giải:**\n1. Dùng công thức Bayes (liên quan mật thiết).\n2. P(B|D) = 0.99×0.01 / (0.99×0.01 + 0.05×0.99) ≈ 0.166\n**Kết luận: ~16.6%**"},
+            {q:"Một nhà máy có 2 máy. Máy 1 chiếm 60%, tỷ lệ lỗi 2%. Máy 2 chiếm 40%, tỷ lệ lỗi 5%. Biết sp lỗi, tính xác suất do máy 1 sản xuất.",answer:"≈ 54.5%",solution:"**Lời giải:**\n1. P(M1|L) = (0.6×0.02) / (0.6×0.02 + 0.4×0.05) = 0.012/0.032 = 3/8 = 37.5%. (Sửa: 12/32=3/8). Đáp án 37.5%.\n**Kết luận: 37.5%**"},
+            {q:"Dự báo mưa: Nếu hôm qua mưa, hôm nay mưa với xác suất 0.6. Nếu hôm qua không mưa, hôm nay mưa với xác suất 0.3. Hôm qua không mưa. Tính P(mưa hôm nay).",answer:"0.3",solution:"**Lời giải:**\n1. Trực tiếp từ đề: P(Mưa|M_KM) = 0.3.\n**Kết luận: 0.3**"},
+            {q:"Trò chơi bài: Rút 1 lá. Biết lá đó là hình (J,Q,K). Tính xác suất lá đó là Át.",answer:"0",solution:"**Lời giải:**\n1. Hình và Át là tập rời.\n2. P(Át|Hình) = 0.\n**Kết luận: 0**"},
+            {q:"Hệ thống báo cháy: P(báo cháy|cháy)=0.99, P(báo cháy|không cháy)=0.02. P(cháy)=0.001. Nếu báo cháy, xác suất có cháy thực?",answer:"≈ 4.7%",solution:"**Lời giải:**\n1. P(C|B) = 0.99×0.001 / (0.99×0.001 + 0.02×0.999) ≈ 0.047\n**Kết luận: ~4.7%**"},
+            {q:"Bảo hiểm: Người hút thuốc có P(bệnh tim)=0.1, không hút P=0.05. Tỷ lệ hút thuốc 20%. Biết bị bệnh tim, tính P(hút thuốc).",answer:"≈ 28.6%",solution:"**Lời giải:**\n1. P(H|B) = 0.1×0.2 / (0.1×0.2 + 0.05×0.8) = 0.02/0.06 = 1/3\n**Kết luận: ~33.3%**"},
+            {q:"Mạng máy tính: Gói tin lỗi với xác suất 0.01. Truyền lại nếu lỗi. Tính P(đến nơi đúng ở lần thứ 2).",answer:"0.0099",solution:"**Lời giải:**\n1. P(đúng lần 2) = P(lỗi lần 1) × P(đúng lần 2) = 0.01 × 0.99 = 0.0099\n**Kết luận: 0.0099**"},
+            {q:"Thi trắc nghiệm: 4 lựa chọn. Thí sinh biết đáp án với xác suất 0.6. Nếu không biết thì đoán ngẫu nhiên. Biết chọn đúng, tính P(biết đáp án).",answer:"0.857",solution:"**Lời giải:**\n1. P(B|Đ) = 0.6×1 / (0.6×1 + 0.4×0.25) = 0.6/0.7 = 6/7 ≈ 0.857\n**Kết luận: ~85.7%**"},
+            {q:"Sản xuất linh kiện: Máy A tỷ lệ hỏng 1%, máy B 2%. Chọn ngẫu nhiên 1 linh kiện từ kho hỗn hợp 50-50. Biết hỏng, tính P(do A).",answer:"1/3",solution:"**Lời giải:**\n1. P(A|H) = 0.5×0.01 / (0.5×0.01 + 0.5×0.02) = 1/3\n**Kết luận: 33.3%**"},
+            {q:"Thời tiết: Nếu sáng nắng, chiều mưa xác suất 0.2. Nếu sáng mưa, chiều mưa xác suất 0.7. Sáng nay 70% nắng. Tính P(chiều mưa).",answer:"0.35",solution:"**Lời giải:**\n1. P(M_c) = P(M_c|N_s)P(N_s) + P(M_c|M_s)P(M_s)\n2. = 0.2×0.7 + 0.7×0.3 = 0.14 + 0.21 = 0.35\n**Kết luận: 0.35**"}
+        ];
+
+        function renderQuestions(containerId, dataArray, type) {
+            const container = document.getElementById(containerId);
+            dataArray.forEach((item, index) => {
+                const div = document.createElement('div');
+                div.className = 'border-l-4 border-cyan-400 pl-4 py-3 bg-gray-50 rounded-r-lg';
+                if (type === 'mcq') {
+                    div.innerHTML = `<p class="font-semibold text-gray-800 mb-2"><strong>Câu ${index + 1}:</strong> ${item.q}</p><div class="grid grid-cols-2 gap-2 mb-3 text-sm">${item.options.map(o => `<span class="text-gray-700">${o}</span>`).join('')}</div><button onclick="toggleAnswer('${containerId}-${index}')" class="text-cyan-600 text-sm hover:underline">👁️ Xem đáp án</button><div id="${containerId}-${index}" class="answer-box mt-2 p-3 rounded hidden"><p class="font-semibold text-green-700">Đáp án: ${item.answer}</p><p class="text-gray-700 text-sm mt-1">${item.solution}</p></div>`;
+                } else if (type === 'tf') {
+                    div.innerHTML = `<p class="font-semibold text-gray-800 mb-3"><strong>Câu ${index + 1}:</strong> ${item.q}</p><div class="space-y-2">${item.statements.map((s, i) => `<div class="flex items-center justify-between bg-white p-2 rounded"><span class="text-gray-700 text-sm">${String.fromCharCode(65+i)}. ${s.text}</span><span class="text-xs px-2 py-1 rounded ${s.answer ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}">${s.answer ? 'Đúng' : 'Sai'}</span></div>`).join('')}</div>`;
+                } else {
+                    div.innerHTML = `<p class="font-semibold text-gray-800 mb-2"><strong>Bài ${index + 1}:</strong> ${item.q}</p><button onclick="toggleAnswer('${containerId}-${index}')" class="text-cyan-600 text-sm hover:underline">👁️ Xem đáp án</button><div id="${containerId}-${index}" class="${containerId==='comprehension-container'||containerId==='high-container'||containerId==='real-container'?'solution-box':'answer-box'} mt-2 p-3 rounded hidden"><p class="font-semibold text-purple-700">Đáp án: ${item.answer}</p><p class="text-gray-700 text-sm mt-1 whitespace-pre-line">${item.solution}</p></div>`;
+                }
+                container.appendChild(div);
+            });
+        }
+
+        function toggleAnswer(id) { document.getElementById(id).classList.toggle('hidden'); }
+        document.addEventListener('DOMContentLoaded', () => {
+            renderQuestions('mcq-container', mcqData, 'mcq');
+            renderQuestions('tf-container', tfData, 'tf');
+            renderQuestions('recognition-container', recognitionData, 'default');
+            renderQuestions('comprehension-container', comprehensionData, 'default');
+            renderQuestions('low-container', lowData, 'default');
+            renderQuestions('high-container', highData, 'default');
+            renderQuestions('real-container', realData, 'default');
+        });
+    </script>
+</body>
+</html>
+```

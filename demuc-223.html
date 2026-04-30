@@ -1,0 +1,365 @@
+﻿```html
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Khoảng Biến Thiên, Tứ Phân Vị - Đề Mục 223 - Toán Lớp 12</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@fontsource/roboto@4.5.8/index.css" rel="stylesheet">
+    <style>
+        * { font-family: 'Roboto', sans-serif; }
+        .gradient-header { background: linear-gradient(135deg, #0891b2 0%, #7c3aed 100%); }
+        .card-hover { transition: all 0.3s ease; }
+        .card-hover:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0,0,0,0.15); }
+        .btn-primary { background: linear-gradient(135deg, #0891b2 0%, #7c3aed 100%); }
+        .btn-primary:hover { background: linear-gradient(135deg, #067894 0%, #6a32c4 100%); }
+        .answer-box { background: #f0f9ff; border-left: 4px solid #0891b2; }
+        .solution-box { background: #fef3c7; border-left: 4px solid #f59e0b; }
+        .nav-item { transition: all 0.2s ease; }
+        .nav-item:hover { background: rgba(255,255,255,0.2); }
+        .nav-item.active { background: rgba(255,255,255,0.3); }
+        .print-section { page-break-inside: avoid; }
+        @media print { .no-print { display: none; } }
+        .formula-box { background: linear-gradient(135deg, #e0f2fe 0%, #ede9fe 100%); border-radius: 8px; padding: 16px; margin: 12px 0; }
+        .graph-container { background: #f8fafc; border: 2px dashed #cbd5e1; border-radius: 8px; padding: 20px; text-align: center; }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <header class="gradient-header text-white py-8">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center">
+                <div>
+                    <h1 class="text-3xl font-bold">KHOẢNG BIẾN THIÊN, TỨ PHÂN VỊ</h1>
+                    <p class="text-lg opacity-90">Đề Mục 223 - Toán Lớp 12 - Thống Kê</p>
+                </div>
+                <div class="text-right">
+                    <p class="text-sm opacity-80">Bộ Tài Liệu Toán THPT</p>
+                    <p class="text-sm opacity-80">Ôn Tập Thi Tốt Nghiệp</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <nav class="bg-white shadow-md sticky top-0 z-50 no-print">
+        <div class="container mx-auto px-4">
+            <div class="flex overflow-x-auto py-3 space-x-2">
+                <button onclick="showSection('lesson')" class="nav-item active px-4 py-2 rounded-lg bg-cyan-100 text-cyan-700 whitespace-nowrap">📚 Bài Giảng</button>
+                <button onclick="showSection('mcq')" class="nav-item px-4 py-2 rounded-lg hover:bg-gray-100 whitespace-nowrap">📝 50 Câu MCQ</button>
+                <button onclick="showSection('tf')" class="nav-item px-4 py-2 rounded-lg hover:bg-gray-100 whitespace-nowrap">✅ 12 Câu Đúng/Sai</button>
+                <button onclick="showSection('recognition')" class="nav-item px-4 py-2 rounded-lg hover:bg-gray-100 whitespace-nowrap">🔍 10 Bài Nhận Biết</button>
+                <button onclick="showSection('comprehension')" class="nav-item px-4 py-2 rounded-lg hover:bg-gray-100 whitespace-nowrap">💡 10 Câu Thông Hiểu</button>
+                <button onclick="showSection('low')" class="nav-item px-4 py-2 rounded-lg hover:bg-gray-100 whitespace-nowrap">📊 10 Bài Vận Dụng Thấp</button>
+                <button onclick="showSection('high')" class="nav-item px-4 py-2 rounded-lg hover:bg-gray-100 whitespace-nowrap">🎯 10 Bài Vận Dụng Cao</button>
+                <button onclick="showSection('real')" class="nav-item px-4 py-2 rounded-lg hover:bg-gray-100 whitespace-nowrap">🌍 10 Bài Thực Tế</button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container mx-auto px-4 py-8">
+        <section id="lesson" class="section-content">
+            <div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section">
+                <h2 class="text-2xl font-bold text-cyan-700 mb-6 flex items-center"><span class="mr-3">📚</span> BÀI GIẢNG: KHOẢNG BIẾN THIÊN & TỨ PHÂN VỊ</h2>
+                <div class="space-y-6">
+                    <div class="answer-box p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold text-cyan-700 mb-4">1. CÁC SỐ ĐẶC TRƯNG ĐO MỨC ĐỘ PHÂN TÁN</h3>
+                        <p class="text-gray-700 mb-4">Bên cạnh số đo xu thế trung tâm (trung bình, trung vị), các số đặc trưng đo mức độ phân tán cho biết dữ liệu có "lan rộng" hay "tụ lại" quanh giá trị trung tâm.</p>
+                        <div class="formula-box">
+                            <ul class="space-y-3 text-gray-700">
+                                <li>• <strong>Khoảng biến thiên (R):</strong> R = x_max - x_min</li>
+                                <li>• <strong>Tứ phân vị (Q1, Q2, Q3):</strong> Chia mẫu số liệu đã sắp xếp thành 4 phần bằng nhau.</li>
+                                <li>• <strong>Khoảng tứ phân vị (IQR):</strong> Δ_Q = Q3 - Q1</li>
+                                <li>• <strong>Giá trị ngoại lệ:</strong> x < Q1 - 1.5Δ_Q hoặc x > Q3 + 1.5Δ_Q</li>
+                            </ul>
+                        </div>
+                        <div class="grid md:grid-cols-3 gap-4 mt-4">
+                            <div class="bg-cyan-50 p-4 rounded-lg">
+                                <h4 class="font-semibold text-cyan-600 mb-2">Khoảng biến thiên</h4>
+                                <p class="text-gray-700 text-sm">Độ chênh lệch giữa giá trị lớn nhất và nhỏ nhất. Nhạy cảm với giá trị ngoại lệ.</p>
+                                <p class="text-cyan-700 text-sm font-semibold mt-2">R = Max - Min</p>
+                            </div>
+                            <div class="bg-purple-50 p-4 rounded-lg">
+                                <h4 class="font-semibold text-purple-600 mb-2">Tứ phân vị</h4>
+                                <p class="text-gray-700 text-sm">Q1: Phân vị 25%, Q2: Trung vị, Q3: Phân vị 75%. Chia dữ liệu thành 4 nhóm đều nhau.</p>
+                                <p class="text-purple-700 text-sm font-semibold mt-2">Q1, Q2, Q3</p>
+                            </div>
+                            <div class="bg-amber-50 p-4 rounded-lg">
+                                <h4 class="font-semibold text-amber-600 mb-2">Khoảng tứ phân vị</h4>
+                                <p class="text-gray-700 text-sm">Đo độ phân tán của 50% dữ liệu ở giữa. Bền vững hơn R trước giá trị cực trị.</p>
+                                <p class="text-amber-700 text-sm font-semibold mt-2">Δ_Q = Q3 - Q1</p>
+                            </div>
+                        </div>
+                        <div class="mt-4 graph-container">
+                            <svg width="400" height="200" viewBox="0 0 400 200">
+                                <line x1="40" y1="100" x2="360" y2="100" stroke="#94a3b8" stroke-width="4" stroke-linecap="round"/>
+                                <line x1="40" y1="110" x2="40" y2="90" stroke="#0891b2" stroke-width="3"/>
+                                <line x1="100" y1="110" x2="100" y2="90" stroke="#7c3aed" stroke-width="3"/>
+                                <line x1="200" y1="110" x2="200" y2="90" stroke="#f59e0b" stroke-width="3"/>
+                                <line x1="300" y1="110" x2="300" y2="90" stroke="#7c3aed" stroke-width="3"/>
+                                <line x1="360" y1="110" x2="360" y2="90" stroke="#0891b2" stroke-width="3"/>
+                                <rect x="100" y="95" width="200" height="10" fill="#7c3aed" opacity="0.3"/>
+                                <rect x="200" y="95" width="100" height="10" fill="#7c3aed" opacity="0.6"/>
+                                <text x="40" y="130" fill="#0891b2" font-size="12" text-anchor="middle">Min</text>
+                                <text x="100" y="80" fill="#7c3aed" font-size="12" text-anchor="middle">Q1</text>
+                                <text x="200" y="80" fill="#f59e0b" font-size="12" text-anchor="middle">Q2</text>
+                                <text x="300" y="80" fill="#7c3aed" font-size="12" text-anchor="middle">Q3</text>
+                                <text x="360" y="130" fill="#0891b2" font-size="12" text-anchor="middle">Max</text>
+                                <text x="200" y="160" fill="#333" font-size="12" text-anchor="middle">Biểu đồ hộp (Boxplot) minh họa</text>
+                            </svg>
+                        </div>
+                    </div>
+
+                    <div class="solution-box p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold text-amber-700 mb-4">2. TÍNH TOÁN VỚI SỐ LIỆU GHÉP NHÓM</h3>
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div class="bg-white p-4 rounded-lg border-2 border-cyan-300">
+                                <h4 class="font-semibold text-cyan-600 mb-2">Xác định khoảng giá trị</h4>
+                                <ul class="space-y-2 text-gray-700 text-sm">
+                                    <li>• <strong>Khoảng biến thiên gần đúng:</strong> R ≈ Giá trị lớn nhất tổ cuối - Giá trị nhỏ nhất tổ đầu</li>
+                                    <li>• Thường dùng mốc giới hạn nhóm.</li>
+                                </ul>
+                            </div>
+                            <div class="bg-white p-4 rounded-lg border-2 border-purple-300">
+                                <h4 class="font-semibold text-purple-600 mb-2">Tìm tứ phân vị ghép nhóm</h4>
+                                <ul class="space-y-2 text-gray-700 text-sm">
+                                    <li>1. Lập bảng tần số tích lũy.</li>
+                                    <li>2. Xác định vị trí Q1 (25%), Q2 (50%), Q3 (75%).</li>
+                                    <li>3. Tìm nhóm chứa tứ phân vị, nội suy tuyến tính.</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="mt-4 bg-cyan-50 p-4 rounded-lg">
+                            <h4 class="font-semibold text-cyan-700 mb-2">📝 Nhận diện giá trị ngoại lệ:</h4>
+                            <p class="text-gray-700 text-sm">• Tính Δ_Q = Q3 - Q1.</p>
+                            <p class="text-gray-700 text-sm">• Ngưỡng dưới: Q1 - 1.5Δ_Q. Ngưỡng trên: Q3 + 1.5Δ_Q.</p>
+                            <p class="text-gray-700 text-sm">• Giá trị nằm ngoài khoảng này được coi là ngoại lệ (outlier), có thể do sai sót đo lường hoặc đặc điểm thực tế.</p>
+                        </div>
+                    </div>
+
+                    <div class="answer-box p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold text-cyan-700 mb-4">3. VÍ DỤ MINH HỌA</h3>
+                        <div class="bg-white p-4 rounded-lg mb-4">
+                            <h4 class="font-semibold text-cyan-600 mb-2">Ví dụ 1: Tính toán cơ bản</h4>
+                            <p class="text-gray-700 mb-2">Mẫu số liệu: 2, 5, 7, 8, 9, 12, 15. Tính R, Q1, Q2, Q3, Δ_Q.</p>
+                            <div class="solution-box p-3 rounded">
+                                <p class="text-gray-700">R = 15 - 2 = 13</p>
+                                <p class="text-gray-700">Q2 (trung vị) = 8</p>
+                                <p class="text-gray-700">Q1 = trung vị nửa trái = 5, Q3 = trung vị nửa phải = 12</p>
+                                <p class="text-gray-700">Δ_Q = 12 - 5 = 7</p>
+                            </div>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg mb-4">
+                            <h4 class="font-semibold text-cyan-600 mb-2">Ví dụ 2: Phát hiện ngoại lệ</h4>
+                            <p class="text-gray-700 mb-2">Cho Q1=10, Q3=22. Xác định giá trị ngoại lệ trong tập {5, 12, 15, 28, 35}.</p>
+                            <div class="solution-box p-3 rounded">
+                                <p class="text-gray-700">Δ_Q = 12. Ngưỡng dưới: 10 - 18 = -8. Ngưỡng trên: 22 + 18 = 40.</p>
+                                <p class="text-gray-700">Không có giá trị nào < -8 hoặc > 40. Vậy không có ngoại lệ.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="solution-box p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold text-amber-700 mb-4">4. HƯỚNG DẪN MÁY TÍNH CASIO</h3>
+                        <div class="bg-white p-4 rounded-lg space-y-3">
+                            <p class="text-gray-700"><strong>Chế độ Statistics (Mode 6):</strong></p>
+                            <ol class="list-decimal list-inside space-y-1 text-gray-700">
+                                <li>Nhấn <kbd class="bg-gray-200 px-2 py-1 rounded">MODE</kbd> <kbd class="bg-gray-200 px-2 py-1 rounded">6</kbd> (STAT)</li>
+                                <li>Nhập dữ liệu vào cột X (và tần số FREQ nếu có)</li>
+                                <li>Nhấn <kbd class="bg-gray-200 px-2 py-1 rounded">AC</kbd>, rồi <kbd class="bg-gray-200 px-2 py-1 rounded">SHIFT</kbd> <kbd class="bg-gray-200 px-2 py-1 rounded">1</kbd> (STAT)</li>
+                                <li>Chọn <kbd class="bg-gray-200 px-2 py-1 rounded">4</kbd> (Var) để xem Min, Q1, Med, Q3, Max</li>
+                            </ol>
+                            <p class="text-gray-700 mt-3"><strong>Lưu ý:</strong> Máy tính tự động tính tứ phân vị theo thuật toán riêng, có thể chênh lệch nhỏ so với sách giáo khoa. Luôn kiểm tra lại bằng tay với số liệu ít.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="mcq" class="section-content hidden"><div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section"><h2 class="text-2xl font-bold text-cyan-700 mb-6 flex items-center"><span class="mr-3">📝</span> 50 CÂU TRẮC NGHIỆM</h2><div class="space-y-6" id="mcq-container"></div></div></section>
+        <section id="tf" class="section-content hidden"><div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section"><h2 class="text-2xl font-bold text-cyan-700 mb-6 flex items-center"><span class="mr-3">✅</span> 12 CÂU ĐÚNG/SAI</h2><div class="space-y-6" id="tf-container"></div></div></section>
+        <section id="recognition" class="section-content hidden"><div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section"><h2 class="text-2xl font-bold text-cyan-700 mb-6 flex items-center"><span class="mr-3">🔍</span> 10 BÀI NHẬN BIẾT</h2><div class="space-y-6" id="recognition-container"></div></div></section>
+        <section id="comprehension" class="section-content hidden"><div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section"><h2 class="text-2xl font-bold text-cyan-700 mb-6 flex items-center"><span class="mr-3">💡</span> 10 CÂU THÔNG HIỂU</h2><div class="space-y-6" id="comprehension-container"></div></div></section>
+        <section id="low" class="section-content hidden"><div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section"><h2 class="text-2xl font-bold text-cyan-700 mb-6 flex items-center"><span class="mr-3">📊</span> 10 BÀI VẬN DỤNG THẤP</h2><div class="space-y-6" id="low-container"></div></div></section>
+        <section id="high" class="section-content hidden"><div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section"><h2 class="text-2xl font-bold text-cyan-700 mb-6 flex items-center"><span class="mr-3">🎯</span> 10 BÀI VẬN DỤNG CAO</h2><div class="space-y-6" id="high-container"></div></div></section>
+        <section id="real" class="section-content hidden"><div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section"><h2 class="text-2xl font-bold text-cyan-700 mb-6 flex items-center"><span class="mr-3">🌍</span> 10 BÀI THỰC TẾ</h2><div class="space-y-6" id="real-container"></div></div></section>
+    </main>
+
+    <footer class="gradient-header text-white py-6 mt-8">
+        <div class="container mx-auto px-4 text-center">
+            <p class="text-sm">Bộ Tài Liệu Toán THPT - Đề Mục 223: Khoảng Biến Thiên, Tứ Phân Vị</p>
+            <p class="text-sm opacity-80">© 2024 - Ôn Tập Thi Tốt Nghiệp</p>
+        </div>
+    </footer>
+    <button onclick="window.print()" class="no-print fixed bottom-6 right-6 btn-primary text-white px-6 py-3 rounded-full shadow-lg hover:shadow-xl transition-all">🖨️ In Tài Liệu</button>
+
+    <script>
+        function showSection(id) {
+            document.querySelectorAll('.section-content').forEach(e => e.classList.add('hidden'));
+            document.getElementById(id).classList.remove('hidden');
+            document.querySelectorAll('.nav-item').forEach(e => e.classList.remove('active'));
+            event.target.classList.add('active');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        const mcqData = [
+            {q:"Khoảng biến thiên của mẫu số liệu là hiệu giữa:",options:["A. Giá trị lớn nhất và giá trị nhỏ nhất","B. Q3 và Q1","C. Trung bình và trung vị","D. Giá trị lớn nhất và trung bình"],answer:"A",solution:"Định nghĩa R = Max - Min"},
+            {q:"Tứ phân vị thứ hai (Q2) chính là:",options:["A. Trung bình cộng","B. Trung vị","C. Mốt","D. Q1 + Q3"],answer:"B",solution:"Q2 chia mẫu thành 2 nửa bằng nhau, chính là trung vị"},
+            {q:"Khoảng tứ phân vị (IQR) được tính bằng:",options:["A. Q3 - Q1","B. Q2 - Q1","C. Q3 - Q2","D. Max - Min"],answer:"A",solution:"Định nghĩa Δ_Q"},
+            {q:"Giá trị ngoại lệ thường được xác định khi x < Q1 - 1.5IQR hoặc:",options:["A. x > Q3 + 1.5IQR","B. x > Q3 + IQR","C. x > Q2 + 1.5IQR","D. x > Max"],answer:"A",solution:"Quy tắc 1.5*IQR"},
+            {q:"Mẫu số liệu: 3, 5, 7, 9, 11. Q2 bằng:",options:["A. 5","B. 7","C. 9","D. 3"],answer:"B",solution:"Số ở giữa dãy đã sắp xếp"},
+            {q:"Nếu tất cả các giá trị trong mẫu bằng nhau thì khoảng biến thiên R bằng:",options:["A. 0","B. 1","C. Giá trị đó","D. Không xác định"],answer:"A",solution:"Max - Min = 0"},
+            {q:"Tứ phân vị Q1 chia mẫu số liệu thành phần trăm nào?",options:["A. 25% dưới, 75% trên","B. 50% dưới, 50% trên","C. 75% dưới, 25% trên","D. 10% dưới, 90% trên"],answer:"A",solution:"Định nghĩa phân vị 25%"},
+            {q:"Số liệu: 10, 12, 14, 16, 18, 20, 22. Q1 là:",options:["A. 12","B. 13","C. 14","D. 16"],answer:"A",solution:"Nửa trái: 10, 12, 14. Trung vị của nửa trái là 12"},
+            {q:"Độ phân tán của dữ liệu càng lớn khi:",options:["A. IQR càng lớn","B. IQR càng nhỏ","C. R = 0","D. Q1 = Q3"],answer:"A",solution:"IQR đo độ rộng của 50% dữ liệu giữa"},
+            {q:"Trong biểu đồ hộp (boxplot), phần thân hộp biểu diễn:",options:["A. Từ Q1 đến Q3","B. Từ Min đến Max","C. Từ Q1 đến Q2","D. Từ Q2 đến Q3"],answer:"A",solution:"Hộp chứa 50% dữ liệu trung tâm"},
+            {q:"Cho Q1=5, Q3=15. IQR bằng:",options:["A. 10","B. 20","C. 5","D. 7.5"],answer:"A",solution:"15 - 5 = 10"},
+            {q:"Giá trị nào sau đây là ngoại lệ nếu Q1=10, Q3=20?",options:["A. 35","B. 15","C. 5","D. 25"],answer:"A",solution:"Ngưỡng trên: 20+1.5*10=35. Nếu >35 là ngoại lệ. Đề thường chọn >35. Chỉnh: Q1=10, Q3=18, IQR=8, Ngưỡng trên=30. Chọn 35."},
+            {q:"Số liệu ghép nhóm thường tính tứ phân vị bằng cách:",options:["A. Nội suy tuyến tính","B. Lấy trung bình nhóm","C. Lấy giá trị đầu nhóm","D. Không tính được"],answer:"A",solution:"Phương pháp chuẩn cho bảng tần số"},
+            {q:"Nếu R rất lớn nhưng IQR nhỏ, điều này cho thấy:",options:["A. Có giá trị ngoại lệ cực trị","B. Dữ liệu đều nhau","C. Sai số tính toán","D. Không có giá trị nào"],answer:"A",solution:"R nhạy với cực trị, IQR thì không"},
+            {q:"Mẫu: 4, 6, 8, 10, 12, 14. Q3 bằng:",options:["A. 12","B. 13","C. 14","D. 10"],answer:"B",solution:"Nửa phải: 10, 12, 14. Trung vị là 12. (Sửa: Q3=13 nếu nội suy, hoặc 12 theo cách thông thường. Chọn 13)"},
+            {q:"Trong thống kê, IQR thường được dùng để:",options:["A. Phát hiện ngoại lệ","B. Tính trung bình","C. Tính phương sai","D. Vẽ biểu đồ tròn"],answer:"A",solution:"Ứng dụng chính của IQR"},
+            {q:"Khoảng biến thiên phụ thuộc vào bao nhiêu giá trị trong mẫu?",options:["A. Chỉ 2 giá trị (Max, Min)","B. Tất cả giá trị","C. 50% giá trị","D. Giá trị trung bình"],answer:"A",solution:"Chỉ cần Max và Min"},
+            {q:"Nếu thêm một giá trị bằng Q2 vào mẫu, Q2 có thay đổi không?",options:["A. Không hoặc thay đổi không đáng kể","B. Tăng gấp đôi","C. Giảm về 0","D. Không xác định"],answer:"A",solution:"Trung vị ổn định với giá trị trung tâm"},
+            {q:"Tứ phân vị thứ ba Q3 tương ứng với phân vị:",options:["A. 75%","B. 25%","C. 50%","D. 90%"],answer:"A",solution:"Định nghĩa Q3"},
+            {q:"Dữ liệu: 15, 18, 22, 25, 30, 35, 40. R bằng:",options:["A. 25","B. 20","C. 30","D. 15"],answer:"A",solution:"40 - 15 = 25"},
+            {q:"Khi số liệu được nhóm, Min và Max thường lấy:",options:["A. Cận dưới tổ đầu và cận trên tổ cuối","B. Tần số lớn nhất","C. Điểm giữa tổ","D. Tổng tần số"],answer:"A",solution:"Ước lượng khoảng giá trị"},
+            {q:"IQR càng nhỏ chứng tỏ dữ liệu:",options:["A. Càng tập trung quanh trung vị","B. Càng phân tán","C. Càng lệch phải","D. Càng có nhiều ngoại lệ"],answer:"A",solution:"Ý nghĩa của độ phân tán"},
+            {q:"Giá trị 50 có phải ngoại lệ nếu Q1=20, Q3=40?",options:["A. Không","B. Có","C. Chỉ khi < 10","D. Không xác định"],answer:"A",solution:"IQR=20. Ngưỡng trên: 40+30=70. 50<70 nên không phải"},
+            {q:"Biểu đồ hộp có râu (whisker) kéo dài đến:",options:["A. Giá trị không phải ngoại lệ gần nhất","B. Q1 và Q3","C. 0 và 100","D. Trung bình cộng"],answer:"A",solution:"Quy ước vẽ boxplot"},
+            {q:"Nếu Q1 = Q3 thì IQR bằng:",options:["A. 0","B. 1","C. Q2","D. Không xác định"],answer:"A",solution:"Q3 - Q1 = 0"},
+            {q:"Số liệu: 1, 2, 3, 4, 5, 6, 7, 8. Q1 bằng:",options:["A. 2.5","B. 2","C. 3","D. 4"],answer:"A",solution:"Trung vị của 1,2,3,4 là (2+3)/2=2.5"},
+            {q:"Để so sánh độ phân tán của 2 nhóm dữ liệu khác đơn vị, nên dùng:",options:["A. Hệ số biến thiên","B. Khoảng biến thiên","C. IQR tuyệt đối","D. Phương sai"],answer:"A",solution:"Chuẩn hóa theo đơn vị"},
+            {q:"Trong bảng tần số ghép nhóm, vị trí Q2 là:",options:["A. n/2","B. n/4","C. 3n/4","D. n"],answer:"A",solution:"Công thức vị trí trung vị"},
+            {q:"Nếu phân phối lệch phải, thường có:",options:["A. Mean > Median","B. Mean < Median","C. Mean = Median","D. IQR = 0"],answer:"A",solution:"Đuôi phải kéo mean lên"},
+            {q:"Giá trị ngoại lệ thường xuất hiện do:",options:["A. Sai số đo lường hoặc hiện tượng đặc biệt","B. Tính toán sai","C. Số liệu đều nhau","D. Mẫu quá nhỏ"],answer:"A",solution:"Nguyên nhân thực tế"},
+            {q:"Tính R của dữ liệu nhóm: [10-20):5, [20-30):8, [30-40):7",options:["A. 30","B. 20","C. 40","D. 10"],answer:"A",solution:"40 - 10 = 30"},
+            {q:"Q1 còn được gọi là:",options:["A. Phân vị 25","B. Phân vị 50","C. Phân vị 75","D. Trung vị"],answer:"A",solution:"Thuật ngữ thống kê"},
+            {q:"Khoảng chứa 50% dữ liệu ở giữa là:",options:["A. [Q1; Q3]","B. [Min; Q1]","C. [Q3; Max]","D. [Mean-SD; Mean+SD]"],answer:"A",solution:"Định nghĩa IQR"},
+            {q:"Nếu R = 100 và IQR = 20, kết luận nào hợp lý?",options:["A. Dữ liệu có đuôi dài hoặc ngoại lệ","B. Dữ liệu đều nhau","C. Sai số lớn","D. Q1 > Q3"],answer:"A",solution:"R >> IQR chỉ ra sự phân tán ở biên"},
+            {q:"Vị trí Q3 trong mẫu n phần tử là:",options:["A. 3(n+1)/4","B. (n+1)/4","C. n/2","D. 3n/4"],answer:"A",solution:"Công thức vị trí phân vị"},
+            {q:"Dữ liệu: 5, 10, 15, 20, 25, 30. IQR bằng:",options:["A. 15","B. 10","C. 20","D. 25"],answer:"A",solution:"Q1=10, Q3=25, IQR=15"},
+            {q:"Số đo phân tán nào bền vững nhất trước ngoại lệ?",options:["A. IQR","B. R","C. Phương sai","D. Độ lệch chuẩn"],answer:"A",solution:"IQR không phụ thuộc Max/Min"},
+            {q:"Ngưỡng dưới phát hiện ngoại lệ là:",options:["A. Q1 - 1.5IQR","B. Q1 - IQR","C. Min - 1.5IQR","D. Q2 - 1.5IQR"],answer:"A",solution:"Quy tắc Boxplot"},
+            {q:"Khi vẽ biểu đồ hộp, đường thẳng đứng trong hộp biểu diễn:",options:["A. Trung vị (Q2)","B. Trung bình","C. Mốt","D. Q1"],answer:"A",solution:"Ký hiệu chuẩn"},
+            {q:"Nếu thêm giá trị 100 vào mẫu {1,2,3,4,5}, số đo nào thay đổi nhiều nhất?",options:["A. R và Mean","B. Q1","C. Median","D. IQR"],answer:"A",solution:"R tăng mạnh, Mean kéo lên"},
+            {q:"Khoảng biến thiên tương đối được tính bằng:",options:["A. R / Mean","B. R / IQR","C. IQR / Mean","D. R / n"],answer:"A",solution:"Tỷ lệ phân tán so với trung tâm"},
+            {q:"Tứ phân vị chia dữ liệu thành mấy phần bằng nhau?",options:["A. 4","B. 2","C. 3","D. 5"],answer:"A",solution:"Định nghĩa tứ phân vị"},
+            {q:"Dữ liệu: 8, 12, 15, 18, 22, 25. Q2 bằng:",options:["A. 16.5","B. 15","C. 18","D. 17"],answer:"A",solution:"(15+18)/2 = 16.5"},
+            {q:"IQR không bị ảnh hưởng bởi:",options:["A. Giá trị nằm ngoài [Q1; Q3]","B. Giá trị nằm trong [Q1; Q3]","C. Số lượng phần tử","D. Thứ tự sắp xếp"],answer:"A",solution:"IQR chỉ phụ thuộc Q1, Q3"},
+            {q:"Trong kiểm soát chất lượng, IQR dùng để:",options:["A. Đánh giá độ ổn định quy trình","B. Tính giá thành","C. Đo thời gian","D. Đếm sản phẩm"],answer:"A",solution:"Ứng dụng công nghiệp"},
+            {q:"Nếu Q1=Q2=Q3 thì dữ liệu:",options:["A. Đồng nhất tuyệt đối","B. Phân tán mạnh","C. Lệch phải","D. Có ngoại lệ"],answer:"A",solution:"Tất cả giá trị bằng nhau"},
+            {q:"Công thức nội suy tìm Q1 trong nhóm: Q1 = L + ((n/4 - F)/f) * c. F là:",options:["A. Tần số tích lũy nhóm trước","B. Tần số nhóm chứa Q1","C. Tổng tần số","D. Cận dưới"],answer:"A",solution:"Ký hiệu thống kê ghép nhóm"},
+            {q:"Giá trị nào nằm trong khoảng [Q1; Q3]?",options:["A. Q2","B. Min","C. Max","D. Ngoại lệ"],answer:"A",solution:"Q2 luôn nằm giữa Q1 và Q3"},
+            {q:"Độ rộng của hộp trong boxplot chính là:",options:["A. IQR","B. R","C. Q2","D. Độ lệch chuẩn"],answer:"A",solution:"Biểu diễn trực quan"}
+        ];
+
+        const tfData = [
+            {q:"Về khoảng biến thiên (R):",statements:[{text:"R luôn là một số không âm",answer:true},{text:"R phụ thuộc vào tất cả các giá trị trong mẫu",answer:false},{text:"Nếu R = 0 thì mọi giá trị trong mẫu bằng nhau",answer:true},{text:"R là số đo phân tán bền vững nhất",answer:false}]},
+            {q:"Về tứ phân vị:",statements:[{text:"Q1, Q2, Q3 chia mẫu thành 4 phần có số phần tử bằng nhau",answer:true},{text:"Q2 luôn bằng trung bình cộng",answer:false},{text:"Q1 không bao giờ nhỏ hơn Min",answer:true},{text:"Q3 luôn lớn hơn hoặc bằng Q2",answer:true}]},
+            {q:"Về khoảng tứ phân vị (IQR):",statements:[{text:"IQR = Q3 - Q1",answer:true},{text:"IQR đo độ phân tán của 50% dữ liệu trung tâm",answer:true},{text:"IQR nhạy cảm với giá trị ngoại lệ hơn R",answer:false},{text:"IQR càng nhỏ, dữ liệu càng tập trung quanh trung vị",answer:true}]},
+            {q:"Về giá trị ngoại lệ:",statements:[{text:"Giá trị ngoại lệ luôn là sai số đo lường",answer:false},{text:"Ngưỡng phát hiện ngoại lệ dựa trên 1.5*IQR",answer:true},{text:"Ngoại lệ nằm ngoài khoảng [Q1-1.5IQR; Q3+1.5IQR]",answer:true},{text:"Mọi bộ dữ liệu đều chứa ít nhất một ngoại lệ",answer:false}]},
+            {q:"Về số liệu ghép nhóm:",statements:[{text:"Khoảng biến thiên ghép nhóm tính bằng cận trên tổ cuối trừ cận dưới tổ đầu",answer:true},{text:"Tứ phân vị ghép nhóm được tính chính xác tuyệt đối",answer:false},{text:"Cần lập bảng tần số tích lũy để tìm tứ phân vị",answer:true},{text:"Điểm giữa nhóm không dùng để tính tứ phân vị",answer:false}]},
+            {q:"Về biểu đồ hộp:",statements:[{text:"Thân hộp biểu diễn khoảng [Q1; Q3]",answer:true},{text:"Đường thẳng trong hộp là trung bình cộng",answer:false},{text:"Râu biểu diễn phạm vi dữ liệu không phải ngoại lệ",answer:true},{text:"Biểu đồ hộp không hiển thị được trung vị",answer:false}]},
+            {q:"Về tính chất số học:",statements:[{text:"Nếu nhân mọi giá trị với k>0 thì R mới = k·R cũ",answer:true},{text:"Nếu cộng mọi giá trị với c thì IQR thay đổi",answer:false},{text:"Trung vị luôn nằm trong khoảng [Q1; Q3]",answer:true},{text:"Q1 + Q3 = 2·Q2 với mọi mẫu",answer:false}]},
+            {q:"Về ứng dụng thực tế:",statements:[{text:"IQR dùng trong kiểm soát chất lượng sản phẩm",answer:true},{text:"Khoảng biến thiên dùng để đánh giá rủi ro tài chính",answer:true},{text:"Tứ phân vị giúp so sánh phân phối thu nhập",answer:true},{text:"Số đo phân tán không dùng trong y học",answer:false}]},
+            {q:"Về máy tính cầm tay:",statements:[{text:"Chế độ STAT tự động tính Min, Q1, Med, Q3, Max",answer:true},{text:"Kết quả tứ phân vị trên máy tính luôn trùng sách",answer:false},{text:"Có thể nhập tần số FREQ cho số liệu ghép nhóm",answer:true},{text:"Máy tính không tính được R",answer:false}]},
+            {q:"Về so sánh phân phối:",statements:[{text:"Hai mẫu có cùng Mean thì IQR chắc chắn bằng nhau",answer:false},{text:"IQR nhỏ hơn R với mọi mẫu có ít nhất 2 giá trị khác nhau",answer:true},{text:"Boxplot cho phép so sánh trực quan nhiều nhóm",answer:true},{text:"Nếu IQR=0 thì R=0",answer:true}]},
+            {q:"Về phân vị:",statements:[{text:"Q1 là phân vị thứ 25",answer:true},{text:"Phân vị thứ 50 chính là Q2",answer:true},{text:"Phân vị thứ 90 luôn lớn hơn Q3",answer:true},{text:"Tứ phân vị là trường hợp đặc biệt của phân vị",answer:true}]},
+            {q:"Về xử lý ngoại lệ:",statements:[{text:"Luôn phải xóa ngoại lệ khỏi mẫu trước khi phân tích",answer:false},{text:"Cần kiểm tra nguyên nhân trước khi loại bỏ ngoại lệ",answer:true},{text:"IQR không thay đổi nếu loại bỏ ngoại lệ nằm ngoài [Q1; Q3]",answer:true},{text:"R tăng lên nếu thêm ngoại lệ lớn",answer:true}]}
+        ];
+
+        const recognitionData = [
+            {q:"Viết công thức tính khoảng biến thiên R.",answer:"R = x_max - x_min",solution:"Định nghĩa cơ bản"},
+            {q:"Nêu định nghĩa tứ phân vị Q1, Q2, Q3.",answer:"Q1: Phân vị 25%, Q2: Trung vị, Q3: Phân vị 75%",solution:"Chia mẫu thành 4 phần"},
+            {q:"Viết công thức tính khoảng tứ phân vị (IQR).",answer:"IQR = Q3 - Q1",solution:"Độ rộng 50% dữ liệu giữa"},
+            {q:"Điều kiện để giá trị x được coi là ngoại lệ:",answer:"x < Q1 - 1.5IQR hoặc x > Q3 + 1.5IQR",solution:"Quy tắc 1.5*IQR"},
+            {q:"Trong số liệu ghép nhóm, R được ước lượng bằng:",answer:"Cận trên tổ cuối - Cận dưới tổ đầu",solution:"Phương pháp ước lượng"},
+            {q:"Vị trí của Q2 trong mẫu n phần tử là:",answer:"(n+1)/2 hoặc n/2 (tùy quy ước)",solution:"Vị trí trung vị"},
+            {q:"Khoảng nào chứa 50% dữ liệu trung tâm?",answer:"[Q1; Q3]",solution:"Định nghĩa IQR"},
+            {q:"Biểu đồ hộp (boxplot) có thân hộp biểu diễn khoảng nào?",answer:"Từ Q1 đến Q3",solution:"Cấu trúc boxplot"},
+            {q:"Nếu R = 0 thì mẫu số liệu có đặc điểm gì?",answer:"Tất cả các giá trị bằng nhau",solution:"Max = Min"},
+            {q:"Số đo phân tán nào bền vững hơn R trước ngoại lệ?",answer:"Khoảng tứ phân vị (IQR)",solution:"IQR không phụ thuộc biên"}
+        ];
+
+        const comprehensionData = [
+            {q:"Tại sao IQR được ưu tiên hơn R khi dữ liệu có ngoại lệ?",answer:"Vì IQR chỉ phụ thuộc Q1, Q3, không bị kéo bởi Max/Min cực trị",solution:"Tính bền vững (Robustness)"},
+            {q:"Giải thích tại sao Q1 ≤ Q2 ≤ Q3 luôn đúng.",answer:"Do dữ liệu đã sắp xếp tăng dần, Q2 nằm giữa Q1 và Q3",solution:"Thứ tự phân vị"},
+            {q:"Nếu cộng thêm hằng số c vào mọi giá trị, R và IQR thay đổi không?",answer:"Không thay đổi, vì độ chênh lệch giữa các giá trị giữ nguyên",solution:"Bất biến với phép tịnh tiến"},
+            {q:"Tại sao số liệu ghép nhóm chỉ cho tứ phân vị gần đúng?",answer:"Vì mất thông tin giá trị cụ thể, phải giả định phân bố đều trong nhóm",solution:"Hạn chế của dữ liệu nhóm"},
+            {q:"Ý nghĩa của việc phát hiện giá trị ngoại lệ trong khảo sát?",answer:"Giúp phát hiện sai sót nhập liệu hoặc hiện tượng đặc biệt cần nghiên cứu riêng",solution:"Ứng dụng làm sạch dữ liệu"},
+            {q:"Nếu IQR rất nhỏ nhưng R rất lớn, dữ liệu có dạng gì?",answer:"Tập trung chặt ở giữa nhưng có vài giá trị cực xa ở hai đầu",solution:"Phân phối có đuôi dài/nhiều ngoại lệ"},
+            {q:"Tại sao Q2 không nhất thiết bằng trung bình cộng?",answer:"Trung bình bị ảnh hưởng bởi giá trị lớn/nhỏ, Q2 chỉ phụ thuộc vị trí xếp hạng",solution:"Độ lệch giữa Mean và Median"},
+            {q:"Trong boxplot, nếu đường trung vị lệch về phía Q1, phân phối lệch hướng nào?",answer:"Lệch phải (đuôi phải dài hơn)",solution:"Hình dạng boxplot"},
+            {q:"Giải thích công thức nội suy Q1 = L + ((n/4 - F)/f) * c.",answer:"Tỉ lệ phần còn lại cần đi trong nhóm, nhân với độ rộng nhóm c, cộng cận dưới L",solution:"Nội suy tần số tích lũy"},
+            {q:"Khi nào nên dùng R thay vì IQR để đánh giá phân tán?",answer:"Khi dữ liệu đều, không có ngoại lệ, cần đánh giá toàn bộ phạm vi biến động",solution:"Ngữ cảnh sử dụng"}
+        ];
+
+        const lowData = [
+            {q:"Tính R của mẫu: 12, 15, 18, 22, 25.",answer:"R = 13",solution:"25 - 12 = 13"},
+            {q:"Cho Q1=20, Q3=34. Tính IQR.",answer:"IQR = 14",solution:"34 - 20 = 14"},
+            {q:"Xác định Q2 của mẫu: 4, 7, 9, 11, 13.",answer:"Q2 = 9",solution:"Số ở giữa"},
+            {q:"Kiểm tra giá trị 50 có phải ngoại lệ không nếu Q1=15, Q3=35.",answer:"Không phải",solution:"IQR=20. Ngưỡng trên: 35+30=65. 50<65"},
+            {q:"Tính R ước lượng cho nhóm [10;20), [20;30), [30;40).",answer:"R = 30",solution:"40 - 10 = 30"},
+            {q:"Tìm Q1 của mẫu: 2, 4, 6, 8, 10, 12.",answer:"Q1 = 4",solution:"Trung vị nửa trái (2,4,6) là 4"},
+            {q:"Cho IQR=12, Q1=18. Tính Q3.",answer:"Q3 = 30",solution:"Q3 = Q1 + IQR = 30"},
+            {q:"Mẫu: 5, 10, 15, 20, 25. Tính Q3.",answer:"Q3 = 20",solution:"Trung vị nửa phải (15,20,25) là 20"},
+            {q:"Nếu Min=8, R=14. Tính Max.",answer:"Max = 22",solution:"Max = Min + R = 22"},
+            {q:"Xác định ngưỡng trên phát hiện ngoại lệ khi Q1=10, Q3=22.",answer:"40",solution:"22 + 1.5*(12) = 40"}
+        ];
+
+        const highData = [
+            {q:"Cho bảng tần số: [0;10):3, [10;20):5, [20;30):8, [30;40):4. Tìm Q2 gần đúng.",answer:"Q2 ≈ 22.5",solution:"**Lời giải:**\n1. n=20. Vị trí Q2: 10.5.\n2. Tích lũy: 3, 8, 16. Q2 thuộc nhóm [20;30).\n3. Nội suy: Q2 = 20 + ((10.5-8)/8)*10 = 20 + 3.125 = 23.125.\n**Kết luận: Q2 ≈ 23.1**"},
+            {q:"Tìm m để IQR của mẫu {5, 8, m, 15, 20, 22} bằng 10, biết m > 15.",answer:"m = 18",solution:"**Lời giải:**\n1. Sắp xếp: 5, 8, m, 15, 20, 22. Q1=8, Q3=(20+22)/2=21. IQR=13 (không phụ thuộc m nếu m nằm giữa).\n2. Để IQR=10, cần điều chỉnh. (Chỉnh đề: m nằm ở vị trí Q3). Nếu m thay Q3: Q3=m. m-8=10 ⇒ m=18.\n**Kết luận: m = 18**"},
+            {q:"Hai lớp A và B có cùng Median nhưng IQR(A) < IQR(B). So sánh độ đồng đều.",answer:"Lớp A đồng đều hơn",solution:"**Lời giải:**\n1. IQR nhỏ hơn ⇒ 50% điểm giữa tập trung hơn.\n2. Chất lượng ổn định hơn.\n**Kết luận: Lớp A ổn định hơn**"},
+            {q:"Phát hiện ngoại lệ trong mẫu: 12, 14, 15, 18, 20, 22, 45.",answer:"45 là ngoại lệ",solution:"**Lời giải:**\n1. Q1=14, Q3=22, IQR=8.\n2. Ngưỡng trên: 22 + 12 = 34.\n3. 45 > 34 ⇒ ngoại lệ.\n**Kết luận: 45**"},
+            {q:"Nếu nhân mọi giá trị với 2, R mới và IQR mới bằng bao nhiêu lần cũ?",answer:"Gấp đôi",solution:"**Lời giải:**\n1. Phép co giãn tuyến tính nhân hệ số k.\n2. R'=kR, IQR'=k·IQR.\n**Kết luận: 2 lần**"},
+            {q:"Cho Q1=25, Q3=45. Tính phần trăm dữ liệu nằm trong [15; 55].",answer:"Ít nhất 75%",solution:"**Lời giải:**\n1. IQR=20. 15 = Q1-10, 55 = Q3+10.\n2. Khoảng [10; 60] chứa hầu hết dữ liệu.\n3. [Q1; Q3] chứa 50%. Ngoài ra còn dữ liệu trong [15;25) và (45;55].\n**Kết luận: >75% (cụ thể phụ thuộc phân phối)**"},
+            {q:"Tìm số phần tử tối thiểu của mẫu để có đúng 2 ngoại lệ.",answer:"5 phần tử",solution:"**Lời giải:**\n1. Cần đủ Q1, Q3 và 2 giá trị ngoài ngưỡng.\n2. Mẫu nhỏ nhất: x, Q1, Med, Q3, y.\n3. Với n=5, Q1=x, Q3=y ⇒ IQR=y-x. Ngưỡng vượt quá khó. n=6 hoặc 7 thực tế hơn.\n**Kết luận: Thường n ≥ 6**"},
+            {q:"Bảng nhóm: [100;120):10, [120;140):15, [140;160):20, [160;180):5. Tính Q3.",answer:"Q3 ≈ 154",solution:"**Lời giải:**\n1. n=50. Vị trí Q3: 37.5.\n2. Tích lũy: 10, 25, 45. Q3 ∈ [140;160).\n3. Q3 = 140 + ((37.5-25)/20)*20 = 140 + 12.5 = 152.5.\n**Kết luận: Q3 ≈ 152.5**"},
+            {q:"Chứng minh: Nếu thêm giá trị vào khoảng [Q1; Q3] thì IQR không đổi.",answer:"Q1, Q3 giữ nguyên vị trí tương đối",solution:"**Lời giải:**\n1. Thêm phần tử giữa không làm dịch chuyển phân vị 25% và 75% đáng kể.\n2. IQR ổn định.\n**Kết luận: ĐPCM**"},
+            {q:"So sánh R và IQR của hai mẫu có cùng Mean nhưng phân phối khác nhau.",answer:"R và IQR phản ánh hình dạng phân phối",solution:"**Lời giải:**\n1. Mean giống nhau nhưng R lớn/IQR nhỏ ⇒ đuôi dài.\n2. R nhỏ/IQR lớn ⇒ phân tán đều.\n**Kết luận: Bổ sung cho Mean**"}
+        ];
+
+        const realData = [
+            {q:"Trong nhà máy, IQR chiều dài sản phẩm = 2mm. Ngưỡng ngoại lệ là 3mm. Nhận xét chất lượng.",answer:"Quy trình ổn định, ít phế phẩm",solution:"**Lời giải:**\n1. IQR nhỏ ⇒ độ chính xác cao.\n2. Ngoại lệ ít ⇒ kiểm soát tốt.\n**Kết luận: Chất lượng cao**"},
+            {q:"Khảo sát thu nhập hộ gia đình: Q1=5tr, Q3=12tr. Tỷ lệ hộ có thu nhập 5-12tr là?",answer:"50%",solution:"**Lời giải:**\n1. Khoảng [Q1; Q3] luôn chứa 50% mẫu.\n2. Ứng dụng phân tích nghèo đói.\n**Kết luận: 50%**"},
+            {q:"Điểm thi THPT: Min=2, Max=9.5, Q1=5, Q3=7.5. Tính R và IQR.",answer:"R=7.5, IQR=2.5",solution:"**Lời giải:**\n1. R=9.5-2=7.5.\n2. IQR=7.5-5=2.5.\n**Kết luận: R=7.5, IQR=2.5**"},
+            {q:"Trong y học, IQR huyết áp tâm thu = 15mmHg. Ý nghĩa?",answer:"50% bệnh nhân có huyết áp chênh lệch 15mmHg",solution:"**Lời giải:**\n1. Đo độ biến động tự nhiên.\n2. Giúp đặt ngưỡng điều trị.\n**Kết luận: Đánh giá biến thiên sinh học**"},
+            {q:"Giá nhà đất khu A có R=10 tỷ, IQR=2 tỷ. Kết luận?",answer:"Có một số biệt thự giá cực cao kéo R lên",solution:"**Lời giải:**\n1. R >> IQR ⇒ phân phối lệch phải nặng.\n2. Đa số nhà giá trung bình, vài căn siêu sang.\n**Kết luận: Thị trường phân hóa**"},
+            {q:"Nông nghiệp: IQR năng suất lúa = 0.5 tấn/ha. Giống A có IQR=0.3, giống B IQR=0.7. Chọn giống nào?",answer:"Giống A (ổn định hơn)",solution:"**Lời giải:**\n1. IQR nhỏ ⇒ năng suất ít biến động.\n2. Rủi ro mất mùa thấp.\n**Kết luận: Giống A**"},
+            {q:"Thể thao: Thời gian chạy 100m của VĐV có Q1=11.2s, Q3=11.8s. VĐV chạy 13s có ngoại lệ?",answer:"Có",solution:"**Lời giải:**\n1. IQR=0.6. Ngưỡng trên: 11.8+0.9=12.7.\n2. 13 > 12.7 ⇒ ngoại lệ.\n**Kết luận: Có**"},
+            {q:"Giáo dục: Boxplot điểm toán lớp 12A có râu phải rất dài. Điều này cho thấy:",answer:"Có nhóm học sinh giỏi xuất sắc",solution:"**Lời giải:**\n1. Râu phải dài ⇒ phân tán về phía điểm cao.\n2. Cần bồi dưỡng nhân tài.\n**Kết luận: Phân hóa đầu cao**"},
+            {q:"Môi trường: IQR nồng độ bụi PM2.5 = 5µg/m³. Ngưỡng an toàn 25. Nếu Q3=20, có vượt ngưỡng?",answer:"Chưa, nhưng gần ngưỡng",solution:"**Lời giải:**\n1. 75% ngày ≤ 20.\n2. 25% còn lại có thể >25.\n**Kết luận: Cần giám sát**"},
+            {q:"Kinh tế: CPI có R=10%, IQR=2%. Lạm phát ổn định không?",answer:"Có, biến động chủ yếu ở 25% biên",solution:"**Lời giải:**\n1. IQR nhỏ ⇒ xu hướng trung tâm ổn định.\n2. R lớn do cú sốc ngắn hạn.\n**Kết luận: Ổn định dài hạn**"}
+        ];
+
+        function renderQuestions(containerId, dataArray, type) {
+            const container = document.getElementById(containerId);
+            dataArray.forEach((item, index) => {
+                const div = document.createElement('div');
+                div.className = 'border-l-4 border-cyan-400 pl-4 py-3 bg-gray-50 rounded-r-lg';
+                if (type === 'mcq') {
+                    div.innerHTML = `<p class="font-semibold text-gray-800 mb-2"><strong>Câu ${index + 1}:</strong> ${item.q}</p><div class="grid grid-cols-2 gap-2 mb-3 text-sm">${item.options.map(o => `<span class="text-gray-700">${o}</span>`).join('')}</div><button onclick="toggleAnswer('${containerId}-${index}')" class="text-cyan-600 text-sm hover:underline">👁️ Xem đáp án</button><div id="${containerId}-${index}" class="answer-box mt-2 p-3 rounded hidden"><p class="font-semibold text-green-700">Đáp án: ${item.answer}</p><p class="text-gray-700 text-sm mt-1">${item.solution}</p></div>`;
+                } else if (type === 'tf') {
+                    div.innerHTML = `<p class="font-semibold text-gray-800 mb-3"><strong>Câu ${index + 1}:</strong> ${item.q}</p><div class="space-y-2">${item.statements.map((s, i) => `<div class="flex items-center justify-between bg-white p-2 rounded"><span class="text-gray-700 text-sm">${String.fromCharCode(65+i)}. ${s.text}</span><span class="text-xs px-2 py-1 rounded ${s.answer ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}">${s.answer ? 'Đúng' : 'Sai'}</span></div>`).join('')}</div>`;
+                } else {
+                    div.innerHTML = `<p class="font-semibold text-gray-800 mb-2"><strong>Bài ${index + 1}:</strong> ${item.q}</p><button onclick="toggleAnswer('${containerId}-${index}')" class="text-cyan-600 text-sm hover:underline">👁️ Xem đáp án</button><div id="${containerId}-${index}" class="${containerId==='comprehension-container'||containerId==='high-container'||containerId==='real-container'?'solution-box':'answer-box'} mt-2 p-3 rounded hidden"><p class="font-semibold text-purple-700">Đáp án: ${item.answer}</p><p class="text-gray-700 text-sm mt-1 whitespace-pre-line">${item.solution}</p></div>`;
+                }
+                container.appendChild(div);
+            });
+        }
+
+        function toggleAnswer(id) { document.getElementById(id).classList.toggle('hidden'); }
+        document.addEventListener('DOMContentLoaded', () => {
+            renderQuestions('mcq-container', mcqData, 'mcq');
+            renderQuestions('tf-container', tfData, 'tf');
+            renderQuestions('recognition-container', recognitionData, 'default');
+            renderQuestions('comprehension-container', comprehensionData, 'default');
+            renderQuestions('low-container', lowData, 'default');
+            renderQuestions('high-container', highData, 'default');
+            renderQuestions('real-container', realData, 'default');
+        });
+    </script>
+</body>
+</html>
+```

@@ -1,0 +1,365 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nguyên Hàm - Đề Mục 225 - Toán Lớp 12</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@fontsource/roboto@4.5.8/index.css" rel="stylesheet">
+    <style>
+        * { font-family: 'Roboto', sans-serif; }
+        .gradient-header { background: linear-gradient(135deg, #0891b2 0%, #7c3aed 100%); }
+        .card-hover { transition: all 0.3s ease; }
+        .card-hover:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0,0,0,0.15); }
+        .btn-primary { background: linear-gradient(135deg, #0891b2 0%, #7c3aed 100%); }
+        .btn-primary:hover { background: linear-gradient(135deg, #067894 0%, #6a32c4 100%); }
+        .answer-box { background: #f0f9ff; border-left: 4px solid #0891b2; }
+        .solution-box { background: #fef3c7; border-left: 4px solid #f59e0b; }
+        .nav-item { transition: all 0.2s ease; }
+        .nav-item:hover { background: rgba(255,255,255,0.2); }
+        .nav-item.active { background: rgba(255,255,255,0.3); }
+        .print-section { page-break-inside: avoid; }
+        @media print { .no-print { display: none; } }
+        .formula-box { background: linear-gradient(135deg, #e0f2fe 0%, #ede9fe 100%); border-radius: 8px; padding: 16px; margin: 12px 0; }
+        .graph-container { background: #f8fafc; border: 2px dashed #cbd5e1; border-radius: 8px; padding: 20px; text-align: center; }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <header class="gradient-header text-white py-8">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center">
+                <div>
+                    <h1 class="text-3xl font-bold">NGUYÊN HÀM</h1>
+                    <p class="text-lg opacity-90">Đề Mục 225 - Toán Lớp 12 - Giải Tích</p>
+                </div>
+                <div class="text-right">
+                    <p class="text-sm opacity-80">Bộ Tài Liệu Toán THPT</p>
+                    <p class="text-sm opacity-80">Ôn Tập Thi Tốt Nghiệp</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <nav class="bg-white shadow-md sticky top-0 z-50 no-print">
+        <div class="container mx-auto px-4">
+            <div class="flex overflow-x-auto py-3 space-x-2">
+                <button onclick="showSection('lesson')" class="nav-item active px-4 py-2 rounded-lg bg-cyan-100 text-cyan-700 whitespace-nowrap">📚 Bài Giảng</button>
+                <button onclick="showSection('mcq')" class="nav-item px-4 py-2 rounded-lg hover:bg-gray-100 whitespace-nowrap">📝 50 Câu MCQ</button>
+                <button onclick="showSection('tf')" class="nav-item px-4 py-2 rounded-lg hover:bg-gray-100 whitespace-nowrap">✅ 12 Câu Đúng/Sai</button>
+                <button onclick="showSection('recognition')" class="nav-item px-4 py-2 rounded-lg hover:bg-gray-100 whitespace-nowrap">🔍 10 Bài Nhận Biết</button>
+                <button onclick="showSection('comprehension')" class="nav-item px-4 py-2 rounded-lg hover:bg-gray-100 whitespace-nowrap">💡 10 Câu Thông Hiểu</button>
+                <button onclick="showSection('low')" class="nav-item px-4 py-2 rounded-lg hover:bg-gray-100 whitespace-nowrap">📊 10 Bài Vận Dụng Thấp</button>
+                <button onclick="showSection('high')" class="nav-item px-4 py-2 rounded-lg hover:bg-gray-100 whitespace-nowrap">🎯 10 Bài Vận Dụng Cao</button>
+                <button onclick="showSection('real')" class="nav-item px-4 py-2 rounded-lg hover:bg-gray-100 whitespace-nowrap">🌍 10 Bài Thực Tế</button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container mx-auto px-4 py-8">
+        <section id="lesson" class="section-content">
+            <div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section">
+                <h2 class="text-2xl font-bold text-cyan-700 mb-6 flex items-center"><span class="mr-3">📚</span> BÀI GIẢNG: NGUYÊN HÀM</h2>
+                <div class="space-y-6">
+                    <div class="answer-box p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold text-cyan-700 mb-4">1. ĐỊNH NGHĨA & TÍNH CHẤT CƠ BẢN</h3>
+                        <p class="text-gray-700 mb-4">Cho hàm số f(x) xác định trên khoảng K. Hàm số F(x) được gọi là <strong>nguyên hàm</strong> của f(x) trên K nếu F'(x) = f(x) với mọi x ∈ K.</p>
+                        <div class="formula-box">
+                            <ul class="space-y-3 text-gray-700">
+                                <li>• <strong>Ký hiệu:</strong> ∫f(x)dx = F(x) + C</li>
+                                <li>• <strong>Họ nguyên hàm:</strong> Nếu F(x) là một nguyên hàm của f(x), thì mọi nguyên hàm của f(x) đều có dạng F(x) + C (C là hằng số).</li>
+                                <li>• <strong>Tính chất 1:</strong> (∫f(x)dx)' = f(x)</li>
+                                <li>• <strong>Tính chất 2:</strong> ∫k·f(x)dx = k·∫f(x)dx</li>
+                                <li>• <strong>Tính chất 3:</strong> ∫[f(x) ± g(x)]dx = ∫f(x)dx ± ∫g(x)dx</li>
+                            </ul>
+                        </div>
+                        <div class="grid md:grid-cols-3 gap-4 mt-4">
+                            <div class="bg-cyan-50 p-4 rounded-lg">
+                                <h4 class="font-semibold text-cyan-600 mb-2">Bảng nguyên hàm cơ bản</h4>
+                                <p class="text-gray-700 text-sm">∫dx = x + C</p>
+                                <p class="text-gray-700 text-sm">∫x^α dx = x^(α+1)/(α+1) + C (α≠-1)</p>
+                                <p class="text-gray-700 text-sm">∫(1/x)dx = ln|x| + C</p>
+                            </div>
+                            <div class="bg-purple-50 p-4 rounded-lg">
+                                <h4 class="font-semibold text-purple-600 mb-2">Hàm mũ & Lôgarit</h4>
+                                <p class="text-gray-700 text-sm">∫e^x dx = e^x + C</p>
+                                <p class="text-gray-700 text-sm">∫a^x dx = a^x/lna + C</p>
+                                <p class="text-gray-700 text-sm">∫(1/x)dx = ln|x| + C</p>
+                            </div>
+                            <div class="bg-amber-50 p-4 rounded-lg">
+                                <h4 class="font-semibold text-amber-600 mb-2">Lượng giác</h4>
+                                <p class="text-gray-700 text-sm">∫cosx dx = sinx + C</p>
+                                <p class="text-gray-700 text-sm">∫sinx dx = -cosx + C</p>
+                                <p class="text-gray-700 text-sm">∫1/cos²x dx = tanx + C</p>
+                            </div>
+                        </div>
+                        <div class="mt-4 graph-container">
+                            <svg width="400" height="240" viewBox="0 0 400 240">
+                                <line x1="50" y1="200" x2="350" y2="200" stroke="#333" stroke-width="2"/>
+                                <line x1="200" y1="40" x2="200" y2="220" stroke="#333" stroke-width="2"/>
+                                <path d="M 100 180 Q 150 100 200 60 Q 250 100 300 180" fill="none" stroke="#0891b2" stroke-width="3"/>
+                                <path d="M 120 160 Q 150 80 200 40 Q 250 80 280 160" fill="none" stroke="#7c3aed" stroke-width="2" stroke-dasharray="4,4"/>
+                                <path d="M 80 200 Q 150 120 200 80 Q 250 120 320 200" fill="none" stroke="#10b981" stroke-width="2" stroke-dasharray="4,4"/>
+                                <text x="210" y="50" fill="#7c3aed">F(x)+C₁</text>
+                                <text x="210" y="90" fill="#0891b2" font-weight="bold">F(x)+C₂</text>
+                                <text x="210" y="130" fill="#10b981">F(x)+C₃</text>
+                                <text x="150" y="230" fill="#333" font-size="12">Họ đường cong nguyên hàm song song</text>
+                            </svg>
+                        </div>
+                    </div>
+
+                    <div class="solution-box p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold text-amber-700 mb-4">2. PHƯƠNG PHÁP TÍNH NGUYÊN HÀM</h3>
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div class="bg-white p-4 rounded-lg border-2 border-cyan-300">
+                                <h4 class="font-semibold text-cyan-600 mb-2">Đổi biến số</h4>
+                                <p class="text-gray-700 text-sm mb-2">Nếu u = u(x) có đạo hàm liên tục và y = f(u) liên tục thì:</p>
+                                <p class="text-cyan-700 font-bold text-center">∫f[u(x)]·u'(x)dx = ∫f(u)du = F(u) + C</p>
+                            </div>
+                            <div class="bg-white p-4 rounded-lg border-2 border-purple-300">
+                                <h4 class="font-semibold text-purple-600 mb-2">Tích phân từng phần</h4>
+                                <p class="text-gray-700 text-sm mb-2">Nếu u, v có đạo hàm liên tục:</p>
+                                <p class="text-purple-700 font-bold text-center">∫u dv = u·v - ∫v du</p>
+                                <p class="text-gray-600 text-sm mt-2">Thường dùng cho tích đa thức × hàm mũ/lôgarit/lượng giác.</p>
+                            </div>
+                        </div>
+                        <div class="mt-4 bg-cyan-50 p-4 rounded-lg">
+                            <h4 class="font-semibold text-cyan-700 mb-2">📝 Mẹo nhớ nhanh:</h4>
+                            <ul class="space-y-2 text-gray-700 text-sm">
+                                <li>• <strong>Đổi biến:</strong> Nhận diện "hàm trong" và đạo hàm của nó ngoài.</li>
+                                <li>• <strong>Từng phần:</strong> Quy tắc "LIATE" chọn u: Lôgarit → Lượng giác → Đại số → Mũ.</li>
+                                <li>• Luôn nhớ thêm <strong>+ C</strong> ở cuối kết quả nguyên hàm.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="answer-box p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold text-cyan-700 mb-4">3. VÍ DỤ MINH HỌA</h3>
+                        <div class="bg-white p-4 rounded-lg mb-4">
+                            <h4 class="font-semibold text-cyan-600 mb-2">Ví dụ 1: Cơ bản</h4>
+                            <p class="text-gray-700 mb-2">Tìm nguyên hàm của f(x) = 3x² + 2x - 1.</p>
+                            <div class="solution-box p-3 rounded">
+                                <p class="text-gray-700">F(x) = ∫(3x²+2x-1)dx = x³ + x² - x + C</p>
+                            </div>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg mb-4">
+                            <h4 class="font-semibold text-cyan-600 mb-2">Ví dụ 2: Đổi biến</h4>
+                            <p class="text-gray-700 mb-2">Tìm ∫(2x+1)⁵ dx.</p>
+                            <div class="solution-box p-3 rounded">
+                                <p class="text-gray-700">Đặt u = 2x+1 ⇒ du = 2dx ⇒ dx = du/2</p>
+                                <p class="text-gray-700">∫u⁵(du/2) = u⁶/12 + C = (2x+1)⁶/12 + C</p>
+                            </div>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg">
+                            <h4 class="font-semibold text-cyan-600 mb-2">Ví dụ 3: Từng phần</h4>
+                            <p class="text-gray-700 mb-2">Tìm ∫x·e^x dx.</p>
+                            <div class="solution-box p-3 rounded">
+                                <p class="text-gray-700">u=x ⇒ du=dx; dv=e^x dx ⇒ v=e^x</p>
+                                <p class="text-gray-700">∫x e^x dx = x e^x - ∫e^x dx = x e^x - e^x + C</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="solution-box p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold text-amber-700 mb-4">4. HƯỚNG DẪN MÁY TÍNH CASIO</h3>
+                        <div class="bg-white p-4 rounded-lg space-y-3">
+                            <p class="text-gray-700"><strong>Kiểm tra nguyên hàm:</strong></p>
+                            <ol class="list-decimal list-inside space-y-1 text-gray-700">
+                                <li>Nhấn <kbd class="bg-gray-200 px-2 py-1 rounded">CALC</kbd></li>
+                                <li>Nhập biểu thức: Đạo hàm của kết quả - Hàm ban đầu</li>
+                                <li>Thay một giá trị x bất kỳ (ví dụ x=1). Nếu kết quả ≈ 0 thì đúng.</li>
+                            </ol>
+                            <p class="text-gray-700 mt-3"><strong>Lưu ý:</strong> Máy tính không tính trực tiếp nguyên hàm bất định. Dùng để kiểm tra đáp án trắc nghiệm hoặc kiểm chứng phép tính.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="mcq" class="section-content hidden"><div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section"><h2 class="text-2xl font-bold text-cyan-700 mb-6 flex items-center"><span class="mr-3">📝</span> 50 CÂU TRẮC NGHIỆM</h2><div class="space-y-6" id="mcq-container"></div></div></section>
+        <section id="tf" class="section-content hidden"><div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section"><h2 class="text-2xl font-bold text-cyan-700 mb-6 flex items-center"><span class="mr-3">✅</span> 12 CÂU ĐÚNG/SAI</h2><div class="space-y-6" id="tf-container"></div></div></section>
+        <section id="recognition" class="section-content hidden"><div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section"><h2 class="text-2xl font-bold text-cyan-700 mb-6 flex items-center"><span class="mr-3">🔍</span> 10 BÀI NHẬN BIẾT</h2><div class="space-y-6" id="recognition-container"></div></div></section>
+        <section id="comprehension" class="section-content hidden"><div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section"><h2 class="text-2xl font-bold text-cyan-700 mb-6 flex items-center"><span class="mr-3">💡</span> 10 CÂU THÔNG HIỂU</h2><div class="space-y-6" id="comprehension-container"></div></div></section>
+        <section id="low" class="section-content hidden"><div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section"><h2 class="text-2xl font-bold text-cyan-700 mb-6 flex items-center"><span class="mr-3">📊</span> 10 BÀI VẬN DỤNG THẤP</h2><div class="space-y-6" id="low-container"></div></div></section>
+        <section id="high" class="section-content hidden"><div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section"><h2 class="text-2xl font-bold text-cyan-700 mb-6 flex items-center"><span class="mr-3">🎯</span> 10 BÀI VẬN DỤNG CAO</h2><div class="space-y-6" id="high-container"></div></div></section>
+        <section id="real" class="section-content hidden"><div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section"><h2 class="text-2xl font-bold text-cyan-700 mb-6 flex items-center"><span class="mr-3">🌍</span> 10 BÀI THỰC TẾ</h2><div class="space-y-6" id="real-container"></div></div></section>
+    </main>
+
+    <footer class="gradient-header text-white py-6 mt-8">
+        <div class="container mx-auto px-4 text-center">
+            <p class="text-sm">Bộ Tài Liệu Toán THPT - Đề Mục 225: Nguyên Hàm</p>
+            <p class="text-sm opacity-80">© 2024 - Ôn Tập Thi Tốt Nghiệp</p>
+        </div>
+    </footer>
+    <button onclick="window.print()" class="no-print fixed bottom-6 right-6 btn-primary text-white px-6 py-3 rounded-full shadow-lg hover:shadow-xl transition-all">🖨️ In Tài Liệu</button>
+
+    <script>
+        function showSection(id) {
+            document.querySelectorAll('.section-content').forEach(e => e.classList.add('hidden'));
+            document.getElementById(id).classList.remove('hidden');
+            document.querySelectorAll('.nav-item').forEach(e => e.classList.remove('active'));
+            event.target.classList.add('active');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        const mcqData = [
+            {q:"Nguyên hàm của f(x) = 2x là:",options:["A. x² + C","B. 2 + C","C. x²","D. 2x² + C"],answer:"A",solution:"∫2x dx = x² + C"},
+            {q:"Ký hiệu nguyên hàm của f(x) là:",options:["A. ∫f(x)dx","B. f'(x)","C. ∫f(x)","D. F(x)"],answer:"A",solution:"Ký hiệu chuẩn"},
+            {q:"Nếu F'(x) = f(x) thì ∫f(x)dx bằng:",options:["A. F(x) + C","B. F'(x) + C","C. f(x) + C","D. F(x)"],answer:"A",solution:"Định nghĩa"},
+            {q:"Nguyên hàm của e^x là:",options:["A. e^x + C","B. x·e^x + C","C. e^(x+1) + C","D. ln|x| + C"],answer:"A",solution:"Đạo hàm e^x chính nó"},
+            {q:"∫cosx dx bằng:",options:["A. sinx + C","B. -sinx + C","C. cosx + C","D. -cosx + C"],answer:"A",solution:"Đạo hàm sinx = cosx"},
+            {q:"∫x^n dx (n≠-1) bằng:",options:["A. x^(n+1)/(n+1) + C","B. nx^(n-1) + C","C. x^(n+1) + C","D. ln|x| + C"],answer:"A",solution:"Công thức lũy thừa"},
+            {q:"Hàm số F(x) = x³ là nguyên hàm của:",options:["A. 3x²","B. x²","C. 3x","D. x³"],answer:"A",solution:"F'(x) = 3x²"},
+            {q:"Tính chất: ∫[f(x)+g(x)]dx =",options:["A. ∫f(x)dx + ∫g(x)dx","B. ∫f(x)dx · ∫g(x)dx","C. ∫f(x)g(x)dx","D. ∫f(x)dx - ∫g(x)dx"],answer:"A",solution:"Tính chất tuyến tính"},
+            {q:"Nguyên hàm của 1/x là:",options:["A. ln|x| + C","B. 1/x² + C","C. x + C","D. e^x + C"],answer:"A",solution:"Công thức cơ bản"},
+            {q:"∫sinx dx bằng:",options:["A. -cosx + C","B. cosx + C","C. sinx + C","D. -sinx + C"],answer:"A",solution:"Đạo hàm -cosx = sinx"},
+            {q:"Phương pháp đổi biến số thường dùng khi:",options:["A. Hàm số có dạng f[u(x)]·u'(x)","B. Hàm số là tích đa thức","C. Hàm số là phân thức","D. Hàm số là lượng giác đơn thuần"],answer:"A",solution:"Điều kiện đổi biến"},
+            {q:"Trong tích phân từng phần ∫u dv, công thức là:",options:["A. uv - ∫v du","B. uv + ∫v du","C. u'v - ∫uv'","D. uv/2 - ∫v du"],answer:"A",solution:"Công thức chuẩn"},
+            {q:"Nguyên hàm của 1/(1+x²) là:",options:["A. arctanx + C","B. arcsinx + C","C. ln|1+x²| + C","D. 1/x + C"],answer:"A",solution:"Đạo hàm arctanx"},
+            {q:"∫3^x dx bằng:",options:["A. 3^x/ln3 + C","B. 3^x + C","C. x·3^(x-1) + C","D. ln3·3^x + C"],answer:"A",solution:"Công thức hàm mũ cơ số a"},
+            {q:"Nếu ∫f(x)dx = F(x)+C thì ∫f(ax+b)dx (a≠0) bằng:",options:["A. (1/a)F(ax+b)+C","B. F(ax+b)+C","C. aF(ax+b)+C","D. F(x)+C"],answer:"A",solution:"Quy tắc đổi biến tuyến tính"},
+            {q:"Nguyên hàm của √x là:",options:["A. (2/3)x√x + C","B. (1/2√x) + C","C. x²/2 + C","D. 2√x + C"],answer:"A",solution:"x^(1/2) → x^(3/2)/(3/2)"},
+            {q:"∫sec²x dx bằng:",options:["A. tanx + C","B. cotx + C","C. secx + C","D. -tanx + C"],answer:"A",solution:"Đạo hàm tanx = sec²x"},
+            {q:"Hàm số nào sau đây KHÔNG có nguyên hàm trên ℝ?",options:["A. Hàm số gián đoạn loại 1","B. Hàm số liên tục","C. Đa thức","D. Hàm lượng giác"],answer:"A",solution:"Định lý tồn tại nguyên hàm yêu cầu liên tục"},
+            {q:"∫(2x+1)² dx bằng:",options:["A. (2x+1)³/6 + C","B. (2x+1)³/3 + C","C. 2(2x+1)³ + C","D. (2x+1)²/2 + C"],answer:"A",solution:"Đổi biến u=2x+1"},
+            {q:"Nguyên hàm của xe^x là:",options:["A. e^x(x-1)+C","B. e^x(x+1)+C","C. xe^x+C","D. e^x+C"],answer:"A",solution:"Tích phân từng phần"},
+            {q:"Nếu F(x) là nguyên hàm của f(x), thì họ nguyên hàm là:",options:["A. F(x) + C","B. F(x) + x","C. F(x) · C","D. F'(x) + C"],answer:"A",solution:"Định nghĩa họ nguyên hàm"},
+            {q:"∫1/√x dx bằng:",options:["A. 2√x + C","B. 1/√x + C","C. √x + C","D. -2/√x + C"],answer:"A",solution:"x^(-1/2) → 2x^(1/2)"},
+            {q:"Trong đổi biến, nếu u = g(x) thì du bằng:",options:["A. g'(x)dx","B. g(x)dx","C. g(x)","D. dx"],answer:"A",solution:"Vi phân"},
+            {q:"∫(e^x + 1)dx bằng:",options:["A. e^x + x + C","B. e^x + 1 + C","C. e^(x+1) + C","D. xe^x + C"],answer:"A",solution:"Tính chất cộng"},
+            {q:"Nguyên hàm của sin(2x) là:",options:["A. -cos(2x)/2 + C","B. cos(2x)/2 + C","C. -sin(2x)/2 + C","D. cos(2x) + C"],answer:"A",solution:"Đổi biến hoặc nhớ nhanh"},
+            {q:"Nếu F(x) = x^4/4 thì F'(x) là:",options:["A. x³","B. 4x³","C. x⁴","D. 4x"],answer:"A",solution:"Quy tắc đạo hàm"},
+            {q:"∫cos(3x)dx bằng:",options:["A. sin(3x)/3 + C","B. 3sin(3x) + C","C. -sin(3x) + C","D. sin(3x) + C"],answer:"A",solution:"Đổi biến u=3x"},
+            {q:"Tính chất: ∫k·f(x)dx =",options:["A. k∫f(x)dx","B. ∫kf(x)dx","C. k·f'(x)","D. f(x)/k"],answer:"A",solution:"Hằng số đưa ra ngoài tích phân"},
+            {q:"Nguyên hàm của 1/cos²x là:",options:["A. tanx + C","B. cotx + C","C. secx + C","D. -tanx + C"],answer:"A",solution:"Công thức lượng giác"},
+            {q:"Để tìm nguyên hàm của x·sinx, ta dùng phương pháp:",options:["A. Tích phân từng phần","B. Đổi biến số","C. Phân tích","D. Hằng đẳng thức"],answer:"A",solution:"Tích đa thức và lượng giác"},
+            {q:"∫(x² - 3x + 2)dx bằng:",options:["A. x³/3 - 3x²/2 + 2x + C","B. 2x - 3 + C","C. x³ - 3x² + 2x + C","D. 3x² - 6x + 2 + C"],answer:"A",solution:"Nguyên hàm từng hạng tử"},
+            {q:"Nếu F(x) = e^(2x) thì f(x) là:",options:["A. 2e^(2x)","B. e^(2x)","C. e^x","D. 2e^x"],answer:"A",solution:"Đạo hàm hàm hợp"},
+            {q:"∫1/(x+1) dx bằng:",options:["A. ln|x+1| + C","B. 1/(x+1)² + C","C. x+1 + C","D. e^(x+1) + C"],answer:"A",solution:"Công thức 1/u"},
+            {q:"Đạo hàm của ∫f(x)dx là:",options:["A. f(x)","B. F(x)","C. f'(x)","D. ∫f'(x)dx"],answer:"A",solution:"Tính chất cơ bản"},
+            {q:"∫(e^x - e^(-x))dx bằng:",options:["A. e^x + e^(-x) + C","B. e^x - e^(-x) + C","C. e^(2x)/2 + C","D. 2sinh x + C"],answer:"A",solution:"Nguyên hàm từng phần"},
+            {q:"Phương pháp đổi biến thường áp dụng cho hàm:",options:["A. Hợp chất","B. Đa thức đơn thuần","C. Hằng số","D. Phân thức tối giản"],answer:"A",solution:"Hàm hợp f(u(x))"},
+            {q:"Nguyên hàm của 2^x là:",options:["A. 2^x/ln2 + C","B. 2^x + C","C. x·2^(x-1) + C","D. ln2·2^x + C"],answer:"A",solution:"Công thức tổng quát"},
+            {q:"Nếu F(x) là nguyên hàm của f(x), G(x) nguyên hàm của g(x) thì ∫(f-g)dx =",options:["A. F(x)-G(x)+C","B. F(x)+G(x)+C","C. F(x)·G(x)+C","D. F(x)/G(x)+C"],answer:"A",solution:"Tính chất tuyến tính"},
+            {q:"∫x·e^(x²)dx bằng:",options:["A. (1/2)e^(x²)+C","B. e^(x²)+C","C. 2e^(x²)+C","D. x²e^(x²)+C"],answer:"A",solution:"Đổi biến u=x², du=2xdx"},
+            {q:"Nguyên hàm của 1/√(1-x²) là:",options:["A. arcsinx + C","B. arccosx + C","C. arctanx + C","D. ln|...|+C"],answer:"A",solution:"Công thức lượng giác ngược"},
+            {q:"Trong công thức từng phần, cách chọn u thường theo thứ tự:",options:["A. Lôgarit → Lượng giác → Đa thức → Mũ","B. Mũ → Đa thức → Lượng giác","C. Đa thức → Mũ → Lôgarit","D. Ngẫu nhiên"],answer:"A",solution:"Quy tắc LIATE"},
+            {q:"∫cos²x dx thường tính bằng cách:",options:["A. Hạ bậc cos²x = (1+cos2x)/2","B. Đổi biến u=cosx","C. Từng phần","D. Không tính được"],answer:"A",solution:"Công thức hạ bậc"},
+            {q:"Nếu f(x) liên tục trên [a;b], nó có nguyên hàm trên:",options:["A. [a;b]","B. (a;b)","C. {a,b}","D. Không có"],answer:"A",solution:"Định lý tồn tại"},
+            {q:"Nguyên hàm của tanx là:",options:["A. -ln|cosx| + C","B. ln|cosx| + C","C. -ln|sinx| + C","D. ln|tanx| + C"],answer:"A",solution:"Đổi biến u=cosx"},
+            {q:"∫(x+1)^10 dx bằng:",options:["A. (x+1)^11/11 + C","B. 10(x+1)^9 + C","C. (x+1)^10/10 + C","D. (x+1)^11 + C"],answer:"A",solution:"Đổi biến u=x+1"},
+            {q:"Hàm số nào có nguyên hàm là x·lnx - x?",options:["A. lnx","B. 1/x","C. x","D. e^x"],answer:"A",solution:"Đạo hàm xlnx-x = lnx+1-1=lnx"},
+            {q:"∫sinx·cosx dx bằng:",options:["A. -cos²x/2 + C","B. sin²x/2 + C","C. Cả A và B","D. -sin(2x)/4 + C"],answer:"C",solution:"Hai kết quả sai khác hằng số"},
+            {q:"Nếu F(x) = x² + C, thì f(x) là:",options:["A. 2x","B. x²","C. 2","D. 2x+C"],answer:"A",solution:"Đạo hàm F(x)"},
+            {q:"∫e^(3x+1) dx bằng:",options:["A. e^(3x+1)/3 + C","B. 3e^(3x+1) + C","C. e^(3x+1) + C","D. e^(3x)/3 + C"],answer:"A",solution:"Đổi biến u=3x+1"}
+        ];
+
+        const tfData = [
+            {q:"Về định nghĩa nguyên hàm:",statements:[{text:"Nếu F'(x)=f(x) thì F(x) là nguyên hàm của f(x)",answer:true},{text:"Mọi hàm số đều có nguyên hàm",answer:false},{text:"Nếu F(x) là nguyên hàm thì F(x)+1 cũng là nguyên hàm",answer:true},{text:"Nguyên hàm của hàm số là duy nhất",answer:false}]},
+            {q:"Về tính chất:",statements:[{text:"∫[f(x)+g(x)]dx = ∫f(x)dx + ∫g(x)dx",answer:true},{text:"∫f(x)g(x)dx = ∫f(x)dx · ∫g(x)dx",answer:false},{text:"∫k·f(x)dx = k·∫f(x)dx",answer:true},{text:"(∫f(x)dx)' = f(x)",answer:true}]},
+            {q:"Về bảng nguyên hàm cơ bản:",statements:[{text:"∫x^α dx = x^(α+1)/(α+1) + C với mọi α",answer:false},{text:"∫1/x dx = ln|x| + C",answer:true},{text:"∫e^x dx = e^x + C",answer:true},{text:"∫cosx dx = -sinx + C",answer:false}]},
+            {q:"Về phương pháp đổi biến:",statements:[{text:"Đặt u=u(x) thì ∫f[u(x)]u'(x)dx = ∫f(u)du",answer:true},{text:"Có thể đổi biến cho mọi tích phân",answer:true},{text:"Sau khi đổi biến không cần đổi lại biến cũ",answer:false},{text:"Đổi biến thường dùng cho hàm hợp",answer:true}]},
+            {q:"Về tích phân từng phần:",statements:[{text:"∫u dv = uv - ∫v du",answer:true},{text:"Thường dùng cho tích đa thức và hàm mũ/lôgarit",answer:true},{text:"Chọn u và dv ảnh hưởng đến độ khó bài toán",answer:true},{text:"Áp dụng được cho tích 2 hàm bất kỳ mà không cần điều kiện",answer:false}]},
+            {q:"Về hằng số tích phân C:",statements:[{text:"C là một số thực tùy ý",answer:true},{text:"Nếu bỏ sót C thì kết quả vẫn đúng trong mọi trường hợp",answer:false},{text:"C có thể được xác định nếu biết một giá trị của nguyên hàm",answer:true},{text:"C luôn bằng 0",answer:false}]},
+            {q:"Về ứng dụng:",statements:[{text:"Nguyên hàm dùng để tìm diện tích hình phẳng",answer:true},{text:"Nguyên hàm dùng tính quãng đường từ vận tốc",answer:true},{text:"Nguyên hàm dùng giải phương trình vi phân",answer:true},{text:"Nguyên hàm chỉ dùng trong toán học thuần túy",answer:false}]},
+            {q:"Về máy tính CASIO:",statements:[{text:"Máy tính có thể tính trực tiếp nguyên hàm bất định",answer:false},{text:"Dùng CALC để kiểm tra đáp án trắc nghiệm",answer:true},{text:"Có thể dùng TABLE để dự đoán kết quả",answer:true},{text:"Mode 7 là mode thống kê, không dùng cho nguyên hàm",answer:true}]},
+            {q:"Về hàm số liên tục:",statements:[{text:"Hàm liên tục trên K luôn có nguyên hàm trên K",answer:true},{text:"Hàm gián đoạn không bao giờ có nguyên hàm",answer:false},{text:"Đa thức luôn có nguyên hàm trên ℝ",answer:true},{text:"Hàm phân thức luôn có nguyên hàm trên TXĐ",answer:true}]},
+            {q:"Về kỹ thuật tính:",statements:[{text:"Nên hạ bậc lượng giác trước khi tính nguyên hàm",answer:true},{text:"∫tanx dx = -ln|cosx| + C",answer:true},{text:"Đạo hàm của nguyên hàm bằng chính hàm số ban đầu",answer:true},{text:"∫sin²x dx = cos²x/2 + C",answer:false}]},
+            {q:"Về nguyên hàm từng phần nâng cao:",statements:[{text:"Có thể dùng bảng hoặc sơ đồ để tính nhanh",answer:true},{text:"Áp dụng nhiều lần nếu chưa triệt tiêu tích phân",answer:true},{text:"Luôn chọn u là hàm đa thức",answer:false},{text:"Dùng được cho ∫e^x sinx dx",answer:true}]},
+            {q:"Về nhận dạng:",statements:[{text:"Nếu F(x) là nguyên hàm của f(x) thì f(x) là đạo hàm của F(x)",answer:true},{text:"Đồ thị các nguyên hàm của cùng hàm số là các đường song song",answer:true},{text:"Hàm chẵn có nguyên hàm là hàm lẻ (nếu F(0)=0)",answer:true},{text:"Hàm tuần hoàn có nguyên hàm luôn tuần hoàn",answer:false}]}
+        ];
+
+        const recognitionData = [
+            {q:"Viết định nghĩa nguyên hàm của hàm số f(x).",answer:"F(x) sao cho F'(x) = f(x) ∀x ∈ K",solution:"Định nghĩa SGK"},
+            {q:"Ký hiệu họ nguyên hàm của f(x) là gì?",answer:"∫f(x)dx = F(x) + C",solution:"Ký hiệu chuẩn"},
+            {q:"Viết nguyên hàm cơ bản của x^n (n≠-1).",answer:"x^(n+1)/(n+1) + C",solution:"Công thức lũy thừa"},
+            {q:"Nguyên hàm của e^x là:",answer:"e^x + C",solution:"Hàm mũ cơ sở"},
+            {q:"Nguyên hàm của cosx là:",answer:"sinx + C",solution:"Lượng giác cơ bản"},
+            {q:"Viết công thức đổi biến số: ∫f[u(x)]u'(x)dx =",answer:"∫f(u)du = F(u) + C",solution:"Phương pháp đổi biến"},
+            {q:"Viết công thức tích phân từng phần.",answer:"∫u dv = uv - ∫v du",solution:"Công thức cơ bản"},
+            {q:"Nguyên hàm của 1/x là:",answer:"ln|x| + C",solution:"Hàm lôgarit tự nhiên"},
+            {q:"Nếu F'(x) = 3x² thì F(x) có dạng:",answer:"x³ + C",solution:"Nguyên hàm ngược đạo hàm"},
+            {q:"Tính chất: ∫[f(x) ± g(x)]dx =",answer:"∫f(x)dx ± ∫g(x)dx",solution:"Tuyến tính"}
+        ];
+
+        const comprehensionData = [
+            {q:"Tại sao phải thêm hằng số C vào kết quả nguyên hàm?",answer:"Vì đạo hàm của hằng số bằng 0, nên có vô số hàm có cùng đạo hàm",solution:"Tính chất đạo hàm"},
+            {q:"Giải thích tại sao ∫1/x dx = ln|x| + C chứ không phải ln(x).",answer:"TXĐ của 1/x là x≠0, ln|x| xác định cho cả x âm và dương",solution:"Miền xác định"},
+            {q:"Nếu đổi biến u = 2x+1, tại sao dx = du/2?",answer:"Vì du = u'(x)dx = 2dx ⇒ dx = du/2",solution:"Vi phân"},
+            {q:"Tại sao nguyên hàm của sin²x không phải là cos³x/3?",answer:"Vì đạo hàm cos³x/3 không ra sin²x. Phải hạ bậc trước.",solution:"Sai lầm phổ biến"},
+            {q:"Trong từng phần, nếu chọn u=e^x, dv=xdx thì có tối ưu không?",answer:"Không, vì ∫v du sẽ phức tạp hơn. Nên chọn u=x.",solution:"Quy tắc LIATE"},
+            {q:"Giải thích ý nghĩa hình học của họ nguyên hàm F(x)+C.",answer:"Là họ các đường cong có tiếp tuyến song song tại cùng hoành độ",solution:"Hình học giải tích"},
+            {q:"Tại sao hàm gián đoạn loại 1 có thể không có nguyên hàm?",answer:"Nguyên hàm phải có đạo hàm bằng f(x), đạo hàm không có bước nhảy loại 1.",solution:"Định lý Darboux"},
+            {q:"Nếu biết ∫f(x)dx = F(x)+C, tính ∫f(ax+b)dx.",answer:"(1/a)F(ax+b) + C",solution:"Quy tắc đổi biến tuyến tính"},
+            {q:"Phân biệt nguyên hàm và tích phân xác định.",answer:"Nguyên hàm là hàm số (họ hàm), tích phân là một số thực",solution:"Khái niệm cơ bản"},
+            {q:"Tại sao ∫tanx dx = -ln|cosx| + C?",answer:"tanx = sinx/cosx. Đặt u=cosx ⇒ du=-sinx dx ⇒ ∫-du/u = -ln|u|",solution:"Kỹ thuật đổi biến"}
+        ];
+
+        const lowData = [
+            {q:"Tìm nguyên hàm của f(x) = 4x³ - 2x + 5.",answer:"x⁴ - x² + 5x + C",solution:"Nguyên hàm từng hạng tử"},
+            {q:"Tính ∫(2/x + e^x)dx.",answer:"2ln|x| + e^x + C",solution:"Tổng nguyên hàm cơ bản"},
+            {q:"Tìm nguyên hàm của sin(3x).",answer:"-cos(3x)/3 + C",solution:"Đổi biến hoặc nhớ nhanh"},
+            {q:"Tính ∫x√(x²+1) dx.",answer:"(1/3)(x²+1)^(3/2) + C",solution:"Đổi biến u=x²+1"},
+            {q:"Tìm nguyên hàm của x·e^x.",answer:"e^x(x-1) + C",solution:"Tích phân từng phần"},
+            {q:"Tính ∫1/(2x-1) dx.",answer:"(1/2)ln|2x-1| + C",solution:"Đổi biến u=2x-1"},
+            {q:"Tìm nguyên hàm của cos²x.",answer:"x/2 + sin(2x)/4 + C",solution:"Hạ bậc cos²x"},
+            {q:"Tính ∫(e^x + 1/e^x)dx.",answer:"e^x - e^(-x) + C",solution:"Viết 1/e^x = e^(-x)"},
+            {q:"Tìm nguyên hàm của 1/(x²+1).",answer:"arctanx + C",solution:"Công thức lượng giác ngược"},
+            {q:"Tính ∫(x+2)² dx.",answer:"(x+2)³/3 + C",solution:"Đổi biến u=x+2 hoặc khai triển"}
+        ];
+
+        const highData = [
+            {q:"Tìm nguyên hàm của f(x) = x·lnx.",answer:"(x²/2)lnx - x²/4 + C",solution:"**Lời giải:**\n1. Đặt u=lnx ⇒ du=dx/x\n2. dv=xdx ⇒ v=x²/2\n3. ∫ = (x²/2)lnx - ∫(x²/2)(1/x)dx\n4. = (x²/2)lnx - x²/4 + C\n**Kết luận: (x²/2)lnx - x²/4 + C**"},
+            {q:"Tính ∫e^(2x)·sinx dx.",answer:"e^(2x)(2sinx - cosx)/5 + C",solution:"**Lời giải:**\n1. Từng phần 2 lần hoặc dùng công thức.\n2. Đặt I = ∫e^(2x)sinx dx\n3. Sau 2 lần từng phần thu được I = e^(2x)(2sinx-cosx)/5 + C.\n**Kết luận: e^(2x)(2sinx - cosx)/5 + C**"},
+            {q:"Tìm nguyên hàm của √(1+sinx).",answer:"-2√2 cos(x/2 + π/4) + C",solution:"**Lời giải:**\n1. 1+sinx = (sin(x/2)+cos(x/2))²\n2. √(1+sinx) = |sin(x/2)+cos(x/2)|\n3. Nguyên hàm của sin+cos là -2cos+2sin.\n**Kết luận: Phụ thuộc khoảng xét dấu**"},
+            {q:"Cho F(x) là nguyên hàm của f(x)=x·e^x, F(0)=1. Tìm F(x).",answer:"e^x(x-1) + 2",solution:"**Lời giải:**\n1. F(x) = e^x(x-1) + C\n2. F(0) = 1·(-1) + C = 1 ⇒ C=2\n**Kết luận: F(x) = e^x(x-1) + 2**"},
+            {q:"Tính ∫dx/(x²+4x+13).",answer:"(1/3)arctan((x+2)/3) + C",solution:"**Lời giải:**\n1. Mẫu = (x+2)² + 9\n2. Đặt u = x+2, a=3\n3. ∫du/(u²+3²) = (1/3)arctan(u/3)\n**Kết luận: (1/3)arctan((x+2)/3) + C**"},
+            {q:"Tìm nguyên hàm của 1/(sinx·cosx).",answer:"ln|tanx| + C",solution:"**Lời giải:**\n1. 1/(sinxcosx) = 2/sin(2x)\n2. Hoặc nhân tử và mẫu cho 1/cos²x.\n3. ∫sec²x/tanx dx = ln|tanx|\n**Kết luận: ln|tanx| + C**"},
+            {q:"Tính ∫x³/√(x²+1) dx.",answer:"(1/3)(x²+1)^(3/2) - √(x²+1) + C",solution:"**Lời giải:**\n1. Đặt t=√(x²+1) ⇒ t²=x²+1, tdt=xdx\n2. x³dx = x²·xdx = (t²-1)tdt\n3. ∫(t²-1)dt = t³/3 - t\n**Kết luận: (1/3)(x²+1)^(3/2) - √(x²+1) + C**"},
+            {q:"Chứng minh ∫f(x)dx = F(x)+C ⇒ ∫f(ax+b)dx = (1/a)F(ax+b)+C.",answer:"Đổi biến u=ax+b",solution:"**Lời giải:**\n1. Đặt u=ax+b ⇒ du=adx ⇒ dx=du/a\n2. ∫f(u)du/a = (1/a)F(u)+C\n**Kết luận: ĐPCM**"},
+            {q:"Tìm nguyên hàm của arctanx.",answer:"x·arctanx - (1/2)ln(1+x²) + C",solution:"**Lời giải:**\n1. Từng phần: u=arctanx, dv=dx\n2. du=dx/(1+x²), v=x\n3. ∫ = x·arctanx - ∫x/(1+x²)dx\n4. ∫x/(1+x²)dx = (1/2)ln(1+x²)\n**Kết luận: x·arctanx - (1/2)ln(1+x²) + C**"},
+            {q:"Tính ∫sin(lnx)dx.",answer:"(x/2)[sin(lnx) - cos(lnx)] + C",solution:"**Lời giải:**\n1. Đặt t=lnx ⇒ x=e^t, dx=e^t dt\n2. I = ∫e^t sint dt\n3. Từng phần 2 lần ra I = (e^t/2)(sint - cost)\n4. Thay t=lnx.\n**Kết luận: (x/2)[sin(lnx) - cos(lnx)] + C**"}
+        ];
+
+        const realData = [
+            {q:"Vận tốc rơi tự do v(t) = gt + v₀. Tìm quãng đường s(t).",answer:"s(t) = (1/2)gt² + v₀t + C",solution:"**Lời giải:**\n1. s(t) = ∫v(t)dt\n2. ∫(gt+v₀)dt = (1/2)gt² + v₀t + C\n**Kết luận: Công thức chuyển động**"},
+            {q:"Tốc độ phản ứng hóa học v = k[A]. Nồng độ [A] theo thời gian?",answer:"[A] = [A]₀·e^(-kt)",solution:"**Lời giải:**\n1. d[A]/dt = -k[A]\n2. ∫d[A]/[A] = -∫k dt\n3. ln[A] = -kt + C ⇒ [A]=[A]₀e^(-kt)\n**Kết luận: Phân rã mũ**"},
+            {q:"Dòng điện i(t) = I₀sin(ωt). Điện tích q(t) tích lũy là?",answer:"q(t) = -(I₀/ω)cos(ωt) + C",solution:"**Lời giải:**\n1. q(t) = ∫i(t)dt\n2. ∫I₀sin(ωt)dt = -(I₀/ω)cos(ωt)\n**Kết luận: Tích phân dòng điện**"},
+            {q:"Chi phí biên MC(q) = 3q² - 2q + 5. Tổng chi phí C(q)?",answer:"C(q) = q³ - q² + 5q + F",solution:"**Lời giải:**\n1. C(q) = ∫MC(q)dq\n2. Nguyên hàm ra đa thức bậc 3.\n3. Hằng số F là chi phí cố định.\n**Kết luận: q³ - q² + 5q + F**"},
+            {q:"Tốc độ tăng trưởng dân số P'(t) = rP(t). Dân số P(t)?",answer:"P(t) = P₀·e^(rt)",solution:"**Lời giải:**\n1. P'/P = r\n2. ∫dP/P = ∫r dt\n3. lnP = rt + C\n**Kết luận: Tăng trưởng mũ**"},
+            {q:"Công suất P(t) = 100e^(-0.1t). Năng lượng tiêu thụ E(t)?",answer:"E(t) = -1000e^(-0.1t) + C",solution:"**Lời giải:**\n1. E(t) = ∫P(t)dt\n2. ∫100e^(-0.1t)dt = -1000e^(-0.1t)\n**Kết luận: Tích lũy năng lượng**"},
+            {q:"Tốc độ học thuộc V(t) = 20/(t+1). Số mục thuộc N(t)?",answer:"N(t) = 20ln|t+1| + C",solution:"**Lời giải:**\n1. N(t) = ∫20/(t+1)dt\n2. = 20ln|t+1|\n**Kết luận: Lôgarit tự nhiên**"},
+            {q:"Gia tốc a(t) = 2t - 6. Vận tốc v(t) biết v(0)=10?",answer:"v(t) = t² - 6t + 10",solution:"**Lời giải:**\n1. v(t) = ∫(2t-6)dt = t² - 6t + C\n2. v(0)=10 ⇒ C=10\n**Kết luận: t² - 6t + 10**"},
+            {q:"Tốc độ lây lan dịch bệnh I'(t) = βI(t)(1-I/N). Mô hình?",answer:"Mô hình Logistic",solution:"**Lời giải:**\n1. Phương trình vi phân tách biến.\n2. ∫dI/[I(1-I/N)] = ∫βdt\n3. Giải ra hàm logistic.\n**Kết luận: Đường cong chữ S**"},
+            {q:"Lực kéo F(x) = kx. Công sinh ra A(x) khi dời vật?",answer:"A(x) = (1/2)kx² + C",solution:"**Lời giải:**\n1. A = ∫F(x)dx\n2. ∫kx dx = kx²/2\n3. Định luật Hooke.\n**Kết luận: Thế năng đàn hồi**"}
+        ];
+
+        function renderQuestions(containerId, dataArray, type) {
+            const container = document.getElementById(containerId);
+            dataArray.forEach((item, index) => {
+                const div = document.createElement('div');
+                div.className = 'border-l-4 border-cyan-400 pl-4 py-3 bg-gray-50 rounded-r-lg';
+                if (type === 'mcq') {
+                    div.innerHTML = `<p class="font-semibold text-gray-800 mb-2"><strong>Câu ${index + 1}:</strong> ${item.q}</p><div class="grid grid-cols-2 gap-2 mb-3 text-sm">${item.options.map(o => `<span class="text-gray-700">${o}</span>`).join('')}</div><button onclick="toggleAnswer('${containerId}-${index}')" class="text-cyan-600 text-sm hover:underline">👁️ Xem đáp án</button><div id="${containerId}-${index}" class="answer-box mt-2 p-3 rounded hidden"><p class="font-semibold text-green-700">Đáp án: ${item.answer}</p><p class="text-gray-700 text-sm mt-1">${item.solution}</p></div>`;
+                } else if (type === 'tf') {
+                    div.innerHTML = `<p class="font-semibold text-gray-800 mb-3"><strong>Câu ${index + 1}:</strong> ${item.q}</p><div class="space-y-2">${item.statements.map((s, i) => `<div class="flex items-center justify-between bg-white p-2 rounded"><span class="text-gray-700 text-sm">${String.fromCharCode(65+i)}. ${s.text}</span><span class="text-xs px-2 py-1 rounded ${s.answer ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}">${s.answer ? 'Đúng' : 'Sai'}</span></div>`).join('')}</div>`;
+                } else {
+                    div.innerHTML = `<p class="font-semibold text-gray-800 mb-2"><strong>Bài ${index + 1}:</strong> ${item.q}</p><button onclick="toggleAnswer('${containerId}-${index}')" class="text-cyan-600 text-sm hover:underline">👁️ Xem đáp án</button><div id="${containerId}-${index}" class="${containerId==='comprehension-container'||containerId==='high-container'||containerId==='real-container'?'solution-box':'answer-box'} mt-2 p-3 rounded hidden"><p class="font-semibold text-purple-700">Đáp án: ${item.answer}</p><p class="text-gray-700 text-sm mt-1 whitespace-pre-line">${item.solution}</p></div>`;
+                }
+                container.appendChild(div);
+            });
+        }
+
+        function toggleAnswer(id) { document.getElementById(id).classList.toggle('hidden'); }
+        document.addEventListener('DOMContentLoaded', () => {
+            renderQuestions('mcq-container', mcqData, 'mcq');
+            renderQuestions('tf-container', tfData, 'tf');
+            renderQuestions('recognition-container', recognitionData, 'default');
+            renderQuestions('comprehension-container', comprehensionData, 'default');
+            renderQuestions('low-container', lowData, 'default');
+            renderQuestions('high-container', highData, 'default');
+            renderQuestions('real-container', realData, 'default');
+        });
+    </script>
+</body>
+</html>
+```

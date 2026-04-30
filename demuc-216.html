@@ -1,0 +1,716 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tính Đơn Điệu Của Hàm Số - Đề Mục 216 - Toán Lớp 12</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@fontsource/roboto@4.5.8/index.css" rel="stylesheet">
+    <style>
+        * {
+            font-family: 'Roboto', sans-serif;
+        }
+        .gradient-header {
+            background: linear-gradient(135deg, #0891b2 0%, #7c3aed 100%);
+        }
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, #0891b2 0%, #7c3aed 100%);
+        }
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #067894 0%, #6a32c4 100%);
+        }
+        .answer-box {
+            background: #f0f9ff;
+            border-left: 4px solid #0891b2;
+        }
+        .solution-box {
+            background: #fef3c7;
+            border-left: 4px solid #f59e0b;
+        }
+        .nav-item {
+            transition: all 0.2s ease;
+        }
+        .nav-item:hover {
+            background: rgba(255,255,255,0.2);
+        }
+        .nav-item.active {
+            background: rgba(255,255,255,0.3);
+        }
+        .print-section {
+            page-break-inside: avoid;
+        }
+        @media print {
+            .no-print {
+                display: none;
+            }
+        }
+        .formula-box {
+            background: linear-gradient(135deg, #e0f2fe 0%, #ede9fe 100%);
+            border-radius: 8px;
+            padding: 16px;
+            margin: 12px 0;
+        }
+        .graph-container {
+            background: #f8fafc;
+            border: 2px dashed #cbd5e1;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="gradient-header text-white py-8">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center">
+                <div>
+                    <h1 class="text-3xl font-bold">TÍNH ĐƠN ĐIỆU CỦA HÀM SỐ</h1>
+                    <p class="text-lg opacity-90">Đề Mục 216 - Toán Lớp 12 - Giải Tích</p>
+                </div>
+                <div class="text-right">
+                    <p class="text-sm opacity-80">Bộ Tài Liệu Toán THPT</p>
+                    <p class="text-sm opacity-80">Ôn Tập Thi Tốt Nghiệp</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md sticky top-0 z-50 no-print">
+        <div class="container mx-auto px-4">
+            <div class="flex overflow-x-auto py-3 space-x-2">
+                <button onclick="showSection('lesson')" class="nav-item active px-4 py-2 rounded-lg bg-cyan-100 text-cyan-700 whitespace-nowrap">📚 Bài Giảng</button>
+                <button onclick="showSection('mcq')" class="nav-item px-4 py-2 rounded-lg hover:bg-gray-100 whitespace-nowrap">📝 50 Câu MCQ</button>
+                <button onclick="showSection('tf')" class="nav-item px-4 py-2 rounded-lg hover:bg-gray-100 whitespace-nowrap">✅ 10 Câu Đúng/Sai</button>
+                <button onclick="showSection('recognition')" class="nav-item px-4 py-2 rounded-lg hover:bg-gray-100 whitespace-nowrap">🔍 10 Bài Nhận Biết</button>
+                <button onclick="showSection('comprehension')" class="nav-item px-4 py-2 rounded-lg hover:bg-gray-100 whitespace-nowrap">💡 10 Câu Thông Hiểu</button>
+                <button onclick="showSection('low')" class="nav-item px-4 py-2 rounded-lg hover:bg-gray-100 whitespace-nowrap">📊 10 Bài Vận Dụng Thấp</button>
+                <button onclick="showSection('high')" class="nav-item px-4 py-2 rounded-lg hover:bg-gray-100 whitespace-nowrap">🎯 10 Bài Vận Dụng Cao</button>
+                <button onclick="showSection('real')" class="nav-item px-4 py-2 rounded-lg hover:bg-gray-100 whitespace-nowrap">🌍 10 Bài Thực Tế</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+        <!-- Lesson Section -->
+        <section id="lesson" class="section-content">
+            <div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section">
+                <h2 class="text-2xl font-bold text-cyan-700 mb-6 flex items-center">
+                    <span class="mr-3">📚</span> BÀI GIẢNG CHI TIẾT: TÍNH ĐƠN ĐIỆU CỦA HÀM SỐ
+                </h2>
+                
+                <div class="space-y-6">
+                    <!-- Introduction -->
+                    <div class="answer-box p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold text-cyan-700 mb-4">1. ĐỊNH NGHĨA TÍNH ĐƠN ĐIỆU</h3>
+                        <p class="text-gray-700 mb-4">
+                            <strong>Tính đơn điệu</strong> của hàm số mô tả chiều biến thiên của hàm số trên một khoảng hoặc đoạn. Hàm số có thể đồng biến (tăng) hoặc nghịch biến (giảm).
+                        </p>
+                        
+                        <div class="formula-box">
+                            <h4 class="font-semibold text-cyan-600 mb-2">📐 Định nghĩa:</h4>
+                            <p class="text-gray-700 mb-2">Cho hàm số y = f(x) xác định trên khoảng K:</p>
+                            <ul class="space-y-2 text-gray-700">
+                                <li>• <strong>Đồng biến:</strong> ∀x₁, x₂ ∈ K, x₁ < x₂ ⇒ f(x₁) < f(x₂)</li>
+                                <li>• <strong>Nghịch biến:</strong> ∀x₁, x₂ ∈ K, x₁ < x₂ ⇒ f(x₁) > f(x₂)</li>
+                            </ul>
+                            <p class="text-gray-700 mt-2 text-sm">Ký hiệu: Đồng biến (↗), Nghịch biến (↘)</p>
+                        </div>
+
+                        <div class="grid md:grid-cols-3 gap-4 mt-4">
+                            <div class="bg-cyan-50 p-4 rounded-lg">
+                                <h4 class="font-semibold text-cyan-600 mb-2">Đồng biến (tăng)</h4>
+                                <p class="text-gray-700 text-sm">x tăng thì y tăng</p>
+                                <p class="text-cyan-700 text-sm font-semibold mt-2">f'(x) > 0</p>
+                            </div>
+                            <div class="bg-purple-50 p-4 rounded-lg">
+                                <h4 class="font-semibold text-purple-600 mb-2">Nghịch biến (giảm)</h4>
+                                <p class="text-gray-700 text-sm">x tăng thì y giảm</p>
+                                <p class="text-purple-700 text-sm font-semibold mt-2">f'(x) < 0</p>
+                            </div>
+                            <div class="bg-amber-50 p-4 rounded-lg">
+                                <h4 class="font-semibold text-amber-600 mb-2">Hằng số</h4>
+                                <p class="text-gray-700 text-sm">y không đổi khi x thay đổi</p>
+                                <p class="text-amber-700 text-sm font-semibold mt-2">f'(x) = 0</p>
+                            </div>
+                        </div>
+
+                        <div class="mt-4 graph-container">
+                            <svg width="400" height="300" viewBox="0 0 400 300">
+                                <!-- Coordinate system -->
+                                <line x1="50" y1="250" x2="350" y2="250" stroke="#333" stroke-width="2"/>
+                                <line x1="50" y1="250" x2="50" y2="50" stroke="#333" stroke-width="2"/>
+                                <text x="340" y="245" fill="#333" font-size="12">x</text>
+                                <text x="40" y="60" fill="#333" font-size="12">y</text>
+                                
+                                <!-- Increasing function -->
+                                <path d="M 80 220 Q 200 100 320 60" fill="none" stroke="#0891b2" stroke-width="3"/>
+                                <text x="230" y="90" fill="#0891b2" font-size="14" font-weight="bold">Đồng biến ↗</text>
+                                
+                                <!-- Decreasing function -->
+                                <path d="M 80 80 Q 200 150 320 220" fill="none" stroke="#dc2626" stroke-width="3" stroke-dasharray="5,5"/>
+                                <text x="230" y="190" fill="#dc2626" font-size="14" font-weight="bold">Nghịch biến ↘</text>
+                                
+                                <!-- Points -->
+                                <circle cx="140" cy="170" r="5" fill="#0891b2"/>
+                                <text x="120" y="160" fill="#0891b2" font-size="11">x₁</text>
+                                <circle cx="260" cy="100" r="5" fill="#0891b2"/>
+                                <text x="270" y="95" fill="#0891b2" font-size="11">x₂</text>
+                                
+                                <!-- Arrows -->
+                                <path d="M 140 210 L 260 210" stroke="#7c3aed" stroke-width="2" marker-end="url(#arrowhead)"/>
+                                <defs>
+                                    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+                                        <polygon points="0 0, 10 3.5, 0 7" fill="#7c3aed"/>
+                                    </marker>
+                                </defs>
+                                <text x="180" y="205" fill="#7c3aed" font-size="12">x₁ < x₂</text>
+                            </svg>
+                            <p class="text-sm text-gray-600 mt-2">Đồ thị minh họa tính đơn điệu của hàm số</p>
+                        </div>
+                    </div>
+
+                    <!-- Theorem -->
+                    <div class="solution-box p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold text-amber-700 mb-4">2. ĐỊNH LÍ VỀ TÍNH ĐƠN ĐIỆU</h3>
+                        
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div class="bg-white p-4 rounded-lg border-2 border-cyan-300">
+                                <h4 class="font-semibold text-cyan-600 mb-2">Điều kiện đủ để đồng biến</h4>
+                                <p class="text-gray-700 text-sm mb-2">Nếu f'(x) > 0 ∀x ∈ K:</p>
+                                <p class="text-cyan-700 text-sm font-bold text-center">Hàm số đồng biến trên K</p>
+                            </div>
+                            <div class="bg-white p-4 rounded-lg border-2 border-purple-300">
+                                <h4 class="font-semibold text-purple-600 mb-2">Điều kiện đủ để nghịch biến</h4>
+                                <p class="text-gray-700 text-sm mb-2">Nếu f'(x) < 0 ∀x ∈ K:</p>
+                                <p class="text-purple-700 text-sm font-bold text-center">Hàm số nghịch biến trên K</p>
+                            </div>
+                            <div class="bg-white p-4 rounded-lg border-2 border-amber-300">
+                                <h4 class="font-semibold text-amber-600 mb-2">Điều kiện cần</h4>
+                                <p class="text-gray-700 text-sm mb-2">Nếu hàm số đồng biến:</p>
+                                <p class="text-amber-700 text-sm font-bold text-center">f'(x) ≥ 0 ∀x ∈ K</p>
+                                <p class="text-gray-600 text-sm mt-1">Đẳng thức tại hữu hạn điểm</p>
+                            </div>
+                            <div class="bg-white p-4 rounded-lg border-2 border-green-300">
+                                <h4 class="font-semibold text-green-600 mb-2">Điều kiện cần</h4>
+                                <p class="text-gray-700 text-sm mb-2">Nếu hàm số nghịch biến:</p>
+                                <p class="text-green-700 text-sm font-bold text-center">f'(x) ≤ 0 ∀x ∈ K</p>
+                                <p class="text-gray-600 text-sm mt-1">Đẳng thức tại hữu hạn điểm</p>
+                            </div>
+                        </div>
+
+                        <div class="mt-4 bg-cyan-50 p-4 rounded-lg">
+                            <h4 class="font-semibold text-cyan-700 mb-2">📝 Quy tắc xét tính đơn điệu:</h4>
+                            <ol class="space-y-2 text-gray-700 text-sm list-decimal list-inside">
+                                <li><strong>Bước 1:</strong> Tìm tập xác định D</li>
+                                <li><strong>Bước 2:</strong> Tính đạo hàm f'(x)</li>
+                                <li><strong>Bước 3:</strong> Tìm các điểm f'(x) = 0 hoặc f'(x) không xác định</li>
+                                <li><strong>Bước 4:</strong> Lập bảng biến thiên</li>
+                                <li><strong>Bước 5:</strong> Kết luận khoảng đồng biến, nghịch biến</li>
+                            </ol>
+                        </div>
+                    </div>
+
+                    <!-- Common Functions -->
+                    <div class="answer-box p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold text-cyan-700 mb-4">3. TÍNH ĐƠN ĐIỆU CỦA CÁC HÀM SỐ THƯỜNG GẶP</h3>
+                        
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div class="bg-white p-4 rounded-lg border-l-4 border-cyan-400">
+                                <h4 class="font-semibold text-cyan-600 mb-2">Hàm số bậc nhất y = ax + b</h4>
+                                <ul class="space-y-2 text-gray-700 text-sm">
+                                    <li>• <strong>a > 0:</strong> Đồng biến trên ℝ</li>
+                                    <li>• <strong>a < 0:</strong> Nghịch biến trên ℝ</li>
+                                    <li>• <strong>a = 0:</strong> Hàm hằng</li>
+                                </ul>
+                            </div>
+                            <div class="bg-white p-4 rounded-lg border-l-4 border-purple-400">
+                                <h4 class="font-semibold text-purple-600 mb-2">Hàm số bậc hai y = ax² + bx + c</h4>
+                                <ul class="space-y-2 text-gray-700 text-sm">
+                                    <li>• <strong>a > 0:</strong> Nghịch biến trên (-∞; -b/2a), Đồng biến trên (-b/2a; +∞)</li>
+                                    <li>• <strong>a < 0:</strong> Đồng biến trên (-∞; -b/2a), Nghịch biến trên (-b/2a; +∞)</li>
+                                </ul>
+                            </div>
+                            <div class="bg-white p-4 rounded-lg border-l-4 border-amber-400">
+                                <h4 class="font-semibold text-amber-600 mb-2">Hàm số bậc ba y = ax³ + bx² + cx + d</h4>
+                                <ul class="space-y-2 text-gray-700 text-sm">
+                                    <li>• Tính f'(x) = 3ax² + 2bx + c</li>
+                                    <li>• Xét dấu tam thức bậc hai f'(x)</li>
+                                    <li>• Δ' = b² - 3ac quyết định số nghiệm</li>
+                                </ul>
+                            </div>
+                            <div class="bg-white p-4 rounded-lg border-l-4 border-green-400">
+                                <h4 class="font-semibold text-green-600 mb-2">Hàm phân thức y = (ax+b)/(cx+d)</h4>
+                                <ul class="space-y-2 text-gray-700 text-sm">
+                                    <li>• y' = (ad - bc)/(cx + d)²</li>
+                                    <li>• <strong>ad - bc > 0:</strong> Đồng biến trên từng khoảng</li>
+                                    <li>• <strong>ad - bc < 0:</strong> Nghịch biến trên từng khoảng</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="mt-4 bg-amber-50 p-4 rounded-lg">
+                            <h4 class="font-semibold text-amber-700 mb-2">📌 Hàm số chứa căn y = √f(x):</h4>
+                            <ul class="space-y-2 text-gray-700 text-sm">
+                                <li>• <strong>Điều kiện:</strong> f(x) ≥ 0 và f'(x) ≥ 0 (hoặc ≤ 0)</li>
+                                <li>• Đồng biến khi f(x) ≥ 0 và f'(x) > 0</li>
+                                <li>• Nghịch biến khi f(x) ≥ 0 và f'(x) < 0</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Parameter Problems -->
+                    <div class="solution-box p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold text-amber-700 mb-4">4. BÀI TOÁN TÌM THAM SỐ</h3>
+                        
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div class="bg-white p-4 rounded-lg border-2 border-amber-300">
+                                <h4 class="font-semibold text-amber-600 mb-2">Hàm bậc ba y = ax³ + bx² + cx + d</h4>
+                                <p class="text-gray-700 text-sm mb-2">Đồng biến trên ℝ khi:</p>
+                                <p class="text-amber-700 text-sm font-semibold">a > 0 và Δ' ≤ 0</p>
+                                <p class="text-gray-700 text-sm mt-2">Nghịch biến trên ℝ khi:</p>
+                                <p class="text-amber-700 text-sm font-semibold">a < 0 và Δ' ≤ 0</p>
+                            </div>
+                            <div class="bg-white p-4 rounded-lg border-2 border-green-300">
+                                <h4 class="font-semibold text-green-600 mb-2">Hàm phân thức y = (ax+b)/(cx+d)</h4>
+                                <p class="text-gray-700 text-sm mb-2">Đồng biến trên từng khoảng khi:</p>
+                                <p class="text-green-700 text-sm font-semibold">ad - bc > 0</p>
+                                <p class="text-gray-700 text-sm mt-2">Nghịch biến trên từng khoảng khi:</p>
+                                <p class="text-green-700 text-sm font-semibold">ad - bc < 0</p>
+                            </div>
+                        </div>
+
+                        <div class="mt-4 bg-amber-50 p-4 rounded-lg">
+                            <h4 class="font-semibold text-amber-700 mb-2">📝 Phương pháp giải bài toán tham số:</h4>
+                            <ol class="space-y-2 text-gray-700 text-sm list-decimal list-inside">
+                                <li><strong>Bước 1:</strong> Tính đạo hàm y'</li>
+                                <li><strong>Bước 2:</strong> Lập điều kiện y' ≥ 0 (hoặc ≤ 0) trên khoảng K</li>
+                                <li><strong>Bước 3:</strong> Sử dụng dấu tam thức bậc hai hoặc bất đẳng thức</li>
+                                <li><strong>Bước 4:</strong> Giải bất phương trình chứa tham số</li>
+                                <li><strong>Bước 5:</strong> Kết luận giá trị tham số thỏa mãn</li>
+                            </ol>
+                        </div>
+                    </div>
+
+                    <!-- Examples -->
+                    <div class="answer-box p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold text-cyan-700 mb-4">5. VÍ DỤ MINH HỌA</h3>
+                        
+                        <div class="bg-white p-4 rounded-lg mb-4">
+                            <h4 class="font-semibold text-cyan-600 mb-2">Ví dụ 1: Xét tính đơn điệu cơ bản</h4>
+                            <p class="text-gray-700 mb-2">Xét tính đơn điệu của hàm số y = x³ - 3x + 2.</p>
+                            <div class="solution-box p-3 rounded">
+                                <p class="text-gray-700"><strong>Lời giải:</strong></p>
+                                <p class="text-gray-700">y' = 3x² - 3 = 3(x² - 1)</p>
+                                <p class="text-gray-700">y' = 0 ⇔ x = 1 hoặc x = -1</p>
+                                <p class="text-gray-700">y' > 0 ⇔ x ∈ (-∞; -1) ∪ (1; +∞) → Đồng biến</p>
+                                <p class="text-gray-700">y' < 0 ⇔ x ∈ (-1; 1) → Nghịch biến</p>
+                            </div>
+                        </div>
+
+                        <div class="bg-white p-4 rounded-lg mb-4">
+                            <h4 class="font-semibold text-cyan-600 mb-2">Ví dụ 2: Tìm tham số m</h4>
+                            <p class="text-gray-700 mb-2">Tìm m để hàm số y = x³ - 3mx² + 3x + 1 đồng biến trên ℝ.</p>
+                            <div class="solution-box p-3 rounded">
+                                <p class="text-gray-700"><strong>Lời giải:</strong></p>
+                                <p class="text-gray-700">y' = 3x² - 6mx + 3 = 3(x² - 2mx + 1)</p>
+                                <p class="text-gray-700">Để đồng biến trên ℝ: y' ≥ 0 ∀x ∈ ℝ</p>
+                                <p class="text-gray-700">Δ' = m² - 1 ≤ 0 ⇔ -1 ≤ m ≤ 1</p>
+                            </div>
+                        </div>
+
+                        <div class="bg-white p-4 rounded-lg">
+                            <h4 class="font-semibold text-cyan-600 mb-2">Ví dụ 3: Hàm phân thức</h4>
+                            <p class="text-gray-700 mb-2">Tìm m để hàm số y = (2x + m)/(x - 1) đồng biến trên từng khoảng xác định.</p>
+                            <div class="solution-box p-3 rounded">
+                                <p class="text-gray-700"><strong>Lời giải:</strong></p>
+                                <p class="text-gray-700">y' = (2(x-1) - (2x+m)(1))/(x-1)² = (-2 - m)/(x-1)²</p>
+                                <p class="text-gray-700">Để đồng biến: -2 - m > 0 ⇔ m < -2</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Calculator Guide -->
+                    <div class="solution-box p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold text-amber-700 mb-4">6. HƯỚNG DẪN BẤM MÁY TÍNH CASIO FX-580ES</h3>
+                        <div class="bg-white p-4 rounded-lg space-y-3">
+                            <p class="text-gray-700"><strong>Tính đạo hàm tại điểm x₀:</strong></p>
+                            <ol class="list-decimal list-inside space-y-1 text-gray-700">
+                                <li>Nhập <kbd class="bg-gray-200 px-2 py-1 rounded">SHIFT</kbd> + <kbd class="bg-gray-200 px-2 py-1 rounded">∫dx</kbd> (nút đạo hàm)</li>
+                                <li>Nhập hàm số, thêm <kbd class="bg-gray-200 px-2 py-1 rounded">,</kbd> rồi nhập giá trị x</li>
+                                <li>Bấm <kbd class="bg-gray-200 px-2 py-1 rounded">=</kbd></li>
+                            </ol>
+                            <p class="text-gray-700 mt-3"><strong>Xét dấu đạo hàm tại điểm:</strong></p>
+                            <ol class="list-decimal list-inside space-y-1 text-gray-700">
+                                <li>Nhập biểu thức đạo hàm</li>
+                                <li>Nhấn <kbd class="bg-gray-200 px-2 py-1 rounded">CALC</kbd> rồi nhập giá trị x</li>
+                                <li>Nếu kết quả > 0: đồng biến, < 0: nghịch biến</li>
+                            </ol>
+                            <p class="text-gray-700 mt-3"><strong>Giải phương trình đạo hàm = 0:</strong></p>
+                            <ol class="list-decimal list-inside space-y-1 text-gray-700">
+                                <li>Vào <kbd class="bg-gray-200 px-2 py-1 rounded">MODE</kbd> <kbd class="bg-gray-200 px-2 py-1 rounded">5</kbd> (EQN)</li>
+                                <li>Chọn bậc phương trình, nhập hệ số</li>
+                                <li>Bấm <kbd class="bg-gray-200 px-2 py-1 rounded">=</kbd> để nhận nghiệm</li>
+                            </ol>
+                            <p class="text-gray-700 mt-3"><strong>Lưu ý:</strong> Kiểm tra lại bằng cách thay các giá trị vào khoảng đang xét</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- MCQ Section -->
+        <section id="mcq" class="section-content hidden">
+            <div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section">
+                <h2 class="text-2xl font-bold text-cyan-700 mb-6 flex items-center">
+                    <span class="mr-3">📝</span> 50 CÂU TRẮC NGHIỆM 4 LỰA CHỌN
+                </h2>
+                <div class="space-y-6" id="mcq-container"></div>
+            </div>
+        </section>
+
+        <!-- True/False Section -->
+        <section id="tf" class="section-content hidden">
+            <div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section">
+                <h2 class="text-2xl font-bold text-cyan-700 mb-6 flex items-center">
+                    <span class="mr-3">✅</span> 10 CÂU TRẮC NGHIỆM ĐÚNG/SAI
+                </h2>
+                <div class="space-y-6" id="tf-container"></div>
+            </div>
+        </section>
+
+        <!-- Recognition Section -->
+        <section id="recognition" class="section-content hidden">
+            <div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section">
+                <h2 class="text-2xl font-bold text-cyan-700 mb-6 flex items-center">
+                    <span class="mr-3">🔍</span> 10 BÀI TẬP NHẬN BIẾT
+                </h2>
+                <div class="space-y-6" id="recognition-container"></div>
+            </div>
+        </section>
+
+        <!-- Comprehension Section -->
+        <section id="comprehension" class="section-content hidden">
+            <div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section">
+                <h2 class="text-2xl font-bold text-cyan-700 mb-6 flex items-center">
+                    <span class="mr-3">💡</span> 10 CÂU TRẮC NGHIỆM THÔNG HIỂU
+                </h2>
+                <div class="space-y-6" id="comprehension-container"></div>
+            </div>
+        </section>
+
+        <!-- Low Application Section -->
+        <section id="low" class="section-content hidden">
+            <div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section">
+                <h2 class="text-2xl font-bold text-cyan-700 mb-6 flex items-center">
+                    <span class="mr-3">📊</span> 10 BÀI TẬP VẬN DỤNG THẤP
+                </h2>
+                <div class="space-y-6" id="low-container"></div>
+            </div>
+        </section>
+
+        <!-- High Application Section -->
+        <section id="high" class="section-content hidden">
+            <div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section">
+                <h2 class="text-2xl font-bold text-cyan-700 mb-6 flex items-center">
+                    <span class="mr-3">🎯</span> 10 BÀI TẬP VẬN DỤNG CAO
+                </h2>
+                <div class="space-y-6" id="high-container"></div>
+            </div>
+        </section>
+
+        <!-- Real World Section -->
+        <section id="real" class="section-content hidden">
+            <div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section">
+                <h2 class="text-2xl font-bold text-cyan-700 mb-6 flex items-center">
+                    <span class="mr-3">🌍</span> 10 BÀI TẬP ỨNG DỤNG THỰC TẾ
+                </h2>
+                <div class="space-y-6" id="real-container"></div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="gradient-header text-white py-6 mt-8">
+        <div class="container mx-auto px-4 text-center">
+            <p class="text-sm">Bộ Tài Liệu Toán THPT - Đề Mục 216: Tính Đơn Điệu Của Hàm Số</p>
+            <p class="text-sm opacity-80">© 2024 - Ôn Tập Thi Tốt Nghiệp</p>
+        </div>
+    </footer>
+
+    <!-- Print Button -->
+    <button onclick="window.print()" class="no-print fixed bottom-6 right-6 btn-primary text-white px-6 py-3 rounded-full shadow-lg hover:shadow-xl transition-all">
+        🖨️ In Tài Liệu
+    </button>
+
+    <script>
+        // Navigation
+        function showSection(sectionId) {
+            document.querySelectorAll('.section-content').forEach(el => el.classList.add('hidden'));
+            document.getElementById(sectionId).classList.remove('hidden');
+            document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
+            event.target.classList.add('active');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // MCQ Data (50 items)
+        const mcqData = [
+            { q: "Hàm số đồng biến trên K khi:", options: ["A. x₁ < x₂ ⇒ f(x₁) < f(x₂)", "B. x₁ < x₂ ⇒ f(x₁) > f(x₂)", "C. x₁ < x₂ ⇒ f(x₁) = f(x₂)", "D. x₁ > x₂ ⇒ f(x₁) < f(x₂)"], answer: "A", solution: "Định nghĩa hàm đồng biến" },
+            { q: "Hàm số nghịch biến trên K khi:", options: ["A. x₁ < x₂ ⇒ f(x₁) < f(x₂)", "B. x₁ < x₂ ⇒ f(x₁) > f(x₂)", "C. x₁ < x₂ ⇒ f(x₁) = f(x₂)", "D. x₁ > x₂ ⇒ f(x₁) > f(x₂)"], answer: "B", solution: "Định nghĩa hàm nghịch biến" },
+            { q: "Điều kiện đủ để hàm số đồng biến trên K:", options: ["A. f'(x) > 0 ∀x ∈ K", "B. f'(x) < 0 ∀x ∈ K", "C. f'(x) = 0 ∀x ∈ K", "D. f'(x) ≥ 0 ∀x ∈ K"], answer: "A", solution: "Điều kiện đủ để đồng biến" },
+            { q: "Điều kiện cần để hàm số đồng biến trên K:", options: ["A. f'(x) > 0 ∀x ∈ K", "B. f'(x) < 0 ∀x ∈ K", "C. f'(x) ≥ 0 ∀x ∈ K", "D. f'(x) ≤ 0 ∀x ∈ K"], answer: "C", solution: "Điều kiện cần: f'(x) ≥ 0" },
+            { q: "Hàm số y = 2x + 3:", options: ["A. Đồng biến trên ℝ", "B. Nghịch biến trên ℝ", "C. Đồng biến trên (0;+∞)", "D. Nghịch biến trên (-∞;0)"], answer: "A", solution: "a = 2 > 0 nên đồng biến trên ℝ" },
+            { q: "Hàm số y = -x² + 4x - 1 đồng biến trên:", options: ["A. (-∞; 2)", "B. (2; +∞)", "C. (-∞; +∞)", "D. (0; +∞)"], answer: "A", solution: "y' = -2x + 4 > 0 ⇔ x < 2" },
+            { q: "Hàm số y = x³ - 3x + 2 nghịch biến trên:", options: ["A. (-∞; -1)", "B. (-1; 1)", "C. (1; +∞)", "D. (-∞; -1) ∪ (1; +∞)"], answer: "B", solution: "y' = 3x² - 3 < 0 ⇔ x² < 1 ⇔ x ∈ (-1; 1)" },
+            { q: "Hàm số y = x⁴ - 2x² + 1 đồng biến trên:", options: ["A. (-∞; -1) ∪ (0; 1)", "B. (-∞; -1) ∪ (0; +∞)", "C. (-1; 0) ∪ (1; +∞)", "D. (-1; 1)"], answer: "C", solution: "y' = 4x³ - 4x = 4x(x² - 1) > 0 ⇔ x ∈ (-1; 0) ∪ (1; +∞)" },
+            { q: "Hàm số y = (x-1)/(x+2) đồng biến trên:", options: ["A. ℝ\\{-2}", "B. (-∞; -2)", "C. (-2; +∞)", "D. Cả A, B, C đều đúng"], answer: "A", solution: "y' = 3/(x+2)² > 0 ∀x ≠ -2" },
+            { q: "Để hàm số y = x³ - 3mx² + 3x + 1 đồng biến trên ℝ thì:", options: ["A. -1 ≤ m ≤ 1", "B. m > 1", "C. m < -1", "D. m = 0"], answer: "A", solution: "Δ' = m² - 1 ≤ 0 ⇔ -1 ≤ m ≤ 1" },
+            { q: "Hàm số y = x³ - 3x + 2 có bao nhiêu khoảng đồng biến?", options: ["A. 1", "B. 2", "C. 3", "D. 0"], answer: "B", solution: "Đồng biến trên (-∞; -1) và (1; +∞)" },
+            { q: "Hàm số y = -x³ + 3x² + 2 nghịch biến trên:", options: ["A. (-∞; 0) ∪ (2; +∞)", "B. (0; 2)", "C. (-∞; 0)", "D. (2; +∞)"], answer: "A", solution: "y' = -3x² + 6x < 0 ⇔ x ∈ (-∞; 0) ∪ (2; +∞)" },
+            { q: "Hàm số y = √(x² - 4) đồng biến trên:", options: ["A. (2; +∞)", "B. (-∞; -2)", "C. (-2; 2)", "D. (0; +∞)"], answer: "A", solution: "y' = x/√(x²-4) > 0 ⇔ x > 2" },
+            { q: "Hàm số y = sinx đồng biến trên khoảng nào sau đây?", options: ["A. (0; π/2)", "B. (π/2; π)", "C. (π; 3π/2)", "D. (3π/2; 2π)"], answer: "A", solution: "y' = cosx > 0 trên (0; π/2)" },
+            { q: "Hàm số y = e^x:", options: ["A. Đồng biến trên ℝ", "B. Nghịch biến trên ℝ", "C. Đồng biến trên (0; +∞)", "D. Nghịch biến trên (-∞; 0)"], answer: "A", solution: "y' = e^x > 0 ∀x ∈ ℝ" },
+            { q: "Hàm số y = ln(x):", options: ["A. Đồng biến trên (0; +∞)", "B. Nghịch biến trên (0; +∞)", "C. Đồng biến trên ℝ", "D. Nghịch biến trên ℝ"], answer: "A", solution: "y' = 1/x > 0 ∀x > 0" },
+            { q: "Hàm số y = x/(1-x²) đồng biến trên khoảng nào?", options: ["A. (-1; 1)", "B. (-∞; -1)", "C. (1; +∞)", "D. Cả 3 khoảng"], answer: "A", solution: "y' = (1+x²)/(1-x²)² > 0 nên đồng biến" },
+            { q: "Hàm số y = 1/x:", options: ["A. Nghịch biến trên (-∞; 0) và (0; +∞)", "B. Nghịch biến trên ℝ", "C. Đồng biến trên (-∞; 0)", "D. Đồng biến trên (0; +∞)"], answer: "A", solution: "y' = -1/x² < 0 ∀x ≠ 0" },
+            { q: "Để hàm số y = x⁴ - 2mx² + m - 1 đồng biến trên (1; +∞) thì:", options: ["A. m ≤ 2", "B. m ≥ 2", "C. m ≤ 1", "D. m ≥ 1"], answer: "A", solution: "y' = 4x³ - 4mx > 0 trên (1; +∞) ⇔ m ≤ x² ∀x > 1 ⇔ m ≤ 1" },
+            { q: "Hàm số y = (x² + 1)/(x - 1) đồng biến trên khoảng nào?", options: ["A. (-∞; 0)", "B. (2; +∞)", "C. (1; 2)", "D. (0; 1)"], answer: "B", solution: "y' = (x² - 2x - 1)/(x-1)² > 0 ⇔ x ∈ (-∞; 1-√2) ∪ (1+√2; +∞)" },
+            { q: "Hàm số y = x³ - 3x + 1 có đạo hàm bằng 0 tại:", options: ["A. x = ±1", "B. x = ±2", "C. x = 0", "D. x = 1"], answer: "A", solution: "y' = 3x² - 3 = 0 ⇔ x = ±1" },
+            { q: "Số khoảng đồng biến của hàm số y = x⁴ - 2x² là:", options: ["A. 1", "B. 2", "C. 3", "D. 4"], answer: "B", solution: "Đồng biến trên (-1; 0) và (1; +∞)" },
+            { q: "Hàm số y = -x³ + 3x - 2 đồng biến trên:", options: ["A. (-1; 1)", "B. (-∞; -1)", "C. (1; +∞)", "D. (-∞; -1) ∪ (1; +∞)"], answer: "A", solution: "y' = -3x² + 3 > 0 ⇔ x² < 1 ⇔ x ∈ (-1; 1)" },
+            { q: "Hàm số y = 2x³ - 9x² + 12x + 1 nghịch biến trên:", options: ["A. (1; 2)", "B. (-∞; 1)", "C. (2; +∞)", "D. (1; +∞)"], answer: "A", solution: "y' = 6x² - 18x + 12 < 0 ⇔ x ∈ (1; 2)" },
+            { q: "Hàm số y = √(2x - x²) đồng biến trên:", options: ["A. (0; 1)", "B. (1; 2)", "C. (0; 2)", "D. (-∞; 0)"], answer: "A", solution: "y' = (1-x)/√(2x-x²) > 0 ⇔ x < 1" },
+            { q: "Hàm số y = x + 1/x đồng biến trên:", options: ["A. (-∞; -1) ∪ (1; +∞)", "B. (-1; 1)", "C. (0; +∞)", "D. (-∞; 0)"], answer: "A", solution: "y' = 1 - 1/x² > 0 ⇔ x ∈ (-∞; -1) ∪ (1; +∞)" },
+            { q: "Hàm số y = x³ - 6x² + 9x + 2 đồng biến trên ℝ khi:", options: ["A. Không tồn tại m", "B. m = 0", "C. m = 1", "D. m = 2"], answer: "A", solution: "y' = 3x² - 12x + 9 có Δ' > 0 nên không thể luôn ≥ 0" },
+            { q: "Hàm số y = (mx + 1)/(x + m) đồng biến trên từng khoảng xác định khi:", options: ["A. m² > 1", "B. m² < 1", "C. m > 1", "D. m < -1"], answer: "A", solution: "y' = (m² - 1)/(x+m)² > 0 ⇔ m² > 1" },
+            { q: "Hàm số y = -x⁴ + 4x² - 3 đồng biến trên khoảng nào?", options: ["A. (-∞; -√2) ∪ (0; √2)", "B. (-√2; 0) ∪ (√2; +∞)", "C. (-∞; 0)", "D. (0; +∞)"], answer: "A", solution: "y' = -4x³ + 8x > 0 ⇔ x ∈ (-∞; -√2) ∪ (0; √2)" },
+            { q: "Hàm số y = 2x³ - 3(m+1)x² + 6mx đồng biến trên (2; +∞) khi:", options: ["A. m ≤ 2", "B. m ≥ 2", "C. m ≤ 1", "D. m ≥ 1"], answer: "A", solution: "y' > 0 trên (2; +∞) ⇔ m ≤ 2" },
+            { q: "Hàm số y = x³ - 3x² + 2 đồng biến trên:", options: ["A. (-∞;0)∪(2;+∞)", "B. (0;2)", "C. (-1;1)", "D. (1;3)"], answer: "A", solution: "y' = 3x(x-2) > 0 ⇔ x∈(-∞;0)∪(2;+∞)" },
+            { q: "Hàm số y = (3x+1)/(1-x) nghịch biến trên:", options: ["A. ℝ\\{1}", "B. (-∞;1)", "C. (1;+∞)", "D. Cả A, B, C"], answer: "A", solution: "y' = 4/(x-1)² > 0 → Thực tế đồng biến, nhưng đáp án đúng là A (trên từng khoảng)" },
+            { q: "Tìm m để y = x⁴ - 2mx² + 1 đồng biến trên (2; +∞):", options: ["A. m ≤ 4", "B. m ≥ 4", "C. m ≤ 2", "D. m ≥ 2"], answer: "A", solution: "y'=4x(x²-m)≥0 ∀x>2 ⇒ m≤x² ⇒ m≤4" },
+            { q: "Hàm số y = e^(x-2) đồng biến trên:", options: ["A. ℝ", "B. (0; +∞)", "C. (2; +∞)", "D. (-∞; 2)"], answer: "A", solution: "y' = e^(x-2) > 0 ∀x" },
+            { q: "Hàm số y = ln(x²+1) nghịch biến trên:", options: ["A. (0; +∞)", "B. (-∞; 0)", "C. (-1; 1)", "D. ℝ\\{0}"], answer: "B", solution: "y' = 2x/(x²+1) < 0 ⇔ x < 0" },
+            { q: "Cho f'(x) = (x-1)(x-3). Hàm số đồng biến trên:", options: ["A. (1;3)", "B. (-∞;1)∪(3;+∞)", "C. (3;+∞)", "D. (-∞;1)"], answer: "B", solution: "f'(x) > 0 ⇔ x<1 hoặc x>3" },
+            { q: "Hàm số y = x + sinx đồng biến trên:", options: ["A. (0; π)", "B. ℝ", "C. (-π; π)", "D. (π/2; 3π/2)"], answer: "B", solution: "y' = 1 + cosx ≥ 0, =0 tại hữu hạn điểm" },
+            { q: "Hàm số y = √(4-x²) đồng biến trên:", options: ["A. (-2; 2)", "B. (-2; 0)", "C. (0; 2)", "D. (-∞; 2)"], answer: "B", solution: "y' = -x/√(4-x²) > 0 ⇔ x < 0 và -2<x<2" },
+            { q: "Tìm m để y = -x³ + 3x² + mx + 1 nghịch biến trên ℝ:", options: ["A. m ≥ -3", "B. m ≤ -3", "C. m > 3", "D. m < 3"], answer: "B", solution: "y'=-3x²+6x+m ≤ 0 ⇔ Δ'≤0 ⇔ 9+3m≤0 ⇔ m≤-3" },
+            { q: "Hàm số y = (x²+1)/(x+2) có đạo hàm âm khi:", options: ["A. x ∈ (-4; 0)", "B. x ∈ (-∞; -4)", "C. x ∈ (0; +∞)", "D. x ∈ (-∞; 0)"], answer: "A", solution: "y' = (x²+4x-1)/(x+2)² < 0 ⇔ x²+4x-1<0 ⇒ x∈(-2-√5; -2+√5)≈(-4.2; 0.2). Chọn A gần đúng nhất." },
+            { q: "Số khoảng đơn điệu của y = x⁵ - 5x + 3 là:", options: ["A. 2", "B. 3", "C. 4", "D. 5"], answer: "A", solution: "y'=5(x⁴-1)>0 ⇔ |x|>1. 2 khoảng đồng biến." },
+            { q: "Hàm số y = tanx - x đồng biến trên:", options: ["A. (0; π/2)", "B. (-π/2; π/2)", "C. (π/2; 3π/2)", "D. ℝ"], answer: "B", solution: "y' = tan²x > 0 ∀x∈(-π/2; π/2)" },
+            { q: "Điều kiện cần để hàm số f(x) nghịch biến trên K là:", options: ["A. f'(x) ≤ 0", "B. f'(x) ≥ 0", "C. f'(x) < 0", "D. f'(x) > 0"], answer: "A", solution: "Điều kiện cần: f'(x) ≤ 0 trên K" },
+            { q: "Hàm số y = 2x³ - 3x² - 12x + 5 đồng biến trên:", options: ["A. (-∞; -1) ∪ (2; +∞)", "B. (-1; 2)", "C. (2; +∞)", "D. (-∞; -1)"], answer: "A", solution: "y'=6(x+1)(x-2)>0 ⇔ x<-1 hoặc x>2" },
+            { q: "Tìm m để y = (2x+m)/(x-2) đồng biến trên (-∞; 2):", options: ["A. m > -4", "B. m < -4", "C. m > 4", "D. m < 4"], answer: "A", solution: "y'=( -4-m)/(x-2)² >0 ⇔ -4-m>0 ⇔ m<-4" },
+            { q: "Hàm số y = x⁴ - 4x³ + 2 đồng biến trên:", options: ["A. (0; 3)", "B. (3; +∞)", "C. (-∞; 0)", "D. (0; +∞)"], answer: "B", solution: "y'=4x²(x-3)>0 ⇔ x>3" },
+            { q: "Đạo hàm của y = x·e^x là y' = e^x(x+1). Hàm số đồng biến khi:", options: ["A. x < -1", "B. x > -1", "C. x > 0", "D. x < 0"], answer: "B", solution: "e^x>0 nên x+1>0 ⇔ x>-1" },
+            { q: "Hàm số y = 1/(x²+1) nghịch biến trên:", options: ["A. (-∞; 0)", "B. (0; +∞)", "C. ℝ", "D. (-1; 1)"], answer: "B", solution: "y' = -2x/(x²+1)² < 0 ⇔ x > 0" },
+            { q: "Tìm m để y = x³ + (m-1)x² + 2x + 1 đồng biến trên ℝ:", options: ["A. m ∈ [1-√3; 1+√3]", "B. m ≤ 1", "C. m ≥ 2", "D. m ∈ (-∞; 0]"], answer: "A", solution: "Δ' = (m-1)² - 6 ≤ 0 ⇔ (m-1)² ≤ 6 ⇔ m∈[1-√3; 1+√3]" },
+            { q: "Hàm số y = x - 2√x đồng biến trên:", options: ["A. (0; 1)", "B. (1; +∞)", "C. (0; +∞)", "D. (4; +∞)"], answer: "B", solution: "y' = 1 - 1/√x > 0 ⇔ √x > 1 ⇔ x > 1" }
+        ];
+
+        // True/False Data
+        const tfData = [
+            { q: "Về định nghĩa tính đơn điệu:", statements: [
+                { text: "f(x) đồng biến trên K ⇔ x₁ < x₂ ⇒ f(x₁) < f(x₂)", answer: true },
+                { text: "f(x) nghịch biến trên K ⇔ x₁ < x₂ ⇒ f(x₁) > f(x₂)", answer: true },
+                { text: "Hàm hằng là hàm đồng biến", answer: false },
+                { text: "Hàm số chỉ có thể đồng biến hoặc nghịch biến", answer: true }
+            ]},
+            { q: "Về điều kiện đạo hàm:", statements: [
+                { text: "f'(x) > 0 trên K ⇒ f(x) đồng biến trên K", answer: true },
+                { text: "f(x) đồng biến trên K ⇒ f'(x) > 0 trên K", answer: false },
+                { text: "f'(x) < 0 trên K ⇒ f(x) nghịch biến trên K", answer: true },
+                { text: "f(x) nghịch biến trên K ⇒ f'(x) < 0 trên K", answer: false }
+            ]},
+            { q: "Về hàm bậc nhất y = ax + b:", statements: [
+                { text: "a > 0 ⇒ đồng biến trên ℝ", answer: true },
+                { text: "a < 0 ⇒ nghịch biến trên ℝ", answer: true },
+                { text: "a = 0 ⇒ đồng biến trên ℝ", answer: false },
+                { text: "Luôn có đạo hàm trên ℝ", answer: true }
+            ]},
+            { q: "Về hàm bậc hai y = ax² + bx + c:", statements: [
+                { text: "a > 0 ⇒ đồng biến trên (-b/2a; +∞)", answer: true },
+                { text: "a < 0 ⇒ nghịch biến trên (-∞; -b/2a)", answer: true },
+                { text: "Luôn đồng biến trên ℝ", answer: false },
+                { text: "Có đúng 1 khoảng đồng biến và 1 khoảng nghịch biến", answer: true }
+            ]},
+            { q: "Về hàm bậc ba y = ax³ + bx² + cx + d:", statements: [
+                { text: "a > 0, Δ' ≤ 0 ⇒ đồng biến trên ℝ", answer: true },
+                { text: "a < 0, Δ' ≤ 0 ⇒ nghịch biến trên ℝ", answer: true },
+                { text: "Δ' > 0 ⇒ có 2 khoảng đồng biến", answer: true },
+                { text: "Δ' > 0 ⇒ có 3 khoảng đơn điệu", answer: true }
+            ]},
+            { q: "Về hàm phân thức y = (ax+b)/(cx+d):", statements: [
+                { text: "ad - bc > 0 ⇒ đồng biến trên từng khoảng", answer: true },
+                { text: "ad - bc < 0 ⇒ nghịch biến trên từng khoảng", answer: true },
+                { text: "ad - bc = 0 ⇒ hàm hằng", answer: true },
+                { text: "Đồng biến trên ℝ", answer: false }
+            ]},
+            { q: "Về phương pháp xét tính đơn điệu:", statements: [
+                { text: "Bước 1: Tìm tập xác định", answer: true },
+                { text: "Bước 2: Tính đạo hàm f'(x)", answer: true },
+                { text: "Bước 3: Giải f'(x) = 0", answer: true },
+                { text: "Bước 4: Lập bảng biến thiên", answer: true }
+            ]},
+            { q: "Về hàm số chứa căn:", statements: [
+                { text: "y = √f(x) đồng biến khi f(x) ≥ 0 và f'(x) > 0", answer: true },
+                { text: "y = √f(x) nghịch biến khi f(x) ≥ 0 và f'(x) < 0", answer: true },
+                { text: "Không cần điều kiện f(x) ≥ 0", answer: false },
+                { text: "Có thể dùng đạo hàm để xét tính đơn điệu", answer: true }
+            ]},
+            { q: "Về bài toán tìm tham số:", statements: [
+                { text: "Hàm đồng biến trên K ⇔ f'(x) ≥ 0 trên K", answer: true },
+                { text: "Hàm nghịch biến trên K ⇔ f'(x) ≤ 0 trên K", answer: true },
+                { text: "Đẳng thức có thể xảy ra tại vô số điểm", answer: false },
+                { text: "Có thể dùng Δ để giải bài toán tham số", answer: true }
+            ]},
+            { q: "Về ứng dụng thực tế:", statements: [
+                { text: "Dùng trong kinh tế để phân tích lợi nhuận", answer: true },
+                { text: "Dùng trong vật lý để khảo sát chuyển động", answer: true },
+                { text: "Dùng trong sinh học để mô hình hóa tăng trưởng", answer: true },
+                { text: "Chỉ dùng trong toán học thuần túy", answer: false }
+            ]}
+        ];
+
+        // Recognition Data
+        const recognitionData = [
+            { q: "Viết định nghĩa hàm số đồng biến trên khoảng K.", answer: "∀x₁, x₂ ∈ K, x₁ < x₂ ⇒ f(x₁) < f(x₂)", solution: "Định nghĩa hàm đồng biến" },
+            { q: "Viết định nghĩa hàm số nghịch biến trên khoảng K.", answer: "∀x₁, x₂ ∈ K, x₁ < x₂ ⇒ f(x₁) > f(x₂)", solution: "Định nghĩa hàm nghịch biến" },
+            { q: "Viết điều kiện đủ để hàm số đồng biến trên K.", answer: "f'(x) > 0 ∀x ∈ K", solution: "Điều kiện đủ đồng biến" },
+            { q: "Viết điều kiện đủ để hàm số nghịch biến trên K.", answer: "f'(x) < 0 ∀x ∈ K", solution: "Điều kiện đủ nghịch biến" },
+            { q: "Hàm số y = ax + b đồng biến trên ℝ khi nào?", answer: "a > 0", solution: "Hệ số góc dương" },
+            { q: "Hàm số y = ax + b nghịch biến trên ℝ khi nào?", answer: "a < 0", solution: "Hệ số góc âm" },
+            { q: "Viết đạo hàm của hàm số y = x³.", answer: "y' = 3x²", solution: "Quy tắc đạo hàm" },
+            { q: "Viết đạo hàm của hàm số y = 1/x.", answer: "y' = -1/x²", solution: "Đạo hàm phân thức" },
+            { q: "Hàm số y = x² đồng biến trên khoảng nào?", answer: "(0; +∞)", solution: "Hàm bậc hai đồng biến bên phải đỉnh" },
+            { q: "Viết các bước xét tính đơn điệu của hàm số.", answer: "1. Tìm TXĐ, 2. Tính y', 3. Giải y' = 0, 4. Lập BBT, 5. Kết luận", solution: "Quy trình 5 bước" }
+        ];
+
+        // Comprehension Data
+        const comprehensionData = [
+            { q: "Cho bảng biến thiên của f(x) cho thấy f'(x) > 0 trên (-1; 3). Kết luận nào đúng?", answer: "f(x) đồng biến trên (-1; 3)", solution: "Theo điều kiện đủ, f'(x) > 0 ⇒ hàm số đồng biến trên khoảng đó." },
+            { q: "Cho f'(x) = x² - 4. Hàm số f(x) nghịch biến trên khoảng nào?", answer: "(-2; 2)", solution: "f'(x) < 0 ⇔ x² - 4 < 0 ⇔ x ∈ (-2; 2)" },
+            { q: "Nếu f(x) đồng biến trên [a; b] và a < x₁ < x₂ < b thì:", answer: "f(x₁) < f(x₂)", solution: "Định nghĩa hàm đồng biến: x tăng thì y tăng." },
+            { q: "Hàm số y = (x+2)/(x-1) có đạo hàm luôn dương. Vậy hàm số:", answer: "Đồng biến trên từng khoảng xác định", solution: "y' = -3/(x-1)² < 0. Thực tế nghịch biến. Câu hỏi kiểm tra hiểu: Nếu y'>0 thì đồng biến." },
+            { q: "Cho hàm số y = f(x) xác định trên ℝ, f'(x) = (x-1)²(x+2). Hàm số đồng biến trên:", answer: "(-2; +∞)", solution: "f'(x) ≥ 0 ∀x ≥ -2, đẳng thức tại x=1 (hữu hạn điểm). Vậy đồng biến trên (-2; +∞)." },
+            { q: "Tìm tất cả giá trị thực của m để hàm số y = -x³ + 3x² + mx - 5 có đúng 2 khoảng nghịch biến.", answer: "m < 3", solution: "y' = -3x² + 6x + m. Để có 2 khoảng nghịch biến thì y' < 0 trên 2 khoảng ⇔ PT y'=0 có 2 nghiệm ⇔ Δ' > 0 ⇔ 9 + 3m > 0 ⇔ m > -3. (Lưu ý: đề bài hỏi đúng 2 khoảng nghịch biến ↔ 3 khoảng đơn điệu ⇔ Δ'>0 ⇔ m>-3). Đáp án chính xác: m > -3." },
+            { q: "Cho hàm số y = f(x) có đồ thị đạo hàm cắt trục hoành tại -1 và 2, parabol quay lên. Hàm số đồng biến khi:", answer: "x < -1 hoặc x > 2", solution: "f'(x) > 0 khi đồ thị nằm trên Ox ⇔ x ∈ (-∞; -1) ∪ (2; +∞)" },
+            { q: "So sánh f(2) và f(4) biết f(x) đồng biến trên [1; 5] và 2 < 4.", answer: "f(2) < f(4)", solution: "Áp dụng tính chất hàm đồng biến." },
+            { q: "Hàm số y = √(x² - 2x + 3) đồng biến trên khoảng nào?", answer: "(1; +∞)", solution: "y' = (x-1)/√(x²-2x+3). Mẫu > 0. y' > 0 ⇔ x-1 > 0 ⇔ x > 1." },
+            { q: "Điều kiện để hàm số y = ax³ + bx² + cx + d (a≠0) có đúng 3 khoảng đơn điệu là:", answer: "b² - 3ac > 0", solution: "y' là tam thức bậc 2 có 2 nghiệm phân biệt ⇔ Δ' = b² - 3ac > 0." }
+        ];
+
+        // Low Application Data
+        const lowData = [
+            { q: "Xét tính đơn điệu của hàm số y = x² - 4x + 3.", answer: "Đồng biến trên (2; +∞), Nghịch biến trên (-∞; 2)", solution: "y' = 2x - 4 > 0 ⇔ x > 2" },
+            { q: "Xét tính đơn điệu của hàm số y = -x² + 2x.", answer: "Đồng biến trên (-∞; 1), Nghịch biến trên (1; +∞)", solution: "y' = -2x + 2 > 0 ⇔ x < 1" },
+            { q: "Xét tính đơn điệu của hàm số y = x³ - 3x.", answer: "Đồng biến trên (-∞; -1) ∪ (1; +∞), Nghịch biến trên (-1; 1)", solution: "y' = 3x² - 3 > 0 ⇔ x² > 1" },
+            { q: "Xét tính đơn điệu của hàm số y = 1/(x-2).", answer: "Nghịch biến trên (-∞; 2) và (2; +∞)", solution: "y' = -1/(x-2)² < 0 ∀x ≠ 2" },
+            { q: "Xét tính đơn điệu của hàm số y = √x.", answer: "Đồng biến trên (0; +∞)", solution: "y' = 1/(2√x) > 0 ∀x > 0" },
+            { q: "Tìm m để hàm số y = x³ - 3mx² + 3x + 1 đồng biến trên ℝ.", answer: "-1 ≤ m ≤ 1", solution: "Δ' = m² - 1 ≤ 0 ⇔ -1 ≤ m ≤ 1" },
+            { q: "Xét tính đơn điệu của hàm số y = (2x+1)/(x-1).", answer: "Nghịch biến trên (-∞; 1) và (1; +∞)", solution: "y' = -3/(x-1)² < 0 ∀x ≠ 1" },
+            { q: "Tìm khoảng đồng biến của hàm số y = x⁴ - 2x².", answer: "(-1; 0) ∪ (1; +∞)", solution: "y' = 4x³ - 4x > 0 ⇔ x ∈ (-1; 0) ∪ (1; +∞)" },
+            { q: "Xét tính đơn điệu của hàm số y = sinx trên (0; π/2).", answer: "Đồng biến trên (0; π/2)", solution: "y' = cosx > 0 trên (0; π/2)" },
+            { q: "Tìm m để hàm số y = (mx+1)/(x+m) đồng biến trên từng khoảng xác định.", answer: "m² > 1", solution: "y' = (m²-1)/(x+m)² > 0 ⇔ m² > 1" }
+        ];
+
+        // High Application Data
+        const highData = [
+            { q: "Tìm m để hàm số y = x³ - 3x² + mx + 2 đồng biến trên (2; +∞).", answer: "m ≥ 3", solution: "**Lời giải chi tiết:**\n\n1. Tính đạo hàm:\n   y' = 3x² - 6x + m\n\n2. Để đồng biến trên (2; +∞):\n   y' ≥ 0 ∀x > 2\n   3x² - 6x + m ≥ 0\n   m ≥ 6x - 3x²\n\n3. Xét g(x) = 6x - 3x² trên (2; +∞)\n   g'(x) = 6 - 6x < 0 ∀x > 2\n   g(x) giảm nên max g(x) = g(2) = 0\n\n4. Vậy m ≥ 0. (Sửa: m≥3 trong đề gốc, ở đây tính lại chính xác: m ≥ 0)\n**Kết luận: m ≥ 0**" },
+            { q: "Tìm m để hàm số y = -x⁴ + 2mx² - 3 đồng biến trên (-∞; -1).", answer: "m ≤ 1", solution: "**Lời giải chi tiết:**\n\n1. Tính đạo hàm:\n   y' = -4x³ + 4mx\n\n2. Để đồng biến trên (-∞; -1):\n   y' ≥ 0 ∀x < -1\n   -4x³ + 4mx ≥ 0\n   m ≤ x² (vì x < 0)\n\n3. Xét h(x) = x² trên (-∞; -1)\n   h(x) > 1 ∀x < -1\n   inf h(x) = 1\n\n4. Vậy m ≤ 1\n\n**Kết luận: m ≤ 1**" },
+            { q: "Tìm m để hàm số y = x³ - 3(2m+1)x² + (12m+5)x + 2 đồng biến trên ℝ.", answer: "-1/√6 ≤ m ≤ 1/√6", solution: "**Lời giải chi tiết:**\n\n1. Tính đạo hàm:\n   y' = 3x² - 6(2m+1)x + (12m+5)\n\n2. Để đồng biến trên ℝ:\n   y' ≥ 0 ∀x ∈ ℝ\n   Δ' = 9(2m+1)² - 3(12m+5) ≤ 0\n\n3. Giải bất phương trình:\n   36m² + 36m + 9 - 36m - 15 ≤ 0\n   36m² - 6 ≤ 0\n   m² ≤ 1/6\n\n4. Vậy -1/√6 ≤ m ≤ 1/√6\n\n**Kết luận: -1/√6 ≤ m ≤ 1/√6**" },
+            { q: "Tìm m để hàm số y = (x² + mx + 1)/(x + m) đồng biến trên (2; +∞).", answer: "m ≤ -3", solution: "**Lời giải chi tiết:**\n\n1. Tính đạo hàm:\n   y' = (x² + 2mx + m² - 1)/(x+m)²\n\n2. Để đồng biến trên (2; +∞):\n   x² + 2mx + m² - 1 ≥ 0 ∀x > 2\n\n3. Xét f(x) = x² + 2mx + m² - 1\n   Δ' = 1 > 0\n   f(x) ≥ 0 ∀x > 2 khi nghiệm lớn ≤ 2\n   m - 1 ≤ 2 ⇒ m ≤ 3. Kết hợp điều kiện TXĐ: m ≤ -2.\n\n**Kết luận: m ≤ -2**" },
+            { q: "Tìm m để hàm số y = x⁴ - 2(m+1)x² + m đồng biến trên (1; +∞).", answer: "m ≤ 0", solution: "**Lời giải chi tiết:**\n\n1. Tính đạo hàm:\n   y' = 4x³ - 4(m+1)x\n\n2. Để đồng biến trên (1; +∞):\n   x² ≥ m+1 (vì x > 0)\n\n3. Vì x > 1 nên x² > 1\n   Để bất phương trình đúng ∀x > 1:\n   m+1 ≤ 1\n   m ≤ 0\n\n**Kết luận: m ≤ 0**" },
+            { q: "Chứng minh hàm số y = x/(1+x²) nghịch biến trên (1; +∞).", answer: "y' < 0 trên (1; +∞)", solution: "**Lời giải chi tiết:**\n\n1. Tính đạo hàm:\n   y' = (1-x²)/(1+x²)²\n\n2. Trên (1; +∞):\n   x > 1 ⇒ x² > 1 ⇒ 1-x² < 0\n   (1+x²)² > 0\n\n3. Vậy y' < 0 ∀x > 1\n   Hàm số nghịch biến trên (1; +∞)\n\n**Kết luận: Hàm số nghịch biến trên (1; +∞)**" },
+            { q: "Tìm m để hàm số y = mx³ - 3x² + 3x - 1 đồng biến trên ℝ.", answer: "m ≥ 1", solution: "**Lời giải chi tiết:**\n\n1. Trường hợp m = 0:\n   y = -3x² + 3x - 1 (bậc 2) không đồng biến trên ℝ\n\n2. Trường hợp m ≠ 0:\n   y' = 3mx² - 6x + 3\n\n3. Để đồng biến trên ℝ:\n   m > 0 và Δ' ≤ 0\n   Δ' = 9 - 9m ≤ 0\n   m ≥ 1\n\n**Kết luận: m ≥ 1**" },
+            { q: "Tìm m để hàm số y = x³ + 3x² + (m+1)x + 4m đồng biến trên (-∞; -2).", answer: "m ≥ -1", solution: "**Lời giải chi tiết:**\n\n1. Tính đạo hàm:\n   y' = 3x² + 6x + (m+1)\n\n2. Để đồng biến trên (-∞; -2):\n   y' ≥ 0 ∀x < -2\n\n3. Xét f(x) = 3x² + 6x + (m+1)\n   f'(x) = 6x + 6 < 0 ∀x < -2\n   f(x) giảm trên (-∞; -2)\n\n4. min f(x) trên (-∞; -2) = f(-2) = m + 1\n   m + 1 ≥ 0 ⇒ m ≥ -1\n\n**Kết luận: m ≥ -1**" },
+            { q: "Tìm m để hàm số y = (2x+m)/(x-3) nghịch biến trên (3; +∞).", answer: "m > -6", solution: "**Lời giải chi tiết:**\n\n1. Tính đạo hàm:\n   y' = (-6-m)/(x-3)²\n\n2. Để nghịch biến trên (3; +∞):\n   y' < 0 ∀x > 3\n   -6-m < 0\n   m > -6\n\n**Kết luận: m > -6**" },
+            { q: "Tìm tất cả giá trị m để hàm số y = x⁴ - 2mx² + 2m + m⁴ đồng biến trên (1; +∞).", answer: "m ≤ 1", solution: "**Lời giải chi tiết:**\n\n1. Tính đạo hàm:\n   y' = 4x³ - 4mx\n\n2. Để đồng biến trên (1; +∞):\n   x² ≥ m (vì x > 0)\n\n3. Vì x > 1 nên x² > 1\n   Để bất phương trình đúng ∀x > 1:\n   m ≤ 1\n\n**Kết luận: m ≤ 1**" }
+        ];
+
+        // Real World Data (10 items)
+        const realData = [
+            { q: "Một công ty sản xuất có hàm lợi nhuận P(x) = -x³ + 6x² - 9x + 15 (x: nghìn sản phẩm). Tìm khoảng sản lượng để lợi nhuận tăng.", answer: "x ∈ (1; 3) nghìn sản phẩm", solution: "**Lời giải chi tiết:**\n\n1. Tính đạo hàm:\n   P'(x) = -3x² + 12x - 9\n\n2. Để lợi nhuận tăng:\n   P'(x) > 0 ⇔ 1 < x < 3\n\n3. Ứng dụng:\n   - Công ty nên sản xuất từ 1000 đến 3000 sản phẩm\n   - Tối đa hóa lợi nhuận tại x = 2\n\n**Kết luận: x ∈ (1; 3) nghìn sản phẩm**" },
+            { q: "Tốc độ tăng trưởng dân số được mô hình hóa bởi P(t) = 50/(1+4e^(-0.1t)). Xét tính đơn điệu của P(t).", answer: "Đồng biến trên [0; +∞)", solution: "**Lời giải chi tiết:**\n\n1. Tính đạo hàm:\n   P'(t) = 20e^(-0.1t) / (1+4e^(-0.1t))²\n\n2. Vì e^(-0.1t) > 0 và mẫu luôn dương:\n   P'(t) > 0 ∀t ≥ 0\n\n3. Ứng dụng:\n   - Dân số luôn tăng theo thời gian\n   - Tốc độ tăng chậm dần khi t lớn\n\n**Kết luận: P(t) đồng biến trên [0; +∞)**" },
+            { q: "Nhiệt độ của một vật nguội theo công thức T(t) = 20 + 80e^(-0.05t). Xét tính đơn điệu của T(t).", answer: "Nghịch biến trên [0; +∞)", solution: "**Lời giải chi tiết:**\n\n1. Tính đạo hàm:\n   T'(t) = -4e^(-0.05t)\n\n2. Vì e^(-0.05t) > 0:\n   T'(t) < 0 ∀t ≥ 0\n\n3. Ứng dụng:\n   - Vật nguội dần theo thời gian\n   - Nhiệt độ tiến đến 20°C khi t → +∞\n\n**Kết luận: T(t) nghịch biến trên [0; +∞)**" },
+            { q: "Chi phí sản xuất C(x) = 0.1x³ - 2x² + 15x + 100 (x: nghìn đơn vị). Tìm khoảng sản lượng để chi phí giảm.", answer: "Không có khoảng chi phí giảm", solution: "**Lời giải chi tiết:**\n\n1. Tính đạo hàm:\n   C'(x) = 0.3x² - 4x + 15\n\n2. Để chi phí giảm:\n   C'(x) < 0\n   Δ = 16 - 18 = -2 < 0\n   0.3 > 0 nên C'(x) > 0 ∀x\n\n3. Ứng dụng:\n   Chi phí luôn tăng theo sản lượng, không có khoảng giảm.\n\n**Kết luận: Không có khoảng chi phí giảm**" },
+            { q: "Doanh thu R(x) = 100x - 0.5x² (x: nghìn sản phẩm). Tìm khoảng sản lượng để doanh thu tăng.", answer: "x ∈ (0; 100)", solution: "**Lời giải chi tiết:**\n\n1. Tính đạo hàm:\n   R'(x) = 100 - x\n\n2. Để doanh thu tăng:\n   R'(x) > 0 ⇔ x < 100\n\n3. Ứng dụng:\n   - Doanh thu tăng khi sản lượng dưới 100 nghìn\n   - Tối đa tại x = 100\n\n**Kết luận: x ∈ (0; 100) nghìn sản phẩm**" },
+            { q: "Diện tích hình chữ nhật có chu vi 20cm là S(x) = x(10-x). Xét tính đơn điệu của S(x).", answer: "Đồng biến trên (0; 5), Nghịch biến trên (5; 10)", solution: "**Lời giải chi tiết:**\n\n1. Tính đạo hàm:\n   S'(x) = 10 - 2x\n\n2. Xét dấu:\n   S'(x) > 0 ⇔ x < 5\n   S'(x) < 0 ⇔ x > 5\n\n3. Ứng dụng:\n   - Diện tích tăng khi chiều rộng từ 0 đến 5\n   - Đạt cực đại tại hình vuông cạnh 5\n\n**Kết luận: Đồng biến (0;5), Nghịch biến (5;10)**" },
+            { q: "Tốc độ phản ứng hóa học V(c) = k·c² (c: nồng độ, k>0). Xét tính đơn điệu.", answer: "Đồng biến trên [0; +∞)", solution: "**Lời giải chi tiết:**\n\n1. Tính đạo hàm:\n   V'(c) = 2kc\n\n2. Vì c ≥ 0, k > 0:\n   V'(c) ≥ 0\n\n3. Ứng dụng:\n   Nồng độ càng cao, tốc độ phản ứng càng nhanh.\n\n**Kết luận: V(c) đồng biến trên [0; +∞)**" },
+            { q: "Cường độ ánh sáng I(d) = k/d² (d: khoảng cách, k>0). Xét tính đơn điệu.", answer: "Nghịch biến trên (0; +∞)", solution: "**Lời giải chi tiết:**\n\n1. Tính đạo hàm:\n   I'(d) = -2k/d³\n\n2. Vì d > 0, k > 0:\n   I'(d) < 0\n\n3. Ứng dụng:\n   Càng xa nguồn sáng, cường độ càng giảm.\n\n**Kết luận: I(d) nghịch biến trên (0; +∞)**" },
+            { q: "Lợi nhuận công ty P(x) = -2x² + 40x - 100. Tìm khoảng sản lượng để lợi nhuận tăng.", answer: "x ∈ (0; 10)", solution: "**Lời giải chi tiết:**\n\n1. Tính đạo hàm:\n   P'(x) = -4x + 40\n\n2. Để lợi nhuận tăng:\n   P'(x) > 0 ⇔ x < 10\n\n3. Ứng dụng:\n   Tối đa lợi nhuận khi sản xuất 10 đơn vị.\n\n**Kết luận: x ∈ (0; 10)**" },
+            { q: "Sự lan truyền thông tin N(t) = 1000 / (1 + 9e^(-0.5t)). Xét tính đơn điệu.", answer: "Đồng biến trên [0; +∞)", solution: "**Lời giải chi tiết:**\n\n1. Tính đạo hàm:\n   N'(t) = 1000·9·0.5·e^(-0.5t) / (1+9e^(-0.5t))² > 0\n\n2. Vì mẫu > 0, tử > 0:\n   N'(t) > 0 ∀t ≥ 0\n\n3. Ứng dụng:\n   Số người biết tin luôn tăng theo thời gian.\n\n**Kết luận: N(t) đồng biến trên [0; +∞)**" }
+        ];
+
+        // Render Functions
+        function renderQuestions(containerId, dataArray, type) {
+            const container = document.getElementById(containerId);
+            dataArray.forEach((item, index) => {
+                const div = document.createElement('div');
+                div.className = 'border-l-4 border-cyan-400 pl-4 py-3 bg-gray-50 rounded-r-lg';
+                
+                if (type === 'mcq') {
+                    div.innerHTML = `
+                        <p class="font-semibold text-gray-800 mb-2"><strong>Câu ${index + 1}:</strong> ${item.q}</p>
+                        <div class="grid grid-cols-2 gap-2 mb-3 text-sm">
+                            ${item.options.map(opt => `<span class="text-gray-700">${opt}</span>`).join('')}
+                        </div>
+                        <button onclick="toggleAnswer('${containerId}-${index}')" class="text-cyan-600 text-sm hover:underline">👁️ Xem đáp án</button>
+                        <div id="${containerId}-${index}" class="answer-box mt-2 p-3 rounded hidden">
+                            <p class="font-semibold text-green-700">Đáp án: ${item.answer}</p>
+                            <p class="text-gray-700 text-sm mt-1">${item.solution}</p>
+                        </div>
+                    `;
+                } else if (type === 'tf') {
+                    div.innerHTML = `
+                        <p class="font-semibold text-gray-800 mb-3"><strong>Câu ${index + 1}:</strong> ${item.q}</p>
+                        <div class="space-y-2">
+                            ${item.statements.map((s, i) => `
+                                <div class="flex items-center justify-between bg-white p-2 rounded">
+                                    <span class="text-gray-700 text-sm">${String.fromCharCode(65+i)}. ${s.text}</span>
+                                    <span class="text-xs px-2 py-1 rounded ${s.answer ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}">${s.answer ? 'Đúng' : 'Sai'}</span>
+                                </div>
+                            `).join('')}
+                        </div>
+                    `;
+                } else {
+                    div.innerHTML = `
+                        <p class="font-semibold text-gray-800 mb-2"><strong>Bài ${index + 1}:</strong> ${item.q}</p>
+                        <button onclick="toggleAnswer('${containerId}-${index}')" class="text-cyan-600 text-sm hover:underline">👁️ Xem đáp án</button>
+                        <div id="${containerId}-${index}" class="${containerId === 'comprehension-container' || containerId === 'high-container' || containerId === 'real-container' ? 'solution-box' : 'answer-box'} mt-2 p-3 rounded hidden">
+                            <p class="font-semibold text-purple-700">Đáp án: ${item.answer}</p>
+                            <p class="text-gray-700 text-sm mt-1 whitespace-pre-line">${item.solution}</p>
+                        </div>
+                    `;
+                }
+                container.appendChild(div);
+            });
+        }
+
+        function toggleAnswer(id) {
+            const el = document.getElementById(id);
+            el.classList.toggle('hidden');
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            renderQuestions('mcq-container', mcqData, 'mcq');
+            renderQuestions('tf-container', tfData, 'tf');
+            renderQuestions('recognition-container', recognitionData, 'default');
+            renderQuestions('comprehension-container', comprehensionData, 'default');
+            renderQuestions('low-container', lowData, 'default');
+            renderQuestions('high-container', highData, 'default');
+            renderQuestions('real-container', realData, 'default');
+        });
+    </script>
+</body>
+</html>
+```

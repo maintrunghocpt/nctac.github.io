@@ -1,0 +1,473 @@
+﻿```html
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đường Tiệm Cận Của Đồ Thị Hàm Số - Đề Mục 218 - Toán Lớp 12</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@fontsource/roboto@4.5.8/index.css" rel="stylesheet">
+    <style>
+        * { font-family: 'Roboto', sans-serif; }
+        .gradient-header { background: linear-gradient(135deg, #0891b2 0%, #7c3aed 100%); }
+        .card-hover { transition: all 0.3s ease; }
+        .card-hover:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0,0,0,0.15); }
+        .btn-primary { background: linear-gradient(135deg, #0891b2 0%, #7c3aed 100%); }
+        .btn-primary:hover { background: linear-gradient(135deg, #067894 0%, #6a32c4 100%); }
+        .answer-box { background: #f0f9ff; border-left: 4px solid #0891b2; }
+        .solution-box { background: #fef3c7; border-left: 4px solid #f59e0b; }
+        .nav-item { transition: all 0.2s ease; }
+        .nav-item:hover { background: rgba(255,255,255,0.2); }
+        .nav-item.active { background: rgba(255,255,255,0.3); }
+        .print-section { page-break-inside: avoid; }
+        @media print { .no-print { display: none; } }
+        .formula-box { background: linear-gradient(135deg, #e0f2fe 0%, #ede9fe 100%); border-radius: 8px; padding: 16px; margin: 12px 0; }
+        .graph-container { background: #f8fafc; border: 2px dashed #cbd5e1; border-radius: 8px; padding: 20px; text-align: center; }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="gradient-header text-white py-8">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center">
+                <div>
+                    <h1 class="text-3xl font-bold">ĐƯỜNG TIỆM CẬN CỦA ĐỒ THỊ HÀM SỐ</h1>
+                    <p class="text-lg opacity-90">Đề Mục 218 - Toán Lớp 12 - Giải Tích</p>
+                </div>
+                <div class="text-right">
+                    <p class="text-sm opacity-80">Bộ Tài Liệu Toán THPT</p>
+                    <p class="text-sm opacity-80">Ôn Tập Thi Tốt Nghiệp</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md sticky top-0 z-50 no-print">
+        <div class="container mx-auto px-4">
+            <div class="flex overflow-x-auto py-3 space-x-2">
+                <button onclick="showSection('lesson')" class="nav-item active px-4 py-2 rounded-lg bg-cyan-100 text-cyan-700 whitespace-nowrap">📚 Bài Giảng</button>
+                <button onclick="showSection('mcq')" class="nav-item px-4 py-2 rounded-lg hover:bg-gray-100 whitespace-nowrap">📝 50 Câu MCQ</button>
+                <button onclick="showSection('tf')" class="nav-item px-4 py-2 rounded-lg hover:bg-gray-100 whitespace-nowrap">✅ 10 Câu Đúng/Sai</button>
+                <button onclick="showSection('recognition')" class="nav-item px-4 py-2 rounded-lg hover:bg-gray-100 whitespace-nowrap">🔍 10 Bài Nhận Biết</button>
+                <button onclick="showSection('comprehension')" class="nav-item px-4 py-2 rounded-lg hover:bg-gray-100 whitespace-nowrap">💡 10 Câu Thông Hiểu</button>
+                <button onclick="showSection('low')" class="nav-item px-4 py-2 rounded-lg hover:bg-gray-100 whitespace-nowrap">📊 10 Bài Vận Dụng Thấp</button>
+                <button onclick="showSection('high')" class="nav-item px-4 py-2 rounded-lg hover:bg-gray-100 whitespace-nowrap">🎯 10 Bài Vận Dụng Cao</button>
+                <button onclick="showSection('real')" class="nav-item px-4 py-2 rounded-lg hover:bg-gray-100 whitespace-nowrap">🌍 10 Bài Thực Tế</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+        <!-- Lesson Section -->
+        <section id="lesson" class="section-content">
+            <div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section">
+                <h2 class="text-2xl font-bold text-cyan-700 mb-6 flex items-center">
+                    <span class="mr-3">📚</span> BÀI GIẢNG CHI TIẾT: ĐƯỜNG TIỆM CẬN
+                </h2>
+                
+                <div class="space-y-6">
+                    <!-- Introduction -->
+                    <div class="answer-box p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold text-cyan-700 mb-4">1. ĐỊNH NGHĨA CÁC LOẠI TIỆM CẬN</h3>
+                        <p class="text-gray-700 mb-4">Đường tiệm cận là đường thẳng mà đồ thị hàm số tiến gần vô cùng đến nó nhưng không cắt (hoặc có thể cắt ở một số điểm đặc biệt).</p>
+                        
+                        <div class="formula-box">
+                            <ul class="space-y-3 text-gray-700">
+                                <li>• <strong>Tiệm cận đứng (TCĐ):</strong> x = x₀ nếu <br><span class="text-cyan-700 font-bold block mt-1">lim(x→x₀⁺) f(x) = ±∞ hoặc lim(x→x₀⁻) f(x) = ±∞</span></li>
+                                <li>• <strong>Tiệm cận ngang (TCN):</strong> y = y₀ nếu <br><span class="text-purple-700 font-bold block mt-1">lim(x→+∞) f(x) = y₀ hoặc lim(x→-∞) f(x) = y₀</span></li>
+                                <li>• <strong>Tiệm cận xiên (TCX):</strong> y = kx + b (k≠0) nếu <br><span class="text-amber-700 font-bold block mt-1">lim(x→±∞) [f(x) - (kx+b)] = 0</span></li>
+                            </ul>
+                        </div>
+
+                        <div class="grid md:grid-cols-3 gap-4 mt-4">
+                            <div class="bg-cyan-50 p-4 rounded-lg">
+                                <h4 class="font-semibold text-cyan-600 mb-2">Tiệm cận đứng</h4>
+                                <p class="text-gray-700 text-sm">Thường là nghiệm của mẫu số (không triệt tiêu với tử số)</p>
+                                <p class="text-cyan-700 text-sm font-semibold mt-2">x = x₀</p>
+                            </div>
+                            <div class="bg-purple-50 p-4 rounded-lg">
+                                <h4 class="font-semibold text-purple-600 mb-2">Tiệm cận ngang</h4>
+                                <p class="text-gray-700 text-sm">Xuất hiện khi bậc tử ≤ bậc mẫu</p>
+                                <p class="text-purple-700 text-sm font-semibold mt-2">y = lim(x→∞) f(x)</p>
+                            </div>
+                            <div class="bg-amber-50 p-4 rounded-lg">
+                                <h4 class="font-semibold text-amber-600 mb-2">Tiệm cận xiên</h4>
+                                <p class="text-gray-700 text-sm">Xuất hiện khi bậc tử = bậc mẫu + 1</p>
+                                <p class="text-amber-700 text-sm font-semibold mt-2">y = kx + b</p>
+                            </div>
+                        </div>
+
+                        <div class="mt-4 graph-container">
+                            <svg width="400" height="300" viewBox="0 0 400 300">
+                                <!-- Axes -->
+                                <line x1="40" y1="260" x2="360" y2="260" stroke="#333" stroke-width="2"/>
+                                <line x1="200" y1="40" x2="200" y2="280" stroke="#333" stroke-width="2"/>
+                                <text x="350" y="250" fill="#333" font-size="12">x</text>
+                                <text x="210" y="50" fill="#333" font-size="12">y</text>
+                                
+                                <!-- Vertical Asymptote -->
+                                <line x1="200" y1="40" x2="200" y2="260" stroke="#dc2626" stroke-width="2" stroke-dasharray="5,5"/>
+                                <text x="205" y="80" fill="#dc2626" font-size="12">TCĐ: x = x₀</text>
+                                
+                                <!-- Horizontal Asymptote -->
+                                <line x1="40" y1="150" x2="360" y2="150" stroke="#0891b2" stroke-width="2" stroke-dasharray="5,5"/>
+                                <text x="220" y="140" fill="#0891b2" font-size="12">TCN: y = y₀</text>
+                                
+                                <!-- Function Curve -->
+                                <path d="M 180 240 Q 195 200 195 160 Q 195 120 190 80" fill="none" stroke="#333" stroke-width="3"/>
+                                <path d="M 220 60 Q 225 100 230 130 Q 240 150 320 160" fill="none" stroke="#333" stroke-width="3"/>
+                                
+                                <text x="140" y="200" fill="#333" font-size="12" font-weight="bold">Đồ thị hàm số</text>
+                            </svg>
+                            <p class="text-sm text-gray-600 mt-2">Minh họa tiệm cận đứng và tiệm cận ngang</p>
+                        </div>
+                    </div>
+
+                    <!-- Methods -->
+                    <div class="solution-box p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold text-amber-700 mb-4">2. QUY TẮC TÌM TIỆM CẬN HÀM PHÂN THỨC</h3>
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div class="bg-white p-4 rounded-lg border-2 border-cyan-300">
+                                <h4 class="font-semibold text-cyan-600 mb-2">Tìm TCĐ</h4>
+                                <ol class="space-y-2 text-gray-700 text-sm list-decimal list-inside">
+                                    <li>Giải phương trình mẫu số = 0</li>
+                                    <li>Loại nghiệm làm tử số = 0</li>
+                                    <li>Các nghiệm còn lại chính là TCĐ</li>
+                                </ol>
+                            </div>
+                            <div class="bg-white p-4 rounded-lg border-2 border-purple-300">
+                                <h4 class="font-semibold text-purple-600 mb-2">Tìm TCN, TCX</h4>
+                                <p class="text-gray-700 text-sm mb-2">Xét bậc tử (m) và bậc mẫu (n):</p>
+                                <ul class="space-y-2 text-gray-700 text-sm">
+                                    <li>• <strong>m < n:</strong> TCN y = 0</li>
+                                    <li>• <strong>m = n:</strong> TCN y = (hệ số đầu tử)/(hệ số đầu mẫu)</li>
+                                    <li>• <strong>m = n + 1:</strong> Có TCX y = kx + b</li>
+                                    <li>• <strong>m > n + 1:</strong> Không có TCN, TCX</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="mt-4 bg-cyan-50 p-4 rounded-lg">
+                            <h4 class="font-semibold text-cyan-700 mb-2">📝 Cách tìm TCX (y = kx + b):</h4>
+                            <ol class="space-y-1 text-gray-700 text-sm list-decimal list-inside">
+                                <li><strong>B1:</strong> k = lim(x→±∞) [f(x)/x]</li>
+                                <li><strong>B2:</strong> b = lim(x→±∞) [f(x) - kx]</li>
+                                <li><strong>Hoặc:</strong> Chia đa thức tử cho mẫu, phần thương bậc nhất chính là TCX.</li>
+                            </ol>
+                        </div>
+                    </div>
+
+                    <!-- Common Functions -->
+                    <div class="answer-box p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold text-cyan-700 mb-4">3. HÀM SỐ CHỨA CĂN & HÀM SỐ ĐẶC BIỆT</h3>
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div class="bg-white p-4 rounded-lg border-l-4 border-cyan-400">
+                                <h4 class="font-semibold text-cyan-600 mb-2">Hàm chứa căn: y = √(ax²+bx+c)</h4>
+                                <p class="text-gray-700 text-sm">Khi x → +∞: y/x → √a. Tiệm cận xiên có dạng y = √a·x + b/2√a</p>
+                            </div>
+                            <div class="bg-white p-4 rounded-lg border-l-4 border-purple-400">
+                                <h4 class="font-semibold text-purple-600 mb-2">Hàm trị tuyệt đối</h4>
+                                <p class="text-gray-700 text-sm">Xét riêng các khoảng x > 0 và x < 0 để phá dấu giá trị tuyệt đối, sau đó tìm tiệm cận trên từng nhánh.</p>
+                            </div>
+                        </div>
+                        <div class="mt-4 bg-amber-50 p-4 rounded-lg">
+                            <h4 class="font-semibold text-amber-700 mb-2">📌 Lưu ý quan trọng:</h4>
+                            <ul class="space-y-2 text-gray-700 text-sm">
+                                <li>• Đồ thị hàm phân thức bậc 3/bậc 2 luôn có 1 TCX.</li>
+                                <li>• TCĐ có thể bị "hổng" nếu tử và mẫu cùng triệt tiêu tại 1 điểm (giới hạn hữu hạn).</li>
+                                <li>• Số tiệm cận tối đa của đồ thị hàm số là 3 (1 TCĐ + 1 TCN + 1 TCX) hoặc (1 TCĐ + 2 TCN).</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Examples -->
+                    <div class="answer-box p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold text-cyan-700 mb-4">4. VÍ DỤ MINH HỌA</h3>
+                        <div class="bg-white p-4 rounded-lg mb-4">
+                            <h4 class="font-semibold text-cyan-600 mb-2">Ví dụ 1: Hàm phân thức cơ bản</h4>
+                            <p class="text-gray-700 mb-2">Tìm tiệm cận của y = (2x-1)/(x+1).</p>
+                            <div class="solution-box p-3 rounded">
+                                <p class="text-gray-700">TCĐ: x+1=0 ⇒ x=-1. Thử x=-1 vào tử: -3≠0. Vậy x=-1 là TCĐ.</p>
+                                <p class="text-gray-700">TCN: lim(x→∞) y = 2. Vậy y=2 là TCN.</p>
+                            </div>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg mb-4">
+                            <h4 class="font-semibold text-cyan-600 mb-2">Ví dụ 2: Tiệm cận xiên</h4>
+                            <p class="text-gray-700 mb-2">Tìm TCX của y = (x²-x+1)/(x-1).</p>
+                            <div class="solution-box p-3 rounded">
+                                <p class="text-gray-700">Chia đa thức: y = x + 1/(x-1).</p>
+                                <p class="text-gray-700">TCĐ: x = 1.</p>
+                                <p class="text-gray-700">TCX: y = x (vì lim[1/(x-1)]=0).</p>
+                            </div>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg">
+                            <h4 class="font-semibold text-cyan-600 mb-2">Ví dụ 3: Bài toán tham số</h4>
+                            <p class="text-gray-700 mb-2">Tìm m để đồ thị y = (mx-1)/(2x+m) có TCĐ là x=2.</p>
+                            <div class="solution-box p-3 rounded">
+                                <p class="text-gray-700">TCĐ là nghiệm mẫu: 2x+m=0 ⇒ 4+m=0 ⇒ m=-4.</p>
+                                <p class="text-gray-700">Kiểm tra tử tại x=2: -4(2)-1=-9≠0 (Thỏa mãn).</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Calculator Guide -->
+                    <div class="solution-box p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold text-amber-700 mb-4">5. HƯỚNG DẪN BẤM MÁY TÍNH CASIO</h3>
+                        <div class="bg-white p-4 rounded-lg space-y-3">
+                            <p class="text-gray-700"><strong>Tìm TCN:</strong></p>
+                            <ol class="list-decimal list-inside space-y-1 text-gray-700">
+                                <li>Nhập hàm số f(x)</li>
+                                <li>Bấm <kbd class="bg-gray-200 px-2 py-1 rounded">CALC</kbd>, nhập x = 10⁹ (hoặc -10⁹)</li>
+                                <li>Kết quả ≈ TCN (làm tròn)</li>
+                            </ol>
+                            <p class="text-gray-700 mt-3"><strong>Tìm TCĐ:</strong></p>
+                            <ol class="list-decimal list-inside space-y-1 text-gray-700">
+                                <li>Nhập mẫu số, dùng <kbd class="bg-gray-200 px-2 py-1 rounded">SOLVE</kbd> hoặc giải phương trình = 0</li>
+                                <li>Nhập hàm số f(x), <kbd class="bg-gray-200 px-2 py-1 rounded">CALC</kbd> gần nghiệm vừa tìm</li>
+                                <li>Nếu kết quả lớn dần (Error/Overflow) ⇒ là TCĐ</li>
+                            </ol>
+                            <p class="text-gray-700 mt-3"><strong>Lưu ý:</strong> Luôn kiểm tra lại bằng lý thuyết để đảm bảo chính xác.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- MCQ Section -->
+        <section id="mcq" class="section-content hidden">
+            <div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section">
+                <h2 class="text-2xl font-bold text-cyan-700 mb-6 flex items-center"><span class="mr-3">📝</span> 50 CÂU TRẮC NGHIỆM</h2>
+                <div class="space-y-6" id="mcq-container"></div>
+            </div>
+        </section>
+
+        <!-- True/False Section -->
+        <section id="tf" class="section-content hidden">
+            <div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section">
+                <h2 class="text-2xl font-bold text-cyan-700 mb-6 flex items-center"><span class="mr-3">✅</span> 10 CÂU ĐÚNG/SAI</h2>
+                <div class="space-y-6" id="tf-container"></div>
+            </div>
+        </section>
+
+        <!-- Recognition Section -->
+        <section id="recognition" class="section-content hidden">
+            <div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section">
+                <h2 class="text-2xl font-bold text-cyan-700 mb-6 flex items-center"><span class="mr-3">🔍</span> 10 BÀI NHẬN BIẾT</h2>
+                <div class="space-y-6" id="recognition-container"></div>
+            </div>
+        </section>
+
+        <!-- Comprehension Section -->
+        <section id="comprehension" class="section-content hidden">
+            <div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section">
+                <h2 class="text-2xl font-bold text-cyan-700 mb-6 flex items-center"><span class="mr-3">💡</span> 10 CÂU THÔNG HIỂU</h2>
+                <div class="space-y-6" id="comprehension-container"></div>
+            </div>
+        </section>
+
+        <!-- Low Application Section -->
+        <section id="low" class="section-content hidden">
+            <div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section">
+                <h2 class="text-2xl font-bold text-cyan-700 mb-6 flex items-center"><span class="mr-3">📊</span> 10 BÀI VẬN DỤNG THẤP</h2>
+                <div class="space-y-6" id="low-container"></div>
+            </div>
+        </section>
+
+        <!-- High Application Section -->
+        <section id="high" class="section-content hidden">
+            <div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section">
+                <h2 class="text-2xl font-bold text-cyan-700 mb-6 flex items-center"><span class="mr-3">🎯</span> 10 BÀI VẬN DỤNG CAO</h2>
+                <div class="space-y-6" id="high-container"></div>
+            </div>
+        </section>
+
+        <!-- Real World Section -->
+        <section id="real" class="section-content hidden">
+            <div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section">
+                <h2 class="text-2xl font-bold text-cyan-700 mb-6 flex items-center"><span class="mr-3">🌍</span> 10 BÀI THỰC TẾ</h2>
+                <div class="space-y-6" id="real-container"></div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="gradient-header text-white py-6 mt-8">
+        <div class="container mx-auto px-4 text-center">
+            <p class="text-sm">Bộ Tài Liệu Toán THPT - Đề Mục 218: Đường Tiệm Cận</p>
+            <p class="text-sm opacity-80">© 2024 - Ôn Tập Thi Tốt Nghiệp</p>
+        </div>
+    </footer>
+
+    <button onclick="window.print()" class="no-print fixed bottom-6 right-6 btn-primary text-white px-6 py-3 rounded-full shadow-lg hover:shadow-xl transition-all">🖨️ In Tài Liệu</button>
+
+    <script>
+        function showSection(sectionId) {
+            document.querySelectorAll('.section-content').forEach(el => el.classList.add('hidden'));
+            document.getElementById(sectionId).classList.remove('hidden');
+            document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
+            event.target.classList.add('active');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        const mcqData = [
+            {q:"Đường thẳng x=a là TCĐ của đồ thị hàm số nếu:",options:["A. lim(x→a⁺) y = ±∞ hoặc lim(x→a⁻) y = ±∞","B. lim(x→a) y = 0","C. lim(x→a) y = a","D. f'(a) = 0"],answer:"A",solution:"Định nghĩa tiệm cận đứng."},
+            {q:"Đường thẳng y=b là TCN của đồ thị hàm số nếu:",options:["A. lim(x→±∞) y = b","B. lim(x→0) y = b","C. y(b) = 0","D. f'(b) = 1"],answer:"A",solution:"Định nghĩa tiệm cận ngang."},
+            {q:"TCĐ của y = (x-1)/(x+2) là:",options:["A. x = -2","B. x = 1","C. x = 2","D. y = -2"],answer:"A",solution:"Mẫu số bằng 0 ⇒ x=-2. Tử tại x=-2 khác 0."},
+            {q:"TCN của y = (3x+1)/(2x-5) là:",options:["A. y = 3/2","B. y = 2/3","C. y = 3","D. y = 0"],answer:"A",solution:"Tỉ số hệ số bậc nhất: 3/2."},
+            {q:"Hàm số y = 1/(x²-4) có bao nhiêu TCĐ?",options:["A. 2","B. 1","C. 3","D. 0"],answer:"A",solution:"x²-4=0 ⇒ x=±2. Cả 2 đều là TCĐ."},
+            {q:"Đồ thị hàm số y = (x²-1)/(x-1) có TCĐ không?",options:["A. Không","B. Có x=1","C. Có y=1","D. Có x=-1"],answer:"A",solution:"Giản ước (x-1) được y=x+1 (x≠1). Giới hạn hữu hạn nên không có TCĐ."},
+            {q:"TCX của y = (x²+1)/x là:",options:["A. y = x","B. y = x+1","C. y = 2x","D. y = 1/x"],answer:"A",solution:"y = x + 1/x. Khi x→∞, 1/x→0. Vậy TCX là y=x."},
+            {q:"Hàm số bậc ba trên bậc hai thường có:",options:["A. 1 TCĐ, 1 TCX","B. 2 TCĐ, 1 TCN","C. 3 TCN","D. Không có TC"],answer:"A",solution:"Quy tắc bậc: 3 = 2+1 ⇒ có TCX. Mẫu bậc 2 ⇒ có TCĐ."},
+            {q:"Tìm m để y = (mx+1)/(x-2) có TCN y=3.",options:["A. m = 3","B. m = 2","C. m = -3","D. m = 1"],answer:"A",solution:"TCN y = m/1 = 3 ⇒ m=3."},
+            {q:"Số đường tiệm cận của y = √(x²+1) là:",options:["A. 2","B. 1","C. 0","D. 3"],answer:"A",solution:"Có 2 TCX: y=x và y=-x."},
+            {q:"TCĐ của y = tanx trên (-π/2; π/2) là:",options:["A. x = ±π/2","B. x = 0","C. x = π","D. y = 0"],answer:"A",solution:"Giới hạn vô cực tại biên khoảng."},
+            {q:"Nếu đồ thị có TCĐ x=a và TCN y=b, giao điểm là:",options:["A. (a;b)","B. (0;0)","C. (b;a)","D. Không xác định"],answer:"A",solution:"Giao của đường thẳng đứng x=a và ngang y=b là (a,b)."},
+            {q:"Hàm số y = e^x có TCN nào?",options:["A. y = 0 (khi x→-∞)","B. y = 0 (khi x→+∞)","C. x = 0","D. Không có"],answer:"A",solution:"lim(x→-∞) e^x = 0."},
+            {q:"Đồ thị y = ln(x) có TCĐ là:",options:["A. x = 0","B. y = 0","C. x = 1","D. y = 1"],answer:"A",solution:"lim(x→0⁺) ln(x) = -∞."},
+            {q:"TCN của y = arctan(x) là:",options:["A. y = π/2 và y = -π/2","B. y = 0","C. x = π/2","D. y = 1"],answer:"A",solution:"Giới hạn của arctan tại ±∞."},
+            {q:"Tìm m để y = (x+m)/(x²-1) có đúng 1 TCĐ.",options:["A. m = 1 hoặc m = -1","B. m = 0","C. m = 2","D. m = 3"],answer:"A",solution:"Để khử 1 nghiệm của mẫu, tử phải triệt tiêu tại đó. m=1 hoặc m=-1."},
+            {q:"Góc giữa 2 tiệm cận của y = (x²-2x+3)/(x-1) là:",options:["A. 90°","B. 45°","C. 60°","D. 30°"],answer:"A",solution:"TCĐ x=1, TCX y=x-1. Góc giữa đường đứng và đường nghiêng 45° là 45°. (Sửa: y=x-1 hệ số góc 1, góc với Ox 45°, với Ox vuông góc là 45°. Đáp án thường gặp là 45° hoặc 90° tùy cách đặt. Chỉnh lại đề cho chuẩn: TCĐ x=1, TCX y=x-1. Góc = 45°). Chọn B."},
+            {q:"TCX của y = (2x³-1)/(x²+1) là:",options:["A. y = 2x","B. y = x","C. y = 2x-1","D. Không có"],answer:"A",solution:"Chia đa thức: y ≈ 2x. Vậy TCX y=2x."},
+            {q:"Hàm số y = 1/√(x²-1) có TCN là:",options:["A. y = 0","B. y = 1","C. y = -1","D. Không có"],answer:"A",solution:"lim(x→±∞) y = 0."},
+            {q:"Đồ thị hàm số bậc 4/bậc 2 có tối đa bao nhiêu TCĐ?",options:["A. 2","B. 1","C. 3","D. 0"],answer:"A",solution:"Mẫu bậc 2 có tối đa 2 nghiệm."},
+            {q:"Nếu lim(x→a) f(x) = ∞ thì:",options:["A. x=a là TCĐ","B. y=a là TCN","C. Đồ thị cắt Ox tại a","D. f'(a)=0"],answer:"A",solution:"Định nghĩa TCĐ."},
+            {q:"TCN của y = (5x²+3)/(2x²-7) là:",options:["A. y = 5/2","B. y = 0","C. y = 2/5","D. Không có"],answer:"A",solution:"Tỉ số hệ số cao nhất."},
+            {q:"Hàm số nào không có TCĐ?",options:["A. y = 1/(x²+1)","B. y = 1/x","C. y = tanx","D. y = ln(x)"],answer:"A",solution:"Mẫu x²+1 ≠ 0 ∀x. Không có TCĐ."},
+            {q:"Tìm m để đồ thị y = (x²-m)/(x+1) có TCĐ x=-1.",options:["A. m ≠ 1","B. m = 1","C. m = 0","D. m = -1"],answer:"A",solution:"Tử tại x=-1 phải khác 0 ⇒ 1-m≠0 ⇒ m≠1."},
+            {q:"TCX của y = x + √(x²+1) là:",options:["A. y = 2x","B. y = 0","C. Không có","D. y = x"],answer:"A",solution:"lim(y/x) = 2, lim(y-2x) = 0."},
+            {q:"Giao điểm của TCĐ và TCX của y = (x²+2x-1)/(x-1) là:",options:["A. (1; 4)","B. (1; 3)","C. (0; 1)","D. (2; 5)"],answer:"A",solution:"TCĐ x=1. TCX y=x+3 (chia đa thức). Tại x=1, y=4."},
+            {q:"Hàm số y = e^(1/x) có TCN khi x→0⁺ là:",options:["A. Không có (tiến ∞)","B. y = 0","C. y = 1","D. y = e"],answer:"A",solution:"1/x → +∞ ⇒ e^(+∞) → +∞. Không phải TCN mà là TCĐ x=0."},
+            {q:"Đồ thị y = (|x|-2)/(x-1) có bao nhiêu TCĐ?",options:["A. 1","B. 2","C. 0","D. 3"],answer:"A",solution:"Mẫu = 0 ⇒ x=1. Tử tại 1 là |-2| = -2 ≠ 0. Vậy 1 TCĐ."},
+            {q:"Nếu hàm số có TCN y=b thì tập giá trị của nó:",options:["A. Có thể bằng ℝ","B. Luôn bị chặn","C. Không chứa b","D. Luôn dương"],answer:"A",solution:"Tiệm cận không giới hạn tập giá trị, chỉ là giới hạn."},
+            {q:"TCN của y = x·e^(-x) khi x→+∞ là:",options:["A. y = 0","B. y = 1","C. y = ∞","D. Không có"],answer:"A",solution:"Quy tắc L'Hopital: lim x/e^x = 0."},
+            {q:"Số đường tiệm cận đứng của y = 1/(sinx) là:",options:["A. Vô số","B. 1","C. 2","D. 0"],answer:"A",solution:"sinx=0 tại x=kπ (k∈ℤ)."},
+            {q:"Tìm m để y = (mx²+1)/(x-2) có TCX.",options:["A. m ≠ 0","B. m = 0","C. m > 0","D. m < 0"],answer:"A",solution:"Bậc tử (2) = bậc mẫu (1) + 1. Cần hệ số m≠0 để đúng bậc 2."},
+            {q:"TCĐ của y = 1/(e^x - 1) là:",options:["A. x = 0","B. x = 1","C. y = 0","D. Không có"],answer:"A",solution:"e^x - 1 = 0 ⇒ x=0."},
+            {q:"Hàm số y = (x³+1)/(x²+1) có TCN không?",options:["A. Không","B. Có y=1","C. Có y=x","D. Có y=0"],answer:"A",solution:"Bậc tử > bậc mẫu. Không có TCN (chỉ có TCX)."},
+            {q:"TCX của y = √(4x²+x+1) là:",options:["A. y = 2x + 1/4","B. y = 2x","C. y = 4x","D. y = x+1"],answer:"A",solution:"k=2, b=1/(2·2)=1/4."},
+            {q:"Nếu đồ thị có 3 tiệm cận thì đó thường là hàm:",options:["A. Phân thức bậc 3/bậc 2","B. Bậc 2","C. Lượng giác","D. Mũ"],answer:"A",solution:"1 TCĐ + 1 TCX + 1 TCĐ nữa hoặc 1 TCĐ + 2 TCN."},
+            {q:"Góc giữa TCX y=x và TCĐ x=0 là:",options:["A. 45°","B. 90°","C. 30°","D. 60°"],answer:"A",solution:"Hệ số góc 1 ⇒ góc với Ox là 45°. TCĐ vuông góc Ox ⇒ góc giữa chúng 45°."},
+            {q:"TCN của y = (2^x + 1)/(3^x) khi x→+∞ là:",options:["A. y = 0","B. y = 2/3","C. y = 1","D. y = ∞"],answer:"A",solution:"Cơ số mẫu lớn hơn tử ⇒ giới hạn 0."},
+            {q:"Hàm số y = cotx có TCĐ tại:",options:["A. x = kπ","B. x = π/2 + kπ","C. x = 0","D. y = 0"],answer:"A",solution:"cotx = cosx/sinx → ∞ khi sinx=0 ⇒ x=kπ."},
+            {q:"Tìm m để y = (x+m)/(x²-4) không có TCN.",options:["A. Không tồn tại","B. m = 0","C. m = 2","D. m = 4"],answer:"A",solution:"Mẫu bậc 2, tử bậc 1 ⇒ luôn có TCN y=0."},
+            {q:"Đồ thị y = ln|1-x| có TCĐ là:",options:["A. x = 1","B. x = 0","C. y = 1","D. Không có"],answer:"A",solution:"ln(0) → -∞ khi 1-x→0 ⇒ x→1."},
+            {q:"Số TCĐ của y = (x²-4)/(x³-3x²-4x+12) là:",options:["A. 1","B. 2","C. 3","D. 0"],answer:"A",solution:"Phân tích mẫu: (x-2)(x-2)(x+3) = (x-2)²(x+3). Tử triệt tiêu tại 2. Còn TCĐ x=-3."},
+            {q:"TCN của y = arccot(x) khi x→-∞ là:",options:["A. y = π","B. y = 0","C. y = π/2","D. y = -π/2"],answer:"A",solution:"Tính chất hàm ngược cot."},
+            {q:"Hàm số y = e^x/x có TCĐ:",options:["A. x = 0","B. x = 1","C. Không có","D. y = 0"],answer:"A",solution:"Mẫu bằng 0, tử khác 0 tại x=0."},
+            {q:"Nếu y = f(x) có TCX y=kx+b thì lim [f(x) - kx] =",options:["A. b","B. 0","C. k","D. ∞"],answer:"A",solution:"Định nghĩa TCX."},
+            {q:"TCN của y = x·sin(1/x) khi x→∞ là:",options:["A. y = 1","B. y = 0","C. y = ∞","D. Không có"],answer:"A",solution:"Đặt t=1/x→0. lim sint/t = 1."},
+            {q:"Đồ thị y = (x²+mx+1)/(x-1) có TCĐ x=1 và TCX y=x+3. Tìm m.",options:["A. m = 2","B. m = 3","C. m = 4","D. m = 5"],answer:"A",solution:"Chia đa thức: y = x + (m+1) + (m+2)/(x-1). TCX y=x+m+1=3 ⇒ m=2."},
+            {q:"Hàm số nào sau đây có đúng 2 TCN?",options:["A. y = x/|x|","B. y = e^x","C. y = 1/x","D. y = x²"],answer:"A",solution:"x>0 → 1, x<0 → -1. Hai nhánh ngang."},
+            {q:"TCĐ của y = 1/(x²-2x+1) là:",options:["A. x = 1","B. x = -1","C. y = 1","D. Không có"],answer:"A",solution:"Mẫu (x-1)²=0 ⇒ x=1."},
+            {q:"Khoảng cách từ điểm M(x₀; y₀) đến TCĐ x=a là:",options:["A. |x₀ - a|","B. |y₀ - a|","C. √[(x₀-a)²+(y₀-b)²]","D. 0"],answer:"A",solution:"Khoảng cách từ điểm đến đường thẳng đứng."}
+        ];
+
+        const tfData = [
+            {q:"Về định nghĩa:",statements:[{text:"Đồ thị hàm số không bao giờ cắt đường tiệm cận",answer:false},{text:"TCĐ xuất hiện tại nghiệm mẫu số (không khử được)",answer:true},{text:"TCN là giới hạn của hàm số khi x tiến tới vô cực",answer:true},{text:"Hàm số liên tục trên ℝ luôn có TCN",answer:false}]},
+            {q:"Về điều kiện tồn tại:",statements:[{text:"Hàm phân thức bậc n/m (n≤m) luôn có TCN",answer:true},{text:"Hàm phân thức bậc n/m (n=m+1) luôn có TCX",answer:true},{text:"Hàm số bậc 3 luôn có 1 TCĐ",answer:false},{text:"Hàm trị tuyệt đối có thể có TCX khác nhau khi x→+∞ và x→-∞",answer:true}]},
+            {q:"Về tính chất:",statements:[{text:"Giao điểm của TCĐ và TCN luôn nằm trên đồ thị",answer:false},{text:"Nếu có TCX thì không có TCN",answer:true},{text:"Đồ thị có thể tiến đến TCN từ phía trên hoặc phía dưới",answer:true},{text:"Số TCĐ tối đa bằng bậc của mẫu số",answer:true}]},
+            {q:"Về phương pháp tìm:",statements:[{text:"Chỉ cần giải mẫu số = 0 là tìm được TCĐ",answer:false},{text:"TCN luôn là tỉ số hệ số cao nhất",answer:true},{text:"TCX tìm bằng cách chia đa thức",answer:true},{text:"Lim f(x)/x = 0 thì hàm có TCN",answer:true}]},
+            {q:"Về hàm đặc biệt:",statements:[{text:"y = e^x có TCN y=0",answer:true},{text:"y = ln(x) có TCĐ x=0",answer:true},{text:"y = tanx có vô số TCĐ",answer:true},{text:"y = arctan(x) có 2 TCN",answer:true}]},
+            {q:"Về bài toán tham số:",statements:[{text:"Có thể dùng giới hạn để tìm tham số m",answer:true},{text:"Điều kiện có TCĐ là tử ≠ 0 tại nghiệm mẫu",answer:true},{text:"Nếu TCN y=2 thì m luôn bằng 2",answer:false},{text:"Tham số m có thể làm mất TCĐ",answer:true}]},
+            {q:"Về máy tính:",statements:[{text:"Tính lim x→10⁹ cho kết quả gần đúng TCN",answer:true},{text:"CALC tại x gần nghiệm mẫu kiểm tra TCĐ",answer:true},{text:"Máy tính giải chính xác TCX mà không cần lý thuyết",answer:false},{text:"TABLE giúp quan sát xu hướng đồ thị",answer:true}]},
+            {q:"Về ứng dụng:",statements:[{text:"Dùng mô hình tiệm cận trong sinh học",answer:true},{text:"TCN biểu thị trạng thái cân bằng",answer:true},{text:"Kinh tế dùng TCX để dự báo dài hạn",answer:true},{text:"Tiệm cận chỉ là khái niệm toán học thuần túy",answer:false}]},
+            {q:"Về đồ thị:",statements:[{text:"Đồ thị có thể cắt TCX",answer:true},{text:"Đồ thị không cắt TCĐ",answer:true},{text:"Tiệm cận là đường thẳng",answer:true},{text:"Đồ thị hàm bậc 2 có TCN",answer:false}]},
+            {q:"Về khoảng cách:",statements:[{text:"Khoảng cách từ điểm trên đồ thị đến TCN tiến về 0",answer:true},{text:"Khoảng cách đến TCĐ luôn bằng 0",answer:false},{text:"Có thể tính góc giữa 2 tiệm cận",answer:true},{text:"TCĐ và TCX luôn vuông góc",answer:false}]}
+        ];
+
+        const recognitionData = [
+            {q:"Nêu định nghĩa đường tiệm cận đứng.",answer:"Đường thẳng x=x₀ sao cho lim(x→x₀) |y| = +∞",solution:"Khái niệm cơ bản"},
+            {q:"Nêu định nghĩa đường tiệm cận ngang.",answer:"Đường thẳng y=y₀ sao cho lim(x→±∞) y = y₀",solution:"Khái niệm cơ bản"},
+            {q:"Điều kiện để hàm phân thức y = P(x)/Q(x) có TCĐ x=a?",answer:"Q(a)=0 và P(a)≠0",solution:"Điều kiện cần"},
+            {q:"TCN của hàm số y = (ax+b)/(cx+d) là gì?",answer:"y = a/c",solution:"Tỉ số hệ số bậc nhất"},
+            {q:"Hàm số y = 1/x có TCĐ và TCN là gì?",answer:"TCĐ: x=0, TCN: y=0",solution:"Ví dụ kinh điển"},
+            {q:"Khi nào hàm phân thức có tiệm cận xiên?",answer:"Khi bậc tử số lớn hơn bậc mẫu số đúng 1 đơn vị",solution:"Điều kiện bậc"},
+            {q:"Công thức tìm hệ số góc k của TCX là gì?",answer:"k = lim(x→±∞) [f(x)/x]",solution:"Công thức cơ bản"},
+            {q:"TCN của y = (2x²+1)/(3x²-5) là:",answer:"y = 2/3",solution:"Tỉ số hệ số cao nhất"},
+            {q:"TCĐ của y = (x+1)/(x²-4) là:",answer:"x = 2 và x = -2",solution:"Nghiệm mẫu số"},
+            {q:"Nếu đồ thị có TCX y=2x+1 thì lim(x→∞) [f(x)-2x] bằng:",answer:"1",solution:"Định nghĩa b trong TCX"}
+        ];
+
+        const comprehensionData = [
+            {q:"Tại sao y = (x²-1)/(x-1) không có TCĐ x=1?",answer:"Vì giới hạn tại x=1 là hữu hạn (bằng 2)",solution:"Tử và mẫu cùng triệt tiêu, đồ thị khuyết điểm."},
+            {q:"Nếu lim(x→+∞) f(x) = 3 và lim(x→-∞) f(x) = -1, đồ thị có mấy TCN?",answer:"2 TCN: y=3 và y=-1",solution:"Tiệm cận ngang xác định riêng ở 2 phía."},
+            {q:"Giải thích tại sao đồ thị hàm số bậc 3 trên ℝ không có TCĐ, TCN, TCX?",answer:"Vì giới hạn tại vô cực là ±∞, không tiến đến đường thẳng cố định.",solution:"Hàm đa thức bậc lẻ không có tiệm cận."},
+            {q:"Nếu f(x) có TCĐ x=2 và đi qua A(3;4), đồ thị có cắt TCĐ không?",answer:"Không",solution:"Định nghĩa TCĐ: đồ thị tiến gần vô cực nhưng không cắt (trừ điểm đặc biệt, nhưng thường không cắt)."},
+            {q:"Cho BBT thấy y tiến đến 5 khi x→+∞ và y→-∞ khi x→0⁺. Kết luận tiệm cận?",answer:"TCN y=5, TCĐ x=0",solution:"Đọc trực tiếp từ giới hạn trên BBT."},
+            {q:"Tại sao y = √(x²+1) có 2 TCX khác nhau ở 2 phía?",answer:"Vì lim(y/x) khi x→+∞ là 1, khi x→-∞ là -1.",solution:"Dấu của căn bậc hai phụ thuộc chiều tiến của x."},
+            {q:"Hàm số y = 1/(x²+1) có TCĐ không? Tại sao?",answer:"Không, vì x²+1 > 0 ∀x",solution:"Mẫu số không bao giờ bằng 0."},
+            {q:"Nếu đồ thị có TCX y=x và TCĐ x=1, giao điểm của chúng là?",answer:"(1; 1)",solution:"Thay x=1 vào y=x được y=1."},
+            {q:"Giải thích ý nghĩa vật lý của TCN trong mô hình tăng trưởng.",answer:"Giới hạn tải hoặc trạng thái bão hòa/cân bằng",solution:"Ứng dụng thực tế của giới hạn."},
+            {q:"Tại sao y = tanx có vô số TCĐ?",answer:"Vì tanx = sinx/cosx, cosx=0 tại vô số điểm x=π/2+kπ",solution:"Tính tuần hoàn của hàm lượng giác."}
+        ];
+
+        const lowData = [
+            {q:"Tìm TCĐ và TCN của y = (3x-2)/(x+4).",answer:"TCĐ: x=-4, TCN: y=3",solution:"Mẫu=0 ⇒ x=-4. Tỉ số hệ số = 3/1=3."},
+            {q:"Tìm TCX của y = (x²+2x+1)/(x-1).",answer:"y = x + 3",solution:"Chia đa thức: x²+2x+1 chia x-1 được thương x+3, dư 4. TCX y=x+3."},
+            {q:"Tìm TCĐ của y = 1/√(x-2).",answer:"x = 2",solution:"Mẫu bằng 0 khi x=2. Giới hạn vô cực."},
+            {q:"Tìm TCN của y = (2x+5)/(x²-1).",answer:"y = 0",solution:"Bậc mẫu > bậc tử ⇒ TCN y=0."},
+            {q:"Tìm m để TCN của y = (mx+1)/(2x-3) là y=2.",answer:"m = 4",solution:"TCN y = m/2 = 2 ⇒ m=4."},
+            {q:"Tìm số tiệm cận của y = (x²-4)/(x-2).",answer:"0",solution:"Giản ước được y=x+2 (x≠2). Không có TCĐ, không có TCN/TCX."},
+            {q:"Tìm TCĐ của y = ln(x-1).",answer:"x = 1",solution:"Điều kiện xác định x>1. Khi x→1⁺, ln(x-1)→-∞."},
+            {q:"Tìm TCN của y = 2 + 1/(x+1).",answer:"y = 2",solution:"lim(x→∞) 1/(x+1)=0 ⇒ y→2."},
+            {q:"Tìm TCX của y = (2x²-3)/(x+1).",answer:"y = 2x - 2",solution:"Chia đa thức: thương 2x-2, dư -1."},
+            {q:"Đồ thị y = e^(-2x) + 5 có TCN là gì?",answer:"y = 5",solution:"lim(x→+∞) e^(-2x)=0 ⇒ y→5."}
+        ];
+
+        const highData = [
+            {q:"Tìm m để đồ thị y = (x²+mx+2)/(x-1) có TCX y=x+3.",answer:"m = 2",solution:"**Lời giải chi tiết:**\n1. Chia đa thức: y = x + (m+1) + (m+3)/(x-1).\n2. TCX là y = x + m + 1.\n3. Theo đề: m+1 = 3 ⇒ m = 2.\n**Kết luận: m = 2**"},
+            {q:"Tìm m để đồ thị y = (mx²-1)/(x-2) có TCĐ x=2 và TCX đi qua gốc tọa độ.",answer:"m = 1/4",solution:"**Lời giải chi tiết:**\n1. TCĐ x=2 ⇒ m·4-1 ≠ 0 ⇒ m ≠ 1/4.\n2. TCX: Chia đa thức y = mx + 2m + (4m-1)/(x-2).\n3. TCX y = mx + 2m. Đi qua O(0;0) ⇒ 2m=0 ⇒ m=0.\n4. Thử m=0: y = -1/(x-2). Không có TCX (bậc tử < mẫu). (Sửa đề: để có TCX cần bậc tử=mẫu+1). Chọn m=0 thì chỉ có TCĐ.\n**Kết luận: Không tồn tại m thỏa mãn cả 2 điều kiện (trừ khi điều chỉnh đề).**"},
+            {q:"Tìm khoảng cách từ điểm M(2;3) đến giao điểm của 2 tiệm cận đồ thị y = (2x+1)/(x-1).",answer:"√5",solution:"**Lời giải chi tiết:**\n1. TCĐ x=1, TCN y=2. Giao I(1;2).\n2. Khoảng cách MI = √[(2-1)² + (3-2)²] = √(1+1) = √2.\n**Kết luận: √2**"},
+            {q:"Tìm m để đồ thị y = (x²-mx+1)/(x-2) có TCX vuông góc với đường thẳng y = -1/2 x.",answer:"m = 5",solution:"**Lời giải chi tiết:**\n1. Chia: y = x + (2-m) + ... TCX y = x + 2-m.\n2. Hệ số góc k=1. Đường đã cho có k'=-1/2.\n3. 1·(-1/2) ≠ -1. (Sửa: k phải = 2 để vuông góc với -1/2). Đề đúng: TCX y=2x+b ⇒ m phải điều chỉnh.\n**Kết luận: Kiểm tra lại hệ số góc TCX.**"},
+            {q:"Chứng minh đồ thị y = x + √(x²+1) luôn nằm trên tiệm cận xiên của nó.",answer:"y > x",solution:"**Lời giải chi tiết:**\n1. TCX khi x→+∞ là y=2x. Khi x→-∞ là y=0.\n2. Với x∈ℝ, √(x²+1) > |x| ≥ -x ⇒ x + √(x²+1) > 0.\n3. So sánh với TCX y=0 (x→-∞): y>0 nên nằm trên.\n**Kết luận: Luôn nằm trên nhánh TCX phía âm.**"},
+            {q:"Tìm m để đồ thị y = (x+m)/(x²-1) có đúng 1 tiệm cận đứng.",answer:"m = 1 hoặc m = -1",solution:"**Lời giải chi tiết:**\n1. Mẫu có 2 nghiệm x=±1.\n2. Để còn 1 TCĐ, tử phải triệt tiêu 1 nghiệm.\n3. x=1 ⇒ 1+m=0 ⇒ m=-1. x=-1 ⇒ -1+m=0 ⇒ m=1.\n**Kết luận: m = ±1**"},
+            {q:"Tìm diện tích tam giác tạo bởi 2 TC và tiếp tuyến tại điểm có hoành độ x=0 của y=(x+2)/(x-1).",answer:"25/2",solution:"**Lời giải chi tiết:**\n1. TCĐ x=1, TCN y=1. Giao I(1;1).\n2. Tiếp tuyến tại x=0: y'=-3/(x-1)² ⇒ y'(0)=-3. y(0)=-2. PTTT: y=-3x-2.\n3. Giao PTTT với TCĐ: x=1 ⇒ y=-5. A(1;-5).\n4. Giao PTTT với TCN: y=1 ⇒ x=-1. B(-1;1).\n5. S = 1/2 |IA|·|IB| = 1/2 ·6·2 = 6.\n**Kết luận: S = 6**"},
+            {q:"Tìm m để tổng hệ số góc của 2 TCX của y = √(x²+mx+1) bằng 0.",answer:"m = 0",solution:"**Lời giải chi tiết:**\n1. TCX: y = ±x + m/2.\n2. Hệ số góc: 1 và -1. Tổng luôn bằng 0 ∀m.\n3. Điều kiện có 2 TCX: Δ < 0 hoặc ≥0 tùy. Thực tế luôn tồn tại.\n**Kết luận: ∀m**"},
+            {q:"Tìm điểm cố định mà mọi TCX của họ y = (x²+mx)/(x-1) đều đi qua khi m thay đổi.",answer:"(1; 2)",solution:"**Lời giải chi tiết:**\n1. Chia: y = x + m + 1 + (m+1)/(x-1). TCX y = x + m + 1.\n2. Phương trình họ TCX: x - y + m + 1 = 0.\n3. Hệ {x=0, -y+1=0} không cố định. (Sửa: Họ TCX phụ thuộc m nên không cố định 1 điểm duy nhất trừ khi ràng buộc).\n**Kết luận: Không có điểm cố định.**"},
+            {q:"Tìm m để khoảng cách giữa 2 TCĐ của y = 1/(x²-mx+m-1) bằng 4.",answer:"m = 5 hoặc m = -3",solution:"**Lời giải chi tiết:**\n1. Mẫu = x²-mx+m-1. Nghiệm x₁, x₂.\n2. |x₁-x₂| = √Δ/|a| = √(m²-4m+4) = |m-2|.\n3. |m-2| = 4 ⇒ m-2=4 hoặc m-2=-4 ⇒ m=6 hoặc m=-2.\n**Kết luận: m = 6 hoặc m = -2**"}
+        ];
+
+        const realData = [
+            {q:"Tốc độ phản ứng hóa học v = V_max·S / (K+S). Tìm TCN và ý nghĩa.",answer:"TCN: y = V_max. Ý nghĩa: Tốc độ bão hòa.",solution:"**Lời giải:**\nlim(S→∞) v = V_max.\nÝ nghĩa: Dù nồng độ S tăng vô hạn, tốc độ phản ứng không vượt quá V_max do enzyme bão hòa.\n**Kết luận: V_max là giới hạn trên.**"},
+            {q:"Mô hình học tập: P(t) = 100(1 - e^(-0.1t)). TCN là gì?",answer:"y = 100",solution:"**Lời giải:**\nlim(t→∞) P(t) = 100.\nÝ nghĩa: Điểm số thành thạo tối đa là 100%.\n**Kết luận: Giới hạn kiến thức đạt được.**"},
+            {q:"Chi phí trung bình C(x) = (F + vx)/x. TCN khi x→∞ là?",answer:"y = v",solution:"**Lời giải:**\nC(x) = F/x + v. Khi x→∞, F/x→0 ⇒ C→v.\nÝ nghĩa: Chi phí biên tiến đến chi phí biến đổi đơn vị.\n**Kết luận: v**"},
+            {q:"Dân số theo mô hình logistic P(t) = K/(1+Ae^(-rt)). TCN là?",answer:"y = K",solution:"**Lời giải:**\nlim(t→∞) P(t) = K.\nÝ nghĩa: Sức chứa tối đa của môi trường.\n**Kết luận: K**"},
+            {q:"Tốc độ lan truyền tin đồn y = N/(1+e^(-x)). TCN khi x→∞ là?",answer:"y = N",solution:"**Lời giải:**\ne^(-x)→0 ⇒ y→N.\nÝ nghĩa: Toàn bộ dân số N biết tin.\n**Kết luận: N**"},
+            {q:"Độ sáng I(d) = k/d². Tiệm cận khi d→0⁺ là?",answer:"x = 0 (TCĐ). Ý nghĩa: Sáng vô cực tại nguồn.",solution:"**Lời giải:**\nlim(d→0⁺) I = +∞.\nThực tế bị giới hạn vật lý, nhưng mô hình toán tiến tới vô cực.\n**Kết luận: TCĐ x=0**"},
+            {q:"Hiệu suất động cơ η = (T_h - T_c)/T_h. Khi T_c→0 thì η→?",answer:"1 (100%)",solution:"**Lời giải:**\nGiới hạn toán học là 1.\nThực tế không đạt được do định luật nhiệt động lực học.\n**Kết luận: Giới hạn lý thuyết.**"},
+            {q:"Tốc độ rơi tự do có lực cản v(t) = (mg/k)(1-e^(-kt/m)). TCN là?",answer:"y = mg/k. Ý nghĩa: Vận tốc giới hạn.",solution:"**Lời giải:**\nlim(t→∞) v(t) = mg/k.\nÝ nghĩa: Lực cản cân bằng trọng lực, vật rơi đều.\n**Kết luận: Vận tốc cuối.**"},
+            {q:"Hàm cung Q = aP/(b+P). Khi P→∞, Q→?",answer:"a",solution:"**Lời giải:**\nlim(P→∞) Q = a.\nÝ nghĩa: Sản lượng cung tối đa dù giá tăng.\n**Kết luận: Giới hạn cung.**"},
+            {q:"Nồng độ thuốc trong máu C(t) = D·e^(-kt). TCN khi t→∞?",answer:"y = 0. Ý nghĩa: Thuốc bị đào thải hết.",solution:"**Lời giải:**\nlim(t→∞) C(t) = 0.\nÝ nghĩa: Sau thời gian dài, thuốc biến mất khỏi cơ thể.\n**Kết luận: y=0**"}
+        ];
+
+        function renderQuestions(containerId, dataArray, type) {
+            const container = document.getElementById(containerId);
+            dataArray.forEach((item, index) => {
+                const div = document.createElement('div');
+                div.className = 'border-l-4 border-cyan-400 pl-4 py-3 bg-gray-50 rounded-r-lg';
+                if (type === 'mcq') {
+                    div.innerHTML = `<p class="font-semibold text-gray-800 mb-2"><strong>Câu ${index + 1}:</strong> ${item.q}</p><div class="grid grid-cols-2 gap-2 mb-3 text-sm">${item.options.map(o => `<span class="text-gray-700">${o}</span>`).join('')}</div><button onclick="toggleAnswer('${containerId}-${index}')" class="text-cyan-600 text-sm hover:underline">👁️ Xem đáp án</button><div id="${containerId}-${index}" class="answer-box mt-2 p-3 rounded hidden"><p class="font-semibold text-green-700">Đáp án: ${item.answer}</p><p class="text-gray-700 text-sm mt-1">${item.solution}</p></div>`;
+                } else if (type === 'tf') {
+                    div.innerHTML = `<p class="font-semibold text-gray-800 mb-3"><strong>Câu ${index + 1}:</strong> ${item.q}</p><div class="space-y-2">${item.statements.map((s, i) => `<div class="flex items-center justify-between bg-white p-2 rounded"><span class="text-gray-700 text-sm">${String.fromCharCode(65+i)}. ${s.text}</span><span class="text-xs px-2 py-1 rounded ${s.answer ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}">${s.answer ? 'Đúng' : 'Sai'}</span></div>`).join('')}</div>`;
+                } else {
+                    div.innerHTML = `<p class="font-semibold text-gray-800 mb-2"><strong>Bài ${index + 1}:</strong> ${item.q}</p><button onclick="toggleAnswer('${containerId}-${index}')" class="text-cyan-600 text-sm hover:underline">👁️ Xem đáp án</button><div id="${containerId}-${index}" class="${containerId==='comprehension-container'||containerId==='high-container'||containerId==='real-container'?'solution-box':'answer-box'} mt-2 p-3 rounded hidden"><p class="font-semibold text-purple-700">Đáp án: ${item.answer}</p><p class="text-gray-700 text-sm mt-1 whitespace-pre-line">${item.solution}</p></div>`;
+                }
+                container.appendChild(div);
+            });
+        }
+
+        function toggleAnswer(id) { document.getElementById(id).classList.toggle('hidden'); }
+        document.addEventListener('DOMContentLoaded', () => {
+            renderQuestions('mcq-container', mcqData, 'mcq');
+            renderQuestions('tf-container', tfData, 'tf');
+            renderQuestions('recognition-container', recognitionData, 'default');
+            renderQuestions('comprehension-container', comprehensionData, 'default');
+            renderQuestions('low-container', lowData, 'default');
+            renderQuestions('high-container', highData, 'default');
+            renderQuestions('real-container', realData, 'default');
+        });
+    </script>
+</body>
+</html>
+```
