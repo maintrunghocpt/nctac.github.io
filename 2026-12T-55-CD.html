@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Danh sách Liên kết Tài liệu & Drive</title>
+    <style>
+        :root {
+            --bg-color: #f4f6f8;
+            --card-bg: #ffffff;
+            --text-main: #1f2937;
+            --text-sub: #6b7280;
+            --primary: #2563eb;
+            --primary-hover: #1d4ed8;
+            --accent-doc: #ea4335; /* Google Docs red/orange */
+            --accent-file: #0f9d58; /* Google Drive green */
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-hover: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --radius: 12px;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            padding: 2rem 1rem;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        h1 {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #111827;
+            margin-bottom: 0.5rem;
+        }
+
+        .subtitle {
+            color: var(--text-sub);
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .search-wrapper {
+            position: relative;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        #search-input {
+            width: 100%;
+            padding: 0.75rem 1.25rem 0.75rem 3rem;
+            border: 1px solid #e5e7eb;
+            border-radius: 99px;
+            font-size: 1rem;
+            outline: none;
+            transition: all 0.2s;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+        }
+
+        #search-input:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #9ca3af;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            box-shadow: var(--shadow);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-hover);
+            border-color: var(--primary);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .icon-box {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 0.75rem;
+            flex-shrink: 0;
+        }
+
+        .icon-doc {
+            background-color: #fef2f2;
+            color: var(--accent-doc);
+        }
+
+        .icon-file {
+            background-color: #ecfdf5;
+            color: var(--accent-file);
+        }
+
+        .card-title {
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: var(--text-main);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .card-id {
+            font-family: 'SF Mono', 'Fira Code', monospace;
+            font-size: 0.75rem;
+            color: var(--text-sub);
+            background-color: #f3f4f6;
+            padding: 0.4rem 0.6rem;
+            border-radius: 6px;
+            word-break: break-all;
+            margin-top: auto;
+        }
+
+        .badge {
+            position: absolute;
+            top: 0.75rem;
+            right: 0.75rem;
+            font-size: 0.65rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            padding: 2px 6px;
+            border-radius: 4px;
+            background-color: #f3f4f6;
+            color: var(--text-sub);
+        }
+
+        .empty-state {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 3rem;
+            color: var(--text-sub);
+        }
+
+        .stats {
+            margin-top: 1rem;
+            font-size: 0.85rem;
+            color: var(--text-sub);
+            text-align: center;
+        }
+        
+        /* Tooltip for opening new tab */
+        .card::after {
+            content: '↗';
+            position: absolute;
+            top: 0.75rem;
+            right: 0.75rem;
+            opacity: 0;
+            transition: opacity 0.2s;
+            color: var(--primary);
+            font-size: 1.2rem;
+            pointer-events: none;
+        }
+        
+        .card:hover::after {
+            opacity: 1;
+        }
+
+        @media (max-width: 640px) {
+            h1 { font-size: 1.5rem; }
+            .grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>Danh sách Tài liệu</h1>
+            <p class="subtitle">Tổng hợp các Google Docs & Drive Files</p>
+            
+            <div class="search-wrapper">
+                <svg class="search-icon" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                </svg>
+                <input type="text" id="search-input" placeholder="Tìm kiếm theo ID hoặc loại tệp...">
+            </div>
+            <div class="stats" id="stats-text"></div>
+        </header>
+
+        <div class="grid" id="links-grid">
+            <!-- Cards will be injected here via JS -->
+        </div>
+    </div>
+
+    <script>
+        // Danh sách các URL từ yêu cầu
+        const rawUrls = [
+            "https://drive.google.com/file/d/1Vy5ENx_XU1USKjeuMvCobn0swd3utBXN/view?usp=drive_link",
+            "https://drive.google.com/file/d/1rccyC73-nSMUkYlOaIdvchlkRYACBTrM/view?usp=drive_link",
+            "https://drive.google.com/file/d/1VRequlpaZ2mfzGgvo6mIjCZcc7X2jVcP/view?usp=drive_link",
+            "https://docs.google.com/document/d/1RnN2U1EZ3NDdXnrE5zGZ_dyqDuDK5RN3/edit?usp=drive_link&ouid=106190470233562618511&rtpof=true&sd=true",
+            "https://drive.google.com/file/d/19zFCpdcqoqMsL_xrNq1NTNolGsutLFh5/view?usp=drive_link",
+            "https://docs.google.com/document/d/1HGxjoV8RzVXw0Jv40c3IXMGFGC9u4C_W/edit?usp=drive_link&ouid=106190470233562618511&rtpof=true&sd=true",
+            "https://drive.google.com/file/d/1H6EpiOehiMSyhsVZv5RKaLL_4cxRrU-n/view?usp=drive_link",
+            "https://docs.google.com/document/d/1quL9RlrI3--QVPjVf7RXRW2eACXlWKrh/edit?usp=drive_link&ouid=106190470233562618511&rtpof=true&sd=true",
+            "https://docs.google.com/document/d/1C0nCUa0HNDmbLBdbuAT-Ut1TXuCKmU5E/edit?usp=drive_link&ouid=106190470233562618511&rtpof=true&sd=true",
+            "https://docs.google.com/document/d/1Ij1DGI86cuu6vBDYdrJ7yb9EiB1xjy8q/edit?usp=drive_link&ouid=106190470233562618511&rtpof=true&sd=true",
+            "https://docs.google.com/document/d/1lqMHDFHE88bB_tRnPMp6ebv2h_gH3buX/edit?usp=drive_link&ouid=106190470233562618511&rtpof=true&sd=true",
+            "https://docs.google.com/document/d/1-2I616wmQY5tocVJsAFOydRZ9MHtFktj/edit?usp=drive_link&ouid=106190470233562618511&rtpof=true&sd=true",
+            "https://docs.google.com/document/d/1n2fiEoBti0nNOy_-FqLF__3HlEJhv_l5/edit?usp=drive_link&ouid=106190470233562618511&rtpof=true&sd=true",
+            "https://docs.google.com/document/d/13hn1I4doAcxx_-kP8WXu5YPxpTR-hh-U/edit?usp=drive_link&ouid=106190470233562618511&rtpof=true&sd=true",
+            "https://docs.google.com/document/d/1cs2upFOuOG4HinTKfsjw1aQGhmRiww9L/edit?usp=drive_link&ouid=106190470233562618511&rtpof=true&sd=true",
+            "https://docs.google.com/document/d/1lmqhiXSDp3uWbMq2NhN4sbsWQGhQ9VZH/edit?usp=drive_link&ouid=106190470233562618511&rtpof=true&sd=true",
+            "https://docs.google.com/document/d/1gXtVm8coxY-p9nPSE7kd8iDL-HxXIifE/edit?usp=drive_link&ouid=106190470233562618511&rtpof=true&sd=true",
+            "https://docs.google.com/document/d/1rXhVSLavT-2JLb03Q4ByrAh12dsN0pQe/edit?usp=drive_link&ouid=106190470233562618511&rtpof=true&sd=true",
+            "https://docs.google.com/document/d/1IHf1TEgdGLk3Ku2L5PZM6vgSvtVQtGxI/edit?usp=drive_link&ouid=106190470233562618511&rtpof=true&sd=true",
+            "https://docs.google.com/document/d/1RWvoZwKZJQSBuCvHALZSaNPSnyu2crjG/edit?usp=drive_link&ouid=106190470233562618511&rtpof=true&sd=true",
+            "https://docs.google.com/document/d/18qIOVxjMuhhsxJi9GXNH7JXOmzK4zSVM/edit?usp=drive_link&ouid=106190470233562618511&rtpof=true&sd=true",
+            "https://docs.google.com/document/d/1iRb1o78jPeN6tyFGnT44j36o9RR2K835/edit?usp=drive_link&ouid=106190470233562618511&rtpof=true&sd=true",
+            "https://docs.google.com/document/d/1ZyoOrtntFoc_YKyLaZbeP8C70_QPvY9I/edit?usp=drive_link&ouid=106190470233562618511&rtpof=true&sd=true",
+            "https://docs.google.com/document/d/1Kj5TGYCRjEEc0ksU2bCfuyhNNcF7BSqV/edit?usp=drive_link&ouid=106190470233562618511&rtpof=true&sd=true",
+            "https://docs.google.com/document/d/1wasJbI4m73xI5ct0yenG1UeOkii2d01R/edit?usp=drive_link&ouid=106190470233562618511&rtpof=true&sd=true",
+            "https://docs.google.com/document/d/1bTs7ggQWNBLD5B3Dfbiw1mzLIcHB2HKK/edit?usp=drive_link&ouid=106190470233562618511&rtpof=true&sd=true",
+            "https://docs.google.com/document/d/1Giwjo20T7GfAZTP5fNjkv4QGaa24YK2i/edit?usp=drive_link&ouid=106190470233562618511&rtpof=true&sd=true",
+            "https://docs.google.com/document/d/1ONaG-v7ooiUDdL4BQI7pEXWTMtORk56Y/edit?usp=drive_link&ouid=106190470233562618511&rtpof=true&sd=true",
+            "https://docs.google.com/document/d/1STVWQoxHmwJQ-qm83fLO3R0sNxzj6_JI/edit?usp=drive_link&ouid=106190470233562618511&rtpof=true&sd=true",
+            "https://docs.google.com/document/d/1DzkqOiIK6igADYSi7or_U6f5Z4XcZyvK/edit?usp=drive_link&ouid=106190470233562618511&rtpof=true&sd=true",
+            "https://docs.google.com/document/d/1SMR468LJ5UqvHjZbmdjO0KrGtOy0pebd/edit?usp=drive_link&ouid=106190470233562618511&rtpof=true&sd=true",
+            "https://docs.google.com/document/d/11YMP83bD1P7uiNM7DkrgVHTkmBaff4_7/edit?usp=drive_link&ouid=106190470233562618511&rtpof=true&sd=true",
+            "https://docs.google.com/document/d/1kHTB5HxuFgI1QlQkatIG1BGushW5Jkfa/edit?usp=drive_link&ouid=106190470233562618511&rtpof=true&sd=true",
+            "https://docs.google.com/document/d/1-BGIpc4l8Xo3e_D_oe0ROYr1NQY_xzAD/edit?usp=drive_link&ouid=106190470233562618511&rtpof=true&sd=true",
+            "https://docs.google.com/document/d/1av6chSx_aUbqrXxVpiKXGfQV7atYdjwU/edit?usp=drive_link&ouid=106190470233562618511&rtpof=true&sd=true",
+            "https://docs.google.com/document/d/1oNLs1M7GTUtn_528Wn3k1A41vN-mz5hz/edit?usp=drive_link&ouid=106190470233562618511&rtpof=true&sd=true",
+            "https://docs.google.com/document/d/1Wt4K9veAEPP8OVcxDT_OfzUjoRDXgD6w/edit?usp=drive_link&ouid=106190470233562618511&rtpof=true&sd=true",
+            "https://docs.google.com/document/d/1QOpfAb-ZTzgQrNZ5SyGCe9BE8hQfVQ1H/edit?usp=drive_link&ouid=106190470233562618511&rtpof=true&sd=true",
+            "https://docs.google.com/document/d/1OShidWtXJ0XJKyyKzFdN23JjisYGoMJw/edit?usp=drive_link&ouid=106190470233562618511&rtpof=true&sd=true",
+            "https://docs.google.com/document/d/1sehQa3dESIx6qAhir3sz1YCDJemy13RQ/edit?usp=drive_link&ouid=106190470233562618511&rtpof=true&sd=true",
+            "https://docs.google.com/document/d/1xq0uBIvsrVbqSZYEaiMCJYUmc_uY38I7/edit?usp=drive_link&ouid=106190470233562618511&rtpof=true&sd=true",
+            "https://docs.google.com/document/d/1D1lDStQMw4laGXHlM6Tw06g-6tP6yFnk/edit?usp=drive_link&ouid=106190470233562618511&rtpof=true&sd=true",
+            "https://docs.google.com/document/d/15xhvTZKN1TC1RAjNpVQUsW6dHyM5VhnE/edit?usp=drive_link&ouid=106190470233562618511&rtpof=true&sd=true",
+            "https://docs.google.com/document/d/14lhKLwhdmH5cIzqOUG7W9WlZRES7rIY9/edit?usp=drive_link&ouid=106190470233562618511&rtpof=true&sd=true",
+            "https://docs.google.com/document/d/1IssizQiEjOULbIRn1EzX9pkhPNe7hp2H/edit?usp=drive_link&ouid=106190470233562618511&rtpof=true&sd=true",
+            "https://docs.google.com/document/d/1EPl-SVneNguRicsN1HhGs02LspLUXsXU/edit?usp=drive_link&ouid=106190470233562618511&rtpof=true&sd=true",
+            "https://docs.google.com/document/d/1rXVlLpTrwU0ds8U7LvIqVrJ1MxzGp9SF/edit?usp=drive_link&ouid=106190470233562618511&rtpof=true&sd=true",
+            "https://docs.google.com/document/d/1n3BW_EecPGuxjeqFFkPuLWjZLhOQYKJu/edit?usp=drive_link&ouid=106190470233562618511&rtpof=true&sd=true",
+            "https://docs.google.com/document/d/1JhzYyM-Owh41uXolq9joDL9JJ-CsARIR/edit?usp=drive_link&ouid=106190470233562618511&rtpof=true&sd=true",
+            "https://docs.google.com/document/d/1zLIFBWgexeNybevFnilSLjwxsfxNsQDq/edit?usp=drive_link&ouid=106190470233562618511&rtpof=true&sd=true",
+            "https://docs.google.com/document/d/1D7W5mC3-9wlAbp9ZXS1eomBKw-6Bgfqd/edit?usp=drive_link&ouid=106190470233562618511&rtpof=true&sd=true",
+            "https://docs.google.com/document/d/1hPJ_M4rLlLg6M0EUXqDPF_Oy04tT5gZ7/edit?usp=drive_link&ouid=106190470233562618511&rtpof=true&sd=true",
+            "https://docs.google.com/document/d/1zm502YHtCLBmKj0DmCgYD-slyHTodF_l/edit?usp=drive_link&ouid=106190470233562618511&rtpof=true&sd=true",
+            "https://docs.google.com/document/d/1kdjyGaPzDYjgirqpeiqkR_ElrhVoQeID/edit?usp=drive_link&ouid=106190470233562618511&rtpof=true&sd=true",
+            "https://docs.google.com/document/d/1mupP3PDnLXPuzP3j62v_6WglE4bJZu4n/edit?usp=drive_link&ouid=106190470233562618511&rtpof=true&sd=true",
+            "https://docs.google.com/document/d/13MdxmVmnliJuus2qjDq5NZJe0TU7MrVD/edit?usp=drive_link&ouid=106190470233562618511&rtpof=true&sd=true",
+            "https://docs.google.com/document/d/1RgntuedC7g6wSLne8cemsFTMXl4e2leO/edit?usp=drive_link&ouid=106190470233562618511&rtpof=true&sd=true",
+            "https://docs.google.com/document/d/16rN7vtjANlKirdyARNa9vzas9S3a8otr/edit?usp=drive_link&ouid=106190470233562618511&rtpof=true&sd=true",
+            "https://docs.google.com/document/d/1I_3Yp4HcB2nYYKn3jDFQv-FBG5u8D2J7/edit?usp=drive_link&ouid=106190470233562618511&rtpof=true&sd=true",
+            "https://docs.google.com/document/d/1q56euFpoEZDd_ZX982Vg62zExGLqBqGh/edit?usp=drive_link&ouid=106190470233562618511&rtpof=true&sd=true",
+            "https://docs.google.com/document/d/1tNpWegY7fyXkkVtb4ULVhKSRGnTOiMgi/edit?usp=drive_link&ouid=106190470233562618511&rtpof=true&sd=true",
+            "https://docs.google.com/document/d/1pOrrUPxt40XutWL5NZLyF-t71Uly1XHR/edit?usp=drive_link&ouid=106190470233562618511&rtpof=true&sd=true",
+            "https://docs.google.com/document/d/1zRVgFh-jz4QSCLOnEs9yUE9erB6Wx68e/edit?usp=drive_link&ouid=106190470233562618511&rtpof=true&sd=true",
+            "https://docs.google.com/document/d/10kI2iVYNqdXz1cwX5CFkaRHRRHa3C2u6/edit?usp=drive_link&ouid=106190470233562618511&rtpof=true&sd=true",
+            "https://docs.google.com/document/d/1bmX5yTZbLPaQcSp3GJ6CNgRfRgVeC8vV/edit?usp=drive_link&ouid=106190470233562618511&rtpof=true&sd=true",
+            "https://docs.google.com/document/d/1G2ykbNa6XL03VjIShOVFXgys70lLhF_e/edit?usp=drive_link&ouid=106190470233562618511&rtpof=true&sd=true",
+            "https://docs.google.com/document/d/1HKSgWWGMY3CJhcjd9aRYZf8NlEY4tZbS/edit?usp=drive_link&ouid=106190470233562618511&rtpof=true&sd=true",
+            "https://docs.google.com/document/d/1_s9sYN0hZZl-99FmKsg0w_tCO3u4AdSp/edit?usp=drive_link&ouid=106190470233562618511&rtpof=true&sd=true",
+            "https://docs.google.com/document/d/13ypQdM4CyJS4UEYLsyIXnkTsmmm5wA1l/edit?usp=drive_link&ouid=106190470233562618511&rtpof=true&sd=true",
+            "https://docs.google.com/document/d/1itHJQUQByiQoJ5HLl2Dd4VzjLq1k5RkW/edit?usp=drive_link&ouid=106190470233562618511&rtpof=true&sd=true",
+            "https://docs.google.com/document/d/1i2KwkvGfpfDgrZynmETap3K9e0vfQavi/edit?usp=drive_link&ouid=106190470233562618511&rtpof=true&sd=true",
+            "https://docs.google.com/document/d/1ZBy_fHh48PJPcsYXT0URsobCAWs6CQHy/edit?usp=drive_link&ouid=106190470233562618511&rtpof=true&sd=true",
+            "https://docs.google.com/document/d/1ROYm35_cnngWWsW8aiakUVkzSBRdK-u8/edit?usp=drive_link&ouid=106190470233562618511&rtpof=true&sd=true",
+            "https://docs.google.com/document/d/14Rw8Z7LC7eGUzyaWZp-IG1ekqp-sYRyT/edit?usp=drive_link&ouid=106190470233562618511&rtpof=true&sd=true",
+            "https://docs.google.com/document/d/1lrTb8aBru8Qe-NyxjOqY-CF1XsyuOdip/edit?usp=drive_link&ouid=106190470233562618511&rtpof=true&sd=true",
+            "https://docs.google.com/document/d/1D-Goz1izxQLQ062UyUID21rKWk5wu8p-/edit?usp=drive_link&ouid=106190470233562618511&rtpof=true&sd=true",
+            "https://docs.google.com/document/d/1nWBJjG4aBhn1RoHoXGZ8n6jOjv3x8Qrn/edit?usp=drive_link&ouid=106190470233562618511&rtpof=true&sd=true",
+            "https://docs.google.com/document/d/1QXya6O9NZ-2ElIKWUEy3mrqgT5g-P74f/edit?usp=drive_link&ouid=106190470233562618511&rtpof=true&sd=true",
+            "https://docs.google.com/document/d/1y8j47pj7IDR46BqJE9YHhiKj5Mej7aDU/edit?usp=drive_link&ouid=106190470233562618511&rtpof=true&sd=true",
+            "https://docs.google.com/document/d/1r3OG5bx1oDAjKraOe_muKPkCuHgvlrSW/edit?usp=drive_link&ouid=106190470233562618511&rtpof=true&sd=true",
+            "https://docs.google.com/document/d/1BJKr72G384jdtO9Fd2Hdqh1uCqMRIbc6/edit?usp=drive_link&ouid=106190470233562618511&rtpof=true&sd=true",
+            "https://docs.google.com/document/d/1Sd2v8UIz6Vlht_8OHhubQBZuMDJ-z2pV/edit?usp=drive_link&ouid=106190470233562618511&rtpof=true&sd=true",
+            "https://docs.google.com/document/d/1dQB81R03sFNVv45t_251dkDRMP4AGn_7/edit?usp=drive_link&ouid=106190470233562618511&rtpof=true&sd=true",
+            "https://docs.google.com/document/d/1U9wUIEm2bXALZFPpg8ZV9hHuFYVKE-er/edit?usp=drive_link&ouid=106190470233562618511&rtpof=true&sd=true",
+            "https://docs.google.com/document/d/1n_w1ZV1eGvRRoDVvpYtVOjPCRGg2rKPf/edit?usp=drive_link&ouid=106190470233562618511&rtpof=true&sd=true",
+            "https://docs.google.com/document/d/18IxLgUMgeWOJptMFYznt3bQClnYxClGy/edit?usp=drive_link&ouid=106190470233562618511&rtpof=true&sd=true",
+            "https://docs.google.com/document/d/1Qa369jK8R9Wf8msebYrbiwSwFC_Bp2c4/edit?usp=drive_link&ouid=106190470233562618511&rtpof=true&sd=true",
+            "https://docs.google.com/document/d/1i14fFvllDV1Hza49cIziL3goGm9bg3yT/edit?usp=drive_link&ouid=106190470233562618511&rtpof=true&sd=true",
+            "https://docs.google.com/document/d/1L0Ah4Xo2WQv2fYPg8azCmc5-uj-Q0r3w/edit?usp=drive_link&ouid=106190470233562618511&rtpof=true&sd=true",
+            "https://docs.google.com/document/d/1cJZAbc_Q00NNctTYWrW-RsFg5Lvnoqkc/edit?usp=drive_link&ouid=106190470233562618511&rtpof=true&sd=true",
+            "https://docs.google.com/document/d/1zRWPCihXWbR0R3BEbRuMIPV9A8_rciID/edit?usp=drive_link&ouid=106190470233562618511&rtpof=true&sd=true",
+            "https://docs.google.com/document/d/1WBEgsnGFpwZOZSFVvR4vLXt1sF1KT2H6/edit?usp=drive_link&ouid=106190470233562618511&rtpof=true&sd=true",
+            "https://docs.google.com/document/d/1oNBKNAlw-vVHfGKXiXAouIjk25EdlOAH/edit?usp=drive_link&ouid=106190470233562618511&rtpof=true&sd=true",
+            "https://docs.google.com/document/d/1YmnBC13Ev-oevXwLw9qOfolFWYEoOTDZ/edit?usp=drive_link&ouid=106190470233562618511&rtpof=true&sd=true",
+            "https://docs.google.com/document/d/14ud-dBT6v9qDCftYXvXkEsuYS7MIq7Vl/edit?usp=drive_link&ouid=106190470233562618511&rtpof=true&sd=true",
+            "https://docs.google.com/document/d/1BDeGnpstXjNOXsD-_mv8_krRW-O5wN19/edit?usp=drive_link&ouid=106190470233562618511&rtpof=true&sd=true",
+            "https://docs.google.com/document/d/1l-sMK7zWW9R9A5uoBjgWnd1vK4l1EROw/edit?usp=drive_link&ouid=106190470233562618511&rtpof=true&sd=true",
+            "https://docs.google.com/document/d/1XYXStrNKK08v_8Oc6tgPqsBjfyEegoYv/edit?usp=drive_link&ouid=106190470233562618511&rtpof=true&sd=true",
+            "https://docs.google.com/document/d/1hIEOh5kpdePxRugK0dtd8aIKaDMT8-WM/edit?usp=drive_link&ouid=106190470233562618511&rtpof=true&sd=true",
+            "https://docs.google.com/document/d/1Cs8iKq0XwiOxpPrAM_oWybTxkEkf96ev/edit?usp=drive_link&ouid=106190470233562618511&rtpof=true&sd=true",
+            "https://docs.google.com/document/d/12Isar9vSRmI-8ECRJ1gL0Rj5nBDhXCqd/edit?usp=drive_link&ouid=106190470233562618511&rtpof=true&sd=true",
+            "https://docs.google.com/document/d/1mApJ3eYPi-GLdRTZNYc-kuma1glsYYRW/edit?usp=drive_link&ouid=106190470233562618511&rtpof=true&sd=true",
+            "https://docs.google.com/document/d/1v00BP1cu5YttBDGcuQ_AbwAtNDXwo6qH/edit?usp=drive_link&ouid=106190470233562618511&rtpof=true&sd=true",
+            "https://docs.google.com/document/d/1E3QGph09o8_WBiV5kd5GRh3vpEaGvRgm/edit?usp=drive_link&ouid=106190470233562618511&rtpof=true&sd=true",
+            "https://docs.google.com/document/d/1X57_KIT6MXLx3NVt39RqVIXbbzF5iwuM/edit?usp=drive_link&ouid=106190470233562618511&rtpof=true&sd=true",
+            "https://docs.google.com/document/d/1OX3m9S_XERROVDl_94Ku0Dqhl2IdmjaW/edit?usp=drive_link&ouid=106190470233562618511&rtpof=true&sd=true",
+            "https://docs.google.com/document/d/1B9Gcjc5p_W5J-dbWlixz7_IHcYGNhNXo/edit?usp=drive_link&ouid=106190470233562618511&rtpof=true&sd=true",
+            "https://docs.google.com/document/d/1_FWeoqkNkrISKzUsCiZNjYTb1HXASgGx/edit?usp=drive_link&ouid=106190470233562618511&rtpof=true&sd=true",
+            "https://docs.google.com/document/d/1cDH4ek4G8wSyMYHtqVseYlC9OAa3YBBg/edit?usp=drive_link&ouid=106190470233562618511&rtpof=true&sd=true",
+            "https://docs.google.com/document/d/1GO8wqoUDBysO79_TgZciIIJoHQOw2P87/edit?usp=drive_link&ouid=106190470233562618511&rtpof=true&sd=true",
+            "https://docs.google.com/document/d/10rwaM4V0_QkwLqIK63bG_rBSBoM-1yr4/edit?usp=drive_link&ouid=106190470233562618511&rtpof=true&sd=true",
+            "https://docs.google.com/document/d/13f4wV0fP2DyDsufAl1-NZe5ayDCzLzNw/edit?usp=drive_link&ouid=106190470233562618511&rtpof=true&sd=true",
+            "https://docs.google.com/document/d/1BDCawSKOytY-3k3pBUQrbtxi_CuEssZw/edit?usp=drive_link&ouid=106190470233562618511&rtpof=true&sd=true",
+            "https://docs.google.com/document/d/17Tbwu96eqH7dU2fc--GuthI08TEDUG_H/edit?usp=drive_link&ouid=106190470233562618511&rtpof=true&sd=true",
+            "https://drive.google.com/file/d/1FiMBxnMK9uhTfuswMkJX1kVeCZ9I2t4x/view?usp=drive_link",
+            "https://docs.google.com/document/d/16wlEkk_YZZg9z6IbOrCvWpMm0dhzMWvx/edit?usp=drive_link&ouid=106190470233562618511&rtpof=true&sd=true",
+            "https://drive.google.com/file/d/1Phl1AvQ05zTKdLuZMMeXVK3GohkAqYm4/view?usp=drive_link",
+            "https://docs.google.com/document/d/1_CUbRXtBqegIjQfzKNQtAJtfsUXHrHL0/edit?usp=drive_link&ouid=106190470233562618511&rtpof=true&sd=true",
+            "https://drive.google.com/file/d/15TyB5kCFZrj668PMXefbP_tzLdCO6RO2/view?usp=drive_link",
+            "https://docs.google.com/document/d/1EEnS_B2hMVberpjRaHJpWKDB0Q1ANHcV/edit?usp=drive_link&ouid=106190470233562618511&rtpof=true&sd=true"
+        ];
+
+        const grid = document.getElementById('links-grid');
+        const searchInput = document.getElementById('search-input');
+        const statsText = document.getElementById('stats-text');
+
+        function parseUrlData(url) {
+            let id = '';
+            let type = 'unknown';
+            let title = 'Liên kết';
+
+            if (url.includes('/document/d/')) {
+                type = 'doc';
+                title = 'Google Docs';
+                const match = url.match(/\/document\/d\/([a-zA-Z0-9_-]+)/);
+                id = match ? match[1] : '';
+            } else if (url.includes('/file/d/')) {
+                type = 'file';
+                title = 'Google Drive File';
+                const match = url.match(/\/file\/d\/([a-zA-Z0-9_-]+)/);
+                id = match ? match[1] : '';
+            } else {
+                // Fallback for other links
+                try {
+                    const urlObj = new URL(url);
+                    id = urlObj.pathname.split('/').pop() || 'N/A';
+                } catch {
+                    id = 'N/A';
+                }
+            }
+
+            return { url, id, type, title };
+        }
+
+        function createCard(item, index) {
+            const isDoc = item.type === 'doc';
+            const cardClass = isDoc ? 'icon-doc' : 'icon-file';
+            const svgIcon = isDoc 
+                ? `<svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M14 2H6C4.9 2 4.01 2.9 4.01 4L4 20C4 21.1 4.89 22 5.99 22H18C19.1 22 20 21.1 20 20V8L14 2ZM14 4.2L19.8 10H14V4.2Z"/></svg>`
+                : `<svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M10 4H4C2.9 4 2.01 4.9 2.01 6L2 18C2 19.1 2.9 20 4 20H20C21.1 20 22 19.1 22 18V8C22 6.9 21.1 6 20 6H12L10 4Z"/></svg>`;
+            const typeName = isDoc ? 'TÀI LIỆU' : 'FILE';
+
+            const a = document.createElement('a');
+            a.href = item.url;
+            a.target = "_blank";
+            a.className = 'card';
+            a.innerHTML = `
+                <div class="card-header">
+                    <div class="icon-box ${cardClass}">
+                        ${svgIcon}
+                    </div>
+                    <div style="flex: 1; min-width: 0;">
+                        <div class="card-title">${item.title}</div>
+                        <div style="font-size: 0.75rem; color: #6b7280; margin-top: 2px;">#${index + 1}</div>
+                    </div>
+                    <div class="badge">${typeName}</div>
+                </div>
+                <div class="card-id">${item.id}</div>
+            `;
+            return a;
+        }
+
+        function renderLinks(filter = '') {
+            grid.innerHTML = '';
+            const lowerFilter = filter.toLowerCase();
+            
+            let count = 0;
+
+            rawUrls.forEach((url, index) => {
+                const item = parseUrlData(url);
+                
+                if (lowerFilter) {
+                    if (
+                        !item.id.toLowerCase().includes(lowerFilter) && 
+                        !item.title.toLowerCase().includes(lowerFilter) &&
+                        !(index + 1).toString().includes(lowerFilter)
+                    ) {
+                        return;
+                    }
+                }
+
+                grid.appendChild(createCard(item, index));
+                count++;
+            });
+
+            if (count === 0) {
+                grid.innerHTML = `<div class="empty-state">Không tìm thấy kết quả nào phù hợp với "${filter}"</div>`;
+            }
+
+            statsText.textContent = filter ? `Hiển thị ${count} kết quả` : `Hiển thị ${rawUrls.length} liên kết`;
+        }
+
+        searchInput.addEventListener('input', (e) => {
+            renderLinks(e.target.value);
+        });
+
+        // Initial render
+        renderLinks();
+
+    </script>
+</body>
+</html>
+
