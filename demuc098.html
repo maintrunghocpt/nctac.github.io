@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hình Trụ - Đề Mục 98 - Toán Lớp 9</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@fontsource/roboto@4.5.8/index.css" rel="stylesheet">
+    <style>
+        * {
+            font-family: 'Roboto', sans-serif;
+        }
+        .gradient-header {
+            background: linear-gradient(135deg, #0284c7 0%, #7c3aed 100%);
+        }
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, #0284c7 0%, #7c3aed 100%);
+        }
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #0369a1 0%, #6a32c4 100%);
+        }
+        .answer-box {
+            background: #f0f9ff;
+            border-left: 4px solid #0284c7;
+        }
+        .solution-box {
+            background: #fef3c7;
+            border-left: 4px solid #f59e0b;
+        }
+        .nav-item {
+            transition: all 0.2s ease;
+        }
+        .nav-item:hover {
+            background: rgba(255,255,255,0.2);
+        }
+        .nav-item.active {
+            background: rgba(255,255,255,0.3);
+        }
+        .print-section {
+            page-break-inside: avoid;
+        }
+        @media print {
+            .no-print {
+                display: none;
+            }
+        }
+        .cylinder-diagram {
+            background: #f8fafc;
+            border: 2px dashed #cbd5e1;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+        }
+        .formula-box {
+            background: linear-gradient(135deg, #e0f2fe 0%, #ede9fe 100%);
+            border-radius: 8px;
+            padding: 16px;
+            margin: 12px 0;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="gradient-header text-white py-8">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center">
+                <div>
+                    <h1 class="text-3xl font-bold">HÌNH TRỤ</h1>
+                    <p class="text-lg opacity-90">Đề Mục 98 - Toán Lớp 9 - Hình Học</p>
+                </div>
+                <div class="text-right">
+                    <p class="text-sm opacity-80">Bộ Tài Liệu Toán THCS</p>
+                    <p class="text-sm opacity-80">60 Ngày Ôn Tập</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md sticky top-0 z-50 no-print">
+        <div class="container mx-auto px-4">
+            <div class="flex overflow-x-auto py-3 space-x-2">
+                <button onclick="showSection('lesson')" class="nav-item active px-4 py-2 rounded-lg bg-blue-100 text-blue-700 whitespace-nowrap">📚 Bài Giảng</button>
+                <button onclick="showSection('mcq')" class="nav-item px-4 py-2 rounded-lg hover:bg-gray-100 whitespace-nowrap">📝 30 Câu MCQ</button>
+                <button onclick="showSection('tf')" class="nav-item px-4 py-2 rounded-lg hover:bg-gray-100 whitespace-nowrap">✅ 10 Câu Đúng/Sai</button>
+                <button onclick="showSection('recognition')" class="nav-item px-4 py-2 rounded-lg hover:bg-gray-100 whitespace-nowrap">🔍 10 Bài Nhận Biết</button>
+                <button onclick="showSection('low')" class="nav-item px-4 py-2 rounded-lg hover:bg-gray-100 whitespace-nowrap">📊 10 Bài Vận Dụng Thấp</button>
+                <button onclick="showSection('high')" class="nav-item px-4 py-2 rounded-lg hover:bg-gray-100 whitespace-nowrap">🎯 10 Bài Vận Dụng Cao</button>
+                <button onclick="showSection('real')" class="nav-item px-4 py-2 rounded-lg hover:bg-gray-100 whitespace-nowrap">🌍 5 Bài Thực Tế</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+        <!-- Lesson Section -->
+        <section id="lesson" class="section-content">
+            <div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section">
+                <h2 class="text-2xl font-bold text-blue-700 mb-6 flex items-center">
+                    <span class="mr-3">📚</span> BÀI GIẢNG CHI TIẾT: HÌNH TRỤ
+                </h2>
+                <div class="space-y-6">
+                    <!-- Introduction -->
+                    <div class="answer-box p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold text-blue-700 mb-4">1. ĐỊNH NGHĨA HÌNH TRỤ</h3>
+                        <p class="text-gray-700 mb-4">
+                            <strong>Hình trụ tròn xoay</strong> (gọi tắt là hình trụ) là hình được tạo thành khi quay hình chữ nhật ABCD một vòng quanh cạnh AB cố định.
+                        </p>
+                        <div class="cylinder-diagram mb-4">
+                            <svg width="350" height="400" viewBox="0 0 350 400">
+                                <!-- Bottom base -->
+                                <ellipse cx="175" cy="350" rx="100" ry="30" fill="none" stroke="#0284c7" stroke-width="3"/>
+                                <!-- Top base -->
+                                <ellipse cx="175" cy="100" rx="100" ry="30" fill="none" stroke="#0284c7" stroke-width="3"/>
+                                <!-- Side lines -->
+                                <line x1="75" y1="100" x2="75" y2="350" stroke="#0284c7" stroke-width="3"/>
+                                <line x1="275" y1="100" x2="275" y2="350" stroke="#0284c7" stroke-width="3"/>
+                                <!-- Height -->
+                                <line x1="175" y1="100" x2="175" y2="350" stroke="#7c3aed" stroke-width="2" stroke-dasharray="5,5"/>
+                                <text x="185" y="230" fill="#7c3aed" font-size="16" font-weight="bold">h</text>
+                                <!-- Radius -->
+                                <line x1="175" y1="350" x2="275" y2="350" stroke="#f59e0b" stroke-width="2"/>
+                                <text x="215" y="340" fill="#f59e0b" font-size="16" font-weight="bold">R</text>
+                                <!-- Labels -->
+                                <text x="160" y="90" fill="#0284c7" font-size="14">Đáy trên</text>
+                                <text x="160" y="390" fill="#0284c7" font-size="14">Đáy dưới</text>
+                                <text x="290" y="230" fill="#0284c7" font-size="14">Mặt xung quanh</text>
+                                <circle cx="175" cy="350" r="3" fill="#7c3aed"/>
+                                <text x="185" y="365" fill="#7c3aed" font-size="12">O</text>
+                            </svg>
+                            <p class="text-sm text-gray-600 mt-2">Hình trụ có bán kính đáy R và chiều cao h</p>
+                        </div>
+                        <div class="formula-box">
+                            <h4 class="font-semibold text-blue-600 mb-2">📐 Các yếu tố của hình trụ:</h4>
+                            <ul class="space-y-2 text-gray-700">
+                                <li>• <strong>Đáy:</strong> Hai hình tròn bằng nhau, song song với nhau</li>
+                                <li>• <strong>Bán kính đáy (R):</strong> Bán kính của hai hình tròn đáy</li>
+                                <li>• <strong>Chiều cao (h):</strong> Khoảng cách giữa hai mặt đáy</li>
+                                <li>• <strong>Trục:</strong> Đường thẳng đi qua tâm hai đáy</li>
+                                <li>• <strong>Đường sinh:</strong> Đoạn thẳng nối hai điểm tương ứng trên hai đáy, song song với trục</li>
+                                <li>• <strong>Mặt xung quanh:</strong> Mặt cong nối hai đường tròn đáy</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Formulas -->
+                    <div class="solution-box p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold text-amber-700 mb-4">2. CÔNG THỨC TÍNH TOÁN</h3>
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div class="bg-white p-4 rounded-lg border-2 border-blue-300">
+                                <h4 class="font-semibold text-blue-600 mb-2">📏 Diện tích đáy:</h4>
+                                <p class="text-2xl text-blue-700 font-bold text-center">S_đáy = πR²</p>
+                                <p class="text-gray-600 text-sm text-center mt-2">R: bán kính đáy</p>
+                            </div>
+                            <div class="bg-white p-4 rounded-lg border-2 border-purple-300">
+                                <h4 class="font-semibold text-purple-600 mb-2">📐 Chu vi đáy:</h4>
+                                <p class="text-2xl text-purple-700 font-bold text-center">C = 2πR</p>
+                                <p class="text-gray-600 text-sm text-center mt-2">R: bán kính đáy</p>
+                            </div>
+                            <div class="bg-white p-4 rounded-lg border-2 border-amber-300">
+                                <h4 class="font-semibold text-amber-600 mb-2">📐 Diện tích xung quanh:</h4>
+                                <p class="text-2xl text-amber-700 font-bold text-center">S_xq = 2πRh</p>
+                                <p class="text-gray-600 text-sm text-center mt-2">R: bán kính, h: chiều cao</p>
+                            </div>
+                            <div class="bg-white p-4 rounded-lg border-2 border-green-300">
+                                <h4 class="font-semibold text-green-600 mb-2">📐 Diện tích toàn phần:</h4>
+                                <p class="text-xl text-green-700 font-bold text-center">S_tp = 2πRh + 2πR²</p>
+                                <p class="text-gray-600 text-sm text-center mt-2">= S_xq + 2S_đáy</p>
+                            </div>
+                            <div class="bg-white p-4 rounded-lg border-2 border-red-300 md:col-span-2">
+                                <h4 class="font-semibold text-red-600 mb-2">📐 Thể tích khối trụ:</h4>
+                                <p class="text-3xl text-red-700 font-bold text-center">V = πR²h</p>
+                                <p class="text-gray-600 text-sm text-center mt-2">= S_đáy × h</p>
+                            </div>
+                        </div>
+                        <div class="mt-4 bg-amber-50 p-4 rounded-lg">
+                            <p class="text-amber-800 text-sm">
+                                <strong>💡 Lưu ý:</strong> π ≈ 3.14159... Trong tính toán thường lấy π ≈ 3.14 hoặc π ≈ 22/7. Đơn vị thể tích là lập phương của đơn vị độ dài (cm³, m³,...)
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Properties -->
+                    <div class="answer-box p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold text-blue-700 mb-4">3. TÍNH CHẤT CỦA HÌNH TRỤ</h3>
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div class="bg-blue-50 p-4 rounded-lg">
+                                <h4 class="font-semibold text-blue-600 mb-2">Tính chất 1: Mặt cắt</h4>
+                                <p class="text-gray-700 text-sm">Mặt cắt song song với đáy là hình tròn bằng đáy.</p>
+                            </div>
+                            <div class="bg-purple-50 p-4 rounded-lg">
+                                <h4 class="font-semibold text-purple-600 mb-2">Tính chất 2: Mặt cắt qua trục</h4>
+                                <p class="text-gray-700 text-sm">Mặt cắt chứa trục là hình chữ nhật có kích thước 2R × h.</p>
+                            </div>
+                            <div class="bg-amber-50 p-4 rounded-lg">
+                                <h4 class="font-semibold text-amber-600 mb-2">Tính chất 3: Đường sinh</h4>
+                                <p class="text-gray-700 text-sm">Tất cả đường sinh bằng nhau và bằng chiều cao h.</p>
+                            </div>
+                            <div class="bg-green-50 p-4 rounded-lg">
+                                <h4 class="font-semibold text-green-600 mb-2">Tính chất 4: Đối xứng</h4>
+                                <p class="text-gray-700 text-sm">Hình trụ có vô số mặt phẳng đối xứng chứa trục.</p>
+                            </div>
+                        </div>
+                        <div class="mt-4 bg-white p-4 rounded-lg border-2 border-blue-300">
+                            <h4 class="font-semibold text-blue-700 mb-2">📝 Mặt khai triển của hình trụ:</h4>
+                            <ul class="space-y-2 text-gray-700 text-sm">
+                                <li>• Mặt xung quanh khai triển thành hình chữ nhật</li>
+                                <li>• Chiều dài hình chữ nhật = chu vi đáy = 2πR</li>
+                                <li>• Chiều rộng hình chữ nhật = chiều cao = h</li>
+                                <li>• Hai đáy là hai hình tròn bằng nhau</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Problem Types -->
+                    <div class="solution-box p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold text-amber-700 mb-4">4. CÁC DẠNG TOÁN THƯỜNG GẶP</h3>
+                        <div class="grid md:grid-cols-3 gap-4">
+                            <div class="bg-white p-4 rounded-lg border-l-4 border-blue-400 card-hover">
+                                <h4 class="font-semibold text-blue-600 mb-2">Dạng 1: Tính diện tích</h4>
+                                <p class="text-gray-700 text-sm">Tính S_xq, S_tp khi biết R và h.</p>
+                            </div>
+                            <div class="bg-white p-4 rounded-lg border-l-4 border-purple-400 card-hover">
+                                <h4 class="font-semibold text-purple-600 mb-2">Dạng 2: Tính thể tích</h4>
+                                <p class="text-gray-700 text-sm">Tính V khi biết R và h.</p>
+                            </div>
+                            <div class="bg-white p-4 rounded-lg border-l-4 border-amber-400 card-hover">
+                                <h4 class="font-semibold text-amber-600 mb-2">Dạng 3: Tìm R hoặc h</h4>
+                                <p class="text-gray-700 text-sm">Biết S hoặc V, tìm R hoặc h.</p>
+                            </div>
+                            <div class="bg-white p-4 rounded-lg border-l-4 border-green-400 card-hover">
+                                <h4 class="font-semibold text-green-600 mb-2">Dạng 4: Tỉ lệ</h4>
+                                <p class="text-gray-700 text-sm">So sánh thể tích, diện tích hai hình trụ.</p>
+                            </div>
+                            <div class="bg-white p-4 rounded-lg border-l-4 border-red-400 card-hover">
+                                <h4 class="font-semibold text-red-600 mb-2">Dạng 5: Hình trụ rỗng</h4>
+                                <p class="text-gray-700 text-sm">Tính thể tích phần rỗng, thành ống.</p>
+                            </div>
+                            <div class="bg-white p-4 rounded-lg border-l-4 border-indigo-400 card-hover">
+                                <h4 class="font-semibold text-indigo-600 mb-2">Dạng 6: Bài toán thực tế</h4>
+                                <p class="text-gray-700 text-sm">Áp dụng vào tính toán vật chứa, ống nước.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Relationships -->
+                    <div class="answer-box p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold text-blue-700 mb-4">5. HỆ THỨC LIÊN HỆ</h3>
+                        <div class="formula-box">
+                            <h4 class="font-semibold text-blue-600 mb-2">📐 Từ đường kính d:</h4>
+                            <p class="text-gray-700 mb-2">R = d/2</p>
+                            <p class="text-blue-700 font-bold">V = π(d/2)²h = πd²h/4</p>
+                        </div>
+                        <div class="formula-box">
+                            <h4 class="font-semibold text-purple-600 mb-2">📐 Từ chu vi đáy C:</h4>
+                            <p class="text-gray-700 mb-2">C = 2πR ⇒ R = C/(2π)</p>
+                            <p class="text-purple-700 font-bold">S_xq = C × h</p>
+                        </div>
+                        <div class="formula-box">
+                            <h4 class="font-semibold text-amber-600 mb-2">📐 Từ diện tích đáy S_đáy:</h4>
+                            <p class="text-gray-700 mb-2">S_đáy = πR² ⇒ R = √(S_đáy/π)</p>
+                            <p class="text-amber-700 font-bold">V = S_đáy × h</p>
+                        </div>
+                        <div class="mt-4 bg-blue-50 p-4 rounded-lg">
+                            <h4 class="font-semibold text-blue-700 mb-2">📌 Tỉ lệ khi thay đổi kích thước:</h4>
+                            <ul class="space-y-2 text-gray-700 text-sm">
+                                <li>• Nếu R tăng k lần, S_đáy tăng k² lần</li>
+                                <li>• Nếu h tăng k lần, V tăng k lần</li>
+                                <li>• Nếu R và h đều tăng k lần, V tăng k³ lần</li>
+                                <li>• Nếu R tăng k lần, S_xq tăng k lần</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Examples -->
+                    <div class="solution-box p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold text-amber-700 mb-4">6. VÍ DỤ MINH HỌA</h3>
+                        <div class="bg-white p-4 rounded-lg mb-4">
+                            <h4 class="font-semibold text-amber-600 mb-2">Ví dụ 1: Tính diện tích xung quanh</h4>
+                            <p class="text-gray-700 mb-2">Cho hình trụ có R = 5cm, h = 10cm. Tính S_xq.</p>
+                            <div class="answer-box p-3 rounded">
+                                <p class="text-gray-700"><strong>Lời giải:</strong></p>
+                                <p class="text-gray-700">S_xq = 2πRh = 2π × 5 × 10 = 100π cm²</p>
+                                <p class="text-gray-700">≈ 314 cm² (với π ≈ 3.14)</p>
+                            </div>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg mb-4">
+                            <h4 class="font-semibold text-amber-600 mb-2">Ví dụ 2: Tính thể tích</h4>
+                            <p class="text-gray-700 mb-2">Cho hình trụ có đường kính đáy 8cm, chiều cao 12cm. Tính V.</p>
+                            <div class="answer-box p-3 rounded">
+                                <p class="text-gray-700"><strong>Lời giải:</strong></p>
+                                <p class="text-gray-700">R = d/2 = 8/2 = 4cm</p>
+                                <p class="text-gray-700">V = πR²h = π × 16 × 12 = 192π cm³</p>
+                                <p class="text-gray-700">≈ 603 cm³ (với π ≈ 3.14)</p>
+                            </div>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg">
+                            <h4 class="font-semibold text-amber-600 mb-2">Ví dụ 3: Tìm chiều cao</h4>
+                            <p class="text-gray-700 mb-2">Cho hình trụ có V = 500π cm³, R = 5cm. Tính h.</p>
+                            <div class="answer-box p-3 rounded">
+                                <p class="text-gray-700"><strong>Lời giải:</strong></p>
+                                <p class="text-gray-700">V = πR²h ⇒ h = V/(πR²)</p>
+                                <p class="text-gray-700">h = 500π/(π × 25) = 20cm</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Calculator Guide -->
+                    <div class="answer-box p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold text-blue-700 mb-4">7. HƯỚNG DẪN BẤM MÁY TÍNH CASIO FX-580ES</h3>
+                        <div class="bg-white p-4 rounded-lg space-y-3">
+                            <p class="text-gray-700"><strong>Tính diện tích xung quanh:</strong></p>
+                            <ol class="list-decimal list-inside space-y-1 text-gray-700">
+                                <li>Nhập <kbd class="bg-gray-200 px-2 py-1 rounded">2</kbd> × <kbd class="bg-gray-200 px-2 py-1 rounded">SHIFT</kbd> + <kbd class="bg-gray-200 px-2 py-1 rounded">π</kbd> × <kbd class="bg-gray-200 px-2 py-1 rounded">R</kbd> × <kbd class="bg-gray-200 px-2 py-1 rounded">h</kbd></li>
+                                <li>Bấm <kbd class="bg-gray-200 px-2 py-1 rounded">=</kbd></li>
+                            </ol>
+                            <p class="text-gray-700 mt-3"><strong>Tính thể tích:</strong></p>
+                            <ol class="list-decimal list-inside space-y-1 text-gray-700">
+                                <li>Nhập <kbd class="bg-gray-200 px-2 py-1 rounded">SHIFT</kbd> + <kbd class="bg-gray-200 px-2 py-1 rounded">π</kbd> × <kbd class="bg-gray-200 px-2 py-1 rounded">R</kbd><kbd class="bg-gray-200 px-2 py-1 rounded">x²</kbd> × <kbd class="bg-gray-200 px-2 py-1 rounded">h</kbd></li>
+                                <li>Bấm <kbd class="bg-gray-200 px-2 py-1 rounded">=</kbd></li>
+                            </ol>
+                            <p class="text-gray-700 mt-3"><strong>Tính diện tích toàn phần:</strong></p>
+                            <ol class="list-decimal list-inside space-y-1 text-gray-700">
+                                <li>Nhập <kbd class="bg-gray-200 px-2 py-1 rounded">2</kbd> × <kbd class="bg-gray-200 px-2 py-1 rounded">SHIFT</kbd> + <kbd class="bg-gray-200 px-2 py-1 rounded">π</kbd> × <kbd class="bg-gray-200 px-2 py-1 rounded">R</kbd> × (<kbd class="bg-gray-200 px-2 py-1 rounded">h</kbd> + <kbd class="bg-gray-200 px-2 py-1 rounded">R</kbd>)</li>
+                                <li>Bấm <kbd class="bg-gray-200 px-2 py-1 rounded">=</kbd></li>
+                            </ol>
+                            <p class="text-gray-700 mt-3"><strong>Lưu ý:</strong> Sử dụng phím π để có kết quả chính xác hơn</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- MCQ Section -->
+        <section id="mcq" class="section-content hidden">
+            <div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section">
+                <h2 class="text-2xl font-bold text-blue-700 mb-6 flex items-center">
+                    <span class="mr-3">📝</span> 30 CÂU TRẮC NGHIỆM 4 LỰA CHỌN
+                </h2>
+                <div class="space-y-6" id="mcq-container"></div>
+            </div>
+        </section>
+
+        <!-- True/False Section -->
+        <section id="tf" class="section-content hidden">
+            <div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section">
+                <h2 class="text-2xl font-bold text-blue-700 mb-6 flex items-center">
+                    <span class="mr-3">✅</span> 10 CÂU TRẮC NGHIỆM ĐÚNG/SAI
+                </h2>
+                <div class="space-y-6" id="tf-container"></div>
+            </div>
+        </section>
+
+        <!-- Recognition Section -->
+        <section id="recognition" class="section-content hidden">
+            <div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section">
+                <h2 class="text-2xl font-bold text-blue-700 mb-6 flex items-center">
+                    <span class="mr-3">🔍</span> 10 BÀI TẬP NHẬN BIẾT
+                </h2>
+                <div class="space-y-6" id="recognition-container"></div>
+            </div>
+        </section>
+
+        <!-- Low Application Section -->
+        <section id="low" class="section-content hidden">
+            <div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section">
+                <h2 class="text-2xl font-bold text-blue-700 mb-6 flex items-center">
+                    <span class="mr-3">📊</span> 10 BÀI TẬP VẬN DỤNG THẤP
+                </h2>
+                <div class="space-y-6" id="low-container"></div>
+            </div>
+        </section>
+
+        <!-- High Application Section -->
+        <section id="high" class="section-content hidden">
+            <div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section">
+                <h2 class="text-2xl font-bold text-blue-700 mb-6 flex items-center">
+                    <span class="mr-3">🎯</span> 10 BÀI TẬP VẬN DỤNG CAO
+                </h2>
+                <div class="space-y-6" id="high-container"></div>
+            </div>
+        </section>
+
+        <!-- Real World Section -->
+        <section id="real" class="section-content hidden">
+            <div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section">
+                <h2 class="text-2xl font-bold text-blue-700 mb-6 flex items-center">
+                    <span class="mr-3">🌍</span> 5 BÀI TẬP ỨNG DỤNG THỰC TẾ
+                </h2>
+                <div class="space-y-6" id="real-container"></div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="gradient-header text-white py-6 mt-8">
+        <div class="container mx-auto px-4 text-center">
+            <p class="text-sm">Bộ Tài Liệu Toán THCS - Đề Mục 98: Hình Trụ</p>
+            <p class="text-sm opacity-80">© 2024 - Tài liệu ôn tập 60 ngày</p>
+        </div>
+    </footer>
+
+    <!-- Print Button -->
+    <button onclick="window.print()" class="no-print fixed bottom-6 right-6 btn-primary text-white px-6 py-3 rounded-full shadow-lg hover:shadow-xl transition-all">
+        🖨 In Tài Liệu
+    </button>
+
+    <script>
+        // Navigation
+        function showSection(sectionId) {
+            document.querySelectorAll('.section-content').forEach(el => el.classList.add('hidden'));
+            document.getElementById(sectionId).classList.remove('hidden');
+            document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
+            event.target.classList.add('active');
+        }
+
+        // MCQ Data
+        const mcqData = [
+            { q: "Hình trụ được tạo thành khi quay hình nào quanh một cạnh cố định?", options: ["A. Hình tam giác", "B. Hình chữ nhật", "C. Hình vuông", "D. Hình thang"], answer: "B", solution: "Hình trụ được tạo thành khi quay hình chữ nhật một vòng quanh một cạnh cố định" },
+            { q: "Công thức tính diện tích xung quanh hình trụ là:", options: ["A. πRh", "B. 2πRh", "C. πR²h", "D. 2πR²"], answer: "B", solution: "S_xq = 2πRh (chu vi đáy × chiều cao)" },
+            { q: "Công thức tính thể tích khối trụ là:", options: ["A. πRh", "B. 2πRh", "C. πR²h", "D. 2πR²h"], answer: "C", solution: "V = πR²h (diện tích đáy × chiều cao)" },
+            { q: "Diện tích toàn phần hình trụ bằng:", options: ["A. S_xq + S_đáy", "B. S_xq + 2S_đáy", "C. 2S_xq + S_đáy", "D. 2(S_xq + S_đáy)"], answer: "B", solution: "S_tp = S_xq + 2S_đáy = 2πRh + 2πR²" },
+            { q: "Cho hình trụ có R = 3cm, h = 5cm. S_xq bằng:", options: ["A. 15π cm²", "B. 30π cm²", "C. 45π cm²", "D. 60π cm²"], answer: "B", solution: "S_xq = 2π × 3 × 5 = 30π cm²" },
+            { q: "Cho hình trụ có R = 4cm, h = 10cm. Thể tích bằng:", options: ["A. 40π cm³", "B. 80π cm³", "C. 160π cm³", "D. 320π cm³"], answer: "C", solution: "V = π × 16 × 10 = 160π cm³" },
+            { q: "Mặt cắt song song với đáy của hình trụ là:", options: ["A. Hình chữ nhật", "B. Hình tròn bằng đáy", "C. Hình elip", "D. Hình vuông"], answer: "B", solution: "Mặt cắt song song với đáy là hình tròn bằng đáy" },
+            { q: "Mặt cắt chứa trục của hình trụ là:", options: ["A. Hình tròn", "B. Hình chữ nhật 2R × h", "C. Hình vuông", "D. Hình thang"], answer: "B", solution: "Mặt cắt chứa trục là hình chữ nhật có kích thước 2R × h" },
+            { q: "Đường sinh của hình trụ bằng:", options: ["A. Bán kính đáy", "B. Đường kính đáy", "C. Chiều cao", "D. Chu vi đáy"], answer: "C", solution: "Tất cả đường sinh bằng nhau và bằng chiều cao h" },
+            { q: "Cho hình trụ có đường kính đáy 6cm, h = 8cm. R bằng:", options: ["A. 2cm", "B. 3cm", "C. 4cm", "D. 6cm"], answer: "B", solution: "R = d/2 = 6/2 = 3cm" },
+            { q: "Nếu bán kính tăng 2 lần, diện tích đáy tăng:", options: ["A. 2 lần", "B. 3 lần", "C. 4 lần", "D. 8 lần"], answer: "C", solution: "S_đáy = πR², nếu R tăng 2 lần thì S tăng 2² = 4 lần" },
+            { q: "Nếu chiều cao tăng 3 lần, thể tích tăng:", options: ["A. 2 lần", "B. 3 lần", "C. 6 lần", "D. 9 lần"], answer: "B", solution: "V = πR²h, nếu h tăng 3 lần thì V tăng 3 lần" },
+            { q: "Cho S_xq = 100π cm², R = 5cm. Tính h:", options: ["A. 5cm", "B. 10cm", "C. 15cm", "D. 20cm"], answer: "B", solution: "h = S_xq/(2πR) = 100π/(10π) = 10cm" },
+            { q: "Cho V = 200π cm³, h = 8cm. Tính R:", options: ["A. 3cm", "B. 4cm", "C. 5cm", "D. 6cm"], answer: "C", solution: "R² = V/(πh) = 200π/(8π) = 25 ⇒ R = 5cm" },
+            { q: "Hình trụ có R = h. Khi đó S_xq bằng:", options: ["A. 2πR²", "B. πR²", "C. 4πR²", "D. πR³"], answer: "A", solution: "S_xq = 2πRh = 2πR² (vì h = R)" },
+            { q: "Chu vi đáy hình trụ bằng 20π cm. Tính R:", options: ["A. 5cm", "B. 10cm", "C. 15cm", "D. 20cm"], answer: "B", solution: "C = 2πR = 20π ⇒ R = 10cm" },
+            { q: "Diện tích một đáy hình trụ là 25π cm². Tính R:", options: ["A. 3cm", "B. 4cm", "C. 5cm", "D. 6cm"], answer: "C", solution: "πR² = 25π ⇒ R² = 25 ⇒ R = 5cm" },
+            { q: "Hình trụ có d = 10cm, h = 10cm. Thể tích bằng:", options: ["A. 100π cm³", "B. 200π cm³", "C. 250π cm³", "D. 500π cm³"], answer: "C", solution: "R = 5cm, V = π × 25 × 10 = 250π cm³" },
+            { q: "Nếu R và h đều tăng 2 lần, thể tích tăng:", options: ["A. 2 lần", "B. 4 lần", "C. 6 lần", "D. 8 lần"], answer: "D", solution: "V mới = π(2R)²(2h) = 8πR²h = 8V" },
+            { q: "Mặt khai triển mặt xung quanh hình trụ là:", options: ["A. Hình tròn", "B. Hình chữ nhật", "C. Hình vuông", "D. Hình thang"], answer: "B", solution: "Mặt xung quanh khai triển thành hình chữ nhật" },
+            { q: "Chiều dài hình chữ nhật khai triển bằng:", options: ["A. R", "B. 2R", "C. 2πR", "D. πR"], answer: "C", solution: "Chiều dài = chu vi đáy = 2πR" },
+            { q: "Cho hình trụ có S_tp = 60π cm², R = 3cm. Tính h:", options: ["A. 5cm", "B. 6cm", "C. 7cm", "D. 8cm"], answer: "C", solution: "S_tp = 2πR(h+R) = 60π ⇒ 6(h+3) = 60 ⇒ h = 7cm" },
+            { q: "Hình trụ có R = 7cm, h = 10cm. S_xq ≈ (π ≈ 22/7):", options: ["A. 440 cm²", "B. 420 cm²", "C. 460 cm²", "D. 480 cm²"], answer: "A", solution: "S_xq = 2 × 22/7 × 7 × 10 = 440 cm²" },
+            { q: "Thể tích hình trụ có d = 14cm, h = 10cm ≈ (π ≈ 22/7):", options: ["A. 1540 cm³", "B. 1450 cm³", "C. 1640 cm³", "D. 1740 cm³"], answer: "A", solution: "R = 7cm, V = 22/7 × 49 × 10 = 1540 cm³" },
+            { q: "Hình trụ có S_xq = S_đáy. Khi đó h bằng:", options: ["A. R/2", "B. R", "C. 2R", "D. R/4"], answer: "A", solution: "2πRh = πR² ⇒ h = R/2" },
+            { q: "Tỉ số V/S_xq của hình trụ bằng:", options: ["A. R", "B. R/2", "C. 2R", "D. h/2"], answer: "B", solution: "V/S_xq = (πR²h)/(2πRh) = R/2" },
+            { q: "Hình trụ có h = 2R. Tỉ số S_tp/V bằng:", options: ["A. 3/R", "B. 2/R", "C. 4/R", "D. 1/R"], answer: "A", solution: "S_tp = 2πR(2R+R) = 6πR², V = 2πR³, S_tp/V = 3/R" },
+            { q: "Cho hai hình trụ có R1 = 2R2, h1 = h2. Tỉ số V1/V2 bằng:", options: ["A. 2", "B. 3", "C. 4", "D. 8"], answer: "C", solution: "V1/V2 = (R1/R2)² = 4" },
+            { q: "Hình trụ nội tiếp hình lập phương cạnh a. Thể tích hình trụ bằng:", options: ["A. πa³/2", "B. πa³/4", "C. πa³/8", "D. πa³"], answer: "B", solution: "R = a/2, h = a, V = π(a/2)² × a = πa³/4" },
+            { q: "Số mặt phẳng đối xứng của hình trụ là:", options: ["A. 1", "B. 2", "C. 4", "D. Vô số"], answer: "D", solution: "Hình trụ có vô số mặt phẳng đối xứng chứa trục" }
+        ];
+
+        // True/False Data
+        const tfData = [
+            { q: "Về định nghĩa hình trụ:", statements: [
+                { text: "Hình trụ được tạo thành khi quay hình chữ nhật quanh một cạnh", answer: true },
+                { text: "Hình trụ có hai đáy là hai hình tròn bằng nhau", answer: true },
+                { text: "Hình trụ có một đáy", answer: false },
+                { text: "Trục hình trụ đi qua tâm hai đáy", answer: true }
+            ]},
+            { q: "Về công thức tính toán:", statements: [
+                { text: "S_xq = 2πRh", answer: true },
+                { text: "S_tp = 2πRh + πR²", answer: false },
+                { text: "V = πR²h", answer: true },
+                { text: "S_đáy = 2πR²", answer: false }
+            ]},
+            { q: "Về tính chất hình trụ:", statements: [
+                { text: "Mặt cắt song song với đáy là hình tròn bằng đáy", answer: true },
+                { text: "Mặt cắt chứa trục là hình vuông", answer: false },
+                { text: "Tất cả đường sinh bằng nhau", answer: true },
+                { text: "Đường sinh bằng chiều cao", answer: true }
+            ]},
+            { q: "Về mối quan hệ giữa các đại lượng:", statements: [
+                { text: "Nếu R tăng 2 lần, S_đáy tăng 4 lần", answer: true },
+                { text: "Nếu h tăng 3 lần, V tăng 3 lần", answer: true },
+                { text: "Nếu R và h tăng 2 lần, V tăng 4 lần", answer: false },
+                { text: "S_xq tỉ lệ thuận với R và h", answer: true }
+            ]},
+            { q: "Cho hình trụ có R = 5cm, h = 10cm:", statements: [
+                { text: "S_xq = 100π cm²", answer: true },
+                { text: "S_đáy = 25π cm²", answer: true },
+                { text: "V = 250π cm³", answer: true },
+                { text: "S_tp = 150π cm²", answer: true }
+            ]},
+            { q: "Về mặt khai triển:", statements: [
+                { text: "Mặt xung quanh khai triển thành hình chữ nhật", answer: true },
+                { text: "Chiều dài hình chữ nhật bằng 2πR", answer: true },
+                { text: "Chiều rộng hình chữ nhật bằng h", answer: true },
+                { text: "Hai đáy khai triển thành hình vuông", answer: false }
+            ]},
+            { q: "Về đơn vị đo:", statements: [
+                { text: "Diện tích đo bằng cm²", answer: true },
+                { text: "Thể tích đo bằng cm³", answer: true },
+                { text: "Bán kính đo bằng cm³", answer: false },
+                { text: "Chiều cao đo bằng cm", answer: true }
+            ]},
+            { q: "Về hình trụ đặc biệt:", statements: [
+                { text: "Hình trụ có h = 2R gọi là hình trụ đều", answer: true },
+                { text: "Hình trụ có R = h thì S_xq = 2πR²", answer: true },
+                { text: "Hình trụ nội tiếp hình lập phương có R = a/2", answer: true },
+                { text: "Hình trụ có đường kính bằng chiều cao là hình trụ đều", answer: true }
+            ]},
+            { q: "Về tính đối xứng:", statements: [
+                { text: "Hình trụ có tâm đối xứng", answer: true },
+                { text: "Hình trụ có vô số mặt phẳng đối xứng", answer: true },
+                { text: "Mọi mặt phẳng qua trục đều là mặt phẳng đối xứng", answer: true },
+                { text: "Hình trụ không có trục đối xứng", answer: false }
+            ]},
+            { q: "Về tính toán thực tế:", statements: [
+                { text: "π thường lấy bằng 3.14", answer: true },
+                { text: "π có thể lấy bằng 22/7", answer: true },
+                { text: "Thể tích nước trong bình trụ tính bằng V = πR²h", answer: true },
+                { text: "Diện tích tôn làm thùng không tính đáy", answer: true }
+            ]}
+        ];
+
+        // Recognition Data
+        const recognitionData = [
+            { q: "Phát biểu định nghĩa hình trụ tròn xoay.", answer: "Hình tạo thành khi quay hình chữ nhật quanh một cạnh cố định", solution: "Hình trụ là hình được tạo thành khi quay hình chữ nhật ABCD một vòng quanh cạnh AB cố định" },
+            { q: "Viết công thức tính diện tích xung quanh hình trụ.", answer: "S_xq = 2πRh", solution: "Diện tích xung quanh bằng chu vi đáy nhân chiều cao" },
+            { q: "Viết công thức tính thể tích khối trụ.", answer: "V = πR²h", solution: "Thể tích bằng diện tích đáy nhân chiều cao" },
+            { q: "Viết công thức tính diện tích toàn phần hình trụ.", answer: "S_tp = 2πRh + 2πR²", solution: "S_tp = S_xq + 2S_đáy" },
+            { q: "Cho biết mặt cắt song song với đáy của hình trụ là hình gì.", answer: "Hình tròn bằng đáy", solution: "Mặt cắt song song với đáy là hình tròn bằng đáy" },
+            { q: "Cho biết đường sinh của hình trụ bằng gì.", answer: "Bằng chiều cao h", solution: "Tất cả đường sinh bằng nhau và bằng chiều cao" },
+            { q: "Viết công thức tính bán kính khi biết đường kính d.", answer: "R = d/2", solution: "Bán kính bằng nửa đường kính" },
+            { q: "Cho biết mặt khai triển mặt xung quanh hình trụ là hình gì.", answer: "Hình chữ nhật", solution: "Mặt xung quanh khai triển thành hình chữ nhật" },
+            { q: "Viết công thức tính chu vi đáy hình trụ.", answer: "C = 2πR", solution: "Chu vi đáy bằng 2π nhân bán kính" },
+            { q: "Cho biết số mặt phẳng đối xứng của hình trụ.", answer: "Vô số", solution: "Hình trụ có vô số mặt phẳng đối xứng chứa trục" }
+        ];
+
+        // Low Application Data
+        const lowData = [
+            { q: "Cho hình trụ có R = 6cm, h = 8cm. Tính S_xq.", answer: "S_xq = 96π cm²", solution: "S_xq = 2πRh = 2π × 6 × 8 = 96π cm²" },
+            { q: "Cho hình trụ có R = 5cm, h = 10cm. Tính V.", answer: "V = 250π cm³", solution: "V = πR²h = π × 25 × 10 = 250π cm³" },
+            { q: "Cho hình trụ có d = 10cm, h = 12cm. Tính S_đáy.", answer: "S_đáy = 25π cm²", solution: "R = 5cm, S_đáy = π × 25 = 25π cm²" },
+            { q: "Cho hình trụ có S_xq = 80π cm², R = 4cm. Tính h.", answer: "h = 10cm", solution: "h = S_xq/(2πR) = 80π/(8π) = 10cm" },
+            { q: "Cho hình trụ có V = 180π cm³, h = 5cm. Tính R.", answer: "R = 6cm", solution: "R² = V/(πh) = 180π/(5π) = 36 ⇒ R = 6cm" },
+            { q: "Cho hình trụ có R = 7cm, h = 7cm. Tính S_tp.", answer: "S_tp = 196π cm²", solution: "S_tp = 2πR(h+R) = 2π × 7 × 14 = 196π cm²" },
+            { q: "Cho hình trụ có C = 16π cm, h = 10cm. Tính S_xq.", answer: "S_xq = 160π cm²", solution: "S_xq = C × h = 16π × 10 = 160π cm²" },
+            { q: "Cho hình trụ có S_đáy = 36π cm², h = 8cm. Tính V.", answer: "V = 288π cm³", solution: "V = S_đáy × h = 36π × 8 = 288π cm³" },
+            { q: "Cho hình trụ có R = 3cm, h = 12cm. Tính tỉ số V/S_xq.", answer: "V/S_xq = 1.5", solution: "V/S_xq = R/2 = 3/2 = 1.5" },
+            { q: "Cho hai hình trụ có R1 = 2R2, h1 = h2. Tính tỉ số S_xq1/S_xq2.", answer: "S_xq1/S_xq2 = 2", solution: "S_xq1/S_xq2 = R1/R2 = 2" }
+        ];
+
+        // High Application Data
+        const highData = [
+            { q: "Cho hình trụ có S_tp = 150π cm² và h = 2R. Tính R, h và V.", answer: "R = 5cm, h = 10cm, V = 250π cm³", solution: "**Lời giải chi tiết:**\n\n1. Ta có: h = 2R\n\n2. S_tp = 2πR(h + R) = 150π\n   2πR(2R + R) = 150π\n   2πR × 3R = 150π\n   6πR² = 150π\n   R² = 25\n   R = 5cm\n\n3. Tính h:\n   h = 2R = 10cm\n\n4. Tính V:\n   V = πR²h = π × 25 × 10 = 250π cm³\n\n**Kết luận: R = 5cm, h = 10cm, V = 250π cm³**" },
+            { q: "Một hình trụ có thể tích 1000π cm³. Tìm R và h để S_tp nhỏ nhất.", answer: "R = h = 10cm, S_tp_min = 400π cm²", solution: "**Lời giải chi tiết:**\n\n1. V = πR²h = 1000π\n   ⇒ h = 1000/R²\n\n2. S_tp = 2πR(h + R)\n   = 2πR(1000/R² + R)\n   = 2π(1000/R + R²)\n\n3. Áp dụng bất đẳng thức Cauchy:\n   1000/R + R² = 500/R + 500/R + R²\n   ≥ 3∛(500/R × 500/R × R²)\n   = 3∛(250000) = 3 × 50 = 150\n\n4. Dấu = xảy ra khi:\n   500/R = R²\n   R³ = 500\n   R = 10cm\n   h = 1000/100 = 10cm\n\n5. S_tp_min = 2π(100 + 100) = 400π cm²\n\n**Kết luận: R = h = 10cm, S_tp_min = 400π cm²**" },
+            { q: "Cho hình trụ có R = 6cm, h = 8cm. Một mặt phẳng song song với trục và cách trục 4cm. Tính diện tích thiết diện.", answer: "S = 32√5 cm²", solution: "**Lời giải chi tiết:**\n\n1. Thiết diện là hình chữ nhật\n   Chiều cao = h = 8cm\n\n2. Tính chiều rộng:\n   Khoảng cách từ trục đến mặt phẳng: d = 4cm\n   Chiều rộng = 2√(R² - d²)\n   = 2√(36 - 16) = 2√20 = 4√5 cm\n\n3. Diện tích thiết diện:\n   S = 8 × 4√5 = 32√5 cm²\n\n**Kết luận: S = 32√5 cm² ≈ 71.6 cm²**" },
+            { q: "Một ống hình trụ rỗng có đường kính ngoài 10cm, đường kính trong 8cm, chiều cao 20cm. Tính thể tích phần thành ống.", answer: "V = 180π cm³", solution: "**Lời giải chi tiết:**\n\n1. Bán kính ngoài: R = 5cm\n   Bán kính trong: r = 4cm\n\n2. Thể tích khối trụ ngoài:\n   V_ngoài = πR²h = π × 25 × 20 = 500π cm³\n\n3. Thể tích khối trụ trong:\n   V_trong = πr²h = π × 16 × 20 = 320π cm³\n\n4. Thể tích phần thành:\n   V = V_ngoài - V_trong\n   V = 500π - 320π = 180π cm³\n\n**Kết luận: V = 180π cm³ ≈ 565 cm³**" },
+            { q: "Cho hình trụ có V = 500π cm³. Nếu tăng R thêm 2cm và giảm h đi 3cm thì V không đổi. Tính R và h ban đầu.", answer: "R = 8cm, h = 7.8125cm", solution: "**Lời giải chi tiết:**\n\n1. V = πR²h = 500π\n   ⇒ R²h = 500 (1)\n\n2. Sau khi thay đổi:\n   V' = π(R+2)²(h-3) = 500π\n   (R+2)²(h-3) = 500 (2)\n\n3. Từ (1) và (2):\n   R²h = (R+2)²(h-3)\n   R²h = (R²+4R+4)(h-3)\n   R²h = R²h - 3R² + 4Rh - 12R + 4h - 12\n   0 = -3R² + 4Rh - 12R + 4h - 12\n\n4. Từ (1): h = 500/R²\n   Thay vào và giải phương trình:\n   R = 8cm\n   h = 500/64 = 7.8125cm\n\n**Kết luận: R = 8cm, h = 7.8125cm**" },
+            { q: "Một hình trụ nội tiếp trong hình hộp chữ nhật có kích thước 10cm × 10cm × 15cm. Tính thể tích phần không gian còn lại.", answer: "V = 1500 - 375π cm³", solution: "**Lời giải chi tiết:**\n\n1. Thể tích hình hộp:\n   V_hộp = 10 × 10 × 15 = 1500 cm³\n\n2. Hình trụ nội tiếp:\n   R = 10/2 = 5cm\n   h = 15cm\n\n3. Thể tích hình trụ:\n   V_trụ = πR²h = π × 25 × 15 = 375π cm³\n\n4. Thể tích phần còn lại:\n   V = V_hộp - V_trụ\n   V = 1500 - 375π cm³\n   V ≈ 1500 - 1178 = 322 cm³\n\n**Kết luận: V = 1500 - 375π cm³ ≈ 322 cm³**" },
+            { q: "Cho hai hình trụ đồng trục có R1 = 6cm, R2 = 4cm, h = 10cm. Tính thể tích phần không gian giữa hai hình trụ.", answer: "V = 200π cm³", solution: "**Lời giải chi tiết:**\n\n1. Thể tích hình trụ ngoài:\n   V1 = πR1²h = π × 36 × 10 = 360π cm³\n\n2. Thể tích hình trụ trong:\n   V2 = πR2²h = π × 16 × 10 = 160π cm³\n\n3. Thể tích phần giữa:\n   V = V1 - V2\n   V = 360π - 160π = 200π cm³\n\n4. Hoặc dùng công thức:\n   V = πh(R1² - R2²)\n   V = π × 10 × (36 - 16) = 200π cm³\n\n**Kết luận: V = 200π cm³ ≈ 628 cm³**" },
+            { q: "Một hình trụ có S_xq = 200π cm². Khi tăng h thêm 5cm thì S_tp tăng 50π cm². Tính R và h ban đầu.", answer: "R = 5cm, h = 20cm", solution: "**Lời giải chi tiết:**\n\n1. S_xq = 2πRh = 200π\n   ⇒ Rh = 100 (1)\n\n2. S_tp ban đầu: S1 = 2πR(h + R)\n   S_tp sau: S2 = 2πR(h + 5 + R)\n\n3. S2 - S1 = 50π\n   2πR(h + 5 + R) - 2πR(h + R) = 50π\n   2πR × 5 = 50π\n   10πR = 50π\n   R = 5cm\n\n4. Từ (1):\n   h = 100/R = 100/5 = 20cm\n\n**Kết luận: R = 5cm, h = 20cm**" },
+            { q: "Cho hình trụ có R = 10cm, h = 20cm. Một dây căng từ điểm A trên mép đáy dưới đến điểm B trên mép đáy trên đối diện. Tính độ dài ngắn nhất của dây.", answer: "L = 10√(π² + 4) cm", solution: "**Lời giải chi tiết:**\n\n1. Khai triển mặt xung quanh thành hình chữ nhật:\n   Chiều dài = chu vi đáy = 2πR = 20π cm\n   Chiều rộng = h = 20cm\n\n2. Điểm A và B đối diện:\n   Khoảng cách ngang = nửa chu vi = 10π cm\n   Khoảng cách dọc = h = 20cm\n\n3. Độ dài dây ngắn nhất:\n   L = √((10π)² + 20²)\n   L = √(100π² + 400)\n   L = 10√(π² + 4) cm\n   L ≈ 10√(9.87 + 4) ≈ 37.2cm\n\n**Kết luận: L = 10√(π² + 4) cm ≈ 37.2cm**" },
+            { q: "Một bể nước hình trụ có R = 2m, h = 3m. Mực nước ban đầu cao 1.5m. Nếu thả vào bể một vật thể tích 2m³, mực nước dâng lên bao nhiêu?", answer: "Mực nước dâng 0.159m", solution: "**Lời giải chi tiết:**\n\n1. Diện tích đáy bể:\n   S_đáy = πR² = π × 4 = 4π m²\n\n2. Thể tích vật thả vào:\n   V_vật = 2m³\n\n3. Mực nước dâng lên:\n   Δh = V_vật / S_đáy\n   Δh = 2/(4π) = 1/(2π)\n   Δh ≈ 0.159m\n\n4. Mực nước mới:\n   h_mới = 1.5 + 0.159 = 1.659m\n   (vẫn nhỏ hơn 3m nên không tràn)\n\n**Kết luận: Mực nước dâng 0.159m**" }
+        ];
+
+        // Real World Data
+        const realData = [
+            { q: "Một lon nước ngọt hình trụ có đường kính 6cm, chiều cao 12cm. Tính thể tích lon và diện tích nhãn dán xung quanh (không tính hai đáy).", answer: "V = 339 cm³, S_nhãn = 226 cm²", solution: "**Lời giải chi tiết:**\n\n1. Đổi đơn vị:\n   d = 6cm ⇒ R = 3cm\n   h = 12cm\n\n2. Tính thể tích:\n   V = πR²h = π × 9 × 12 = 108π\n   V ≈ 339 cm³ = 339 ml\n\n3. Diện tích nhãn dán (S_xq):\n   S_xq = 2πRh = 2π × 3 × 12 = 72π\n   S_xq ≈ 226 cm²\n\n4. Ứng dụng thực tế:\n   - Lon 330ml là tiêu chuẩn công nghiệp\n   - Nhãn dán bao quanh thân lon\n\n**Kết luận: V = 339 cm³, S_nhãn = 226 cm²**" },
+            { q: "Một ống nước hình trụ có đường kính trong 10cm, dài 50m. Tính lượng nước tối đa chứa trong ống (theo lít).", answer: "392.5 lít", solution: "**Lời giải chi tiết:**\n\n1. Đổi đơn vị:\n   d = 10cm ⇒ R = 5cm = 0.05m\n   L = 50m\n\n2. Tính thể tích:\n   V = πR²L = π × 0.0025 × 50\n   V = 0.125π m³\n   V ≈ 0.3925 m³\n\n3. Đổi sang lít:\n   1 m³ = 1000 lít\n   V = 392.5 lít\n\n4. Ứng dụng:\n   - Tính dung tích ống dẫn nước\n   - Thiết kế hệ thống cấp nước\n\n**Kết luận: Ống chứa được 392.5 lít nước**" },
+            { q: "Một cái cốc hình trụ có bán kính 4cm, chiều cao 10cm. Nếu rót vào cốc 300ml nước, mực nước cao bao nhiêu cm?", answer: "h ≈ 5.97cm", solution: "**Lời giải chi tiết:**\n\n1. Đổi đơn vị:\n   V = 300ml = 300 cm³\n   R = 4cm\n\n2. Diện tích đáy:\n   S_đáy = πR² = π × 16 = 16π cm²\n\n3. Chiều cao mực nước:\n   h = V / S_đáy\n   h = 300/(16π)\n   h ≈ 300/50.27 ≈ 5.97cm\n\n4. Kiểm tra:\n   h < 10cm (chiều cao cốc)\n   Nước không tràn\n\n**Kết luận: Mực nước cao 5.97 cm**" },
+            { q: "Một nhà máy sản xuất thùng phi hình trụ có đường kính 60cm, chiều cao 90cm. Tính diện tích tôn cần để làm một thùng (có cả hai đáy, dự phòng 5% mép hàn).", answer: "S ≈ 2.37 m²", solution: "**Lời giải chi tiết:**\n\n1. Đổi đơn vị:\n   d = 60cm ⇒ R = 30cm = 0.3m\n   h = 90cm = 0.9m\n\n2. Diện tích toàn phần:\n   S_tp = 2πR(h + R)\n   S_tp = 2π × 0.3 × (0.9 + 0.3)\n   S_tp = 2π × 0.3 × 1.2\n   S_tp = 0.72π ≈ 2.26 m²\n\n3. Dự phòng 5%:\n   S_thực = 2.26 × 1.05 ≈ 2.37 m²\n\n4. Ứng dụng:\n   - Tính nguyên liệu sản xuất\n   - Dự toán chi phí\n\n**Kết luận: Cần khoảng 2.37 m² tôn**" },
+            { q: "Một cột bê tông hình trụ có đường kính 40cm, chiều cao 4m. Tính khối lượng cột biết khối lượng riêng của bê tông là 2500 kg/m³.", answer: "m ≈ 1257 kg", solution: "**Lời giải chi tiết:**\n\n1. Đổi đơn vị:\n   d = 40cm ⇒ R = 20cm = 0.2m\n   h = 4m\n\n2. Tính thể tích:\n   V = πR²h = π × 0.04 × 4\n   V = 0.16π ≈ 0.503 m³\n\n3. Tính khối lượng:\n   m = V × D\n   m = 0.503 × 2500\n   m ≈ 1257 kg\n\n4. Ứng dụng:\n   - Tính tải trọng công trình\n   - Vận chuyển và lắp đặt\n\n**Kết luận: Khối lượng cột khoảng 1257 kg**" }
+        ];
+
+        // Render MCQ
+        function renderMCQ() {
+            const container = document.getElementById('mcq-container');
+            mcqData.forEach((item, index) => {
+                const div = document.createElement('div');
+                div.className = 'border-l-4 border-blue-400 pl-4 py-3 bg-gray-50 rounded-r-lg';
+                div.innerHTML = `
+                    <p class="font-semibold text-gray-800 mb-2"><strong>Câu ${index + 1}:</strong> ${item.q}</p>
+                    <div class="grid grid-cols-2 gap-2 mb-3 text-sm">
+                        ${item.options.map(opt => `<span class="text-gray-700">${opt}</span>`).join('')}
+                    </div>
+                    <button onclick="toggleAnswer('mcq-${index}')" class="text-blue-600 text-sm hover:underline">👁 Xem đáp án</button>
+                    <div id="mcq-${index}" class="answer-box mt-2 p-3 rounded hidden">
+                        <p class="font-semibold text-green-700">Đáp án: ${item.answer}</p>
+                        <p class="text-gray-700 text-sm mt-1">${item.solution}</p>
+                    </div>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        // Render True/False
+        function renderTF() {
+            const container = document.getElementById('tf-container');
+            tfData.forEach((item, index) => {
+                const div = document.createElement('div');
+                div.className = 'border-l-4 border-amber-400 pl-4 py-3 bg-gray-50 rounded-r-lg';
+                div.innerHTML = `
+                    <p class="font-semibold text-gray-800 mb-3"><strong>Câu ${index + 1}:</strong> ${item.q}</p>
+                    <div class="space-y-2">
+                        ${item.statements.map((s, i) => `
+                            <div class="flex items-center justify-between bg-white p-2 rounded">
+                                <span class="text-gray-700 text-sm">${String.fromCharCode(65 + i)}. ${s.text}</span>
+                                <span class="text-xs px-2 py-1 rounded ${s.answer ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}">${s.answer ? 'Đúng' : 'Sai'}</span>
+                            </div>
+                        `).join('')}
+                    </div>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        // Render Recognition
+        function renderRecognition() {
+            const container = document.getElementById('recognition-container');
+            recognitionData.forEach((item, index) => {
+                const div = document.createElement('div');
+                div.className = 'border-l-4 border-blue-400 pl-4 py-3 bg-gray-50 rounded-r-lg';
+                div.innerHTML = `
+                    <p class="font-semibold text-gray-800 mb-2"><strong>Bài ${index + 1}:</strong> ${item.q}</p>
+                    <button onclick="toggleAnswer('rec-${index}')" class="text-blue-600 text-sm hover:underline">👁 Xem đáp án</button>
+                    <div id="rec-${index}" class="answer-box mt-2 p-3 rounded hidden">
+                        <p class="font-semibold text-purple-700">Đáp án: ${item.answer}</p>
+                        <p class="text-gray-700 text-sm mt-1">${item.solution}</p>
+                    </div>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        // Render Low Application
+        function renderLow() {
+            const container = document.getElementById('low-container');
+            lowData.forEach((item, index) => {
+                const div = document.createElement('div');
+                div.className = 'border-l-4 border-green-400 pl-4 py-3 bg-gray-50 rounded-r-lg';
+                div.innerHTML = `
+                    <p class="font-semibold text-gray-800 mb-2"><strong>Bài ${index + 1}:</strong> ${item.q}</p>
+                    <button onclick="toggleAnswer('low-${index}')" class="text-green-600 text-sm hover:underline">👁 Xem đáp án</button>
+                    <div id="low-${index}" class="solution-box mt-2 p-3 rounded hidden">
+                        <p class="font-semibold text-amber-700">Đáp án: ${item.answer}</p>
+                        <p class="text-gray-700 text-sm mt-1 whitespace-pre-line">${item.solution}</p>
+                    </div>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        // Render High Application
+        function renderHigh() {
+            const container = document.getElementById('high-container');
+            highData.forEach((item, index) => {
+                const div = document.createElement('div');
+                div.className = 'border-l-4 border-red-400 pl-4 py-3 bg-gray-50 rounded-r-lg';
+                div.innerHTML = `
+                    <p class="font-semibold text-gray-800 mb-2"><strong>Bài ${index + 1}:</strong> ${item.q}</p>
+                    <button onclick="toggleAnswer('high-${index}')" class="text-red-600 text-sm hover:underline">👁 Xem lời giải chi tiết</button>
+                    <div id="high-${index}" class="solution-box mt-2 p-4 rounded hidden">
+                        <p class="font-semibold text-amber-700 mb-2">Đáp án: ${item.answer}</p>
+                        <div class="text-gray-700 text-sm whitespace-pre-line">${item.solution}</div>
+                    </div>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        // Render Real World
+        function renderReal() {
+            const container = document.getElementById('real-container');
+            realData.forEach((item, index) => {
+                const div = document.createElement('div');
+                div.className = 'border-l-4 border-indigo-400 pl-4 py-3 bg-gray-50 rounded-r-lg';
+                div.innerHTML = `
+                    <p class="font-semibold text-gray-800 mb-2"><strong>Bài ${index + 1}:</strong> ${item.q}</p>
+                    <button onclick="toggleAnswer('real-${index}')" class="text-indigo-600 text-sm hover:underline">👁 Xem lời giải chi tiết</button>
+                    <div id="real-${index}" class="solution-box mt-2 p-4 rounded hidden">
+                        <p class="font-semibold text-amber-700 mb-2">Đáp án: ${item.answer}</p>
+                        <div class="text-gray-700 text-sm whitespace-pre-line">${item.solution}</div>
+                    </div>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        // Toggle Answer
+        function toggleAnswer(id) {
+            const el = document.getElementById(id);
+            el.classList.toggle('hidden');
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            renderMCQ();
+            renderTF();
+            renderRecognition();
+            renderLow();
+            renderHigh();
+            renderReal();
+        });
+    </script>
+</body>
+</html>
+
