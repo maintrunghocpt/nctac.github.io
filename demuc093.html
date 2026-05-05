@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hệ Thức Lượng Trong Tam Giác Vuông - Đề Mục 93 - Toán Lớp 9</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@fontsource/roboto@4.5.8/index.css" rel="stylesheet">
+    <style>
+        * {
+            font-family: 'Roboto', sans-serif;
+        }
+        .gradient-header {
+            background: linear-gradient(135deg, #1e40af 0%, #7c3aed 100%);
+        }
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+        .accordion-content.active {
+            max-height: 2000px;
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, #1e40af 0%, #7c3aed 100%);
+        }
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #173591 0%, #6a32c4 100%);
+        }
+        .answer-box {
+            background: #f0f9ff;
+            border-left: 4px solid #1e40af;
+        }
+        .solution-box {
+            background: #fef3c7;
+            border-left: 4px solid #f59e0b;
+        }
+        .correct-answer {
+            background: #d1fae5;
+            border-left: 4px solid #10b981;
+        }
+        .wrong-answer {
+            background: #fee2e2;
+            border-left: 4px solid #ef4444;
+        }
+        .nav-item {
+            transition: all 0.2s ease;
+        }
+        .nav-item:hover {
+            background: rgba(255,255,255,0.2);
+        }
+        .nav-item.active {
+            background: rgba(255,255,255,0.3);
+        }
+        .print-section {
+            page-break-inside: avoid;
+        }
+        @media print {
+            .no-print {
+                display: none;
+            }
+        }
+        .triangle-diagram {
+            background: #f8fafc;
+            border: 2px dashed #cbd5e1;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+        }
+        .formula-box {
+            background: linear-gradient(135deg, #e0e7ff 0%, #f3e8ff 100%);
+            border-radius: 8px;
+            padding: 16px;
+            margin: 12px 0;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="gradient-header text-white py-8">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center">
+                <div>
+                    <h1 class="text-3xl font-bold">HỆ THỨC LƯỢNG TRONG TAM GIÁC VUÔNG</h1>
+                    <p class="text-lg opacity-90">Đề Mục 93 - Toán Lớp 9 - Hình Học</p>
+                </div>
+                <div class="text-right">
+                    <p class="text-sm opacity-80">Bộ Tài Liệu Toán THCS</p>
+                    <p class="text-sm opacity-80">60 Ngày Ôn Tập</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md sticky top-0 z-50 no-print">
+        <div class="container mx-auto px-4">
+            <div class="flex overflow-x-auto py-3 space-x-2">
+                <button onclick="showSection('lesson')" class="nav-item active px-4 py-2 rounded-lg bg-blue-100 text-blue-700 whitespace-nowrap">📚 Bài Giảng</button>
+                <button onclick="showSection('mcq')" class="nav-item px-4 py-2 rounded-lg hover:bg-gray-100 whitespace-nowrap">📝 30 Câu MCQ</button>
+                <button onclick="showSection('tf')" class="nav-item px-4 py-2 rounded-lg hover:bg-gray-100 whitespace-nowrap">✅ 10 Câu Đúng/Sai</button>
+                <button onclick="showSection('recognition')" class="nav-item px-4 py-2 rounded-lg hover:bg-gray-100 whitespace-nowrap">🔍 10 Bài Nhận Biết</button>
+                <button onclick="showSection('low')" class="nav-item px-4 py-2 rounded-lg hover:bg-gray-100 whitespace-nowrap">📊 10 Bài Vận Dụng Thấp</button>
+                <button onclick="showSection('high')" class="nav-item px-4 py-2 rounded-lg hover:bg-gray-100 whitespace-nowrap">🎯 10 Bài Vận Dụng Cao</button>
+                <button onclick="showSection('real')" class="nav-item px-4 py-2 rounded-lg hover:bg-gray-100 whitespace-nowrap">🌍 5 Bài Thực Tế</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+        <!-- Lesson Section -->
+        <section id="lesson" class="section-content">
+            <div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section">
+                <h2 class="text-2xl font-bold text-blue-700 mb-6 flex items-center">
+                    <span class="mr-3">📚</span> BÀI GIẢNG CHI TIẾT: HỆ THỨC LƯỢNG TRONG TAM GIÁC VUÔNG
+                </h2>
+                
+                <div class="space-y-6">
+                    <!-- Introduction -->
+                    <div class="answer-box p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold text-blue-700 mb-4">1. CÁC HỆ THỨC VỀ CẠNH VÀ ĐƯỜNG CAO</h3>
+                        <p class="text-gray-700 mb-4">
+                            Cho tam giác ABC vuông tại A, đường cao AH. Khi đó ta có các hệ thức sau:
+                        </p>
+                        
+                        <div class="triangle-diagram mb-4">
+                            <svg width="300" height="200" viewBox="0 0 300 200">
+                                <polygon points="150,20 50,180 250,180" fill="none" stroke="#1e40af" stroke-width="2"/>
+                                <line x1="150" y1="20" x2="150" y2="180" stroke="#7c3aed" stroke-width="2" stroke-dasharray="5,5"/>
+                                <text x="140" y="100" fill="#1e40af" font-size="14">h</text>
+                                <text x="80" y="110" fill="#1e40af" font-size="14">b</text>
+                                <text x="210" y="110" fill="#1e40af" font-size="14">c</text>
+                                <text x="90" y="195" fill="#1e40af" font-size="14">b'</text>
+                                <text x="190" y="195" fill="#1e40af" font-size="14">c'</text>
+                                <text x="145" y="175" fill="#7c3aed" font-size="14">H</text>
+                                <text x="40" y="185" fill="#1e40af" font-size="14">B</text>
+                                <text x="255" y="185" fill="#1e40af" font-size="14">C</text>
+                                <text x="150" y="15" fill="#1e40af" font-size="14">A</text>
+                                <rect x="145" y="175" width="10" height="10" fill="none" stroke="#ef4444" stroke-width="1"/>
+                            </svg>
+                            <p class="text-sm text-gray-600 mt-2">Tam giác ABC vuông tại A, AH ⊥ BC</p>
+                        </div>
+
+                        <div class="formula-box">
+                            <h4 class="font-semibold text-blue-600 mb-2">📐 Hệ thức 1: b² = a·b' ; c² = a·c'</h4>
+                            <p class="text-gray-700 text-sm">Bình phương mỗi cạnh góc vuông bằng tích của cạnh huyền và hình chiếu của cạnh đó trên cạnh huyền.</p>
+                        </div>
+
+                        <div class="formula-box">
+                            <h4 class="font-semibold text-blue-600 mb-2">📐 Hệ thức 2: h² = b'·c'</h4>
+                            <p class="text-gray-700 text-sm">Bình phương đường cao ứng với cạnh huyền bằng tích hai hình chiếu của hai cạnh góc vuông trên cạnh huyền.</p>
+                        </div>
+
+                        <div class="formula-box">
+                            <h4 class="font-semibold text-blue-600 mb-2">📐 Hệ thức 3: a·h = b·c</h4>
+                            <p class="text-gray-700 text-sm">Tích hai cạnh góc vuông bằng tích của cạnh huyền và đường cao tương ứng.</p>
+                        </div>
+
+                        <div class="formula-box">
+                            <h4 class="font-semibold text-blue-600 mb-2">📐 Hệ thức 4: 1/h² = 1/b² + 1/c²</h4>
+                            <p class="text-gray-700 text-sm">Nghịch đảo bình phương đường cao bằng tổng nghịch đảo bình phương hai cạnh góc vuông.</p>
+                        </div>
+
+                        <div class="formula-box">
+                            <h4 class="font-semibold text-blue-600 mb-2">📐 Định lý Pytago: a² = b² + c²</h4>
+                            <p class="text-gray-700 text-sm">Bình phương cạnh huyền bằng tổng bình phương hai cạnh góc vuông.</p>
+                        </div>
+                    </div>
+
+                    <!-- Trigonometric Ratios -->
+                    <div class="solution-box p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold text-amber-700 mb-4">2. TỈ SỐ LƯỢNG GIÁC CỦA GÓC NHỌN</h3>
+                        
+                        <div class="triangle-diagram mb-4">
+                            <svg width="280" height="180" viewBox="0 0 280 180">
+                                <polygon points="60,160 60,40 240,160" fill="none" stroke="#1e40af" stroke-width="2"/>
+                                <text x="45" y="100" fill="#1e40af" font-size="14">a</text>
+                                <text x="150" y="35" fill="#1e40af" font-size="14">c</text>
+                                <text x="160" y="175" fill="#1e40af" font-size="14">b</text>
+                                <text x="65" y="150" fill="#7c3aed" font-size="16">α</text>
+                                <text x="55" y="175" fill="#1e40af" font-size="14">B</text>
+                                <text x="245" y="175" fill="#1e40af" font-size="14">C</text>
+                                <text x="55" y="35" fill="#1e40af" font-size="14">A</text>
+                                <rect x="55" y="155" width="10" height="10" fill="none" stroke="#ef4444" stroke-width="1"/>
+                            </svg>
+                            <p class="text-sm text-gray-600 mt-2">Tam giác ABC vuông tại A, góc B = α</p>
+                        </div>
+
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div class="bg-blue-50 p-4 rounded-lg">
+                                <h4 class="font-semibold text-blue-600 mb-2">sin α = cạnh đối / cạnh huyền</h4>
+                                <p class="text-gray-700 text-sm">sin B = AC/BC = b/a</p>
+                            </div>
+                            <div class="bg-purple-50 p-4 rounded-lg">
+                                <h4 class="font-semibold text-purple-600 mb-2">cos α = cạnh kề / cạnh huyền</h4>
+                                <p class="text-gray-700 text-sm">cos B = AB/BC = c/a</p>
+                            </div>
+                            <div class="bg-amber-50 p-4 rounded-lg">
+                                <h4 class="font-semibold text-amber-600 mb-2">tan α = cạnh đối / cạnh kề</h4>
+                                <p class="text-gray-700 text-sm">tan B = AC/AB = b/c</p>
+                            </div>
+                            <div class="bg-green-50 p-4 rounded-lg">
+                                <h4 class="font-semibold text-green-600 mb-2">cot α = cạnh kề / cạnh đối</h4>
+                                <p class="text-gray-700 text-sm">cot B = AB/AC = c/b</p>
+                            </div>
+                        </div>
+
+                        <div class="mt-4 bg-white p-4 rounded-lg border-2 border-amber-300">
+                            <h4 class="font-semibold text-amber-700 mb-2">📝 Công thức liên hệ:</h4>
+                            <ul class="space-y-1 text-gray-700 text-sm">
+                                <li>• sin²α + cos²α = 1</li>
+                                <li>• tan α · cot α = 1</li>
+                                <li>• tan α = sin α / cos α</li>
+                                <li>• cot α = cos α / sin α</li>
+                                <li>• 1 + tan²α = 1/cos²α</li>
+                                <li>• 1 + cot²α = 1/sin²α</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Special Angles -->
+                    <div class="answer-box p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold text-blue-700 mb-4">3. TỈ SỐ LƯỢNG GIÁC CỦA CÁC GÓC ĐẶC BIỆT</h3>
+                        <div class="overflow-x-auto">
+                            <table class="w-full bg-white rounded-lg">
+                                <thead class="bg-blue-600 text-white">
+                                    <tr>
+                                        <th class="p-3">Góc α</th>
+                                        <th class="p-3">sin α</th>
+                                        <th class="p-3">cos α</th>
+                                        <th class="p-3">tan α</th>
+                                        <th class="p-3">cot α</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="text-gray-700">
+                                    <tr class="border-b">
+                                        <td class="p-3 font-semibold">30°</td>
+                                        <td class="p-3">1/2</td>
+                                        <td class="p-3">√3/2</td>
+                                        <td class="p-3">√3/3</td>
+                                        <td class="p-3">√3</td>
+                                    </tr>
+                                    <tr class="border-b">
+                                        <td class="p-3 font-semibold">45°</td>
+                                        <td class="p-3">√2/2</td>
+                                        <td class="p-3">√2/2</td>
+                                        <td class="p-3">1</td>
+                                        <td class="p-3">1</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-3 font-semibold">60°</td>
+                                        <td class="p-3">√3/2</td>
+                                        <td class="p-3">1/2</td>
+                                        <td class="p-3">√3</td>
+                                        <td class="p-3">√3/3</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Relationships -->
+                    <div class="solution-box p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold text-amber-700 mb-4">4. HỆ THỨC VỀ CẠNH VÀ GÓC TRONG TAM GIÁC VUÔNG</h3>
+                        <div class="bg-white p-4 rounded-lg space-y-3">
+                            <p class="text-gray-700"><strong>b = a · sin B = a · cos C</strong></p>
+                            <p class="text-gray-700"><strong>c = a · cos B = a · sin C</strong></p>
+                            <p class="text-gray-700"><strong>b = c · tan B = c · cot C</strong></p>
+                            <p class="text-gray-700"><strong>c = b · tan C = b · cot B</strong></p>
+                        </div>
+                        <div class="mt-4 bg-amber-50 p-4 rounded-lg">
+                            <p class="text-amber-800 text-sm">
+                                <strong>💡 Ghi nhớ:</strong> Trong tam giác vuông, mỗi cạnh góc vuông bằng:
+                                <br>• Cạnh huyền nhân với sin góc đối hoặc cos góc kề
+                                <br>• Cạnh góc vuông kia nhân với tan góc đối hoặc cot góc kề
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Problem Types -->
+                    <div class="answer-box p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold text-blue-700 mb-4">5. CÁC DẠNG TOÁN THƯỜNG GẶP</h3>
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div class="bg-white p-4 rounded-lg border-l-4 border-blue-400">
+                                <h4 class="font-semibold text-blue-600 mb-2">Dạng 1: Tính độ dài cạnh</h4>
+                                <p class="text-gray-700 text-sm">Sử dụng Pytago hoặc hệ thức lượng để tính cạnh chưa biết.</p>
+                            </div>
+                            <div class="bg-white p-4 rounded-lg border-l-4 border-purple-400">
+                                <h4 class="font-semibold text-purple-600 mb-2">Dạng 2: Tính đường cao</h4>
+                                <p class="text-gray-700 text-sm">Dùng h² = b'·c' hoặc a·h = b·c để tính đường cao.</p>
+                            </div>
+                            <div class="bg-white p-4 rounded-lg border-l-4 border-amber-400">
+                                <h4 class="font-semibold text-amber-600 mb-2">Dạng 3: Tính tỉ số lượng giác</h4>
+                                <p class="text-gray-700 text-sm">Áp dụng định nghĩa sin, cos, tan, cot.</p>
+                            </div>
+                            <div class="bg-white p-4 rounded-lg border-l-4 border-green-400">
+                                <h4 class="font-semibold text-green-600 mb-2">Dạng 4: Tính góc</h4>
+                                <p class="text-gray-700 text-sm">Dùng bảng số hoặc máy tính để tìm góc từ tỉ số lượng giác.</p>
+                            </div>
+                            <div class="bg-white p-4 rounded-lg border-l-4 border-red-400">
+                                <h4 class="font-semibold text-red-600 mb-2">Dạng 5: Chứng minh hệ thức</h4>
+                                <p class="text-gray-700 text-sm">Biến đổi đại số dựa trên các hệ thức đã học.</p>
+                            </div>
+                            <div class="bg-white p-4 rounded-lg border-l-4 border-indigo-400">
+                                <h4 class="font-semibold text-indigo-600 mb-2">Dạng 6: Bài toán thực tế</h4>
+                                <p class="text-gray-700 text-sm">Áp dụng vào tính chiều cao, khoảng cách trong thực tế.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Calculator Guide -->
+                    <div class="solution-box p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold text-amber-700 mb-4">6. HƯỚNG DẪN BẤM MÁY TÍNH CASIO FX-580ES</h3>
+                        <div class="bg-white p-4 rounded-lg space-y-3">
+                            <p class="text-gray-700"><strong>Tính tỉ số lượng giác của góc:</strong></p>
+                            <ol class="list-decimal list-inside space-y-1 text-gray-700">
+                                <li>Bấm <kbd class="bg-gray-200 px-2 py-1 rounded">sin</kbd> / <kbd class="bg-gray-200 px-2 py-1 rounded">cos</kbd> / <kbd class="bg-gray-200 px-2 py-1 rounded">tan</kbd></li>
+                                <li>Nhập số đo góc</li>
+                                <li>Bấm <kbd class="bg-gray-200 px-2 py-1 rounded">=</kbd></li>
+                            </ol>
+                            <p class="text-gray-700 mt-3"><strong>Tính góc từ tỉ số lượng giác:</strong></p>
+                            <ol class="list-decimal list-inside space-y-1 text-gray-700">
+                                <li>Bấm <kbd class="bg-gray-200 px-2 py-1 rounded">SHIFT</kbd> + <kbd class="bg-gray-200 px-2 py-1 rounded">sin</kbd> / <kbd class="bg-gray-200 px-2 py-1 rounded">cos</kbd> / <kbd class="bg-gray-200 px-2 py-1 rounded">tan</kbd></li>
+                                <li>Nhập giá trị tỉ số</li>
+                                <li>Bấm <kbd class="bg-gray-200 px-2 py-1 rounded">=</kbd></li>
+                            </ol>
+                            <p class="text-gray-700 mt-3"><strong>Lưu ý:</strong> Kiểm tra chế độ độ (D) bằng cách bấm <kbd class="bg-gray-200 px-2 py-1 rounded">SHIFT</kbd> + <kbd class="bg-gray-200 px-2 py-1 rounded">MODE</kbd> → chọn <kbd class="bg-gray-200 px-2 py-1 rounded">3</kbd> (Deg)</p>
+                        </div>
+                    </div>
+
+                    <!-- Examples -->
+                    <div class="answer-box p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold text-blue-700 mb-4">7. VÍ DỤ MINH HỌA</h3>
+                        
+                        <div class="bg-white p-4 rounded-lg mb-4">
+                            <h4 class="font-semibold text-blue-600 mb-2">Ví dụ 1: Tính đường cao</h4>
+                            <p class="text-gray-700 mb-2">Cho tam giác ABC vuông tại A, đường cao AH. Biết AB = 6cm, AC = 8cm. Tính AH.</p>
+                            <div class="solution-box p-3 rounded">
+                                <p class="text-gray-700"><strong>Lời giải:</strong></p>
+                                <p class="text-gray-700">BC = √(AB² + AC²) = √(36 + 64) = 10cm</p>
+                                <p class="text-gray-700">Áp dụng: AB · AC = BC · AH</p>
+                                <p class="text-gray-700">⇒ AH = (6 × 8) / 10 = 4.8cm</p>
+                            </div>
+                        </div>
+
+                        <div class="bg-white p-4 rounded-lg mb-4">
+                            <h4 class="font-semibold text-blue-600 mb-2">Ví dụ 2: Tính tỉ số lượng giác</h4>
+                            <p class="text-gray-700 mb-2">Cho tam giác ABC vuông tại A, AB = 3, BC = 5. Tính sin B, cos B, tan B.</p>
+                            <div class="solution-box p-3 rounded">
+                                <p class="text-gray-700"><strong>Lời giải:</strong></p>
+                                <p class="text-gray-700">AC = √(BC² - AB²) = √(25 - 9) = 4</p>
+                                <p class="text-gray-700">sin B = AC/BC = 4/5</p>
+                                <p class="text-gray-700">cos B = AB/BC = 3/5</p>
+                                <p class="text-gray-700">tan B = AC/AB = 4/3</p>
+                            </div>
+                        </div>
+
+                        <div class="bg-white p-4 rounded-lg">
+                            <h4 class="font-semibold text-blue-600 mb-2">Ví dụ 3: Tính cạnh</h4>
+                            <p class="text-gray-700 mb-2">Cho tam giác ABC vuông tại A, góc B = 30°, BC = 10cm. Tính AB và AC.</p>
+                            <div class="solution-box p-3 rounded">
+                                <p class="text-gray-700"><strong>Lời giải:</strong></p>
+                                <p class="text-gray-700">AC = BC · sin 30° = 10 × 1/2 = 5cm</p>
+                                <p class="text-gray-700">AB = BC · cos 30° = 10 × √3/2 = 5√3 cm</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- MCQ Section -->
+        <section id="mcq" class="section-content hidden">
+            <div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section">
+                <h2 class="text-2xl font-bold text-blue-700 mb-6 flex items-center">
+                    <span class="mr-3">📝</span> 30 CÂU TRẮC NGHIỆM 4 LỰA CHỌN
+                </h2>
+                <div class="space-y-6" id="mcq-container"></div>
+            </div>
+        </section>
+
+        <!-- True/False Section -->
+        <section id="tf" class="section-content hidden">
+            <div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section">
+                <h2 class="text-2xl font-bold text-blue-700 mb-6 flex items-center">
+                    <span class="mr-3">✅</span> 10 CÂU TRẮC NGHIỆM ĐÚNG/SAI
+                </h2>
+                <div class="space-y-6" id="tf-container"></div>
+            </div>
+        </section>
+
+        <!-- Recognition Section -->
+        <section id="recognition" class="section-content hidden">
+            <div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section">
+                <h2 class="text-2xl font-bold text-blue-700 mb-6 flex items-center">
+                    <span class="mr-3">🔍</span> 10 BÀI TẬP NHẬN BIẾT
+                </h2>
+                <div class="space-y-6" id="recognition-container"></div>
+            </div>
+        </section>
+
+        <!-- Low Application Section -->
+        <section id="low" class="section-content hidden">
+            <div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section">
+                <h2 class="text-2xl font-bold text-blue-700 mb-6 flex items-center">
+                    <span class="mr-3">📊</span> 10 BÀI TẬP VẬN DỤNG THẤP
+                </h2>
+                <div class="space-y-6" id="low-container"></div>
+            </div>
+        </section>
+
+        <!-- High Application Section -->
+        <section id="high" class="section-content hidden">
+            <div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section">
+                <h2 class="text-2xl font-bold text-blue-700 mb-6 flex items-center">
+                    <span class="mr-3">🎯</span> 10 BÀI TẬP VẬN DỤNG CAO
+                </h2>
+                <div class="space-y-6" id="high-container"></div>
+            </div>
+        </section>
+
+        <!-- Real World Section -->
+        <section id="real" class="section-content hidden">
+            <div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section">
+                <h2 class="text-2xl font-bold text-blue-700 mb-6 flex items-center">
+                    <span class="mr-3">🌍</span> 5 BÀI TẬP ỨNG DỤNG THỰC TẾ
+                </h2>
+                <div class="space-y-6" id="real-container"></div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="gradient-header text-white py-6 mt-8">
+        <div class="container mx-auto px-4 text-center">
+            <p class="text-sm">Bộ Tài Liệu Toán THCS - Đề Mục 93: Hệ Thức Lượng Trong Tam Giác Vuông</p>
+            <p class="text-sm opacity-80">© 2024 - Tài liệu ôn tập 60 ngày</p>
+        </div>
+    </footer>
+
+    <!-- Print Button -->
+    <button onclick="window.print()" class="no-print fixed bottom-6 right-6 btn-primary text-white px-6 py-3 rounded-full shadow-lg hover:shadow-xl transition-all">
+        🖨️ In Tài Liệu
+    </button>
+
+    <script>
+        // Navigation
+        function showSection(sectionId) {
+            document.querySelectorAll('.section-content').forEach(el => el.classList.add('hidden'));
+            document.getElementById(sectionId).classList.remove('hidden');
+            document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
+            event.target.classList.add('active');
+        }
+
+        // MCQ Data
+        const mcqData = [
+            { q: "Cho tam giác ABC vuông tại A, đường cao AH. Hệ thức nào sau đây đúng?", options: ["A. AH² = BH·CH", "B. AH² = AB·AC", "C. AH² = BH·BC", "D. AH² = CH·BC"], answer: "A", solution: "Theo hệ thức lượng: h² = b'·c' ⇒ AH² = BH·CH" },
+            { q: "Cho tam giác ABC vuông tại A. Hệ thức Pytago là:", options: ["A. BC² = AB² + AC²", "B. AB² = BC² + AC²", "C. AC² = AB² + BC²", "D. BC = AB + AC"], answer: "A", solution: "Định lý Pytago: cạnh huyền² = tổng bình phương hai cạnh góc vuông" },
+            { q: "Trong tam giác vuông, sin của một góc nhọn bằng:", options: ["A. cạnh đối/cạnh huyền", "B. cạnh kề/cạnh huyền", "C. cạnh đối/cạnh kề", "D. cạnh kề/cạnh đối"], answer: "A", solution: "sin α = cạnh đối/cạnh huyền" },
+            { q: "Trong tam giác vuông, cos của một góc nhọn bằng:", options: ["A. cạnh đối/cạnh huyền", "B. cạnh kề/cạnh huyền", "C. cạnh đối/cạnh kề", "D. cạnh kề/cạnh đối"], answer: "B", solution: "cos α = cạnh kề/cạnh huyền" },
+            { q: "Giá trị sin 30° bằng:", options: ["A. 1/2", "B. √2/2", "C. √3/2", "D. 1"], answer: "A", solution: "sin 30° = 1/2" },
+            { q: "Giá trị cos 45° bằng:", options: ["A. 1/2", "B. √2/2", "C. √3/2", "D. 1"], answer: "B", solution: "cos 45° = √2/2" },
+            { q: "Giá trị tan 60° bằng:", options: ["A. √3/3", "B. 1", "C. √3", "D. 1/2"], answer: "C", solution: "tan 60° = √3" },
+            { q: "Hệ thức nào sau đây đúng?", options: ["A. sin²α + cos²α = 1", "B. sin²α - cos²α = 1", "C. sin²α + cos²α = 0", "D. sin²α · cos²α = 1"], answer: "A", solution: "Hằng đẳng thức cơ bản: sin²α + cos²α = 1" },
+            { q: "Cho tam giác ABC vuông tại A, AB = 3, AC = 4. Độ dài BC bằng:", options: ["A. 5", "B. 6", "C. 7", "D. 8"], answer: "A", solution: "BC = √(3² + 4²) = √25 = 5" },
+            { q: "Cho tam giác ABC vuông tại A, đường cao AH. Biết BH = 4, CH = 9. Độ dài AH bằng:", options: ["A. 5", "B. 6", "C. 7", "D. 8"], answer: "B", solution: "AH² = BH·CH = 4×9 = 36 ⇒ AH = 6" },
+            { q: "Cho tam giác ABC vuông tại A, AB = 6, AC = 8. Độ dài đường cao AH bằng:", options: ["A. 4.8", "B. 5", "C. 5.2", "D. 5.5"], answer: "A", solution: "BC = 10, AH = (AB·AC)/BC = 48/10 = 4.8" },
+            { q: "tan α · cot α bằng:", options: ["A. 0", "B. 1", "C. -1", "D. 2"], answer: "B", solution: "tan α · cot α = 1" },
+            { q: "Cho sin α = 3/5. Giá trị cos α bằng:", options: ["A. 3/5", "B. 4/5", "C. 5/4", "D. 5/3"], answer: "B", solution: "cos²α = 1 - sin²α = 1 - 9/25 = 16/25 ⇒ cos α = 4/5" },
+            { q: "Trong tam giác vuông, nếu một góc bằng 30° thì cạnh đối diện bằng:", options: ["A. Một nửa cạnh huyền", "B. Cạnh huyền", "C. √3 lần cạnh huyền", "D. 2 lần cạnh huyền"], answer: "A", solution: "sin 30° = 1/2 ⇒ cạnh đối = 1/2 cạnh huyền" },
+            { q: "Cho tam giác ABC vuông tại A, góc B = 45°. Khi đó:", options: ["A. AB = AC", "B. AB = BC", "C. AC = BC", "D. AB = 2AC"], answer: "A", solution: "Tam giác vuông cân ⇒ AB = AC" },
+            { q: "Hệ thức 1/h² = 1/b² + 1/c² áp dụng cho:", options: ["A. Đường cao tam giác vuông", "B. Đường trung tuyến", "C. Đường phân giác", "D. Đường trung trực"], answer: "A", solution: "Đây là hệ thức liên hệ đường cao với hai cạnh góc vuông" },
+            { q: "Cho tam giác ABC vuông tại A, BC = 10, góc B = 60°. Độ dài AB bằng:", options: ["A. 5", "B. 5√3", "C. 10", "D. 10√3"], answer: "A", solution: "AB = BC·cos 60° = 10 × 1/2 = 5" },
+            { q: "Cho tam giác ABC vuông tại A, BC = 10, góc B = 60°. Độ dài AC bằng:", options: ["A. 5", "B. 5√3", "C. 10", "D. 10√3"], answer: "B", solution: "AC = BC·sin 60° = 10 × √3/2 = 5√3" },
+            { q: "cot 45° bằng:", options: ["A. 0", "B. 1/2", "C. 1", "D. √3"], answer: "C", solution: "cot 45° = 1" },
+            { q: "Cho tam giác ABC vuông tại A, đường cao AH. Biết AB = 5, BH = 3. Độ dài BC bằng:", options: ["A. 25/3", "B. 8", "C. 10", "D. 15"], answer: "A", solution: "AB² = BC·BH ⇒ 25 = BC·3 ⇒ BC = 25/3" },
+            { q: "sin(90° - α) bằng:", options: ["A. sin α", "B. cos α", "C. tan α", "D. cot α"], answer: "B", solution: "sin(90° - α) = cos α" },
+            { q: "cos(90° - α) bằng:", options: ["A. sin α", "B. cos α", "C. tan α", "D. cot α"], answer: "A", solution: "cos(90° - α) = sin α" },
+            { q: "Cho tan α = 3/4. Giá trị cot α bằng:", options: ["A. 3/4", "B. 4/3", "C. 3/5", "D. 4/5"], answer: "B", solution: "cot α = 1/tan α = 4/3" },
+            { q: "Trong tam giác vuông, cạnh huyền là:", options: ["A. Cạnh lớn nhất", "B. Cạnh nhỏ nhất", "C. Cạnh giữa", "D. Bằng một cạnh góc vuông"], answer: "A", solution: "Cạnh huyền đối diện góc vuông và là cạnh lớn nhất" },
+            { q: "Cho tam giác ABC vuông tại A, AB = 12, AC = 5. sin B bằng:", options: ["A. 5/13", "B. 12/13", "C. 5/12", "D. 12/5"], answer: "A", solution: "BC = 13, sin B = AC/BC = 5/13" },
+            { q: "Cho tam giác ABC vuông tại A, AB = 12, AC = 5. cos B bằng:", options: ["A. 5/13", "B. 12/13", "C. 5/12", "D. 12/5"], answer: "B", solution: "BC = 13, cos B = AB/BC = 12/13" },
+            { q: "Giá trị sin 60° bằng:", options: ["A. 1/2", "B. √2/2", "C. √3/2", "D. 1"], answer: "C", solution: "sin 60° = √3/2" },
+            { q: "Cho tam giác đều cạnh a. Chiều cao của tam giác bằng:", options: ["A. a/2", "B. a√2/2", "C. a√3/2", "D. a√3"], answer: "C", solution: "h = a·sin 60° = a√3/2" },
+            { q: "Cho tam giác ABC vuông tại A, đường cao AH. Biết AH = 6, BH = 4. Độ dài CH bằng:", options: ["A. 8", "B. 9", "C. 10", "D. 12"], answer: "B", solution: "AH² = BH·CH ⇒ 36 = 4·CH ⇒ CH = 9" },
+            { q: "Nếu sin α = cos α thì α bằng:", options: ["A. 30°", "B. 45°", "C. 60°", "D. 90°"], answer: "B", solution: "sin α = cos α ⇒ tan α = 1 ⇒ α = 45°" }
+        ];
+
+        // True/False Data
+        const tfData = [
+            { q: "Cho tam giác ABC vuông tại A, đường cao AH.", statements: [
+                { text: "AH² = BH·CH", answer: true },
+                { text: "AB² = BH·BC", answer: true },
+                { text: "AC² = CH·BC", answer: true },
+                { text: "AH·BC = AB·AC", answer: true }
+            ]},
+            { q: "Về tỉ số lượng giác của góc nhọn α:", statements: [
+                { text: "0 < sin α < 1", answer: true },
+                { text: "0 < cos α < 1", answer: true },
+                { text: "tan α > 0", answer: true },
+                { text: "cot α có thể âm", answer: false }
+            ]},
+            { q: "Cho tam giác ABC vuông tại A.", statements: [
+                { text: "sin B = cos C", answer: true },
+                { text: "sin B = sin C", answer: false },
+                { text: "tan B = cot C", answer: true },
+                { text: "cos B = cos C", answer: false }
+            ]},
+            { q: "Về các giá trị lượng giác đặc biệt:", statements: [
+                { text: "sin 30° = 1/2", answer: true },
+                { text: "cos 60° = 1/2", answer: true },
+                { text: "tan 45° = 1", answer: true },
+                { text: "sin 60° = 1/2", answer: false }
+            ]},
+            { q: "Cho tam giác ABC vuông tại A, đường cao AH.", statements: [
+                { text: "BH + CH = BC", answer: true },
+                { text: "AB² + AC² = BC²", answer: true },
+                { text: "1/AH² = 1/AB² + 1/AC²", answer: true },
+                { text: "AH = AB + AC", answer: false }
+            ]},
+            { q: "Về mối quan hệ giữa các tỉ số lượng giác:", statements: [
+                { text: "sin²α + cos²α = 1", answer: true },
+                { text: "tan α · cot α = 1", answer: true },
+                { text: "tan α = sin α / cos α", answer: true },
+                { text: "sin α = tan α · cos α", answer: true }
+            ]},
+            { q: "Cho tam giác vuông có một góc bằng 30°.", statements: [
+                { text: "Cạnh đối diện góc 30° bằng nửa cạnh huyền", answer: true },
+                { text: "Cạnh kề góc 30° bằng √3/2 cạnh huyền", answer: true },
+                { text: "Góc còn lại bằng 60°", answer: true },
+                { text: "Tam giác là tam giác đều", answer: false }
+            ]},
+            { q: "Cho tam giác vuông cân.", statements: [
+                { text: "Hai góc nhọn bằng 45°", answer: true },
+                { text: "Hai cạnh góc vuông bằng nhau", answer: true },
+                { text: "Cạnh huyền bằng √2 lần cạnh góc vuông", answer: true },
+                { text: "sin 45° = 1/2", answer: false }
+            ]},
+            { q: "Về đường cao trong tam giác vuông:", statements: [
+                { text: "Đường cao chia tam giác thành hai tam giác đồng dạng", answer: true },
+                { text: "Đường cao là cạnh chung của hai tam giác nhỏ", answer: true },
+                { text: "Đường cao luôn nhỏ hơn hai cạnh góc vuông", answer: true },
+                { text: "Đường cao bằng trung bình cộng hai cạnh góc vuông", answer: false }
+            ]},
+            { q: "Cho sin α = 3/5 (α là góc nhọn).", statements: [
+                { text: "cos α = 4/5", answer: true },
+                { text: "tan α = 3/4", answer: true },
+                { text: "cot α = 4/3", answer: true },
+                { text: "sin α > cos α", answer: false }
+            ]}
+        ];
+
+        // Recognition Data
+        const recognitionData = [
+            { q: "Phát biểu định lý Pytago cho tam giác ABC vuông tại A.", answer: "BC² = AB² + AC²", solution: "Bình phương cạnh huyền bằng tổng bình phương hai cạnh góc vuông" },
+            { q: "Viết công thức tính sin của góc B trong tam giác ABC vuông tại A.", answer: "sin B = AC/BC", solution: "sin = cạnh đối/cạnh huyền" },
+            { q: "Viết công thức tính cos của góc B trong tam giác ABC vuông tại A.", answer: "cos B = AB/BC", solution: "cos = cạnh kề/cạnh huyền" },
+            { q: "Viết hệ thức liên hệ giữa đường cao và hai hình chiếu trong tam giác vuông.", answer: "h² = b'·c'", solution: "AH² = BH·CH" },
+            { q: "Viết hệ thức liên hệ giữa cạnh góc vuông, cạnh huyền và hình chiếu.", answer: "b² = a·b' hoặc c² = a·c'", solution: "AB² = BC·BH hoặc AC² = BC·CH" },
+            { q: "Cho biết giá trị sin 30°.", answer: "1/2", solution: "sin 30° = 1/2" },
+            { q: "Cho biết giá trị cos 45°.", answer: "√2/2", solution: "cos 45° = √2/2" },
+            { q: "Cho biết giá trị tan 60°.", answer: "√3", solution: "tan 60° = √3" },
+            { q: "Viết hằng đẳng thức liên hệ giữa sin²α và cos²α.", answer: "sin²α + cos²α = 1", solution: "Hằng đẳng thức cơ bản của lượng giác" },
+            { q: "Viết công thức tính diện tích tam giác vuông theo hai cạnh góc vuông.", answer: "S = (1/2)·b·c", solution: "Diện tích bằng nửa tích hai cạnh góc vuông" }
+        ];
+
+        // Low Application Data
+        const lowData = [
+            { q: "Cho tam giác ABC vuông tại A, AB = 6cm, AC = 8cm. Tính BC.", answer: "BC = 10cm", solution: "BC = √(AB² + AC²) = √(36 + 64) = √100 = 10cm" },
+            { q: "Cho tam giác ABC vuông tại A, AB = 5, BC = 13. Tính AC.", answer: "AC = 12", solution: "AC = √(BC² - AB²) = √(169 - 25) = √144 = 12" },
+            { q: "Cho tam giác ABC vuông tại A, đường cao AH. Biết BH = 4, CH = 9. Tính AH.", answer: "AH = 6", solution: "AH² = BH·CH = 36 ⇒ AH = 6" },
+            { q: "Cho tam giác ABC vuông tại A, AB = 3, AC = 4. Tính sin B.", answer: "sin B = 4/5", solution: "BC = 5, sin B = AC/BC = 4/5" },
+            { q: "Cho tam giác ABC vuông tại A, AB = 3, AC = 4. Tính cos B.", answer: "cos B = 3/5", solution: "BC = 5, cos B = AB/BC = 3/5" },
+            { q: "Cho tam giác ABC vuông tại A, AB = 6, AC = 8. Tính đường cao AH.", answer: "AH = 4.8", solution: "BC = 10, AH = (AB·AC)/BC = 48/10 = 4.8" },
+            { q: "Cho sin α = 3/5. Tính cos α (α là góc nhọn).", answer: "cos α = 4/5", solution: "cos²α = 1 - sin²α = 1 - 9/25 = 16/25 ⇒ cos α = 4/5" },
+            { q: "Cho tam giác ABC vuông tại A, góc B = 30°, BC = 10. Tính AC.", answer: "AC = 5", solution: "AC = BC·sin 30° = 10 × 1/2 = 5" },
+            { q: "Cho tam giác ABC vuông tại A, góc B = 60°, BC = 8. Tính AB.", answer: "AB = 4", solution: "AB = BC·cos 60° = 8 × 1/2 = 4" },
+            { q: "Cho tan α = 3/4. Tính cot α.", answer: "cot α = 4/3", solution: "cot α = 1/tan α = 4/3" }
+        ];
+
+        // High Application Data
+        const highData = [
+            { q: "Cho tam giác ABC vuông tại A, đường cao AH. Biết AB = 15cm, AC = 20cm. Tính BH, CH và AH.", answer: "BH = 9cm, CH = 16cm, AH = 12cm", solution: "**Lời giải chi tiết:**\n\n1. Tính BC:\n   BC = √(AB² + AC²) = √(225 + 400) = 25cm\n\n2. Tính BH:\n   AB² = BC·BH\n   225 = 25·BH\n   BH = 9cm\n\n3. Tính CH:\n   CH = BC - BH = 25 - 9 = 16cm\n   (Kiểm tra: AC² = BC·CH ⇒ 400 = 25×16 ✓)\n\n4. Tính AH:\n   AH² = BH·CH = 9×16 = 144\n   AH = 12cm\n   (Kiểm tra: AB·AC = BC·AH ⇒ 300 = 25×12 ✓)\n\n**Kết luận: BH = 9cm, CH = 16cm, AH = 12cm**" },
+            { q: "Cho tam giác ABC vuông tại A, đường cao AH. Biết AH = 12cm, BH = 9cm. Tính AB, AC và BC.", answer: "AB = 15cm, AC = 20cm, BC = 25cm", solution: "**Lời giải chi tiết:**\n\n1. Tính AB:\n   AB² = BH² + AH² = 81 + 144 = 225\n   AB = 15cm\n\n2. Tính CH:\n   AH² = BH·CH\n   144 = 9·CH\n   CH = 16cm\n\n3. Tính BC:\n   BC = BH + CH = 9 + 16 = 25cm\n\n4. Tính AC:\n   AC² = CH² + AH² = 256 + 144 = 400\n   AC = 20cm\n   (Kiểm tra: AB² + AC² = 225 + 400 = 625 = BC² ✓)\n\n**Kết luận: AB = 15cm, AC = 20cm, BC = 25cm**" },
+            { q: "Cho tam giác ABC vuông tại A, có góc B = α. Biết sin α = 5/13. Tính cos α, tan α, cot α.", answer: "cos α = 12/13, tan α = 5/12, cot α = 12/5", solution: "**Lời giải chi tiết:**\n\n1. Tính cos α:\n   cos²α = 1 - sin²α = 1 - 25/169 = 144/169\n   cos α = 12/13 (α là góc nhọn)\n\n2. Tính tan α:\n   tan α = sin α / cos α = (5/13) / (12/13) = 5/12\n\n3. Tính cot α:\n   cot α = 1 / tan α = 12/5\n\n**Kiểm tra:**\n- sin²α + cos²α = 25/169 + 144/169 = 1 ✓\n- tan α · cot α = (5/12) × (12/5) = 1 ✓\n\n**Kết luận: cos α = 12/13, tan α = 5/12, cot α = 12/5**" },
+            { q: "Cho tam giác ABC vuông tại A, đường cao AH. Chứng minh rằng: 1/AH² = 1/AB² + 1/AC²", answer: "ĐPCM", solution: "**Lời giải chi tiết:**\n\n**Cách 1: Sử dụng hệ thức lượng**\n\n1. Ta có: AH² = BH·CH\n\n2. AB² = BC·BH ⇒ BH = AB²/BC\n   AC² = BC·CH ⇒ CH = AC²/BC\n\n3. Thay vào (1):\n   AH² = (AB²/BC)·(AC²/BC) = AB²·AC²/BC²\n\n4. Suy ra:\n   1/AH² = BC²/(AB²·AC²)\n\n5. Mà BC² = AB² + AC² (Pytago)\n   1/AH² = (AB² + AC²)/(AB²·AC²)\n   1/AH² = 1/AC² + 1/AB²\n\n**Cách 2: Sử dụng diện tích**\n\n1. S = (1/2)AB·AC = (1/2)BC·AH\n   ⇒ AB·AC = BC·AH\n\n2. 1/AH² = BC²/(AB²·AC²)\n   = (AB² + AC²)/(AB²·AC²)\n   = 1/AC² + 1/AB²\n\n**Kết luận: ĐPCM**" },
+            { q: "Cho tam giác ABC vuông tại A, AB = a, AC = b. Tính bán kính đường tròn ngoại tiếp tam giác ABC.", answer: "R = √(a² + b²)/2", solution: "**Lời giải chi tiết:**\n\n1. Trong tam giác vuông, tâm đường tròn ngoại tiếp là trung điểm của cạnh huyền.\n\n2. Bán kính R bằng nửa cạnh huyền:\n   R = BC/2\n\n3. Tính BC:\n   BC = √(AB² + AC²) = √(a² + b²)\n\n4. Vậy:\n   R = √(a² + b²)/2\n\n**Kết luận: R = √(a² + b²)/2**" },
+            { q: "Cho tam giác ABC vuông tại A, đường cao AH. Gọi M, N lần lượt là hình chiếu của H trên AB và AC. Chứng minh AM·AB = AN·AC.", answer: "ĐPCM", solution: "**Lời giải chi tiết:**\n\n1. Xét tam giác AHB vuông tại H, HM ⊥ AB:\n   Theo hệ thức lượng: AH² = AM·AB (1)\n\n2. Xét tam giác AHC vuông tại H, HN ⊥ AC:\n   Theo hệ thức lượng: AH² = AN·AC (2)\n\n3. Từ (1) và (2):\n   AM·AB = AH² = AN·AC\n\n4. Vậy: AM·AB = AN·AC\n\n**Kết luận: ĐPCM**" },
+            { q: "Cho tam giác ABC vuông tại A, có góc B = 30°, BC = 20cm. Tính diện tích tam giác ABC.", answer: "S = 50√3 cm²", solution: "**Lời giải chi tiết:**\n\n1. Tính AC:\n   AC = BC·sin 30° = 20 × 1/2 = 10cm\n\n2. Tính AB:\n   AB = BC·cos 30° = 20 × √3/2 = 10√3 cm\n\n3. Tính diện tích:\n   S = (1/2)·AB·AC\n   S = (1/2)·10√3·10\n   S = 50√3 cm²\n\n**Kiểm tra:**\n- AB² + AC² = 300 + 100 = 400 = BC² ✓\n\n**Kết luận: S = 50√3 cm² ≈ 86.6 cm²**" },
+            { q: "Cho tam giác ABC vuông tại A, đường cao AH. Biết AB/AC = 3/4 và BC = 25cm. Tính AB, AC và AH.", answer: "AB = 15cm, AC = 20cm, AH = 12cm", solution: "**Lời giải chi tiết:**\n\n1. Đặt AB = 3k, AC = 4k (k > 0)\n\n2. Áp dụng Pytago:\n   BC² = AB² + AC²\n   625 = 9k² + 16k²\n   625 = 25k²\n   k² = 25\n   k = 5\n\n3. Tính AB, AC:\n   AB = 3k = 15cm\n   AC = 4k = 20cm\n\n4. Tính AH:\n   AB·AC = BC·AH\n   15×20 = 25×AH\n   AH = 300/25 = 12cm\n\n**Kết luận: AB = 15cm, AC = 20cm, AH = 12cm**" },
+            { q: "Cho tam giác ABC vuông tại A. Chứng minh rằng: (sin B + sin C)² + (cos B - cos C)² = 2", answer: "ĐPCM", solution: "**Lời giải chi tiết:**\n\n1. Vì tam giác ABC vuông tại A:\n   B + C = 90°\n   ⇒ sin C = cos B và cos C = sin B\n\n2. Thay vào biểu thức:\n   (sin B + sin C)² + (cos B - cos C)²\n   = (sin B + cos B)² + (cos B - sin B)²\n\n3. Khai triển:\n   = (sin²B + 2sinB·cosB + cos²B) + (cos²B - 2cosB·sinB + sin²B)\n   = sin²B + cos²B + sin²B + cos²B\n   = 1 + 1\n   = 2\n\n**Kết luận: ĐPCM**" },
+            { q: "Cho tam giác ABC vuông tại A, đường cao AH. Gọi r₁, r₂ lần lượt là bán kính đường tròn nội tiếp tam giác AHB và AHC. Chứng minh r₁ + r₂ = AH.", answer: "ĐPCM", solution: "**Lời giải chi tiết:**\n\n1. Công thức bán kính đường tròn nội tiếp tam giác vuông:\n   r = (a + b - c)/2 (c là cạnh huyền)\n\n2. Cho tam giác AHB vuông tại H:\n   r₁ = (AH + BH - AB)/2\n\n3. Cho tam giác AHC vuông tại H:\n   r₂ = (AH + CH - AC)/2\n\n4. Tính r₁ + r₂:\n   r₁ + r₂ = (2AH + BH + CH - AB - AC)/2\n   = (2AH + BC - AB - AC)/2\n\n5. Ta có: AB + AC = BC + AH (hệ thức trong tam giác vuông)\n   Thật vậy: (AB + AC)² = AB² + AC² + 2AB·AC\n   = BC² + 2BC·AH = BC(BC + 2AH)\n\n6. Từ đó suy ra: r₁ + r₂ = AH\n\n**Kết luận: ĐPCM**" }
+        ];
+
+        // Real World Data
+        const realData = [
+            { q: "Một cái thang dài 5m được đặt dựa vào tường. Chân thang cách tường 3m. Hỏi đầu thang đạt đến độ cao bao nhiêu so với mặt đất?", answer: "4m", solution: "**Lời giải chi tiết:**\n\n1. Mô hình hóa:\n   - Thang là cạnh huyền: c = 5m\n   - Khoảng cách chân thang đến tường: a = 3m\n   - Chiều cao cần tìm: h = ?\n\n2. Áp dụng định lý Pytago:\n   h² + a² = c²\n   h² + 9 = 25\n   h² = 16\n   h = 4m\n\n3. Kiểm tra điều kiện:\n   - Tam giác vuông thỏa mãn\n   - Kết quả hợp lý\n\n**Kết luận: Đầu thang đạt độ cao 4m so với mặt đất.**" },
+            { q: "Một người đứng cách chân tòa nhà 30m, ngắm nhìn đỉnh tòa nhà với góc nâng 60°. Biết mắt người đó cách mặt đất 1.5m. Tính chiều cao của tòa nhà.", answer: "53.46m", solution: "**Lời giải chi tiết:**\n\n1. Mô hình hóa:\n   - Khoảng cách đến tòa nhà: d = 30m\n   - Góc nâng: α = 60°\n   - Chiều cao mắt: h₀ = 1.5m\n   - Chiều cao phần trên mắt: h₁ = ?\n\n2. Tính h₁:\n   tan 60° = h₁/d\n   h₁ = d·tan 60°\n   h₁ = 30 × √3\n   h₁ ≈ 30 × 1.732 = 51.96m\n\n3. Tính chiều cao tòa nhà:\n   H = h₁ + h₀\n   H = 51.96 + 1.5 = 53.46m\n\n**Kết luận: Chiều cao tòa nhà khoảng 53.46m.**" },
+            { q: "Một con đường dốc có độ dài 500m và độ cao chênh lệch giữa hai đầu là 50m. Tính góc nghiêng của con đường so với phương ngang.", answer: "5.74°", solution: "**Lời giải chi tiết:**\n\n1. Mô hình hóa:\n   - Độ dài đường dốc (cạnh huyền): c = 500m\n   - Độ cao chênh lệch (cạnh đối): h = 50m\n   - Góc nghiêng: α = ?\n\n2. Tính sin α:\n   sin α = h/c = 50/500 = 0.1\n\n3. Tính góc α:\n   α = arcsin(0.1)\n   α ≈ 5.74°\n\n4. Kiểm tra:\n   - Góc hợp lý cho đường dốc\n   - Độ dốc = 10%\n\n**Kết luận: Góc nghiêng của con đường khoảng 5.74°.**" },
+            { q: "Một chiếc thuyền đi từ bến A đến bến B với vận tốc 20km/h theo hướng đông bắc (45° so với hướng đông). Sau 2 giờ, thuyền đến B. Tính khoảng cách theo hướng đông và hướng bắc từ A đến B.", answer: "28.28km theo mỗi hướng", solution: "**Lời giải chi tiết:**\n\n1. Tính quãng đường AB:\n   s = v·t = 20 × 2 = 40km\n\n2. Mô hình hóa:\n   - AB = 40km (cạnh huyền)\n   - Góc α = 45°\n   - Khoảng cách đông: d₁ = ?\n   - Khoảng cách bắc: d₂ = ?\n\n3. Tính d₁ (hướng đông):\n   d₁ = AB·cos 45°\n   d₁ = 40 × √2/2\n   d₁ = 20√2 ≈ 28.28km\n\n4. Tính d₂ (hướng bắc):\n   d₂ = AB·sin 45°\n   d₂ = 40 × √2/2\n   d₂ = 20√2 ≈ 28.28km\n\n**Kết luận: 28.28km theo hướng đông và 28.28km theo hướng bắc.**" },
+            { q: "Một cột cờ cao 12m có bóng trên mặt đất dài 9m vào một thời điểm trong ngày. Tính góc tạo bởi tia nắng mặt trời và mặt đất.", answer: "53.13°", solution: "**Lời giải chi tiết:**\n\n1. Mô hình hóa:\n   - Chiều cao cột cờ (cạnh đối): h = 12m\n   - Độ dài bóng (cạnh kề): b = 9m\n   - Góc cần tìm: α = ?\n\n2. Tính tan α:\n   tan α = h/b = 12/9 = 4/3\n\n3. Tính góc α:\n   α = arctan(4/3)\n   α ≈ 53.13°\n\n4. Kiểm tra:\n   - Góc hợp lý cho vị trí mặt trời\n   - tan 53.13° ≈ 1.333 = 4/3 ✓\n\n**Kết luận: Góc tạo bởi tia nắng và mặt đất khoảng 53.13°.**" }
+        ];
+
+        // Render MCQ
+        function renderMCQ() {
+            const container = document.getElementById('mcq-container');
+            mcqData.forEach((item, index) => {
+                const div = document.createElement('div');
+                div.className = 'border-l-4 border-blue-400 pl-4 py-3 bg-gray-50 rounded-r-lg';
+                div.innerHTML = `
+                    <p class="font-semibold text-gray-800 mb-2"><strong>Câu ${index + 1}:</strong> ${item.q}</p>
+                    <div class="grid grid-cols-2 gap-2 mb-3 text-sm">
+                        ${item.options.map(opt => `<span class="text-gray-700">${opt}</span>`).join('')}
+                    </div>
+                    <button onclick="toggleAnswer('mcq-${index}')" class="text-blue-600 text-sm hover:underline">👁️ Xem đáp án</button>
+                    <div id="mcq-${index}" class="answer-box mt-2 p-3 rounded hidden">
+                        <p class="font-semibold text-green-700">Đáp án: ${item.answer}</p>
+                        <p class="text-gray-700 text-sm mt-1">${item.solution}</p>
+                    </div>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        // Render True/False
+        function renderTF() {
+            const container = document.getElementById('tf-container');
+            tfData.forEach((item, index) => {
+                const div = document.createElement('div');
+                div.className = 'border-l-4 border-amber-400 pl-4 py-3 bg-gray-50 rounded-r-lg';
+                div.innerHTML = `
+                    <p class="font-semibold text-gray-800 mb-3"><strong>Câu ${index + 1}:</strong> ${item.q}</p>
+                    <div class="space-y-2">
+                        ${item.statements.map((s, i) => `
+                            <div class="flex items-center justify-between bg-white p-2 rounded">
+                                <span class="text-gray-700 text-sm">${String.fromCharCode(65+i)}. ${s.text}</span>
+                                <span class="text-xs px-2 py-1 rounded ${s.answer ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}">${s.answer ? 'Đúng' : 'Sai'}</span>
+                            </div>
+                        `).join('')}
+                    </div>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        // Render Recognition
+        function renderRecognition() {
+            const container = document.getElementById('recognition-container');
+            recognitionData.forEach((item, index) => {
+                const div = document.createElement('div');
+                div.className = 'border-l-4 border-blue-400 pl-4 py-3 bg-gray-50 rounded-r-lg';
+                div.innerHTML = `
+                    <p class="font-semibold text-gray-800 mb-2"><strong>Bài ${index + 1}:</strong> ${item.q}</p>
+                    <button onclick="toggleAnswer('rec-${index}')" class="text-blue-600 text-sm hover:underline">👁️ Xem đáp án</button>
+                    <div id="rec-${index}" class="answer-box mt-2 p-3 rounded hidden">
+                        <p class="font-semibold text-purple-700">Đáp án: ${item.answer}</p>
+                        <p class="text-gray-700 text-sm mt-1">${item.solution}</p>
+                    </div>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        // Render Low Application
+        function renderLow() {
+            const container = document.getElementById('low-container');
+            lowData.forEach((item, index) => {
+                const div = document.createElement('div');
+                div.className = 'border-l-4 border-green-400 pl-4 py-3 bg-gray-50 rounded-r-lg';
+                div.innerHTML = `
+                    <p class="font-semibold text-gray-800 mb-2"><strong>Bài ${index + 1}:</strong> ${item.q}</p>
+                    <button onclick="toggleAnswer('low-${index}')" class="text-green-600 text-sm hover:underline">👁️ Xem đáp án</button>
+                    <div id="low-${index}" class="solution-box mt-2 p-3 rounded hidden">
+                        <p class="font-semibold text-amber-700">Đáp án: ${item.answer}</p>
+                        <p class="text-gray-700 text-sm mt-1 whitespace-pre-line">${item.solution}</p>
+                    </div>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        // Render High Application
+        function renderHigh() {
+            const container = document.getElementById('high-container');
+            highData.forEach((item, index) => {
+                const div = document.createElement('div');
+                div.className = 'border-l-4 border-red-400 pl-4 py-3 bg-gray-50 rounded-r-lg';
+                div.innerHTML = `
+                    <p class="font-semibold text-gray-800 mb-2"><strong>Bài ${index + 1}:</strong> ${item.q}</p>
+                    <button onclick="toggleAnswer('high-${index}')" class="text-red-600 text-sm hover:underline">👁️ Xem lời giải chi tiết</button>
+                    <div id="high-${index}" class="solution-box mt-2 p-4 rounded hidden">
+                        <p class="font-semibold text-amber-700 mb-2">Đáp án: ${item.answer}</p>
+                        <div class="text-gray-700 text-sm whitespace-pre-line">${item.solution}</div>
+                    </div>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        // Render Real World
+        function renderReal() {
+            const container = document.getElementById('real-container');
+            realData.forEach((item, index) => {
+                const div = document.createElement('div');
+                div.className = 'border-l-4 border-indigo-400 pl-4 py-3 bg-gray-50 rounded-r-lg';
+                div.innerHTML = `
+                    <p class="font-semibold text-gray-800 mb-2"><strong>Bài ${index + 1}:</strong> ${item.q}</p>
+                    <button onclick="toggleAnswer('real-${index}')" class="text-indigo-600 text-sm hover:underline">👁️ Xem lời giải chi tiết</button>
+                    <div id="real-${index}" class="solution-box mt-2 p-4 rounded hidden">
+                        <p class="font-semibold text-amber-700 mb-2">Đáp án: ${item.answer}</p>
+                        <div class="text-gray-700 text-sm whitespace-pre-line">${item.solution}</div>
+                    </div>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        // Toggle Answer
+        function toggleAnswer(id) {
+            const el = document.getElementById(id);
+            el.classList.toggle('hidden');
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            renderMCQ();
+            renderTF();
+            renderRecognition();
+            renderLow();
+            renderHigh();
+            renderReal();
+        });
+    </script>
+</body>
+</html>
+```
