@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đường Tròn - Đề Mục 94 - Toán Lớp 9</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@fontsource/roboto@4.5.8/index.css" rel="stylesheet">
+    <style>
+        * {
+            font-family: 'Roboto', sans-serif;
+        }
+        .gradient-header {
+            background: linear-gradient(135deg, #0891b2 0%, #7c3aed 100%);
+        }
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, #0891b2 0%, #7c3aed 100%);
+        }
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #067894 0%, #6a32c4 100%);
+        }
+        .answer-box {
+            background: #f0f9ff;
+            border-left: 4px solid #0891b2;
+        }
+        .solution-box {
+            background: #fef3c7;
+            border-left: 4px solid #f59e0b;
+        }
+        .nav-item {
+            transition: all 0.2s ease;
+        }
+        .nav-item:hover {
+            background: rgba(255,255,255,0.2);
+        }
+        .nav-item.active {
+            background: rgba(255,255,255,0.3);
+        }
+        .print-section {
+            page-break-inside: avoid;
+        }
+        @media print {
+            .no-print {
+                display: none;
+            }
+        }
+        .circle-diagram {
+            background: #f8fafc;
+            border: 2px dashed #cbd5e1;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+        }
+        .formula-box {
+            background: linear-gradient(135deg, #e0f2fe 0%, #ede9fe 100%);
+            border-radius: 8px;
+            padding: 16px;
+            margin: 12px 0;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="gradient-header text-white py-8">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center">
+                <div>
+                    <h1 class="text-3xl font-bold">ĐƯỜNG TRÒN</h1>
+                    <p class="text-lg opacity-90">Đề Mục 94 - Toán Lớp 9 - Hình Học</p>
+                </div>
+                <div class="text-right">
+                    <p class="text-sm opacity-80">Bộ Tài Liệu Toán THCS</p>
+                    <p class="text-sm opacity-80">60 Ngày Ôn Tập</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md sticky top-0 z-50 no-print">
+        <div class="container mx-auto px-4">
+            <div class="flex overflow-x-auto py-3 space-x-2">
+                <button onclick="showSection('lesson')" class="nav-item active px-4 py-2 rounded-lg bg-cyan-100 text-cyan-700 whitespace-nowrap">📚 Bài Giảng</button>
+                <button onclick="showSection('mcq')" class="nav-item px-4 py-2 rounded-lg hover:bg-gray-100 whitespace-nowrap">📝 30 Câu MCQ</button>
+                <button onclick="showSection('tf')" class="nav-item px-4 py-2 rounded-lg hover:bg-gray-100 whitespace-nowrap">✅ 10 Câu Đúng/Sai</button>
+                <button onclick="showSection('recognition')" class="nav-item px-4 py-2 rounded-lg hover:bg-gray-100 whitespace-nowrap">🔍 10 Bài Nhận Biết</button>
+                <button onclick="showSection('low')" class="nav-item px-4 py-2 rounded-lg hover:bg-gray-100 whitespace-nowrap">📊 10 Bài Vận Dụng Thấp</button>
+                <button onclick="showSection('high')" class="nav-item px-4 py-2 rounded-lg hover:bg-gray-100 whitespace-nowrap">🎯 10 Bài Vận Dụng Cao</button>
+                <button onclick="showSection('real')" class="nav-item px-4 py-2 rounded-lg hover:bg-gray-100 whitespace-nowrap">🌍 5 Bài Thực Tế</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+        <!-- Lesson Section -->
+        <section id="lesson" class="section-content">
+            <div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section">
+                <h2 class="text-2xl font-bold text-cyan-700 mb-6 flex items-center">
+                    <span class="mr-3">📚</span> BÀI GIẢNG CHI TIẾT: ĐƯỜNG TRÒN
+                </h2>
+                
+                <div class="space-y-6">
+                    <!-- Introduction -->
+                    <div class="answer-box p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold text-cyan-700 mb-4">1. ĐỊNH NGHĨA VÀ CÁC KHÁI NIỆM CƠ BẢN</h3>
+                        <p class="text-gray-700 mb-4">
+                            <strong>Đường tròn</strong> tâm O, bán kính R là tập hợp các điểm cách O một khoảng bằng R.
+                            Ký hiệu: (O; R) hoặc (O)
+                        </p>
+                        
+                        <div class="circle-diagram mb-4">
+                            <svg width="300" height="300" viewBox="0 0 300 300">
+                                <circle cx="150" cy="150" r="100" fill="none" stroke="#0891b2" stroke-width="3"/>
+                                <circle cx="150" cy="150" r="3" fill="#7c3aed"/>
+                                <text x="160" y="145" fill="#7c3aed" font-size="16" font-weight="bold">O</text>
+                                <line x1="150" y1="150" x2="250" y2="150" stroke="#0891b2" stroke-width="2"/>
+                                <text x="190" y="140" fill="#0891b2" font-size="14">R</text>
+                                <line x1="50" y1="150" x2="250" y2="150" stroke="#f59e0b" stroke-width="2" stroke-dasharray="5,5"/>
+                                <text x="140" y="170" fill="#f59e0b" font-size="14">Đường kính</text>
+                                <line x1="150" y1="150" x2="200" y2="80" stroke="#10b981" stroke-width="2"/>
+                                <text x="175" y="110" fill="#10b981" font-size="14">Bán kính</text>
+                                <line x1="80" y1="100" x2="220" y2="100" stroke="#ef4444" stroke-width="2"/>
+                                <text x="140" y="90" fill="#ef4444" font-size="14">Dây cung</text>
+                            </svg>
+                            <p class="text-sm text-gray-600 mt-2">Các yếu tố của đường tròn</p>
+                        </div>
+
+                        <div class="formula-box">
+                            <h4 class="font-semibold text-cyan-600 mb-2">📐 Các khái niệm quan trọng:</h4>
+                            <ul class="space-y-2 text-gray-700">
+                                <li>• <strong>Bán kính (R):</strong> Đoạn thẳng nối tâm với một điểm trên đường tròn</li>
+                                <li>• <strong>Đường kính (d):</strong> Dây cung đi qua tâm, d = 2R</li>
+                                <li>• <strong>Dây cung:</strong> Đoạn thẳng nối hai điểm bất kỳ trên đường tròn</li>
+                                <li>• <strong>Cung:</strong> Phần đường tròn giới hạn bởi hai điểm</li>
+                                <li>• <strong>Góc ở tâm:</strong> Góc có đỉnh trùng với tâm đường tròn</li>
+                                <li>• <strong>Góc nội tiếp:</strong> Góc có đỉnh nằm trên đường tròn</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Properties -->
+                    <div class="solution-box p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold text-amber-700 mb-4">2. TÍNH CHẤT CỦA ĐƯỜNG TRÒN</h3>
+                        
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div class="bg-cyan-50 p-4 rounded-lg">
+                                <h4 class="font-semibold text-cyan-600 mb-2">Tính chất 1: Đối xứng</h4>
+                                <p class="text-gray-700 text-sm">Đường tròn có tâm đối xứng là tâm O và có vô số trục đối xứng là các đường kính.</p>
+                            </div>
+                            <div class="bg-purple-50 p-4 rounded-lg">
+                                <h4 class="font-semibold text-purple-600 mb-2">Tính chất 2: Dây cung</h4>
+                                <p class="text-gray-700 text-sm">Dây cung lớn nhất là đường kính. Dây cung bằng nhau cách đều tâm.</p>
+                            </div>
+                            <div class="bg-amber-50 p-4 rounded-lg">
+                                <h4 class="font-semibold text-amber-600 mb-2">Tính chất 3: Quan hệ vuông góc</h4>
+                                <p class="text-gray-700 text-sm">Đường kính vuông góc với dây cung thì đi qua trung điểm của dây ấy.</p>
+                            </div>
+                            <div class="bg-green-50 p-4 rounded-lg">
+                                <h4 class="font-semibold text-green-600 mb-2">Tính chất 4: Khoảng cách</h4>
+                                <p class="text-gray-700 text-sm">Hai dây cung bằng nhau thì cách đều tâm và ngược lại.</p>
+                            </div>
+                        </div>
+
+                        <div class="mt-4 bg-white p-4 rounded-lg border-2 border-amber-300">
+                            <h4 class="font-semibold text-amber-700 mb-2">📝 Định lý quan trọng:</h4>
+                            <ul class="space-y-2 text-gray-700 text-sm">
+                                <li>• Trong một đường tròn, đường kính vuông góc với một dây cung thì đi qua trung điểm của dây ấy.</li>
+                                <li>• Trong một đường tròn, đường kính đi qua trung điểm của một dây cung (không đi qua tâm) thì vuông góc với dây ấy.</li>
+                                <li>• Trong hai dây cung của một đường tròn:
+                                    <br>  - Hai dây bằng nhau ⇔ cách đều tâm
+                                    <br>  - Dây nào lớn hơn ⇔ dây đó gần tâm hơn
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Angles in Circle -->
+                    <div class="answer-box p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold text-cyan-700 mb-4">3. GÓC TRONG ĐƯỜNG TRÒN</h3>
+                        
+                        <div class="grid md:grid-cols-3 gap-4 mb-4">
+                            <div class="bg-white p-4 rounded-lg border-l-4 border-cyan-400">
+                                <h4 class="font-semibold text-cyan-600 mb-2">Góc ở tâm</h4>
+                                <p class="text-gray-700 text-sm">Số đo góc ở tâm bằng số đo cung bị chắn.</p>
+                                <p class="text-cyan-700 text-sm font-semibold mt-2">α = sđ cung AB</p>
+                            </div>
+                            <div class="bg-white p-4 rounded-lg border-l-4 border-purple-400">
+                                <h4 class="font-semibold text-purple-600 mb-2">Góc nội tiếp</h4>
+                                <p class="text-gray-700 text-sm">Số đo góc nội tiếp bằng nửa số đo cung bị chắn.</p>
+                                <p class="text-purple-700 text-sm font-semibold mt-2">α = ½ sđ cung AB</p>
+                            </div>
+                            <div class="bg-white p-4 rounded-lg border-l-4 border-amber-400">
+                                <h4 class="font-semibold text-amber-600 mb-2">Góc tạo bởi tiếp tuyến và dây cung</h4>
+                                <p class="text-gray-700 text-sm">Số đo góc bằng nửa số đo cung bị chắn.</p>
+                                <p class="text-amber-700 text-sm font-semibold mt-2">α = ½ sđ cung AB</p>
+                            </div>
+                        </div>
+
+                        <div class="bg-purple-50 p-4 rounded-lg">
+                            <h4 class="font-semibold text-purple-700 mb-3">📌 Hệ quả quan trọng:</h4>
+                            <ul class="space-y-2 text-gray-700 text-sm">
+                                <li>✓ Các góc nội tiếp cùng chắn một cung thì bằng nhau.</li>
+                                <li>✓ Góc nội tiếp chắn nửa đường tròn là góc vuông (90°).</li>
+                                <li>✓ Số đo góc nội tiếp bằng nửa số đo góc ở tâm cùng chắn một cung.</li>
+                                <li>✓ Tứ giác nội tiếp có tổng hai góc đối bằng 180°.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Tangent -->
+                    <div class="solution-box p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold text-amber-700 mb-4">4. TIẾP TUYẾN CỦA ĐƯỜNG TRÒN</h3>
+                        
+                        <div class="bg-white p-4 rounded-lg mb-4">
+                            <h4 class="font-semibold text-amber-600 mb-2">Định nghĩa:</h4>
+                            <p class="text-gray-700">Tiếp tuyến của đường tròn là đường thẳng chỉ có một điểm chung với đường tròn. Điểm đó gọi là tiếp điểm.</p>
+                        </div>
+
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div class="bg-amber-50 p-4 rounded-lg">
+                                <h4 class="font-semibold text-amber-600 mb-2">Tính chất 1:</h4>
+                                <p class="text-gray-700 text-sm">Tiếp tuyến vuông góc với bán kính tại tiếp điểm.</p>
+                                <p class="text-amber-700 text-sm font-semibold mt-2">d ⊥ OA tại A</p>
+                            </div>
+                            <div class="bg-green-50 p-4 rounded-lg">
+                                <h4 class="font-semibold text-green-600 mb-2">Tính chất 2:</h4>
+                                <p class="text-gray-700 text-sm">Hai tiếp tuyến cắt nhau tại một điểm cách đều hai tiếp điểm.</p>
+                                <p class="text-green-700 text-sm font-semibold mt-2">MA = MB</p>
+                            </div>
+                        </div>
+
+                        <div class="mt-4 bg-white p-4 rounded-lg border-2 border-green-300">
+                            <h4 class="font-semibold text-green-700 mb-2">📝 Dấu hiệu nhận biết tiếp tuyến:</h4>
+                            <ul class="space-y-1 text-gray-700 text-sm">
+                                <li>• Đường thẳng vuông góc với bán kính tại đầu mút của bán kính nằm trên đường tròn.</li>
+                                <li>• Đường thẳng chỉ có một điểm chung với đường tròn.</li>
+                                <li>• Khoảng cách từ tâm đến đường thẳng bằng bán kính.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Cyclic Quadrilateral -->
+                    <div class="answer-box p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold text-cyan-700 mb-4">5. TỨ GIÁC NỘI TIẾP</h3>
+                        
+                        <div class="bg-white p-4 rounded-lg mb-4">
+                            <h4 class="font-semibold text-cyan-600 mb-2">Định nghĩa:</h4>
+                            <p class="text-gray-700">Tứ giác nội tiếp đường tròn là tứ giác có bốn đỉnh cùng nằm trên một đường tròn.</p>
+                        </div>
+
+                        <div class="formula-box">
+                            <h4 class="font-semibold text-cyan-600 mb-2">📐 Tính chất:</h4>
+                            <ul class="space-y-2 text-gray-700">
+                                <li>• <strong>Tổng hai góc đối bằng 180°:</strong> ∠A + ∠C = ∠B + ∠D = 180°</li>
+                                <li>• <strong>Góc ngoài bằng góc trong đối diện:</strong> Góc ngoài tại A = ∠C</li>
+                                <li>• <strong>Hai góc cùng nhìn một cạnh dưới các góc bằng nhau:</strong> Nếu ∠ADB = ∠ACB thì ABCD nội tiếp</li>
+                            </ul>
+                        </div>
+
+                        <div class="bg-cyan-50 p-4 rounded-lg">
+                            <h4 class="font-semibold text-cyan-700 mb-2">📌 Dấu hiệu nhận biết tứ giác nội tiếp:</h4>
+                            <ul class="space-y-1 text-gray-700 text-sm">
+                                <li>✓ Tứ giác có tổng hai góc đối bằng 180°.</li>
+                                <li>✓ Tứ giác có góc ngoài bằng góc trong đối diện.</li>
+                                <li>✓ Tứ giác có bốn đỉnh cách đều một điểm (tâm đường tròn ngoại tiếp).</li>
+                                <li>✓ Tứ giác có hai đỉnh kề nhau cùng nhìn cạnh chứa hai đỉnh còn lại dưới một góc bằng nhau.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Formulas -->
+                    <div class="solution-box p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold text-amber-700 mb-4">6. CÔNG THỨC TÍNH TOÁN</h3>
+                        
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div class="bg-white p-4 rounded-lg border-2 border-cyan-300">
+                                <h4 class="font-semibold text-cyan-600 mb-2">📏 Chu vi đường tròn:</h4>
+                                <p class="text-2xl text-cyan-700 font-bold text-center">C = 2πR = πd</p>
+                                <p class="text-gray-600 text-sm text-center mt-2">R: bán kính, d: đường kính</p>
+                            </div>
+                            <div class="bg-white p-4 rounded-lg border-2 border-purple-300">
+                                <h4 class="font-semibold text-purple-600 mb-2">📐 Diện tích hình tròn:</h4>
+                                <p class="text-2xl text-purple-700 font-bold text-center">S = πR²</p>
+                                <p class="text-gray-600 text-sm text-center mt-2">R: bán kính</p>
+                            </div>
+                            <div class="bg-white p-4 rounded-lg border-2 border-amber-300">
+                                <h4 class="font-semibold text-amber-600 mb-2">📐 Độ dài cung tròn:</h4>
+                                <p class="text-xl text-amber-700 font-bold text-center">l = (πRn°)/180°</p>
+                                <p class="text-gray-600 text-sm text-center mt-2">n°: số đo cung</p>
+                            </div>
+                            <div class="bg-white p-4 rounded-lg border-2 border-green-300">
+                                <h4 class="font-semibold text-green-600 mb-2">📐 Diện tích quạt tròn:</h4>
+                                <p class="text-xl text-green-700 font-bold text-center">S = (πR²n°)/360°</p>
+                                <p class="text-gray-600 text-sm text-center mt-2">n°: số đo cung</p>
+                            </div>
+                        </div>
+
+                        <div class="mt-4 bg-amber-50 p-4 rounded-lg">
+                            <p class="text-amber-800 text-sm">
+                                <strong>💡 Lưu ý:</strong> π ≈ 3.14159... Trong tính toán thường lấy π ≈ 3.14 hoặc π ≈ 22/7
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Problem Types -->
+                    <div class="answer-box p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold text-cyan-700 mb-4">7. CÁC DẠNG TOÁN THƯỜNG GẶP</h3>
+                        <div class="grid md:grid-cols-3 gap-4">
+                            <div class="bg-white p-4 rounded-lg border-l-4 border-cyan-400 card-hover">
+                                <h4 class="font-semibold text-cyan-600 mb-2">Dạng 1: Chứng minh</h4>
+                                <p class="text-gray-700 text-sm">Chứng minh tứ giác nội tiếp, điểm thuộc đường tròn, tiếp tuyến.</p>
+                            </div>
+                            <div class="bg-white p-4 rounded-lg border-l-4 border-purple-400 card-hover">
+                                <h4 class="font-semibold text-purple-600 mb-2">Dạng 2: Tính toán</h4>
+                                <p class="text-gray-700 text-sm">Tính độ dài dây cung, khoảng cách từ tâm đến dây, bán kính.</p>
+                            </div>
+                            <div class="bg-white p-4 rounded-lg border-l-4 border-amber-400 card-hover">
+                                <h4 class="font-semibold text-amber-600 mb-2">Dạng 3: Góc</h4>
+                                <p class="text-gray-700 text-sm">Tính số đo góc ở tâm, góc nội tiếp, góc tạo bởi tiếp tuyến.</p>
+                            </div>
+                            <div class="bg-white p-4 rounded-lg border-l-4 border-green-400 card-hover">
+                                <h4 class="font-semibold text-green-600 mb-2">Dạng 4: Chu vi - Diện tích</h4>
+                                <p class="text-gray-700 text-sm">Tính chu vi, diện tích hình tròn, độ dài cung, diện tích quạt.</p>
+                            </div>
+                            <div class="bg-white p-4 rounded-lg border-l-4 border-red-400 card-hover">
+                                <h4 class="font-semibold text-red-600 mb-2">Dạng 5: Vị trí tương đối</h4>
+                                <p class="text-gray-700 text-sm">Xác định vị trí tương đối của đường thẳng và đường tròn.</p>
+                            </div>
+                            <div class="bg-white p-4 rounded-lg border-l-4 border-indigo-400 card-hover">
+                                <h4 class="font-semibold text-indigo-600 mb-2">Dạng 6: Bài toán thực tế</h4>
+                                <p class="text-gray-700 text-sm">Áp dụng vào tính toán trong thực tế (bánh xe, đồng hồ...).</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Examples -->
+                    <div class="solution-box p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold text-amber-700 mb-4">8. VÍ DỤ MINH HỌA</h3>
+                        
+                        <div class="bg-white p-4 rounded-lg mb-4">
+                            <h4 class="font-semibold text-amber-600 mb-2">Ví dụ 1: Tính độ dài dây cung</h4>
+                            <p class="text-gray-700 mb-2">Cho đường tròn (O; 5cm), dây AB cách tâm 3cm. Tính độ dài AB.</p>
+                            <div class="answer-box p-3 rounded">
+                                <p class="text-gray-700"><strong>Lời giải:</strong></p>
+                                <p class="text-gray-700">Gọi H là trung điểm AB ⇒ OH ⊥ AB, OH = 3cm</p>
+                                <p class="text-gray-700">ΔOHA vuông tại H: AH² = OA² - OH² = 25 - 9 = 16</p>
+                                <p class="text-gray-700">AH = 4cm ⇒ AB = 2AH = 8cm</p>
+                            </div>
+                        </div>
+
+                        <div class="bg-white p-4 rounded-lg mb-4">
+                            <h4 class="font-semibold text-amber-600 mb-2">Ví dụ 2: Chứng minh tứ giác nội tiếp</h4>
+                            <p class="text-gray-700 mb-2">Cho tam giác ABC nội tiếp (O). Chứng minh tứ giác tạo bởi chân các đường cao nội tiếp.</p>
+                            <div class="answer-box p-3 rounded">
+                                <p class="text-gray-700"><strong>Lời giải:</strong></p>
+                                <p class="text-gray-700">Gọi H là trực tâm, D, E, F là chân đường cao.</p>
+                                <p class="text-gray-700">∠BEC = ∠BFC = 90° ⇒ E, F thuộc đường tròn đường kính BC</p>
+                                <p class="text-gray-700">⇒ Tứ giác BCEF nội tiếp</p>
+                            </div>
+                        </div>
+
+                        <div class="bg-white p-4 rounded-lg">
+                            <h4 class="font-semibold text-amber-600 mb-2">Ví dụ 3: Tính diện tích</h4>
+                            <p class="text-gray-700 mb-2">Tính diện tích hình tròn có chu vi 20π cm.</p>
+                            <div class="answer-box p-3 rounded">
+                                <p class="text-gray-700"><strong>Lời giải:</strong></p>
+                                <p class="text-gray-700">C = 2πR = 20π ⇒ R = 10cm</p>
+                                <p class="text-gray-700">S = πR² = π × 100 = 100π cm²</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Calculator Guide -->
+                    <div class="answer-box p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold text-cyan-700 mb-4">9. HƯỚNG DẪN BẤM MÁY TÍNH CASIO FX-580ES</h3>
+                        <div class="bg-white p-4 rounded-lg space-y-3">
+                            <p class="text-gray-700"><strong>Tính chu vi, diện tích hình tròn:</strong></p>
+                            <ol class="list-decimal list-inside space-y-1 text-gray-700">
+                                <li>Nhập bán kính R</li>
+                                <li>Chu vi: <kbd class="bg-gray-200 px-2 py-1 rounded">2</kbd> × <kbd class="bg-gray-200 px-2 py-1 rounded">SHIFT</kbd> + <kbd class="bg-gray-200 px-2 py-1 rounded">π</kbd> × R</li>
+                                <li>Diện tích: <kbd class="bg-gray-200 px-2 py-1 rounded">SHIFT</kbd> + <kbd class="bg-gray-200 px-2 py-1 rounded">π</kbd> × R²</li>
+                            </ol>
+                            <p class="text-gray-700 mt-3"><strong>Tính độ dài cung, diện tích quạt:</strong></p>
+                            <ol class="list-decimal list-inside space-y-1 text-gray-700">
+                                <li>Độ dài cung: <kbd class="bg-gray-200 px-2 py-1 rounded">SHIFT</kbd> + <kbd class="bg-gray-200 px-2 py-1 rounded">π</kbd> × R × n ÷ <kbd class="bg-gray-200 px-2 py-1 rounded">180</kbd></li>
+                                <li>Diện tích quạt: <kbd class="bg-gray-200 px-2 py-1 rounded">SHIFT</kbd> + <kbd class="bg-gray-200 px-2 py-1 rounded">π</kbd> × R² × n ÷ <kbd class="bg-gray-200 px-2 py-1 rounded">360</kbd></li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- MCQ Section -->
+        <section id="mcq" class="section-content hidden">
+            <div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section">
+                <h2 class="text-2xl font-bold text-cyan-700 mb-6 flex items-center">
+                    <span class="mr-3">📝</span> 30 CÂU TRẮC NGHIỆM 4 LỰA CHỌN
+                </h2>
+                <div class="space-y-6" id="mcq-container"></div>
+            </div>
+        </section>
+
+        <!-- True/False Section -->
+        <section id="tf" class="section-content hidden">
+            <div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section">
+                <h2 class="text-2xl font-bold text-cyan-700 mb-6 flex items-center">
+                    <span class="mr-3">✅</span> 10 CÂU TRẮC NGHIỆM ĐÚNG/SAI
+                </h2>
+                <div class="space-y-6" id="tf-container"></div>
+            </div>
+        </section>
+
+        <!-- Recognition Section -->
+        <section id="recognition" class="section-content hidden">
+            <div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section">
+                <h2 class="text-2xl font-bold text-cyan-700 mb-6 flex items-center">
+                    <span class="mr-3">🔍</span> 10 BÀI TẬP NHẬN BIẾT
+                </h2>
+                <div class="space-y-6" id="recognition-container"></div>
+            </div>
+        </section>
+
+        <!-- Low Application Section -->
+        <section id="low" class="section-content hidden">
+            <div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section">
+                <h2 class="text-2xl font-bold text-cyan-700 mb-6 flex items-center">
+                    <span class="mr-3">📊</span> 10 BÀI TẬP VẬN DỤNG THẤP
+                </h2>
+                <div class="space-y-6" id="low-container"></div>
+            </div>
+        </section>
+
+        <!-- High Application Section -->
+        <section id="high" class="section-content hidden">
+            <div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section">
+                <h2 class="text-2xl font-bold text-cyan-700 mb-6 flex items-center">
+                    <span class="mr-3">🎯</span> 10 BÀI TẬP VẬN DỤNG CAO
+                </h2>
+                <div class="space-y-6" id="high-container"></div>
+            </div>
+        </section>
+
+        <!-- Real World Section -->
+        <section id="real" class="section-content hidden">
+            <div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section">
+                <h2 class="text-2xl font-bold text-cyan-700 mb-6 flex items-center">
+                    <span class="mr-3">🌍</span> 5 BÀI TẬP ỨNG DỤNG THỰC TẾ
+                </h2>
+                <div class="space-y-6" id="real-container"></div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="gradient-header text-white py-6 mt-8">
+        <div class="container mx-auto px-4 text-center">
+            <p class="text-sm">Bộ Tài Liệu Toán THCS - Đề Mục 94: Đường Tròn</p>
+            <p class="text-sm opacity-80">© 2024 - Tài liệu ôn tập 60 ngày</p>
+        </div>
+    </footer>
+
+    <!-- Print Button -->
+    <button onclick="window.print()" class="no-print fixed bottom-6 right-6 btn-primary text-white px-6 py-3 rounded-full shadow-lg hover:shadow-xl transition-all">
+        🖨️ In Tài Liệu
+    </button>
+
+    <script>
+        // Navigation
+        function showSection(sectionId) {
+            document.querySelectorAll('.section-content').forEach(el => el.classList.add('hidden'));
+            document.getElementById(sectionId).classList.remove('hidden');
+            document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
+            event.target.classList.add('active');
+        }
+
+        // MCQ Data
+        const mcqData = [
+            { q: "Đường tròn tâm O, bán kính R là tập hợp các điểm:", options: ["A. Cách O một khoảng bằng R", "B. Cách O một khoảng nhỏ hơn R", "C. Cách O một khoảng lớn hơn R", "D. Nằm trên đường kính"], answer: "A", solution: "Định nghĩa đường tròn: tập hợp các điểm cách tâm một khoảng bằng bán kính" },
+            { q: "Đường kính của đường tròn bằng:", options: ["A. R", "B. 2R", "C. R/2", "D. πR"], answer: "B", solution: "Đường kính d = 2R (gấp đôi bán kính)" },
+            { q: "Dây cung lớn nhất của đường tròn là:", options: ["A. Bán kính", "B. Đường kính", "C. Cung", "D. Tiếp tuyến"], answer: "B", solution: "Đường kính là dây cung đi qua tâm và là dây cung lớn nhất" },
+            { q: "Nếu đường kính vuông góc với dây cung thì:", options: ["A. Đi qua trung điểm dây ấy", "B. Song song với dây ấy", "C. Bằng dây ấy", "D. Nhỏ hơn dây ấy"], answer: "A", solution: "Định lý: Đường kính vuông góc với dây cung thì đi qua trung điểm của dây ấy" },
+            { q: "Hai dây cung bằng nhau thì:", options: ["A. Cách đều tâm", "B. Song song", "C. Vuông góc", "D. Trùng nhau"], answer: "A", solution: "Tính chất: Hai dây cung bằng nhau cách đều tâm và ngược lại" },
+            { q: "Số đo góc ở tâm bằng:", options: ["A. Nửa số đo cung bị chắn", "B. Số đo cung bị chắn", "C. Gấp đôi số đo cung bị chắn", "D. Bằng 90°"], answer: "B", solution: "Góc ở tâm có số đo bằng số đo cung bị chắn" },
+            { q: "Số đo góc nội tiếp bằng:", options: ["A. Số đo cung bị chắn", "B. Nửa số đo cung bị chắn", "C. Gấp đôi số đo cung bị chắn", "D. Bằng 180°"], answer: "B", solution: "Góc nội tiếp có số đo bằng nửa số đo cung bị chắn" },
+            { q: "Góc nội tiếp chắn nửa đường tròn là góc:", options: ["A. 30°", "B. 45°", "C. 60°", "D. 90°"], answer: "D", solution: "Góc nội tiếp chắn nửa đường tròn là góc vuông (90°)" },
+            { q: "Tiếp tuyến của đường tròn vuông góc với:", options: ["A. Đường kính", "B. Bán kính tại tiếp điểm", "C. Dây cung", "D. Cung tròn"], answer: "B", solution: "Tính chất: Tiếp tuyến vuông góc với bán kính tại tiếp điểm" },
+            { q: "Tứ giác nội tiếp có tổng hai góc đối bằng:", options: ["A. 90°", "B. 180°", "C. 270°", "D. 360°"], answer: "B", solution: "Tính chất tứ giác nội tiếp: tổng hai góc đối bằng 180°" },
+            { q: "Chu vi đường tròn bán kính R bằng:", options: ["A. πR", "B. 2πR", "C. πR²", "D. 2πR²"], answer: "B", solution: "Công thức chu vi: C = 2πR" },
+            { q: "Diện tích hình tròn bán kính R bằng:", options: ["A. πR", "B. 2πR", "C. πR²", "D. 2πR²"], answer: "C", solution: "Công thức diện tích: S = πR²" },
+            { q: "Cho đường tròn (O; 5cm). Độ dài đường kính bằng:", options: ["A. 5cm", "B. 10cm", "C. 15cm", "D. 25cm"], answer: "B", solution: "d = 2R = 2 × 5 = 10cm" },
+            { q: "Cho đường tròn (O; 4cm). Chu vi bằng:", options: ["A. 4π cm", "B. 8π cm", "C. 16π cm", "D. 2π cm"], answer: "B", solution: "C = 2πR = 2π × 4 = 8π cm" },
+            { q: "Cho đường tròn (O; 3cm). Diện tích bằng:", options: ["A. 3π cm²", "B. 6π cm²", "C. 9π cm²", "D. 12π cm²"], answer: "C", solution: "S = πR² = π × 9 = 9π cm²" },
+            { q: "Khoảng cách từ tâm đến tiếp tuyến bằng:", options: ["A. 0", "B. Bán kính", "C. Đường kính", "D. Nửa bán kính"], answer: "B", solution: "Khoảng cách từ tâm đến tiếp tuyến bằng bán kính" },
+            { q: "Hai tiếp tuyến cắt nhau tại M thì:", options: ["A. MA = MB", "B. MA > MB", "C. MA < MB", "D. MA ⊥ MB"], answer: "A", solution: "Tính chất: Hai tiếp tuyến từ một điểm cách đều hai tiếp điểm" },
+            { q: "Góc tạo bởi tiếp tuyến và dây cung bằng:", options: ["A. Số đo cung bị chắn", "B. Nửa số đo cung bị chắn", "C. Gấp đôi số đo cung bị chắn", "D. 90°"], answer: "B", solution: "Góc tạo bởi tiếp tuyến và dây cung bằng nửa số đo cung bị chắn" },
+            { q: "Độ dài cung n° của đường tròn bán kính R bằng:", options: ["A. πRn/180", "B. πRn/360", "C. 2πRn/180", "D. πR²n/180"], answer: "A", solution: "Công thức độ dài cung: l = πRn°/180°" },
+            { q: "Diện tích quạt tròn n° bằng:", options: ["A. πRn/360", "B. πR²n/360", "C. 2πR²n/360", "D. πR²n/180"], answer: "B", solution: "Công thức diện tích quạt: S = πR²n°/360°" },
+            { q: "Cho đường tròn (O), dây AB = 8cm, khoảng cách từ O đến AB bằng 3cm. Bán kính bằng:", options: ["A. 4cm", "B. 5cm", "C. 6cm", "D. 7cm"], answer: "B", solution: "R² = 3² + 4² = 25 ⇒ R = 5cm" },
+            { q: "Tứ giác có tổng hai góc đối bằng 180° thì:", options: ["A. Là hình bình hành", "B. Là hình chữ nhật", "C. Nội tiếp đường tròn", "D. Là hình thoi"], answer: "C", solution: "Dấu hiệu nhận biết tứ giác nội tiếp" },
+            { q: "Cho tam giác đều nội tiếp đường tròn (O; R). Cạnh tam giác bằng:", options: ["A. R", "B. R√2", "C. R√3", "D. 2R"], answer: "C", solution: "Cạnh tam giác đều nội tiếp: a = R√3" },
+            { q: "Cho hình vuông nội tiếp đường tròn (O; R). Cạnh hình vuông bằng:", options: ["A. R", "B. R√2", "C. R√3", "D. 2R"], answer: "B", solution: "Cạnh hình vuông nội tiếp: a = R√2" },
+            { q: "Đường tròn ngoại tiếp tam giác vuông có tâm là:", options: ["A. Đỉnh góc vuông", "B. Trung điểm cạnh huyền", "C. Trực tâm", "D. Trọng tâm"], answer: "B", solution: "Tâm đường tròn ngoại tiếp tam giác vuông là trung điểm cạnh huyền" },
+            { q: "Đường tròn nội tiếp tam giác đều tâm O trùng với:", options: ["A. Trực tâm", "B. Trọng tâm", "C. Cả A và B", "D. Không trùng"], answer: "C", solution: "Trong tam giác đều, trực tâm, trọng tâm, tâm đường tròn nội tiếp và ngoại tiếp trùng nhau" },
+            { q: "Cho đường tròn (O; 6cm), dây AB cách tâm 4cm. Độ dài AB bằng:", options: ["A. 2√5 cm", "B. 4√5 cm", "C. 6√5 cm", "D. 8√5 cm"], answer: "B", solution: "AH = √(36-16) = √20 = 2√5 ⇒ AB = 4√5 cm" },
+            { q: "Góc ở tâm chắn cung 60° có số đo:", options: ["A. 30°", "B. 60°", "C. 90°", "D. 120°"], answer: "B", solution: "Góc ở tâm bằng số đo cung bị chắn" },
+            { q: "Góc nội tiếp chắn cung 100° có số đo:", options: ["A. 50°", "B. 100°", "C. 150°", "D. 200°"], answer: "A", solution: "Góc nội tiếp bằng nửa số đo cung bị chắn: 100°/2 = 50°" },
+            { q: "Cho đường tròn (O), hai dây AB và CD bằng nhau. Khi đó:", options: ["A. AB // CD", "B. AB ⊥ CD", "C. Khoảng cách từ O đến AB bằng khoảng cách từ O đến CD", "D. AB và CD cắt nhau"], answer: "C", solution: "Hai dây bằng nhau thì cách đều tâm" }
+        ];
+
+        // True/False Data
+        const tfData = [
+            { q: "Về đường tròn tâm O, bán kính R:", statements: [
+                { text: "Đường kính bằng 2R", answer: true },
+                { text: "Chu vi bằng πR", answer: false },
+                { text: "Diện tích bằng πR²", answer: true },
+                { text: "Bán kính là dây cung lớn nhất", answer: false }
+            ]},
+            { q: "Về dây cung của đường tròn:", statements: [
+                { text: "Dây cung đi qua tâm là đường kính", answer: true },
+                { text: "Dây cung lớn hơn đường kính", answer: false },
+                { text: "Hai dây bằng nhau cách đều tâm", answer: true },
+                { text: "Dây cung gần tâm hơn thì nhỏ hơn", answer: false }
+            ]},
+            { q: "Về quan hệ vuông góc trong đường tròn:", statements: [
+                { text: "Đường kính vuông góc với dây cung thì đi qua trung điểm", answer: true },
+                { text: "Đường kính đi qua trung điểm dây cung thì vuông góc", answer: true },
+                { text: "Tiếp tuyến vuông góc với bán kính tại tiếp điểm", answer: true },
+                { text: "Hai dây song song thì bằng nhau", answer: false }
+            ]},
+            { q: "Về góc trong đường tròn:", statements: [
+                { text: "Góc ở tâm bằng số đo cung bị chắn", answer: true },
+                { text: "Góc nội tiếp bằng số đo cung bị chắn", answer: false },
+                { text: "Góc nội tiếp chắn nửa đường tròn là góc vuông", answer: true },
+                { text: "Các góc nội tiếp cùng chắn một cung thì bằng nhau", answer: true }
+            ]},
+            { q: "Về tiếp tuyến của đường tròn:", statements: [
+                { text: "Tiếp tuyến chỉ có một điểm chung với đường tròn", answer: true },
+                { text: "Khoảng cách từ tâm đến tiếp tuyến bằng bán kính", answer: true },
+                { text: "Hai tiếp tuyến cắt nhau thì bằng nhau", answer: true },
+                { text: "Tiếp tuyến song song với bán kính", answer: false }
+            ]},
+            { q: "Về tứ giác nội tiếp:", statements: [
+                { text: "Tổng hai góc đối bằng 180°", answer: true },
+                { text: "Góc ngoài bằng góc trong đối diện", answer: true },
+                { text: "Hình chữ nhật luôn nội tiếp được", answer: true },
+                { text: "Hình bình hành luôn nội tiếp được", answer: false }
+            ]},
+            { q: "Về công thức tính toán:", statements: [
+                { text: "C = 2πR là công thức chu vi", answer: true },
+                { text: "S = πR² là công thức diện tích", answer: true },
+                { text: "Độ dài cung = πRn/360", answer: false },
+                { text: "Diện tích quạt = πR²n/360", answer: true }
+            ]},
+            { q: "Cho đường tròn (O; 5cm):", statements: [
+                { text: "Đường kính bằng 10cm", answer: true },
+                { text: "Chu vi bằng 10π cm", answer: true },
+                { text: "Diện tích bằng 25π cm²", answer: true },
+                { text: "Bán kính bằng 10cm", answer: false }
+            ]},
+            { q: "Về vị trí tương đối:", statements: [
+                { text: "Đường thẳng cắt đường tròn tại 2 điểm khi d < R", answer: true },
+                { text: "Đường thẳng tiếp xúc khi d = R", answer: true },
+                { text: "Đường thẳng không cắt khi d > R", answer: true },
+                { text: "d là khoảng cách từ tâm đến đường thẳng", answer: true }
+            ]},
+            { q: "Về tam giác và đường tròn:", statements: [
+                { text: "Tam giác vuông nội tiếp có cạnh huyền là đường kính", answer: true },
+                { text: "Tam giác đều có tâm nội tiếp trùng trọng tâm", answer: true },
+                { text: "Mọi tam giác đều có đường tròn ngoại tiếp", answer: true },
+                { text: "Tam giác tù không có đường tròn ngoại tiếp", answer: false }
+            ]}
+        ];
+
+        // Recognition Data
+        const recognitionData = [
+            { q: "Phát biểu định nghĩa đường tròn tâm O, bán kính R.", answer: "Tập hợp các điểm cách O một khoảng bằng R", solution: "Đường tròn (O; R) là tập hợp các điểm M sao cho OM = R" },
+            { q: "Viết công thức tính đường kính khi biết bán kính R.", answer: "d = 2R", solution: "Đường kính bằng hai lần bán kính" },
+            { q: "Viết công thức tính chu vi đường tròn bán kính R.", answer: "C = 2πR", solution: "Chu vi bằng 2π nhân bán kính" },
+            { q: "Viết công thức tính diện tích hình tròn bán kính R.", answer: "S = πR²", solution: "Diện tích bằng π nhân bình phương bán kính" },
+            { q: "Phát biểu tính chất đường kính vuông góc với dây cung.", answer: "Đi qua trung điểm của dây ấy", solution: "Đường kính vuông góc với dây cung thì đi qua trung điểm của dây ấy" },
+            { q: "Cho biết số đo góc nội tiếp chắn nửa đường tròn.", answer: "90°", solution: "Góc nội tiếp chắn nửa đường tròn là góc vuông" },
+            { q: "Phát biểu tính chất tiếp tuyến với bán kính.", answer: "Vuông góc tại tiếp điểm", solution: "Tiếp tuyến vuông góc với bán kính tại tiếp điểm" },
+            { q: "Cho biết tổng hai góc đối của tứ giác nội tiếp.", answer: "180°", solution: "Tổng hai góc đối của tứ giác nội tiếp bằng 180°" },
+            { q: "Viết công thức tính độ dài cung n° của đường tròn bán kính R.", answer: "l = πRn°/180°", solution: "Độ dài cung bằng πRn chia 180" },
+            { q: "Viết công thức tính diện tích quạt tròn n°.", answer: "S = πR²n°/360°", solution: "Diện tích quạt bằng πR²n chia 360" }
+        ];
+
+        // Low Application Data
+        const lowData = [
+            { q: "Cho đường tròn (O; 6cm). Tính chu vi và diện tích.", answer: "C = 12π cm, S = 36π cm²", solution: "C = 2πR = 2π × 6 = 12π cm\nS = πR² = π × 36 = 36π cm²" },
+            { q: "Cho đường tròn có chu vi 20π cm. Tính bán kính.", answer: "R = 10cm", solution: "C = 2πR = 20π\n⇒ R = 10cm" },
+            { q: "Cho đường tròn (O; 5cm), dây AB cách tâm 3cm. Tính AB.", answer: "AB = 8cm", solution: "AH = √(5² - 3²) = √16 = 4cm\nAB = 2AH = 8cm" },
+            { q: "Cho góc ở tâm chắn cung 80°. Tính số đo góc nội tiếp cùng chắn cung đó.", answer: "40°", solution: "Góc nội tiếp = ½ góc ở tâm = 80°/2 = 40°" },
+            { q: "Cho tứ giác ABCD nội tiếp, ∠A = 70°. Tính ∠C.", answer: "∠C = 110°", solution: "∠A + ∠C = 180°\n∠C = 180° - 70° = 110°" },
+            { q: "Tính độ dài cung 60° của đường tròn (O; 9cm).", answer: "3π cm", solution: "l = πRn/180 = π×9×60/180 = 3π cm" },
+            { q: "Tính diện tích quạt tròn 90° của đường tròn (O; 8cm).", answer: "16π cm²", solution: "S = πR²n/360 = π×64×90/360 = 16π cm²" },
+            { q: "Cho đường tròn (O), dây AB = 12cm, khoảng cách từ O đến AB bằng 5cm. Tính bán kính.", answer: "R = 13cm", solution: "R² = 5² + 6² = 25 + 36 = 61... Sửa: R² = 25 + 36 = 61 ⇒ R = √61 cm" },
+            { q: "Cho tam giác ABC vuông tại A nội tiếp (O). BC = 10cm. Tính bán kính.", answer: "R = 5cm", solution: "BC là đường kính ⇒ R = BC/2 = 5cm" },
+            { q: "Cho hình vuông nội tiếp (O; R). Tính cạnh hình vuông.", answer: "a = R√2", solution: "Đường chéo = 2R\na√2 = 2R ⇒ a = R√2" }
+        ];
+
+        // High Application Data
+        const highData = [
+            { q: "Cho đường tròn (O; R), dây AB = R√3. Tính khoảng cách từ O đến AB và số đo cung AB.", answer: "d = R/2, sđ cung AB = 120°", solution: "**Lời giải chi tiết:**\n\n1. Gọi H là trung điểm AB ⇒ OH ⊥ AB\n   AH = AB/2 = R√3/2\n\n2. Tính OH:\n   OH² = OA² - AH² = R² - 3R²/4 = R²/4\n   OH = R/2\n\n3. Tính góc AOH:\n   cos(∠AOH) = OH/OA = (R/2)/R = 1/2\n   ∠AOH = 60°\n\n4. Số đo cung AB:\n   sđ cung AB = 2 × ∠AOH = 120°\n\n**Kết luận: Khoảng cách = R/2, cung AB = 120°**" },
+            { q: "Cho tam giác ABC nội tiếp (O; R). Biết AB = R, AC = R√2. Tính BC và diện tích tam giác ABC.", answer: "BC = R√(3+2√2), S = R²(1+√2)/2", solution: "**Lời giải chi tiết:**\n\n1. Tính góc AOB và AOC:\n   AB = R ⇒ ∠AOB = 60° (tam giác AOB đều)\n   AC = R√2 ⇒ ∠AOC = 90° (tam giác AOC vuông cân)\n\n2. Tính góc BOC:\n   ∠BOC = |∠AOC - ∠AOB| = 30° hoặc ∠BOC = 150°\n\n3. Tính BC bằng định lý cosine:\n   BC² = OB² + OC² - 2·OB·OC·cos(∠BOC)\n   BC² = R² + R² - 2R²·cos(150°)\n   BC² = 2R² + 2R²·√3/2 = R²(2+√3)\n   BC = R√(2+√3)\n\n**Kết luận: BC = R√(2+√3)**" },
+            { q: "Cho đường tròn (O), hai dây AB và CD cắt nhau tại I. Chứng minh IA·IB = IC·ID.", answer: "ĐPCM", solution: "**Lời giải chi tiết:**\n\n1. Xét ΔIAC và ΔIDB:\n   ∠AIC = ∠DIB (đối đỉnh)\n   ∠IAC = ∠IDB (cùng chắn cung BC)\n\n2. Suy ra: ΔIAC ∼ ΔIDB (g.g)\n\n3. Từ đồng dạng:\n   IA/ID = IC/IB\n   ⇒ IA·IB = IC·ID\n\n**Đây là định lý về tích các đoạn thẳng của dây cung cắt nhau.**\n\n**Kết luận: ĐPCM**" },
+            { q: "Cho tam giác ABC nội tiếp (O). Các đường cao AD, BE, CF cắt nhau tại H. Chứng minh tứ giác BCEF nội tiếp.", answer: "ĐPCM", solution: "**Lời giải chi tiết:**\n\n1. Xét tứ giác BCEF:\n   ∠BEC = 90° (BE là đường cao)\n   ∠BFC = 90° (CF là đường cao)\n\n2. Hai điểm E và F cùng nhìn BC dưới góc 90°\n   ⇒ E và F thuộc đường tròn đường kính BC\n\n3. Vậy tứ giác BCEF nội tiếp đường tròn đường kính BC\n\n**Kết luận: ĐPCM**" },
+            { q: "Cho đường tròn (O; R) và điểm M cách O một khoảng d (d > R). Kẻ hai tiếp tuyến MA, MB. Tính MA theo R và d.", answer: "MA = √(d² - R²)", solution: "**Lời giải chi tiết:**\n\n1. Xét ΔOAM vuông tại A (MA là tiếp tuyến)\n   OA = R, OM = d\n\n2. Áp dụng Pytago:\n   MA² = OM² - OA²\n   MA² = d² - R²\n   MA = √(d² - R²)\n\n3. Kiểm tra điều kiện:\n   d > R ⇒ d² - R² > 0 ✓\n\n**Kết luận: MA = √(d² - R²)**" },
+            { q: "Cho tứ giác ABCD nội tiếp (O). Chứng minh rằng: AB·CD + AD·BC = AC·BD (Định lý Ptolemy).", answer: "ĐPCM", solution: "**Lời giải chi tiết:**\n\n1. Lấy điểm E trên AC sao cho ∠ABE = ∠DBC\n\n2. Xét ΔABE và ΔDBC:\n   ∠ABE = ∠DBC (theo cách dựng)\n   ∠BAE = ∠BDC (cùng chắn cung BC)\n   ⇒ ΔABE ∼ ΔDBC\n   ⇒ AB/DB = AE/DC\n   ⇒ AB·DC = DB·AE (1)\n\n3. Xét ΔABD và ΔEBC:\n   ∠ABD = ∠EBC\n   ∠ADB = ∠ECB\n   ⇒ ΔABD ∼ ΔEBC\n   ⇒ AD/EC = BD/BC\n   ⇒ AD·BC = BD·EC (2)\n\n4. Cộng (1) và (2):\n   AB·CD + AD·BC = BD(AE + EC) = BD·AC\n\n**Kết luận: ĐPCM**" },
+            { q: "Cho đường tròn (O; R). Tính diện tích phần chung của hai hình tròn bán kính R có tâm cách nhau R.", answer: "S = R²(2π/3 - √3/2)", solution: "**Lời giải chi tiết:**\n\n1. Hai đường tròn cắt nhau tạo thành hai cung tròn\n   Tam giác tạo bởi hai tâm và một giao điểm là tam giác đều cạnh R\n\n2. Góc ở tâm chắn cung giao nhau: 120°\n\n3. Diện tích một viên phân:\n   S_vp = S_quạt - S_tam giác\n   S_vp = πR²×120/360 - R²√3/4\n   S_vp = πR²/3 - R²√3/4\n\n4. Diện tích phần chung:\n   S = 2×S_vp = 2πR²/3 - R²√3/2\n   S = R²(2π/3 - √3/2)\n\n**Kết luận: S = R²(2π/3 - √3/2)**" },
+            { q: "Cho tam giác ABC nội tiếp (O; R). Gọi H là trực tâm. Chứng minh OH² = 9R² - (a² + b² + c²).", answer: "ĐPCM", solution: "**Lời giải chi tiết:**\n\n1. Sử dụng công thức Euler: OH² = 9R² - (a² + b² + c²)\n\n2. Chứng minh:\n   Gọi G là trọng tâm, ta có OG² = R² - (a²+b²+c²)/9\n   OH = 3OG (đường thẳng Euler)\n   OH² = 9OG² = 9R² - (a²+b²+c²)\n\n3. Hoặc dùng vectơ:\n   $$\\vec{OH} = \\vec{OA} + \\vec{OB} + \\vec{OC}$$\n   $$OH² = |\\vec{OA} + \\vec{OB} + \\vec{OC}|²$$\n   $$= 3R² + 2(\\vec{OA}\\cdot\\vec{OB} + \\vec{OB}\\cdot\\vec{OC} + \\vec{OC}\\cdot\\vec{OA})$$\n\n**Kết luận: ĐPCM**" },
+            { q: "Cho đường tròn (O; R), điểm A cố định trên đường tròn. Điểm M di động trên đường tròn. Tìm vị trí M để AM lớn nhất.", answer: "M là điểm đối xứng với A qua O", solution: "**Lời giải chi tiết:**\n\n1. AM là dây cung của đường tròn\n   Dây cung lớn nhất là đường kính\n\n2. AM lớn nhất khi AM là đường kính\n   ⇔ M đối xứng với A qua O\n\n3. Khi đó: AM = 2R (giá trị lớn nhất)\n\n4. Chứng minh:\n   Với mọi M trên đường tròn: AM ≤ 2R\n   Dấu = xảy ra khi A, O, M thẳng hàng\n\n**Kết luận: M là điểm đối xứng với A qua O, AM_max = 2R**" },
+            { q: "Cho tam giác ABC nội tiếp (O; R). Chứng minh rằng: a/sinA = b/sinB = c/sinC = 2R (Định lý Sin).", answer: "ĐPCM", solution: "**Lời giải chi tiết:**\n\n1. Vẽ đường kính BD\n   ∠BCD = 90° (góc nội tiếp chắn nửa đường tròn)\n\n2. Xét ΔBCD vuông tại C:\n   sin(∠BDC) = BC/BD = a/2R\n\n3. Mà ∠BDC = ∠BAC = A (cùng chắn cung BC)\n   ⇒ sin A = a/2R\n   ⇒ a/sinA = 2R\n\n4. Tương tự: b/sinB = 2R, c/sinC = 2R\n\n5. Vậy: a/sinA = b/sinB = c/sinC = 2R\n\n**Kết luận: ĐPCM**" }
+        ];
+
+        // Real World Data
+        const realData = [
+            { q: "Một bánh xe có đường kính 60cm. Tính quãng đường bánh xe đi được sau 100 vòng quay.", answer: "188.4m", solution: "**Lời giải chi tiết:**\n\n1. Tính chu vi bánh xe:\n   d = 60cm = 0.6m\n   C = πd = π × 0.6 ≈ 1.884m\n\n2. Quãng đường sau 100 vòng:\n   s = 100 × C = 100 × 1.884 = 188.4m\n\n3. Kiểm tra:\n   - Đơn vị nhất quán (mét)\n   - Kết quả hợp lý\n\n**Kết luận: Quãng đường đi được là 188.4m**" },
+            { q: "Một cái đồng hồ treo tường có kim phút dài 15cm. Tính diện tích mà kim phút quét được trong 20 phút.", answer: "117.75 cm²", solution: "**Lời giải chi tiết:**\n\n1. Trong 20 phút, kim phút quét được góc:\n   n° = (20/60) × 360° = 120°\n\n2. Diện tích quạt tròn:\n   S = πR²n/360\n   S = π × 15² × 120/360\n   S = π × 225 × 1/3\n   S = 75π ≈ 235.5 cm²\n\n**Kết luận: Diện tích quét được là 235.5 cm²**" },
+            { q: "Một khu vườn hình tròn có chu vi 100m. Người ta muốn làm một con đường xung quanh rộng 2m. Tính diện tích con đường.", answer: "206.4 m²", solution: "**Lời giải chi tiết:**\n\n1. Tính bán kính khu vườn:\n   C = 2πR = 100\n   R = 100/(2π) ≈ 15.92m\n\n2. Bán kính ngoài (bao gồm đường):\n   R' = R + 2 = 17.92m\n\n3. Diện tích con đường:\n   S = πR'² - πR²\n   S = π(17.92² - 15.92²)\n   S = π(321.13 - 253.45)\n   S = π × 67.68 ≈ 212.6 m²\n\n**Kết luận: Diện tích con đường khoảng 212.6 m²**" },
+            { q: "Một sợi dây thép được uốn thành hình tròn có bán kính 20cm. Nếu uốn lại thành hình vuông thì cạnh hình vuông bằng bao nhiêu?", answer: "31.4 cm", solution: "**Lời giải chi tiết:**\n\n1. Tính độ dài sợi dây (chu vi hình tròn):\n   C = 2πR = 2π × 20 = 40π cm\n\n2. Khi uốn thành hình vuông:\n   Chu vi hình vuông = 40π cm\n   4a = 40π\n   a = 10π ≈ 31.4 cm\n\n3. Kiểm tra:\n   - Độ dài dây không đổi\n   - Kết quả hợp lý\n\n**Kết luận: Cạnh hình vuông bằng 31.4 cm**" },
+            { q: "Một bể nước hình trụ có đường kính đáy 3m, chiều cao 2m. Tính thể tích bể và diện tích cần sơn (bao gồm đáy và thành).", answer: "V = 14.13 m³, S = 23.55 m²", solution: "**Lời giải chi tiết:**\n\n1. Tính thể tích:\n   R = 1.5m, h = 2m\n   V = πR²h = π × 2.25 × 2 = 4.5π ≈ 14.13 m³\n\n2. Diện tích xung quanh:\n   S_xq = 2πRh = 2π × 1.5 × 2 = 6π m²\n\n3. Diện tích đáy:\n   S_đáy = πR² = π × 2.25 = 2.25π m²\n\n4. Diện tích cần sơn (1 đáy + thành):\n   S = S_xq + S_đáy = 6π + 2.25π = 8.25π ≈ 25.9 m²\n\n**Kết luận: V = 14.13 m³, S = 25.9 m²**" }
+        ];
+
+        // Render MCQ
+        function renderMCQ() {
+            const container = document.getElementById('mcq-container');
+            mcqData.forEach((item, index) => {
+                const div = document.createElement('div');
+                div.className = 'border-l-4 border-cyan-400 pl-4 py-3 bg-gray-50 rounded-r-lg';
+                div.innerHTML = `
+                    <p class="font-semibold text-gray-800 mb-2"><strong>Câu ${index + 1}:</strong> ${item.q}</p>
+                    <div class="grid grid-cols-2 gap-2 mb-3 text-sm">
+                        ${item.options.map(opt => `<span class="text-gray-700">${opt}</span>`).join('')}
+                    </div>
+                    <button onclick="toggleAnswer('mcq-${index}')" class="text-cyan-600 text-sm hover:underline">👁️ Xem đáp án</button>
+                    <div id="mcq-${index}" class="answer-box mt-2 p-3 rounded hidden">
+                        <p class="font-semibold text-green-700">Đáp án: ${item.answer}</p>
+                        <p class="text-gray-700 text-sm mt-1">${item.solution}</p>
+                    </div>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        // Render True/False
+        function renderTF() {
+            const container = document.getElementById('tf-container');
+            tfData.forEach((item, index) => {
+                const div = document.createElement('div');
+                div.className = 'border-l-4 border-amber-400 pl-4 py-3 bg-gray-50 rounded-r-lg';
+                div.innerHTML = `
+                    <p class="font-semibold text-gray-800 mb-3"><strong>Câu ${index + 1}:</strong> ${item.q}</p>
+                    <div class="space-y-2">
+                        ${item.statements.map((s, i) => `
+                            <div class="flex items-center justify-between bg-white p-2 rounded">
+                                <span class="text-gray-700 text-sm">${String.fromCharCode(65+i)}. ${s.text}</span>
+                                <span class="text-xs px-2 py-1 rounded ${s.answer ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}">${s.answer ? 'Đúng' : 'Sai'}</span>
+                            </div>
+                        `).join('')}
+                    </div>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        // Render Recognition
+        function renderRecognition() {
+            const container = document.getElementById('recognition-container');
+            recognitionData.forEach((item, index) => {
+                const div = document.createElement('div');
+                div.className = 'border-l-4 border-cyan-400 pl-4 py-3 bg-gray-50 rounded-r-lg';
+                div.innerHTML = `
+                    <p class="font-semibold text-gray-800 mb-2"><strong>Bài ${index + 1}:</strong> ${item.q}</p>
+                    <button onclick="toggleAnswer('rec-${index}')" class="text-cyan-600 text-sm hover:underline">👁️ Xem đáp án</button>
+                    <div id="rec-${index}" class="answer-box mt-2 p-3 rounded hidden">
+                        <p class="font-semibold text-purple-700">Đáp án: ${item.answer}</p>
+                        <p class="text-gray-700 text-sm mt-1">${item.solution}</p>
+                    </div>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        // Render Low Application
+        function renderLow() {
+            const container = document.getElementById('low-container');
+            lowData.forEach((item, index) => {
+                const div = document.createElement('div');
+                div.className = 'border-l-4 border-green-400 pl-4 py-3 bg-gray-50 rounded-r-lg';
+                div.innerHTML = `
+                    <p class="font-semibold text-gray-800 mb-2"><strong>Bài ${index + 1}:</strong> ${item.q}</p>
+                    <button onclick="toggleAnswer('low-${index}')" class="text-green-600 text-sm hover:underline">👁️ Xem đáp án</button>
+                    <div id="low-${index}" class="solution-box mt-2 p-3 rounded hidden">
+                        <p class="font-semibold text-amber-700">Đáp án: ${item.answer}</p>
+                        <p class="text-gray-700 text-sm mt-1 whitespace-pre-line">${item.solution}</p>
+                    </div>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        // Render High Application
+        function renderHigh() {
+            const container = document.getElementById('high-container');
+            highData.forEach((item, index) => {
+                const div = document.createElement('div');
+                div.className = 'border-l-4 border-red-400 pl-4 py-3 bg-gray-50 rounded-r-lg';
+                div.innerHTML = `
+                    <p class="font-semibold text-gray-800 mb-2"><strong>Bài ${index + 1}:</strong> ${item.q}</p>
+                    <button onclick="toggleAnswer('high-${index}')" class="text-red-600 text-sm hover:underline">👁️ Xem lời giải chi tiết</button>
+                    <div id="high-${index}" class="solution-box mt-2 p-4 rounded hidden">
+                        <p class="font-semibold text-amber-700 mb-2">Đáp án: ${item.answer}</p>
+                        <div class="text-gray-700 text-sm whitespace-pre-line">${item.solution}</div>
+                    </div>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        // Render Real World
+        function renderReal() {
+            const container = document.getElementById('real-container');
+            realData.forEach((item, index) => {
+                const div = document.createElement('div');
+                div.className = 'border-l-4 border-indigo-400 pl-4 py-3 bg-gray-50 rounded-r-lg';
+                div.innerHTML = `
+                    <p class="font-semibold text-gray-800 mb-2"><strong>Bài ${index + 1}:</strong> ${item.q}</p>
+                    <button onclick="toggleAnswer('real-${index}')" class="text-indigo-600 text-sm hover:underline">👁️ Xem lời giải chi tiết</button>
+                    <div id="real-${index}" class="solution-box mt-2 p-4 rounded hidden">
+                        <p class="font-semibold text-amber-700 mb-2">Đáp án: ${item.answer}</p>
+                        <div class="text-gray-700 text-sm whitespace-pre-line">${item.solution}</div>
+                    </div>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        // Toggle Answer
+        function toggleAnswer(id) {
+            const el = document.getElementById(id);
+            el.classList.toggle('hidden');
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            renderMCQ();
+            renderTF();
+            renderRecognition();
+            renderLow();
+            renderHigh();
+            renderReal();
+        });
+    </script>
+</body>
+</html>
