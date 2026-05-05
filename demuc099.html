@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hình Nón - Đề Mục 99 - Toán Lớp 9</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@fontsource/roboto@4.5.8/index.css" rel="stylesheet">
+    <style>
+        * {
+            font-family: 'Roboto', sans-serif;
+        }
+        .gradient-header {
+            background: linear-gradient(135deg, #0891b2 0%, #dc2626 100%);
+        }
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, #0891b2 0%, #dc2626 100%);
+        }
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #067894 0%, #b91c1c 100%);
+        }
+        .answer-box {
+            background: #f0f9ff;
+            border-left: 4px solid #0891b2;
+        }
+        .solution-box {
+            background: #fef3c7;
+            border-left: 4px solid #f59e0b;
+        }
+        .nav-item {
+            transition: all 0.2s ease;
+        }
+        .nav-item:hover {
+            background: rgba(255,255,255,0.2);
+        }
+        .nav-item.active {
+            background: rgba(255,255,255,0.3);
+        }
+        .print-section {
+            page-break-inside: avoid;
+        }
+        @media print {
+            .no-print {
+                display: none;
+            }
+        }
+        .cone-diagram {
+            background: #f8fafc;
+            border: 2px dashed #cbd5e1;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+        }
+        .formula-box {
+            background: linear-gradient(135deg, #e0f2fe 0%, #fee2e2 100%);
+            border-radius: 8px;
+            padding: 16px;
+            margin: 12px 0;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="gradient-header text-white py-8">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center">
+                <div>
+                    <h1 class="text-3xl font-bold">HÌNH NÓN</h1>
+                    <p class="text-lg opacity-90">Đề Mục 99 - Toán Lớp 9 - Hình Học</p>
+                </div>
+                <div class="text-right">
+                    <p class="text-sm opacity-80">Bộ Tài Liệu Toán THCS</p>
+                    <p class="text-sm opacity-80">60 Ngày Ôn Tập</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md sticky top-0 z-50 no-print">
+        <div class="container mx-auto px-4">
+            <div class="flex overflow-x-auto py-3 space-x-2">
+                <button onclick="showSection('lesson')" class="nav-item active px-4 py-2 rounded-lg bg-cyan-100 text-cyan-700 whitespace-nowrap">📚 Bài Giảng</button>
+                <button onclick="showSection('mcq')" class="nav-item px-4 py-2 rounded-lg hover:bg-gray-100 whitespace-nowrap">📝 30 Câu MCQ</button>
+                <button onclick="showSection('tf')" class="nav-item px-4 py-2 rounded-lg hover:bg-gray-100 whitespace-nowrap">✅ 10 Câu Đúng/Sai</button>
+                <button onclick="showSection('recognition')" class="nav-item px-4 py-2 rounded-lg hover:bg-gray-100 whitespace-nowrap">🔍 10 Bài Nhận Biết</button>
+                <button onclick="showSection('low')" class="nav-item px-4 py-2 rounded-lg hover:bg-gray-100 whitespace-nowrap">📊 10 Bài Vận Dụng Thấp</button>
+                <button onclick="showSection('high')" class="nav-item px-4 py-2 rounded-lg hover:bg-gray-100 whitespace-nowrap">🎯 10 Bài Vận Dụng Cao</button>
+                <button onclick="showSection('real')" class="nav-item px-4 py-2 rounded-lg hover:bg-gray-100 whitespace-nowrap">🌍 5 Bài Thực Tế</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+        <!-- Lesson Section -->
+        <section id="lesson" class="section-content">
+            <div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section">
+                <h2 class="text-2xl font-bold text-cyan-700 mb-6 flex items-center">
+                    <span class="mr-3">📚</span> BÀI GIẢNG CHI TIẾT: HÌNH NÓN
+                </h2>
+                <div class="space-y-6">
+                    <!-- Introduction -->
+                    <div class="answer-box p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold text-cyan-700 mb-4">1. ĐỊNH NGHĨA HÌNH NÓN</h3>
+                        <p class="text-gray-700 mb-4">
+                            <strong>Hình nón tròn xoay</strong> (gọi tắt là hình nón) là hình được tạo thành khi quay tam giác vuông AOB một vòng quanh cạnh góc vuông OA cố định.
+                        </p>
+                        <div class="cone-diagram mb-4">
+                            <svg width="350" height="400" viewBox="0 0 350 400">
+                                <!-- Cone base -->
+                                <ellipse cx="175" cy="350" rx="100" ry="30" fill="none" stroke="#0891b2" stroke-width="3"/>
+                                <!-- Cone sides -->
+                                <line x1="75" y1="350" x2="175" y2="100" stroke="#0891b2" stroke-width="3"/>
+                                <line x1="275" y1="350" x2="175" y2="100" stroke="#0891b2" stroke-width="3"/>
+                                <!-- Height -->
+                                <line x1="175" y1="100" x2="175" y2="350" stroke="#dc2626" stroke-width="2" stroke-dasharray="5,5"/>
+                                <text x="185" y="230" fill="#dc2626" font-size="16" font-weight="bold">h</text>
+                                <!-- Radius -->
+                                <line x1="175" y1="350" x2="275" y2="350" stroke="#f59e0b" stroke-width="2"/>
+                                <text x="215" y="340" fill="#f59e0b" font-size="16" font-weight="bold">R</text>
+                                <!-- Slant height -->
+                                <line x1="175" y1="100" x2="275" y2="350" stroke="#7c3aed" stroke-width="2"/>
+                                <text x="235" y="200" fill="#7c3aed" font-size="16" font-weight="bold">ℓ</text>
+                                <!-- Labels -->
+                                <text x="160" y="90" fill="#0891b2" font-size="14">Đỉnh</text>
+                                <text x="160" y="390" fill="#0891b2" font-size="14">Đáy</text>
+                                <text x="290" y="230" fill="#0891b2" font-size="14">Đường sinh</text>
+                                <circle cx="175" cy="350" r="3" fill="#dc2626"/>
+                                <text x="185" y="365" fill="#dc2626" font-size="12">O</text>
+                                <circle cx="175" cy="100" r="3" fill="#0891b2"/>
+                                <text x="185" y="90" fill="#0891b2" font-size="12">S</text>
+                            </svg>
+                            <p class="text-sm text-gray-600 mt-2">Hình nón có bán kính đáy R, chiều cao h và đường sinh ℓ</p>
+                        </div>
+                        <div class="formula-box">
+                            <h4 class="font-semibold text-cyan-600 mb-2">📐 Các yếu tố của hình nón:</h4>
+                            <ul class="space-y-2 text-gray-700">
+                                <li>• <strong>Đáy:</strong> Một hình tròn bán kính R</li>
+                                <li>• <strong>Đỉnh(S):</strong> Điểm nhọn của hình nón</li>
+                                <li>• <strong>Bán kính đáy (R):</strong> Bán kính của hình tròn đáy</li>
+                                <li>• <strong>Chiều cao(h):</strong> Khoảng cách từ đỉnh đến tâm đáy (SO)</li>
+                                <li>• <strong>Đường sinh(ℓ):</strong> Đoạn thẳng nối đỉnh với một điểm trên đường tròn đáy</li>
+                                <li>• <strong>Mặt xung quanh:</strong> Mặt cong nối đỉnh với đường tròn đáy</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Formulas -->
+                    <div class="solution-box p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold text-amber-700 mb-4">2. CÔNG THỨC TÍNH TOÁN</h3>
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div class="bg-white p-4 rounded-lg border-2 border-cyan-300">
+                                <h4 class="font-semibold text-cyan-600 mb-2">📏 Diện tích đáy:</h4>
+                                <p class="text-2xl text-cyan-700 font-bold text-center">S_đáy = πR²</p>
+                                <p class="text-gray-600 text-sm text-center mt-2">R: bán kính đáy</p>
+                            </div>
+                            <div class="bg-white p-4 rounded-lg border-2 border-purple-300">
+                                <h4 class="font-semibold text-purple-600 mb-2">📐 Chu vi đáy:</h4>
+                                <p class="text-2xl text-purple-700 font-bold text-center">C = 2πR</p>
+                                <p class="text-gray-600 text-sm text-center mt-2">R: bán kính đáy</p>
+                            </div>
+                            <div class="bg-white p-4 rounded-lg border-2 border-amber-300">
+                                <h4 class="font-semibold text-amber-600 mb-2">📐 Diện tích xung quanh:</h4>
+                                <p class="text-2xl text-amber-700 font-bold text-center">S_xq = πRℓ</p>
+                                <p class="text-gray-600 text-sm text-center mt-2">R: bán kính, ℓ: đường sinh</p>
+                            </div>
+                            <div class="bg-white p-4 rounded-lg border-2 border-green-300">
+                                <h4 class="font-semibold text-green-600 mb-2">📐 Diện tích toàn phần:</h4>
+                                <p class="text-xl text-green-700 font-bold text-center">S_tp = πRℓ + πR²</p>
+                                <p class="text-gray-600 text-sm text-center mt-2">= S_xq + S_đáy</p>
+                            </div>
+                            <div class="bg-white p-4 rounded-lg border-2 border-red-300 md:col-span-2">
+                                <h4 class="font-semibold text-red-600 mb-2">📐 Thể tích khối nón:</h4>
+                                <p class="text-3xl text-red-700 font-bold text-center">V = ⅓πR²h</p>
+                                <p class="text-gray-600 text-sm text-center mt-2">= ⅓ × S_đáy × h</p>
+                            </div>
+                        </div>
+                        <div class="formula-box">
+                            <h4 class="font-semibold text-cyan-600 mb-2">📐 Hệ thức Pytago trong hình nón:</h4>
+                            <p class="text-gray-700 mb-2">Trong tam giác vuông tạo bởi chiều cao, bán kính và đường sinh:</p>
+                            <p class="text-cyan-700 font-bold text-center text-xl">ℓ² = R² + h²</p>
+                            <p class="text-gray-600 text-sm text-center mt-2">⇒ ℓ = √(R² + h²)</p>
+                        </div>
+                        <div class="mt-4 bg-amber-50 p-4 rounded-lg">
+                            <p class="text-amber-800 text-sm">
+                                <strong>💡 Lưu ý:</strong> Thể tích khối nón bằng 1/3 thể tích khối trụ có cùng đáy và chiều cao. Đơn vị thể tích là lập phương của đơn vị độ dài (cm³, m³,...)
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Properties -->
+                    <div class="answer-box p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold text-cyan-700 mb-4">3. TÍNH CHẤT CỦA HÌNH NÓN</h3>
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div class="bg-cyan-50 p-4 rounded-lg">
+                                <h4 class="font-semibold text-cyan-600 mb-2">Tính chất 1: Mặt cắt</h4>
+                                <p class="text-gray-700 text-sm">Mặt cắt song song với đáy là hình tròn nhỏ hơn đáy.</p>
+                            </div>
+                            <div class="bg-purple-50 p-4 rounded-lg">
+                                <h4 class="font-semibold text-purple-600 mb-2">Tính chất 2: Mặt cắt qua trục</h4>
+                                <p class="text-gray-700 text-sm">Mặt cắt chứa trục là tam giác cân có cạnh bên bằng đường sinh.</p>
+                            </div>
+                            <div class="bg-amber-50 p-4 rounded-lg">
+                                <h4 class="font-semibold text-amber-600 mb-2">Tính chất 3: Đường sinh</h4>
+                                <p class="text-gray-700 text-sm">Tất cả đường sinh bằng nhau và tạo với đáy cùng một góc.</p>
+                            </div>
+                            <div class="bg-green-50 p-4 rounded-lg">
+                                <h4 class="font-semibold text-green-600 mb-2">Tính chất 4: Đối xứng</h4>
+                                <p class="text-gray-700 text-sm">Hình nón có vô số mặt phẳng đối xứng chứa trục.</p>
+                            </div>
+                        </div>
+                        <div class="mt-4 bg-white p-4 rounded-lg border-2 border-cyan-300">
+                            <h4 class="font-semibold text-cyan-700 mb-2">📝 Mặt khai triển của hình nón:</h4>
+                            <ul class="space-y-2 text-gray-700 text-sm">
+                                <li>• Mặt xung quanh khai triển thành hình quạt tròn</li>
+                                <li>• Bán kính hình quạt = đường sinh ℓ</li>
+                                <li>• Độ dài cung hình quạt = chu vi đáy = 2πR</li>
+                                <li>• Góc ở tâm hình quạt: n° = (360° × R)/ℓ</li>
+                                <li>• Đáy là một hình tròn bán kính R</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Relationships -->
+                    <div class="solution-box p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold text-amber-700 mb-4">4. HỆ THỨC LIÊN HỆ</h3>
+                        <div class="formula-box">
+                            <h4 class="font-semibold text-cyan-600 mb-2">📐 Từ đường kính d:</h4>
+                            <p class="text-gray-700 mb-2">R = d/2</p>
+                            <p class="text-cyan-700 font-bold">V = ⅓π(d/2)²h = πd²h/12</p>
+                        </div>
+                        <div class="formula-box">
+                            <h4 class="font-semibold text-purple-600 mb-2">📐 Từ chu vi đáy C:</h4>
+                            <p class="text-gray-700 mb-2">C = 2πR ⇒ R = C/(2π)</p>
+                            <p class="text-purple-700 font-bold">S_xq = ½C × ℓ</p>
+                        </div>
+                        <div class="formula-box">
+                            <h4 class="font-semibold text-amber-600 mb-2">📐 Từ diện tích đáy S_đáy:</h4>
+                            <p class="text-gray-700 mb-2">S_đáy = πR² ⇒ R = √(S_đáy/π)</p>
+                            <p class="text-amber-700 font-bold">V = ⅓ × S_đáy × h</p>
+                        </div>
+                        <div class="formula-box">
+                            <h4 class="font-semibold text-green-600 mb-2">📐 Tính đường sinh ℓ:</h4>
+                            <p class="text-gray-700 mb-2">ℓ = √(R² + h²)</p>
+                            <p class="text-green-700 font-bold">h = √(ℓ² - R²)</p>
+                            <p class="text-green-700 font-bold">R = √(ℓ² - h²)</p>
+                        </div>
+                        <div class="mt-4 bg-cyan-50 p-4 rounded-lg">
+                            <h4 class="font-semibold text-cyan-700 mb-2">📌 Tỉ lệ khi thay đổi kích thước:</h4>
+                            <ul class="space-y-2 text-gray-700 text-sm">
+                                <li>• Nếu R tăng k lần, S_đáy tăng k² lần</li>
+                                <li>• Nếu h tăng k lần, V tăng k lần</li>
+                                <li>• Nếu R và h đều tăng k lần, V tăng k³ lần</li>
+                                <li>• Nếu R và ℓ đều tăng k lần, S_xq tăng k² lần</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Problem Types -->
+                    <div class="answer-box p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold text-cyan-700 mb-4">5. CÁC DẠNG TOÁN THƯỜNG GẶP</h3>
+                        <div class="grid md:grid-cols-3 gap-4">
+                            <div class="bg-white p-4 rounded-lg border-l-4 border-cyan-400 card-hover">
+                                <h4 class="font-semibold text-cyan-600 mb-2">Dạng 1: Tính diện tích</h4>
+                                <p class="text-gray-700 text-sm">Tính S_xq, S_tp khi biết R và ℓ.</p>
+                            </div>
+                            <div class="bg-white p-4 rounded-lg border-l-4 border-purple-400 card-hover">
+                                <h4 class="font-semibold text-purple-600 mb-2">Dạng 2: Tính thể tích</h4>
+                                <p class="text-gray-700 text-sm">Tính V khi biết R và h.</p>
+                            </div>
+                            <div class="bg-white p-4 rounded-lg border-l-4 border-amber-400 card-hover">
+                                <h4 class="font-semibold text-amber-600 mb-2">Dạng 3: Tìm R, h hoặc ℓ</h4>
+                                <p class="text-gray-700 text-sm">Biết S hoặc V, tìm các yếu tố.</p>
+                            </div>
+                            <div class="bg-white p-4 rounded-lg border-l-4 border-green-400 card-hover">
+                                <h4 class="font-semibold text-green-600 mb-2">Dạng 4: Tỉ lệ</h4>
+                                <p class="text-gray-700 text-sm">So sánh thể tích, diện tích hai hình nón.</p>
+                            </div>
+                            <div class="bg-white p-4 rounded-lg border-l-4 border-red-400 card-hover">
+                                <h4 class="font-semibold text-red-600 mb-2">Dạng 5: Hình nón cụt</h4>
+                                <p class="text-gray-700 text-sm">Tính thể tích, diện tích hình nón cụt.</p>
+                            </div>
+                            <div class="bg-white p-4 rounded-lg border-l-4 border-indigo-400 card-hover">
+                                <h4 class="font-semibold text-indigo-600 mb-2">Dạng 6: Bài toán thực tế</h4>
+                                <p class="text-gray-700 text-sm">Áp dụng vào tính toán mũ, phễu, cọc.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Examples -->
+                    <div class="solution-box p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold text-amber-700 mb-4">6. VÍ DỤ MINH HỌA</h3>
+                        <div class="bg-white p-4 rounded-lg mb-4">
+                            <h4 class="font-semibold text-amber-600 mb-2">Ví dụ 1: Tính diện tích xung quanh</h4>
+                            <p class="text-gray-700 mb-2">Cho hình nón có R = 5cm, ℓ = 13cm. Tính S_xq.</p>
+                            <div class="answer-box p-3 rounded">
+                                <p class="text-gray-700"><strong>Lời giải:</strong></p>
+                                <p class="text-gray-700">S_xq = πRℓ = π × 5 × 13 = 65π cm²</p>
+                                <p class="text-gray-700">≈ 204 cm² (với π ≈ 3.14)</p>
+                            </div>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg mb-4">
+                            <h4 class="font-semibold text-amber-600 mb-2">Ví dụ 2: Tính thể tích</h4>
+                            <p class="text-gray-700 mb-2">Cho hình nón có R = 6cm, h = 8cm. Tính V.</p>
+                            <div class="answer-box p-3 rounded">
+                                <p class="text-gray-700"><strong>Lời giải:</strong></p>
+                                <p class="text-gray-700">V = ⅓πR²h = ⅓π × 36 × 8 = 96π cm³</p>
+                                <p class="text-gray-700">≈ 301 cm³ (với π ≈ 3.14)</p>
+                            </div>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg">
+                            <h4 class="font-semibold text-amber-600 mb-2">Ví dụ 3: Tính đường sinh</h4>
+                            <p class="text-gray-700 mb-2">Cho hình nón có R = 9cm, h = 12cm. Tính ℓ.</p>
+                            <div class="answer-box p-3 rounded">
+                                <p class="text-gray-700"><strong>Lời giải:</strong></p>
+                                <p class="text-gray-700">ℓ = √(R² + h²) = √(81 + 144) = √225</p>
+                                <p class="text-gray-700">ℓ = 15cm</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Calculator Guide -->
+                    <div class="answer-box p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold text-cyan-700 mb-4">7. HƯỚNG DẪN BẤM MÁY TÍNH CASIO FX-580ES</h3>
+                        <div class="bg-white p-4 rounded-lg space-y-3">
+                            <p class="text-gray-700"><strong>Tính diện tích xung quanh:</strong></p>
+                            <ol class="list-decimal list-inside space-y-1 text-gray-700">
+                                <li>Nhập <kbd class="bg-gray-200 px-2 py-1 rounded">SHIFT</kbd> + <kbd class="bg-gray-200 px-2 py-1 rounded">π</kbd> × <kbd class="bg-gray-200 px-2 py-1 rounded">R</kbd> × <kbd class="bg-gray-200 px-2 py-1 rounded">ℓ</kbd></li>
+                                <li>Bấm <kbd class="bg-gray-200 px-2 py-1 rounded">=</kbd></li>
+                            </ol>
+                            <p class="text-gray-700 mt-3"><strong>Tính thể tích:</strong></p>
+                            <ol class="list-decimal list-inside space-y-1 text-gray-700">
+                                <li>Nhập <kbd class="bg-gray-200 px-2 py-1 rounded">1</kbd> <kbd class="bg-gray-200 px-2 py-1 rounded">÷</kbd> <kbd class="bg-gray-200 px-2 py-1 rounded">3</kbd> × <kbd class="bg-gray-200 px-2 py-1 rounded">SHIFT</kbd> + <kbd class="bg-gray-200 px-2 py-1 rounded">π</kbd> × <kbd class="bg-gray-200 px-2 py-1 rounded">R</kbd><kbd class="bg-gray-200 px-2 py-1 rounded">x²</kbd> × <kbd class="bg-gray-200 px-2 py-1 rounded">h</kbd></li>
+                                <li>Bấm <kbd class="bg-gray-200 px-2 py-1 rounded">=</kbd></li>
+                            </ol>
+                            <p class="text-gray-700 mt-3"><strong>Tính đường sinh:</strong></p>
+                            <ol class="list-decimal list-inside space-y-1 text-gray-700">
+                                <li>Nhập <kbd class="bg-gray-200 px-2 py-1 rounded">√</kbd>(<kbd class="bg-gray-200 px-2 py-1 rounded">R</kbd><kbd class="bg-gray-200 px-2 py-1 rounded">x²</kbd> + <kbd class="bg-gray-200 px-2 py-1 rounded">h</kbd><kbd class="bg-gray-200 px-2 py-1 rounded">x²</kbd>)</li>
+                                <li>Bấm <kbd class="bg-gray-200 px-2 py-1 rounded">=</kbd></li>
+                            </ol>
+                            <p class="text-gray-700 mt-3"><strong>Lưu ý:</strong> Sử dụng phím π để có kết quả chính xác hơn</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- MCQ Section -->
+        <section id="mcq" class="section-content hidden">
+            <div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section">
+                <h2 class="text-2xl font-bold text-cyan-700 mb-6 flex items-center">
+                    <span class="mr-3">📝</span> 30 CÂU TRẮC NGHIỆM 4 LỰA CHỌN
+                </h2>
+                <div class="space-y-6" id="mcq-container"></div>
+            </div>
+        </section>
+
+        <!-- True/False Section -->
+        <section id="tf" class="section-content hidden">
+            <div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section">
+                <h2 class="text-2xl font-bold text-cyan-700 mb-6 flex items-center">
+                    <span class="mr-3">✅</span> 10 CÂU TRẮC NGHIỆM ĐÚNG/SAI
+                </h2>
+                <div class="space-y-6" id="tf-container"></div>
+            </div>
+        </section>
+
+        <!-- Recognition Section -->
+        <section id="recognition" class="section-content hidden">
+            <div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section">
+                <h2 class="text-2xl font-bold text-cyan-700 mb-6 flex items-center">
+                    <span class="mr-3">🔍</span> 10 BÀI TẬP NHẬN BIẾT
+                </h2>
+                <div class="space-y-6" id="recognition-container"></div>
+            </div>
+        </section>
+
+        <!-- Low Application Section -->
+        <section id="low" class="section-content hidden">
+            <div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section">
+                <h2 class="text-2xl font-bold text-cyan-700 mb-6 flex items-center">
+                    <span class="mr-3">📊</span> 10 BÀI TẬP VẬN DỤNG THẤP
+                </h2>
+                <div class="space-y-6" id="low-container"></div>
+            </div>
+        </section>
+
+        <!-- High Application Section -->
+        <section id="high" class="section-content hidden">
+            <div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section">
+                <h2 class="text-2xl font-bold text-cyan-700 mb-6 flex items-center">
+                    <span class="mr-3">🎯</span> 10 BÀI TẬP VẬN DỤNG CAO
+                </h2>
+                <div class="space-y-6" id="high-container"></div>
+            </div>
+        </section>
+
+        <!-- Real World Section -->
+        <section id="real" class="section-content hidden">
+            <div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section">
+                <h2 class="text-2xl font-bold text-cyan-700 mb-6 flex items-center">
+                    <span class="mr-3">🌍</span> 5 BÀI TẬP ỨNG DỤNG THỰC TẾ
+                </h2>
+                <div class="space-y-6" id="real-container"></div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="gradient-header text-white py-6 mt-8">
+        <div class="container mx-auto px-4 text-center">
+            <p class="text-sm">Bộ Tài Liệu Toán THCS - Đề Mục 99: Hình Nón</p>
+            <p class="text-sm opacity-80">© 2024 - Tài liệu ôn tập 60 ngày</p>
+        </div>
+    </footer>
+
+    <!-- Print Button -->
+    <button onclick="window.print()" class="no-print fixed bottom-6 right-6 btn-primary text-white px-6 py-3 rounded-full shadow-lg hover:shadow-xl transition-all">
+        🖨 In Tài Liệu
+    </button>
+
+    <script>
+        // Navigation
+        function showSection(sectionId) {
+            document.querySelectorAll('.section-content').forEach(el => el.classList.add('hidden'));
+            document.getElementById(sectionId).classList.remove('hidden');
+            document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
+            event.target.classList.add('active');
+        }
+
+        // MCQ Data
+        const mcqData = [
+            { q: "Hình nón được tạo thành khi quay hình nào quanh một cạnh góc vuông cố định?", options: ["A. Hình chữ nhật", "B. Tam giác vuông", "C. Tam giác đều", "D. Hình thang"], answer: "B", solution: "Hình nón được tạo thành khi quay tam giác vuông một vòng quanh một cạnh góc vuông cố định" },
+            { q: "Công thức tính diện tích xung quanh hình nón là:", options: ["A. πRh", "B. πRℓ", "C. 2πRℓ", "D. πR²"], answer: "B", solution: "S_xq = πRℓ (π × bán kính × đường sinh)" },
+            { q: "Công thức tính thể tích khối nón là:", options: ["A. πR²h", "B. ⅓πR²h", "C. ½πR²h", "D. 2πR²h"], answer: "B", solution: "V = ⅓πR²h (một phần ba diện tích đáy nhân chiều cao)" },
+            { q: "Diện tích toàn phần hình nón bằng:", options: ["A. S_xq + S_đáy", "B. S_xq + 2S_đáy", "C. 2S_xq + S_đáy", "D. S_xq - S_đáy"], answer: "A", solution: "S_tp = S_xq + S_đáy = πRℓ + πR²" },
+            { q: "Cho hình nón có R = 5cm, ℓ = 13cm. S_xq bằng:", options: ["A. 65π cm²", "B. 130π cm²", "C. 325π cm²", "D. 18π cm²"], answer: "A", solution: "S_xq = π × 5 × 13 = 65π cm²" },
+            { q: "Cho hình nón có R = 6cm, h = 8cm. Thể tích bằng:", options: ["A. 48π cm³", "B. 96π cm³", "C. 144π cm³", "D. 288π cm³"], answer: "B", solution: "V = ⅓π × 36 × 8 = 96π cm³" },
+            { q: "Mặt cắt song song với đáy của hình nón là:", options: ["A. Hình tròn nhỏ hơn đáy", "B. Hình tròn bằng đáy", "C. Hình elip", "D. Hình vuông"], answer: "A", solution: "Mặt cắt song song với đáy là hình tròn nhỏ hơn đáy" },
+            { q: "Mặt cắt chứa trục của hình nón là:", options: ["A. Hình tròn", "B. Tam giác cân", "C. Tam giác vuông", "D. Hình chữ nhật"], answer: "B", solution: "Mặt cắt chứa trục là tam giác cân có cạnh bên bằng đường sinh" },
+            { q: "Đường sinh của hình nón được tính bằng:", options: ["A. ℓ = R + h", "B. ℓ = √(R² + h²)", "C. ℓ = R² + h²", "D. ℓ = √(R + h)"], answer: "B", solution: "ℓ = √(R² + h²) (theo định lý Pytago)" },
+            { q: "Cho hình nón có đường kính đáy 10cm, h = 12cm. R bằng:", options: ["A. 3cm", "B. 5cm", "C. 6cm", "D. 10cm"], answer: "B", solution: "R = d/2 = 10/2 = 5cm" },
+            { q: "Nếu bán kính tăng 2 lần, diện tích đáy tăng:", options: ["A. 2 lần", "B. 3 lần", "C. 4 lần", "D. 8 lần"], answer: "C", solution: "S_đáy = πR², nếu R tăng 2 lần thì S tăng 2² = 4 lần" },
+            { q: "Nếu chiều cao tăng 3 lần, thể tích tăng:", options: ["A. 2 lần", "B. 3 lần", "C. 6 lần", "D. 9 lần"], answer: "B", solution: "V = ⅓πR²h, nếu h tăng 3 lần thì V tăng 3 lần" },
+            { q: "Cho S_xq = 50π cm², R = 5cm. Tính ℓ:", options: ["A. 5cm", "B. 10cm", "C. 15cm", "D. 20cm"], answer: "B", solution: "ℓ = S_xq/(πR) = 50π/(5π) = 10cm" },
+            { q: "Cho V = 100π cm³, h = 12cm. Tính R:", options: ["A. 3cm", "B. 4cm", "C. 5cm", "D. 6cm"], answer: "C", solution: "R² = 3V/(πh) = 300π/(12π) = 25 ⇒ R = 5cm" },
+            { q: "Hình nón có R = ℓ. Khi đó h bằng:", options: ["A. 0", "B. R", "C. R√2", "D. Không tồn tại"], answer: "A", solution: "ℓ² = R² + h², nếu ℓ = R thì h = 0 (không tồn tại hình nón thực)" },
+            { q: "Chu vi đáy hình nón bằng 20π cm. Tính R:", options: ["A. 5cm", "B. 10cm", "C. 15cm", "D. 20cm"], answer: "B", solution: "C = 2πR = 20π ⇒ R = 10cm" },
+            { q: "Diện tích đáy hình nón là 36π cm². Tính R:", options: ["A. 4cm", "B. 5cm", "C. 6cm", "D. 7cm"], answer: "C", solution: "πR² = 36π ⇒ R² = 36 ⇒ R = 6cm" },
+            { q: "Hình nón có d = 12cm, h = 8cm. Thể tích bằng:", options: ["A. 96π cm³", "B. 192π cm³", "C. 288π cm³", "D. 384π cm³"], answer: "A", solution: "R = 6cm, V = ⅓π × 36 × 8 = 96π cm³" },
+            { q: "Nếu R và h đều tăng 2 lần, thể tích tăng:", options: ["A. 2 lần", "B. 4 lần", "C. 6 lần", "D. 8 lần"], answer: "D", solution: "V mới = ⅓π(2R)²(2h) = 8 × ⅓πR²h = 8V" },
+            { q: "Mặt khai triển mặt xung quanh hình nón là:", options: ["A. Hình tròn", "B. Hình quạt tròn", "C. Hình chữ nhật", "D. Hình tam giác"], answer: "B", solution: "Mặt xung quanh khai triển thành hình quạt tròn" },
+            { q: "Bán kính hình quạt khai triển bằng:", options: ["A. R", "B. h", "C. ℓ", "D. 2R"], answer: "C", solution: "Bán kính hình quạt = đường sinh ℓ" },
+            { q: "Cho hình nón có S_tp = 90π cm², R = 5cm. Tính ℓ:", options: ["A. 10cm", "B. 11cm", "C. 12cm", "D. 13cm"], answer: "D", solution: "S_tp = πR(ℓ+R) = 90π ⇒ 5(ℓ+5) = 90 ⇒ ℓ = 13cm" },
+            { q: "Hình nón có R = 7cm, ℓ = 25cm. S_xq ≈ (π ≈ 22/7):", options: ["A. 550 cm²", "B. 525 cm²", "C. 575 cm²", "D. 600 cm²"], answer: "A", solution: "S_xq = 22/7 × 7 × 25 = 550 cm²" },
+            { q: "Thể tích hình nón có d = 14cm, h = 12cm ≈ (π ≈ 22/7):", options: ["A. 616 cm³", "B. 516 cm³", "C. 716 cm³", "D. 816 cm³"], answer: "A", solution: "R = 7cm, V = ⅓ × 22/7 × 49 × 12 = 616 cm³" },
+            { q: "Hình nón có S_xq = 2S_đáy. Khi đó ℓ bằng:", options: ["A. R", "B. 2R", "C. 3R", "D. R/2"], answer: "B", solution: "πRℓ = 2πR² ⇒ ℓ = 2R" },
+            { q: "Tỉ số V/S_đáy của hình nón bằng:", options: ["A. h", "B. h/2", "C. h/3", "D. 3h"], answer: "C", solution: "V/S_đáy = (⅓πR²h)/(πR²) = h/3" },
+            { q: "Hình nón có h = R√3. Góc ở đỉnh bằng:", options: ["A. 30°", "B. 45°", "C. 60°", "D. 90°"], answer: "C", solution: "tan(α/2) = R/h = 1/√3 ⇒ α/2 = 30° ⇒ α = 60°" },
+            { q: "Cho hai hình nón có R1 = 2R2, h1 = h2. Tỉ số V1/V2 bằng:", options: ["A. 2", "B. 3", "C. 4", "D. 8"], answer: "C", solution: "V1/V2 = (R1/R2)² = 4" },
+            { q: "Hình nón nội tiếp hình trụ có cùng R và h. Tỉ số V_nón/V_trụ bằng:", options: ["A. 1/2", "B. 1/3", "C. 1/4", "D. 2/3"], answer: "B", solution: "V_nón = ⅓πR²h, V_trụ = πR²h ⇒ tỉ số = 1/3" },
+            { q: "Số mặt phẳng đối xứng của hình nón là:", options: ["A. 1", "B. 2", "C. 4", "D. Vô số"], answer: "D", solution: "Hình nón có vô số mặt phẳng đối xứng chứa trục" }
+        ];
+
+        // True/False Data
+        const tfData = [
+            { q: "Về định nghĩa hình nón:", statements: [
+                { text: "Hình nón được tạo thành khi quay tam giác vuông quanh một cạnh góc vuông", answer: true },
+                { text: "Hình nón có một đáy là hình tròn", answer: true },
+                { text: "Hình nón có hai đáy", answer: false },
+                { text: "Trục hình nón đi qua đỉnh và tâm đáy", answer: true }
+            ]},
+            { q: "Về công thức tính toán:", statements: [
+                { text: "S_xq = πRℓ", answer: true },
+                { text: "S_tp = πRℓ + πR²", answer: true },
+                { text: "V = πR²h", answer: false },
+                { text: "V = ⅓πR²h", answer: true }
+            ]},
+            { q: "Về tính chất hình nón:", statements: [
+                { text: "Mặt cắt song song với đáy là hình tròn", answer: true },
+                { text: "Mặt cắt chứa trục là tam giác cân", answer: true },
+                { text: "Tất cả đường sinh bằng nhau", answer: true },
+                { text: "Đường sinh bằng chiều cao", answer: false }
+            ]},
+            { q: "Về mối quan hệ giữa các đại lượng:", statements: [
+                { text: "ℓ² = R² + h²", answer: true },
+                { text: "Nếu h tăng 3 lần, V tăng 3 lần", answer: true },
+                { text: "Nếu R và h tăng 2 lần, V tăng 4 lần", answer: false },
+                { text: "S_xq tỉ lệ thuận với R và ℓ", answer: true }
+            ]},
+            { q: "Cho hình nón có R = 6cm, h = 8cm:", statements: [
+                { text: "ℓ = 10cm", answer: true },
+                { text: "S_xq = 60π cm²", answer: true },
+                { text: "V = 96π cm³", answer: true },
+                { text: "S_tp = 96π cm²", answer: true }
+            ]},
+            { q: "Về mặt khai triển:", statements: [
+                { text: "Mặt xung quanh khai triển thành hình quạt tròn", answer: true },
+                { text: "Bán kính hình quạt bằng ℓ", answer: true },
+                { text: "Độ dài cung hình quạt bằng 2πR", answer: true },
+                { text: "Đáy khai triển thành hình vuông", answer: false }
+            ]},
+            { q: "Về đơn vị đo:", statements: [
+                { text: "Diện tích đo bằng cm²", answer: true },
+                { text: "Thể tích đo bằng cm³", answer: true },
+                { text: "Bán kính đo bằng cm³", answer: false },
+                { text: "Đường sinh đo bằng cm", answer: true }
+            ]},
+            { q: "Về hình nón đặc biệt:", statements: [
+                { text: "Hình nón có h = R√3 thì góc ở đỉnh bằng 60°", answer: true },
+                { text: "Hình nón có ℓ = 2R thì S_xq = 2S_đáy", answer: true },
+                { text: "Hình nón nội tiếp hình trụ có V bằng 1/3 V_trụ", answer: true },
+                { text: "Hình nón đều có R = h", answer: false }
+            ]},
+            { q: "Về tính đối xứng:", statements: [
+                { text: "Hình nón có trục đối xứng", answer: true },
+                { text: "Hình nón có vô số mặt phẳng đối xứng", answer: true },
+                { text: "Mọi mặt phẳng qua trục đều là mặt phẳng đối xứng", answer: true },
+                { text: "Hình nón không có tâm đối xứng", answer: true }
+            ]},
+            { q: "Về tính toán thực tế:", statements: [
+                { text: "π thường lấy bằng 3.14", answer: true },
+                { text: "π có thể lấy bằng 22/7", answer: true },
+                { text: "Thể tích nón bằng 1/3 thể tích trụ cùng đáy chiều cao", answer: true },
+                { text: "Diện tích xung quanh dùng tính vải làm nón", answer: true }
+            ]}
+        ];
+
+        // Recognition Data
+        const recognitionData = [
+            { q: "Phát biểu định nghĩa hình nón tròn xoay.", answer: "Hình tạo thành khi quay tam giác vuông quanh một cạnh góc vuông cố định", solution: "Hình nón là hình được tạo thành khi quay tam giác vuông AOB một vòng quanh cạnh góc vuông OA cố định" },
+            { q: "Viết công thức tính diện tích xung quanh hình nón.", answer: "S_xq = πRℓ", solution: "Diện tích xung quanh bằng π nhân bán kính nhân đường sinh" },
+            { q: "Viết công thức tính thể tích khối nón.", answer: "V = ⅓πR²h", solution: "Thể tích bằng một phần ba diện tích đáy nhân chiều cao" },
+            { q: "Viết công thức tính diện tích toàn phần hình nón.", answer: "S_tp = πRℓ + πR²", solution: "S_tp = S_xq + S_đáy" },
+            { q: "Cho biết mặt cắt song song với đáy của hình nón là hình gì.", answer: "Hình tròn nhỏ hơn đáy", solution: "Mặt cắt song song với đáy là hình tròn nhỏ hơn đáy" },
+            { q: "Cho biết công thức liên hệ giữa R, h và ℓ.", answer: "ℓ² = R² + h²", solution: "Theo định lý Pytago: ℓ = √(R² + h²)" },
+            { q: "Viết công thức tính đường sinh khi biết R và h.", answer: "ℓ = √(R² + h²)", solution: "Đường sinh bằng căn bậc hai của tổng bình phương R và h" },
+            { q: "Cho biết mặt khai triển mặt xung quanh hình nón là hình gì.", answer: "Hình quạt tròn", solution: "Mặt xung quanh khai triển thành hình quạt tròn bán kính ℓ" },
+            { q: "Viết công thức tính chu vi đáy hình nón.", answer: "C = 2πR", solution: "Chu vi đáy bằng 2π nhân bán kính" },
+            { q: "Cho biết tỉ số thể tích hình nón và hình trụ cùng đáy chiều cao.", answer: "1/3", solution: "V_nón = ⅓V_trụ khi cùng R và h" }
+        ];
+
+        // Low Application Data
+        const lowData = [
+            { q: "Cho hình nón có R = 5cm, ℓ = 13cm. Tính S_xq.", answer: "S_xq = 65π cm²", solution: "S_xq = πRℓ = π × 5 × 13 = 65π cm²" },
+            { q: "Cho hình nón có R = 6cm, h = 8cm. Tính V.", answer: "V = 96π cm³", solution: "V = ⅓πR²h = ⅓π × 36 × 8 = 96π cm³" },
+            { q: "Cho hình nón có d = 14cm, h = 10cm. Tính S_đáy.", answer: "S_đáy = 49π cm²", solution: "R = 7cm, S_đáy = π × 49 = 49π cm²" },
+            { q: "Cho hình nón có S_xq = 60π cm², R = 6cm. Tính ℓ.", answer: "ℓ = 10cm", solution: "ℓ = S_xq/(πR) = 60π/(6π) = 10cm" },
+            { q: "Cho hình nón có V = 150π cm³, h = 9cm. Tính R.", answer: "R = 5√2 cm", solution: "R² = 3V/(πh) = 450π/(9π) = 50 ⇒ R = 5√2 cm" },
+            { q: "Cho hình nón có R = 8cm, ℓ = 17cm. Tính h.", answer: "h = 15cm", solution: "h = √(ℓ² - R²) = √(289 - 64) = √225 = 15cm" },
+            { q: "Cho hình nón có C = 20π cm, ℓ = 15cm. Tính S_xq.", answer: "S_xq = 150π cm²", solution: "R = 10cm, S_xq = π × 10 × 15 = 150π cm²" },
+            { q: "Cho hình nón có S_đáy = 64π cm², h = 12cm. Tính V.", answer: "V = 256π cm³", solution: "V = ⅓ × 64π × 12 = 256π cm³" },
+            { q: "Cho hình nón có R = 4cm, h = 6cm. Tính tỉ số V/S_xq.", answer: "V/S_xq = 2/√13", solution: "ℓ = √(16+36) = √52, V/S_xq = (⅓πR²h)/(πRℓ) = Rh/(3ℓ) = 24/(3√52) = 8/√52 = 2/√13" },
+            { q: "Cho hai hình nón có R1 = 3R2, h1 = h2. Tính tỉ số V1/V2.", answer: "V1/V2 = 9", solution: "V1/V2 = (R1/R2)² = 9" }
+        ];
+
+        // High Application Data
+        const highData = [
+            { q: "Cho hình nón có S_tp = 120π cm² và ℓ = 2R. Tính R, h và V.", answer: "R = 2√10 cm, h = 2√30 cm, V = 80π√30/3 cm³", solution: "**Lời giải chi tiết:**\n\n1. Ta có: ℓ = 2R\n\n2. S_tp = πR(ℓ + R) = 120π\n   πR(2R + R) = 120π\n   3πR² = 120π\n   R² = 40\n   R = 2√10 cm\n\n3. Tính ℓ:\n   ℓ = 2R = 4√10 cm\n\n4. Tính h:\n   h = √(ℓ² - R²) = √(160 - 40) = √120 = 2√30 cm\n\n5. Tính V:\n   V = ⅓πR²h = ⅓π × 40 × 2√30 = 80π√30/3 cm³\n\n**Kết luận: R = 2√10 cm, h = 2√30 cm, V = 80π√30/3 cm³**" },
+            { q: "Một hình nón có thể tích 1000π cm³. Tìm R và h để S_xq nhỏ nhất.", answer: "R = 10cm, h = 10√2 cm, S_xq_min = 300π cm²", solution: "**Lời giải chi tiết:**\n\n1. V = ⅓πR²h = 1000π\n   ⇒ h = 3000/R²\n\n2. ℓ = √(R² + h²) = √(R² + 9000000/R⁴)\n\n3. S_xq = πRℓ = πR√(R² + 9000000/R⁴)\n\n4. Để S_xq nhỏ nhất, dùng đạo hàm hoặc Cauchy:\n   Khi h = R√2 thì S_xq nhỏ nhất\n\n5. Từ V = 1000π:\n   ⅓πR² × R√2 = 1000π\n   R³ = 3000/√2\n   R = 10cm\n   h = 10√2 cm\n\n6. S_xq_min = π × 10 × √(100 + 200) = 10π√300 = 300π cm²\n\n**Kết luận: R = 10cm, h = 10√2 cm, S_xq_min = 300π cm²**" },
+            { q: "Cho hình nón có R = 12cm, h = 16cm. Một mặt phẳng song song với đáy cắt hình nón tạo thành hình nón nhỏ có thể tích bằng 1/8 thể tích hình nón ban đầu. Tính khoảng cách từ đỉnh đến mặt phẳng cắt.", answer: "8cm", solution: "**Lời giải chi tiết:**\n\n1. Tỉ số thể tích: V_nhỏ/V_lớn = 1/8\n\n2. Tỉ số đồng dạng: k = ∛(1/8) = 1/2\n\n3. Chiều cao hình nón nhỏ:\n   h_nhỏ = k × h = ½ × 16 = 8cm\n\n4. Khoảng cách từ đỉnh đến mặt phẳng cắt:\n   d = h_nhỏ = 8cm\n\n5. Khoảng cách từ đáy đến mặt phẳng cắt:\n   16 - 8 = 8cm\n\n**Kết luận: Khoảng cách từ đỉnh đến mặt phẳng cắt là 8cm**" },
+            { q: "Một hình nón cụt có bán kính đáy lớn R = 10cm, bán kính đáy nhỏ r = 6cm, chiều cao h = 8cm. Tính thể tích và diện tích xung quanh.", answer: "V = 1568π/3 cm³, S_xq = 64π√5 cm²", solution: "**Lời giải chi tiết:**\n\n1. Tính đường sinh hình nón cụt:\n   ℓ = √(h² + (R-r)²) = √(64 + 16) = √80 = 4√5 cm\n\n2. Thể tích hình nón cụt:\n   V = ⅓πh(R² + Rr + r²)\n   V = ⅓π × 8 × (100 + 60 + 36)\n   V = ⅓π × 8 × 196 = 1568π/3 cm³\n\n3. Diện tích xung quanh:\n   S_xq = π(R + r)ℓ\n   S_xq = π × 16 × 4√5 = 64π√5 cm²\n\n**Kết luận: V = 1568π/3 cm³, S_xq = 64π√5 cm²**" },
+            { q: "Cho hình nón có R = 9cm, h = 12cm. Nội tiếp trong hình nón là một hình trụ có chiều cao bằng bán kính đáy. Tính thể tích hình trụ.", answer: "V = 46656π/343 cm³", solution: "**Lời giải chi tiết:**\n\n1. Gọi r và x là bán kính và chiều cao hình trụ\n   x = r (theo đề)\n\n2. Dùng tam giác đồng dạng:\n   r/R = (h-x)/h\n   r/9 = (12-r)/12\n   12r = 108 - 9r\n   21r = 108\n   r = 36/7 cm\n\n3. Thể tích hình trụ:\n   V = πr²x = πr³\n   V = π × (36/7)³ = 46656π/343 cm³\n\n**Kết luận: V = 46656π/343 cm³ ≈ 136π cm³**" },
+            { q: "Một hình nón có góc ở đỉnh bằng 60°. Tính tỉ số S_xq/S_đáy.", answer: "2", solution: "**Lời giải chi tiết:**\n\n1. Góc ở đỉnh α = 60°\n   Góc giữa đường sinh và trục = 30°\n\n2. Trong tam giác vuông tạo bởi h, R, ℓ:\n   sin(30°) = R/ℓ = 1/2\n   ℓ = 2R\n\n3. Tỉ số diện tích:\n   S_xq/S_đáy = (πRℓ)/(πR²) = ℓ/R = 2\n\n**Kết luận: S_xq/S_đáy = 2**" },
+            { q: "Cho hình nón có V = 500π cm³. Nếu tăng R thêm 2cm và giảm h đi 3cm thì V không đổi. Tính R và h ban đầu.", answer: "R ≈ 10.5cm, h ≈ 13.6cm", solution: "**Lời giải chi tiết:**\n\n1. V = ⅓πR²h = 500π\n   ⇒ R²h = 1500 (1)\n\n2. Sau khi thay đổi:\n   V' = ⅓π(R+2)²(h-3) = 500π\n   (R+2)²(h-3) = 1500 (2)\n\n3. Từ (1) và (2):\n   R²h = (R+2)²(h-3)\n   R²h = (R²+4R+4)(h-3)\n\n4. Giải hệ phương trình:\n   Từ (1): h = 1500/R²\n   Thay vào và giải ra R ≈ 10.5cm\n   h ≈ 13.6cm\n\n**Kết luận: R ≈ 10.5cm, h ≈ 13.6cm**" },
+            { q: "Cho hình nón có R = 15cm, h = 20cm. Một dây căng từ điểm A trên mép đáy đến điểm S(đỉnh). Tính độ dài ngắn nhất của dây trên mặt xung quanh.", answer: "L = 25cm", solution: "**Lời giải chi tiết:**\n\n1. Đường sinh ℓ = √(R² + h²) = √(225 + 400) = 25cm\n\n2. Độ dài ngắn nhất trên mặt xung quanh chính là đường sinh\n\n3. Khi khai triển mặt xung quanh thành hình quạt:\n   Đường ngắn nhất là đoạn thẳng nối A và S\n\n4. Độ dài = ℓ = 25cm\n\n**Kết luận: Độ dài ngắn nhất của dây là 25cm**" },
+            { q: "Một bể chứa hình nón có R = 3m, h = 5m. Mực nước ban đầu cao 2.5m. Tính thể tích nước trong bể.", answer: "V = 31.25π/3 m³", solution: "**Lời giải chi tiết:**\n\n1. Tỉ lệ chiều cao: h_nước/h_bể = 2.5/5 = 1/2\n\n2. Tỉ lệ bán kính mặt nước:\n   r/R = 1/2 ⇒ r = 1.5m\n\n3. Thể tích nước:\n   V = ⅓πr²h_nước\n   V = ⅓π × 2.25 × 2.5\n   V = 5.625π/3 = 31.25π/3 m³\n   V ≈ 32.7 m³\n\n**Kết luận: Thể tích nước là 31.25π/3 m³ ≈ 32.7 m³**" },
+            { q: "Cho hình nón có R = 10cm, ℓ = 26cm. Tính bán kính mặt cầu nội tiếp hình nón.", answer: "r = 20/3 cm", solution: "**Lời giải chi tiết:**\n\n1. Tính h:\n   h = √(ℓ² - R²) = √(676 - 100) = √576 = 24cm\n\n2. Bán kính mặt cầu nội tiếp:\n   r = (R × h)/(R + ℓ) (công thức)\n   r = (10 × 24)/(10 + 26) = 240/36 = 20/3 cm\n\n3. Hoặc dùng tam giác đồng dạng:\n   r = R × h/(R + ℓ) = 10 × 24/36 = 20/3 cm\n\n**Kết luận: Bán kính mặt cầu nội tiếp là 20/3 cm ≈ 6.67cm**" }
+        ];
+
+        // Real World Data
+        const realData = [
+            { q: "Một cái nón lá hình nón có đường kính đáy 40cm, đường sinh 50cm. Tính diện tích lá cần để làm nón (không tính viền).", answer: "S ≈ 3140 cm²", solution: "**Lời giải chi tiết:**\n\n1. Đổi đơn vị:\n   d = 40cm ⇒ R = 20cm\n   ℓ = 50cm\n\n2. Diện tích xung quanh (diện tích lá):\n   S_xq = πRℓ = π × 20 × 50 = 1000π\n   S_xq ≈ 3140 cm²\n\n3. Đổi sang dm²:\n   3140 cm² = 31.4 dm²\n\n4. Ứng dụng thực tế:\n   - Tính nguyên liệu làm nón lá\n   - Dự toán chi phí sản xuất\n\n**Kết luận: Cần khoảng 3140 cm² lá để làm nón**" },
+            { q: "Một cái phễu hình nón có đường kính miệng 15cm, chiều sâu 20cm. Tính dung tích phễu (theo ml).", answer: "V ≈ 1178 ml", solution: "**Lời giải chi tiết:**\n\n1. Đổi đơn vị:\n   d = 15cm ⇒ R = 7.5cm\n   h = 20cm\n\n2. Tính thể tích:\n   V = ⅓πR²h = ⅓π × 56.25 × 20\n   V = 375π cm³\n   V ≈ 1178 cm³ = 1178 ml\n\n3. Ứng dụng:\n   - Thiết kế phễu đổ chất lỏng\n   - Tính dung tích chứa\n\n**Kết luận: Phễu chứa được khoảng 1178 ml**" },
+            { q: "Một cọc tiêu giao thông hình nón có đường kính đáy 30cm, chiều cao 60cm. Tính khối lượng cọc biết khối lượng riêng nhựa là 900 kg/m³.", answer: "m ≈ 12.7 kg", solution: "**Lời giải chi tiết:**\n\n1. Đổi đơn vị:\n   d = 30cm ⇒ R = 0.15m\n   h = 0.6m\n\n2. Tính thể tích:\n   V = ⅓πR²h = ⅓π × 0.0225 × 0.6\n   V = 0.0045π m³\n   V ≈ 0.0141 m³\n\n3. Tính khối lượng:\n   m = V × D = 0.0141 × 900\n   m ≈ 12.7 kg\n\n4. Ứng dụng:\n   - Tính tải trọng vận chuyển\n   - Thiết kế độ ổn định\n\n**Kết luận: Khối lượng cọc khoảng 12.7 kg**" },
+            { q: "Một đống cát hình nón có chu vi đáy 18.84m, đường sinh 5m. Tính thể tích đống cát (theo m³).", answer: "V ≈ 37.7 m³", solution: "**Lời giải chi tiết:**\n\n1. Tính bán kính:\n   C = 2πR = 18.84\n   R = 18.84/(2π) ≈ 3m\n\n2. Tính chiều cao:\n   h = √(ℓ² - R²) = √(25 - 9) = 4m\n\n3. Tính thể tích:\n   V = ⅓πR²h = ⅓π × 9 × 4\n   V = 12π m³\n   V ≈ 37.7 m³\n\n4. Ứng dụng:\n   - Tính khối lượng vật liệu xây dựng\n   - Dự toán vận chuyển\n\n**Kết luận: Thể tích đống cát khoảng 37.7 m³**" },
+            { q: "Một ngọn nến hình nón có R = 4cm, h = 10cm. Nến cháy với tốc độ 5 cm³/giờ. Hỏi nến cháy hết trong bao lâu?", answer: "t ≈ 33.5 giờ", solution: "**Lời giải chi tiết:**\n\n1. Tính thể tích nến:\n   V = ⅓πR²h = ⅓π × 16 × 10\n   V = 160π/3 cm³\n   V ≈ 167.5 cm³\n\n2. Thời gian cháy:\n   t = V/tốc độ = 167.5/5\n   t ≈ 33.5 giờ\n\n3. Ứng dụng:\n   - Thiết kế thời gian sử dụng nến\n   - Tính toán nguyên liệu\n\n**Kết luận: Nến cháy hết trong khoảng 33.5 giờ**" }
+        ];
+
+        // Render MCQ
+        function renderMCQ() {
+            const container = document.getElementById('mcq-container');
+            mcqData.forEach((item, index) => {
+                const div = document.createElement('div');
+                div.className = 'border-l-4 border-cyan-400 pl-4 py-3 bg-gray-50 rounded-r-lg';
+                div.innerHTML = `
+                    <p class="font-semibold text-gray-800 mb-2"><strong>Câu ${index + 1}:</strong> ${item.q}</p>
+                    <div class="grid grid-cols-2 gap-2 mb-3 text-sm">
+                        ${item.options.map(opt => `<span class="text-gray-700">${opt}</span>`).join('')}
+                    </div>
+                    <button onclick="toggleAnswer('mcq-${index}')" class="text-cyan-600 text-sm hover:underline">👁 Xem đáp án</button>
+                    <div id="mcq-${index}" class="answer-box mt-2 p-3 rounded hidden">
+                        <p class="font-semibold text-green-700">Đáp án: ${item.answer}</p>
+                        <p class="text-gray-700 text-sm mt-1">${item.solution}</p>
+                    </div>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        // Render True/False
+        function renderTF() {
+            const container = document.getElementById('tf-container');
+            tfData.forEach((item, index) => {
+                const div = document.createElement('div');
+                div.className = 'border-l-4 border-amber-400 pl-4 py-3 bg-gray-50 rounded-r-lg';
+                div.innerHTML = `
+                    <p class="font-semibold text-gray-800 mb-3"><strong>Câu ${index + 1}:</strong> ${item.q}</p>
+                    <div class="space-y-2">
+                        ${item.statements.map((s, i) => `
+                            <div class="flex items-center justify-between bg-white p-2 rounded">
+                                <span class="text-gray-700 text-sm">${String.fromCharCode(65 + i)}. ${s.text}</span>
+                                <span class="text-xs px-2 py-1 rounded ${s.answer ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}">${s.answer ? 'Đúng' : 'Sai'}</span>
+                            </div>
+                        `).join('')}
+                    </div>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        // Render Recognition
+        function renderRecognition() {
+            const container = document.getElementById('recognition-container');
+            recognitionData.forEach((item, index) => {
+                const div = document.createElement('div');
+                div.className = 'border-l-4 border-cyan-400 pl-4 py-3 bg-gray-50 rounded-r-lg';
+                div.innerHTML = `
+                    <p class="font-semibold text-gray-800 mb-2"><strong>Bài ${index + 1}:</strong> ${item.q}</p>
+                    <button onclick="toggleAnswer('rec-${index}')" class="text-cyan-600 text-sm hover:underline">👁 Xem đáp án</button>
+                    <div id="rec-${index}" class="answer-box mt-2 p-3 rounded hidden">
+                        <p class="font-semibold text-purple-700">Đáp án: ${item.answer}</p>
+                        <p class="text-gray-700 text-sm mt-1">${item.solution}</p>
+                    </div>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        // Render Low Application
+        function renderLow() {
+            const container = document.getElementById('low-container');
+            lowData.forEach((item, index) => {
+                const div = document.createElement('div');
+                div.className = 'border-l-4 border-green-400 pl-4 py-3 bg-gray-50 rounded-r-lg';
+                div.innerHTML = `
+                    <p class="font-semibold text-gray-800 mb-2"><strong>Bài ${index + 1}:</strong> ${item.q}</p>
+                    <button onclick="toggleAnswer('low-${index}')" class="text-green-600 text-sm hover:underline">👁 Xem đáp án</button>
+                    <div id="low-${index}" class="solution-box mt-2 p-3 rounded hidden">
+                        <p class="font-semibold text-amber-700">Đáp án: ${item.answer}</p>
+                        <p class="text-gray-700 text-sm mt-1 whitespace-pre-line">${item.solution}</p>
+                    </div>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        // Render High Application
+        function renderHigh() {
+            const container = document.getElementById('high-container');
+            highData.forEach((item, index) => {
+                const div = document.createElement('div');
+                div.className = 'border-l-4 border-red-400 pl-4 py-3 bg-gray-50 rounded-r-lg';
+                div.innerHTML = `
+                    <p class="font-semibold text-gray-800 mb-2"><strong>Bài ${index + 1}:</strong> ${item.q}</p>
+                    <button onclick="toggleAnswer('high-${index}')" class="text-red-600 text-sm hover:underline">👁 Xem lời giải chi tiết</button>
+                    <div id="high-${index}" class="solution-box mt-2 p-4 rounded hidden">
+                        <p class="font-semibold text-amber-700 mb-2">Đáp án: ${item.answer}</p>
+                        <div class="text-gray-700 text-sm whitespace-pre-line">${item.solution}</div>
+                    </div>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        // Render Real World
+        function renderReal() {
+            const container = document.getElementById('real-container');
+            realData.forEach((item, index) => {
+                const div = document.createElement('div');
+                div.className = 'border-l-4 border-indigo-400 pl-4 py-3 bg-gray-50 rounded-r-lg';
+                div.innerHTML = `
+                    <p class="font-semibold text-gray-800 mb-2"><strong>Bài ${index + 1}:</strong> ${item.q}</p>
+                    <button onclick="toggleAnswer('real-${index}')" class="text-indigo-600 text-sm hover:underline">👁 Xem lời giải chi tiết</button>
+                    <div id="real-${index}" class="solution-box mt-2 p-4 rounded hidden">
+                        <p class="font-semibold text-amber-700 mb-2">Đáp án: ${item.answer}</p>
+                        <div class="text-gray-700 text-sm whitespace-pre-line">${item.solution}</div>
+                    </div>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        // Toggle Answer
+        function toggleAnswer(id) {
+            const el = document.getElementById(id);
+            el.classList.toggle('hidden');
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            renderMCQ();
+            renderTF();
+            renderRecognition();
+            renderLow();
+            renderHigh();
+            renderReal();
+        });
+    </script>
+</body>
+</html>
+
