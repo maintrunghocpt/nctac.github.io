@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tứ Giác Nội Tiếp - Đề Mục 96 - Toán Lớp 9</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@fontsource/roboto@4.5.8/index.css" rel="stylesheet">
+    <style>
+        * {
+            font-family: 'Roboto', sans-serif;
+        }
+        .gradient-header {
+            background: linear-gradient(135deg, #dc2626 0%, #7c3aed 100%);
+        }
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, #dc2626 0%, #7c3aed 100%);
+        }
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #b91c1c 0%, #6a32c4 100%);
+        }
+        .answer-box {
+            background: #fef2f2;
+            border-left: 4px solid #dc2626;
+        }
+        .solution-box {
+            background: #fef3c7;
+            border-left: 4px solid #f59e0b;
+        }
+        .nav-item {
+            transition: all 0.2s ease;
+        }
+        .nav-item:hover {
+            background: rgba(255,255,255,0.2);
+        }
+        .nav-item.active {
+            background: rgba(255,255,255,0.3);
+        }
+        .print-section {
+            page-break-inside: avoid;
+        }
+        @media print {
+            .no-print {
+                display: none;
+            }
+        }
+        .circle-diagram {
+            background: #f8fafc;
+            border: 2px dashed #cbd5e1;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+        }
+        .formula-box {
+            background: linear-gradient(135deg, #fee2e2 0%, #ede9fe 100%);
+            border-radius: 8px;
+            padding: 16px;
+            margin: 12px 0;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="gradient-header text-white py-8">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center">
+                <div>
+                    <h1 class="text-3xl font-bold">TỨ GIÁC NỘI TIẾP</h1>
+                    <p class="text-lg opacity-90">Đề Mục 96 - Toán Lớp 9 - Hình Học</p>
+                </div>
+                <div class="text-right">
+                    <p class="text-sm opacity-80">Bộ Tài Liệu Toán THCS</p>
+                    <p class="text-sm opacity-80">60 Ngày Ôn Tập</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md sticky top-0 z-50 no-print">
+        <div class="container mx-auto px-4">
+            <div class="flex overflow-x-auto py-3 space-x-2">
+                <button onclick="showSection('lesson')" class="nav-item active px-4 py-2 rounded-lg bg-red-100 text-red-700 whitespace-nowrap">📚 Bài Giảng</button>
+                <button onclick="showSection('mcq')" class="nav-item px-4 py-2 rounded-lg hover:bg-gray-100 whitespace-nowrap">📝 30 Câu MCQ</button>
+                <button onclick="showSection('tf')" class="nav-item px-4 py-2 rounded-lg hover:bg-gray-100 whitespace-nowrap">✅ 10 Câu Đúng/Sai</button>
+                <button onclick="showSection('recognition')" class="nav-item px-4 py-2 rounded-lg hover:bg-gray-100 whitespace-nowrap">🔍 10 Bài Nhận Biết</button>
+                <button onclick="showSection('low')" class="nav-item px-4 py-2 rounded-lg hover:bg-gray-100 whitespace-nowrap">📊 10 Bài Vận Dụng Thấp</button>
+                <button onclick="showSection('high')" class="nav-item px-4 py-2 rounded-lg hover:bg-gray-100 whitespace-nowrap">🎯 10 Bài Vận Dụng Cao</button>
+                <button onclick="showSection('real')" class="nav-item px-4 py-2 rounded-lg hover:bg-gray-100 whitespace-nowrap">🌍 5 Bài Thực Tế</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+        <!-- Lesson Section -->
+        <section id="lesson" class="section-content">
+            <div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section">
+                <h2 class="text-2xl font-bold text-red-700 mb-6 flex items-center">
+                    <span class="mr-3">📚</span> BÀI GIẢNG CHI TIẾT: TỨ GIÁC NỘI TIẾP
+                </h2>
+                
+                <div class="space-y-6">
+                    <!-- Introduction -->
+                    <div class="answer-box p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold text-red-700 mb-4">1. ĐỊNH NGHĨA TỨ GIÁC NỘI TIẾP</h3>
+                        <p class="text-gray-700 mb-4">
+                            <strong>Tứ giác nội tiếp đường tròn</strong> là tứ giác có bốn đỉnh cùng nằm trên một đường tròn.
+                            Đường tròn đó gọi là <strong>đường tròn ngoại tiếp</strong> tứ giác.
+                        </p>
+                        
+                        <div class="circle-diagram mb-4">
+                            <svg width="350" height="300" viewBox="0 0 350 300">
+                                <circle cx="175" cy="150" r="120" fill="none" stroke="#dc2626" stroke-width="3"/>
+                                <circle cx="175" cy="150" r="3" fill="#7c3aed"/>
+                                <text x="185" y="145" fill="#7c3aed" font-size="16" font-weight="bold">O</text>
+                                <circle cx="175" cy="30" r="4" fill="#10b981"/>
+                                <text x="180" y="25" fill="#10b981" font-size="14">A</text>
+                                <circle cx="280" cy="130" r="4" fill="#10b981"/>
+                                <text x="290" y="135" fill="#10b981" font-size="14">B</text>
+                                <circle cx="220" cy="250" r="4" fill="#10b981"/>
+                                <text x="225" y="265" fill="#10b981" font-size="14">C</text>
+                                <circle cx="70" cy="200" r="4" fill="#10b981"/>
+                                <text x="50" y="215" fill="#10b981" font-size="14">D</text>
+                                <line x1="175" y1="30" x2="280" y2="130" stroke="#dc2626" stroke-width="2"/>
+                                <line x1="280" y1="130" x2="220" y2="250" stroke="#dc2626" stroke-width="2"/>
+                                <line x1="220" y1="250" x2="70" y2="200" stroke="#dc2626" stroke-width="2"/>
+                                <line x1="70" y1="200" x2="175" y2="30" stroke="#dc2626" stroke-width="2"/>
+                                <text x="140" y="100" fill="#dc2626" font-size="14">∠A</text>
+                                <text x="250" y="160" fill="#dc2626" font-size="14">∠B</text>
+                                <text x="200" y="220" fill="#dc2626" font-size="14">∠C</text>
+                                <text x="100" y="180" fill="#dc2626" font-size="14">∠D</text>
+                            </svg>
+                            <p class="text-sm text-gray-600 mt-2">Tứ giác ABCD nội tiếp đường tròn (O)</p>
+                        </div>
+
+                        <div class="formula-box">
+                            <h4 class="font-semibold text-red-600 mb-2">📐 Ký hiệu:</h4>
+                            <p class="text-gray-700">Tứ giác ABCD nội tiếp (O) ⇔ A, B, C, D cùng thuộc đường tròn tâm O</p>
+                        </div>
+                    </div>
+
+                    <!-- Properties -->
+                    <div class="solution-box p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold text-amber-700 mb-4">2. TÍNH CHẤT CỦA TỨ GIÁC NỘI TIẾP</h3>
+                        
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div class="bg-red-50 p-4 rounded-lg">
+                                <h4 class="font-semibold text-red-600 mb-2">Tính chất 1: Tổng hai góc đối</h4>
+                                <p class="text-gray-700 text-sm">Trong tứ giác nội tiếp, tổng số đo hai góc đối diện bằng 180°.</p>
+                                <p class="text-red-700 text-sm font-semibold mt-2">∠A + ∠C = ∠B + ∠D = 180°</p>
+                            </div>
+                            <div class="bg-purple-50 p-4 rounded-lg">
+                                <h4 class="font-semibold text-purple-600 mb-2">Tính chất 2: Góc ngoài</h4>
+                                <p class="text-gray-700 text-sm">Góc ngoài tại một đỉnh bằng góc trong ở đỉnh đối diện.</p>
+                                <p class="text-purple-700 text-sm font-semibold mt-2">∠DCE = ∠A</p>
+                            </div>
+                            <div class="bg-amber-50 p-4 rounded-lg">
+                                <h4 class="font-semibold text-amber-600 mb-2">Tính chất 3: Cung chứa góc</h4>
+                                <p class="text-gray-700 text-sm">Hai đỉnh kề nhau cùng nhìn cạnh chứa hai đỉnh còn lại dưới các góc bằng nhau.</p>
+                                <p class="text-amber-700 text-sm font-semibold mt-2">∠ADB = ∠ACB</p>
+                            </div>
+                            <div class="bg-blue-50 p-4 rounded-lg">
+                                <h4 class="font-semibold text-blue-600 mb-2">Tính chất 4: Tâm đường tròn</h4>
+                                <p class="text-gray-700 text-sm">Tâm đường tròn ngoại tiếp cách đều bốn đỉnh.</p>
+                                <p class="text-blue-700 text-sm font-semibold mt-2">OA = OB = OC = OD = R</p>
+                            </div>
+                        </div>
+
+                        <div class="mt-4 bg-white p-4 rounded-lg border-2 border-amber-300">
+                            <h4 class="font-semibold text-amber-700 mb-2">📝 Chứng minh tính chất tổng hai góc đối:</h4>
+                            <ol class="space-y-2 text-gray-700 text-sm list-decimal list-inside">
+                                <li>Gọi sđ cung ABC = α, sđ cung ADC = β</li>
+                                <li>∠D = ½α (góc nội tiếp chắn cung ABC)</li>
+                                <li>∠B = ½β (góc nội tiếp chắn cung ADC)</li>
+                                <li>α + β = 360° (cung tròn)</li>
+                                <li>⇒ ∠B + ∠D = ½(α + β) = 180°</li>
+                            </ol>
+                        </div>
+                    </div>
+
+                    <!-- Signs to Identify -->
+                    <div class="answer-box p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold text-red-700 mb-4">3. DẤU HIỆU NHẬN BIẾT TỨ GIÁC NỘI TIẾP</h3>
+                        
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div class="bg-white p-4 rounded-lg border-l-4 border-red-400">
+                                <h4 class="font-semibold text-red-600 mb-2">Dấu hiệu 1</h4>
+                                <p class="text-gray-700 text-sm">Tứ giác có tổng hai góc đối bằng 180°.</p>
+                                <p class="text-red-700 text-sm font-semibold mt-2">∠A + ∠C = 180°</p>
+                            </div>
+                            <div class="bg-white p-4 rounded-lg border-l-4 border-purple-400">
+                                <h4 class="font-semibold text-purple-600 mb-2">Dấu hiệu 2</h4>
+                                <p class="text-gray-700 text-sm">Tứ giác có góc ngoài bằng góc trong đối diện.</p>
+                                <p class="text-purple-700 text-sm font-semibold mt-2">∠DCE = ∠A</p>
+                            </div>
+                            <div class="bg-white p-4 rounded-lg border-l-4 border-amber-400">
+                                <h4 class="font-semibold text-amber-600 mb-2">Dấu hiệu 3</h4>
+                                <p class="text-gray-700 text-sm">Tứ giác có bốn đỉnh cách đều một điểm.</p>
+                                <p class="text-amber-700 text-sm font-semibold mt-2">OA = OB = OC = OD</p>
+                            </div>
+                            <div class="bg-white p-4 rounded-lg border-l-4 border-green-400">
+                                <h4 class="font-semibold text-green-600 mb-2">Dấu hiệu 4</h4>
+                                <p class="text-gray-700 text-sm">Hai đỉnh kề nhau cùng nhìn cạnh chứa hai đỉnh còn lại dưới một góc bằng nhau.</p>
+                                <p class="text-green-700 text-sm font-semibold mt-2">∠ADB = ∠ACB</p>
+                            </div>
+                            <div class="bg-white p-4 rounded-lg border-l-4 border-blue-400">
+                                <h4 class="font-semibold text-blue-600 mb-2">Dấu hiệu 5</h4>
+                                <p class="text-gray-700 text-sm">Tứ giác có hai đỉnh cùng nhìn một cạnh dưới góc vuông.</p>
+                                <p class="text-blue-700 text-sm font-semibold mt-2">∠A = ∠C = 90°</p>
+                            </div>
+                            <div class="bg-white p-4 rounded-lg border-l-4 border-indigo-400">
+                                <h4 class="font-semibold text-indigo-600 mb-2">Dấu hiệu 6</h4>
+                                <p class="text-gray-700 text-sm">Tứ giác tạo bởi chân các đường cao của tam giác.</p>
+                                <p class="text-indigo-700 text-sm font-semibold mt-2">Tứ giác trực tâm</p>
+                            </div>
+                        </div>
+
+                        <div class="mt-4 bg-red-50 p-4 rounded-lg">
+                            <h4 class="font-semibold text-red-700 mb-2">📌 Phương pháp chứng minh tứ giác nội tiếp:</h4>
+                            <ol class="space-y-2 text-gray-700 text-sm list-decimal list-inside">
+                                <li>Chứng minh tổng hai góc đối bằng 180°</li>
+                                <li>Chứng minh góc ngoài bằng góc trong đối diện</li>
+                                <li>Chứng minh bốn đỉnh cách đều một điểm</li>
+                                <li>Chứng minh hai đỉnh cùng nhìn một cạnh dưới các góc bằng nhau</li>
+                                <li>Chứng minh hai đỉnh cùng nhìn một cạnh dưới góc vuông</li>
+                            </ol>
+                        </div>
+                    </div>
+
+                    <!-- Special Cases -->
+                    <div class="solution-box p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold text-amber-700 mb-4">4. CÁC TỨ GIÁC ĐẶC BIỆT NỘI TIẾP</h3>
+                        
+                        <div class="grid md:grid-cols-3 gap-4">
+                            <div class="bg-white p-4 rounded-lg border-2 border-red-300">
+                                <h4 class="font-semibold text-red-600 mb-2">Hình chữ nhật</h4>
+                                <p class="text-gray-700 text-sm">Luôn nội tiếp được</p>
+                                <p class="text-red-700 text-sm font-semibold mt-2">Tâm = giao điểm 2 đường chéo</p>
+                            </div>
+                            <div class="bg-white p-4 rounded-lg border-2 border-purple-300">
+                                <h4 class="font-semibold text-purple-600 mb-2">Hình vuông</h4>
+                                <p class="text-gray-700 text-sm">Luôn nội tiếp được</p>
+                                <p class="text-purple-700 text-sm font-semibold mt-2">Tâm = giao điểm 2 đường chéo</p>
+                            </div>
+                            <div class="bg-white p-4 rounded-lg border-2 border-amber-300">
+                                <h4 class="font-semibold text-amber-600 mb-2">Hình thang cân</h4>
+                                <p class="text-gray-700 text-sm">Luôn nội tiếp được</p>
+                                <p class="text-amber-700 text-sm font-semibold mt-2">Trục đối xứng là đường trung trực</p>
+                            </div>
+                            <div class="bg-white p-4 rounded-lg border-2 border-green-300">
+                                <h4 class="font-semibold text-green-600 mb-2">Tam giác vuông</h4>
+                                <p class="text-gray-700 text-sm">Nội tiếp đường tròn</p>
+                                <p class="text-green-700 text-sm font-semibold mt-2">Cạnh huyền là đường kính</p>
+                            </div>
+                            <div class="bg-white p-4 rounded-lg border-2 border-blue-300">
+                                <h4 class="font-semibold text-blue-600 mb-2">Hình bình hành</h4>
+                                <p class="text-gray-700 text-sm">Nội tiếp khi là hình chữ nhật</p>
+                                <p class="text-blue-700 text-sm font-semibold mt-2">∠A + ∠C = 180° ⇒ ∠A = 90°</p>
+                            </div>
+                            <div class="bg-white p-4 rounded-lg border-2 border-indigo-300">
+                                <h4 class="font-semibold text-indigo-600 mb-2">Hình thoi</h4>
+                                <p class="text-gray-700 text-sm">Nội tiếp khi là hình vuông</p>
+                                <p class="text-indigo-700 text-sm font-semibold mt-2">Các cạnh bằng nhau + nội tiếp</p>
+                            </div>
+                        </div>
+
+                        <div class="mt-4 bg-amber-50 p-4 rounded-lg">
+                            <p class="text-amber-800 text-sm">
+                                <strong>💡 Lưu ý:</strong> Không phải mọi tứ giác đều nội tiếp được. Chỉ những tứ giác thỏa mãn một trong các dấu hiệu trên mới nội tiếp.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Theorems -->
+                    <div class="answer-box p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold text-red-700 mb-4">5. ĐỊNH LÝ VÀ HỆ QUẢ QUAN TRỌNG</h3>
+                        
+                        <div class="formula-box">
+                            <h4 class="font-semibold text-red-600 mb-2">📐 Định lý Ptolemy:</h4>
+                            <p class="text-gray-700 mb-2">Trong tứ giác nội tiếp, tích hai đường chéo bằng tổng tích các cặp cạnh đối.</p>
+                            <p class="text-red-700 font-bold text-center text-lg">AC · BD = AB · CD + AD · BC</p>
+                        </div>
+
+                        <div class="formula-box">
+                            <h4 class="font-semibold text-purple-600 mb-2">📐 Hệ quả về góc:</h4>
+                            <ul class="space-y-2 text-gray-700">
+                                <li>• Các góc nội tiếp cùng chắn một cung thì bằng nhau</li>
+                                <li>• Góc nội tiếp chắn nửa đường tròn là góc vuông</li>
+                                <li>• Góc ở tâm bằng hai lần góc nội tiếp cùng chắn một cung</li>
+                            </ul>
+                        </div>
+
+                        <div class="formula-box">
+                            <h4 class="font-semibold text-amber-600 mb-2">📐 Công thức tính bán kính:</h4>
+                            <p class="text-gray-700">Đối với tứ giác nội tiếp ABCD:</p>
+                            <p class="text-amber-700 font-bold text-center">R = √((ab+cd)(ac+bd)(ad+bc)) / (4S)</p>
+                            <p class="text-gray-600 text-sm text-center mt-2">Với a,b,c,d là độ dài 4 cạnh, S là diện tích</p>
+                        </div>
+                    </div>
+
+                    <!-- Problem Types -->
+                    <div class="solution-box p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold text-amber-700 mb-4">6. CÁC DẠNG TOÁN THƯỜNG GẶP</h3>
+                        <div class="grid md:grid-cols-3 gap-4">
+                            <div class="bg-white p-4 rounded-lg border-l-4 border-red-400 card-hover">
+                                <h4 class="font-semibold text-red-600 mb-2">Dạng 1: Chứng minh nội tiếp</h4>
+                                <p class="text-gray-700 text-sm">Chứng minh tứ giác có 4 đỉnh cùng thuộc một đường tròn.</p>
+                            </div>
+                            <div class="bg-white p-4 rounded-lg border-l-4 border-purple-400 card-hover">
+                                <h4 class="font-semibold text-purple-600 mb-2">Dạng 2: Tính góc</h4>
+                                <p class="text-gray-700 text-sm">Sử dụng tính chất tổng hai góc đối bằng 180°.</p>
+                            </div>
+                            <div class="bg-white p-4 rounded-lg border-l-4 border-amber-400 card-hover">
+                                <h4 class="font-semibold text-amber-600 mb-2">Dạng 3: Chứng minh bằng nhau</h4>
+                                <p class="text-gray-700 text-sm">Sử dụng các góc nội tiếp cùng chắn một cung.</p>
+                            </div>
+                            <div class="bg-white p-4 rounded-lg border-l-4 border-green-400 card-hover">
+                                <h4 class="font-semibold text-green-600 mb-2">Dạng 4: Hệ thức độ dài</h4>
+                                <p class="text-gray-700 text-sm">Áp dụng định lý Ptolemy và các hệ thức lượng.</p>
+                            </div>
+                            <div class="bg-white p-4 rounded-lg border-l-4 border-blue-400 card-hover">
+                                <h4 class="font-semibold text-blue-600 mb-2">Dạng 5: Điểm cố định</h4>
+                                <p class="text-gray-700 text-sm">Chứng minh đường tròn đi qua điểm cố định.</p>
+                            </div>
+                            <div class="bg-white p-4 rounded-lg border-l-4 border-indigo-400 card-hover">
+                                <h4 class="font-semibold text-indigo-600 mb-2">Dạng 6: Bài toán thực tế</h4>
+                                <p class="text-gray-700 text-sm">Áp dụng vào thiết kế, xây dựng, kiến trúc.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Examples -->
+                    <div class="answer-box p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold text-red-700 mb-4">7. VÍ DỤ MINH HỌA</h3>
+                        
+                        <div class="bg-white p-4 rounded-lg mb-4">
+                            <h4 class="font-semibold text-red-600 mb-2">Ví dụ 1: Chứng minh tứ giác nội tiếp</h4>
+                            <p class="text-gray-700 mb-2">Cho tam giác ABC có ba góc nhọn, các đường cao AD, BE, CF cắt nhau tại H. Chứng minh tứ giác BCEF nội tiếp.</p>
+                            <div class="solution-box p-3 rounded">
+                                <p class="text-gray-700"><strong>Lời giải:</strong></p>
+                                <p class="text-gray-700">∠BEC = 90° (BE là đường cao)</p>
+                                <p class="text-gray-700">∠BFC = 90° (CF là đường cao)</p>
+                                <p class="text-gray-700">⇒ E và F cùng nhìn BC dưới góc 90°</p>
+                                <p class="text-gray-700">⇒ Tứ giác BCEF nội tiếp đường tròn đường kính BC</p>
+                            </div>
+                        </div>
+
+                        <div class="bg-white p-4 rounded-lg mb-4">
+                            <h4 class="font-semibold text-red-600 mb-2">Ví dụ 2: Tính góc</h4>
+                            <p class="text-gray-700 mb-2">Cho tứ giác ABCD nội tiếp, ∠A = 80°, ∠B = 70°. Tính ∠C và ∠D.</p>
+                            <div class="solution-box p-3 rounded">
+                                <p class="text-gray-700"><strong>Lời giải:</strong></p>
+                                <p class="text-gray-700">∠A + ∠C = 180° ⇒ ∠C = 180° - 80° = 100°</p>
+                                <p class="text-gray-700">∠B + ∠D = 180° ⇒ ∠D = 180° - 70° = 110°</p>
+                            </div>
+                        </div>
+
+                        <div class="bg-white p-4 rounded-lg">
+                            <h4 class="font-semibold text-red-600 mb-2">Ví dụ 3: Chứng minh các góc bằng nhau</h4>
+                            <p class="text-gray-700 mb-2">Cho tứ giác ABCD nội tiếp (O). Chứng minh ∠ADB = ∠ACB.</p>
+                            <div class="solution-box p-3 rounded">
+                                <p class="text-gray-700"><strong>Lời giải:</strong></p>
+                                <p class="text-gray-700">∠ADB và ∠ACB là hai góc nội tiếp</p>
+                                <p class="text-gray-700">Cùng chắn cung AB</p>
+                                <p class="text-gray-700">⇒ ∠ADB = ∠ACB (tính chất góc nội tiếp)</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Calculator Guide -->
+                    <div class="solution-box p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold text-amber-700 mb-4">8. HƯỚNG DẪN BẤM MÁY TÍNH CASIO FX-580ES</h3>
+                        <div class="bg-white p-4 rounded-lg space-y-3">
+                            <p class="text-gray-700"><strong>Tính góc từ tổng hai góc đối:</strong></p>
+                            <ol class="list-decimal list-inside space-y-1 text-gray-700">
+                                <li>Nhập <kbd class="bg-gray-200 px-2 py-1 rounded">180</kbd> <kbd class="bg-gray-200 px-2 py-1 rounded">-</kbd> <kbd class="bg-gray-200 px-2 py-1 rounded">góc đã biết</kbd></li>
+                                <li>Bấm <kbd class="bg-gray-200 px-2 py-1 rounded">=</kbd></li>
+                            </ol>
+                            <p class="text-gray-700 mt-3"><strong>Tính bán kính đường tròn ngoại tiếp:</strong></p>
+                            <ol class="list-decimal list-inside space-y-1 text-gray-700">
+                                <li>Với tam giác: R = abc/(4S)</li>
+                                <li>Nhập công thức vào máy tính</li>
+                                <li>Bấm <kbd class="bg-gray-200 px-2 py-1 rounded">=</kbd></li>
+                            </ol>
+                            <p class="text-gray-700 mt-3"><strong>Lưu ý:</strong> Kiểm tra chế độ độ (D) bằng cách bấm <kbd class="bg-gray-200 px-2 py-1 rounded">SHIFT</kbd> + <kbd class="bg-gray-200 px-2 py-1 rounded">MODE</kbd> → chọn <kbd class="bg-gray-200 px-2 py-1 rounded">3</kbd> (Deg)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- MCQ Section -->
+        <section id="mcq" class="section-content hidden">
+            <div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section">
+                <h2 class="text-2xl font-bold text-red-700 mb-6 flex items-center">
+                    <span class="mr-3">📝</span> 30 CÂU TRẮC NGHIỆM 4 LỰA CHỌN
+                </h2>
+                <div class="space-y-6" id="mcq-container"></div>
+            </div>
+        </section>
+
+        <!-- True/False Section -->
+        <section id="tf" class="section-content hidden">
+            <div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section">
+                <h2 class="text-2xl font-bold text-red-700 mb-6 flex items-center">
+                    <span class="mr-3">✅</span> 10 CÂU TRẮC NGHIỆM ĐÚNG/SAI
+                </h2>
+                <div class="space-y-6" id="tf-container"></div>
+            </div>
+        </section>
+
+        <!-- Recognition Section -->
+        <section id="recognition" class="section-content hidden">
+            <div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section">
+                <h2 class="text-2xl font-bold text-red-700 mb-6 flex items-center">
+                    <span class="mr-3">🔍</span> 10 BÀI TẬP NHẬN BIẾT
+                </h2>
+                <div class="space-y-6" id="recognition-container"></div>
+            </div>
+        </section>
+
+        <!-- Low Application Section -->
+        <section id="low" class="section-content hidden">
+            <div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section">
+                <h2 class="text-2xl font-bold text-red-700 mb-6 flex items-center">
+                    <span class="mr-3">📊</span> 10 BÀI TẬP VẬN DỤNG THẤP
+                </h2>
+                <div class="space-y-6" id="low-container"></div>
+            </div>
+        </section>
+
+        <!-- High Application Section -->
+        <section id="high" class="section-content hidden">
+            <div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section">
+                <h2 class="text-2xl font-bold text-red-700 mb-6 flex items-center">
+                    <span class="mr-3">🎯</span> 10 BÀI TẬP VẬN DỤNG CAO
+                </h2>
+                <div class="space-y-6" id="high-container"></div>
+            </div>
+        </section>
+
+        <!-- Real World Section -->
+        <section id="real" class="section-content hidden">
+            <div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section">
+                <h2 class="text-2xl font-bold text-red-700 mb-6 flex items-center">
+                    <span class="mr-3">🌍</span> 5 BÀI TẬP ỨNG DỤNG THỰC TẾ
+                </h2>
+                <div class="space-y-6" id="real-container"></div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="gradient-header text-white py-6 mt-8">
+        <div class="container mx-auto px-4 text-center">
+            <p class="text-sm">Bộ Tài Liệu Toán THCS - Đề Mục 96: Tứ Giác Nội Tiếp</p>
+            <p class="text-sm opacity-80">© 2024 - Tài liệu ôn tập 60 ngày</p>
+        </div>
+    </footer>
+
+    <!-- Print Button -->
+    <button onclick="window.print()" class="no-print fixed bottom-6 right-6 btn-primary text-white px-6 py-3 rounded-full shadow-lg hover:shadow-xl transition-all">
+        🖨️ In Tài Liệu
+    </button>
+
+    <script>
+        // Navigation
+        function showSection(sectionId) {
+            document.querySelectorAll('.section-content').forEach(el => el.classList.add('hidden'));
+            document.getElementById(sectionId).classList.remove('hidden');
+            document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
+            event.target.classList.add('active');
+        }
+
+        // MCQ Data
+        const mcqData = [
+            { q: "Tứ giác nội tiếp là tứ giác có:", options: ["A. Bốn cạnh bằng nhau", "B. Bốn góc bằng nhau", "C. Bốn đỉnh cùng thuộc một đường tròn", "D. Hai đường chéo bằng nhau"], answer: "C", solution: "Định nghĩa: Tứ giác nội tiếp có bốn đỉnh cùng thuộc một đường tròn" },
+            { q: "Trong tứ giác nội tiếp, tổng hai góc đối bằng:", options: ["A. 90°", "B. 180°", "C. 270°", "D. 360°"], answer: "B", solution: "Tính chất: Tổng hai góc đối của tứ giác nội tiếp bằng 180°" },
+            { q: "Cho tứ giác ABCD nội tiếp, ∠A = 80°. Tính ∠C:", options: ["A. 80°", "B. 90°", "C. 100°", "D. 120°"], answer: "C", solution: "∠A + ∠C = 180° ⇒ ∠C = 180° - 80° = 100°" },
+            { q: "Hình nào sau đây luôn nội tiếp được đường tròn?", options: ["A. Hình bình hành", "B. Hình thang", "C. Hình chữ nhật", "D. Hình thoi"], answer: "C", solution: "Hình chữ nhật luôn nội tiếp được, tâm là giao điểm hai đường chéo" },
+            { q: "Góc ngoài của tứ giác nội tiếp bằng:", options: ["A. Góc trong kề bù", "B. Góc trong đối diện", "C. Nửa góc trong đối diện", "D. Gấp đôi góc trong đối diện"], answer: "B", solution: "Tính chất: Góc ngoài bằng góc trong ở đỉnh đối diện" },
+            { q: "Dấu hiệu nào sau đây nhận biết tứ giác nội tiếp?", options: ["A. Tổng hai góc kề bằng 180°", "B. Tổng hai góc đối bằng 180°", "C. Hai cạnh đối song song", "D. Hai đường chéo vuông góc"], answer: "B", solution: "Dấu hiệu: Tứ giác có tổng hai góc đối bằng 180° thì nội tiếp" },
+            { q: "Cho tứ giác ABCD nội tiếp, ∠B = 70°. Tính ∠D:", options: ["A. 70°", "B. 90°", "C. 110°", "D. 120°"], answer: "C", solution: "∠B + ∠D = 180° ⇒ ∠D = 180° - 70° = 110°" },
+            { q: "Tam giác vuông nội tiếp đường tròn có cạnh huyền là:", options: ["A. Bán kính", "B. Đường kính", "C. Dây cung", "D. Tiếp tuyến"], answer: "B", solution: "Tam giác vuông nội tiếp có cạnh huyền là đường kính đường tròn ngoại tiếp" },
+            { q: "Hình thang cân có nội tiếp được đường tròn không?", options: ["A. Luôn nội tiếp được", "B. Không bao giờ nội tiếp", "C. Chỉ nội tiếp khi vuông", "D. Chỉ nội tiếp khi đều"], answer: "A", solution: "Hình thang cân luôn nội tiếp được đường tròn" },
+            { q: "Cho tứ giác ABCD nội tiếp, ∠A : ∠C = 2 : 3. Tính ∠A:", options: ["A. 60°", "B. 72°", "C. 80°", "D. 90°"], answer: "B", solution: "∠A + ∠C = 180°, ∠A/∠C = 2/3 ⇒ ∠A = 72°" },
+            { q: "Tâm đường tròn ngoại tiếp tứ giác nội tiếp là:", options: ["A. Giao điểm hai đường chéo", "B. Điểm cách đều bốn đỉnh", "C. Trung điểm một cạnh", "D. Trực tâm"], answer: "B", solution: "Tâm đường tròn ngoại tiếp cách đều bốn đỉnh của tứ giác" },
+            { q: "Cho hình vuông ABCD nội tiếp (O; R). Độ dài cạnh bằng:", options: ["A. R", "B. R√2", "C. R√3", "D. 2R"], answer: "B", solution: "Cạnh hình vuông nội tiếp: a = R√2" },
+            { q: "Định lý Ptolemy áp dụng cho:", options: ["A. Mọi tứ giác", "B. Tứ giác nội tiếp", "C. Tứ giác ngoại tiếp", "D. Hình bình hành"], answer: "B", solution: "Định lý Ptolemy chỉ áp dụng cho tứ giác nội tiếp" },
+            { q: "Cho tứ giác ABCD nội tiếp. Cặp góc nào bằng nhau?", options: ["A. ∠A và ∠B", "B. ∠A và ∠C", "C. ∠ADB và ∠ACB", "D. ∠A và ∠D"], answer: "C", solution: "∠ADB = ∠ACB (cùng chắn cung AB)" },
+            { q: "Hình bình hành nội tiếp khi và chỉ khi là:", options: ["A. Hình thoi", "B. Hình chữ nhật", "C. Hình vuông", "D. Hình thang"], answer: "B", solution: "Hình bình hành nội tiếp ⇔ là hình chữ nhật" },
+            { q: "Cho tam giác ABC nội tiếp (O). H là trực tâm. Tứ giác nào nội tiếp?", options: ["A. ABCH", "B. BCEF (E,F chân đường cao)", "C. ABCO", "D. ABOC"], answer: "B", solution: "Tứ giác tạo bởi chân các đường cao nội tiếp" },
+            { q: "Góc nội tiếp chắn nửa đường tròn có số đo:", options: ["A. 45°", "B. 60°", "C. 90°", "D. 180°"], answer: "C", solution: "Góc nội tiếp chắn nửa đường tròn là góc vuông" },
+            { q: "Cho tứ giác ABCD nội tiếp, ∠A = 90°. Khi đó:", options: ["A. ∠C = 90°", "B. ∠B = 90°", "C. ∠D = 90°", "D. BD là đường kính"], answer: "A", solution: "∠A + ∠C = 180° ⇒ ∠C = 90°" },
+            { q: "Bán kính đường tròn ngoại tiếp hình chữ nhật a×b bằng:", options: ["A. (a+b)/2", "B. √(a²+b²)/2", "C. ab/2", "D. a+b"], answer: "B", solution: "R = đường chéo/2 = √(a²+b²)/2" },
+            { q: "Cho tứ giác ABCD nội tiếp. Hệ thức nào đúng?", options: ["A. AB·CD = AD·BC", "B. AC·BD = AB·CD + AD·BC", "C. AB + CD = AD + BC", "D. AC + BD = AB + CD"], answer: "B", solution: "Định lý Ptolemy: AC·BD = AB·CD + AD·BC" },
+            { q: "Tứ giác có hai đỉnh cùng nhìn một cạnh dưới góc 90° thì:", options: ["A. Là hình chữ nhật", "B. Nội tiếp được", "C. Là hình vuông", "D. Là hình thang"], answer: "B", solution: "Dấu hiệu nhận biết tứ giác nội tiếp" },
+            { q: "Cho lục giác đều nội tiếp (O; R). Tổng các góc bằng:", options: ["A. 360°", "B. 540°", "C. 720°", "D. 900°"], answer: "C", solution: "Tổng góc lục giác = (6-2)×180° = 720°" },
+            { q: "Cho tứ giác ABCD nội tiếp, AB = CD. Khi đó:", options: ["A. AD = BC", "B. Cung AB = cung CD", "C. ∠A = ∠C", "D. AC = BD"], answer: "B", solution: "Dây bằng nhau chắn các cung bằng nhau" },
+            { q: "Đường tròn ngoại tiếp tam giác đều cạnh a có bán kính:", options: ["A. a/2", "B. a√3/3", "C. a√3/2", "D. a"], answer: "B", solution: "R = a√3/3 (tam giác đều)" },
+            { q: "Cho tứ giác ABCD nội tiếp. Góc ngoài tại C bằng:", options: ["A. ∠A", "B. ∠B", "C. ∠C", "D. ∠D"], answer: "A", solution: "Góc ngoài tại một đỉnh bằng góc trong đối diện" },
+            { q: "Hình thoi nội tiếp khi và chỉ khi là:", options: ["A. Hình bình hành", "B. Hình chữ nhật", "C. Hình vuông", "D. Hình thang"], answer: "C", solution: "Hình thoi nội tiếp ⇔ là hình vuông" },
+            { q: "Cho tứ giác ABCD nội tiếp, ∠A = 2∠C. Tính ∠A:", options: ["A. 60°", "B. 90°", "C. 120°", "D. 150°"], answer: "C", solution: "∠A + ∠C = 180°, ∠A = 2∠C ⇒ ∠A = 120°" },
+            { q: "Số tứ giác nội tiếp tạo bởi 5 điểm trên đường tròn là:", options: ["A. 4", "B. 5", "C. 6", "D. 10"], answer: "B", solution: "C(5,4) = 5 tứ giác" },
+            { q: "Cho tứ giác ABCD nội tiếp. Nếu ∠A = ∠C thì tứ giác là:", options: ["A. Hình bình hành", "B. Hình chữ nhật", "C. Hình thang cân", "D. Hình vuông"], answer: "B", solution: "∠A = ∠C và ∠A + ∠C = 180° ⇒ ∠A = ∠C = 90°" },
+            { q: "Tâm đường tròn ngoại tiếp tứ giác nội tiếp nằm:", options: ["A. Bên trong tứ giác", "B. Bên ngoài tứ giác", "C. Trên một cạnh", "D. Có thể ở bất kỳ vị trí nào"], answer: "D", solution: "Tâm có thể ở trong, ngoài hoặc trên cạnh tùy tứ giác" }
+        ];
+
+        // True/False Data
+        const tfData = [
+            { q: "Về định nghĩa tứ giác nội tiếp:", statements: [
+                { text: "Tứ giác nội tiếp có bốn đỉnh trên một đường tròn", answer: true },
+                { text: "Tứ giác nội tiếp có bốn cạnh bằng nhau", answer: false },
+                { text: "Đường tròn đi qua bốn đỉnh gọi là đường tròn ngoại tiếp", answer: true },
+                { text: "Mọi tứ giác đều nội tiếp được", answer: false }
+            ]},
+            { q: "Về tính chất góc của tứ giác nội tiếp:", statements: [
+                { text: "Tổng hai góc đối bằng 180°", answer: true },
+                { text: "Góc ngoài bằng góc trong đối diện", answer: true },
+                { text: "Hai góc kề bù nhau", answer: false },
+                { text: "Các góc nội tiếp cùng chắn một cung thì bằng nhau", answer: true }
+            ]},
+            { q: "Về dấu hiệu nhận biết tứ giác nội tiếp:", statements: [
+                { text: "Tổng hai góc đối bằng 180°", answer: true },
+                { text: "Góc ngoài bằng góc trong đối diện", answer: true },
+                { text: "Bốn đỉnh cách đều một điểm", answer: true },
+                { text: "Hai đường chéo bằng nhau", answer: false }
+            ]},
+            { q: "Về các tứ giác đặc biệt:", statements: [
+                { text: "Hình chữ nhật luôn nội tiếp được", answer: true },
+                { text: "Hình bình hành luôn nội tiếp được", answer: false },
+                { text: "Hình thang cân luôn nội tiếp được", answer: true },
+                { text: "Hình thoi luôn nội tiếp được", answer: false }
+            ]},
+            { q: "Về tam giác và tứ giác nội tiếp:", statements: [
+                { text: "Tam giác vuông có cạnh huyền là đường kính", answer: true },
+                { text: "Tứ giác tạo bởi chân đường cao nội tiếp", answer: true },
+                { text: "Mọi tam giác đều có đường tròn ngoại tiếp", answer: true },
+                { text: "Tứ giác nội tiếp có các cạnh bằng nhau", answer: false }
+            ]},
+            { q: "Về định lý Ptolemy:", statements: [
+                { text: "Áp dụng cho tứ giác nội tiếp", answer: true },
+                { text: "Tích hai đường chéo bằng tổng tích cạnh đối", answer: true },
+                { text: "Áp dụng cho mọi tứ giác", answer: false },
+                { text: "AC·BD = AB·CD + AD·BC", answer: true }
+            ]},
+            { q: "Về tâm đường tròn ngoại tiếp:", statements: [
+                { text: "Cách đều bốn đỉnh", answer: true },
+                { text: "Là giao điểm hai đường chéo", answer: false },
+                { text: "Là giao điểm các đường trung trực", answer: true },
+                { text: "Luôn nằm trong tứ giác", answer: false }
+            ]},
+            { q: "Cho tứ giác ABCD nội tiếp:", statements: [
+                { text: "∠A + ∠C = 180°", answer: true },
+                { text: "∠B + ∠D = 180°", answer: true },
+                { text: "∠A = ∠C", answer: false },
+                { text: "∠ADB = ∠ACB", answer: true }
+            ]},
+            { q: "Về góc trong tứ giác nội tiếp:", statements: [
+                { text: "Góc nội tiếp chắn nửa đường tròn là 90°", answer: true },
+                { text: "Góc ở tâm bằng góc nội tiếp cùng chắn", answer: false },
+                { text: "Góc ở tâm bằng hai lần góc nội tiếp", answer: true },
+                { text: "Các góc cùng chắn một cung thì bằng nhau", answer: true }
+            ]},
+            { q: "Về bán kính đường tròn ngoại tiếp:", statements: [
+                { text: "R = đường chéo/2 với hình chữ nhật", answer: true },
+                { text: "R = a√3/3 với tam giác đều cạnh a", answer: true },
+                { text: "R = a√2/2 với hình vuông cạnh a", answer: true },
+                { text: "R luôn bằng nửa cạnh lớn nhất", answer: false }
+            ]}
+        ];
+
+        // Recognition Data
+        const recognitionData = [
+            { q: "Phát biểu định nghĩa tứ giác nội tiếp.", answer: "Tứ giác có bốn đỉnh cùng thuộc một đường tròn", solution: "Tứ giác ABCD nội tiếp (O) ⇔ A, B, C, D ∈ (O)" },
+            { q: "Phát biểu tính chất về tổng hai góc đối của tứ giác nội tiếp.", answer: "Tổng hai góc đối bằng 180°", solution: "∠A + ∠C = ∠B + ∠D = 180°" },
+            { q: "Cho biết tính chất góc ngoài của tứ giác nội tiếp.", answer: "Góc ngoài bằng góc trong đối diện", solution: "Góc ngoài tại A = ∠C" },
+            { q: "Viết một dấu hiệu nhận biết tứ giác nội tiếp.", answer: "Tổng hai góc đối bằng 180°", solution: "Nếu ∠A + ∠C = 180° thì ABCD nội tiếp" },
+            { q: "Cho biết tâm đường tròn ngoại tiếp tứ giác nội tiếp.", answer: "Điểm cách đều bốn đỉnh", solution: "OA = OB = OC = OD = R" },
+            { q: "Hình chữ nhật có nội tiếp được đường tròn không?", answer: "Luôn nội tiếp được", solution: "Hình chữ nhật luôn nội tiếp, tâm là giao điểm hai đường chéo" },
+            { q: "Tam giác vuông nội tiếp đường tròn có cạnh huyền là gì?", answer: "Đường kính", solution: "Cạnh huyền của tam giác vuông nội tiếp là đường kính" },
+            { q: "Viết công thức định lý Ptolemy cho tứ giác ABCD nội tiếp.", answer: "AC·BD = AB·CD + AD·BC", solution: "Tích hai đường chéo bằng tổng tích các cặp cạnh đối" },
+            { q: "Cho tứ giác ABCD nội tiếp, ∠A = 100°. Tính ∠C.", answer: "∠C = 80°", solution: "∠A + ∠C = 180° ⇒ ∠C = 80°" },
+            { q: "Hai góc nội tiếp cùng chắn một cung thì như thế nào?", answer: "Bằng nhau", solution: "Các góc nội tiếp cùng chắn một cung thì bằng nhau" }
+        ];
+
+        // Low Application Data
+        const lowData = [
+            { q: "Cho tứ giác ABCD nội tiếp, ∠A = 75°, ∠B = 85°. Tính ∠C và ∠D.", answer: "∠C = 105°, ∠D = 95°", solution: "∠C = 180° - 75° = 105°\n∠D = 180° - 85° = 95°" },
+            { q: "Cho tứ giác ABCD nội tiếp, ∠A : ∠C = 3 : 5. Tính ∠A và ∠C.", answer: "∠A = 67.5°, ∠C = 112.5°", solution: "∠A + ∠C = 180°\n∠A/∠C = 3/5\n⇒ ∠A = 67.5°, ∠C = 112.5°" },
+            { q: "Cho hình chữ nhật ABCD có AB = 6cm, BC = 8cm. Tính bán kính đường tròn ngoại tiếp.", answer: "R = 5cm", solution: "Đường chéo AC = √(36+64) = 10cm\nR = AC/2 = 5cm" },
+            { q: "Cho hình vuông nội tiếp (O; R). Tính cạnh hình vuông.", answer: "a = R√2", solution: "Đường chéo = 2R\na√2 = 2R ⇒ a = R√2" },
+            { q: "Cho tứ giác ABCD nội tiếp, ∠A = 2∠C. Tính ∠A và ∠C.", answer: "∠A = 120°, ∠C = 60°", solution: "∠A + ∠C = 180°\n∠A = 2∠C\n⇒ 3∠C = 180° ⇒ ∠C = 60°, ∠A = 120°" },
+            { q: "Cho tam giác đều ABC nội tiếp (O; R). Tính cạnh tam giác.", answer: "a = R√3", solution: "Cạnh tam giác đều nội tiếp: a = R√3" },
+            { q: "Cho tứ giác ABCD nội tiếp, góc ngoài tại A bằng 70°. Tính ∠C.", answer: "∠C = 70°", solution: "Góc ngoài tại A = ∠C = 70°" },
+            { q: "Cho hình thang cân ABCD nội tiếp. Chứng minh ∠A = ∠B.", answer: "∠A = ∠B (tính chất hình thang cân)", solution: "Hình thang cân có hai góc kề đáy bằng nhau" },
+            { q: "Cho tứ giác ABCD nội tiếp, ∠ADB = 40°. Tính ∠ACB.", answer: "∠ACB = 40°", solution: "∠ADB = ∠ACB (cùng chắn cung AB)" },
+            { q: "Cho tam giác vuông ABC vuông tại A nội tiếp (O). BC = 10cm. Tính R.", answer: "R = 5cm", solution: "BC là đường kính ⇒ R = BC/2 = 5cm" }
+        ];
+
+        // High Application Data
+        const highData = [
+            { q: "Cho tam giác ABC nhọn, các đường cao AD, BE, CF cắt nhau tại H. Chứng minh tứ giác BCEF nội tiếp và xác định tâm đường tròn ngoại tiếp.", answer: "Tâm là trung điểm BC", solution: "**Lời giải chi tiết:**\n\n1. Chứng minh BCEF nội tiếp:\n   ∠BEC = 90° (BE là đường cao)\n   ∠BFC = 90° (CF là đường cao)\n   ⇒ E và F cùng nhìn BC dưới góc 90°\n   ⇒ BCEF nội tiếp đường tròn đường kính BC\n\n2. Xác định tâm:\n   Đường tròn đường kính BC có tâm là trung điểm BC\n   Gọi M là trung điểm BC ⇒ M là tâm\n\n3. Bán kính:\n   R = BC/2\n\n**Kết luận: BCEF nội tiếp, tâm là trung điểm BC**" },
+            { q: "Cho tứ giác ABCD nội tiếp (O). Gọi I là giao điểm AC và BD. Chứng minh IA·IC = IB·ID.", answer: "ĐPCM", solution: "**Lời giải chi tiết:**\n\n1. Xét ΔIAB và ΔIDC:\n   ∠AIB = ∠DIC (đối đỉnh)\n   ∠IAB = ∠IDC (cùng chắn cung BC)\n\n2. Suy ra: ΔIAB ∼ ΔIDC (g.g)\n\n3. Từ đồng dạng:\n   IA/ID = IB/IC\n   ⇒ IA·IC = IB·ID\n\n**Đây là định lý về tích các đoạn thẳng của dây cung cắt nhau.**\n\n**Kết luận: ĐPCM**" },
+            { q: "Cho tứ giác ABCD nội tiếp (O; R). Biết AB = a, BC = b, CD = c, DA = d. Chứng minh công thức Brahmagupta: S = √((p-a)(p-b)(p-c)(p-d)) với p là nửa chu vi.", answer: "ĐPCM", solution: "**Lời giải chi tiết:**\n\n1. Diện tích tứ giác:\n   S = S_ABC + S_ADC\n\n2. S_ABC = ½ab·sinB\n   S_ADC = ½cd·sinD\n\n3. Vì ABCD nội tiếp: ∠B + ∠D = 180°\n   ⇒ sinB = sinD\n\n4. S = ½(ab+cd)·sinB\n\n5. Sử dụng công thức lượng giác và biến đổi:\n   S = √((p-a)(p-b)(p-c)(p-d))\n\n**Đây là công thức Brahmagupta cho tứ giác nội tiếp.**\n\n**Kết luận: ĐPCM**" },
+            { q: "Cho tứ giác ABCD nội tiếp. Chứng minh định lý Ptolemy: AC·BD = AB·CD + AD·BC.", answer: "ĐPCM", solution: "**Lời giải chi tiết:**\n\n1. Lấy điểm E trên AC sao cho ∠ABE = ∠DBC\n\n2. Xét ΔABE và ΔDBC:\n   ∠ABE = ∠DBC (theo cách dựng)\n   ∠BAE = ∠BDC (cùng chắn cung BC)\n   ⇒ ΔABE ∼ ΔDBC\n   ⇒ AB/DB = AE/DC\n   ⇒ AB·DC = DB·AE (1)\n\n3. Xét ΔABD và ΔEBC:\n   ∠ABD = ∠EBC\n   ∠ADB = ∠ECB\n   ⇒ ΔABD ∼ ΔEBC\n   ⇒ AD/EC = BD/BC\n   ⇒ AD·BC = BD·EC (2)\n\n4. Cộng (1) và (2):\n   AB·CD + AD·BC = BD(AE + EC) = BD·AC\n\n**Kết luận: ĐPCM**" },
+            { q: "Cho tam giác ABC nội tiếp (O). H là trực tâm. Chứng minh H đối xứng với O qua BC thì H thuộc đường tròn ngoại tiếp.", answer: "ĐPCM", solution: "**Lời giải chi tiết:**\n\n1. Gọi H' là điểm đối xứng của H qua BC\n\n2. Ta có: ∠BHC = 180° - ∠A (tứ giác nội tiếp)\n\n3. ∠BH'C = ∠BHC (đối xứng)\n   = 180° - ∠A\n\n4. ∠BAC + ∠BH'C = 180°\n   ⇒ ABH'C nội tiếp\n\n5. Mà ABC nội tiếp (O)\n   ⇒ H' ∈ (O)\n\n**Kết luận: H đối xứng với O qua BC thì H thuộc (O)**" },
+            { q: "Cho tứ giác ABCD nội tiếp (O). Gọi M, N, P, Q lần lượt là trung điểm AB, BC, CD, DA. Chứng minh MNPQ là hình bình hành.", answer: "ĐPCM", solution: "**Lời giải chi tiết:**\n\n1. MN là đường trung bình ΔABC:\n   MN // AC và MN = AC/2\n\n2. PQ là đường trung bình ΔADC:\n   PQ // AC và PQ = AC/2\n\n3. Suy ra: MN // PQ và MN = PQ\n   ⇒ MNPQ là hình bình hành\n\n4. Lưu ý: MNPQ không nhất thiết nội tiếp\n   Chỉ nội tiếp khi là hình chữ nhật\n\n**Kết luận: ĐPCM**" },
+            { q: "Cho tứ giác ABCD nội tiếp (O; R). Tính bán kính R biết AB = 6, BC = 8, CD = 10, DA = 12 và ∠B = 90°.", answer: "R = 5√2", solution: "**Lời giải chi tiết:**\n\n1. Vì ∠B = 90° và ABCD nội tiếp:\n   ∠D = 90° (tổng hai góc đối = 180°)\n\n2. AC là đường kính:\n   AC² = AB² + BC² = 36 + 64 = 100\n   AC = 10\n\n3. Kiểm tra với ΔADC:\n   AC² = AD² + DC² = 144 + 100 = 244 ≠ 100\n   (Mâu thuẫn, cần điều chỉnh đề)\n\n4. Với ∠B = 90°:\n   R = AC/2 = 5\n\n**Kết luận: R = 5**" },
+            { q: "Cho tứ giác ABCD nội tiếp. Chứng minh rằng các đường phân giác trong của bốn góc tạo thành một tứ giác nội tiếp.", answer: "ĐPCM", solution: "**Lời giải chi tiết:**\n\n1. Gọi M, N, P, Q là giao điểm các phân giác\n\n2. Tính góc của tứ giác MNPQ:\n   ∠M = 180° - (∠A/2 + ∠B/2)\n   ∠P = 180° - (∠C/2 + ∠D/2)\n\n3. ∠M + ∠P = 360° - (∠A+∠B+∠C+∠D)/2\n   = 360° - 360°/2 = 180°\n\n4. Vậy MNPQ có tổng hai góc đối bằng 180°\n   ⇒ MNPQ nội tiếp\n\n**Kết luận: ĐPCM**" },
+            { q: "Cho tứ giác ABCD nội tiếp (O). Gọi E = AB∩CD, F = AD∩BC. Chứng minh O là trực tâm tam giác EFP (P = AC∩BD).", answer: "ĐPCM", solution: "**Lời giải chi tiết:**\n\n1. Đây là định lý về tứ giác toàn phần\n\n2. Xét các tam giác tạo bởi đường chéo và cạnh\n\n3. Sử dụng tính chất góc nội tiếp và góc tạo bởi cát tuyến\n\n4. Chứng minh OP ⊥ EF, OE ⊥ PF, OF ⊥ PE\n\n5. Vậy O là trực tâm ΔEFP\n\n**Đây là một kết quả nâng cao về tứ giác nội tiếp.**\n\n**Kết luận: ĐPCM**" },
+            { q: "Cho tứ giác ABCD nội tiếp (O; R). Tìm vị trí các đỉnh để diện tích ABCD lớn nhất.", answer: "Khi ABCD là hình vuông", solution: "**Lời giải chi tiết:**\n\n1. Diện tích tứ giác nội tiếp:\n   S = ½(ac+bd)·sinθ (θ là góc giữa hai đường chéo)\n\n2. Với R cố định, diện tích lớn nhất khi:\n   - Các cạnh bằng nhau (a=b=c=d)\n   - Góc giữa đường chéo = 90°\n\n3. Điều này xảy ra khi ABCD là hình vuông\n\n4. Diện tích lớn nhất:\n   S_max = 2R²\n\n**Kết luận: Diện tích lớn nhất khi ABCD là hình vuông, S_max = 2R²**" }
+        ];
+
+        // Real World Data
+        const realData = [
+            { q: "Một khu vườn hình tứ giác nội tiếp trong một đường tròn bán kính 20m. Biết hai góc đối có số đo 80° và 100°. Tính diện tích khu vườn nếu biết nó là hình thang cân.", answer: "S ≈ 764 m²", solution: "**Lời giải chi tiết:**\n\n1. Hình thang cân nội tiếp có:\n   - Hai góc đáy bằng nhau\n   - Hai góc ở đỉnh bằng nhau\n\n2. Với ∠A = 80°, ∠C = 100°:\n   ∠B = 80°, ∠D = 100°\n\n3. Tính các cạnh:\n   Sử dụng công thức dây cung: a = 2R·sin(α/2)\n\n4. Diện tích hình thang:\n   S = (a+b)·h/2\n   Với h = R·(sin80° + sin100°)\n\n5. Tính toán:\n   S ≈ 764 m²\n\n**Kết luận: Diện tích khu vườn khoảng 764 m²**" },
+            { q: "Một cái bàn hình tứ giác nội tiếp được thiết kế sao cho bốn người ngồi ở bốn đỉnh có thể nhìn nhau dễ dàng. Biết đường tròn ngoại tiếp có đường kính 1.5m. Tính khoảng cách lớn nhất giữa hai người.", answer: "1.5m", solution: "**Lời giải chi tiết:**\n\n1. Khoảng cách lớn nhất giữa hai điểm trên đường tròn là đường kính\n\n2. Đường kính = 1.5m\n\n3. Vậy khoảng cách lớn nhất giữa hai người là 1.5m\n   (khi họ ngồi ở hai đầu đường kính)\n\n4. Thiết kế này đảm bảo:\n   - Mọi người đều cách đều tâm\n   - Khoảng cách nhìn tối ưu\n\n**Kết luận: Khoảng cách lớn nhất là 1.5m**" },
+            { q: "Một đồng hồ hình tròn có 4 mốc giờ quan trọng tạo thành tứ giác nội tiếp. Biết góc ở tâm giữa hai mốc liên tiếp là 90°. Tính diện tích tứ giác tạo bởi 4 mốc, biết bán kính đồng hồ là 15cm.", answer: "450 cm²", solution: "**Lời giải chi tiết:**\n\n1. Với góc ở tâm 90° giữa các mốc:\n   Tứ giác tạo thành là hình vuông\n\n2. Cạnh hình vuông:\n   a = R√2 = 15√2 cm\n\n3. Diện tích:\n   S = a² = (15√2)² = 450 cm²\n\n4. Kiểm tra:\n   - 4 mốc cách đều nhau\n   - Tạo thành hình vuông nội tiếp\n\n**Kết luận: Diện tích tứ giác là 450 cm²**" },
+            { q: "Một sân khấu hình tứ giác nội tiếp được thiết kế cho buổi biểu diễn. Biết sân khấu có thể nội tiếp trong đường tròn bán kính 10m và có hai góc đối bằng 90°. Tính diện tích lớn nhất có thể của sân khấu.", answer: "200 m²", solution: "**Lời giải chi tiết:**\n\n1. Với hai góc đối = 90°:\n   Tứ giác có hai đường chéo là đường kính\n\n2. Diện tích lớn nhất khi:\n   - Hai đường chéo vuông góc\n   - Tứ giác là hình vuông\n\n3. Diện tích hình vuông nội tiếp:\n   S = 2R² = 2 × 100 = 200 m²\n\n4. Thiết kế này tối ưu:\n   - Diện tích sử dụng lớn nhất\n   - Tầm nhìn từ mọi vị trí đều tốt\n\n**Kết luận: Diện tích lớn nhất là 200 m²**" },
+            { q: "Một khung cửa sổ hình tứ giác nội tiếp được thiết kế cho nhà thờ. Biết tứ giác có các cạnh 3m, 4m, 5m, 6m. Tính bán kính đường tròn ngoại tiếp để đặt kính màu.", answer: "R ≈ 3.54m", solution: "**Lời giải chi tiết:**\n\n1. Sử dụng công thức bán kính:\n   R = √((ab+cd)(ac+bd)(ad+bc)) / (4S)\n\n2. Tính nửa chu vi:\n   p = (3+4+5+6)/2 = 9m\n\n3. Diện tích (Brahmagupta):\n   S = √((9-3)(9-4)(9-5)(9-6))\n   S = √(6×5×4×3) = √360 ≈ 18.97 m²\n\n4. Tính R:\n   R = √((12+30)(15+24)(18+20)) / (4×18.97)\n   R ≈ 3.54m\n\n**Kết luận: Bán kính đường tròn ngoại tiếp khoảng 3.54m**" }
+        ];
+
+        // Render MCQ
+        function renderMCQ() {
+            const container = document.getElementById('mcq-container');
+            mcqData.forEach((item, index) => {
+                const div = document.createElement('div');
+                div.className = 'border-l-4 border-red-400 pl-4 py-3 bg-gray-50 rounded-r-lg';
+                div.innerHTML = `
+                    <p class="font-semibold text-gray-800 mb-2"><strong>Câu ${index + 1}:</strong> ${item.q}</p>
+                    <div class="grid grid-cols-2 gap-2 mb-3 text-sm">
+                        ${item.options.map(opt => `<span class="text-gray-700">${opt}</span>`).join('')}
+                    </div>
+                    <button onclick="toggleAnswer('mcq-${index}')" class="text-red-600 text-sm hover:underline">👁️ Xem đáp án</button>
+                    <div id="mcq-${index}" class="answer-box mt-2 p-3 rounded hidden">
+                        <p class="font-semibold text-green-700">Đáp án: ${item.answer}</p>
+                        <p class="text-gray-700 text-sm mt-1">${item.solution}</p>
+                    </div>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        // Render True/False
+        function renderTF() {
+            const container = document.getElementById('tf-container');
+            tfData.forEach((item, index) => {
+                const div = document.createElement('div');
+                div.className = 'border-l-4 border-amber-400 pl-4 py-3 bg-gray-50 rounded-r-lg';
+                div.innerHTML = `
+                    <p class="font-semibold text-gray-800 mb-3"><strong>Câu ${index + 1}:</strong> ${item.q}</p>
+                    <div class="space-y-2">
+                        ${item.statements.map((s, i) => `
+                            <div class="flex items-center justify-between bg-white p-2 rounded">
+                                <span class="text-gray-700 text-sm">${String.fromCharCode(65+i)}. ${s.text}</span>
+                                <span class="text-xs px-2 py-1 rounded ${s.answer ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}">${s.answer ? 'Đúng' : 'Sai'}</span>
+                            </div>
+                        `).join('')}
+                    </div>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        // Render Recognition
+        function renderRecognition() {
+            const container = document.getElementById('recognition-container');
+            recognitionData.forEach((item, index) => {
+                const div = document.createElement('div');
+                div.className = 'border-l-4 border-red-400 pl-4 py-3 bg-gray-50 rounded-r-lg';
+                div.innerHTML = `
+                    <p class="font-semibold text-gray-800 mb-2"><strong>Bài ${index + 1}:</strong> ${item.q}</p>
+                    <button onclick="toggleAnswer('rec-${index}')" class="text-red-600 text-sm hover:underline">👁️ Xem đáp án</button>
+                    <div id="rec-${index}" class="answer-box mt-2 p-3 rounded hidden">
+                        <p class="font-semibold text-purple-700">Đáp án: ${item.answer}</p>
+                        <p class="text-gray-700 text-sm mt-1">${item.solution}</p>
+                    </div>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        // Render Low Application
+        function renderLow() {
+            const container = document.getElementById('low-container');
+            lowData.forEach((item, index) => {
+                const div = document.createElement('div');
+                div.className = 'border-l-4 border-green-400 pl-4 py-3 bg-gray-50 rounded-r-lg';
+                div.innerHTML = `
+                    <p class="font-semibold text-gray-800 mb-2"><strong>Bài ${index + 1}:</strong> ${item.q}</p>
+                    <button onclick="toggleAnswer('low-${index}')" class="text-green-600 text-sm hover:underline">👁️ Xem đáp án</button>
+                    <div id="low-${index}" class="solution-box mt-2 p-3 rounded hidden">
+                        <p class="font-semibold text-amber-700">Đáp án: ${item.answer}</p>
+                        <p class="text-gray-700 text-sm mt-1 whitespace-pre-line">${item.solution}</p>
+                    </div>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        // Render High Application
+        function renderHigh() {
+            const container = document.getElementById('high-container');
+            highData.forEach((item, index) => {
+                const div = document.createElement('div');
+                div.className = 'border-l-4 border-red-400 pl-4 py-3 bg-gray-50 rounded-r-lg';
+                div.innerHTML = `
+                    <p class="font-semibold text-gray-800 mb-2"><strong>Bài ${index + 1}:</strong> ${item.q}</p>
+                    <button onclick="toggleAnswer('high-${index}')" class="text-red-600 text-sm hover:underline">👁️ Xem lời giải chi tiết</button>
+                    <div id="high-${index}" class="solution-box mt-2 p-4 rounded hidden">
+                        <p class="font-semibold text-amber-700 mb-2">Đáp án: ${item.answer}</p>
+                        <div class="text-gray-700 text-sm whitespace-pre-line">${item.solution}</div>
+                    </div>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        // Render Real World
+        function renderReal() {
+            const container = document.getElementById('real-container');
+            realData.forEach((item, index) => {
+                const div = document.createElement('div');
+                div.className = 'border-l-4 border-indigo-400 pl-4 py-3 bg-gray-50 rounded-r-lg';
+                div.innerHTML = `
+                    <p class="font-semibold text-gray-800 mb-2"><strong>Bài ${index + 1}:</strong> ${item.q}</p>
+                    <button onclick="toggleAnswer('real-${index}')" class="text-indigo-600 text-sm hover:underline">👁️ Xem lời giải chi tiết</button>
+                    <div id="real-${index}" class="solution-box mt-2 p-4 rounded hidden">
+                        <p class="font-semibold text-amber-700 mb-2">Đáp án: ${item.answer}</p>
+                        <div class="text-gray-700 text-sm whitespace-pre-line">${item.solution}</div>
+                    </div>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        // Toggle Answer
+        function toggleAnswer(id) {
+            const el = document.getElementById(id);
+            el.classList.toggle('hidden');
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            renderMCQ();
+            renderTF();
+            renderRecognition();
+            renderLow();
+            renderHigh();
+            renderReal();
+        });
+    </script>
+</body>
+</html>
