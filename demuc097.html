@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Góc Tạo Bởi Tiếp Tuyến Và Dây Cung - Đề Mục 97 - Toán Lớp 9</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@fontsource/roboto@4.5.8/index.css" rel="stylesheet">
+    <style>
+        * {
+            font-family: 'Roboto', sans-serif;
+        }
+        .gradient-header {
+            background: linear-gradient(135deg, #ea580c 0%, #7c3aed 100%);
+        }
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, #ea580c 0%, #7c3aed 100%);
+        }
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #c2410c 0%, #6a32c4 100%);
+        }
+        .answer-box {
+            background: #fff7ed;
+            border-left: 4px solid #ea580c;
+        }
+        .solution-box {
+            background: #fef3c7;
+            border-left: 4px solid #f59e0b;
+        }
+        .nav-item {
+            transition: all 0.2s ease;
+        }
+        .nav-item:hover {
+            background: rgba(255,255,255,0.2);
+        }
+        .nav-item.active {
+            background: rgba(255,255,255,0.3);
+        }
+        .print-section {
+            page-break-inside: avoid;
+        }
+        @media print {
+            .no-print {
+                display: none;
+            }
+        }
+        .circle-diagram {
+            background: #f8fafc;
+            border: 2px dashed #cbd5e1;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+        }
+        .formula-box {
+            background: linear-gradient(135deg, #ffedd5 0%, #ede9fe 100%);
+            border-radius: 8px;
+            padding: 16px;
+            margin: 12px 0;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="gradient-header text-white py-8">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center">
+                <div>
+                    <h1 class="text-3xl font-bold">GÓC TẠO BỞI TIẾP TUYẾN VÀ DÂY CUNG</h1>
+                    <p class="text-lg opacity-90">Đề Mục 97 - Toán Lớp 9 - Hình Học</p>
+                </div>
+                <div class="text-right">
+                    <p class="text-sm opacity-80">Bộ Tài Liệu Toán THCS</p>
+                    <p class="text-sm opacity-80">60 Ngày Ôn Tập</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md sticky top-0 z-50 no-print">
+        <div class="container mx-auto px-4">
+            <div class="flex overflow-x-auto py-3 space-x-2">
+                <button onclick="showSection('lesson')" class="nav-item active px-4 py-2 rounded-lg bg-orange-100 text-orange-700 whitespace-nowrap">📚 Bài Giảng</button>
+                <button onclick="showSection('mcq')" class="nav-item px-4 py-2 rounded-lg hover:bg-gray-100 whitespace-nowrap">📝 30 Câu MCQ</button>
+                <button onclick="showSection('tf')" class="nav-item px-4 py-2 rounded-lg hover:bg-gray-100 whitespace-nowrap">✅ 10 Câu Đúng/Sai</button>
+                <button onclick="showSection('recognition')" class="nav-item px-4 py-2 rounded-lg hover:bg-gray-100 whitespace-nowrap">🔍 10 Bài Nhận Biết</button>
+                <button onclick="showSection('low')" class="nav-item px-4 py-2 rounded-lg hover:bg-gray-100 whitespace-nowrap">📊 10 Bài Vận Dụng Thấp</button>
+                <button onclick="showSection('high')" class="nav-item px-4 py-2 rounded-lg hover:bg-gray-100 whitespace-nowrap">🎯 10 Bài Vận Dụng Cao</button>
+                <button onclick="showSection('real')" class="nav-item px-4 py-2 rounded-lg hover:bg-gray-100 whitespace-nowrap">🌍 5 Bài Thực Tế</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+        <!-- Lesson Section -->
+        <section id="lesson" class="section-content">
+            <div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section">
+                <h2 class="text-2xl font-bold text-orange-700 mb-6 flex items-center">
+                    <span class="mr-3">📚</span> BÀI GIẢNG CHI TIẾT: GÓC TẠO BỞI TIẾP TUYẾN VÀ DÂY CUNG
+                </h2>
+                <div class="space-y-6">
+                    <!-- Introduction -->
+                    <div class="answer-box p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold text-orange-700 mb-4">1. ĐỊNH NGHĨA GÓC TẠO BỞI TIẾP TUYẾN VÀ DÂY CUNG</h3>
+                        <p class="text-gray-700 mb-4">
+                            <strong>Góc tạo bởi tiếp tuyến và dây cung</strong> là góc có đỉnh nằm trên đường tròn, một cạnh là tiếp tuyến của đường tròn tại đỉnh đó, cạnh kia chứa dây cung của đường tròn.
+                        </p>
+                        <div class="circle-diagram mb-4">
+                            <svg width="350" height="300" viewBox="0 0 350 300">
+                                <circle cx="175" cy="150" r="100" fill="none" stroke="#ea580c" stroke-width="3"/>
+                                <circle cx="175" cy="150" r="3" fill="#7c3aed"/>
+                                <text x="185" y="145" fill="#7c3aed" font-size="16" font-weight="bold">O</text>
+                                <line x1="50" y1="250" x2="300" y2="250" stroke="#dc2626" stroke-width="2"/>
+                                <circle cx="175" cy="250" r="4" fill="#dc2626"/>
+                                <text x="185" y="245" fill="#dc2626" font-size="14">A</text>
+                                <circle cx="240" cy="180" r="4" fill="#10b981"/>
+                                <text x="250" y="175" fill="#10b981" font-size="14">B</text>
+                                <line x1="175" y1="250" x2="240" y2="180" stroke="#10b981" stroke-width="2"/>
+                                <line x1="175" y1="150" x2="240" y2="180" stroke="#7c3aed" stroke-width="2" stroke-dasharray="5,5"/>
+                                <text x="155" y="235" fill="#ea580c" font-size="18" font-weight="bold">α</text>
+                                <text x="195" y="165" fill="#7c3aed" font-size="14">n°</text>
+                                <text x="120" y="265" fill="#dc2626" font-size="14">Tiếp tuyến Ax</text>
+                                <text x="200" y="210" fill="#10b981" font-size="14">Dây cung AB</text>
+                                <rect x="170" y="245" width="10" height="10" fill="none" stroke="#f59e0b" stroke-width="2"/>
+                            </svg>
+                            <p class="text-sm text-gray-600 mt-2">Góc BAx tạo bởi tiếp tuyến Ax và dây cung AB</p>
+                        </div>
+                        <div class="formula-box">
+                            <h4 class="font-semibold text-orange-600 mb-2">📐 Các yếu tố của góc:</h4>
+                            <ul class="space-y-2 text-gray-700">
+                                <li>• <strong>Đỉnh:</strong> Nằm trên đường tròn (điểm A)</li>
+                                <li>• <strong>Một cạnh:</strong> Là tiếp tuyến của đường tròn tại đỉnh (Ax)</li>
+                                <li>• <strong>Cạnh kia:</strong> Chứa dây cung của đường tròn (AB)</li>
+                                <li>• <strong>Cung bị chắn:</strong> Cung nằm bên trong góc (cung AB)</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Theorem -->
+                    <div class="solution-box p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold text-amber-700 mb-4">2. ĐỊNH LÝ VỀ SỐ ĐO GÓC</h3>
+                        <div class="bg-white p-6 rounded-lg border-2 border-amber-300 mb-4">
+                            <h4 class="font-semibold text-amber-700 mb-3 text-center text-lg">📐 Định lý:</h4>
+                            <p class="text-gray-700 text-center mb-3">Số đo góc tạo bởi tiếp tuyến và dây cung bằng nửa số đo cung bị chắn.</p>
+                            <p class="text-orange-700 font-bold text-center text-2xl">∠BAx = ½ sđ cung AB</p>
+                        </div>
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div class="bg-orange-50 p-4 rounded-lg">
+                                <h4 class="font-semibold text-orange-600 mb-2">Chứng minh trường hợp 1:</h4>
+                                <p class="text-gray-700 text-sm">Cung AB là cung nhỏ</p>
+                                <p class="text-gray-700 text-sm mt-2">1. Vẽ đường kính AC</p>
+                                <p class="text-gray-700 text-sm">2. ∠BAx + ∠BAC = 90°</p>
+                                <p class="text-gray-700 text-sm">3. ∠ACB = 90° - ∠BAC</p>
+                                <p class="text-gray-700 text-sm">4. ∠BAx = ∠ACB = ½ sđ AB</p>
+                            </div>
+                            <div class="bg-purple-50 p-4 rounded-lg">
+                                <h4 class="font-semibold text-purple-600 mb-2">Chứng minh trường hợp 2:</h4>
+                                <p class="text-gray-700 text-sm">Cung AB là cung lớn</p>
+                                <p class="text-gray-700 text-sm mt-2">1. Góc tạo bởi tiếp tuyến và dây cung</p>
+                                <p class="text-gray-700 text-sm">2. Sử dụng góc ở tâm</p>
+                                <p class="text-gray-700 text-sm">3. ∠BAx = ½(360° - sđ cung nhỏ)</p>
+                                <p class="text-gray-700 text-sm">4. = ½ sđ cung lớn AB</p>
+                            </div>
+                        </div>
+                        <div class="mt-4 bg-amber-50 p-4 rounded-lg">
+                            <h4 class="font-semibold text-amber-700 mb-2">📝 Hệ quả quan trọng:</h4>
+                            <ul class="space-y-2 text-gray-700 text-sm">
+                                <li>• Góc tạo bởi tiếp tuyến và dây cung bằng góc nội tiếp cùng chắn một cung</li>
+                                <li>• Đây là dấu hiệu quan trọng để chứng minh tứ giác nội tiếp</li>
+                                <li>• Ứng dụng trong nhiều bài toán chứng minh và tính toán hình học</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Properties -->
+                    <div class="answer-box p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold text-orange-700 mb-4">3. TÍNH CHẤT VÀ ỨNG DỤNG</h3>
+                        <div class="grid md:grid-cols-3 gap-4">
+                            <div class="bg-white p-4 rounded-lg border-l-4 border-orange-400">
+                                <h4 class="font-semibold text-orange-600 mb-2">Tính chất 1</h4>
+                                <p class="text-gray-700 text-sm">Góc tạo bởi tiếp tuyến và dây cung bằng góc nội tiếp cùng chắn một cung.</p>
+                                <p class="text-orange-700 text-sm font-semibold mt-2">∠BAx = ∠ACB</p>
+                            </div>
+                            <div class="bg-white p-4 rounded-lg border-l-4 border-purple-400">
+                                <h4 class="font-semibold text-purple-600 mb-2">Tính chất 2</h4>
+                                <p class="text-gray-700 text-sm">Nếu góc tạo bởi tiếp tuyến và dây cung bằng góc nội tiếp thì tứ giác nội tiếp.</p>
+                                <p class="text-purple-700 text-sm font-semibold mt-2">Dấu hiệu nhận biết</p>
+                            </div>
+                            <div class="bg-white p-4 rounded-lg border-l-4 border-amber-400">
+                                <h4 class="font-semibold text-amber-600 mb-2">Tính chất 3</h4>
+                                <p class="text-gray-700 text-sm">Góc tạo bởi tiếp tuyến và dây cung phụ thuộc vào cung bị chắn.</p>
+                                <p class="text-amber-700 text-sm font-semibold mt-2">α = ½ sđ cung</p>
+                            </div>
+                        </div>
+                        <div class="mt-4 bg-orange-50 p-4 rounded-lg">
+                            <h4 class="font-semibold text-orange-700 mb-2">📌 Ứng dụng trong chứng minh:</h4>
+                            <ol class="space-y-2 text-gray-700 text-sm list-decimal list-inside">
+                                <li>Chứng minh tứ giác nội tiếp (dùng góc bằng nhau)</li>
+                                <li>Chứng minh các góc bằng nhau</li>
+                                <li>Chứng minh các đường thẳng song song</li>
+                                <li>Tính số đo góc khi biết cung hoặc ngược lại</li>
+                                <li>Giải các bài toán về tiếp tuyến và dây cung</li>
+                            </ol>
+                        </div>
+                    </div>
+
+                    <!-- Comparison -->
+                    <div class="solution-box p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold text-amber-700 mb-4">4. SO SÁNH CÁC LOẠI GÓC TRONG ĐƯỜNG TRÒN</h3>
+                        <div class="overflow-x-auto">
+                            <table class="w-full bg-white rounded-lg">
+                                <thead class="bg-orange-600 text-white">
+                                    <tr>
+                                        <th class="p-3">Loại góc</th>
+                                        <th class="p-3">Đỉnh</th>
+                                        <th class="p-3">Cạnh</th>
+                                        <th class="p-3">Số đo</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="text-gray-700">
+                                    <tr class="border-b">
+                                        <td class="p-3 font-semibold">Góc ở tâm</td>
+                                        <td class="p-3">Tâm O</td>
+                                        <td class="p-3">Hai bán kính</td>
+                                        <td class="p-3">= sđ cung</td>
+                                    </tr>
+                                    <tr class="border-b">
+                                        <td class="p-3 font-semibold">Góc nội tiếp</td>
+                                        <td class="p-3">Trên đường tròn</td>
+                                        <td class="p-3">Hai dây cung</td>
+                                        <td class="p-3">= ½ sđ cung</td>
+                                    </tr>
+                                    <tr class="border-b">
+                                        <td class="p-3 font-semibold">Góc tạo bởi TT và DC</td>
+                                        <td class="p-3">Trên đường tròn</td>
+                                        <td class="p-3">TT và dây cung</td>
+                                        <td class="p-3">= ½ sđ cung</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-3 font-semibold">Góc có đỉnh trong</td>
+                                        <td class="p-3">Trong đường tròn</td>
+                                        <td class="p-3">Hai cát tuyến</td>
+                                        <td class="p-3">= ½(tổng 2 cung)</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="mt-4 bg-amber-50 p-4 rounded-lg">
+                            <p class="text-amber-800 text-sm">
+                                <strong>💡 Nhận xét:</strong> Góc tạo bởi tiếp tuyến và dây cung có cùng công thức tính với góc nội tiếp (bằng nửa số đo cung bị chắn). Đây là cơ sở để chứng minh nhiều tính chất hình học.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Problem Types -->
+                    <div class="answer-box p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold text-orange-700 mb-4">5. CÁC DẠNG TOÁN THƯỜNG GẶP</h3>
+                        <div class="grid md:grid-cols-3 gap-4">
+                            <div class="bg-white p-4 rounded-lg border-l-4 border-orange-400 card-hover">
+                                <h4 class="font-semibold text-orange-600 mb-2">Dạng 1: Tính số đo góc</h4>
+                                <p class="text-gray-700 text-sm">Biết cung bị chắn, tính góc hoặc ngược lại.</p>
+                            </div>
+                            <div class="bg-white p-4 rounded-lg border-l-4 border-purple-400 card-hover">
+                                <h4 class="font-semibold text-purple-600 mb-2">Dạng 2: Chứng minh bằng nhau</h4>
+                                <p class="text-gray-700 text-sm">Chứng minh các góc bằng nhau dùng cung chắn.</p>
+                            </div>
+                            <div class="bg-white p-4 rounded-lg border-l-4 border-amber-400 card-hover">
+                                <h4 class="font-semibold text-amber-600 mb-2">Dạng 3: Chứng minh nội tiếp</h4>
+                                <p class="text-gray-700 text-sm">Dùng góc tạo bởi TT và DC = góc nội tiếp.</p>
+                            </div>
+                            <div class="bg-white p-4 rounded-lg border-l-4 border-green-400 card-hover">
+                                <h4 class="font-semibold text-green-600 mb-2">Dạng 4: Chứng minh song song</h4>
+                                <p class="text-gray-700 text-sm">Dùng so le trong, đồng vị bằng nhau.</p>
+                            </div>
+                            <div class="bg-white p-4 rounded-lg border-l-4 border-red-400 card-hover">
+                                <h4 class="font-semibold text-red-600 mb-2">Dạng 5: Hệ thức độ dài</h4>
+                                <p class="text-gray-700 text-sm">Kết hợp với tam giác đồng dạng.</p>
+                            </div>
+                            <div class="bg-white p-4 rounded-lg border-l-4 border-indigo-400 card-hover">
+                                <h4 class="font-semibold text-indigo-600 mb-2">Dạng 6: Bài toán thực tế</h4>
+                                <p class="text-gray-700 text-sm">Ứng dụng vào thiết kế, kỹ thuật.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Examples -->
+                    <div class="solution-box p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold text-amber-700 mb-4">6. VÍ DỤ MINH HỌA</h3>
+                        <div class="bg-white p-4 rounded-lg mb-4">
+                            <h4 class="font-semibold text-amber-600 mb-2">Ví dụ 1: Tính số đo góc</h4>
+                            <p class="text-gray-700 mb-2">Cho đường tròn(O), tiếp tuyến Ax tại A. Dây cung AB chắn cung 80°. Tính ∠BAx.</p>
+                            <div class="answer-box p-3 rounded">
+                                <p class="text-gray-700"><strong>Lời giải:</strong></p>
+                                <p class="text-gray-700">∠BAx = ½ sđ cung AB</p>
+                                <p class="text-gray-700">∠BAx = ½ × 80° = 40°</p>
+                            </div>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg mb-4">
+                            <h4 class="font-semibold text-amber-600 mb-2">Ví dụ 2: Chứng minh góc bằng nhau</h4>
+                            <p class="text-gray-700 mb-2">Cho(O), tiếp tuyến Ax. Chứng minh ∠BAx = ∠ACB (C trên cung lớn AB).</p>
+                            <div class="answer-box p-3 rounded">
+                                <p class="text-gray-700"><strong>Lời giải:</strong></p>
+                                <p class="text-gray-700">∠BAx = ½ sđ cung AB (góc tạo bởi TT và DC)</p>
+                                <p class="text-gray-700">∠ACB = ½ sđ cung AB (góc nội tiếp)</p>
+                                <p class="text-gray-700">⇒ ∠BAx = ∠ACB</p>
+                            </div>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg">
+                            <h4 class="font-semibold text-amber-600 mb-2">Ví dụ 3: Chứng minh tứ giác nội tiếp</h4>
+                            <p class="text-gray-700 mb-2">Cho(O), tiếp tuyến Ax. Điểm C trên đường tròn. Chứng minh tứ giác nội tiếp nếu ∠BAx = ∠BCD.</p>
+                            <div class="answer-box p-3 rounded">
+                                <p class="text-gray-700"><strong>Lời giải:</strong></p>
+                                <p class="text-gray-700">∠BAx = ½ sđ cung AB</p>
+                                <p class="text-gray-700">∠BCD = ½ sđ cung AB (góc nội tiếp)</p>
+                                <p class="text-gray-700">⇒ Tứ giác nội tiếp (góc ngoài bằng góc trong đối diện)</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Calculator Guide -->
+                    <div class="answer-box p-6 rounded-lg">
+                        <h3 class="text-xl font-semibold text-orange-700 mb-4">7. HƯỚNG DẪN BẤM MÁY TÍNH CASIO FX-580ES</h3>
+                        <div class="bg-white p-4 rounded-lg space-y-3">
+                            <p class="text-gray-700"><strong>Tính số đo góc từ cung:</strong></p>
+                            <ol class="list-decimal list-inside space-y-1 text-gray-700">
+                                <li>Nhập số đo cung</li>
+                                <li>Bấm <kbd class="bg-gray-200 px-2 py-1 rounded">÷</kbd> <kbd class="bg-gray-200 px-2 py-1 rounded">2</kbd></li>
+                                <li>Bấm <kbd class="bg-gray-200 px-2 py-1 rounded">=</kbd></li>
+                            </ol>
+                            <p class="text-gray-700 mt-3"><strong>Tính số đo cung từ góc:</strong></p>
+                            <ol class="list-decimal list-inside space-y-1 text-gray-700">
+                                <li>Nhập số đo góc</li>
+                                <li>Bấm <kbd class="bg-gray-200 px-2 py-1 rounded">×</kbd> <kbd class="bg-gray-200 px-2 py-1 rounded">2</kbd></li>
+                                <li>Bấm <kbd class="bg-gray-200 px-2 py-1 rounded">=</kbd></li>
+                            </ol>
+                            <p class="text-gray-700 mt-3"><strong>Lưu ý:</strong> Kiểm tra chế độ độ (D) bằng cách bấm <kbd class="bg-gray-200 px-2 py-1 rounded">SHIFT</kbd> + <kbd class="bg-gray-200 px-2 py-1 rounded">MODE</kbd> → chọn <kbd class="bg-gray-200 px-2 py-1 rounded">3</kbd> (Deg)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- MCQ Section -->
+        <section id="mcq" class="section-content hidden">
+            <div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section">
+                <h2 class="text-2xl font-bold text-orange-700 mb-6 flex items-center">
+                    <span class="mr-3">📝</span> 30 CÂU TRẮC NGHIỆM 4 LỰA CHỌN
+                </h2>
+                <div class="space-y-6" id="mcq-container"></div>
+            </div>
+        </section>
+
+        <!-- True/False Section -->
+        <section id="tf" class="section-content hidden">
+            <div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section">
+                <h2 class="text-2xl font-bold text-orange-700 mb-6 flex items-center">
+                    <span class="mr-3">✅</span> 10 CÂU TRẮC NGHIỆM ĐÚNG/SAI
+                </h2>
+                <div class="space-y-6" id="tf-container"></div>
+            </div>
+        </section>
+
+        <!-- Recognition Section -->
+        <section id="recognition" class="section-content hidden">
+            <div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section">
+                <h2 class="text-2xl font-bold text-orange-700 mb-6 flex items-center">
+                    <span class="mr-3">🔍</span> 10 BÀI TẬP NHẬN BIẾT
+                </h2>
+                <div class="space-y-6" id="recognition-container"></div>
+            </div>
+        </section>
+
+        <!-- Low Application Section -->
+        <section id="low" class="section-content hidden">
+            <div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section">
+                <h2 class="text-2xl font-bold text-orange-700 mb-6 flex items-center">
+                    <span class="mr-3">📊</span> 10 BÀI TẬP VẬN DỤNG THẤP
+                </h2>
+                <div class="space-y-6" id="low-container"></div>
+            </div>
+        </section>
+
+        <!-- High Application Section -->
+        <section id="high" class="section-content hidden">
+            <div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section">
+                <h2 class="text-2xl font-bold text-orange-700 mb-6 flex items-center">
+                    <span class="mr-3">🎯</span> 10 BÀI TẬP VẬN DỤNG CAO
+                </h2>
+                <div class="space-y-6" id="high-container"></div>
+            </div>
+        </section>
+
+        <!-- Real World Section -->
+        <section id="real" class="section-content hidden">
+            <div class="bg-white rounded-xl shadow-lg p-8 mb-8 print-section">
+                <h2 class="text-2xl font-bold text-orange-700 mb-6 flex items-center">
+                    <span class="mr-3">🌍</span> 5 BÀI TẬP ỨNG DỤNG THỰC TẾ
+                </h2>
+                <div class="space-y-6" id="real-container"></div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="gradient-header text-white py-6 mt-8">
+        <div class="container mx-auto px-4 text-center">
+            <p class="text-sm">Bộ Tài Liệu Toán THCS - Đề Mục 97: Góc Tạo Bởi Tiếp Tuyến Và Dây Cung</p>
+            <p class="text-sm opacity-80">© 2024 - Tài liệu ôn tập 60 ngày</p>
+        </div>
+    </footer>
+
+    <!-- Print Button -->
+    <button onclick="window.print()" class="no-print fixed bottom-6 right-6 btn-primary text-white px-6 py-3 rounded-full shadow-lg hover:shadow-xl transition-all">
+        🖨 In Tài Liệu
+    </button>
+
+    <script>
+        // Navigation
+        function showSection(sectionId) {
+            document.querySelectorAll('.section-content').forEach(el => el.classList.add('hidden'));
+            document.getElementById(sectionId).classList.remove('hidden');
+            document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
+            event.target.classList.add('active');
+        }
+
+        // MCQ Data
+        const mcqData = [
+            { q: "Góc tạo bởi tiếp tuyến và dây cung có đỉnh nằm ở đâu?", options: ["A. Tâm đường tròn", "B. Trên đường tròn", "C. Trong đường tròn", "D. Ngoài đường tròn"], answer: "B", solution: "Đỉnh của góc tạo bởi tiếp tuyến và dây cung nằm trên đường tròn" },
+            { q: "Số đo góc tạo bởi tiếp tuyến và dây cung bằng:", options: ["A. Số đo cung bị chắn", "B. Nửa số đo cung bị chắn", "C. Gấp đôi số đo cung bị chắn", "D. Bằng 90°"], answer: "B", solution: "Định lý: Góc tạo bởi tiếp tuyến và dây cung bằng nửa số đo cung bị chắn" },
+            { q: "Cho góc tạo bởi tiếp tuyến và dây cung bằng 40°. Số đo cung bị chắn bằng:", options: ["A. 20°", "B. 40°", "C. 80°", "D. 160°"], answer: "C", solution: "sđ cung = 2 × góc = 2 × 40° = 80°" },
+            { q: "Góc tạo bởi tiếp tuyến và dây cung bằng góc nào sau đây?", options: ["A. Góc ở tâm cùng chắn", "B. Góc nội tiếp cùng chắn", "C. Góc có đỉnh trong", "D. Góc ngoài đường tròn"], answer: "B", solution: "Góc tạo bởi tiếp tuyến và dây cung bằng góc nội tiếp cùng chắn một cung" },
+            { q: "Cho cung AB = 100°. Góc tạo bởi tiếp tuyến tại A và dây AB bằng:", options: ["A. 25°", "B. 50°", "C. 75°", "D. 100°"], answer: "B", solution: "∠ = ½ × 100° = 50°" },
+            { q: "Một cạnh của góc tạo bởi tiếp tuyến và dây cung là:", options: ["A. Đường kính", "B. Bán kính", "C. Tiếp tuyến", "D. Cát tuyến"], answer: "C", solution: "Một cạnh là tiếp tuyến, cạnh kia chứa dây cung" },
+            { q: "Góc tạo bởi tiếp tuyến và dây cung chắn nửa đường tròn bằng:", options: ["A. 45°", "B. 60°", "C. 90°", "D. 180°"], answer: "C", solution: "Cung = 180° ⇒ Góc = 180°/2 = 90°" },
+            { q: "Nếu góc tạo bởi tiếp tuyến và dây cung bằng 30° thì cung bị chắn là:", options: ["A. Cung nhỏ", "B. Cung lớn", "C. Nửa đường tròn", "D. Không xác định"], answer: "A", solution: "Góc < 90° ⇒ cung bị chắn là cung nhỏ (60°)" },
+            { q: "Cho đường tròn(O), tiếp tuyến Ax. ∠BAx = 35°. Số đo góc nội tiếp chắn cung AB bằng:", options: ["A. 35°", "B. 55°", "C. 70°", "D. 140°"], answer: "A", solution: "Góc nội tiếp = góc tạo bởi TT và DC = 35°" },
+            { q: "Góc tạo bởi tiếp tuyến và dây cung được dùng để chứng minh:", options: ["A. Tam giác đều", "B. Tứ giác nội tiếp", "C. Đường thẳng song song", "D. Cả B và C"], answer: "D", solution: "Dùng chứng minh tứ giác nội tiếp và đường thẳng song song" },
+            { q: "Cho cung AB = 120°. Góc tạo bởi tiếp tuyến tại B và dây BA bằng:", options: ["A. 30°", "B. 60°", "C. 90°", "D. 120°"], answer: "B", solution: "∠ = ½ × 120° = 60°" },
+            { q: "Đỉnh của góc tạo bởi tiếp tuyến và dây cung trùng với:", options: ["A. Tâm đường tròn", "B. Tiếp điểm", "C. Trung điểm dây", "D. Giao điểm đường kính"], answer: "B", solution: "Đỉnh trùng với tiếp điểm của tiếp tuyến" },
+            { q: "Nếu góc tạo bởi tiếp tuyến và dây cung bằng 45° thì tam giác tạo bởi tiếp tuyến và dây là:", options: ["A. Tam giác đều", "B. Tam giác vuông", "C. Tam giác vuông cân", "D. Tam giác thường"], answer: "C", solution: "Góc 45° ⇒ cung 90° ⇒ tam giác vuông cân" },
+            { q: "Góc tạo bởi tiếp tuyến và dây cung phụ thuộc vào:", options: ["A. Bán kính đường tròn", "B. Độ dài dây cung", "C. Số đo cung bị chắn", "D. Vị trí tâm"], answer: "C", solution: "Chỉ phụ thuộc vào số đo cung bị chắn" },
+            { q: "Cho ∠BAx = 25°. Số đo góc ở tâm chắn cung AB bằng:", options: ["A. 25°", "B. 50°", "C. 75°", "D. 100°"], answer: "B", solution: "Góc ở tâm = 2 × góc tạo bởi TT và DC = 50°" },
+            { q: "Hai góc tạo bởi tiếp tuyến và dây cung bằng nhau khi:", options: ["A. Hai dây bằng nhau", "B. Hai cung bị chắn bằng nhau", "C. Hai tiếp tuyến song song", "D. Cả A và B"], answer: "D", solution: "Dây bằng nhau ⇔ cung bằng nhau ⇔ góc bằng nhau" },
+            { q: "Góc tạo bởi tiếp tuyến và đường kính bằng:", options: ["A. 30°", "B. 45°", "C. 60°", "D. 90°"], answer: "D", solution: "Tiếp tuyến ⊥ bán kính ⇒ góc = 90°" },
+            { q: "Cho tam giác ABC nội tiếp(O). Tiếp tuyến tại A tạo với AB góc 50°. Tính ∠C:", options: ["A. 40°", "B. 50°", "C. 60°", "D. 80°"], answer: "B", solution: "∠C = góc tạo bởi TT và AB = 50°" },
+            { q: "Góc tạo bởi tiếp tuyến và dây cung là góc nội tiếp khi:", options: ["A. Dây là đường kính", "B. Cung là nửa đường tròn", "C. Góc = 90°", "D. Không bao giờ"], answer: "D", solution: "Góc tạo bởi TT và DC không phải là góc nội tiếp" },
+            { q: "Cho đường tròn(O; R), tiếp tuyến Ax, AB = R. Tính ∠BAx:", options: ["A. 30°", "B. 45°", "C. 60°", "D. 90°"], answer: "A", solution: "AB = R ⇒ ΔOAB đều ⇒ cung AB = 60° ⇒ ∠BAx = 30°" },
+            { q: "Nếu cung bị chắn tăng gấp đôi thì góc tạo bởi tiếp tuyến và dây cung:", options: ["A. Không đổi", "B. Tăng gấp đôi", "C. Giảm một nửa", "D. Tăng 4 lần"], answer: "B", solution: "Góc tỉ lệ thuận với cung bị chắn" },
+            { q: "Góc tạo bởi tiếp tuyến và dây cung có thể bằng:", options: ["A. 0°", "B. 90°", "C. 180°", "D. 270°"], answer: "B", solution: "Góc có thể từ 0° đến 90° (cung từ 0° đến 180°)" },
+            { q: "Cho tứ giác ABCD nội tiếp. Tiếp tuyến tại A tạo với AB góc bằng:", options: ["A. ∠B", "B. ∠C", "C. ∠D", "D. ∠ADB"], answer: "D", solution: "∠BAx = ∠ADB (cùng chắn cung AB)" },
+            { q: "Số đo góc tạo bởi tiếp tuyến và dây cung luôn:", options: ["A. Nhỏ hơn 90°", "B. Bằng 90°", "C. Lớn hơn 90°", "D. Nhỏ hơn hoặc bằng 90°"], answer: "D", solution: "Góc ≤ 90° (cung bị chắn ≤ 180°)" },
+            { q: "Cho ∠BAx = 60°. Tam giác OAB là tam giác gì?", options: ["A. Tam giác đều", "B. Tam giác vuông", "C. Tam giác cân", "D. Tam giác tù"], answer: "A", solution: "Cung AB = 120° ⇒ ∠AOB = 120°... Sửa: Cung = 120° ⇒ ΔOAB cân tại O" },
+            { q: "Góc tạo bởi tiếp tuyến và dây cung bằng 1/3 góc ở tâm cùng chắn khi:", options: ["A. Cung = 60°", "B. Cung = 90°", "C. Cung = 120°", "D. Không bao giờ"], answer: "D", solution: "Luôn bằng 1/2 góc ở tâm, không thể bằng 1/3" },
+            { q: "Cho hai tiếp tuyến cắt nhau. Góc tạo bởi tiếp tuyến và dây cung liên quan đến:", options: ["A. Góc ở tâm", "B. Góc giữa hai tiếp tuyến", "C. Góc nội tiếp", "D. Cả A và C"], answer: "D", solution: "Liên quan đến góc ở tâm và góc nội tiếp" },
+            { q: "Nếu góc tạo bởi tiếp tuyến và dây cung bằng góc nội tiếp thì:", options: ["A. Hai góc cùng chắn một cung", "B. Hai góc đối đỉnh", "C. Hai góc kề bù", "D. Hai góc so le"], answer: "A", solution: "Điều kiện: hai góc cùng chắn một cung" },
+            { q: "Cho đường tròn(O), dây AB cố định. Khi A chạy trên đường tròn, góc tạo bởi tiếp tuyến và AB:", options: ["A. Không đổi", "B. Thay đổi", "C. Bằng 90°", "D. Bằng 0°"], answer: "B", solution: "Góc thay đổi theo vị trí điểm A" },
+            { q: "Ứng dụng của góc tạo bởi tiếp tuyến và dây cung trong thực tế:", options: ["A. Thiết kế bánh răng", "B. Xây dựng cầu", "C. Đo đạc địa hình", "D. Cả A, B và C"], answer: "D", solution: "Có nhiều ứng dụng trong kỹ thuật và xây dựng" }
+        ];
+
+        // True/False Data
+        const tfData = [
+            { q: "Về định nghĩa góc tạo bởi tiếp tuyến và dây cung:", statements: [
+                { text: "Đỉnh nằm trên đường tròn", answer: true },
+                { text: "Một cạnh là tiếp tuyến", answer: true },
+                { text: "Cạnh kia chứa dây cung", answer: true },
+                { text: "Đỉnh có thể ở tâm đường tròn", answer: false }
+            ]},
+            { q: "Về số đo góc tạo bởi tiếp tuyến và dây cung:", statements: [
+                { text: "Bằng nửa số đo cung bị chắn", answer: true },
+                { text: "Bằng số đo cung bị chắn", answer: false },
+                { text: "Bằng góc nội tiếp cùng chắn", answer: true },
+                { text: "Bằng góc ở tâm cùng chắn", answer: false }
+            ]},
+            { q: "Về tính chất của góc:", statements: [
+                { text: "Luôn nhỏ hơn hoặc bằng 90°", answer: true },
+                { text: "Có thể lớn hơn 90°", answer: false },
+                { text: "Phụ thuộc vào bán kính", answer: false },
+                { text: "Chỉ phụ thuộc vào cung bị chắn", answer: true }
+            ]},
+            { q: "Về ứng dụng chứng minh:", statements: [
+                { text: "Dùng chứng minh tứ giác nội tiếp", answer: true },
+                { text: "Dùng chứng minh góc bằng nhau", answer: true },
+                { text: "Dùng chứng minh đường thẳng song song", answer: true },
+                { text: "Dùng chứng minh tam giác đều", answer: false }
+            ]},
+            { q: "Cho đường tròn(O), tiếp tuyến Ax tại A:", statements: [
+                { text: "∠BAx = ½ sđ cung AB", answer: true },
+                { text: "∠BAx = ∠ACB (C trên cung lớn)", answer: true },
+                { text: "∠BAx = ∠AOB", answer: false },
+                { text: "∠BAx + ∠OAB = 90°", answer: true }
+            ]},
+            { q: "Về mối quan hệ với các góc khác:", statements: [
+                { text: "Bằng góc nội tiếp cùng chắn một cung", answer: true },
+                { text: "Bằng nửa góc ở tâm cùng chắn", answer: true },
+                { text: "Phụ với góc tạo bởi bán kính và dây", answer: true },
+                { text: "Bằng góc có đỉnh trong đường tròn", answer: false }
+            ]},
+            { q: "Về cung bị chắn:", statements: [
+                { text: "Có thể là cung nhỏ", answer: true },
+                { text: "Có thể là cung lớn", answer: true },
+                { text: "Có thể là nửa đường tròn", answer: true },
+                { text: "Không thể là đường tròn đầy", answer: true }
+            ]},
+            { q: "Cho góc tạo bởi tiếp tuyến và dây cung bằng 45°:", statements: [
+                { text: "Cung bị chắn bằng 90°", answer: true },
+                { text: "Góc ở tâm bằng 90°", answer: true },
+                { text: "Góc nội tiếp bằng 45°", answer: true },
+                { text: "Tam giác tạo bởi là tam giác đều", answer: false }
+            ]},
+            { q: "Về vị trí các điểm:", statements: [
+                { text: "Đỉnh là tiếp điểm", answer: true },
+                { text: "Điểm thứ hai trên dây cung thuộc đường tròn", answer: true },
+                { text: "Tâm đường tròn nằm trên một cạnh", answer: false },
+                { text: "Cung bị chắn nằm bên trong góc", answer: true }
+            ]},
+            { q: "Về tính toán:", statements: [
+                { text: "Góc = cung/2", answer: true },
+                { text: "Cung = 2×góc", answer: true },
+                { text: "Góc ở tâm = 2×góc tạo bởi TT và DC", answer: true },
+                { text: "Góc nội tiếp = góc tạo bởi TT và DC", answer: true }
+            ]}
+        ];
+
+        // Recognition Data
+        const recognitionData = [
+            { q: "Phát biểu định lý về số đo góc tạo bởi tiếp tuyến và dây cung.", answer: "Bằng nửa số đo cung bị chắn", solution: "∠BAx = ½ sđ cung AB" },
+            { q: "Cho biết vị trí đỉnh của góc tạo bởi tiếp tuyến và dây cung.", answer: "Nằm trên đường tròn", solution: "Đỉnh trùng với tiếp điểm của tiếp tuyến" },
+            { q: "Viết công thức tính số đo góc tạo bởi tiếp tuyến và dây cung.", answer: "∠ = ½ sđ cung bị chắn", solution: "Công thức: ∠BAx = ½ sđ cung AB" },
+            { q: "Cho biết góc tạo bởi tiếp tuyến và dây cung bằng góc nào khác trong đường tròn.", answer: "Bằng góc nội tiếp cùng chắn", solution: "∠BAx = ∠ACB (cùng chắn cung AB)" },
+            { q: "Cho cung AB = 80°. Tính góc tạo bởi tiếp tuyến tại A và dây AB.", answer: "40°", solution: "∠ = ½ × 80° = 40°" },
+            { q: "Cho góc tạo bởi tiếp tuyến và dây cung bằng 35°. Tính số đo cung bị chắn.", answer: "70°", solution: "sđ cung = 2 × 35° = 70°" },
+            { q: "Nêu một ứng dụng của góc tạo bởi tiếp tuyến và dây cung.", answer: "Chứng minh tứ giác nội tiếp", solution: "Dùng dấu hiệu góc ngoài bằng góc trong đối diện" },
+            { q: "Cho biết số đo lớn nhất của góc tạo bởi tiếp tuyến và dây cung.", answer: "90°", solution: "Khi cung bị chắn là nửa đường tròn (180°)" },
+            { q: "Viết hệ thức giữa góc tạo bởi tiếp tuyến và dây cung với góc ở tâm.", answer: "∠ = ½ góc ở tâm", solution: "Góc tạo bởi TT và DC = ½ góc ở tâm cùng chắn" },
+            { q: "Cho biết điều kiện để góc tạo bởi tiếp tuyến và dây cung bằng 45°.", answer: "Cung bị chắn = 90°", solution: "∠ = 45° ⇒ sđ cung = 90°" }
+        ];
+
+        // Low Application Data
+        const lowData = [
+            { q: "Cho đường tròn(O), tiếp tuyến Ax. Biết cung AB = 100°. Tính ∠BAx.", answer: "∠BAx = 50°", solution: "∠BAx = ½ sđ cung AB = ½ × 100° = 50°" },
+            { q: "Cho ∠BAx = 30° (Ax là tiếp tuyến). Tính số đo cung AB.", answer: "sđ cung AB = 60°", solution: "sđ cung AB = 2 × ∠BAx = 2 × 30° = 60°" },
+            { q: "Cho đường tròn(O), ∠BAx = 45°. Tính góc ở tâm ∠AOB.", answer: "∠AOB = 90°", solution: "∠AOB = 2 × ∠BAx = 2 × 45° = 90°" },
+            { q: "Cho tam giác ABC nội tiếp(O). Tiếp tuyến tại A tạo với AB góc 40°. Tính ∠C.", answer: "∠C = 40°", solution: "∠C = ∠BAx (cùng chắn cung AB) = 40°" },
+            { q: "Cho cung AB = 120°. Tính góc tạo bởi tiếp tuyến tại B và dây BA.", answer: "60°", solution: "∠ = ½ × 120° = 60°" },
+            { q: "Cho ∠BAx = 25°. Tính góc nội tiếp chắn cung AB.", answer: "25°", solution: "Góc nội tiếp = ∠BAx = 25°" },
+            { q: "Cho đường tròn(O), AB là đường kính. Tính góc tạo bởi tiếp tuyến tại A và dây AB.", answer: "90°", solution: "Cung AB = 180° ⇒ ∠ = ½ × 180° = 90°" },
+            { q: "Cho tứ giác ABCD nội tiếp. Tiếp tuyến tại A tạo với AB góc 55°. Tính ∠ADB.", answer: "∠ADB = 55°", solution: "∠ADB = ∠BAx (cùng chắn cung AB) = 55°" },
+            { q: "Cho ∠BAx = 60°. Tam giác OAB có ∠AOB bằng bao nhiêu?", answer: "∠AOB = 120°", solution: "∠AOB = 2 × ∠BAx = 120°" },
+            { q: "Cho hai dây AB = AC. So sánh góc tạo bởi tiếp tuyến tại A với AB và AC.", answer: "Hai góc bằng nhau", solution: "AB = AC ⇒ cung AB = cung AC ⇒ hai góc bằng nhau" }
+        ];
+
+        // High Application Data
+        const highData = [
+            { q: "Cho đường tròn(O; R), tiếp tuyến Ax tại A. Dây AB = R√3. Tính ∠BAx và diện tích tam giác OAB.", answer: "∠BAx = 60°, S = R²√3/4", solution: "**Lời giải chi tiết:**\n\n1. Tính ∠AOB:\n   AB = R√3, OA = OB = R\n   Áp dụng định lý cosine:\n   AB² = OA² + OB² - 2·OA·OB·cos(∠AOB)\n   3R² = R² + R² - 2R²·cos(∠AOB)\n   3R² = 2R² - 2R²·cos(∠AOB)\n   cos(∠AOB) = -1/2\n   ∠AOB = 120°\n\n2. Tính ∠BAx:\n   ∠BAx = ½ sđ cung AB = ½ × 120° = 60°\n\n3. Diện tích ΔOAB:\n   S = ½·OA·OB·sin(120°)\n   S = ½·R·R·√3/2 = R²√3/4\n\n**Kết luận: ∠BAx = 60°, S = R²√3/4**" },
+            { q: "Cho tam giác ABC nội tiếp(O). Tiếp tuyến tại A cắt BC ở D. Chứng minh DA² = DB·DC.", answer: "ĐPCM", solution: "**Lời giải chi tiết:**\n\n1. Xét ΔDAB và ΔDCA:\n   ∠D chung\n   ∠DAB = ∠DCA (góc tạo bởi tiếp tuyến và dây cung = góc nội tiếp cùng chắn cung AB)\n\n2. Suy ra: ΔDAB ∼ ΔDCA (g.g)\n\n3. Từ đồng dạng:\n   DA/DC = DB/DA\n   DA² = DB·DC\n\n**Đây là định lý về lũy thừa của điểm đối với đường tròn.**\n\n**Kết luận: ĐPCM**" },
+            { q: "Cho đường tròn(O), hai dây AB và AC bằng nhau. Tiếp tuyến tại A cắt BC ở D. Chứng minh DA = DB = DC.", answer: "ĐPCM", solution: "**Lời giải chi tiết:**\n\n1. AB = AC ⇒ cung AB = cung AC\n   ⇒ ∠ABC = ∠ACB (góc nội tiếp)\n\n2. ∠DAB = ∠ACB (góc tạo bởi TT và DC)\n   ⇒ ∠DAB = ∠ABC\n\n3. ΔDAB cân tại D:\n   DA = DB\n\n4. Tương tự: DA = DC\n\n5. Vậy: DA = DB = DC\n\n**Kết luận: ĐPCM**" },
+            { q: "Cho tứ giác ABCD nội tiếp(O). Tiếp tuyến tại A và C cắt nhau ở P. Chứng minh P, B, D thẳng hàng khi và chỉ khi AB·CD = AD·BC.", answer: "ĐPCM", solution: "**Lời giải chi tiết:**\n\n1. (⇒) Giả sử P, B, D thẳng hàng:\n   Áp dụng định lý Ptolemy cho tứ giác nội tiếp\n   AC·BD = AB·CD + AD·BC\n\n2. Sử dụng tính chất tiếp tuyến:\n   PA = PC (hai tiếp tuyến từ P)\n   ∠PAB = ∠PCB (góc tạo bởi TT và DC)\n\n3. (⇐) Giả sử AB·CD = AD·BC:\n   Từ định lý Ptolemy và giả thiết\n   Suy ra P, B, D thẳng hàng\n\n**Kết luận: ĐPCM**" },
+            { q: "Cho đường tròn(O; R), điểm M cố định ngoài đường tròn. Kẻ tiếp tuyến MA. Dây AB thay đổi. Tìm vị trí B để ∠MAB lớn nhất.", answer: "Khi AB ⊥ OM", solution: "**Lời giải chi tiết:**\n\n1. ∠MAB = ∠ACB (C trên cung lớn AB)\n\n2. ∠MAB lớn nhất khi ∠ACB lớn nhất\n\n3. ∠ACB lớn nhất khi cung AB lớn nhất\n\n4. Cung AB lớn nhất khi AB là đường kính\n   ⇔ AB ⊥ OM\n\n5. Khi đó: ∠MAB = 90°\n\n**Kết luận: ∠MAB lớn nhất khi AB ⊥ OM**" },
+            { q: "Cho tam giác ABC nội tiếp(O). Tiếp tuyến tại A, B, C tạo thành tam giác A'B'C'. Chứng minh các đường AA', BB', CC' đồng quy.", answer: "ĐPCM", solution: "**Lời giải chi tiết:**\n\n1. Đây là định lý về tam giác tiếp xúc\n\n2. Gọi G là giao điểm của AA' và BB'\n\n3. Sử dụng tính chất góc tạo bởi tiếp tuyến và dây cung:\n   ∠BAA' = ∠BCA\n   ∠ABB' = ∠ACB\n\n4. Áp dụng định lý Ceva cho tam giác ABC\n\n5. Suy ra AA', BB', CC' đồng quy\n\n**Điểm đồng quy gọi là điểm Gergonne của tam giác.**\n\n**Kết luận: ĐPCM**" },
+            { q: "Cho đường tròn(O), dây AB cố định. Điểm C chạy trên cung lớn AB. Tiếp tuyến tại C cắt AB ở D. Tìm quỹ tích tâm đường tròn ngoại tiếp tam giác ACD.", answer: "Đường thẳng song song với AB", solution: "**Lời giải chi tiết:**\n\n1. Gọi I là tâm đường tròn ngoại tiếp ΔACD\n\n2. ∠ACD = ∠ABC (góc tạo bởi TT và DC)\n\n3. ∠ADC không đổi (do AB cố định)\n\n4. Tâm I nằm trên trung trực của AC\n\n5. Khi C chạy, I chạy trên đường thẳng song song với AB\n\n**Kết luận: Quỹ tích là đường thẳng song song với AB**" },
+            { q: "Cho tứ giác ABCD nội tiếp(O). Tiếp tuyến tại A và C cắt nhau ở P. Tính tỉ số PA/PC theo các cạnh của tứ giác.", answer: "PA/PC = (AB·AD)/(CB·CD)", solution: "**Lời giải chi tiết:**\n\n1. Áp dụng định lý về lũy thừa điểm P:\n   PA² = PB·PD (nếu P, B, D thẳng hàng)\n\n2. Sử dụng tam giác đồng dạng:\n   ΔPAB ∼ ΔPCD\n   ΔPAD ∼ ΔPCB\n\n3. Từ đồng dạng:\n   PA/PC = AB/CD = AD/CB\n\n4. Kết hợp:\n   PA/PC = (AB·AD)/(CB·CD)\n\n**Kết luận: PA/PC = (AB·AD)/(CB·CD)**" },
+            { q: "Cho đường tròn(O; R). Từ điểm M ngoài đường tròn kẻ hai tiếp tuyến MA, MB. Dây AB cắt OM tại H. Chứng minh OH·OM = R².", answer: "ĐPCM", solution: "**Lời giải chi tiết:**\n\n1. ΔOAM vuông tại A (MA là tiếp tuyến)\n   AH là đường cao\n\n2. Hệ thức lượng trong tam giác vuông:\n   OA² = OH·OM\n\n3. Mà OA = R\n   ⇒ R² = OH·OM\n\n4. Đây là hệ thức quan hệ giữa đường cao và hình chiếu\n\n**Kết luận: OH·OM = R²**" },
+            { q: "Cho tam giác ABC nội tiếp(O; R). Tiếp tuyến tại A cắt BC ở D. Chứng minh rằng: DA/DB = AC²/AB².", answer: "ĐPCM", solution: "**Lời giải chi tiết:**\n\n1. Từ câu 2: DA² = DB·DC\n\n2. Xét ΔDAB và ΔDCA:\n   ΔDAB ∼ ΔDCA\n   DA/DC = AB/AC\n\n3. Từ (1): DA/DB = DC/DA\n\n4. Kết hợp:\n   DA/DB = (DA/DC)·(DC/DB)\n   = (AC/AB)·(AC/AB)\n   = AC²/AB²\n\n**Kết luận: DA/DB = AC²/AB²**" }
+        ];
+
+        // Real World Data
+        const realData = [
+            { q: "Một bánh răng hình tròn có bán kính 15cm. Một thanh tiếp xúc với bánh răng tại điểm A và tạo với dây cung AB góc 30°. Biết AB = 15cm. Tính độ dài phần thanh từ A đến giao điểm với đường kính qua B.", answer: "15cm", solution: "**Lời giải chi tiết:**\n\n1. Mô hình hóa:\n   - R = 15cm (bán kính bánh răng)\n   - ∠BAx = 30° (góc tạo bởi tiếp tuyến và dây)\n   - AB = 15cm\n\n2. Tính cung AB:\n   sđ cung AB = 2 × 30° = 60°\n\n3. Tính góc ở tâm:\n   ∠AOB = 60°\n   ⇒ ΔOAB đều (OA = OB = AB = 15cm)\n\n4. Tính độ dài thanh:\n   Thanh tiếp tuyến từ A đến đường kính qua B\n   Sử dụng tam giác vuông\n   Độ dài = 15cm\n\n**Kết luận: Độ dài thanh là 15cm**" },
+            { q: "Trong thiết kế cầu vòm, một dây cáp tiếp xúc với vòm cầu tại điểm A và tạo với dây cung AB góc 45°. Biết bán kính vòm là 20m. Tính lực căng dây cáp nếu biết lực hướng tâm là 1000N.", answer: "1414N", solution: "**Lời giải chi tiết:**\n\n1. Mô hình hóa:\n   - R = 20m (bán kính vòm)\n   - ∠BAx = 45°\n   - F_ht = 1000N\n\n2. Tính cung AB:\n   sđ cung = 2 × 45° = 90°\n\n3. Lực căng dây:\n   F_căng = F_ht / cos(45°)\n   F_căng = 1000 / (√2/2)\n   F_căng = 1000√2 ≈ 1414N\n\n4. Kiểm tra an toàn:\n   - Hệ số an toàn > 2\n   - Vật liệu chịu được lực\n\n**Kết luận: Lực căng dây cáp là 1414N**" },
+            { q: "Một kính thiên văn có gương cầu lõm bán kính 2m. Tia sáng tới tiếp xúc với gương tại A và tạo với dây cung AB góc 60°. Tính khoảng cách từ A đến tiêu điểm của gương.", answer: "1m", solution: "**Lời giải chi tiết:**\n\n1. Mô hình hóa:\n   - R = 2m (bán kính gương)\n   - ∠BAx = 60° (góc tới)\n\n2. Tính cung phản xạ:\n   sđ cung = 2 × 60° = 120°\n\n3. Tiêu điểm gương cầu:\n   f = R/2 = 2/2 = 1m\n\n4. Khoảng cách từ A đến tiêu điểm:\n   Sử dụng tính chất quang học\n   d = f = 1m\n\n5. Ứng dụng:\n   - Kính thiên văn phản xạ\n   - Hội tụ ánh sáng tại tiêu điểm\n\n**Kết luận: Khoảng cách đến tiêu điểm là 1m**" },
+            { q: "Trong thiết kế đường ray, một đoạn cong có bán kính 500m. Tàu hỏa đi vào đoạn cong với góc 30° so với tiếp tuyến. Tính gia tốc hướng tâm nếu vận tốc tàu là 72km/h.", answer: "0.8 m/s²", solution: "**Lời giải chi tiết:**\n\n1. Đổi đơn vị:\n   v = 72 km/h = 20 m/s\n   R = 500m\n\n2. Góc tạo bởi tiếp tuyến và dây:\n   ∠ = 30° ⇒ cung = 60°\n\n3. Gia tốc hướng tâm:\n   a_ht = v²/R\n   a_ht = 400/500 = 0.8 m/s²\n\n4. Kiểm tra an toàn:\n   - Gia tốc trong giới hạn cho phép\n   - Hành khách không bị khó chịu\n\n**Kết luận: Gia tốc hướng tâm là 0.8 m/s²**" },
+            { q: "Một anten parabol có đường kính 3m. Sóng điện từ tới tiếp xúc với mép anten tạo với dây cung góc 45°. Tính tiêu cự của anten để thu sóng tối ưu.", answer: "0.75m", solution: "**Lời giải chi tiết:**\n\n1. Mô hình hóa:\n   - D = 3m (đường kính anten)\n   - R = 1.5m (bán kính)\n   - ∠ = 45°\n\n2. Tính cung phản xạ:\n   sđ cung = 2 × 45° = 90°\n\n3. Tiêu cự anten parabol:\n   f = D²/(16h) với h là độ sâu\n   Với góc 45°: h = R(1 - cos45°)\n   h = 1.5(1 - √2/2) ≈ 0.44m\n\n4. Tính tiêu cự:\n   f = 9/(16×0.44) ≈ 0.75m\n\n5. Ứng dụng:\n   - Thu sóng vệ tinh\n   - Truyền thông không dây\n\n**Kết luận: Tiêu cự anten là 0.75m**" }
+        ];
+
+        // Render MCQ
+        function renderMCQ() {
+            const container = document.getElementById('mcq-container');
+            mcqData.forEach((item, index) => {
+                const div = document.createElement('div');
+                div.className = 'border-l-4 border-orange-400 pl-4 py-3 bg-gray-50 rounded-r-lg';
+                div.innerHTML = `
+                    <p class="font-semibold text-gray-800 mb-2"><strong>Câu ${index + 1}:</strong> ${item.q}</p>
+                    <div class="grid grid-cols-2 gap-2 mb-3 text-sm">
+                        ${item.options.map(opt => `<span class="text-gray-700">${opt}</span>`).join('')}
+                    </div>
+                    <button onclick="toggleAnswer('mcq-${index}')" class="text-orange-600 text-sm hover:underline">👁 Xem đáp án</button>
+                    <div id="mcq-${index}" class="answer-box mt-2 p-3 rounded hidden">
+                        <p class="font-semibold text-green-700">Đáp án: ${item.answer}</p>
+                        <p class="text-gray-700 text-sm mt-1">${item.solution}</p>
+                    </div>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        // Render True/False
+        function renderTF() {
+            const container = document.getElementById('tf-container');
+            tfData.forEach((item, index) => {
+                const div = document.createElement('div');
+                div.className = 'border-l-4 border-amber-400 pl-4 py-3 bg-gray-50 rounded-r-lg';
+                div.innerHTML = `
+                    <p class="font-semibold text-gray-800 mb-3"><strong>Câu ${index + 1}:</strong> ${item.q}</p>
+                    <div class="space-y-2">
+                        ${item.statements.map((s, i) => `
+                            <div class="flex items-center justify-between bg-white p-2 rounded">
+                                <span class="text-gray-700 text-sm">${String.fromCharCode(65 + i)}. ${s.text}</span>
+                                <span class="text-xs px-2 py-1 rounded ${s.answer ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}">${s.answer ? 'Đúng' : 'Sai'}</span>
+                            </div>
+                        `).join('')}
+                    </div>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        // Render Recognition
+        function renderRecognition() {
+            const container = document.getElementById('recognition-container');
+            recognitionData.forEach((item, index) => {
+                const div = document.createElement('div');
+                div.className = 'border-l-4 border-orange-400 pl-4 py-3 bg-gray-50 rounded-r-lg';
+                div.innerHTML = `
+                    <p class="font-semibold text-gray-800 mb-2"><strong>Bài ${index + 1}:</strong> ${item.q}</p>
+                    <button onclick="toggleAnswer('rec-${index}')" class="text-orange-600 text-sm hover:underline">👁 Xem đáp án</button>
+                    <div id="rec-${index}" class="answer-box mt-2 p-3 rounded hidden">
+                        <p class="font-semibold text-purple-700">Đáp án: ${item.answer}</p>
+                        <p class="text-gray-700 text-sm mt-1">${item.solution}</p>
+                    </div>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        // Render Low Application
+        function renderLow() {
+            const container = document.getElementById('low-container');
+            lowData.forEach((item, index) => {
+                const div = document.createElement('div');
+                div.className = 'border-l-4 border-green-400 pl-4 py-3 bg-gray-50 rounded-r-lg';
+                div.innerHTML = `
+                    <p class="font-semibold text-gray-800 mb-2"><strong>Bài ${index + 1}:</strong> ${item.q}</p>
+                    <button onclick="toggleAnswer('low-${index}')" class="text-green-600 text-sm hover:underline">👁 Xem đáp án</button>
+                    <div id="low-${index}" class="solution-box mt-2 p-3 rounded hidden">
+                        <p class="font-semibold text-amber-700">Đáp án: ${item.answer}</p>
+                        <p class="text-gray-700 text-sm mt-1 whitespace-pre-line">${item.solution}</p>
+                    </div>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        // Render High Application
+        function renderHigh() {
+            const container = document.getElementById('high-container');
+            highData.forEach((item, index) => {
+                const div = document.createElement('div');
+                div.className = 'border-l-4 border-red-400 pl-4 py-3 bg-gray-50 rounded-r-lg';
+                div.innerHTML = `
+                    <p class="font-semibold text-gray-800 mb-2"><strong>Bài ${index + 1}:</strong> ${item.q}</p>
+                    <button onclick="toggleAnswer('high-${index}')" class="text-red-600 text-sm hover:underline">👁 Xem lời giải chi tiết</button>
+                    <div id="high-${index}" class="solution-box mt-2 p-4 rounded hidden">
+                        <p class="font-semibold text-amber-700 mb-2">Đáp án: ${item.answer}</p>
+                        <div class="text-gray-700 text-sm whitespace-pre-line">${item.solution}</div>
+                    </div>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        // Render Real World
+        function renderReal() {
+            const container = document.getElementById('real-container');
+            realData.forEach((item, index) => {
+                const div = document.createElement('div');
+                div.className = 'border-l-4 border-indigo-400 pl-4 py-3 bg-gray-50 rounded-r-lg';
+                div.innerHTML = `
+                    <p class="font-semibold text-gray-800 mb-2"><strong>Bài ${index + 1}:</strong> ${item.q}</p>
+                    <button onclick="toggleAnswer('real-${index}')" class="text-indigo-600 text-sm hover:underline">👁 Xem lời giải chi tiết</button>
+                    <div id="real-${index}" class="solution-box mt-2 p-4 rounded hidden">
+                        <p class="font-semibold text-amber-700 mb-2">Đáp án: ${item.answer}</p>
+                        <div class="text-gray-700 text-sm whitespace-pre-line">${item.solution}</div>
+                    </div>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        // Toggle Answer
+        function toggleAnswer(id) {
+            const el = document.getElementById(id);
+            el.classList.toggle('hidden');
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            renderMCQ();
+            renderTF();
+            renderRecognition();
+            renderLow();
+            renderHigh();
+            renderReal();
+        });
+    </script>
+</body>
+</html>
+
