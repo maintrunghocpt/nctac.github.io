@@ -1,0 +1,663 @@
+```html
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Luyện Thi Trắc Nghiệm - Chuyên Đề 21: Toán Thực Tế</title>
+<link href="https://cdn.jsdelivr.net/npm/@fontsource/inter@5.0.18/index.css" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0f172a;
+    --bg2: #1e293b;
+    --bg3: #334155;
+    --card: #1e293b;
+    --border: #334155;
+    --primary: #6366f1;
+    --primary-light: #818cf8;
+    --accent: #22d3ee;
+    --green: #10b981;
+    --red: #ef4444;
+    --orange: #f59e0b;
+    --text: #f1f5f9;
+    --text-dim: #94a3b8;
+    --text-dimmer: #64748b;
+    --correct-bg: rgba(16, 185, 129, 0.15);
+    --correct-border: #10b981;
+    --wrong-bg: rgba(239, 68, 68, 0.15);
+    --wrong-border: #ef4444;
+    --selected-bg: rgba(99, 102, 241, 0.15);
+    --selected-border: #6366f1;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  .bg-orbs {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    pointer-events: none; z-index: 0; overflow: hidden;
+  }
+  .bg-orbs .orb {
+    position: absolute; border-radius: 50%; filter: blur(100px); opacity: 0.12;
+    animation: orbFloat 25s ease-in-out infinite;
+  }
+  .orb:nth-child(1) { width: 500px; height: 500px; background: var(--primary); top: -100px; left: -100px; }
+  .orb:nth-child(2) { width: 400px; height: 400px; background: var(--accent); bottom: -100px; right: -100px; animation-delay: -8s; }
+  .orb:nth-child(3) { width: 350px; height: 350px; background: #a78bfa; top: 50%; left: 50%; transform: translate(-50%,-50%); animation-delay: -16s; }
+  @keyframes orbFloat {
+    0%, 100% { transform: translate(0,0) scale(1); }
+    33% { transform: translate(40px, -30px) scale(1.05); }
+    66% { transform: translate(-30px, 40px) scale(0.95); }
+  }
+
+  .progress-bar {
+    position: fixed; top: 0; left: 0; height: 3px; z-index: 1000;
+    background: linear-gradient(90deg, var(--primary), var(--accent));
+    transition: width 0.3s ease;
+  }
+
+  .container { position: relative; z-index: 1; max-width: 900px; margin: 0 auto; padding: 0 16px; }
+
+  header {
+    text-align: center; padding: 48px 16px 32px;
+  }
+  .badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: linear-gradient(135deg, rgba(99,102,241,0.2), rgba(34,211,238,0.2));
+    border: 1px solid rgba(99,102,241,0.3);
+    padding: 8px 20px; border-radius: 50px;
+    font-size: 0.82rem; font-weight: 500; color: var(--primary-light);
+    margin-bottom: 20px;
+  }
+  h1 {
+    font-size: clamp(1.5rem, 4vw, 2.4rem); font-weight: 800;
+    background: linear-gradient(135deg, #fff, var(--primary-light), var(--accent));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text; margin-bottom: 8px;
+  }
+  .subtitle { color: var(--text-dim); font-size: 0.95rem; }
+  .subtitle span { color: var(--accent); font-weight: 600; }
+
+  /* Stats */
+  .stats-row {
+    display: flex; justify-content: center; gap: 24px; flex-wrap: wrap;
+    margin: 24px 0 32px;
+  }
+  .stat-box {
+    text-align: center; padding: 12px 20px;
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 12px; min-width: 100px;
+  }
+  .stat-num { font-size: 1.6rem; font-weight: 700; }
+  .stat-num.green { color: var(--green); }
+  .stat-num.red { color: var(--red); }
+  .stat-num.blue { color: var(--accent); }
+  .stat-num.orange { color: var(--orange); }
+  .stat-label { font-size: 0.72rem; color: var(--text-dimmer); text-transform: uppercase; letter-spacing: 1px; margin-top: 2px; }
+
+  /* Toolbar */
+  .toolbar {
+    display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;
+    margin-bottom: 24px;
+  }
+  .tool-btn {
+    padding: 10px 20px; border-radius: 10px; border: 1px solid var(--border);
+    background: var(--card); color: var(--text-dim); font-weight: 500;
+    cursor: pointer; transition: all 0.3s; font-size: 0.85rem;
+    display: flex; align-items: center; gap: 6px;
+  }
+  .tool-btn:hover, .tool-btn.active {
+    background: var(--primary); border-color: var(--primary); color: #fff;
+    transform: translateY(-2px); box-shadow: 0 6px 20px rgba(99,102,241,0.3);
+  }
+  .tool-btn.green-btn:hover, .tool-btn.green-btn.active {
+    background: var(--green); border-color: var(--green);
+    box-shadow: 0 6px 20px rgba(16,185,129,0.3);
+  }
+  .tool-btn.orange-btn:hover, .tool-btn.orange-btn.active {
+    background: var(--orange); border-color: var(--orange);
+    box-shadow: 0 6px 20px rgba(245,158,11,0.3);
+  }
+
+  /* Question Grid */
+  .q-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(48px, 1fr));
+    gap: 6px; margin-bottom: 32px;
+  }
+  .q-grid-item {
+    width: 48px; height: 48px; border-radius: 10px; border: 1px solid var(--border);
+    background: var(--card); display: flex; align-items: center; justify-content: center;
+    font-size: 0.82rem; font-weight: 600; cursor: pointer; transition: all 0.3s;
+    color: var(--text-dim);
+  }
+  .q-grid-item:hover { border-color: var(--primary); color: var(--primary-light); transform: translateY(-2px); }
+  .q-grid-item.answered { background: var(--selected-bg); border-color: var(--primary); color: var(--primary-light); }
+  .q-grid-item.correct { background: var(--correct-bg); border-color: var(--correct-border); color: var(--green); }
+  .q-grid-item.wrong { background: var(--wrong-bg); border-color: var(--wrong-border); color: var(--red); }
+  .q-grid-item.current { box-shadow: 0 0 0 2px var(--accent); }
+
+  /* Question Card */
+  .q-card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 16px; margin-bottom: 20px; overflow: hidden;
+    transition: all 0.3s; animation: fadeUp 0.5s ease both;
+  }
+  .q-card.hidden { display: none; }
+  .q-card:hover { border-color: rgba(99,102,241,0.3); }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .q-header {
+    padding: 20px 24px; display: flex; align-items: flex-start; gap: 16px;
+  }
+  .q-num {
+    min-width: 44px; height: 44px; border-radius: 12px;
+    background: linear-gradient(135deg, var(--primary), #8b5cf6);
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 700; font-size: 1rem; flex-shrink: 0;
+  }
+  .q-body { flex: 1; }
+  .q-text { font-size: 0.93rem; line-height: 1.8; color: var(--text); margin-bottom: 16px; }
+
+  .options-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+
+  .opt-btn {
+    padding: 14px 16px; border-radius: 10px; border: 2px solid var(--border);
+    background: var(--bg2); cursor: pointer; transition: all 0.25s;
+    display: flex; align-items: center; gap: 10px; font-size: 0.88rem;
+    color: var(--text-dim); text-align: left; position: relative;
+  }
+  .opt-btn:hover:not(.locked) {
+    border-color: var(--primary); background: rgba(99,102,241,0.08);
+    color: var(--text);
+  }
+  .opt-label {
+    min-width: 28px; height: 28px; border-radius: 8px;
+    background: var(--bg3); display: flex; align-items: center; justify-content: center;
+    font-weight: 700; font-size: 0.8rem; flex-shrink: 0; color: var(--primary-light);
+  }
+  .opt-btn.selected {
+    border-color: var(--primary); background: var(--selected-bg); color: var(--text);
+  }
+  .opt-btn.selected .opt-label { background: var(--primary); color: #fff; }
+
+  .opt-btn.correct-answer {
+    border-color: var(--correct-border) !important; background: var(--correct-bg) !important; color: var(--green) !important;
+  }
+  .opt-btn.correct-answer .opt-label { background: var(--green) !important; color: #fff !important; }
+
+  .opt-btn.wrong-answer {
+    border-color: var(--wrong-border) !important; background: var(--wrong-bg) !important; color: var(--red) !important;
+  }
+  .opt-btn.wrong-answer .opt-label { background: var(--red) !important; color: #fff !important; }
+
+  .opt-btn.locked { cursor: default; }
+
+  .opt-icon {
+    position: absolute; right: 12px; top: 50%; transform: translateY(-50%);
+    font-size: 1.2rem;
+  }
+
+  /* Explanation */
+  .explanation {
+    margin-top: 16px; padding: 16px; border-radius: 10px;
+    background: rgba(99,102,241,0.08); border-left: 3px solid var(--primary);
+    font-size: 0.88rem; color: var(--text-dim); line-height: 1.8;
+    display: none;
+  }
+  .explanation.show { display: block; animation: fadeUp 0.3s ease; }
+
+  .answer-tag {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 6px 14px; border-radius: 8px; font-size: 0.82rem; font-weight: 600;
+    margin-bottom: 12px;
+  }
+  .answer-tag.correct { background: var(--correct-bg); color: var(--green); }
+  .answer-tag.wrong { background: var(--wrong-bg); color: var(--red); }
+
+  /* Result Modal */
+  .modal-overlay {
+    position: fixed; inset: 0; background: rgba(0,0,0,0.7);
+    display: none; align-items: center; justify-content: center; z-index: 2000;
+    backdrop-filter: blur(4px);
+  }
+  .modal-overlay.show { display: flex; }
+  .modal {
+    background: var(--bg2); border: 1px solid var(--border);
+    border-radius: 20px; padding: 40px; max-width: 500px; width: 90%;
+    text-align: center; animation: modalIn 0.4s ease;
+  }
+  @keyframes modalIn {
+    from { opacity: 0; transform: scale(0.9) translateY(20px); }
+    to { opacity: 1; transform: scale(1) translateY(0); }
+  }
+  .modal h2 { font-size: 1.6rem; margin-bottom: 8px; }
+  .modal .score-circle {
+    width: 120px; height: 120px; border-radius: 50%; margin: 24px auto;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    border: 4px solid;
+  }
+  .score-circle .pct { font-size: 2rem; font-weight: 800; }
+  .score-circle .lbl { font-size: 0.75rem; color: var(--text-dimmer); }
+  .modal .detail { color: var(--text-dim); font-size: 0.9rem; margin: 16px 0; line-height: 1.6; }
+  .modal-btn {
+    padding: 12px 32px; border-radius: 10px; border: none; font-weight: 600;
+    cursor: pointer; font-size: 0.9rem; transition: all 0.3s; margin: 4px;
+  }
+  .modal-btn.primary { background: var(--primary); color: #fff; }
+  .modal-btn.primary:hover { background: var(--primary-light); transform: translateY(-2px); }
+  .modal-btn.secondary { background: var(--bg3); color: var(--text); border: 1px solid var(--border); }
+  .modal-btn.secondary:hover { border-color: var(--primary); }
+
+  /* Scroll top */
+  .scroll-top {
+    position: fixed; bottom: 24px; right: 24px; width: 46px; height: 46px;
+    border-radius: 50%; background: var(--primary); color: #fff; border: none;
+    font-size: 1.2rem; cursor: pointer; opacity: 0; transition: all 0.3s;
+    z-index: 100; box-shadow: 0 4px 16px rgba(99,102,241,0.4);
+  }
+  .scroll-top.visible { opacity: 1; }
+  .scroll-top:hover { transform: translateY(-3px); }
+
+  /* Timer */
+  .timer-bar {
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+    margin-bottom: 16px; font-size: 0.9rem; color: var(--text-dim);
+  }
+  .timer-bar .time { color: var(--accent); font-weight: 600; font-variant-numeric: tabular-nums; }
+
+  footer {
+    text-align: center; padding: 40px 16px; color: var(--text-dimmer); font-size: 0.8rem;
+  }
+
+  @media (max-width: 600px) {
+    .options-grid { grid-template-columns: 1fr; }
+    .q-grid { grid-template-columns: repeat(10, 1fr); }
+    .q-header { padding: 16px; }
+    .stats-row { gap: 12px; }
+    .stat-box { min-width: 80px; padding: 10px 14px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="progress-bar" id="progressBar"></div>
+<div class="bg-orbs"><div class="orb"></div><div class="orb"></div><div class="orb"></div></div>
+
+<header>
+  <div class="container">
+    <div class="badge">📝 Chuyên đề 21 — Toán Thực Tế</div>
+    <h1>Luyện Thi Trắc Nghiệm<br>50 Câu Hỏi</h1>
+    <p class="subtitle">Chọn phương án đúng nhất cho mỗi câu hỏi</p>
+  </div>
+</header>
+
+<div class="container">
+  <div class="stats-row" id="statsRow">
+    <div class="stat-box"><div class="stat-num blue" id="statTotal">50</div><div class="stat-label">Tổng câu</div></div>
+    <div class="stat-box"><div class="stat-num green" id="statCorrect">0</div><div class="stat-label">Đúng</div></div>
+    <div class="stat-box"><div class="stat-num red" id="statWrong">0</div><div class="stat-label">Sai</div></div>
+    <div class="stat-box"><div class="stat-num orange" id="statPct">0%</div><div class="stat-label">Tỉ lệ</div></div>
+  </div>
+
+  <div class="timer-bar">
+    ⏱ Thời gian: <span class="time" id="timer">00:00</span>
+  </div>
+
+  <div class="toolbar">
+    <button class="tool-btn active" onclick="showAll()">📋 Tất cả</button>
+    <button class="tool-btn" onclick="showUnanswered()"> Chưa làm</button>
+    <button class="tool-btn" onclick="showCorrect()">✅ Đã đúng</button>
+    <button class="tool-btn" onclick="showWrong()">❌ Đã sai</button>
+    <button class="tool-btn green-btn" onclick="showAnswers()"> Xem đáp án</button>
+    <button class="tool-btn orange-btn" onclick="resetQuiz()">🔄 Làm lại</button>
+  </div>
+
+  <div class="q-grid" id="qGrid"></div>
+
+  <div id="questionsContainer"></div>
+</div>
+
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal">
+    <h2 id="modalTitle"> Kết quả</h2>
+    <div class="score-circle" id="scoreCircle">
+      <div class="pct" id="modalPct">0%</div>
+      <div class="lbl">Đúng</div>
+    </div>
+    <div class="detail" id="modalDetail"></div>
+    <button class="modal-btn primary" onclick="closeModal()">Đóng</button>
+    <button class="modal-btn secondary" onclick="resetQuiz();closeModal();">Làm lại</button>
+  </div>
+</div>
+
+<button class="scroll-top" id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<footer>
+  <div class="container">
+    <p>📚 Chuyên đề 21: Toán Thực Tế — 50 câu trắc nghiệm</p>
+    <p style="margin-top:4px;opacity:0.5;">Website hỗ trợ luyện thi trắc nghiệm</p>
+  </div>
+</footer>
+
+<script>
+const questions = [
+  { id:1, q:"Một ô tô đi quãng đường AB với vận tốc 50 km/h, rồi đi tiếp quãng đường BC với vận tốc 45 km/h. Biết quãng đường tổng cộng dài 165 km và thời gian đi trên AB ít hơn thời gian đi trên BC là 30 phút. Tính thời gian ô tô đi trên đoạn đường AB.", opts:["1,5 giờ","2 giờ","1 giờ","3 giờ"], ans:1 },
+  { id:2, q:"Trên một cánh đồng cấy 60 ha lúa giống mới và 40 ha lúa giống cũ, thu hoạch được tất cả 460 tấn thóc. Biết rằng 3 ha trồng lúa mới thu hoạch được ít hơn 4 ha trồng lúa cũ là 1 tấn. Hỏi năng suất lúa mới trên 1 ha là bao nhiêu?", opts:["5 tấn","4 tấn","6 tấn","3 tấn"], ans:0 },
+  { id:3, q:"Một cano chạy trên sông trong 7 giờ, xuôi dòng 108 km và ngược dòng 63 km. Một lần khác cũng trong 7 giờ cano xuôi dòng 81 km và ngược dòng 84 km. Tính vận tốc nước chảy.", opts:["4 km/h","3 km/h","2 km/h","2,5 km/h"], ans:1 },
+  { id:4, q:"Một khách du lịch đi trên ô tô 4 giờ, sau đó đi tiếp bằng tàu hỏa trong 7 giờ được quãng đường dài 640 km. Hỏi vận tốc của tàu hỏa, biết rằng mỗi giờ tàu hỏa đi nhanh hơn ô tô 5 km?", opts:["40 km/h","50 km/h","60 km/h","65 km/h"], ans:2 },
+  { id:5, q:"Năm ngoái, cả 2 cánh đồng thu hoạch được 500 tấn thóc. Năm nay, cánh đồng thứ nhất tăng 30%, cánh đồng thứ hai tăng 20%. Tổng cộng thu được 630 tấn. Hỏi năm nay cánh đồng thứ nhất thu được bao nhiêu tấn?", opts:["390 tấn","380 tấn","400 tấn","240 tấn"], ans:0 },
+  { id:6, q:"Trong tháng đầu hai tổ sản xuất được 800 sản phẩm. Tháng 2, tổ 1 tăng 12%, tổ 2 giảm 10% nên tổng làm được 786 sản phẩm. Tính số sản phẩm tổ 1 làm được trong tháng đầu.", opts:["500 sản phẩm","300 sản phẩm","200 sản phẩm","400 sản phẩm"], ans:1 },
+  { id:7, q:"Một tam giác có chiều cao bằng 3/4 cạnh đáy. Nếu chiều cao tăng thêm 3 dm và cạnh đáy giảm đi 3 dm thì diện tích tăng thêm 12 dm². Tính diện tích của tam giác ban đầu.", opts:["700 dm²","678 dm²","627 dm²","726 dm²"], ans:3 },
+  { id:8, q:"Một khu vườn hình chữ nhật có chu vi bằng 48 m. Nếu tăng chiều rộng lên bốn lần và tăng chiều dài lên ba lần thì chu vi sẽ là 162 m. Tìm diện tích khu vườn ban đầu.", opts:["24 m²","153 m²","135 m²","14 m²"], ans:2 },
+  { id:9, q:"Một cái thang dài 6 m, được đặt tạo với mặt đất một góc 60°. Vậy chân thang cách tường bao nhiêu mét?", opts:["3 m","3√2 m","7,8 m","0,4 m"], ans:0 },
+  { id:10, q:"Một mảnh vườn hình chữ nhật có chiều dài là 30 m, góc giữa đường chéo và chiều dài của mảnh vườn là 30°. Tính chiều rộng của mảnh vườn.", opts:["20√3 m","10√3 m","10√6 m","20√6 m"], ans:1 },
+  { id:11, q:"Tại một thời điểm trong ngày, tia nắng mặt trời tạo với phương ngang một góc bằng 35°, khi đó cột AH có bóng trên mặt đất là đoạn BH dài 7,2 m. Tính chiều cao của cột AH (làm tròn 2 chữ số thập phân).", opts:["5,04 m","4,12 m","10,28 m","8,56 m"], ans:0 },
+  { id:12, q:"Một chiếc thang dài 5 m được đặt vào thân cây cau, khoảng cách từ chân thang đến gốc cây cau là 2,5 m. Tính góc α tạo bởi thang và thân cây cau.", opts:["30°","45°","60°","75°"], ans:0 },
+  { id:13, q:"Tia nắng chiếu qua điểm B của tòa nhà tạo với mặt đất một góc x và tạo với cạnh AB một góc y. Biết cos x ≈ 0,78 và cot x ≈ 1,25. Tính sin y.", opts:["0,78","0,75","0,35","0,45"], ans:0 },
+  { id:14, q:"Tính chiều cao của tháp canh. Biết khoảng cách từ chân tháp đến điểm quan sát là 72 m, góc nhìn là 8°.", opts:["10,05 m","10,04 m","10,045 m","10,03 m"], ans:1 },
+  { id:15, q:"Một hình trụ có chu vi đáy là 8π và chiều cao h = 10. Tính thể tích hình trụ.", opts:["80π","40π","160π","150π"], ans:2 },
+  { id:16, q:"Hộp sữa ông Thọ có dạng hình trụ (đã bỏ nắp) có chiều cao 10 cm và đường kính đáy 6 cm. Tính diện tích toàn phần (lấy π = 3,14).", opts:["276,32 cm²","110π cm²","129π cm²","69π cm²"], ans:0 },
+  { id:17, q:"Một trục lăn hình trụ nằm ngang có diện tích đáy 25π cm² và chiều cao 10 cm. Nếu trục lăn 12 vòng thì diện tích tạo trên sân phẳng là bao nhiêu?", opts:["1200π cm²","600π cm²","1000π cm²","1210π cm²"], ans:0 },
+  { id:18, q:"Một hình trụ có diện tích đáy bằng 20 cm², chiều cao bằng đường kính đáy. Tính diện tích xung quanh.", opts:["40 cm²","80 cm²","40π cm²","80π cm²"], ans:3 },
+  { id:19, q:"Để đo thể tích viên đá, người ta thả vào bình hình trụ đường kính 18 cm. Mực nước dâng từ 15 cm lên 18 cm. Thể tích viên đá xấp xỉ bằng:", opts:["763 cm³","679 cm³","170 cm³","254 cm³"], ans:0 },
+  { id:20, q:"Cho hình nón có bán kính đáy 3 cm và chiều cao 4 cm. Tính diện tích xung quanh.", opts:["15π cm²","12π cm²","20π cm²","25π cm²"], ans:0 },
+  { id:21, q:"Từ khúc gỗ hình trụ cao 15 cm tiện thành hình nón. Phần gỗ bỏ đi có thể tích 640π cm³. Tính thể tích khúc gỗ hình trụ.", opts:["960π cm³","320π cm³","640π cm³","690π cm³"], ans:0 },
+  { id:22, q:"Bạn Hiếu gửi tiết kiệm 100 triệu đồng với lãi suất 6,5%/năm (lãi đơn). Số tiền nhận được sau 3 năm là:", opts:["119,5 triệu","120 triệu","120,5 triệu","121 triệu"], ans:0 },
+  { id:23, q:"Bạn Hải gửi 100 triệu đồng với lãi suất 6,5%/năm (lãi kép). Số tiền nhận được sau 3 năm là:", opts:["120,79 triệu","120,69 triệu","120,59 triệu","120,49 triệu"], ans:0 },
+  { id:24, q:"Quân gửi ngân hàng lãi suất 12%/năm (lãi đơn). Sau 3 năm có 13,6 triệu đồng cả gốc lẫn lãi. Lúc đầu Quân gửi bao nhiêu tiền?", opts:["8 triệu","9 triệu","10 triệu","11 triệu"], ans:2 },
+  { id:25, q:"Nam vay 40 triệu đồng trong 2 năm. Lãi năm đầu nhập gốc tính lãi năm sau. Sau 2 năm trả 48,4 triệu đồng. Lãi suất là bao nhiêu %/năm?", opts:["9%","10%","11%","12%"], ans:1 },
+  { id:26, q:"Bác Bình gửi 100 triệu vào ngân hàng A, cùng ngày gửi 150 triệu vào ngân hàng B (lãi suất cao hơn A là 1%/năm). Sau 1 năm tổng lãi là 16,5 triệu. Lãi suất ngân hàng A là:", opts:["5%/năm","6%/năm","7%/năm","8%/năm"], ans:1 },
+  { id:27, q:"Cửa hàng bán hàng 40.000 đ/món. Giảm 20% cho 1 món. Nếu mua ≥5 món, từ món thứ 5 trả 60% giá đang bán. Khách trả 272.000 đ thì mua bao nhiêu món?", opts:["8 món","9 món","10 món","11 món"], ans:2 },
+  { id:28, q:"Đổ thêm 100 g nước vào dung dịch chứa 40 g muối thì nồng độ giảm 20%. Trước khi đổ nước, dung dịch chứa bao nhiêu gam nước?", opts:["45 g","160 g","200 g","250 g"], ans:1 },
+  { id:29, q:"Thanh kim loại 1 nặng 250 g, thanh 2 nặng 320 g. Thể tích thanh 1 nhỏ hơn thanh 2 là 15 cm³, khối lượng riêng thanh 1 lớn hơn thanh 2 là 2 g/cm³. Khối lượng riêng thanh 1 là:", opts:["8 g/cm³","9 g/cm³","10 g/cm³","11 g/cm³"], ans:2 },
+  { id:30, q:"TTTM có 100 gian hàng cho thuê 100 triệu/năm thì hết. Cứ tăng 5 triệu/năm thì trống 2 gian. Giá thuê tối đa doanh thu là:", opts:["165 triệu","170 triệu","175 triệu","180 triệu"], ans:2 },
+  { id:31, q:"Một hình chữ nhật có chiều dài gấp 3 chiều rộng. Tăng cả hai thêm 5 cm được hình mới diện tích 153 cm². Chu vi ban đầu là:", opts:["16 cm","32 cm","34 cm","36 cm"], ans:1 },
+  { id:32, q:"Một thửa ruộng tam giác diện tích 180 m². Tăng đáy 4 m, giảm chiều cao 1 m thì diện tích không đổi. Cạnh đáy ban đầu là:", opts:["30 m","35 m","36 m","40 m"], ans:2 },
+  { id:33, q:"Một đội xe chuyên chở 150 tấn hàng. 5 xe đi làm việc khác nên mỗi xe còn lại chở thêm 5 tấn. Đội xe ban đầu có bao nhiêu chiếc?", opts:["10 xe","15 xe","20 xe","25 xe"], ans:1 },
+  { id:34, q:"Phòng họp có 360 ghế xếp đều dãy. Tăng 1 dãy và tăng 1 ghế/dãy thì có 400 ghế. Phòng có bao nhiêu dãy (biết < 20 dãy)?", opts:["14 dãy","15 dãy","16 dãy","17 dãy"], ans:1 },
+  { id:35, q:"Quãng đường 180 km. Ô tô chạy nhanh hơn dự định 10 km/h nên đến sớm hơn 1,5 giờ. Vận tốc dự định là:", opts:["20 km/h","30 km/h","40 km/h","50 km/h"], ans:1 },
+  { id:36, q:"Mảnh vườn hình chữ nhật có chiều dài hơn chiều rộng 5 m. Giảm chiều dài 2 m, tăng chiều rộng 1 m thì diện tích giảm 10 m². Kích thước ban đầu là:", opts:["Dài 18 m; Rộng 13 m","Dài 20 m; Rộng 15 m","Dài 15 m; Rộng 10 m","Dài 22 m; Rộng 17 m"], ans:0 },
+  { id:37, q:"Một người đi xe đạp từ A đến B với vận tốc 12 km/h. Lúc về đi với vận tốc 10 km/h nên thời gian về lâu hơn 15 phút. Quãng đường AB là:", opts:["15 km","18 km","20 km","24 km"], ans:0 },
+  { id:38, q:"Hiện nay tuổi mẹ gấp 3 lần tuổi con. 10 năm nữa, tuổi mẹ gấp 2 lần tuổi con. Tuổi mẹ hiện nay là:", opts:["30 tuổi","36 tuổi","40 tuổi","45 tuổi"], ans:0 },
+  { id:39, q:"Tam giác vuông có cạnh huyền 25 cm. Tổng hai cạnh góc vuông là 35 cm. Độ dài hai cạnh góc vuông là:", opts:["7 và 24 cm","10 và 15 cm","12 và 13 cm","9 và 16 cm"], ans:0 },
+  { id:40, q:"Hai thợ sơn tường hết 6 giờ. Người 1 làm 4 giờ, người 2 làm 3 giờ được 2/3 tường. Người 1 làm một mình xong trong:", opts:["10 giờ","12 giờ","8 giờ","15 giờ"], ans:0 },
+  { id:41, q:"Ô tô dự định đi 40 km/h. Đi nửa đường gặp đường xấu giảm 10 km/h, đến chậm 30 phút. Quãng đường AB là:", opts:["80 km","90 km","100 km","120 km"], ans:0 },
+  { id:42, q:"Tìm hai số tự nhiên biết tổng bằng 70, thương số lớn chia số nhỏ là 4 dư 5.", opts:["15 và 55","20 và 50","25 và 45","30 và 40"], ans:0 },
+  { id:43, q:"Ông A gửi 200 triệu. Lãi suất năm 1 là x%, năm 2 là y%. Sau 2 năm nhận 220,5 triệu. Nếu đổi thứ tự lãi suất nhận 220,2 triệu. Tính x, y.", opts:["x = 5, y = 4","x = 4, y = 5","x = 3, y = 6","x = 6, y = 3"], ans:0 },
+  { id:44, q:"Hình chữ nhật nội tiếp đường tròn bán kính 13 cm. Chiều dài hơn chiều rộng 14 cm. Diện tích hình chữ nhật là:", opts:["120 cm²","144 cm²","169 cm²","180 cm²"], ans:0 },
+  { id:45, q:"Đội máy cày dự định cày 40 ha/ngày. Thực tế cày 52 ha/ngày nên sớm hơn 2 ngày và cày thêm 4 ha. Diện tích ruộng dự định là:", opts:["360 ha","400 ha","420 ha","480 ha"], ans:1 },
+  { id:46, q:"Hai xe khởi hành từ A và B cách nhau 180 km, ngược chiều gặp nhau sau 2 giờ. Nếu xe 1 tăng 10 km/h và xe 2 giảm 5 km/h thì gặp nhau sau 1,8 giờ. Vận tốc ban đầu:", opts:["40 và 50 km/h","45 và 45 km/h","35 và 55 km/h","50 và 40 km/h"], ans:0 },
+  { id:47, q:"Số có hai chữ số. Tổng các chữ số bằng 10. Viết thêm chữ số 0 vào giữa được số mới lớn hơn số cũ 720. Số ban đầu là:", opts:["19","28","37","46"], ans:0 },
+  { id:48, q:"Hai vòi nước. Vòi 1 nhanh hơn vòi 2 là 2 giờ. Mở cả hai sau 2 giờ 24 phút đầy bể. Thời gian mỗi vòi chảy một mình đầy bể:", opts:["4 và 6 giờ","5 và 7 giờ","6 và 8 giờ","3 và 5 giờ"], ans:0 },
+  { id:49, q:"Mảnh đất hình chữ nhật diện tích 2400 m². Giảm chiều dài 10 m, tăng chiều rộng 5 m thì diện tích không đổi. Chu vi ban đầu là:", opts:["180 m","196 m","200 m","210 m"], ans:1 },
+  { id:50, q:"Dung dịch A chứa 20% muối, dung dịch B chứa 50% muối. Trộn được dung dịch C 30% muối. Tăng A thêm 10 lít, giảm B đi 5 lít được dung dịch 25%. Lượng A và B ban đầu là:", opts:["20 và 10 lít","15 và 15 lít","30 và 10 lít","25 và 5 lít"], ans:0 },
+];
+
+const labels = ['A', 'B', 'C', 'D'];
+let userAnswers = new Array(50).fill(-1);
+let locked = new Array(50).fill(false);
+let timerInterval;
+let seconds = 0;
+let showMode = 'all'; // all, unanswered, correct, wrong
+
+function init() {
+  renderGrid();
+  renderQuestions();
+  startTimer();
+  updateStats();
+}
+
+function startTimer() {
+  clearInterval(timerInterval);
+  seconds = 0;
+  timerInterval = setInterval(() => {
+    seconds++;
+    const m = String(Math.floor(seconds / 60)).padStart(2, '0');
+    const s = String(seconds % 60).padStart(2, '0');
+    document.getElementById('timer').textContent = m + ':' + s;
+  }, 1000);
+}
+
+function renderGrid() {
+  const grid = document.getElementById('qGrid');
+  grid.innerHTML = '';
+  for (let i = 0; i < 50; i++) {
+    const div = document.createElement('div');
+    div.className = 'q-grid-item';
+    div.textContent = i + 1;
+    div.dataset.idx = i;
+    div.onclick = () => scrollToQuestion(i);
+    grid.appendChild(div);
+  }
+}
+
+function renderQuestions() {
+  const container = document.getElementById('questionsContainer');
+  container.innerHTML = '';
+  questions.forEach((q, i) => {
+    const card = document.createElement('div');
+    card.className = 'q-card';
+    card.id = 'q' + i;
+    card.dataset.idx = i;
+    card.style.animationDelay = (i * 0.02) + 's';
+
+    let optsHTML = '';
+    q.opts.forEach((opt, j) => {
+      optsHTML += `<button class="opt-btn" data-q="${i}" data-o="${j}" onclick="selectOption(${i},${j})">
+        <span class="opt-label">${labels[j]}</span>
+        <span>${opt}</span>
+      </button>`;
+    });
+
+    card.innerHTML = `
+      <div class="q-header">
+        <div class="q-num">${q.id}</div>
+        <div class="q-body">
+          <div class="q-text">${q.q}</div>
+          <div class="options-grid">${optsHTML}</div>
+          <div class="explanation" id="exp${i}">
+            <div class="answer-tag" id="tag${i}"></div>
+            <div><strong>Đáp án đúng:</strong> ${labels[q.ans]} — ${q.opts[q.ans]}</div>
+          </div>
+        </div>
+      </div>`;
+    container.appendChild(card);
+  });
+}
+
+function selectOption(qIdx, oIdx) {
+  if (locked[qIdx]) return;
+  locked[qIdx] = true;
+  userAnswers[qIdx] = oIdx;
+  const q = questions[qIdx];
+  const card = document.getElementById('q' + qIdx);
+  const btns = card.querySelectorAll('.opt-btn');
+
+  btns.forEach((btn, j) => {
+    btn.classList.add('locked');
+    if (j === q.ans) {
+      btn.classList.add('correct-answer');
+      btn.innerHTML += '<span class="opt-icon">✓</span>';
+    }
+    if (j === oIdx && oIdx !== q.ans) {
+      btn.classList.add('wrong-answer');
+      btn.innerHTML += '<span class="opt-icon">✗</span>';
+    }
+  });
+
+  const exp = document.getElementById('exp' + qIdx);
+  exp.classList.add('show');
+  const tag = document.getElementById('tag' + qIdx);
+  if (oIdx === q.ans) {
+    tag.className = 'answer-tag correct';
+    tag.innerHTML = '✅ Chính xác!';
+  } else {
+    tag.className = 'answer-tag wrong';
+    tag.innerHTML = '❌ Chưa đúng';
+  }
+
+  updateStats();
+  updateGrid();
+  applyFilter();
+}
+
+function updateStats() {
+  let correct = 0, wrong = 0, answered = 0;
+  for (let i = 0; i < 50; i++) {
+    if (userAnswers[i] >= 0) {
+      answered++;
+      if (userAnswers[i] === questions[i].ans) correct++;
+      else wrong++;
+    }
+  }
+  document.getElementById('statCorrect').textContent = correct;
+  document.getElementById('statWrong').textContent = wrong;
+  document.getElementById('statPct').textContent = answered > 0 ? Math.round(correct / answered * 100) + '%' : '0%';
+  updateProgress(answered);
+}
+
+function updateProgress(answered) {
+  const pct = (answered / 50) * 100;
+  document.getElementById('progressBar').style.width = pct + '%';
+  if (answered === 50) {
+    setTimeout(showResult, 500);
+  }
+}
+
+function updateGrid() {
+  document.querySelectorAll('.q-grid-item').forEach((item, i) => {
+    item.classList.remove('correct', 'wrong', 'answered');
+    if (locked[i]) {
+      item.classList.add(userAnswers[i] === questions[i].ans ? 'correct' : 'wrong');
+    } else if (userAnswers[i] >= 0) {
+      item.classList.add('answered');
+    }
+  });
+}
+
+function scrollToQuestion(i) {
+  const el = document.getElementById('q' + i);
+  if (!el) return;
+  // Make sure it's visible
+  el.classList.remove('hidden');
+  document.querySelectorAll('.tool-btn').forEach(b => b.classList.remove('active'));
+  document.querySelector('.tool-btn').classList.add('active');
+  showMode = 'all';
+  el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  el.style.boxShadow = '0 0 0 3px var(--accent)';
+  setTimeout(() => { el.style.boxShadow = ''; }, 2000);
+}
+
+function showAll() {
+  showMode = 'all';
+  setActiveBtn(this);
+  applyFilter();
+}
+function showUnanswered() {
+  showMode = 'unanswered';
+  setActiveBtn(this);
+  applyFilter();
+}
+function showCorrect() {
+  showMode = 'correct';
+  setActiveBtn(this);
+  applyFilter();
+}
+function showWrong() {
+  showMode = 'wrong';
+  setActiveBtn(this);
+  applyFilter();
+}
+
+function setActiveBtn(btn) {
+  document.querySelectorAll('.toolbar .tool-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+}
+
+function applyFilter() {
+  document.querySelectorAll('.q-card').forEach((card, i) => {
+    let show = true;
+    if (showMode === 'unanswered' && locked[i]) show = false;
+    if (showMode === 'correct' && (userAnswers[i] !== questions[i].ans)) show = false;
+    if (showMode === 'wrong' && userAnswers[i] !== questions[i].ans) show = false;
+    card.classList.toggle('hidden', !show);
+  });
+}
+
+function showAnswers() {
+  questions.forEach((q, i) => {
+    const exp = document.getElementById('exp' + i);
+    exp.classList.add('show');
+    const tag = document.getElementById('tag' + i);
+    tag.className = 'answer-tag correct';
+    tag.innerHTML = '📌 Đáp án';
+  });
+  // Highlight correct answers
+  document.querySelectorAll('.opt-btn').forEach(btn => {
+    const qi = parseInt(btn.dataset.q);
+    const oi = parseInt(btn.dataset.o);
+    if (oi === questions[qi].ans) {
+      btn.classList.add('correct-answer');
+    }
+  });
+}
+
+function resetQuiz() {
+  userAnswers = new Array(50).fill(-1);
+  locked = new Array(50).fill(false);
+  renderQuestions();
+  updateGrid();
+  updateStats();
+  startTimer();
+  showMode = 'all';
+  document.querySelectorAll('.tool-btn').forEach(b => b.classList.remove('active'));
+  document.querySelector('.tool-btn').classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function showResult() {
+  clearInterval(timerInterval);
+  let correct = 0;
+  for (let i = 0; i < 50; i++) {
+    if (userAnswers[i] === questions[i].ans) correct++;
+  }
+  const pct = Math.round(correct / 50 * 100);
+  document.getElementById('modalPct').textContent = pct + '%';
+  document.getElementById('modalDetail').innerHTML =
+    `Bạn đã trả lời đúng <strong>${correct}/50</strong> câu.<br>` +
+    `Thời gian: <strong>${document.getElementById('timer').textContent}</strong><br>` +
+    (pct >= 80 ? '🏆 Xuất sắc!' : pct >= 60 ? ' Khá tốt!' : pct >= 40 ? '📚 Cần ôn thêm!' : '💪 Hãy cố gắng hơn!');
+
+  const circle = document.getElementById('scoreCircle');
+  if (pct >= 80) { circle.style.borderColor = 'var(--green)'; circle.style.color = 'var(--green)'; }
+  else if (pct >= 50) { circle.style.borderColor = 'var(--orange)'; circle.style.color = 'var(--orange)'; }
+  else { circle.style.borderColor = 'var(--red)'; circle.style.color = 'var(--red)'; }
+
+  document.getElementById('modalOverlay').classList.add('show');
+}
+
+function closeModal() {
+  document.getElementById('modalOverlay').classList.remove('show');
+}
+
+// Scroll to top button
+window.addEventListener('scroll', () => {
+  document.getElementById('scrollTop').classList.toggle('visible', window.scrollY > 400);
+});
+
+init();
+</script>
+</body>
+</html>
+```
