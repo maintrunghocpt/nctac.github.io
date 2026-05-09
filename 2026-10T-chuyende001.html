@@ -1,0 +1,709 @@
+```html
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Luyện Thi Trắc Nghiệm - Chuyên Đề 001: Phương Trình Bậc Nhất Hai Ẩn</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0e1a;
+    --bg2: #111827;
+    --bg3: #1a2236;
+    --card: #151d30;
+    --card-border: #2a3450;
+    --primary: #6366f1;
+    --primary-light: #818cf8;
+    --accent: #22d3ee;
+    --green: #10b981;
+    --red: #ef4444;
+    --orange: #f59e0b;
+    --pink: #ec4899;
+    --text: #e2e8f0;
+    --text-dim: #94a3b8;
+    --text-dimmer: #64748b;
+    --correct-bg: rgba(16,185,129,0.12);
+    --correct-border: #10b981;
+    --wrong-bg: rgba(239,68,68,0.12);
+    --wrong-border: #ef4444;
+    --selected-bg: rgba(99,102,241,0.12);
+    --selected-border: #6366f1;
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    overflow-x: hidden;
+    min-height: 100vh;
+  }
+
+  .bg-animation {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    z-index: 0; pointer-events: none; overflow: hidden;
+  }
+  .bg-animation .orb {
+    position: absolute; border-radius: 50%; filter: blur(80px); opacity: 0.12;
+    animation: orbFloat 22s ease-in-out infinite;
+  }
+  .bg-animation .orb:nth-child(1) { width: 600px; height: 600px; background: var(--primary); top: -200px; left: -200px; }
+  .bg-animation .orb:nth-child(2) { width: 500px; height: 500px; background: var(--accent); bottom: -150px; right: -150px; animation-delay: -7s; }
+  .bg-animation .orb:nth-child(3) { width: 400px; height: 400px; background: #a78bfa; top: 50%; left: 50%; transform: translate(-50%,-50%); animation-delay: -14s; }
+  @keyframes orbFloat {
+    0%, 100% { transform: translate(0,0) scale(1); }
+    33% { transform: translate(30px,-30px) scale(1.05); }
+    66% { transform: translate(-20px,20px) scale(0.95); }
+  }
+
+  .progress-bar {
+    position: fixed; top: 0; left: 0; height: 3px; z-index: 1000;
+    background: linear-gradient(90deg, var(--primary), var(--accent));
+    transition: width 0.3s ease;
+  }
+
+  .container {
+    position: relative; z-index: 1;
+    max-width: 1000px; margin: 0 auto; padding: 0 20px;
+  }
+
+  header {
+    text-align: center; padding: 50px 20px 30px;
+  }
+  .badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: linear-gradient(135deg, rgba(99,102,241,0.2), rgba(34,211,238,0.2));
+    border: 1px solid rgba(99,102,241,0.3);
+    padding: 8px 20px; border-radius: 50px;
+    font-size: 0.82rem; font-weight: 500; color: var(--primary-light);
+    margin-bottom: 20px;
+    animation: fadeInDown 0.8s ease;
+  }
+  h1 {
+    font-size: clamp(1.6rem, 4vw, 2.6rem); font-weight: 800;
+    background: linear-gradient(135deg, #fff, var(--primary-light), var(--accent));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text; margin-bottom: 8px;
+    animation: fadeInDown 0.8s ease 0.1s both;
+  }
+  .subtitle {
+    font-size: 1rem; color: var(--text-dim);
+    animation: fadeInDown 0.8s ease 0.2s both;
+  }
+  .subtitle span { color: var(--accent); font-weight: 600; }
+
+  @keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Stats */
+  .stats-row {
+    display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;
+    margin: 28px 0 32px;
+    animation: fadeInDown 0.8s ease 0.3s both;
+  }
+  .stat-box {
+    text-align: center; padding: 14px 22px;
+    background: var(--card); border: 1px solid var(--card-border);
+    border-radius: 14px; min-width: 100px;
+    transition: all 0.3s;
+  }
+  .stat-box:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(0,0,0,0.3); }
+  .stat-num { font-size: 1.7rem; font-weight: 800; }
+  .stat-num.green { color: var(--green); }
+  .stat-num.red { color: var(--red); }
+  .stat-num.blue { color: var(--accent); }
+  .stat-num.orange { color: var(--orange); }
+  .stat-label {
+    font-size: 0.7rem; color: var(--text-dimmer);
+    text-transform: uppercase; letter-spacing: 1px; margin-top: 2px;
+  }
+
+  /* Timer */
+  .timer-bar {
+    display: flex; align-items: center; justify-content: center; gap: 10px;
+    margin-bottom: 20px; font-size: 0.92rem; color: var(--text-dim);
+    animation: fadeInDown 0.8s ease 0.35s both;
+  }
+  .timer-bar .time {
+    color: var(--accent); font-weight: 700; font-variant-numeric: tabular-nums;
+    font-size: 1.1rem;
+  }
+
+  /* Toolbar */
+  .toolbar {
+    display: flex; gap: 8px; justify-content: center; flex-wrap: wrap;
+    margin-bottom: 24px;
+    animation: fadeInDown 0.8s ease 0.4s both;
+  }
+  .tool-btn {
+    padding: 9px 18px; border-radius: 10px; border: 1px solid var(--card-border);
+    background: var(--card); color: var(--text-dim); font-weight: 500;
+    cursor: pointer; transition: all 0.3s; font-size: 0.82rem;
+    display: flex; align-items: center; gap: 6px; white-space: nowrap;
+  }
+  .tool-btn:hover, .tool-btn.active {
+    background: var(--primary); border-color: var(--primary); color: #fff;
+    transform: translateY(-2px); box-shadow: 0 6px 20px rgba(99,102,241,0.3);
+  }
+  .tool-btn.green-btn:hover, .tool-btn.green-btn.active {
+    background: var(--green); border-color: var(--green);
+    box-shadow: 0 6px 20px rgba(16,185,129,0.3);
+  }
+  .tool-btn.orange-btn:hover, .tool-btn.orange-btn.active {
+    background: var(--orange); border-color: var(--orange);
+    box-shadow: 0 6px 20px rgba(245,158,11,0.3);
+  }
+  .tool-btn.pink-btn:hover, .tool-btn.pink-btn.active {
+    background: var(--pink); border-color: var(--pink);
+    box-shadow: 0 6px 20px rgba(236,72,153,0.3);
+  }
+
+  /* Question Grid Navigation */
+  .q-grid {
+    display: grid; grid-template-columns: repeat(10, 1fr);
+    gap: 6px; margin-bottom: 28px;
+    animation: fadeInDown 0.8s ease 0.45s both;
+  }
+  .q-grid-item {
+    aspect-ratio: 1; border-radius: 10px; border: 1px solid var(--card-border);
+    background: var(--card); display: flex; align-items: center; justify-content: center;
+    font-size: 0.78rem; font-weight: 600; cursor: pointer; transition: all 0.3s;
+    color: var(--text-dim); position: relative;
+  }
+  .q-grid-item:hover {
+    border-color: var(--primary); color: var(--primary-light);
+    transform: translateY(-2px); box-shadow: 0 4px 12px rgba(99,102,241,0.2);
+  }
+  .q-grid-item.answered { background: var(--selected-bg); border-color: var(--primary); color: var(--primary-light); }
+  .q-grid-item.correct { background: var(--correct-bg); border-color: var(--correct-border); color: var(--green); }
+  .q-grid-item.wrong { background: var(--wrong-bg); border-color: var(--wrong-border); color: var(--red); }
+  .q-grid-item.current { box-shadow: 0 0 0 2px var(--accent); }
+
+  /* Question Card */
+  .q-card {
+    background: var(--card); border: 1px solid var(--card-border);
+    border-radius: 16px; margin-bottom: 16px; overflow: hidden;
+    transition: all 0.3s; animation: fadeUp 0.5s ease both;
+  }
+  .q-card.hidden { display: none; }
+  .q-card:hover { border-color: rgba(99,102,241,0.3); }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .q-header {
+    padding: 20px 24px; display: flex; align-items: flex-start; gap: 16px;
+  }
+  .q-num {
+    min-width: 44px; height: 44px; border-radius: 12px;
+    background: linear-gradient(135deg, var(--primary), #8b5cf6);
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 700; font-size: 1rem; flex-shrink: 0;
+  }
+  .q-body { flex: 1; min-width: 0; }
+  .q-text { font-size: 0.92rem; line-height: 1.8; color: var(--text); margin-bottom: 16px; }
+
+  .options-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+
+  .opt-btn {
+    padding: 14px 16px; border-radius: 10px; border: 2px solid var(--card-border);
+    background: var(--bg2); cursor: pointer; transition: all 0.25s;
+    display: flex; align-items: center; gap: 10px; font-size: 0.88rem;
+    color: var(--text-dim); text-align: left; position: relative;
+  }
+  .opt-btn:hover:not(.locked) {
+    border-color: var(--primary); background: rgba(99,102,241,0.08); color: var(--text);
+  }
+  .opt-label {
+    min-width: 28px; height: 28px; border-radius: 8px;
+    background: var(--bg3); display: flex; align-items: center; justify-content: center;
+    font-weight: 700; font-size: 0.78rem; flex-shrink: 0; color: var(--primary-light);
+  }
+  .opt-btn.selected {
+    border-color: var(--primary); background: var(--selected-bg); color: var(--text);
+  }
+  .opt-btn.selected .opt-label { background: var(--primary); color: #fff; }
+
+  .opt-btn.correct-answer {
+    border-color: var(--correct-border) !important; background: var(--correct-bg) !important; color: var(--green) !important;
+  }
+  .opt-btn.correct-answer .opt-label { background: var(--green) !important; color: #fff !important; }
+
+  .opt-btn.wrong-answer {
+    border-color: var(--wrong-border) !important; background: var(--wrong-bg) !important; color: var(--red) !important;
+  }
+  .opt-btn.wrong-answer .opt-label { background: var(--red) !important; color: #fff !important; }
+
+  .opt-btn.locked { cursor: default; }
+
+  .opt-icon {
+    position: absolute; right: 12px; top: 50%; transform: translateY(-50%);
+    font-size: 1.1rem;
+  }
+
+  /* Explanation */
+  .explanation {
+    margin-top: 16px; padding: 16px; border-radius: 10px;
+    background: rgba(99,102,241,0.08); border-left: 3px solid var(--primary);
+    font-size: 0.88rem; color: var(--text-dim); line-height: 1.8;
+    display: none;
+  }
+  .explanation.show { display: block; animation: fadeUp 0.3s ease; }
+
+  .answer-tag {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 6px 14px; border-radius: 8px; font-size: 0.8rem; font-weight: 600;
+    margin-bottom: 12px;
+  }
+  .answer-tag.correct { background: var(--correct-bg); color: var(--green); }
+  .answer-tag.wrong { background: var(--wrong-bg); color: var(--red); }
+  .answer-tag.info { background: rgba(99,102,241,0.15); color: var(--primary-light); }
+
+  /* Modal */
+  .modal-overlay {
+    position: fixed; inset: 0; background: rgba(0,0,0,0.7);
+    display: none; align-items: center; justify-content: center; z-index: 2000;
+    backdrop-filter: blur(4px);
+  }
+  .modal-overlay.show { display: flex; }
+  .modal {
+    background: var(--bg2); border: 1px solid var(--card-border);
+    border-radius: 20px; padding: 40px; max-width: 520px; width: 92%;
+    text-align: center; animation: modalIn 0.4s ease;
+  }
+  @keyframes modalIn {
+    from { opacity: 0; transform: scale(0.9) translateY(20px); }
+    to { opacity: 1; transform: scale(1) translateY(0); }
+  }
+  .modal h2 { font-size: 1.6rem; margin-bottom: 8px; }
+  .modal .score-circle {
+    width: 130px; height: 130px; border-radius: 50%; margin: 24px auto;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    border: 4px solid;
+  }
+  .score-circle .pct { font-size: 2.2rem; font-weight: 800; }
+  .score-circle .lbl { font-size: 0.72rem; color: var(--text-dimmer); }
+  .modal .detail { color: var(--text-dim); font-size: 0.9rem; margin: 16px 0; line-height: 1.6; }
+  .modal-btn {
+    padding: 12px 32px; border-radius: 10px; border: none; font-weight: 600;
+    cursor: pointer; font-size: 0.9rem; transition: all 0.3s; margin: 4px;
+  }
+  .modal-btn.primary { background: var(--primary); color: #fff; }
+  .modal-btn.primary:hover { background: var(--primary-light); transform: translateY(-2px); }
+  .modal-btn.secondary { background: var(--bg3); color: var(--text); border: 1px solid var(--card-border); }
+  .modal-btn.secondary:hover { border-color: var(--primary); }
+
+  /* Scroll to top */
+  .scroll-top {
+    position: fixed; bottom: 24px; right: 24px; width: 48px; height: 48px;
+    border-radius: 50%; background: var(--primary); color: #fff; border: none;
+    font-size: 1.2rem; cursor: pointer; opacity: 0; transition: all 0.3s;
+    z-index: 100; box-shadow: 0 4px 16px rgba(99,102,241,0.4);
+  }
+  .scroll-top.visible { opacity: 1; }
+  .scroll-top:hover { transform: translateY(-3px); }
+
+  /* Submit button */
+  .submit-btn {
+    display: block; margin: 32px auto; padding: 14px 48px;
+    border-radius: 14px; border: none;
+    background: linear-gradient(135deg, var(--primary), #8b5cf6);
+    color: #fff; font-size: 1rem; font-weight: 700;
+    cursor: pointer; transition: all 0.3s;
+    box-shadow: 0 4px 20px rgba(99,102,241,0.3);
+  }
+  .submit-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 30px rgba(99,102,241,0.4);
+  }
+  .submit-btn:disabled {
+    opacity: 0.5; cursor: not-allowed; transform: none;
+  }
+
+  footer {
+    text-align: center; padding: 40px 20px; color: var(--text-dimmer); font-size: 0.8rem;
+  }
+
+  @media (max-width: 700px) {
+    .options-grid { grid-template-columns: 1fr; }
+    .q-grid { grid-template-columns: repeat(10, 1fr); }
+    .q-header { padding: 16px; }
+    .stats-row { gap: 12px; }
+    .stat-box { min-width: 72px; padding: 10px 12px; }
+    .stat-num { font-size: 1.3rem; }
+    .toolbar { gap: 6px; }
+    .tool-btn { padding: 8px 12px; font-size: 0.78rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="progress-bar" id="progressBar"></div>
+<div class="bg-animation"><div class="orb"></div><div class="orb"></div><div class="orb"></div></div>
+
+<header>
+  <div class="container">
+    <div class="badge">📝 Chuyên đề 001 — Phương Trình Bậc Nhất Hai Ẩn</div>
+    <h1>Luyện Thi Trắc Nghiệm<br>50 Câu Hỏi</h1>
+    <p class="subtitle">Chọn phương án đúng nhất cho mỗi câu hỏi</p>
+  </div>
+</header>
+
+<div class="container">
+  <div class="stats-row" id="statsRow">
+    <div class="stat-box"><div class="stat-num blue" id="statTotal">50</div><div class="stat-label">Tổng câu</div></div>
+    <div class="stat-box"><div class="stat-num green" id="statCorrect">0</div><div class="stat-label">Đúng</div></div>
+    <div class="stat-box"><div class="stat-num red" id="statWrong">0</div><div class="stat-label">Sai</div></div>
+    <div class="stat-box"><div class="stat-num orange" id="statPct">0%</div><div class="stat-label">Tỉ lệ</div></div>
+  </div>
+
+  <div class="timer-bar">
+    ⏱ Thời gian: <span class="time" id="timer">00:00</span>
+  </div>
+
+  <div class="toolbar">
+    <button class="tool-btn active" onclick="filterView('all', this)">📋 Tất cả</button>
+    <button class="tool-btn" onclick="filterView('unanswered', this)">📝 Chưa làm</button>
+    <button class="tool-btn" onclick="filterView('correct', this)">✅ Đã đúng</button>
+    <button class="tool-btn" onclick="filterView('wrong', this)">❌ Đã sai</button>
+    <button class="tool-btn green-btn" onclick="showAllAnswers()"> Xem đáp án</button>
+    <button class="tool-btn orange-btn" onclick="resetQuiz()">🔄 Làm lại</button>
+  </div>
+
+  <div class="q-grid" id="qGrid"></div>
+
+  <div id="questionsContainer"></div>
+
+  <button class="submit-btn" id="submitBtn" onclick="submitQuiz()">📊 Nộp Bài & Xem Kết Quả</button>
+</div>
+
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal">
+    <h2 id="modalTitle">📊 Kết Quả Bài Làm</h2>
+    <div class="score-circle" id="scoreCircle">
+      <div class="pct" id="modalPct">0%</div>
+      <div class="lbl">Đúng</div>
+    </div>
+    <div class="detail" id="modalDetail"></div>
+    <button class="modal-btn primary" onclick="closeModal()">Đóng</button>
+    <button class="modal-btn secondary" onclick="resetQuiz();closeModal();">Làm Lại</button>
+  </div>
+</div>
+
+<button class="scroll-top" id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<footer>
+  <div class="container">
+    <p>📚 Chuyên đề 001: Phương Trình Bậc Nhất Hai Ẩn — 50 câu trắc nghiệm</p>
+    <p style="margin-top:4px;opacity:0.5;">Website hỗ trợ luyện thi trắc nghiệm</p>
+  </div>
+</footer>
+
+<script>
+const questions = [
+  {id:1,q:"Phương trình nào sau đây là phương trình bậc nhất hai ẩn?",opts:["2x + 3y = 5","x² + y = 4","xy = 6","1/x + y = 2"],ans:0},
+  {id:2,q:"Cặp số (2; 1) là nghiệm của phương trình nào?",opts:["x - y = 1","x + y = 5","2x + y = 3","3x - y = 4"],ans:0},
+  {id:3,q:"Phương trình bậc nhất hai ẩn ax + by = c (a² + b² ≠ 0) có bao nhiêu nghiệm trên tập số thực?",opts:["0","1","2","Vô số"],ans:3},
+  {id:4,q:"Tập nghiệm của phương trình 3x + 0y = 9 được biểu diễn bởi đường thẳng nào?",opts:["x = 3","y = 3","y = 3x","x + y = 3"],ans:0},
+  {id:5,q:"Tập nghiệm của phương trình 0x - 4y = 8 được biểu diễn bởi đường thẳng nào?",opts:["y = -2","x = -2","y = -4x","x + y = -2"],ans:0},
+  {id:6,q:"Cặp số nào sau đây là nghiệm của phương trình 2x - y = 5?",opts:["(3; 1)","(1; 3)","(0; 5)","(2; 2)"],ans:0},
+  {id:7,q:"Đồ thị của phương trình y = 3x - 4 cắt trục tung tại điểm có tung độ bằng?",opts:["4","-4","3","-3"],ans:1},
+  {id:8,q:"Đồ thị của phương trình 4x + 3y = 12 cắt trục hoành tại điểm có hoành độ bằng?",opts:["3","4","12","0"],ans:0},
+  {id:9,q:"Điều kiện của tham số m để phương trình (m - 2)x + 3y = 7 là phương trình bậc nhất hai ẩn là?",opts:["m ≠ 2","m = 2","m ≠ 0","m ∈ R"],ans:0},
+  {id:10,q:"Nếu (4; b) là nghiệm của phương trình x - 2y = -2 thì b bằng?",opts:["3","1","5","-1"],ans:0},
+  {id:11,q:"Phương trình nào sau đây có đồ thị là đường thẳng đi qua gốc tọa độ?",opts:["x + 2y = 0","x + 2y = 1","2x + 3 = 0","y = 4"],ans:0},
+  {id:12,q:"Cặp số nào sau đây KHÔNG phải là nghiệm của phương trình 2x + y = 6?",opts:["(1; 4)","(2; 2)","(3; 0)","(0; 5)"],ans:3},
+  {id:13,q:"Nghiệm tổng quát của phương trình 2x - y = 1 được viết dưới dạng?",opts:["y = 2x - 1","y = 2x + 1","y = -2x + 1","y = x - 1"],ans:0},
+  {id:14,q:"Đồ thị của phương trình x - 2y = 4 đi qua điểm nào?",opts:["(0; -2)","(4; 0)","(2; -1)","(6; 1)"],ans:3},
+  {id:15,q:"Tìm a biết cặp số (-1; 3) là nghiệm của phương trình ax - y = -5.",opts:["2","-2","8","-8"],ans:1},
+  {id:16,q:"Phương trình nào tương đương với phương trình 3x + 6y = 9?",opts:["x + 2y = 3","6x + 3y = 9","x + y = 3","3x + y = 3"],ans:0},
+  {id:17,q:"Số nghiệm nguyên dương của phương trình x + 3y = 10 là?",opts:["3","4","2","Vô số"],ans:0},
+  {id:18,q:"Đường thẳng biểu diễn tập nghiệm của phương trình 3x - y = 0 có hệ số góc bằng?",opts:["3","-3","1/3","-1/3"],ans:0},
+  {id:19,q:"Điểm nào thuộc đồ thị phương trình y = -2x + 4?",opts:["(1; 2)","(2; 0)","(0; 4)","Tất cả đều đúng"],ans:3},
+  {id:20,q:"Phương trình bậc nhất hai ẩn có dạng tổng quát là?",opts:["ax + by = c (a² + b² ≠ 0)","ax + by = c (a ≠ 0)","ax + by = c","ax + by + c = 0"],ans:0},
+  {id:21,q:"Nếu đồ thị phương trình ax + by = c song song với trục Ox thì?",opts:["a = 0; b ≠ 0","b = 0; a ≠ 0","a = b = 0","c = 0"],ans:0},
+  {id:22,q:"Nếu đồ thị phương trình ax + by = c song song với trục Oy thì?",opts:["a = 0; b = 0","b = 0; a ≠ 0","a = b ≠ 0","c = 0"],ans:1},
+  {id:23,q:"Cặp số (k; k) là nghiệm của phương trình x - y = 0 khi?",opts:["k = 0","k = 1","Mọi k ∈ R","Không có k"],ans:2},
+  {id:24,q:"Tìm m để phương trình mx + 3y = 9 nhận (3; 1) làm nghiệm.",opts:["2","-2","6","0"],ans:0},
+  {id:25,q:"Diện tích tam giác vuông tạo bởi đồ thị phương trình 2x + 3y = 6 và hai trục tọa độ là?",opts:["3","6","9","12"],ans:0},
+  {id:26,q:"Phương trình nào có đồ thị đi qua điểm A(1; 1) và B(3; 5)?",opts:["y = 2x - 1","y = x + 2","y = 3x - 2","y = -2x + 3"],ans:0},
+  {id:27,q:"Số nghiệm nguyên của phương trình |x| + |y| = 2 là?",opts:["4","6","8","10"],ans:2},
+  {id:28,q:"Cặp số nào là nghiệm nguyên của phương trình 2x + 3y = 1?",opts:["(2; -1)","(-1; 1)","(1; 0)","(0; 1)"],ans:0},
+  {id:29,q:"Đồ thị của phương trình y = -1/2 x đi qua các góc phần tư nào?",opts:["I và IV","I và III","I và II","II và IV"],ans:3},
+  {id:30,q:"Tìm x để phương trình 4x - y = 7 có nghiệm y = -1.",opts:["3/2","2","1","3/4"],ans:0},
+  {id:31,q:"Phương trình nào sau đây có vô số nghiệm nguyên?",opts:["2x + 3y = 1","x² + y = 4","|x| + |y| = 1","x + y = 5"],ans:0},
+  {id:32,q:"Tổng các nghiệm nguyên dương của phương trình 2x + y = 8 là?",opts:["10","12","8","6"],ans:1},
+  {id:33,q:"Đồ thị phương trình 3x - y = 6 cắt đường thẳng y = -3 tại điểm có hoành độ bằng?",opts:["1","0","3","-1"],ans:0},
+  {id:34,q:"Phương trình nào có đồ thị không đi qua điểm M(1; 2)?",opts:["x + y = 3","2x - y = 0","x - y = 1","3x + y = 6"],ans:3},
+  {id:35,q:"Tìm m để phương trình (m + 1)x - 3y = 6 nhận (0; -2) làm nghiệm.",opts:["m = 1","m = 0","m = -1","m ∈ R"],ans:3},
+  {id:36,q:"Cặp số nào sau đây là nghiệm của phương trình 0x + 4y = 12?",opts:["(x; 3) với x ∈ R","(3; y) với y ∈ R","(0; 3)","(3; 0)"],ans:0},
+  {id:37,q:"Đường thẳng biểu diễn tập nghiệm của x - 2y + 4 = 0 cắt trục tung tại điểm có tung độ bằng?",opts:["2","-2","4","-4"],ans:0},
+  {id:38,q:"Phương trình nào có đồ thị song song với đường thẳng y = 4x?",opts:["4x - y = 2","4x + y = 2","x - 4y = 1","x + 4y = 1"],ans:0},
+  {id:39,q:"Số nghiệm thực của phương trình (x - 1)² + (y + 2)² = 0 là?",opts:["0","1","2","Vô số"],ans:1},
+  {id:40,q:"Tìm a biết đồ thị phương trình ax + 3y = 15 đi qua điểm P(3; 3).",opts:["2","3","4","1"],ans:0},
+  {id:41,q:"Đồ thị của phương trình y = -3x + 6 đi qua các điểm nào?",opts:["(0; 6) và (2; 0)","(0; -6) và (2; 0)","(6; 0) và (0; 2)","(1; 3) và (3; 1)"],ans:0},
+  {id:42,q:"Phương trình nào tương đương với x/3 + y/2 = 1?",opts:["2x + 3y = 6","3x + 2y = 6","2x + 3y = 1","3x + 2y = 1"],ans:0},
+  {id:43,q:"Nếu (2; 3) là nghiệm của phương trình ax + by = 10 thì hệ thức nào đúng?",opts:["2a + 3b = 10","3a + 2b = 10","ab = 10","a/b = 10"],ans:0},
+  {id:44,q:"Tìm k để đường thẳng kx - y = 5 cắt trục hoành tại điểm có hoành độ bằng 2.",opts:["5/2","2","5","10"],ans:0},
+  {id:45,q:"Chu vi tam giác vuông tạo bởi đồ thị phương trình 3x + 4y = 12 và hai trục tọa độ là?",opts:["12","10","7","24"],ans:0},
+  {id:46,q:"Phương trình nào có đồ thị đi qua điểm M(-2; 4) và N(0; 2)?",opts:["x + y = 2","x - y = 2","2x + y = 0","x + 2y = 6"],ans:0},
+  {id:47,q:"Số nghiệm nguyên không âm của phương trình x + 2y = 5 là?",opts:["3","4","2","5"],ans:0},
+  {id:48,q:"Đồ thị của phương trình 2x + y = 8 có hệ số góc bằng?",opts:["2","-2","1/2","-1/2"],ans:1},
+  {id:49,q:"Tìm m để phương trình (m² - 4)x + y = 3 KHÔNG phải là phương trình bậc nhất hai ẩn.",opts:["m = 2 hoặc m = -2","m = 0","m = 4","m = 1"],ans:0},
+  {id:50,q:"Giao điểm của đồ thị phương trình 2x - y = 4 và trục tung là điểm nào?",opts:["(0; -4)","(2; 0)","(0; 4)","(4; 0)"],ans:0}
+];
+
+const labels = ['A', 'B', 'C', 'D'];
+let userAnswers = new Array(50).fill(-1);
+let locked = new Array(50).fill(false);
+let timerInterval;
+let seconds = 0;
+let currentFilter = 'all';
+
+function init() {
+  renderGrid();
+  renderQuestions();
+  startTimer();
+  updateStats();
+}
+
+function startTimer() {
+  clearInterval(timerInterval);
+  seconds = 0;
+  timerInterval = setInterval(() => {
+    seconds++;
+    const m = String(Math.floor(seconds / 60)).padStart(2, '0');
+    const s = String(seconds % 60).padStart(2, '0');
+    document.getElementById('timer').textContent = m + ':' + s;
+  }, 1000);
+}
+
+function renderGrid() {
+  const grid = document.getElementById('qGrid');
+  grid.innerHTML = '';
+  for (let i = 0; i < 50; i++) {
+    const div = document.createElement('div');
+    div.className = 'q-grid-item';
+    div.textContent = i + 1;
+    div.dataset.idx = i;
+    div.onclick = () => scrollToQuestion(i);
+    grid.appendChild(div);
+  }
+}
+
+function renderQuestions() {
+  const container = document.getElementById('questionsContainer');
+  container.innerHTML = '';
+  questions.forEach((q, i) => {
+    const card = document.createElement('div');
+    card.className = 'q-card';
+    card.id = 'q' + i;
+    card.dataset.idx = i;
+    card.style.animationDelay = (i * 0.02) + 's';
+
+    let optsHTML = '';
+    q.opts.forEach((opt, j) => {
+      optsHTML += `<button class="opt-btn" data-q="${i}" data-o="${j}" onclick="selectOption(${i},${j})">
+        <span class="opt-label">${labels[j]}</span>
+        <span>${opt}</span>
+      </button>`;
+    });
+
+    card.innerHTML = `
+      <div class="q-header">
+        <div class="q-num">${q.id}</div>
+        <div class="q-body">
+          <div class="q-text">${q.q}</div>
+          <div class="options-grid">${optsHTML}</div>
+          <div class="explanation" id="exp${i}">
+            <div class="answer-tag" id="tag${i}"></div>
+            <div><strong>Đáp án đúng:</strong> ${labels[q.ans]} — ${q.opts[q.ans]}</div>
+          </div>
+        </div>
+      </div>`;
+    container.appendChild(card);
+  });
+}
+
+function selectOption(qIdx, oIdx) {
+  if (locked[qIdx]) return;
+  locked[qIdx] = true;
+  userAnswers[qIdx] = oIdx;
+  const q = questions[qIdx];
+  const card = document.getElementById('q' + qIdx);
+  const btns = card.querySelectorAll('.opt-btn');
+
+  btns.forEach((btn, j) => {
+    btn.classList.add('locked');
+    if (j === q.ans) {
+      btn.classList.add('correct-answer');
+      btn.innerHTML += '<span class="opt-icon">✓</span>';
+    }
+    if (j === oIdx && oIdx !== q.ans) {
+      btn.classList.add('wrong-answer');
+      btn.innerHTML += '<span class="opt-icon">✗</span>';
+    }
+  });
+
+  const exp = document.getElementById('exp' + qIdx);
+  exp.classList.add('show');
+  const tag = document.getElementById('tag' + qIdx);
+  if (oIdx === q.ans) {
+    tag.className = 'answer-tag correct';
+    tag.innerHTML = '✅ Chính xác!';
+  } else {
+    tag.className = 'answer-tag wrong';
+    tag.innerHTML = '❌ Chưa đúng';
+  }
+
+  updateStats();
+  updateGrid();
+  applyFilter();
+}
+
+function updateStats() {
+  let correct = 0, wrong = 0, answered = 0;
+  for (let i = 0; i < 50; i++) {
+    if (userAnswers[i] >= 0) {
+      answered++;
+      if (userAnswers[i] === questions[i].ans) correct++;
+      else wrong++;
+    }
+  }
+  document.getElementById('statCorrect').textContent = correct;
+  document.getElementById('statWrong').textContent = wrong;
+  document.getElementById('statPct').textContent = answered > 0 ? Math.round(correct / answered * 100) + '%' : '0%';
+  updateProgress(answered);
+}
+
+function updateProgress(answered) {
+  const pct = (answered / 50) * 100;
+  document.getElementById('progressBar').style.width = pct + '%';
+}
+
+function updateGrid() {
+  document.querySelectorAll('.q-grid-item').forEach((item, i) => {
+    item.classList.remove('correct', 'wrong', 'answered');
+    if (locked[i]) {
+      item.classList.add(userAnswers[i] === questions[i].ans ? 'correct' : 'wrong');
+    } else if (userAnswers[i] >= 0) {
+      item.classList.add('answered');
+    }
+  });
+}
+
+function scrollToQuestion(i) {
+  const el = document.getElementById('q' + i);
+  if (!el) return;
+  el.classList.remove('hidden');
+  document.querySelectorAll('.toolbar .tool-btn').forEach(b => b.classList.remove('active'));
+  document.querySelector('.toolbar .tool-btn').classList.add('active');
+  currentFilter = 'all';
+  el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  el.style.boxShadow = '0 0 0 3px var(--accent)';
+  setTimeout(() => { el.style.boxShadow = ''; }, 2000);
+}
+
+function filterView(mode, btn) {
+  currentFilter = mode;
+  document.querySelectorAll('.toolbar .tool-btn').forEach(b => b.classList.remove('active'));
+  if (btn) btn.classList.add('active');
+  applyFilter();
+}
+
+function applyFilter() {
+  document.querySelectorAll('.q-card').forEach((card, i) => {
+    let show = true;
+    if (currentFilter === 'unanswered' && locked[i]) show = false;
+    if (currentFilter === 'correct' && (!locked[i] || userAnswers[i] !== questions[i].ans)) show = false;
+    if (currentFilter === 'wrong' && (!locked[i] || userAnswers[i] === questions[i].ans)) show = false;
+    card.classList.toggle('hidden', !show);
+  });
+}
+
+function showAllAnswers() {
+  questions.forEach((q, i) => {
+    const exp = document.getElementById('exp' + i);
+    exp.classList.add('show');
+    const tag = document.getElementById('tag' + i);
+    tag.className = 'answer-tag info';
+    tag.innerHTML = '📌 Đáp án';
+    const card = document.getElementById('q' + i);
+    const btns = card.querySelectorAll('.opt-btn');
+    btns.forEach((btn, j) => {
+      if (j === q.ans && !btn.classList.contains('correct-answer')) {
+        btn.classList.add('correct-answer');
+        if (!btn.innerHTML.includes('✓')) btn.innerHTML += '<span class="opt-icon">✓</span>';
+      }
+    });
+  });
+}
+
+function resetQuiz() {
+  userAnswers = new Array(50).fill(-1);
+  locked = new Array(50).fill(false);
+  currentFilter = 'all';
+  renderQuestions();
+  updateGrid();
+  updateStats();
+  startTimer();
+  document.querySelectorAll('.toolbar .tool-btn').forEach(b => b.classList.remove('active'));
+  document.querySelector('.toolbar .tool-btn').classList.add('active');
+  applyFilter();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function submitQuiz() {
+  clearInterval(timerInterval);
+  let correct = 0, unanswered = 0;
+  for (let i = 0; i < 50; i++) {
+    if (userAnswers[i] === questions[i].ans) correct++;
+    if (userAnswers[i] < 0) unanswered++;
+  }
+  const pct = Math.round(correct / 50 * 100);
+
+  document.getElementById('modalPct').textContent = pct + '%';
+  document.getElementById('modalDetail').innerHTML =
+    `Bạn đã trả lời đúng <strong>${correct}/50</strong> câu<br>` +
+    `Còn <strong>${unanswered}</strong> câu chưa làm<br>` +
+    `Thời gian: <strong>${document.getElementById('timer').textContent}</strong><br>` +
+    (pct >= 90 ? '🏆 Xuất sắc! Bạn nắm rất vững kiến thức!' :
+     pct >= 70 ? ' Khá tốt!继续努力!' :
+     pct >= 50 ? '📚 Cần ôn tập thêm!' :
+     '💪 Hãy cố gắng hơn! Xem lại lý thuyết nhé.');
+
+  const circle = document.getElementById('scoreCircle');
+  if (pct >= 80) { circle.style.borderColor = 'var(--green)'; circle.style.color = 'var(--green)'; }
+  else if (pct >= 50) { circle.style.borderColor = 'var(--orange)'; circle.style.color = 'var(--orange)'; }
+  else { circle.style.borderColor = 'var(--red)'; circle.style.color = 'var(--red)'; }
+
+  // Auto-show answers for unanswered questions
+  for (let i = 0; i < 50; i++) {
+    if (userAnswers[i] < 0) {
+      selectOption(i, questions[i].ans);
+    }
+  }
+
+  document.getElementById('modalOverlay').classList.add('show');
+}
+
+function closeModal() {
+  document.getElementById('modalOverlay').classList.remove('show');
+}
+
+window.addEventListener('scroll', () => {
+  document.getElementById('scrollTop').classList.toggle('visible', window.scrollY > 400);
+});
+
+init();
+</script>
+</body>
+</html>
+```
