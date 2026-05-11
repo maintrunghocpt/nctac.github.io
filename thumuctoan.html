@@ -1,0 +1,438 @@
+```html
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ngân Hàng Câu Hỏi Toán 12 - 1100 Đề</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/inter@5.0.16/index.min.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .fade-in { animation: fadeIn 0.3s ease-in-out; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
+    .toast { transform: translateY(100%); transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+    .toast.show { transform: translateY(0); }
+    .scrollbar-thin::-webkit-scrollbar { width: 6px; height: 6px; }
+    .scrollbar-thin::-webkit-scrollbar-track { background: #f1f5f9; }
+    .scrollbar-thin::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 3px; }
+    .scrollbar-thin::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen">
+  <div class="max-w-7xl mx-auto px-4 py-6 sm:px-6 lg:px-8">
+    <!-- Header -->
+    <header class="mb-8 fade-in">
+      <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+        <div>
+          <h1 class="text-3xl font-bold text-indigo-900 tracking-tight">📚 Ngân Hàng Câu Hỏi Trắc Nghiệm Toán 12</h1>
+          <p class="text-slate-500 mt-1">Quản lý & tra cứu nhanh 1100 tập tin đề thi. Hỗ trợ lọc, tìm kiếm và sao chép đường dẫn.</p>
+        </div>
+        <div class="flex items-center gap-3 bg-white px-4 py-2 rounded-lg border border-slate-200 shadow-sm">
+          <span class="text-sm font-medium text-slate-600">Tổng câu:</span>
+          <span class="text-lg font-bold text-indigo-600" id="totalCount">0</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Filters -->
+    <div class="bg-white rounded-xl border border-slate-200 shadow-sm p-4 mb-6 fade-in">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div class="relative">
+          <label class="block text-xs font-semibold text-slate-500 mb-1 uppercase tracking-wider">Tìm kiếm</label>
+          <input type="text" id="searchInput" placeholder="Nhập tên đề, chủ đề..." class="w-full px-3 py-2 bg-slate-50 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition text-sm">
+        </div>
+        <div>
+          <label class="block text-xs font-semibold text-slate-500 mb-1 uppercase tracking-wider">Khối/Môn</label>
+          <select id="subjectFilter" class="w-full px-3 py-2 bg-slate-50 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm cursor-pointer">
+            <option value="all">Tất cả</option>
+          </select>
+        </div>
+        <div>
+          <label class="block text-xs font-semibold text-slate-500 mb-1 uppercase tracking-wider">Chương</label>
+          <select id="chapterFilter" class="w-full px-3 py-2 bg-slate-50 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm cursor-pointer">
+            <option value="all">Tất cả</option>
+          </select>
+        </div>
+        <div>
+          <label class="block text-xs font-semibold text-slate-500 mb-1 uppercase tracking-wider">Mức độ</label>
+          <select id="levelFilter" class="w-full px-3 py-2 bg-slate-50 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm cursor-pointer">
+            <option value="all">Tất cả</option>
+            <option value="1">Mức 1 - Nhận biết</option>
+            <option value="2">Mức 2 - Thông hiểu</option>
+            <option value="3">Mức 3 - Vận dụng</option>
+            <option value="4">Mức 4 - Vận dụng cao</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <!-- Table -->
+    <div class="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden fade-in">
+      <div class="overflow-x-auto scrollbar-thin">
+        <table class="w-full text-left border-collapse">
+          <thead>
+            <tr class="bg-slate-50 border-b border-slate-200 text-xs uppercase tracking-wider text-slate-500">
+              <th class="px-4 py-3 font-semibold w-16">STT</th>
+              <th class="px-4 py-3 font-semibold w-24">Phân loại</th>
+              <th class="px-4 py-3 font-semibold">Tên đề / Chủ đề</th>
+              <th class="px-4 py-3 font-semibold w-28 text-center">Mức độ</th>
+              <th class="px-4 py-3 font-semibold w-40 text-center">Hành động</th>
+            </tr>
+          </thead>
+          <tbody id="tableBody" class="divide-y divide-slate-100 text-sm">
+            <!-- Rows injected by JS -->
+          </tbody>
+        </table>
+      </div>
+      <div id="emptyState" class="hidden flex-col items-center justify-center py-12 text-slate-400">
+        <svg class="w-12 h-12 mb-3 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+        <p>Không tìm thấy tài liệu phù hợp</p>
+      </div>
+    </div>
+
+    <!-- Pagination -->
+    <div class="mt-6 flex flex-col sm:flex-row items-center justify-between gap-4 fade-in">
+      <span class="text-sm text-slate-500" id="paginationInfo">Hiển thị 0 / 0</span>
+      <div class="flex items-center gap-2" id="paginationControls">
+        <!-- Buttons injected by JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div id="toast" class="toast fixed bottom-6 right-6 z-50 bg-slate-800 text-white px-5 py-3 rounded-lg shadow-lg flex items-center gap-3">
+    <svg class="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+    <span id="toastMessage">Đã sao chép đường dẫn!</span>
+  </div>
+
+  <script>
+    // Raw data from document
+    const RAW_DATA = `1  h:\\chuongtrinh2018\\Toan THPT\\19  NGÀN CÂU TRẮC NGHIỆM TOÁN 12\\12-GHEP6CHUONG\\0001-DS12-C1-CD01-D00- Các câu hỏi chưa phân dạng- Muc do 1.doc
+2  h:\\chuongtrinh2018\\Toan THPT\\19  NGÀN CÂU TRẮC NGHIỆM TOÁN 12\\12-GHEP6CHUONG\\0002-DS12-C1-CD01-D00- Các câu hỏi chưa phân dạng- Muc do 2.doc
+3  h:\\chuongtrinh2018\\Toan THPT\\19  NGÀN CÂU TRẮC NGHIỆM TOÁN 12\\12-GHEP6CHUONG\\0003-DS12-C1-CD01-D00- Các câu hỏi chưa phân dạng- Muc do 3.doc
+4  h:\\chuongtrinh2018\\Toan THPT\\19  NGÀN CÂU TRẮC NGHIỆM TOÁN 12\\12-GHEP6CHUONG\\0004-DS12-C1-CD01-D01- Lý thuyết về tính đơn điệu của hàm số- Muc do 1.doc
+5  h:\\chuongtrinh2018\\Toan THPT\\19  NGÀN CÂU TRẮC NGHIỆM TOÁN 12\\12-GHEP6CHUONG\\0005-DS12-C1-CD01-D01- Lý thuyết về tính đơn điệu của hàm số- Muc do 2.doc
+6  h:\\chuongtrinh2018\\Toan THPT\\19  NGÀN CÂU TRẮC NGHIỆM TOÁN 12\\12-GHEP6CHUONG\\0006-DS12-C1-CD01-D01- Lý thuyết về tính đơn điệu của hàm số- Muc do 3.doc
+7  h:\\chuongtrinh2018\\Toan THPT\\19  NGÀN CÂU TRẮC NGHIỆM TOÁN 12\\12-GHEP6CHUONG\\0007-DS12-C1-CD01-D02- Nhận dạng BBT, nhận dạng hàm số- Muc do 1.doc
+8  h:\\chuongtrinh2018\\Toan THPT\\19  NGÀN CÂU TRẮC NGHIỆM TOÁN 12\\12-GHEP6CHUONG\\0008-DS12-C1-CD01-D02- Nhận dạng BBT, nhận dạng hàm số- Muc do 2.doc
+9  h:\\chuongtrinh2018\\Toan THPT\\19  NGÀN CÂU TRẮC NGHIỆM TOÁN 12\\12-GHEP6CHUONG\\0009-DS12-C1-CD01-D02- Nhận dạng BBT, nhận dạng hàm số- Muc do 3.doc
+10  h:\\chuongtrinh2018\\Toan THPT\\19  NGÀN CÂU TRẮC NGHIỆM TOÁN 12\\12-GHEP6CHUONG\\0010-DS12-C1-CD01-D03- Xét tính đơn điệu của hàm số(Biết đồ thị, BBT)- Muc do 1.doc
+11  h:\\chuongtrinh2018\\Toan THPT\\19  NGÀN CÂU TRẮC NGHIỆM TOÁN 12\\12-GHEP6CHUONG\\0011-DS12-C1-CD01-D03- Xét tính đơn điệu của hàm số(Biết đồ thị, BBT)- Muc do 2.doc
+12  h:\\chuongtrinh2018\\Toan THPT\\19  NGÀN CÂU TRẮC NGHIỆM TOÁN 12\\12-GHEP6CHUONG\\0012-DS12-C1-CD01-D03- Xét tính đơn điệu của hàm số(Biết đồ thị, BBT)- Muc do 3.doc
+13  h:\\chuongtrinh2018\\Toan THPT\\19  NGÀN CÂU TRẮC NGHIỆM TOÁN 12\\12-GHEP6CHUONG\\0013-DS12-C1-CD01-D03- Xét tính đơn điệu của hàm số(Biết đồ thị, BBT)- Muc do 4.doc
+14  h:\\chuongtrinh2018\\Toan THPT\\19  NGÀN CÂU TRẮC NGHIỆM TOÁN 12\\12-GHEP6CHUONG\\0014-DS12-C1-CD01-D04- Xét tính đơn điệu của hàm số(biết y, y’)-Muc do 1.doc
+15  h:\\chuongtrinh2018\\Toan THPT\\19  NGÀN CÂU TRẮC NGHIỆM TOÁN 12\\12-GHEP6CHUONG\\0015-DS12-C1-CD01-D04- Xét tính đơn điệu của hàm số(biết y, y’)-Muc do 2.doc
+16  h:\\chuongtrinh2018\\Toan THPT\\19  NGÀN CÂU TRẮC NGHIỆM TOÁN 12\\12-GHEP6CHUONG\\0016-DS12-C1-CD01-D04- Xét tính đơn điệu của hàm số(biết y, y’)-Muc do 3.doc
+17  h:\\chuongtrinh2018\\Toan THPT\\19  NGÀN CÂU TRẮC NGHIỆM TOÁN 12\\12-GHEP6CHUONG\\0017-DS12-C1-CD01-D04- Xét tính đơn điệu của hàm số(biết y, y’)-Muc do 4.doc
+18  h:\\chuongtrinh2018\\Toan THPT\\19  NGÀN CÂU TRẮC NGHIỆM TOÁN 12\\12-GHEP6CHUONG\\0018-DS12-C1-CD01-D05- Điều kiện để hàm số bậc ba đơn điệu trên khoảng K- Muc do 1.doc
+19  h:\\chuongtrinh2018\\Toan THPT\\19  NGÀN CÂU TRẮC NGHIỆM TOÁN 12\\12-GHEP6CHUONG\\0019-DS12-C1-CD01-D05- Điều kiện để hàm số bậc ba đơn điệu trên khoảng K- Muc do 2.doc
+20  h:\\chuongtrinh2018\\Toan THPT\\19  NGÀN CÂU TRẮC NGHIỆM TOÁN 12\\12-GHEP6CHUONG\\0020-DS12-C1-CD01-D05- Điều kiện để hàm số bậc ba đơn điệu trên khoảng K- Muc do 3.doc
+21  h:\\chuongtrinh2018\\Toan THPT\\19  NGÀN CÂU TRẮC NGHIỆM TOÁN 12\\12-GHEP6CHUONG\\0021-DS12-C1-CD01-D05- Điều kiện để hàm số bậc ba đơn điệu trên khoảng K- Muc do 4.doc
+22  h:\\chuongtrinh2018\\Toan THPT\\19  NGÀN CÂU TRẮC NGHIỆM TOÁN 12\\12-GHEP6CHUONG\\0022-DS12-C1-CD01-D06- Điều kiện để hàm số- nhất biến đơn điệu trên khoảng K- Muc do 2.doc
+23  h:\\chuongtrinh2018\\Toan THPT\\19  NGÀN CÂU TRẮC NGHIỆM TOÁN 12\\12-GHEP6CHUONG\\0023-DS12-C1-CD01-D06- Điều kiện để hàm số- nhất biến đơn điệu trên khoảng K- Muc do 3.doc
+24  h:\\chuongtrinh2018\\Toan THPT\\19  NGÀN CÂU TRẮC NGHIỆM TOÁN 12\\12-GHEP6CHUONG\\0024-DS12-C1-CD01-D07- Điều kiện để hàm số trùng phương đơn điệu trên khoảng K- Muc do 2.doc
+25  h:\\chuongtrinh2018\\Toan THPT\\19  NGÀN CÂU TRẮC NGHIỆM TOÁN 12\\12-GHEP6CHUONG\\0025-DS12-C1-CD01-D07- Điều kiện để hàm số trùng phương đơn điệu trên khoảng K- Muc do 3.doc
+26  h:\\chuongtrinh2018\\Toan THPT\\19  NGÀN CÂU TRẮC NGHIỆM TOÁN 12\\12-GHEP6CHUONG\\0026-DS12-C1-CD01-D08- Điều kiên để hàm số phân thức(khác) đơn điệu trên khoảng K- Muc do 2.doc
+27  h:\\chuongtrinh2018\\Toan THPT\\19  NGÀN CÂU TRẮC NGHIỆM TOÁN 12\\12-GHEP6CHUONG\\0027-DS12-C1-CD01-D08- Điều kiên để hàm số phân thức(khác) đơn điệu trên khoảng K- Muc do 3.doc
+28  h:\\chuongtrinh2018\\Toan THPT\\19  NGÀN CÂU TRẮC NGHIỆM TOÁN 12\\12-GHEP6CHUONG\\0028-DS12-C1-CD01-D08- Điều kiên để hàm số phân thức(khác) đơn điệu trên khoảng K- Muc do 4.doc
+29  h:\\chuongtrinh2018\\Toan THPT\\19  NGÀN CÂU TRẮC NGHIỆM TOÁN 12\\12-GHEP6CHUONG\\0029-DS12-C1-CD01-D09- Điều kiện để hàm số lượng giác đơn điệu trên khoảng K- Muc do 2.doc
+30  h:\\chuongtrinh2018\\Toan THPT\\19  NGÀN CÂU TRẮC NGHIỆM TOÁN 12\\12-GHEP6CHUONG\\0030-DS12-C1-CD01-D09- Điều kiện để hàm số lượng giác đơn điệu trên khoảng K- Muc do 3.doc
+31  h:\\chuongtrinh2018\\Toan THPT\\19  NGÀN CÂU TRẮC NGHIỆM TOÁN 12\\12-GHEP6CHUONG\\0031-DS12-C1-CD01-D09- Điều kiện để hàm số lượng giác đơn điệu trên khoảng K- Muc do 4.doc
+32  h:\\chuongtrinh2018\\Toan THPT\\19  NGÀN CÂU TRẮC NGHIỆM TOÁN 12\\12-GHEP6CHUONG\\0032-DS12-C1-CD01-D10- Điều kiện để hàm số vô tỷ, hàm số khác đơn điệu trên K- Muc do 2.doc
+33  h:\\chuongtrinh2018\\Toan THPT\\19  NGÀN CÂU TRẮC NGHIỆM TOÁN 12\\12-GHEP6CHUONG\\0033-DS12-C1-CD01-D10- Điều kiện để hàm số vô tỷ, hàm số khác đơn điệu trên K- Muc do 3.doc
+34  h:\\chuongtrinh2018\\Toan THPT\\19  NGÀN CÂU TRẮC NGHIỆM TOÁN 12\\12-GHEP6CHUONG\\0034-DS12-C1-CD01-D10- Điều kiện để hàm số vô tỷ, hàm số khác đơn điệu trên K- Muc do 4.doc
+35  h:\\chuongtrinh2018\\Toan THPT\\19  NGÀN CÂU TRẮC NGHIỆM TOÁN 12\\12-GHEP6CHUONG\\0035-DS12-C1-CD01-D11- Ứng dụng phương pháp hàm số vào đại số- Muc do 3.doc
+36  h:\\chuongtrinh2018\\Toan THPT\\19  NGÀN CÂU TRẮC NGHIỆM TOÁN 12\\12-GHEP6CHUONG\\0036-DS12-C1-CD01-D11- Ứng dụng phương pháp hàm số vào đại số- Muc do 4.doc
+37  h:\\chuongtrinh2018\\Toan THPT\\19  NGÀN CÂU TRẮC NGHIỆM TOÁN 12\\12-GHEP6CHUONG\\0037-DS12-C1-CD02-D00- Dạng toán khác về cực trị- Muc do 2.doc
+38  h:\\chuongtrinh2018\\Toan THPT\\19  NGÀN CÂU TRẮC NGHIỆM TOÁN 12\\12-GHEP6CHUONG\\0038-DS12-C1-CD02-D00- Dạng toán khác về cực trị- Muc do 3.doc
+39  h:\\chuongtrinh2018\\Toan THPT\\19  NGÀN CÂU TRẮC NGHIỆM TOÁN 12\\12-GHEP6CHUONG\\0039-DS12-C1-CD02-D00- Dạng toán khác về cực trị- Muc do 4.doc
+40  h:\\chuongtrinh2018\\Toan THPT\\19  NGÀN CÂU TRẮC NGHIỆM TOÁN 12\\12-GHEP6CHUONG\\0040-DS12-C1-CD02-D01- Lý thuyết về cực trị của hàm số- Muc do 1.doc
+41  h:\\chuongtrinh2018\\Toan THPT\\19  NGÀN CÂU TRẮC NGHIỆM TOÁN 12\\12-GHEP6CHUONG\\0041-DS12-C1-CD02-D01- Lý thuyết về cực trị của hàm số- Muc do 2.doc
+42  h:\\chuongtrinh2018\\Toan THPT\\19  NGÀN CÂU TRẮC NGHIỆM TOÁN 12\\12-GHEP6CHUONG\\0042-DS12-C1-CD02-D01- Lý thuyết về cực trị của hàm số- Muc do 3.doc
+43  h:\\chuongtrinh2018\\Toan THPT\\19  NGÀN CÂU TRẮC NGHIỆM TOÁN 12\\12-GHEP6CHUONG\\0043-DS12-C1-CD02-D02- Nhận dạng BBT, nhận dạng hàm số- Muc do 1.doc
+44  h:\\chuongtrinh2018\\Toan THPT\\19  NGÀN CÂU TRẮC NGHIỆM TOÁN 12\\12-GHEP6CHUONG\\0044-DS12-C1-CD02-D02- Nhận dạng BBT, nhận dạng hàm số- Muc do 2.doc
+45  h:\\chuongtrinh2018\\Toan THPT\\19  NGÀN CÂU TRẮC NGHIỆM TOÁN 12\\12-GHEP6CHUONG\\0045-DS12-C1-CD02-D02- Nhận dạng BBT, nhận dạng hàm số- Muc do 3.doc
+46  h:\\chuongtrinh2018\\Toan THPT\\19  NGÀN CÂU TRẮC NGHIỆM TOÁN 12\\12-GHEP6CHUONG\\0046-DS12-C1-CD02-D02- Nhận dạng BBT, nhận dạng hàm số- Muc do 4.doc
+47  h:\\chuongtrinh2018\\Toan THPT\\19  NGÀN CÂU TRẮC NGHIỆM TOÁN 12\\12-GHEP6CHUONG\\0047-DS12-C1-CD02-D03- Đếm số điểm cực trị(Biết đồ thị, BBT)- Muc do 1.doc
+48  h:\\chuongtrinh2018\\Toan THPT\\19  NGÀN CÂU TRẮC NGHIỆM TOÁN 12\\12-GHEP6CHUONG\\0048-DS12-C1-CD02-D03- Đếm số điểm cực trị(Biết đồ thị, BBT)- Muc do 2.doc
+49  h:\\chuongtrinh2018\\Toan THPT\\19  NGÀN CÂU TRẮC NGHIỆM TOÁN 12\\12-GHEP6CHUONG\\0049-DS12-C1-CD02-D03- Đếm số điểm cực trị(Biết đồ thị, BBT)- Muc do 3.doc
+50  h:\\chuongtrinh2018\\Toan THPT\\19  NGÀN CÂU TRẮC NGHIỆM TOÁN 12\\12-GHEP6CHUONG\\0050-DS12-C1-CD02-D03- Đếm số điểm cực trị(Biết đồ thị, BBT)- Muc do 4.doc
+51  h:\\chuongtrinh2018\\Toan THPT\\19  NGÀN CÂU TRẮC NGHIỆM TOÁN 12\\12-GHEP6CHUONG\\0051-DS12-C1-CD02-D04- Đếm số điểm cực trị(Biết y, y’)- Muc do 1.doc
+52  h:\\chuongtrinh2018\\Toan THPT\\19  NGÀN CÂU TRẮC NGHIỆM TOÁN 12\\12-GHEP6CHUONG\\0052-DS12-C1-CD02-D04- Đếm số điểm cực trị(Biết y, y’)- Muc do 2.doc
+53  h:\\chuongtrinh2018\\Toan THPT\\19  NGÀN CÂU TRẮC NGHIỆM TOÁN 12\\12-GHEP6CHUONG\\0053-DS12-C1-CD02-D04- Đếm số điểm cực trị(Biết y, y’)- Muc do 3.doc
+54  h:\\chuongtrinh2018\\Toan THPT\\19  NGÀN CÂU TRẮC NGHIỆM TOÁN 12\\12-GHEP6CHUONG\\0054-DS12-C1-CD02-D04- Đếm số điểm cực trị(Biết y, y’)- Muc do 4.doc
+55  h:\\chuongtrinh2018\\Toan THPT\\19  NGÀN CÂU TRẮC NGHIỆM TOÁN 12\\12-GHEP6CHUONG\\0055-DS12-C1-CD02-D05- Tìm cực trị, điểm cực trị(Biết đồ thị, BBT)-Muc do 1.doc
+56  h:\\chuongtrinh2018\\Toan THPT\\19  NGÀN CÂU TRẮC NGHIỆM TOÁN 12\\12-GHEP6CHUONG\\0056-DS12-C1-CD02-D05- Tìm cực trị, điểm cực trị(Biết đồ thị, BBT)-Muc do 2.doc
+57  h:\\chuongtrinh2018\\Toan THPT\\19  NGÀN CÂU TRẮC NGHIỆM TOÁN 12\\12-GHEP6CHUONG\\0057-DS12-C1-CD02-D05- Tìm cực trị, điểm cực trị(Biết đồ thị, BBT)-Muc do 3.doc
+58  h:\\chuongtrinh2018\\Toan THPT\\19  NGÀN CÂU TRẮC NGHIỆM TOÁN 12\\12-GHEP6CHUONG\\0058-DS12-C1-CD02-D06- Tìm cực trị, điểm cực trị(Biết y,y’)- Muc do 1.doc
+59  h:\\chuongtrinh2018\\Toan THPT\\19  NGÀN CÂU TRẮC NGHIỆM TOÁN 12\\12-GHEP6CHUONG\\0059-DS12-C1-CD02-D06- Tìm cực trị, điểm cực trị(Biết y,y’)- Muc do 2.doc
+60  h:\\chuongtrinh2018\\Toan THPT\\19  NGÀN CÂU TRẮC NGHIỆM TOÁN 12\\12-GHEP6CHUONG\\0060-DS12-C1-CD02-D06- Tìm cực trị, điểm cực trị(Biết y,y’)- Muc do 3.doc
+61  h:\\chuongtrinh2018\\Toan THPT\\19  NGÀN CÂU TRẮC NGHIỆM TOÁN 12\\12-GHEP6CHUONG\\0061-DS12-C1-CD02-D06- Tìm cực trị, điểm cực trị(Biết y,y’)- Muc do 4.doc
+62  h:\\chuongtrinh2018\\Toan THPT\\19  NGÀN CÂU TRẮC NGHIỆM TOÁN 12\\12-GHEP6CHUONG\\0062-DS12-C1-CD02-D07- Điều kiện để hàm số có cực trị- Muc do 1.doc
+63  h:\\chuongtrinh2018\\Toan THPT\\19  NGÀN CÂU TRẮC NGHIỆM TOÁN 12\\12-GHEP6CHUONG\\0063-DS12-C1-CD02-D07- Điều kiện để hàm số có cực trị- Muc do 2.doc
+64  h:\\chuongtrinh2018\\Toan THPT\\19  NGÀN CÂU TRẮC NGHIỆM TOÁN 12\\12-GHEP6CHUONG\\0064-DS12-C1-CD02-D07- Điều kiện để hàm số có cực trị- Muc do 3.doc
+65  h:\\chuongtrinh2018\\Toan THPT\\19  NGÀN CÂU TRẮC NGHIỆM TOÁN 12\\12-GHEP6CHUONG\\0065-DS12-C1-CD02-D07- Điều kiện để hàm số có cực trị- Muc do 4.doc
+66  h:\\chuongtrinh2018\\Toan THPT\\19  NGÀN CÂU TRẮC NGHIỆM TOÁN 12\\12-GHEP6CHUONG\\0066-DS12-C1-CD02-D08- Điều kiện để hàm số có cực trị tại xo(cụ thể) - Muc do 2.doc
+67  h:\\chuongtrinh2018\\Toan THPT\\19  NGÀN CÂU TRẮC NGHIỆM TOÁN 12\\12-GHEP6CHUONG\\0067-DS12-C1-CD02-D08- Điều kiện để hàm số có cực trị tại xo(cụ thể) - Muc do 3.doc
+68  h:\\chuongtrinh2018\\Toan THPT\\19  NGÀN CÂU TRẮC NGHIỆM TOÁN 12\\12-GHEP6CHUONG\\0068-DS12-C1-CD02-D09- Điều kiện để hàm số có cực trị, kèm giả thiết (theo x)- Muc do 1.doc
+69  h:\\chuongtrinh2018\\Toan THPT\\19  NGÀN CÂU TRẮC NGHIỆM TOÁN 12\\12-GHEP6CHUONG\\0069-DS12-C1-CD02-D09- Điều kiện để hàm số có cực trị, kèm giả thiết (theo x)- Muc do 2.doc
+70  h:\\chuongtrinh2018\\Toan THPT\\19  NGÀN CÂU TRẮC NGHIỆM TOÁN 12\\12-GHEP6CHUONG\\0070-DS12-C1-CD02-D09- Điều kiện để hàm số có cực trị, kèm giả thiết (theo x)- Muc do 3.doc
+71  h:\\chuongtrinh2018\\Toan THPT\\19  NGÀN CÂU TRẮC NGHIỆM TOÁN 12\\12-GHEP6CHUONG\\0071-DS12-C1-CD02-D09- Điều kiện để hàm số có cực trị, kèm giả thiết (theo x)- Muc do 4.doc
+72  h:\\chuongtrinh2018\\Toan THPT\\19  NGÀN CÂU TRẮC NGHIỆM TOÁN 12\\12-GHEP6CHUONG\\0072-DS12-C1-CD02-D10- Điều kiện để hàm số có cực trị, kem giả thiết (theo y)- Muc do 2.doc
+73  h:\\chuongtrinh2018\\Toan THPT\\19  NGÀN CÂU TRẮC NGHIỆM TOÁN 12\\12-GHEP6CHUONG\\0073-DS12-C1-CD02-D10- Điều kiện để hàm số có cực trị, kem giả thiết (theo y)- Muc do 3.doc
+74  h:\\chuongtrinh2018\\Toan THPT\\19  NGÀN CÂU TRẮC NGHIỆM TOÁN 12\\12-GHEP6CHUONG\\0074-DS12-C1-CD02-D10- Điều kiện để hàm số có cực trị, kem giả thiết (theo y)- Muc do 4.doc
+75  h:\\chuongtrinh2018\\Toan THPT\\19  NGÀN CÂU TRẮC NGHIỆM TOÁN 12\\12-GHEP6CHUONG\\0075-DS12-C1-CD02-D11- Đường thẳng nối 2 điểm cực trị(đồ thị hàm số bậc ba)- Muc do 2.doc
+76  h:\\chuongtrinh2018\\Toan THPT\\19  NGÀN CÂU TRẮC NGHIỆM TOÁN 12\\12-GHEP6CHUONG\\0076-DS12-C1-CD02-D11- Đường thẳng nối 2 điểm cực trị(đồ thị hàm số bậc ba)- Muc do 3.doc
+77  h:\\chuongtrinh2018\\Toan THPT\\19  NGÀN CÂU TRẮC NGHIỆM TOÁN 12\\12-GHEP6CHUONG\\0077-DS12-C1-CD02-D12- Đường thẳng nối 2 điểm cực trị(đồ thị hàm phân thức)- Muc do 2.doc
+78  h:\\chuongtrinh2018\\Toan THPT\\19  NGÀN CÂU TRẮC NGHIỆM TOÁN 12\\12-GHEP6CHUONG\\0078-DS12-C1-CD02-D12- Đường thẳng nối 2 điểm cực trị(đồ thị hàm phân thức)- Muc do 3.doc
+79  h:\\chuongtrinh2018\\Toan THPT\\19  NGÀN CÂU TRẮC NGHIỆM TOÁN 12\\12-GHEP6CHUONG\\0079-DS12-C1-CD02-D13- Điều kiện hình học về 2 điểm cực trị(hàm bậc ba)- Muc do 2.doc
+80  h:\\chuongtrinh2018\\Toan THPT\\19  NGÀN CÂU TRẮC NGHIỆM TOÁN 12\\12-GHEP6CHUONG\\0080-DS12-C1-CD02-D13- Điều kiện hình học về 2 điểm cực trị(hàm bậc ba)- Muc do 3.doc
+81  h:\\chuongtrinh2018\\Toan THPT\\19  NGÀN CÂU TRẮC NGHIỆM TOÁN 12\\12-GHEP6CHUONG\\0081-DS12-C1-CD02-D13- Điều kiện hình học về 2 điểm cực trị(hàm bậc ba)- Muc do 4.doc
+82  h:\\chuongtrinh2018\\Toan THPT\\19  NGÀN CÂU TRẮC NGHIỆM TOÁN 12\\12-GHEP6CHUONG\\0082-DS12-C1-CD02-D14- Điều kiện hình học về tam giác cực trị(hàm trùng phương)- Muc do 2.doc
+83  h:\\chuongtrinh2018\\Toan THPT\\19  NGÀN CÂU TRẮC NGHIỆM TOÁN 12\\12-GHEP6CHUONG\\0083-DS12-C1-CD02-D14- Điều kiện hình học về tam giác cực trị(hàm trùng phương)- Muc do 3.doc
+84  h:\\chuongtrinh2018\\Toan THPT\\19  NGÀN CÂU TRẮC NGHIỆM TOÁN 12\\12-GHEP6CHUONG\\0084-DS12-C1-CD02-D14- Điều kiện hình học về tam giác cực trị(hàm trùng phương)- Muc do 4.doc
+85  h:\\chuongtrinh2018\\Toan THPT\\19  NGÀN CÂU TRẮC NGHIỆM TOÁN 12\\12-GHEP6CHUONG\\0085-DS12-C1-CD02-D14- Điều kiện hình học về tam giác cực trị(hàm trùng phương)- Muc do 4(1).doc
+86  h:\\chuongtrinh2018\\Toan THPT\\19  NGÀN CÂU TRẮC NGHIỆM TOÁN 12\\12-GHEP6CHUONG\\0086-DS12-C1-CD02-D15- Câu hỏi tổng hợp về tính đơn điệu và cực trị-Muc do 2.doc
+87  h:\\chuongtrinh2018\\Toan THPT\\19  NGÀN CÂU TRẮC NGHIỆM TOÁN 12\\12-GHEP6CHUONG\\0087-DS12-C1-CD02-D15- Câu hỏi tổng hợp về tính đơn điệu và cực trị-Muc do 3.doc
+88  h:\\chuongtrinh2018\\Toan THPT\\19  NGÀN CÂU TRẮC NGHIỆM TOÁN 12\\12-GHEP6CHUONG\\0088-DS12-C1-CD02-D15- Câu hỏi tổng hợp về tính đơn điệu và cực trị-Muc do 4.doc
+89  h:\\chuongtrinh2018\\Toan THPT\\19  NGÀN CÂU TRẮC NGHIỆM TOÁN 12\\12-GHEP6CHUONG\\0089-DS12-C1-CD03-D00- Các câu hỏi chưa phân dạng- Muc do 2.doc
+90  h:\\chuongtrinh2018\\Toan THPT\\19  NGÀN CÂU TRẮC NGHIỆM TOÁN 12\\12-GHEP6CHUONG\\0090-DS12-C1-CD03-D00- Các câu hỏi chưa phân dạng- Muc do 3.doc
+91  h:\\chuongtrinh2018\\Toan THPT\\19  NGÀN CÂU TRẮC NGHIỆM TOÁN 12\\12-GHEP6CHUONG\\0091-DS12-C1-CD03-D00- Các câu hỏi chưa phân dạng- Muc do 4.doc
+92  h:\\chuongtrinh2018\\Toan THPT\\19  NGÀN CÂU TRẮC NGHIỆM TOÁN 12\\12-GHEP6CHUONG\\0092-DS12-C1-CD03-D01- Max-Min biết đồ thị, BBT- Muc do 1.doc
+93  h:\\chuongtrinh2018\\Toan THPT\\19  NGÀN CÂU TRẮC NGHIỆM TOÁN 12\\12-GHEP6CHUONG\\0093-DS12-C1-CD03-D01- Max-Min biết đồ thị, BBT- Muc do 2.doc
+94  h:\\chuongtrinh2018\\Toan THPT\\19  NGÀN CÂU TRẮC NGHIỆM TOÁN 12\\12-GHEP6CHUONG\\0094-DS12-C1-CD03-D01- Max-Min biết đồ thị, BBT- Muc do 3.doc
+95  h:\\chuongtrinh2018\\Toan THPT\\19  NGÀN CÂU TRẮC NGHIỆM TOÁN 12\\12-GHEP6CHUONG\\0095-DS12-C1-CD03-D02- Max-Min của hàm số đa thức trên đoạn[a,b]-Muc do 1.doc
+96  h:\\chuongtrinh2018\\Toan THPT\\19  NGÀN CÂU TRẮC NGHIỆM TOÁN 12\\12-GHEP6CHUONG\\0096-DS12-C1-CD03-D02- Max-Min của hàm số đa thức trên đoạn[a,b]-Muc do 2.doc
+97  h:\\chuongtrinh2018\\Toan THPT\\19  NGÀN CÂU TRẮC NGHIỆM TOÁN 12\\12-GHEP6CHUONG\\0097-DS12-C1-CD03-D02- Max-Min của hàm số đa thức trên đoạn[a,b]-Muc do 3.doc
+98  h:\\chuongtrinh2018\\Toan THPT\\19  NGÀN CÂU TRẮC NGHIỆM TOÁN 12\\12-GHEP6CHUONG\\0098-DS12-C1-CD03-D02- Max-Min của hàm số đa thức trên đoạn[a,b]-Muc do 4.doc
+99  h:\\chuongtrinh2018\\Toan THPT\\19  NGÀN CÂU TRẮC NGHIỆM TOÁN 12\\12-GHEP6CHUONG\\0099-DS12-C1-CD03-D03- Max-Min của hàm số đa thức trên K- Muc do 1.doc
+100  h:\\chuongtrinh2018\\Toan THPT\\19  NGÀN CÂU TRẮC NGHIỆM TOÁN 12\\12-GHEP6CHUONG\\0100-DS12-C1-CD03-D03- Max-Min của hàm số đa thức trên K- Muc do 2.doc`;
+
+    // State
+    let appState = {
+      data: [],
+      filteredData: [],
+      currentPage: 1,
+      itemsPerPage: 20,
+      filters: { search: '', subject: 'all', chapter: 'all', level: 'all' }
+    };
+
+    // DOM Elements
+    const els = {
+      tableBody: document.getElementById('tableBody'),
+      emptyState: document.getElementById('emptyState'),
+      totalCount: document.getElementById('totalCount'),
+      paginationInfo: document.getElementById('paginationInfo'),
+      paginationControls: document.getElementById('paginationControls'),
+      searchInput: document.getElementById('searchInput'),
+      subjectFilter: document.getElementById('subjectFilter'),
+      chapterFilter: document.getElementById('chapterFilter'),
+      levelFilter: document.getElementById('levelFilter'),
+      toast: document.getElementById('toast'),
+      toastMessage: document.getElementById('toastMessage')
+    };
+
+    // Parser
+    function parseData(rawText) {
+      const lines = rawText.trim().split('\n');
+      const items = [];
+      const seen = new Set();
+
+      lines.forEach(line => {
+        const match = line.match(/^\s*(\d+)\s+(.+)$/);
+        if (!match) return;
+        const id = parseInt(match[1]);
+        const fullPath = match[2].trim();
+        const fileName = fullPath.split('\\').pop();
+
+        // Skip duplicates
+        if (seen.has(fileName)) return;
+        seen.add(fileName);
+
+        // Parse filename structure
+        const parts = fileName.split('- Muc do ');
+        if (parts.length < 2) return;
+        
+        const levelStr = parts[1].replace('.doc', '').trim();
+        const level = parseInt(levelStr) || 0;
+        const metaStr = parts[0].replace(/^\d+-/, '');
+
+        const metaMatch = metaStr.match(/^([A-Z]{2}\d{2})-C(\d+)-CD(\d+)-D(\d+)-\s*(.+)$/);
+        if (!metaMatch) return;
+
+        items.push({
+          id,
+          path: fullPath,
+          fileName,
+          subject: metaMatch[1],
+          chapter: parseInt(metaMatch[2]),
+          topicCode: metaMatch[3],
+          subCode: metaMatch[4],
+          title: metaMatch[5].trim(),
+          level
+        });
+      });
+
+      return items.sort((a, b) => a.id - b.id);
+    }
+
+    // Initialize
+    function init() {
+      appState.data = parseData(RAW_DATA);
+      appState.filteredData = [...appState.data];
+      
+      populateFilters();
+      render();
+      bindEvents();
+      
+      els.totalCount.textContent = appState.data.length;
+    }
+
+    function populateFilters() {
+      const subjects = [...new Set(appState.data.map(d => d.subject))].sort();
+      const chapters = [...new Set(appState.data.map(d => d.chapter))].sort((a,b) => a-b);
+
+      subjects.forEach(sub => {
+        const opt = document.createElement('option');
+        opt.value = sub; opt.textContent = sub === 'DS12' ? 'Đại số 12' : 'Hình học 12';
+        els.subjectFilter.appendChild(opt);
+      });
+
+      chapters.forEach(ch => {
+        const opt = document.createElement('option');
+        opt.value = ch; opt.textContent = `Chương ${ch}`;
+        els.chapterFilter.appendChild(opt);
+      });
+    }
+
+    function bindEvents() {
+      let debounceTimer;
+      els.searchInput.addEventListener('input', (e) => {
+        clearTimeout(debounceTimer);
+        debounceTimer = setTimeout(() => {
+          appState.filters.search = e.target.value.toLowerCase();
+          appState.currentPage = 1;
+          applyFilters();
+        }, 200);
+      });
+
+      els.subjectFilter.addEventListener('change', (e) => { appState.filters.subject = e.target.value; appState.currentPage = 1; applyFilters(); });
+      els.chapterFilter.addEventListener('change', (e) => { appState.filters.chapter = e.target.value; appState.currentPage = 1; applyFilters(); });
+      els.levelFilter.addEventListener('change', (e) => { appState.filters.level = e.target.value; appState.currentPage = 1; applyFilters(); });
+    }
+
+    function applyFilters() {
+      appState.filteredData = appState.data.filter(item => {
+        const matchSearch = !appState.filters.search || 
+                            item.title.toLowerCase().includes(appState.filters.search) ||
+                            item.fileName.toLowerCase().includes(appState.filters.search);
+        const matchSubject = appState.filters.subject === 'all' || item.subject === appState.filters.subject;
+        const matchChapter = appState.filters.chapter === 'all' || item.chapter === parseInt(appState.filters.chapter);
+        const matchLevel = appState.filters.level === 'all' || item.level === parseInt(appState.filters.level);
+        return matchSearch && matchSubject && matchChapter && matchLevel;
+      });
+      render();
+    }
+
+    function render() {
+      const start = (appState.currentPage - 1) * appState.itemsPerPage;
+      const end = start + appState.itemsPerPage;
+      const pageData = appState.filteredData.slice(start, end);
+      const totalPages = Math.ceil(appState.filteredData.length / appState.itemsPerPage) || 1;
+
+      // Render Table
+      els.tableBody.innerHTML = '';
+      if (pageData.length === 0) {
+        els.emptyState.classList.remove('hidden');
+        els.emptyState.classList.add('flex');
+      } else {
+        els.emptyState.classList.add('hidden');
+        els.emptyState.classList.remove('flex');
+        pageData.forEach((item, idx) => {
+          const levelColor = item.level <= 1 ? 'bg-blue-100 text-blue-700' : item.level <= 2 ? 'bg-emerald-100 text-emerald-700' : item.level <= 3 ? 'bg-amber-100 text-amber-700' : 'bg-rose-100 text-rose-700';
+          const levelLabel = item.level <= 1 ? 'Nhận biết' : item.level <= 2 ? 'Thông hiểu' : item.level <= 3 ? 'Vận dụng' : 'Vận dụng cao';
+          
+          const tr = document.createElement('tr');
+          tr.className = 'hover:bg-slate-50 transition-colors';
+          tr.innerHTML = `
+            <td class="px-4 py-3 text-slate-500 font-mono text-xs">${item.id}</td>
+            <td class="px-4 py-3">
+              <span class="inline-flex items-center px-2 py-1 rounded-md text-xs font-medium bg-slate-100 text-slate-700">
+                ${item.subject === 'DS12' ? 'ĐS' : 'HH'} - Ch.${item.chapter} - CĐ${item.topicCode}
+              </span>
+            </td>
+            <td class="px-4 py-3 font-medium text-slate-800">${item.title}</td>
+            <td class="px-4 py-3 text-center">
+              <span class="inline-block px-2 py-1 rounded-full text-xs font-semibold ${levelColor}">${levelLabel}</span>
+            </td>
+            <td class="px-4 py-3 text-center">
+              <button onclick="copyPath('${item.path.replace(/\\/g, '\\\\')}')" class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-indigo-50 text-indigo-600 hover:bg-indigo-100 rounded-lg text-xs font-medium transition">
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"></path></svg>
+                Sao chép
+              </button>
+            </td>
+          `;
+          els.tableBody.appendChild(tr);
+        });
+      }
+
+      // Pagination Info
+      const showStart = appState.filteredData.length > 0 ? start + 1 : 0;
+      const showEnd = Math.min(end, appState.filteredData.length);
+      els.paginationInfo.textContent = `Hiển thị ${showStart} - ${showEnd} / ${appState.filteredData.length}`;
+
+      // Pagination Controls
+      renderPagination(totalPages);
+    }
+
+    function renderPagination(totalPages) {
+      els.paginationControls.innerHTML = '';
+      if (totalPages <= 1) return;
+
+      const createBtn = (text, page, disabled = false, active = false) => {
+        const btn = document.createElement('button');
+        btn.className = `px-3 py-1.5 rounded-lg text-sm font-medium transition ${disabled ? 'opacity-50 cursor-not-allowed bg-slate-100 text-slate-400' : active ? 'bg-indigo-600 text-white shadow-sm' : 'bg-white border border-slate-200 text-slate-600 hover:bg-slate-50'}`;
+        btn.textContent = text;
+        if (!disabled) btn.onclick = () => { appState.currentPage = page; render(); window.scrollTo({ top: 0, behavior: 'smooth' }); };
+        return btn;
+      };
+
+      els.paginationControls.appendChild(createBtn('Trước', appState.currentPage - 1, appState.currentPage === 1));
+      
+      // Smart page range
+      let startPage = Math.max(1, appState.currentPage - 2);
+      let endPage = Math.min(totalPages, appState.currentPage + 2);
+      if (startPage > 1) els.paginationControls.appendChild(createBtn('1', 1, false, appState.currentPage === 1));
+      if (startPage > 2) { const d = document.createElement('span'); d.className='px-1 text-slate-400'; d.textContent='...'; els.paginationControls.appendChild(d); }
+      
+      for (let i = startPage; i <= endPage; i++) {
+        els.paginationControls.appendChild(createBtn(i, i, false, appState.currentPage === i));
+      }
+
+      if (endPage < totalPages - 1) { const d = document.createElement('span'); d.className='px-1 text-slate-400'; d.textContent='...'; els.paginationControls.appendChild(d); }
+      if (endPage < totalPages) els.paginationControls.appendChild(createBtn(totalPages, totalPages, false, appState.currentPage === totalPages));
+
+      els.paginationControls.appendChild(createBtn('Sau', appState.currentPage + 1, appState.currentPage === totalPages));
+    }
+
+    window.copyPath = (path) => {
+      navigator.clipboard.writeText(path).then(() => {
+        showToast('Đã sao chép đường dẫn vào bộ nhớ tạm!');
+      }).catch(() => {
+        showToast('Lỗi sao chép. Vui lòng thử lại.');
+      });
+    };
+
+    function showToast(msg) {
+      els.toastMessage.textContent = msg;
+      els.toast.classList.add('show');
+      setTimeout(() => els.toast.classList.remove('show'), 2000);
+    }
+
+    // Boot
+    document.addEventListener('DOMContentLoaded', init);
+  </script>
+</body>
+</html>
+```
